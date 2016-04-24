@@ -8,14 +8,14 @@ import players.Player;
  *
  */
 
-public class MainActionBonus implements Bonus {
+public class PurchasedPermitTileBonus implements Bonus{
 
 	/**
-	 * Permits to player p to do another main action
+	 * TODO
 	 * @param p
 	 */
 	public void assignBonus(Player p) {
-		// TODO - implement MainActionBonus.assignBonus
+		// TODO - implement PurchasedTileBonus.assignBonus
 		throw new UnsupportedOperationException();
 	}
 

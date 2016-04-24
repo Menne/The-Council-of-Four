@@ -1,14 +1,17 @@
 package bonus;
 
-public abstract class Bonus {
+import players.Player;
 
+/**
+ * Bonus interface offers the abstract method assignBonus
+ * @author andreapasquali
+ * 
+ */
+
+public interface Bonus {
 	/**
 	 * 
-	 * @param p
+	 * @param p refers to player
 	 */
-	public void assignBonus(player p) {
-		// TODO - implement Bonus.assignBonus
-		throw new UnsupportedOperationException();
-	}
-
+	public abstract void assignBonus(Player p);
 }
