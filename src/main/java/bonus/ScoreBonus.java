@@ -1,18 +1,22 @@
 package bonus;
 
-import players.*;
+import players.Player;
 
-public class ScoreBonus extends Bonus {
+/**
+ * ScoreBonus implements assignBonus method
+ * @author andreapasquali
+ *
+ */
 
-	private int avdancement;
-
-	/**
-	 * 
-	 * @param p
-	 */
-	public void assignBonus(Player p) {
-		// TODO - implement ScoreBonus.assignBonus
-		throw new UnsupportedOperationException();
+public class ScoreBonus implements Bonus{
+	
+	private final int advancement;
+	
+	public ScoreBonus(int advancement){
+		this.advancement=advancement;
 	}
-
+	
+	public void assignBonus(Player p){
+		
+	}
 }

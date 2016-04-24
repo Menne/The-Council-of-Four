@@ -16,7 +16,7 @@ public class Player {
 	private int coins;
 	private boolean isPlayerTurn;
 	
-	public Player() {
+	public Player(int playerNumber, String name, int assistants, Score score, int nobility, int coins, boolean isPlayerTurn) {
 		this.playerNumber=playerNumber;
 		this.name=name;
 		this.assistants=assistants;
@@ -26,32 +26,34 @@ public class Player {
 		this.isPlayerTurn=isPlayerTurn;
 	}
 
-	public getNumber() {
-		return number;
+	public int getPlayerNumber() {
+		return playerNumber;
 	}
 	
-	public getName() {
+	public String getName() {
 		return name;
 	}
 	
-	public getAssistants() {
+	public int getAssistants() {
 		return assistants;
 	}
 	
-	public getScore() {
+	public Score getScore() {
 		return score;
 	}
 	
-	public getNobility() {
+	public int getNobility() {
 		return nobility;
 	}
 	
-	public getCoins() {
+	public int getCoins() {
 		return coins;
 	}
+
+	
 	
 	public void incrementAssistants(int increment) {
-		this.assistsants+=increment;
+		this.assistants+=increment;
 	}
 	
 	public void incrementNobility(int increment) {

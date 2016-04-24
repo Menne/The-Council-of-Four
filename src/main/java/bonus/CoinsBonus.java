@@ -1,16 +1,26 @@
 package bonus;
 
-public class CoinsBonus extends Bonus {
+import players.Player;
 
-	private int increasementCoins;
+/**
+ * CoinsBonus class
+ * @author andreapasquali
+ *
+ */
 
+public class CoinsBonus implements Bonus{
+
+	private final int increasementCoins;
+
+	public CoinsBonus(int increasementCoins){
+		this.increasementCoins=increasementCoins;
+	}
 	/**
-	 * 
+	 * Assigns to player p an "increasement coins" number of coins
 	 * @param p
 	 */
-	public void assignBonus(player p) {
-		// TODO - implement CoinsBonus.assignBonus
-		throw new UnsupportedOperationException();
+	public void assignBonus(Player p) {
+		p.incrementCoins(increasementCoins);
 	}
 
 }

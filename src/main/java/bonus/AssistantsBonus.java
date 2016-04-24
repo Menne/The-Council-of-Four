@@ -1,16 +1,26 @@
 package bonus;
 
-public class AssistantsBonus extends Bonus {
+import players.Player;
 
-	private int increasementAssistants;
+/**
+ * AssistantsBonus implements the Bonus Class
+ * @author andreapasquali
+ *
+ */
 
+public class AssistantsBonus implements Bonus{
+
+	private final int increasementAssistants;
+
+	public  AssistantsBonus(int increasementAssistants){
+		this.increasementAssistants=increasementAssistants;
+	}
 	/**
-	 * 
+	 * assigns to player p a number "increasementAssistant" of assistants
 	 * @param p
 	 */
-	public void assignBonus(player p) {
-		// TODO - implement AssistantsBonus.assignBonus
-		throw new UnsupportedOperationException();
+	public void assignBonus(Player p) {
+		p.incrementAssistants(increasementAssistants);
 	}
 
 }

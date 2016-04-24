@@ -1,12 +1,20 @@
 package bonus;
 
-public class MainActionBonus extends Bonus {
+import players.Player;
+
+/**
+ * 
+ * @author andreapasquali
+ *
+ */
+
+public class MainActionBonus implements Bonus {
 
 	/**
-	 * 
+	 * Permits to player p to do another main action
 	 * @param p
 	 */
-	public void assignBonus(player p) {
+	public void assignBonus(Player p) {
 		// TODO - implement MainActionBonus.assignBonus
 		throw new UnsupportedOperationException();
 	}

@@ -1,14 +1,26 @@
 package bonus;
 
-public class PoliticsCardsBonus extends Bonus {
+import players.Player;
 
-	private int numberOfCards;
+/**
+ * PoliticsCardBonus 
+ * @author andreapasquali
+ *
+ */
+
+public class PoliticsCardsBonus implements Bonus{
+
+	private final int numberOfCards;
+	
+	public PoliticsCardsBonus(int numberOfCards){
+		this.numberOfCards=numberOfCards;
+	}
 
 	/**
-	 * 
+	 * TODO
 	 * @param p
 	 */
-	public void assignBonus(player p) {
+	public void assignBonus(Player p) {
 		// TODO - implement PoliticsCardsBonus.assignBonus
 		throw new UnsupportedOperationException();
 	}

@@ -1,16 +1,27 @@
 package bonus;
 
-public class NobilityBonus extends Bonus {
+import players.Player;
 
-	private int avdancement;
+/**
+ * NobilityBonus Class
+ * @author andreapasquali
+ *
+ */
 
+public class NobilityBonus implements Bonus{
+
+	private final int advancement;
+	
+	public NobilityBonus(int advancement){
+		this.advancement=advancement;
+	}
+	
 	/**
-	 * 
+	 * assigns to player p the "advancement" increase in nobility
 	 * @param p
 	 */
-	public void assignBonus(player p) {
-		// TODO - implement NobilityBonus.assignBonus
-		throw new UnsupportedOperationException();
+	public void assignBonus(Player p) {
+		p.incrementNobility(advancement);
 	}
 
 }

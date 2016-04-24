@@ -1,12 +1,20 @@
 package bonus;
 
-public class PurchasedTileBonus extends Bonus {
+import players.Player;
+
+/**
+ * 
+ * @author andreapasquali
+ *
+ */
+
+public class PurchasedTileBonus implements Bonus{
 
 	/**
-	 * 
+	 * TODO
 	 * @param p
 	 */
-	public void assignBonus(player p) {
+	public void assignBonus(Player p) {
 		// TODO - implement PurchasedTileBonus.assignBonus
 		throw new UnsupportedOperationException();
 	}
