@@ -10,11 +10,11 @@ public class Score {
 	
 	private int score;
 	
-	public Score() {
+	public Score(int score) {
 		this.score=score;
 	}
 	
-	public incrementScore(int increment) {
+	public void incrementScore(int increment) {
 		this.score=this.score+increment;
 	}
 	

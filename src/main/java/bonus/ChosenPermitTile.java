@@ -8,10 +8,10 @@ import players.Player;
  *
  */
 
-public class ChosenPermitTileTile implements Bonus {
+public class ChosenPermitTile implements Bonus {
 
 	/**
-	 * 
+	 * TODO
 	 * @param p
 	 */
 	public void assignBonus(Player p) {

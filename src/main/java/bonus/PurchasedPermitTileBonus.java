@@ -8,7 +8,7 @@ import players.Player;
  *
  */
 
-public class PurchasedTileBonus implements Bonus{
+public class PurchasedPermitTileBonus implements Bonus{
 
 	/**
 	 * TODO
