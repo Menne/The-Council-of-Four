@@ -1,6 +1,6 @@
 package model;
 
-public enum gameState {
+public enum GameState {
 
 	RUNNING, LASTLAP, END;
 }
