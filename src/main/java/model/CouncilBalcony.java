@@ -1,9 +1,19 @@
 package model;
-
+/**
+ * 
+ * @author andreapasquali
+ *
+ */
 public class CouncilBalcony {
 
-	private int numberOfCouncillors;
-
+	private final int numberOfCouncillors;
+	private CardColour[] councillors;
+	
+	public CouncilBalcony(int numberOfCouncillors, CardColour[] councillors){
+		this.numberOfCouncillors=numberOfCouncillors;
+		this.councillors=councillors;
+	}
+	
 	/**
 	 * 
 	 * @param c
