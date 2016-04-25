@@ -15,15 +15,17 @@ public class City {
 	private final CityColour colour;
 	private final RegionBoard region;
 	private Set<Emporium> citysEmporiums;
+	private final Set<City> nearCities;
 	
 	public City(String name, RewardToken rewardToken, Boolean isKingPresent, CityColour colour, RegionBoard
-			region, Set<Emporium> citysEmporium){
+			region, Set<Emporium> citysEmporium, Set<City> nearCities){
 		this.name=name;
 		this.rewardToken=rewardToken;
 		this.isKingPresent=isKingPresent;
 		this.colour=colour;
 		this.region=region;
 		this.citysEmporiums=citysEmporium;
+		this.nearCities=nearCities;
 	}
 	
 	public Boolean getIsKingPresent() {
@@ -60,6 +62,9 @@ public class City {
 		return name;
 	}
 
+	public Set<City> getNearCities(){
+		return nearCities;
+	}
 	
 	/**
 	 * Djiksta algorithm TODO
@@ -69,5 +74,6 @@ public class City {
 		// TODO - implement City.distance
 		throw new UnsupportedOperationException();
 	}
+
 
 }
