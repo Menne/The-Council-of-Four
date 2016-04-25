@@ -8,6 +8,7 @@ import gameStuff.CouncilBalcony;
 import gameStuff.Councillor;
 import gameStuff.CouncillorsRiserve;
 import gameStuff.KingRewardTile;
+import gameStuff.Map;
 import gameStuff.NobilityTrack;
 import gameStuff.PoliticsDeck;
 import gameStuff.RegionBoard;
@@ -19,9 +20,10 @@ public class Model extends Observable {
 	private final List<Player> players;
 	private Player currentPlayer;
 	private GameState gameState;
+	private final Map map;
+	private final RegionBoard[] regionBoards;
 	private final CouncillorsRiserve councillorsReserve;
 	private final CouncilBalcony councilOfKing;
-	private final RegionBoard[] map;
 	private final NobilityTrack nobilityTrack;
 	private final PoliticsDeck politicsDeck;
 	private final PoliticsDeck politicsDiscard;
@@ -35,7 +37,7 @@ public class Model extends Observable {
 	 * @param players
 	 */
 	public Model(List<Player> players, CouncillorsRiserve councillorsRiserve,
-			CouncilBalcony councilOfKing, RegionBoard[] map, NobilityTrack nobilityTrack,
+			CouncilBalcony councilOfKing, Map map, RegionBoard[] regionBoards, NobilityTrack nobilityTrack,
 			PoliticsDeck politicsDeck, PoliticsDeck politicsDiscard,
 			Set<KingRewardTile> kingRewardTiles, Set<ColourBonusTile> colourBonusTiles){
 		
@@ -45,11 +47,16 @@ public class Model extends Observable {
 		this.councillorsReserve=councillorsRiserve;
 		this.councilOfKing=councilOfKing;
 		this.map=map;
+		this.regionBoards=regionBoards;
 		this.nobilityTrack=nobilityTrack;
 		this.politicsDeck=politicsDeck;
 		this.politicsDiscard=politicsDiscard;
 		this.kingRewardTiles=kingRewardTiles;
 		this.colourBonusTiles=colourBonusTiles;	
+	}
+
+	public RegionBoard[] getRegionBoards() {
+		return regionBoards;
 	}
 
 	public List<Player> getPlayers() {
@@ -72,7 +79,7 @@ public class Model extends Observable {
 		return councilOfKing;
 	}
 
-	public RegionBoard[] getMap() {
+	public Map getMap() {
 		return map;
 	}
 
