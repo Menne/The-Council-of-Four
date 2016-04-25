@@ -1,4 +1,4 @@
-package model;
+package gameStuff;
 
 public class PoliticsDeck extends Deck {
 }

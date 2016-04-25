@@ -1,4 +1,4 @@
-package model;
+package gameStuff;
 
 public abstract class Card {
 }

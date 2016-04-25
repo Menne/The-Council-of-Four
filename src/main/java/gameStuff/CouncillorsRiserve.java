@@ -1,6 +1,10 @@
-package model;
+package gameStuff;
+
+import java.util.List;
 
 public class CouncillorsRiserve {
+	
+	private final List<Councillor> councillors;
 
 	/**
 	 * 

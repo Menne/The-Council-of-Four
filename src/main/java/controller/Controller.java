@@ -1,7 +1,7 @@
 package controller;
 
+import gameStuff.*;
 import observerPattern.*;
-import model.*;
 
 /**
  * It observes the View.

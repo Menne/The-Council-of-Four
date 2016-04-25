@@ -1,4 +1,4 @@
-package model;
+package gameStuff;
 /**
  * 
  * @author andreapasquali
@@ -6,11 +6,10 @@ package model;
  */
 public class CouncilBalcony {
 
-	private final int numberOfCouncillors;
+	private static final int numberOfCouncillors=4;
 	private CardColour[] councillors;
 	
-	public CouncilBalcony(int numberOfCouncillors, CardColour[] councillors){
-		this.numberOfCouncillors=numberOfCouncillors;
+	public CouncilBalcony(CardColour[] councillors){
 		this.councillors=councillors;
 	}
 	

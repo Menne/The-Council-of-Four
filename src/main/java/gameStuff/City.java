@@ -1,4 +1,4 @@
-package model;
+package gameStuff;
 
 import java.util.Set;
 
@@ -11,7 +11,7 @@ public class City {
 
 	private final String name;
 	private final RewardToken rewardToken;
-	private Boolean isKingPresent;
+	private boolean isKingPresent;
 	private final CityColour colour;
 	private final RegionBoard region;
 	private Set<Emporium> citysEmporiums;

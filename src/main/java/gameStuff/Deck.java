@@ -1,9 +1,11 @@
-package model;
+package gameStuff;
+
+import java.util.List;
 
 public abstract class Deck {
 
 	private int numberOfElements;
-	private Set<Card> cards;
+	private List<Card> cards;
 
 	public void shuffle() {
 		// TODO - implement Deck.shuffle

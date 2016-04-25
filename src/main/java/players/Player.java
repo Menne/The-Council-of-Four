@@ -3,8 +3,8 @@ package players;
 import java.util.List;
 import java.util.Set;
 
-import model.PermitTile;
-import model.PoliticsCard;
+import gameStuff.PermitTile;
+import gameStuff.PoliticsCard;
 
 /** Player class constains all of the informations about a player
 	 * 
