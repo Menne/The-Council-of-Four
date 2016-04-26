@@ -1,5 +1,11 @@
 package gameStuff;
 
+	/**
+	 * this class models the colour of a politics card
+	 * @author Emanuele
+	 *
+	 */
+
 public class CardColour {
 
 	private String colour;

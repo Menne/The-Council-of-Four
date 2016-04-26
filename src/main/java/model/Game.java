@@ -1,3 +1,4 @@
+
 package model;
  
 import java.util.List;
@@ -48,7 +49,5 @@ public class Game {
 	@Override
 	public String toString() {
 		return "Game [players=" + players + ", currentPlayer=" + currentPlayer + ", gameTable=" + gameTable + "]";
-	}
-	
-	
+	}	
 }
