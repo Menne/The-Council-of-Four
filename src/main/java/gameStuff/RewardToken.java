@@ -1,5 +1,5 @@
 
-package model;
+package gameStuff;
 
 import java.util.Set;
 

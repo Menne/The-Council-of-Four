@@ -1,10 +1,22 @@
 package controller;
 
+import gameStuff.*;
 import observerPattern.*;
-import model.*;
 
-public class Controller extends Observer {
+/**
+ * It observes the View.
+ * It transforms the View's notify into actions.
+ * @author Luca
+ *
+ */
+public class Controller implements Observer {
 
+	Model game;
+	
+	public Controller(View view, Model game){
+		this.game=game;
+	}
+	
 	/**
 	 * 
 	 * @param s

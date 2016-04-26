@@ -3,11 +3,11 @@ package players;
 import java.util.List;
 import java.util.Set;
 
-import model.Emporium;
-import model.PermitTile;
-import model.PoliticsCard;
+import gameStuff.Emporium;
+import gameStuff.PermitTile;
+import gameStuff.PoliticsCard;
 
-/** Player class constains all of the informations about a player
+/** Player class contains all of the informations about a player
 	 * 
 	 * @author Emanuele
 	 *
@@ -39,7 +39,7 @@ public class Player {
 		this.deck=deck;
 		this.playersPermitTilesTurnedDown=playersPermitTilesTurnedDown;
 		this.playersPermitTilesTurnedUp=playersPermitTilesTurnedUp;
-		this.setRemainigEmporiums(remainigEmporiums);
+		this.remainigEmporiums=remainigEmporiums;
 	}
 
 	

@@ -1,4 +1,4 @@
-package model;
+package gameStuff;
 
 import java.util.Set;
 /**
@@ -9,16 +9,29 @@ import java.util.Set;
 public class RegionBoard {
 
 	private final String name;
+	private final Set<City> citiesOfTheRegion;
 	private boolean presenceBonusRegionBoard;
-	private PermitDeck regionDeck;
-	private Set<PermitTile> uncoveredTiles;
-	private CouncilBalcony regionBalcony;
+	private final PermitDeck regionDeck;
+	private final Set<PermitTile> uncoveredTiles;
+	private final CouncilBalcony regionBalcony;
+	public Set<City> getCitiesOfTheRegion() {
+		return citiesOfTheRegion;
+	}
+
+
+
+	public void setPresenceBonusRegionBoard(boolean presenceBonusRegionBoard) {
+		this.presenceBonusRegionBoard = presenceBonusRegionBoard;
+	}
+
 	private final RegionBoardBonusTile regionBoardBonusTile;
 	
-	public RegionBoard(String name, boolean presenceBonusRegionBoard, PermitDeck regionDeck, Set<PermitTile> 
-	uncoveredTiles, CouncilBalcony regionBalcony, RegionBoardBonusTile regionBoardBonusTile){
+	public RegionBoard(String name, boolean presenceBonusRegionBoard, Set<City> citiesOfTheRegion,
+			PermitDeck regionDeck, Set<PermitTile> uncoveredTiles, 
+			CouncilBalcony regionBalcony, RegionBoardBonusTile regionBoardBonusTile){
 		this.name=name;
 		this.presenceBonusRegionBoard=presenceBonusRegionBoard;
+		this.citiesOfTheRegion=citiesOfTheRegion;
 		this.regionDeck=regionDeck;
 		this.uncoveredTiles=uncoveredTiles;
 		this.regionBalcony=regionBalcony;

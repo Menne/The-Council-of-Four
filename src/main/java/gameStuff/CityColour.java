@@ -1,7 +1,9 @@
-package model;
+package gameStuff;
 
 import java.util.Set;
 
+import model.City;
+import model.Emporium;
 import players.*;
 
 /**
@@ -14,15 +16,14 @@ public class CityColour {
 	private final String name;
 	private boolean presenceBonusColour;
 	private final Set<City> colourCities;
-
+	
 	public CityColour(String name, boolean presenceBonusColour, Set<City> colourCities){
 		this.name=name;
 		this.presenceBonusColour=presenceBonusColour;
 		this.colourCities=colourCities;
 	}
-
 	
-	/**
+     /**
 	 * returns true if there is an emporium e in every city of this colour.
 	 * @param e
 	 * @return
@@ -33,6 +34,7 @@ public class CityColour {
 	else 
 		return true;
 	}
+	
 	
 	public String getName() {
 		return name;

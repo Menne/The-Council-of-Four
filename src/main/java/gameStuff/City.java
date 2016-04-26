@@ -1,8 +1,10 @@
-package model;
+package gameStuff;
 
 import java.util.Set;
 
-import players.Player;
+
+import gameStuff.RegionBoard;
+import gameStuff.RewardToken;
 
 /**
  * Class City identified by its name

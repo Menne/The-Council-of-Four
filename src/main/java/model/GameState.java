@@ -1,15 +1,6 @@
 package model;
 
-import observerPattern.*;
+public enum GameState {
 
-public class GameState extends Observable {
-
-	/**
-	 * 
-	 * @param s
-	 */
-	public boolean checkEndOfGame(GameState s) {
-
-	}
-
+	RUNNING, LASTLAP, END;
 }

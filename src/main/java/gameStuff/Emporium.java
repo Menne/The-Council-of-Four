@@ -1,7 +1,11 @@
-package model;
-
+package gameStuff;
 import players.Player;
 
+/**
+ * 
+ * @author andreapasquali
+ *
+ */
 public class Emporium {
 	private final Player emporiumsPlayer;
 	
