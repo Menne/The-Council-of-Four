@@ -2,11 +2,11 @@ package gameStuff;
 
 import java.util.List;
 
-public class CouncillorsRiserve {
+public class CouncillorsReserve {
 	
 	private final List<Councillor> councillors;
 	
-	public CouncillorsRiserve(List<Councillor> councillors){
+	public CouncillorsReserve(List<Councillor> councillors){
 		this.councillors=councillors;
 	}
 

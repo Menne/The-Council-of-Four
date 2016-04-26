@@ -2,6 +2,10 @@ package gameStuff;
 
 import java.util.Set;
 
+
+import gameStuff.RegionBoard;
+import gameStuff.RewardToken;
+
 /**
  * Class City identified by its name
  * @author andreapasquali
@@ -11,7 +15,7 @@ public class City {
 
 	private final String name;
 	private final RewardToken rewardToken;
-	private boolean isKingPresent;
+	private Boolean isKingPresent;
 	private final CityColour colour;
 	private final RegionBoard region;
 	private Set<Emporium> citysEmporiums;
@@ -67,7 +71,32 @@ public class City {
 	}
 	
 	/**
-	 * Djiksta algorithm TODO
+	 * adds an emporium e to the cities set if the player hasn't any emporium on that city;
+	 * else it returns FALSE
+	 * @param e
+	 */
+	public boolean addEmporium(Emporium e){
+		if(citysEmporiums.contains(e)){
+		citysEmporiums.add(e);
+		return true;}
+		else
+			return false;
+	}
+	
+	/**
+	 * it returns true if city contains emporium e
+	 * @param e
+	 * @return
+	 */
+	public boolean containsEmporium(Emporium e){
+		if(citysEmporiums.contains(e))
+			return true;
+		else 
+			return false;
+	}
+	
+	/**
+	 * Djikstra algorithm TODO
 	 * @param City
 	 */
 	public int distance(int City) {

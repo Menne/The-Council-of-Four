@@ -3,10 +3,11 @@ package players;
 import java.util.List;
 import java.util.Set;
 
+import gameStuff.Emporium;
 import gameStuff.PermitTile;
 import gameStuff.PoliticsCard;
 
-/** Player class constains all of the informations about a player
+/** Player class contains all of the informations about a player
 	 * 
 	 * @author Emanuele
 	 *
@@ -24,10 +25,10 @@ public class Player {
 	private List<PoliticsCard> deck;
 	private Set<PermitTile> playersPermitTilesTurnedUp;
 	private Set<PermitTile> playersPermitTilesTurnedDown;
-	private int remainingEmporiums 
+	private Emporium[] remainigEmporiums;
 	
 	public Player(int playerNumber, String name, int assistants, Score score, int nobility, int coins, boolean isPlayerTurn,
-			List<PoliticsCard> deck, Set<PermitTile> playersPermitTilesTurnedUp, Set<PermitTile> playersPermitTilesTurnedDown) {
+			List<PoliticsCard> deck, Set<PermitTile> playersPermitTilesTurnedUp, Set<PermitTile> playersPermitTilesTurnedDown, Emporium[] remainigEmporiums) {
 		this.playerNumber=playerNumber;
 		this.name=name;
 		this.assistants=assistants;
@@ -38,8 +39,10 @@ public class Player {
 		this.deck=deck;
 		this.playersPermitTilesTurnedDown=playersPermitTilesTurnedDown;
 		this.playersPermitTilesTurnedUp=playersPermitTilesTurnedUp;
+		this.remainigEmporiums=remainigEmporiums;
 	}
 
+	
 	public int getPlayerNumber() {
 		return playerNumber;
 	}
@@ -63,6 +66,12 @@ public class Player {
 	public int getCoins() {
 		return coins;
 	}
+	
+
+	public Emporium[] getRemainigEmporiums() {
+		return remainigEmporiums;
+	}
+
 
 	/**
 	 * increment player's Score of an "increment" calling the method incrementScore in the class Score
@@ -154,5 +163,9 @@ public class Player {
 	public boolean turnTileToDown(PermitTile tile){
 		playersPermitTilesTurnedDown.add(tile);
 		return playersPermitTilesTurnedUp.remove(tile);
+	}
+	
+	public void removeEmporium(){
+		
 	}
 }

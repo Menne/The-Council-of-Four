@@ -9,6 +9,10 @@ public class CouncilBalcony {
 	private static final int numberOfCouncillors=4;
 	private Councillor[] councillors;
 	
+	/**
+	 * controls the number of councillors
+	 * @param councillors
+	 */
 	public CouncilBalcony(Councillor[] councillors){
 		if(councillors.length!=numberOfCouncillors)
 			throw new IllegalArgumentException("Council Balcony must be composed of"
@@ -16,6 +20,14 @@ public class CouncilBalcony {
 		this.councillors=councillors;
 	}
 	
+public Councillor[] getCouncillors() {
+		return councillors;
+	}
+
+public static int getNumberofcouncillors() {
+	return numberOfCouncillors;
+}
+
 /**
  * Put a new councillor into the balcony following the balcony rules 
  * @param c Is the new councillor
