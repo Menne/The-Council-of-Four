@@ -7,7 +7,7 @@ import model.Game;
  * @author Luca
  *
  */
-public class MainAction extends Action {
+public abstract class MainAction extends Action {
 
 	public MainAction(Game game){
 		super(game);
