@@ -6,15 +6,15 @@ package gameStuff;
 	 *
 	 */
 
-public class PoliticsCard extends Card {
+public class PoliticsCard {
 	
 	CardColour colour;
 	
 	/**
 	 * constructor of a politics card
+	 * @param colour is the colour of the card (NB same colours of concillours!)
 	 */
-	public PoliticsCard() {
-		super();
+	public PoliticsCard(CardColour colour) {
 		this.colour=colour;
 	}
 	

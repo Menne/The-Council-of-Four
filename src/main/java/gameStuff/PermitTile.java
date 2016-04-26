@@ -10,7 +10,7 @@ import bonus.Bonus;
 	 *
 	 */
 
-public class PermitTile extends Card {
+public class PermitTile {
 	
 	private Set<City> buildableCities;
 	private Bonus bonus;
@@ -21,7 +21,6 @@ public class PermitTile extends Card {
 	 * @param bonus is the bonus associated to the permit tile 
 	 */
 	public PermitTile(Set<City> buildableCities, Bonus bonus) {
-		super();
 		this.buildableCities=buildableCities;
 		this.bonus=bonus;
 	}
