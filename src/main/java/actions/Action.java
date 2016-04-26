@@ -1,13 +1,21 @@
 package actions;
 
-import players.*;
+import model.Game;
+/**
+ * It's the class that models the generic action.
+ * All the actions will operate on the protected attribute inherited from this class.
+ * @author Luca
+ *
+ */
+public abstract class Action {
 
-public interface Action {
-
-	/**
-	 * 
-	 * @param p
-	 */
-	void executeAction(Player p);
-
+	protected final Game game;
+	
+	public Action(Game game){
+		this.game=game;
+	}
+	
+	public Game getGame() {
+		return game;
+	}
 }

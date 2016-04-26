@@ -1,16 +1,15 @@
 package actions;
 
-import players.*;
+import model.Game;
 
-public class QuickAction implements Action {
+/**
+ * The class that models the generic quick actions of the game
+ * @author Luca
+ *
+ */
+public class QuickAction extends Action {
 
-	/**
-	 * 
-	 * @param p
-	 */
-	public void executeAction(Player p) {
-		// TODO - implement QuickAction.executeAction
-		throw new UnsupportedOperationException();
+	public QuickAction(Game game){
+		super(game);
 	}
-
 }

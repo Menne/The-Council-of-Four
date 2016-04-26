@@ -1,6 +1,6 @@
 package actions;
 
-import players.*;
+import model.Game;
 
 public class BuildByKing extends MainAction {
 
@@ -8,7 +8,7 @@ public class BuildByKing extends MainAction {
 	 * 
 	 * @param p
 	 */
-	public void executeAction(Player p) {
+	public void executeAction(Game game) {
 		// TODO - implement BuildByKing.executeAction
 		throw new UnsupportedOperationException();
 	}

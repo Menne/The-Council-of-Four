@@ -1,7 +1,8 @@
 package controller;
 
-import gameStuff.*;
+import model.Game;
 import observerPattern.*;
+import view.View;
 
 /**
  * It observes the View.
@@ -9,20 +10,23 @@ import observerPattern.*;
  * @author Luca
  *
  */
-public class Controller implements Observer {
+public class Controller extends Observable implements Observer{
 
-	Model game;
+	private final Game game;
 	
-	public Controller(View view, Model game){
-		this.game=game;
+	public Game getGame() {
+		return game;
 	}
-	
-	/**
-	 * 
-	 * @param s
-	 */
-	public void play(GameState s) {
 
+	public Controller(View view, Game game){
+		this.game=game;
+		view.registerObserver(this);
+	}
+
+	@Override
+	public <C> void update(Observable o, C change) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

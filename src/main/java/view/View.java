@@ -1,14 +1,16 @@
 package view;
 
+import controller.Controller;
 import observerPattern.Observable;
 import observerPattern.Observer;
 
 public abstract class View extends Observable implements Observer {
 
-	@Override
-	public <C> void update(Observable o, C change) {
-		// TODO Auto-generated method stub
-
+	public View(Controller controller){
+		controller.registerObserver(this);
 	}
+	
+	@Override
+	public abstract <C> void update(Observable o, C change);
 
 }

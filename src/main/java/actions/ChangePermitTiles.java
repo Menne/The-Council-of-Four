@@ -1,6 +1,6 @@
 package actions;
 
-import players.*;
+import model.Game;
 
 public class ChangePermitTiles extends QuickAction {
 
@@ -8,7 +8,7 @@ public class ChangePermitTiles extends QuickAction {
 	 * 
 	 * @param p
 	 */
-	public void executeAction(Player p) {
+	public void executeAction(Game game) {
 		// TODO - implement ChangePermitTiles.executeAction
 		throw new UnsupportedOperationException();
 	}

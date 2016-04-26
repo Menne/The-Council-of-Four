@@ -1,6 +1,6 @@
 package actions;
 
-import players.*;
+import model.Game;
 
 public class EngageAssistant extends QuickAction {
 
@@ -8,7 +8,7 @@ public class EngageAssistant extends QuickAction {
 	 * 
 	 * @param p
 	 */
-	public void executeAction(Player p) {
+	public void executeAction(Game game) {
 		// TODO - implement EngageAssistant.executeAction
 		throw new UnsupportedOperationException();
 	}

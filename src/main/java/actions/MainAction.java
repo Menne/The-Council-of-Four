@@ -1,16 +1,15 @@
 package actions;
 
-import players.*;
+import model.Game;
 
-public class MainAction implements Action {
+/**
+ * The class that models the generic main actions of the game.
+ * @author Luca
+ *
+ */
+public class MainAction extends Action {
 
-	/**
-	 * 
-	 * @param p
-	 */
-	public void executeAction(Player p) {
-		// TODO - implement MainAction.executeAction
-		throw new UnsupportedOperationException();
+	public MainAction(Game game){
+		super(game);
 	}
-
 }

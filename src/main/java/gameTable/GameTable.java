@@ -1,6 +1,7 @@
 package gameTable;
  
-import java.util.Set;
+import java.util.HashSet;
+import java.util.List;import java.util.Set;
  
 import gameStuff.ColourBonusTile;
 import gameStuff.CouncilBalcony;
@@ -13,25 +14,51 @@ import gameStuff.RegionBoard;
 public class GameTable {
  
 	private final Map map;
-	private final RegionBoard[] regionBoards;
+	private final List<RegionBoard> regionBoards;
 	private final CouncilBalcony councilOfKing;
 	private final CouncillorsReserve councilReserve;
 	private final PoliticsDeck politicsDeck;
-	private final PoliticsDeck politicsDiscard;
 	private final Set<ColourBonusTile> colourBounsTiles;
 	private final Set<KingRewardTile> kingRewardTiles;
                
-	public GameTable(Map map, RegionBoard[] regionBoards, CouncilBalcony councilOfKing,
-			CouncillorsReserve councilReserve, PoliticsDeck politicsDeck, PoliticsDeck politicsDiscard,
+	public GameTable(Map map, List<RegionBoard> regionBoards, CouncilBalcony councilOfKing,
+			CouncillorsReserve councilReserve, PoliticsDeck politicsDeck,
 			Set<ColourBonusTile> colourBounsTiles, Set<KingRewardTile> kingRewardTiles){
 		this.map=map;
-		this.regionBoards=regionBoards;
+		this.regionBoards= regionBoards;
 		this.councilOfKing=councilOfKing;
 		this.councilReserve=councilReserve;
 		this.politicsDeck=politicsDeck;
-		this.politicsDiscard=politicsDiscard;
 		this.colourBounsTiles=colourBounsTiles;
 		this.kingRewardTiles=kingRewardTiles;
+	}
+
+	public Map getMap() {
+		return map;
+	}
+
+	public List<RegionBoard> getRegionBoards() {
+		return regionBoards;
+	}
+
+	public CouncilBalcony getCouncilOfKing() {
+		return councilOfKing;
+	}
+
+	public CouncillorsReserve getCouncilReserve() {
+		return councilReserve;
+	}
+
+	public PoliticsDeck getPoliticsDeck() {
+		return politicsDeck;
+	}
+
+	public Set<ColourBonusTile> getColourBounsTiles() {
+		return colourBounsTiles;
+	}
+
+	public Set<KingRewardTile> getKingRewardTiles() {
+		return kingRewardTiles;
 	}
                
 }
