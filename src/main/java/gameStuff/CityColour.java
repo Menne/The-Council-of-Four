@@ -2,8 +2,6 @@ package gameStuff;
 
 import java.util.Set;
 
-import model.City;
-import model.Emporium;
 import players.*;
 
 /**

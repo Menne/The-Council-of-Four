@@ -18,25 +18,23 @@ public class Player {
 	private final int playerNumber;
 	private final String name;
 	private int assistants;
-	private Score score;
+	private final Score score;
 	private int nobility;
 	private int coins;
-	private boolean isPlayerTurn;
-	private List<PoliticsCard> deck;
-	private Set<PermitTile> playersPermitTilesTurnedUp;
-	private Set<PermitTile> playersPermitTilesTurnedDown;
-	private Emporium[] remainigEmporiums;
+	private final List<PoliticsCard> hand;
+	private final Set<PermitTile> playersPermitTilesTurnedUp;
+	private final Set<PermitTile> playersPermitTilesTurnedDown;
+	private final Emporium[] remainigEmporiums;
 	
-	public Player(int playerNumber, String name, int assistants, Score score, int nobility, int coins, boolean isPlayerTurn,
-			List<PoliticsCard> deck, Set<PermitTile> playersPermitTilesTurnedUp, Set<PermitTile> playersPermitTilesTurnedDown, Emporium[] remainigEmporiums) {
+	public Player(int playerNumber, String name, int assistants, Score score, int nobility, int coins,
+			List<PoliticsCard> hand, Set<PermitTile> playersPermitTilesTurnedUp, Set<PermitTile> playersPermitTilesTurnedDown, Emporium[] remainigEmporiums) {
 		this.playerNumber=playerNumber;
 		this.name=name;
 		this.assistants=assistants;
 		this.score=score;
 		this.nobility=nobility;
 		this.coins=coins;
-		this.isPlayerTurn=isPlayerTurn;
-		this.deck=deck;
+		this.hand=hand;
 		this.playersPermitTilesTurnedDown=playersPermitTilesTurnedDown;
 		this.playersPermitTilesTurnedUp=playersPermitTilesTurnedUp;
 		this.remainigEmporiums=remainigEmporiums;
@@ -63,6 +61,11 @@ public class Player {
 		return nobility;
 	}
 	
+	public List<PoliticsCard> getHand() {
+		return hand;
+	}
+
+
 	public int getCoins() {
 		return coins;
 	}
@@ -137,7 +140,7 @@ public class Player {
 	 * @param card
 	 */
 	public void addCardToDeck(PoliticsCard card){
-		deck.add(card);
+		this.hand.add(card);
 	}
 	
 	/**
@@ -147,11 +150,11 @@ public class Player {
 	 * @param card
 	 */
 	public boolean removeCardFromDeck(PoliticsCard card){
-		return deck.remove(card);
+		return this.hand.remove(card);
 	}
 	
 	public void addTile(PermitTile tile){
-		playersPermitTilesTurnedUp.add(tile);
+		this.playersPermitTilesTurnedUp.add(tile);
 	}
 	
 	/**
@@ -162,7 +165,7 @@ public class Player {
 	 */
 	public boolean turnTileToDown(PermitTile tile){
 		playersPermitTilesTurnedDown.add(tile);
-		return playersPermitTilesTurnedUp.remove(tile);
+		return this.playersPermitTilesTurnedUp.remove(tile);
 	}
 	
 	public void removeEmporium(){
