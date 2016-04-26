@@ -14,6 +14,14 @@ public class CouncilBalcony {
 		this.councillors=councillors;
 	}
 	
+	public int getNumberOfCouncillors() {
+		return numberOfCouncillors;
+	}
+
+	public CardColour[] getCouncillors() {
+		return councillors;
+	}
+
 	/**
 	 * 
 	 * @param c

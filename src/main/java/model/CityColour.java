@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Set;
+
 import players.*;
 
 /**
@@ -11,20 +13,25 @@ public class CityColour {
 
 	private final String name;
 	private boolean presenceBonusColour;
+	private final Set<City> colourCities;
 
-	public CityColour(String name, boolean presenceBonusColour){
+	public CityColour(String name, boolean presenceBonusColour, Set<City> colourCities){
 		this.name=name;
 		this.presenceBonusColour=presenceBonusColour;
+		this.colourCities=colourCities;
 	}
 
 	
 	/**
-	 * TODO scorrere il set di città di questo colore e darmi true se il player le ha tutte
-	 * @param p
+	 * returns true if there is an emporium e in every city of this colour.
+	 * @param e
 	 * @return
 	 */
-	public boolean checkEmporium(Player p) {
-	return true;
+	public boolean checkEmporium(Emporium e) {
+	if(colourCities.contains(c.containsEmporium(e)!=true))
+		return false;
+	else 
+		return true;
 	}
 	
 	public String getName() {
