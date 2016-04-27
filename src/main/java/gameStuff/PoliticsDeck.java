@@ -41,7 +41,7 @@ public class PoliticsDeck extends Deck {
 	 * @param card1 is the card you have used
 	 * @param discard is the discard deck in which you are putting the used card
 	 */
-	public void addCard (Card discardedCard) {
+	public void addCard (PoliticsCard discardedCard) {
 		this.cards.add(0);
 	}
 	
