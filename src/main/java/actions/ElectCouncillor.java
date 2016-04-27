@@ -5,7 +5,7 @@ import gameStuff.Councillor;
 import model.Game;
 
 /**
- * This class is the main action "elect councillor" it operates on the 
+ * It's the main action "elect councillor" it operates on the 
  * protected attribute game through the method executeAction.
  * The controller will pass to the constructor the councillor to add,
  * and the balcony where he wants to add it. 
