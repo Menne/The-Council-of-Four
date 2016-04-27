@@ -1,42 +1,40 @@
  package actions;
 
+import gameStuff.CouncilBalcony;
 import gameStuff.Councillor;
 import model.Game;
+
 /**
  * This class is the main action "elect councillor" it operates on the 
- * protected attribute game through the method executeAction
+ * protected attribute game through the method executeAction.
+ * The controller will pass to the constructor the councillor to add,
+ * and the balcony where he wants to add it. 
  * @author Luca
  *
  */
 public class ElectCouncillor extends MainAction {
 
-	public ElectCouncillor(Game game){
+	private final Councillor newCouncillor;
+	private final CouncilBalcony councilBalcony;
+	
+	public ElectCouncillor(Game game, Councillor newCouncillor, CouncilBalcony councilBalcony){
 		super(game);
+		this.newCouncillor=newCouncillor;
+		this.councilBalcony=councilBalcony;
 	}
 /**
- * Substitute a given councillor in one of the regions.
- * @param newCouncillor The councillor to add on the balcony
- * @param regionIndex The index of the region where we want substitute the councillor.
- * It's negative if we want to select the councilOfKing.
- * @return TRUE the action ends well; FALSE otherwise.
+ * Substitutes a given councillor in one of the balconies of the game,
+ * adds the old substituted councillor in the reserve,
+ * gives to the current player 4 coins.
+ * @return TRUE if the action ends well; FALSE otherwise.
  */
-	public boolean executeAction(Councillor newCouncillor, int regionIndex) {
+	public boolean executeAction() {
 		Councillor oldCouncillor;
 		if(!this.game.getGameTable().getCouncilReserve()
 				.getCouncillors().contains(newCouncillor))
 			return false;
-		if(regionIndex<0){
-			oldCouncillor=this.game.getGameTable().getCouncilOfKing().
-					substituteCouncillor(newCouncillor);
-			this.game.getGameTable().getCouncilReserve().
-					getCouncillors().add(oldCouncillor);
-		}
-		else{
-			oldCouncillor=this.game.getGameTable().getRegionBoards().get(regionIndex)
-				.getRegionBalcony().substituteCouncillor(newCouncillor);
-			this.game.getGameTable().getCouncilReserve().getCouncillors().
-				add(oldCouncillor);
-		}
+		oldCouncillor=this.councilBalcony.substituteCouncillor(newCouncillor);
+		this.game.getGameTable().getCouncilReserve().getCouncillors().add(oldCouncillor);
 		this.game.getCurrentPlayer().incrementCoins(4);
 		return true;
 	}

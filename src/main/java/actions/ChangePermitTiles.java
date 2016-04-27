@@ -8,7 +8,7 @@ public class ChangePermitTiles extends QuickAction {
 	 * 
 	 * @param p
 	 */
-	public void executeAction(Game game) {
+	public boolean executeAction() {
 		// TODO - implement ChangePermitTiles.executeAction
 		throw new UnsupportedOperationException();
 	}

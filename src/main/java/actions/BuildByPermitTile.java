@@ -8,7 +8,7 @@ public class BuildByPermitTile extends MainAction {
 	 * 
 	 * @param p
 	 */
-	public void executeAction(Game game) {
+	public boolean executeAction() {
 		// TODO - implement BuildByPermitTile.executeAction
 		throw new UnsupportedOperationException();
 	}

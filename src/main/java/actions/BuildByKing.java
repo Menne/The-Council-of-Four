@@ -8,7 +8,7 @@ public class BuildByKing extends MainAction {
 	 * 
 	 * @param p
 	 */
-	public void executeAction(Game game) {
+	public boolean executeAction() {
 		// TODO - implement BuildByKing.executeAction
 		throw new UnsupportedOperationException();
 	}

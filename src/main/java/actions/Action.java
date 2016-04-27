@@ -15,7 +15,5 @@ public abstract class Action {
 		this.game=game;
 	}
 	
-	public Game getGame() {
-		return game;
-	}
+	public abstract boolean executeAction();
 }

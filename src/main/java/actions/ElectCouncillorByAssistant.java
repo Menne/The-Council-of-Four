@@ -8,7 +8,7 @@ public class ElectCouncillorByAssistant extends QuickAction {
 	 * 
 	 * @param p
 	 */
-	public void executeAction(Game game) {
+	public boolean executeAction() {
 		// TODO - implement ElectCouncilloByAssistant.executeAction
 		throw new UnsupportedOperationException();
 	}

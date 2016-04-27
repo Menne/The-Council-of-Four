@@ -8,7 +8,7 @@ public class EngageAssistant extends QuickAction {
 	 * 
 	 * @param p
 	 */
-	public void executeAction(Game game) {
+	public boolean executeAction() {
 		// TODO - implement EngageAssistant.executeAction
 		throw new UnsupportedOperationException();
 	}

@@ -8,7 +8,7 @@ public class AdditionalMainAction extends QuickAction {
 	 * 
 	 * @param p
 	 */
-	public void executeAction(Game game) {
+	public boolean executeAction() {
 		// TODO - implement AdditionalMainAction.executeAction
 		throw new UnsupportedOperationException();
 	}

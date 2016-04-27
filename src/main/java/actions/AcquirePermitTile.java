@@ -8,7 +8,7 @@ public class AcquirePermitTile extends MainAction {
 	 * 
 	 * @param p
 	 */
-	public void executeAction(Game game) {
+	public boolean executeAction() {
 		// TODO - implement AcquirePermitTile.executeAction
 		throw new UnsupportedOperationException();
 	}
