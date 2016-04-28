@@ -7,6 +7,8 @@ import players.Player;
  *
  */
 public class Emporium {
+	
+	public static Player getEmporiumsPlayer;
 	private final Player emporiumsPlayer;
 	
 	public Emporium(Player emporiumsPlayer){

@@ -4,10 +4,10 @@ import model.Game;
 
 public class AdditionalMainAction extends QuickAction {
 
-	/**
-	 * 
-	 * @param p
-	 */
+	public AdditionalMainAction(Game game){
+		super(game);
+	}
+	
 	public boolean executeAction() {
 		// TODO - implement AdditionalMainAction.executeAction
 		throw new UnsupportedOperationException();

@@ -5,6 +5,7 @@ import java.util.Set;
 
 import gameStuff.RegionBoard;
 import gameStuff.RewardToken;
+import players.Player;
 
 /**
  * Class City identified by its name
@@ -18,7 +19,7 @@ public class City {
 	private Boolean isKingPresent;
 	private final CityColour colour;
 	private final RegionBoard region;
-	private Set<Emporium> citysEmporiums;
+	private static Set<Emporium> citysEmporiums;
 	private final Set<City> nearCities;
 	
 	public City(String name, RewardToken rewardToken, Boolean isKingPresent, CityColour colour, RegionBoard
@@ -28,7 +29,7 @@ public class City {
 		this.isKingPresent=isKingPresent;
 		this.colour=colour;
 		this.region=region;
-		this.citysEmporiums=citysEmporium;
+		City.citysEmporiums=citysEmporium;
 		this.nearCities=nearCities;
 	}
 	
@@ -84,12 +85,12 @@ public class City {
 	}
 	
 	/**
-	 * it returns true if city contains emporium e
-	 * @param e
+	 * it returns true if city contains an emporium of Player player
+	 * @param player
 	 * @return
 	 */
-	public boolean containsEmporium(Emporium e){
-		if(citysEmporiums.contains(e))
+	public static boolean containsEmporium(Player player){
+		if(citysEmporiums.contains(Emporium.getEmporiumsPlayer=player)==true)
 			return true;
 		else 
 			return false;

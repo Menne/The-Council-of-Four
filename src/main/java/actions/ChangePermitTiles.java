@@ -3,11 +3,11 @@ package actions;
 import model.Game;
 
 public class ChangePermitTiles extends QuickAction {
-
-	/**
-	 * 
-	 * @param p
-	 */
+	
+	public  ChangePermitTiles(Game game){
+		super(game);
+	}
+	
 	public boolean executeAction() {
 		// TODO - implement ChangePermitTiles.executeAction
 		throw new UnsupportedOperationException();
