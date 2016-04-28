@@ -48,11 +48,7 @@ public class AcquirePermitTile extends MainAction {
 	 */
 	public boolean executeAction() {
 
-		if (this.CheckHandCorrected())
-			return false;
-		if (this.CheckEnoughCoins())
-			return false;
-		if (this.CheckHandSatisfiesBalcony())
+		if (!(this.CheckHandCorrected() || this.CheckEnoughCoins() || this.CheckHandSatisfiesBalcony()))
 			return false;
 		
 		this.game.getCurrentPlayer().addTile(permitTileToPick);
@@ -66,20 +62,16 @@ public class AcquirePermitTile extends MainAction {
 	 * checks if the player has selected correct cards
 	 */
 	public boolean CheckHandCorrected() {
-		if (!this.game.getCurrentPlayer().getHand()
-				.contains(cardsToDescard))
-			return false;
-		return true;
+		return this.game.getCurrentPlayer().getHand()
+				.contains(cardsToDescard);
 	}
 	
 	/*
 	 * checks if the player has enough coins
 	 */
 	public boolean CheckEnoughCoins() {
-		if (this.game.getCurrentPlayer().getCoins()>=
-				cardsToDescard.size())
-			return false;
-		return true;
+		return this.game.getCurrentPlayer().getCoins() >= 
+				cardsToDescard.size();
 	}
 	
 	/*
