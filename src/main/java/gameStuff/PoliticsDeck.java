@@ -1,49 +1,43 @@
 package gameStuff;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Iterator;
+import java.util.Random;
+import java.util.Set;
 
-import players.Player;
 
 	/**
-	 * models the politics deck
+	 * Is a generator of random Politics Card
 	 * @author Emanuele
 	 *
 	 */
 
-public class PoliticsDeck extends Deck {
-
-	/**
-	 * constructor of the politics deck
-	 * @param cards is the list of cards in the politics deck
-	 */
-	public PoliticsDeck(List<PoliticsCard> cards) {
-		super(cards);
-	}
+public class PoliticsDeck{
 	
+	private final Set<CardColour> cardColours;
 	
-	/**
-	 * pick a politics card, if the politics deck is empty 
-	 * it will be recomposed. returns a card
-	 * @cards is the list of Card
-	 * @return the card you have picked 
-	 */
-	@Override
-	public PoliticsCard pickCard() {
-		PoliticsCard pickedCard=this.cards.get(this.cards.indexOf(this.cards.size()));
-		this.cards.remove(this.cards.indexOf(this.cards.size()));
-		return pickedCard;
+	public PoliticsDeck(Set<CardColour> cardColours) {
+		this.cardColours=cardColours;
 	}
 	
 	/**
-	 * when you use a politics card then you add it to the discard deck
-	 * @param card1 is the card you have used
-	 * @param discard is the discard deck in which you are putting the used card
+	 * Private because used just from the pick card method.
+	 * @return a random colour among the available colours.
 	 */
-	public void addCard (PoliticsCard discardedCard) {
-		this.cards.add(0);
+	private CardColour randomColour(){
+		int rnd=new Random().nextInt(cardColours.size());
+		int i=0;
+		Iterator<CardColour> iter=this.cardColours.iterator();
+		for(i=0; i<rnd; i++)
+			iter.next();
+		return iter.next();
 	}
 	
+	/**
+	 * Generate a random politics card
+	 * @return a random politics card
+	 */
+	public PoliticsCard pickCard(){
+		return new PoliticsCard(this.randomColour());
+	}
 	
 }
