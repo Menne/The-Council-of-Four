@@ -25,8 +25,6 @@ public class Player {
 	private final Set<PermitTile> playersPermitTilesTurnedUp;
 	private final Set<PermitTile> playersPermitTilesTurnedDown;
 	private final Emporium[] remainigEmporiums;
-	private int mainActionAvailable;
-	private int quickActionAvailable;
 	
 	public Player(int playerNumber, String name, int assistants, Score score, int nobility, int coins,
 			List<PoliticsCard> hand, Set<PermitTile> playersPermitTilesTurnedUp, Set<PermitTile> playersPermitTilesTurnedDown, Emporium[] remainigEmporiums) {
@@ -40,30 +38,7 @@ public class Player {
 		this.playersPermitTilesTurnedDown=playersPermitTilesTurnedDown;
 		this.playersPermitTilesTurnedUp=playersPermitTilesTurnedUp;
 		this.remainigEmporiums=remainigEmporiums;
-		this.mainActionAvailable=1;
-		this.mainActionAvailable=1;
 	}
-
-	
-	public int getMainActionAvailable() {
-		return mainActionAvailable;
-	}
-
-
-	public void setMainActionAvailable(int mainActionAvailable) {
-		this.mainActionAvailable = mainActionAvailable;
-	}
-
-
-	public int getQuickActionAvailable() {
-		return quickActionAvailable;
-	}
-
-
-	public void setQuickActionAvailable(int quickActionAvailable) {
-		this.quickActionAvailable = quickActionAvailable;
-	}
-
 
 	public int getPlayerNumber() {
 		return playerNumber;
