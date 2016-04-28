@@ -1,6 +1,8 @@
 package gameStuff;
 
 import java.util.Set;
+
+import players.Player;
 /**
  * 
  * @author andreapasquali
@@ -12,8 +14,11 @@ public class RegionBoard {
 	private final Set<City> citiesOfTheRegion;
 	private boolean presenceBonusRegionBoard;
 	private final PermitDeck regionDeck;
-	private final Set<PermitTile> uncoveredTiles;
+	private static final int numberOfPermitTiles=2;
+	private PermitTile[] uncoveredTiles;
 	private final CouncilBalcony regionBalcony;
+	
+	
 	public Set<City> getCitiesOfTheRegion() {
 		return citiesOfTheRegion;
 	}
@@ -27,8 +32,12 @@ public class RegionBoard {
 	private final RegionBoardBonusTile regionBoardBonusTile;
 	
 	public RegionBoard(String name, boolean presenceBonusRegionBoard, Set<City> citiesOfTheRegion,
-			PermitDeck regionDeck, Set<PermitTile> uncoveredTiles, 
+			PermitDeck regionDeck, PermitTile[] uncoveredTiles, 
 			CouncilBalcony regionBalcony, RegionBoardBonusTile regionBoardBonusTile){
+		if(uncoveredTiles.length!=numberOfPermitTiles)
+			throw new IllegalArgumentException("uncovered permit tiles array must be composed of"
+		+uncoveredTiles+ "tiles!");
+		this.uncoveredTiles=uncoveredTiles;
 		this.name=name;
 		this.presenceBonusRegionBoard=presenceBonusRegionBoard;
 		this.citiesOfTheRegion=citiesOfTheRegion;
@@ -37,8 +46,7 @@ public class RegionBoard {
 		this.regionBalcony=regionBalcony;
 		this.regionBoardBonusTile=regionBoardBonusTile;
 	}
-	
-	
+
 	
 	public String getName() {
 		return name;
@@ -58,7 +66,7 @@ public class RegionBoard {
 
 
 
-	public Set<PermitTile> getUncoveredTiles() {
+	public PermitTile[] getUncoveredTiles() {
 		return uncoveredTiles;
 	}
 
@@ -75,13 +83,20 @@ public class RegionBoard {
 	}
 
 
-
-	public void changePermitTile() {
-		// TODO - implement RegionBoard.changeBusinessTile
-		throw new UnsupportedOperationException();
+/**
+ * IMPLEMETARE TAKECARD IN PERMIT DECK!!
+ * @param i can be only 0 or 1 (it rappresents the card to remove)
+ */
+	
+	/*
+	public void changePermitTile(int i) {
+		if(i!=0 && i!=1)
+		throw new IllegalArgumentException("index parameter must be 0 or 1");
+		
+		permitTile[i]=PermitDeck.takeCard;
 	}
-
-	public void substitutePermitTile() {
+*/
+	public void substituteBothPermitTiles() {
 		// TODO - implement RegionBoard.substituteBusinessTile
 		throw new UnsupportedOperationException();
 	}
@@ -100,12 +115,15 @@ public class RegionBoard {
 	}
 
 	/**
-	 * 
+	 * it returns true if player has an emporium on each city of the region; false otherwise
 	 * @param colour
 	 */
-	public boolean checkEmporiums(PlayerColour colour) {
-		// TODO - implement RegionBoard.checkEmporiums
-		throw new UnsupportedOperationException();
+	public boolean checkEmporiums(Player player) {
+		if(citiesOfTheRegion.contains(City.containsEmporium(Emporium.getEmporiumsPlayer=player)!=true))
+			return false;
+		else
+			return true;
 	}
 
+	
 }

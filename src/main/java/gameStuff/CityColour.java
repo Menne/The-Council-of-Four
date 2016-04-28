@@ -22,12 +22,12 @@ public class CityColour {
 	}
 	
      /**
-	 * returns true if there is an emporium e in every city of this colour.
+	 * returns true if there is an emporium of Player player in every city of this colour.
 	 * @param e
 	 * @return
 	 */
-	public boolean checkEmporium(Emporium e) {
-	if(colourCities.contains(c.containsEmporium(e)!=true))
+	public boolean checkEmporium(Player player) {
+	if(colourCities.contains(City.containsEmporium(Emporium.getEmporiumsPlayer=player)!=true))
 		return false;
 	else 
 		return true;
