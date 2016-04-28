@@ -163,7 +163,7 @@ public class Player {
 	 * adds one "card" to the player's deck
 	 * @param card
 	 */
-	public void addCardToDeck(PoliticsCard card){
+	public void addCardToHand(PoliticsCard card){
 		this.hand.add(card);
 	}
 	
@@ -173,7 +173,7 @@ public class Player {
 	 * returns FALSE if player's deck didn't contain the card.
 	 * @param card
 	 */
-	public boolean removeCardFromDeck(PoliticsCard card){
+	public boolean removeCardFromHand(PoliticsCard card){
 		return this.hand.remove(card);
 	}
 	

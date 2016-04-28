@@ -2,5 +2,9 @@ package gameStuff;
 
 public class Councillor {
 	
-	private final CardColour colour;
+	private CardColour colour;
+
+	public CardColour getColour() {
+		return colour;
+	}
 }
