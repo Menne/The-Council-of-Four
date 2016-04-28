@@ -7,7 +7,7 @@ package gameStuff;
  */
 public class Councillor {
 	
-	private final CardColour colour;
+	private CardColour colour;
 	
 	public Councillor(CardColour colour){
 		this.colour=colour;
