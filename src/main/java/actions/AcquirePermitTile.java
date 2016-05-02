@@ -1,12 +1,11 @@
 package actions;
 
 import java.util.List;
-import java.util.ArrayList;
 
-import gameStuff.CouncilBalcony;
-import gameStuff.Councillor;
+import bonus.Bonus;
 import gameStuff.PermitTile;
 import gameStuff.PoliticsCard;
+import gameStuff.RegionBoard;
 import model.Game;
 
 /**
@@ -18,9 +17,9 @@ import model.Game;
 
 public class AcquirePermitTile extends MainAction {
 
-	private PermitTile permitTileToPick;
+	private int numberOfPermitTile;
 	private List<PoliticsCard> cardsToDescard;
-	private CouncilBalcony balconyToSatisfy;
+	private RegionBoard chosenRegion;
 
 	/**
 	 * constructor of the action
@@ -30,12 +29,12 @@ public class AcquirePermitTile extends MainAction {
 	 * @param balconyToSatisfy is the council balcony to satisfy
 	 *
 	 */
-	public AcquirePermitTile(Game game, PermitTile permitTileToPick, 
-			List<PoliticsCard> cardsToDescard, CouncilBalcony balconyToSatisfy) {
+	public AcquirePermitTile(Game game, int numberOfPermitTile, 
+			List<PoliticsCard> cardsToDescard, RegionBoard chosenRegion) {
 		super(game);
-		this.permitTileToPick=permitTileToPick;
+		this.numberOfPermitTile=numberOfPermitTile;
 		this.cardsToDescard=cardsToDescard;
-		this.balconyToSatisfy=balconyToSatisfy;
+		this.chosenRegion=chosenRegion;
 	}
 	
 	/**
@@ -48,40 +47,54 @@ public class AcquirePermitTile extends MainAction {
 	 */
 	public boolean executeAction() {
 
-		if (!(this.CheckHandCorrected() || this.CheckEnoughCoins() || this.CheckHandSatisfiesBalcony()))
+		PermitTile permitTileToPick=this.chosenRegion.getUncoveredTiles()[numberOfPermitTile];
+		
+		if (!(this.CheckEnoughCoins() || this.CheckHandSatisfiesBalcony()))
 			return false;
 		
-		this.game.getCurrentPlayer().addTile(permitTileToPick);
+		this.game.getCurrentPlayer().decrementCoins(CoinsToPay());
 		for (PoliticsCard card : cardsToDescard)
 			this.game.getCurrentPlayer().removeCardFromHand(card);
-		this.game.getCurrentPlayer().decrementCoins(((4-(cardsToDescard.size()))*3)+1);
+		this.game.getCurrentPlayer().addTile(permitTileToPick);
+		for (Bonus bonusToAssign : permitTileToPick.getBonus())
+			bonusToAssign.assignBonus(this.game.getCurrentPlayer());
+		this.chosenRegion.SubstitutePermitTile();
 	    return true;
 	}
 	
-	/*
-	 * checks if the player has selected correct cards
+	/**
+	 * Calculate the coins you have to pay according to the cards you
+	 * selected and the number of rainbow politics cards
+	 * @return the amount of coins
 	 */
-	public boolean CheckHandCorrected() {
-		return this.game.getCurrentPlayer().getHand()
-				.contains(cardsToDescard);
+	private int CoinsToPay() {
+		int coinsToPay;
+		if (this.cardsToDescard.size()==4)
+			coinsToPay=0;
+		else
+			coinsToPay=((4-(this.cardsToDescard.size()))*3)+1;
+		for (PoliticsCard card : cardsToDescard)
+			if (card.getColour().getColour() == "rainbow")
+				coinsToPay+=1;
+		return coinsToPay;
 	}
 	
-	/*
+	/**
 	 * checks if the player has enough coins
 	 */
-	public boolean CheckEnoughCoins() {
+	private boolean CheckEnoughCoins() {
 		return this.game.getCurrentPlayer().getCoins() >= 
-				cardsToDescard.size();
+				CoinsToPay();
 	}
 	
-	/*
+	/**
 	 * checks if the player hands cards' colour match with the colour of councillors
 	 * of the selected balcony
 	 */
-	public boolean CheckHandSatisfiesBalcony() {
-		for (int i=0; i<=balconyToSatisfy.getNumberofcouncillors(); i++)
+	private boolean CheckHandSatisfiesBalcony() {
+		for (int i=0; i<=this.chosenRegion.getRegionBalcony().getNumberofcouncillors(); i++)
 			for (PoliticsCard PoliticsCardsInHand: cardsToDescard)
-				if (!(balconyToSatisfy.getCouncillors()[i].getColour() == PoliticsCardsInHand.getColour()))
+				if (!(this.chosenRegion.getRegionBalcony().getCouncillors()[i].getColour() == PoliticsCardsInHand.getColour()))
 					return false;
 		return true;
 	}

@@ -88,14 +88,19 @@ public class RegionBoard {
  * @param i can be only 0 or 1 (it rappresents the card to remove)
  */
 	
-	/*
-	public void changePermitTile(int i) {
-		if(i!=0 && i!=1)
-		throw new IllegalArgumentException("index parameter must be 0 or 1");
+	
+	public PermitTile[] pickPermitTile(int i) {
+		//if(i!=0 && i!=1)
+		//throw new IllegalArgumentException("index parameter must be 0 or 1");
 		
-		permitTile[i]=PermitDeck.takeCard;
+		//permitTile[i]=PermitDeck.pickCard();
+		return uncoveredTiles;
 	}
-*/
+	
+	public void SubstitutePermitTile() {
+		//TODO 
+	}
+
 	public void substituteBothPermitTiles() {
 		// TODO - implement RegionBoard.substituteBusinessTile
 		throw new UnsupportedOperationException();
