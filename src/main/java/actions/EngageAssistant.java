@@ -9,8 +9,14 @@ import model.Game;
  */
 public class EngageAssistant extends QuickAction {
 
+	private static final int necessaryCoins=3;
+	
 	public EngageAssistant(Game game){
 		super(game);
+	}
+	
+	private boolean checkCoins(){
+		return this.game.getCurrentPlayer().getCoins()>=necessaryCoins;
 	}
 
 	/**
@@ -18,9 +24,9 @@ public class EngageAssistant extends QuickAction {
 	 * @return TRUE if the action ends well; FALSE otherwise.
 	 */
 	public boolean executeAction() {
-		if(!this.game.getCurrentPlayer().decrementCoins(3))
+		if(!this.checkCoins())
 			return false;		
-		this.game.getCurrentPlayer().decrementCoins(4);
+		this.game.getCurrentPlayer().decrementCoins(necessaryCoins);
 		this.game.getCurrentPlayer().incrementAssistants(1);
 		return true;
 	}

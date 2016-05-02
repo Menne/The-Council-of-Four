@@ -11,14 +11,14 @@ import java.util.List;
 	 *
 	 */
 
-public class PermitDeck extends Deck {
+public class PermitDeck {
 
 	/**
 	 * constructor of the permit tiles deck
 	 * @param cards are the cards of the deck
 	 */
 	public PermitDeck(List<PermitTile> cards) {
-		super(cards);
+		
 	}
 
 }

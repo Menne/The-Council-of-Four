@@ -3,6 +3,7 @@ package actions;
 import java.util.List;
 
 import bonus.Bonus;
+import gameStuff.CouncilBalcony;
 import gameStuff.PermitTile;
 import gameStuff.PoliticsCard;
 import gameStuff.RegionBoard;
@@ -92,7 +93,7 @@ public class AcquirePermitTile extends MainAction {
 	 * of the selected balcony
 	 */
 	private boolean CheckHandSatisfiesBalcony() {
-		for (int i=0; i<=this.chosenRegion.getRegionBalcony().getNumberofcouncillors(); i++)
+		for (int i=0; i<=CouncilBalcony.getNumberofcouncillors(); i++)
 			for (PoliticsCard PoliticsCardsInHand: cardsToDescard)
 				if (!(this.chosenRegion.getRegionBalcony().getCouncillors()[i].getColour() == PoliticsCardsInHand.getColour()))
 					return false;

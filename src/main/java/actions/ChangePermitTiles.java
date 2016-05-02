@@ -13,6 +13,7 @@ import model.Game;
 public class ChangePermitTiles extends QuickAction {
 	
 	private final RegionBoard selectedRegion;
+	private static final int necessaryAssistants=1;
 	
 	public  ChangePermitTiles(Game game, RegionBoard selectedRegion){
 		super(game);
@@ -20,11 +21,13 @@ public class ChangePermitTiles extends QuickAction {
 	}
 	
 	private boolean checkAssistant(){
-		return this.game.getCurrentPlayer().getAssistants()!=0;
+		return this.game.getCurrentPlayer().getAssistants()>=necessaryAssistants;
 	}
+	
 	/**
-	 * Changes the two uncovered permit tiles of the selected region.
-	 * @return  
+	 * Changes the two uncovered permit tiles of the selected region
+	 * and decrements the necessary assistant to the current player.
+	 * @return TRUE if the action ends well; FALSE otherwise.
 	 */
 	public boolean executeAction() {
 		if(!this.checkAssistant())
@@ -32,6 +35,7 @@ public class ChangePermitTiles extends QuickAction {
 		for(RegionBoard region : this.game.getGameTable().getRegionBoards())
 			if(region.equals(selectedRegion))
 				region.substituteBothPermitTiles();
+		this.game.getCurrentPlayer().decrementAssistants(necessaryAssistants);
 		return true;
 	}
 				

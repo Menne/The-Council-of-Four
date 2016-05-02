@@ -16,11 +16,21 @@ public class ElectCouncillorByAssistant extends QuickAction {
 
 	private final Councillor newCouncillor;
 	private final CouncilBalcony councilBalcony;
+	public static final int necessaryAssistants=1;
 	
 	public ElectCouncillorByAssistant(Game game, Councillor newCouncillor, CouncilBalcony councilBalcony){
 		super(game);
 		this.newCouncillor=newCouncillor;
 		this.councilBalcony=councilBalcony;
+	}
+	
+	private boolean checkAssistants(){
+		return this.game.getCurrentPlayer().getAssistants()>=necessaryAssistants;
+	}
+	
+	private boolean checkCouncillor(){
+		return this.game.getGameTable().getCouncilReserve()
+				.getCouncillors().contains(this.newCouncillor);
 	}
 
 	/**
@@ -31,13 +41,11 @@ public class ElectCouncillorByAssistant extends QuickAction {
 	 */
 	public boolean executeAction() {
 		Councillor oldCouncillor;
-		if((!this.game.getGameTable().getCouncilReserve()
-				.getCouncillors().contains(newCouncillor))||
-				(!this.game.getCurrentPlayer().decrementAssistants(1)))
+		if((!this.checkAssistants())||(!this.checkCouncillor()))
 			return false;
-		oldCouncillor=this.councilBalcony.substituteCouncillor(newCouncillor);
+		oldCouncillor=this.councilBalcony.substituteCouncillor(this.newCouncillor);
 		this.game.getGameTable().getCouncilReserve().getCouncillors().add(oldCouncillor);
-		this.game.getCurrentPlayer().decrementAssistants(1);
+		this.game.getCurrentPlayer().decrementAssistants(necessaryAssistants);
 		return true;
 	}
 
