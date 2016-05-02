@@ -11,99 +11,82 @@ import players.Player;
 public class RegionBoard {
 
 	private final String name;
-	private final Set<City> citiesOfTheRegion;
+	private final Set<City> regionCities;
 	private boolean presenceBonusRegionBoard;
-	private final PermitDeck regionDeck;
-	private static final int numberOfPermitTiles=2;
-	private PermitTile[] uncoveredTiles;
+	private final PermitDeck regionPermitDeck;
+	private static final int numberOfUncoveredPermitTiles=2;
+	private PermitTile[] uncoveredPermitTiles;
 	private final CouncilBalcony regionBalcony;
-	
-	
-	public Set<City> getCitiesOfTheRegion() {
-		return citiesOfTheRegion;
-	}
-
-
-
-	public void setPresenceBonusRegionBoard(boolean presenceBonusRegionBoard) {
-		this.presenceBonusRegionBoard = presenceBonusRegionBoard;
-	}
-
 	private final RegionBoardBonusTile regionBoardBonusTile;
 	
-	public RegionBoard(String name, boolean presenceBonusRegionBoard, Set<City> citiesOfTheRegion,
-			PermitDeck regionDeck, PermitTile[] uncoveredTiles, 
+	public RegionBoard(String name, boolean presenceBonusRegionBoard, Set<City> regionCities,
+			PermitDeck regionPermitDeck, PermitTile[] uncoveredPermitTiles, 
 			CouncilBalcony regionBalcony, RegionBoardBonusTile regionBoardBonusTile){
-		if(uncoveredTiles.length!=numberOfPermitTiles)
+		if(uncoveredPermitTiles.length!=numberOfUncoveredPermitTiles)
 			throw new IllegalArgumentException("uncovered permit tiles array must be composed of"
-		+uncoveredTiles+ "tiles!");
-		this.uncoveredTiles=uncoveredTiles;
+		+uncoveredPermitTiles+ "tiles!");
+		
+		this.uncoveredPermitTiles=uncoveredPermitTiles;
 		this.name=name;
 		this.presenceBonusRegionBoard=presenceBonusRegionBoard;
-		this.citiesOfTheRegion=citiesOfTheRegion;
-		this.regionDeck=regionDeck;
-		this.uncoveredTiles=uncoveredTiles;
+		this.regionCities=regionCities;
+		this.regionPermitDeck=regionPermitDeck;
 		this.regionBalcony=regionBalcony;
 		this.regionBoardBonusTile=regionBoardBonusTile;
 	}
-
 	
 	public String getName() {
 		return name;
 	}
 
-
-
 	public boolean isPresenceBonusRegionBoard() {
 		return presenceBonusRegionBoard;
 	}
 
-
-
-	public PermitDeck getRegionDeck() {
-		return regionDeck;
+	public PermitDeck getRegionPermitDeck() {
+		return regionPermitDeck;
 	}
 
-
-
-	public PermitTile[] getUncoveredTiles() {
-		return uncoveredTiles;
+	public PermitTile[] getUncoveredPermitTiles() {
+		return uncoveredPermitTiles;
 	}
-
-
 
 	public CouncilBalcony getRegionBalcony() {
 		return regionBalcony;
 	}
 
-
-
 	public RegionBoardBonusTile getRegionBoardBonusTile() {
 		return regionBoardBonusTile;
 	}
 
-
-/**
- * IMPLEMETARE TAKECARD IN PERMIT DECK!!
- * @param i can be only 0 or 1 (it rappresents the card to remove)
- */
-	
-	
-	public PermitTile[] pickPermitTile(int i) {
-		//if(i!=0 && i!=1)
-		//throw new IllegalArgumentException("index parameter must be 0 or 1");
-		
-		//permitTile[i]=PermitDeck.pickCard();
-		return uncoveredTiles;
-	}
-	
-	public void SubstitutePermitTile() {
-		//TODO 
+	public Set<City> getRegionCities() {
+		return regionCities;
 	}
 
-	public void substituteBothPermitTiles() {
-		// TODO - implement RegionBoard.substituteBusinessTile
-		throw new UnsupportedOperationException();
+	public void setPresenceBonusRegionBoard(boolean presenceBonusRegionBoard) {
+		this.presenceBonusRegionBoard = presenceBonusRegionBoard;
+	}
+	
+	/**
+	 * Picks a chosen permit tile of the two uncovered, then replaces it with the first tile of the deck
+	 * @param numberOfPermitTile is the permit tile you have to pick
+	 * @return the permit tile you want to pick
+	 */
+	public PermitTile pickUncoveredPermitTile(int numberOfPermitTile) {
+		PermitTile pickedUncoveredPermitTile=this.uncoveredPermitTiles[numberOfPermitTile];
+		this.uncoveredPermitTiles[numberOfPermitTile]=this.regionPermitDeck.pickPermitTile();
+		return pickedUncoveredPermitTile;
+	}
+	
+	/**
+	 * Substitutes both of the uncovered permit tiles on the region board
+	 * by invoking the method addOnBottom of the class PermitDeck ad picking
+	 */
+	public void substitutePermitTiles() {
+		for (int i=0; i<=numberOfUncoveredPermitTiles; i++) {
+			this.regionPermitDeck.addOnBottom(uncoveredPermitTiles[i]);
+			this.uncoveredPermitTiles[i]=this.regionPermitDeck.pickPermitTile();
+		}
 	}
 
 	/**
@@ -124,7 +107,7 @@ public class RegionBoard {
 	 * @param colour
 	 */
 	public boolean checkEmporiums(Player player) {
-		if(citiesOfTheRegion.contains(City.containsEmporium(Emporium.getEmporiumsPlayer=player)!=true))
+		if(regionCities.contains(City.containsEmporium(Emporium.getEmporiumsPlayer=player)!=true))
 			return false;
 		else
 			return true;

@@ -46,8 +46,6 @@ public class AcquirePermitTile extends MainAction {
 	 * each rainbow card requires 1 additional coin each to use.
 	 */
 	public boolean executeAction() {
-
-		PermitTile permitTileToPick=this.chosenRegion.getUncoveredTiles()[numberOfPermitTile];
 		
 		if (!(this.CheckEnoughCoins() || this.CheckHandSatisfiesBalcony()))
 			return false;
@@ -55,10 +53,9 @@ public class AcquirePermitTile extends MainAction {
 		this.game.getCurrentPlayer().decrementCoins(CoinsToPay());
 		for (PoliticsCard card : cardsToDescard)
 			this.game.getCurrentPlayer().removeCardFromHand(card);
-		this.game.getCurrentPlayer().addTile(permitTileToPick);
-		for (Bonus bonusToAssign : permitTileToPick.getBonus())
+		this.game.getCurrentPlayer().addTile(this.chosenRegion.pickUncoveredPermitTile(this.numberOfPermitTile));
+		for (Bonus bonusToAssign : this.chosenRegion.getUncoveredPermitTiles()[numberOfPermitTile].getBonus())
 			bonusToAssign.assignBonus(this.game.getCurrentPlayer());
-		this.chosenRegion.SubstitutePermitTile();
 	    return true;
 	}
 	

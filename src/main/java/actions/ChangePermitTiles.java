@@ -31,7 +31,7 @@ public class ChangePermitTiles extends QuickAction {
 			return false;
 		for(RegionBoard region : this.game.getGameTable().getRegionBoards())
 			if(region.equals(selectedRegion))
-				region.substituteBothPermitTiles();
+				region.substitutePermitTiles();
 		return true;
 	}
 				
