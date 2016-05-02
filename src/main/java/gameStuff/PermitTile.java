@@ -12,8 +12,8 @@ import bonus.Bonus;
 
 public class PermitTile {
 	
-	private Set<City> buildableCities;
-	private Set<Bonus> bonus;
+	private final Set<City> buildableCities;
+	private final Set<Bonus> bonus;
 	
 	/**
 	 * constructor of a permit tile
