@@ -16,11 +16,17 @@ public class ElectCouncillor extends MainAction {
 
 	private final Councillor newCouncillor;
 	private final CouncilBalcony councilBalcony;
+	private static final int givenCoins=4;
 	
 	public ElectCouncillor(Game game, Councillor newCouncillor, CouncilBalcony councilBalcony){
 		super(game);
 		this.newCouncillor=newCouncillor;
 		this.councilBalcony=councilBalcony;
+	}
+	
+	private boolean checkCouncillor(){
+		return this.game.getGameTable().getCouncilReserve()
+				.getCouncillors().contains(this.newCouncillor);
 	}
 /**
  * Substitutes a given councillor in one of the balconies of the game,
@@ -30,12 +36,11 @@ public class ElectCouncillor extends MainAction {
  */
 	public boolean executeAction() {
 		Councillor oldCouncillor;
-		if(!this.game.getGameTable().getCouncilReserve()
-				.getCouncillors().contains(newCouncillor))
+		if(!this.checkCouncillor())
 			return false;
-		oldCouncillor=this.councilBalcony.substituteCouncillor(newCouncillor);
+		oldCouncillor=this.councilBalcony.substituteCouncillor(this.newCouncillor);
 		this.game.getGameTable().getCouncilReserve().getCouncillors().add(oldCouncillor);
-		this.game.getCurrentPlayer().incrementCoins(4);
+		this.game.getCurrentPlayer().incrementCoins(givenCoins);
 		return true;
 	}
 
