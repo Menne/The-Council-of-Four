@@ -32,4 +32,37 @@ public class PermitTile {
 	public Set<Bonus> getBonus() {
 		return bonus;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((bonus == null) ? 0 : bonus.hashCode());
+		result = prime * result + ((buildableCities == null) ? 0 : buildableCities.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PermitTile other = (PermitTile) obj;
+		if (bonus == null) {
+			if (other.bonus != null)
+				return false;
+		} else if (!bonus.equals(other.bonus))
+			return false;
+		if (buildableCities == null) {
+			if (other.buildableCities != null)
+				return false;
+		} else if (!buildableCities.equals(other.buildableCities))
+			return false;
+		return true;
+	}
+	
+	
 }

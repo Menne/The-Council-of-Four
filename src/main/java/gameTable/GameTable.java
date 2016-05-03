@@ -1,7 +1,6 @@
 package gameTable;
  
 import java.util.List;
-import java.util.Set; 
 import gameStuff.CouncilBalcony;
 import gameStuff.CouncillorsReserve;
 import gameStuff.KingRewardTile;
@@ -16,10 +15,10 @@ public class GameTable {
 	private final CouncilBalcony councilOfKing;
 	private final CouncillorsReserve councilReserve;
 	private final PoliticsDeck politicsDeck;
-	private final Set<KingRewardTile> kingRewardTiles;
+	private final List<KingRewardTile> kingRewardTiles;
                
 	public GameTable(Map map, List<RegionBoard> regionBoards, CouncilBalcony councilOfKing,
-			CouncillorsReserve councilReserve, PoliticsDeck politicsDeck, Set<KingRewardTile> kingRewardTiles){
+			CouncillorsReserve councilReserve, PoliticsDeck politicsDeck, List<KingRewardTile> kingRewardTiles){
 		this.map=map;
 		this.regionBoards= regionBoards;
 		this.councilOfKing=councilOfKing;
@@ -48,7 +47,7 @@ public class GameTable {
 		return politicsDeck;
 	}
 
-	public Set<KingRewardTile> getKingRewardTiles() {
+	public List<KingRewardTile> getKingRewardTiles() {
 		return kingRewardTiles;
 	}
                
