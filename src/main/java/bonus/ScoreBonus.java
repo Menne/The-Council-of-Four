@@ -1,25 +1,29 @@
 package bonus;
 
-import players.Player;
+import model.Game;
 
 /**
  * ScoreBonus implements assignBonus method
- * @author andreapasquali
+ * @author Andrea
  *TODO: IMPORTARE CLASSE SCORE
  */
 
 public class ScoreBonus implements Bonus{
 	
-	private final int advancement;
+	private final int scoreAdvancement;
 	
-	public ScoreBonus(int advancement){
-		this.advancement=advancement;
+	/**
+	 * Constructor of ScoreBonus
+	 * @param scoreAdvancement is the amount of advancement in the score track
+	 */
+	public ScoreBonus(int scoreAdvancement){
+		this.scoreAdvancement=scoreAdvancement;
 	}
 	/**
 	 * assignBonus assigns to player p the "advancement" score
-	 * @param p
+	 * @param currentPlayer
 	 */
-	public void assignBonus(Player p){
-		p.incrementScore(advancement, p.getScore());
+	public void assignBonus(Game game){
+		game.getCurrentPlayer().incrementScore(scoreAdvancement, game.getCurrentPlayer().getScore());
 	}
 }

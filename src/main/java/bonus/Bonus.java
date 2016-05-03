@@ -1,6 +1,6 @@
 package bonus;
 
-import players.Player;
+import model.Game;
 
 /**
  * Bonus interface offers the abstract method assignBonus
@@ -10,8 +10,8 @@ import players.Player;
 
 public interface Bonus {
 	/**
-	 * 
-	 * @param p refers to player
+	 * This is an abstract assignment of a bonus
+	 * @param currentPlayer is the player who is playing the turn
 	 */
-	public abstract void assignBonus(Player p);
+	public abstract void assignBonus(Game game);
 }

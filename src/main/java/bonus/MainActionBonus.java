@@ -1,6 +1,6 @@
 package bonus;
 
-import players.Player;
+import model.Game;
 
 /**
  * 
@@ -14,7 +14,7 @@ public class MainActionBonus implements Bonus {
 	 * Permits to player p to do another main action
 	 * @param p
 	 */
-	public void assignBonus(Player p) {
+	public void assignBonus(Game game) {
 		// TODO - implement MainActionBonus.assignBonus
 		throw new UnsupportedOperationException();
 	}

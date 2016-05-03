@@ -50,7 +50,7 @@ public class AcquirePermitTile extends MainAction {
 		if (!(this.CheckEnoughCoins() || this.CheckHandSatisfiesBalcony()))
 			return false;
 		for (Bonus bonusToAssign : this.chosenRegion.getUncoveredPermitTiles()[numberOfPermitTile].getBonus())
-			bonusToAssign.assignBonus(this.game.getCurrentPlayer());
+			bonusToAssign.assignBonus(this.game);
 		this.game.getCurrentPlayer().decrementCoins(CoinsToPay());
 		for (PoliticsCard card : cardsToDescard)
 			this.game.getCurrentPlayer().removeCardFromHand(card);

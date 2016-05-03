@@ -1,6 +1,6 @@
 package bonus;
 
-import players.Player;
+import model.Game;
 
 /**
  * 
@@ -8,13 +8,13 @@ import players.Player;
  *
  */
 
-public class ChosenCityBonus implements Bonus{
+public class ChooseCityBonus implements Bonus{
 	
 	/**
 	 * TO DO
 	 * @param p
 	 */
-	public void assignBonus(Player p) {
+	public void assignBonus(Game game) {
 		// TODO - implement ChosenCityBonus.assignBonus
 		throw new UnsupportedOperationException();
 	}

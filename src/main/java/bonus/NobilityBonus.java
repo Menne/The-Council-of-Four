@@ -1,27 +1,31 @@
 package bonus;
 
-import players.Player;
+import model.Game;
 
 /**
  * NobilityBonus Class
- * @author andreapasquali
+ * @author Andrea, Emanuele
  *
  */
 
 public class NobilityBonus implements Bonus{
 
-	private final int advancement;
+	private final int nobilityAdvancement;
 	
-	public NobilityBonus(int advancement){
-		this.advancement=advancement;
+	/**
+	 * Constructor of NobilityBonus
+	 * @param nobilityAdvancement is the amount of advancement in the nobility track
+	 */
+	public NobilityBonus(int nobilityAdvancement){
+		this.nobilityAdvancement=nobilityAdvancement;
 	}
 	
 	/**
-	 * assigns to player p the "advancement" increase in nobility
-	 * @param p
+	 * Assigns to the currentPlayer an advancement in the nobility track
+	 * @param currentPlayer is the player who is playing the turn
 	 */
-	public void assignBonus(Player p) {
-		p.incrementNobility(advancement);
+	public void assignBonus(Game game) {
+		game.getCurrentPlayer().incrementNobility(nobilityAdvancement);
 	}
 
 }
