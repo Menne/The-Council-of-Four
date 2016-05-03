@@ -4,7 +4,6 @@ import java.util.List;
 
 import bonus.Bonus;
 import gameStuff.CouncilBalcony;
-import gameStuff.PermitTile;
 import gameStuff.PoliticsCard;
 import gameStuff.RegionBoard;
 import model.Game;
@@ -50,13 +49,13 @@ public class AcquirePermitTile extends MainAction {
 		
 		if (!(this.CheckEnoughCoins() || this.CheckHandSatisfiesBalcony()))
 			return false;
-		
+		for (Bonus bonusToAssign : this.chosenRegion.getUncoveredPermitTiles()[numberOfPermitTile].getBonus())
+			bonusToAssign.assignBonus(this.game.getCurrentPlayer());
 		this.game.getCurrentPlayer().decrementCoins(CoinsToPay());
 		for (PoliticsCard card : cardsToDescard)
 			this.game.getCurrentPlayer().removeCardFromHand(card);
 		this.game.getCurrentPlayer().addTile(this.chosenRegion.pickUncoveredPermitTile(this.numberOfPermitTile));
-		for (Bonus bonusToAssign : this.chosenRegion.getUncoveredPermitTiles()[numberOfPermitTile].getBonus())
-			bonusToAssign.assignBonus(this.game.getCurrentPlayer());
+		this.chosenRegion.uncoverPermitTiles();
 	    return true;
 	}
 	
