@@ -20,9 +20,10 @@ public class PermitTile {
 	 * @param buildableCities is the set of cities where you can build in
 	 * @param bonus is the bonus associated to the permit tile 
 	 */
-	public PermitTile(Set<City> buildableCities, Set<Bonus> bonus) {
+	public PermitTile(Set<City> buildableCities, Set<Bonus> bonus, PermitDeck deck) {
 		this.buildableCities=buildableCities;
 		this.bonus=bonus;
+		deck.getPermitTiles().add(this);
 	}
 	
 	public Set<City> getBuildableCities() {

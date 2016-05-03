@@ -1,5 +1,6 @@
 package gameStuff;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**	
@@ -16,8 +17,8 @@ public class PermitDeck {
 	 * constructor of the permit tiles deck
 	 * @param permit tiles are the tiles of the deck
 	 */
-	public PermitDeck(List<PermitTile> permitTiles) {
-		this.permitTiles=permitTiles;
+	public PermitDeck() {
+		this.permitTiles=new ArrayList<PermitTile>();
 	}
 	
 	public PermitTile pickPermitTile() {
