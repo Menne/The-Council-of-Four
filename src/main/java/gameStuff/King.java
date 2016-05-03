@@ -7,26 +7,29 @@ package gameStuff;
  */
 public class King {
 
-	private City kingPresence;
+	private City kingCity;
 	
-	public King(City kingPresence){
-		this.kingPresence=kingPresence;
+	public King(City kingCity){
+		this.kingCity=kingCity;
+		kingCity.setIsKingPresent(true);
 	}
 	
 	
 	
 	public City getKingPresence() {
-		return kingPresence;
+		return kingCity;
 	}
 
 
 
 	/**
-	 * moves king presence from the kingPresence's city to c.
-	 * @param c
+	 * Moves king presence from the kingPresence's city to c.
+	 * @param c new king's city
 	 */
 	public void moveKing(City c) {
-		this.kingPresence=c;
+		this.kingCity.setIsKingPresent(false);
+		this.kingCity=c;
+		this.kingCity.setIsKingPresent(true);
 	}
 
 }
