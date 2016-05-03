@@ -1,9 +1,11 @@
 package actions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import bonus.Bonus;
 import gameStuff.CouncilBalcony;
+import gameStuff.Councillor;
 import gameStuff.PoliticsCard;
 import gameStuff.RegionBoard;
 import model.Game;
@@ -49,6 +51,7 @@ public class AcquirePermitTile extends MainAction {
 		
 		if (!(this.CheckEnoughCoins() || this.CheckHandSatisfiesBalcony()))
 			return false;
+		
 		for (Bonus bonusToAssign : this.chosenRegion.getUncoveredPermitTiles()[numberOfPermitTile].getBonus())
 			bonusToAssign.assignBonus(this.game);
 		this.game.getCurrentPlayer().decrementCoins(CoinsToPay());
@@ -89,11 +92,20 @@ public class AcquirePermitTile extends MainAction {
 	 * of the selected balcony
 	 */
 	private boolean CheckHandSatisfiesBalcony() {
+		List<Councillor> temporaryBalcony=new ArrayList<Councillor>();
+		int satisfyCounter=0;
 		for (int i=0; i<=CouncilBalcony.getNumberofcouncillors(); i++)
-			for (PoliticsCard PoliticsCardsInHand: cardsToDescard)
-				if (!(this.chosenRegion.getRegionBalcony().getCouncillors()[i].getColour() == PoliticsCardsInHand.getColour()))
-					return false;
-		return true;
+			temporaryBalcony.add(chosenRegion.getRegionBalcony().getCouncillors()[i]);
+		
+		for (PoliticsCard politicsCardInHand: cardsToDescard) {
+			if (politicsCardInHand.getColour().getColour() == "rainbow")
+				satisfyCounter++;
+			for (Councillor councillorToCheck : temporaryBalcony)
+				if (councillorToCheck.getColour().equals(politicsCardInHand.getColour())) {
+					temporaryBalcony.remove(councillorToCheck);
+					satisfyCounter++;
+				}
+			}
+		return satisfyCounter == this.cardsToDescard.size();
 	}
-	
 }
