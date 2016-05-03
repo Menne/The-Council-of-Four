@@ -95,7 +95,10 @@ public class City {
 		return nearCities;
 	}
 	
-	
+	/**
+	 * Adds c as a near city of the current city.
+	 * @param c is the near city.
+	 */
 	public void addNearCity(City c){
 		this.nearCities.add(c);
 	}

@@ -4,6 +4,7 @@ import java.util.Set;
 
 import org.jgrapht.*;
 import org.jgrapht.graph.*;
+import org.jgrapht.alg.DijkstraShortestPath;
 
 /**
  * The gameMap modelized as a simple graph
@@ -25,13 +26,20 @@ public class Map {
 			this.gameMap.addVertex(city);
 		for(City city1 : cities)
 			for(City city2 : city1.getNearCities())
-				this.gameMap.addEdge(city1, city2);
+				if(!this.gameMap.containsEdge(city1,city2))
+					this.gameMap.addEdge(city1, city2);				
 	}
 
 	public UndirectedGraph<City, DefaultEdge> getGameMap() {
 		return gameMap;
 	}
 
+	public int getShortestPathLenght(City c1, City c2){
+		DijkstraShortestPath<City, DefaultEdge> dijkstraAlg=
+				new DijkstraShortestPath<City, DefaultEdge>(this.gameMap, c1, c2);
+		return (int)dijkstraAlg.getPathLength();
+	}
+	
 	@Override
 	public String toString() {
 		return "Map [gameMap=" + gameMap + "]";
