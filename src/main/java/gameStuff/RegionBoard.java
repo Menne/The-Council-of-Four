@@ -123,12 +123,12 @@ public class RegionBoard {
 	 * it returns true if player has an emporium on each city of the region; false otherwise
 	 * @param colour
 	 */
-	public boolean checkEmporiums(Player player) {
+	/*public boolean checkEmporiums(Player player) {
 		if(citiesOfTheRegion.contains(City.containsEmporium(Emporium.getEmporiumsPlayer=player)!=true))
 			return false;
 		else
 			return true;
-	}
+	}*/
 
 	
 }

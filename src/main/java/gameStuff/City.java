@@ -1,56 +1,59 @@
 package gameStuff;
 
+import java.util.HashSet;
 import java.util.Set;
 
-
-import gameStuff.RegionBoard;
-import gameStuff.RewardToken;
-import players.Player;
-
 /**
- * Class City identified by its name
- * @author andreapasquali
+ * Models the a city of the game
+ * @author Luca
  *
  */
 public class City {
 
 	private final String name;
-	private final RewardToken rewardToken;
+	private RewardToken rewardToken;
 	private Boolean isKingPresent;
 	private final CityColour colour;
-	private final RegionBoard region;
-	private static Set<Emporium> citysEmporiums;
+	private final Emporium[] citysEmporiums;
 	private final Set<City> nearCities;
 	
-	public City(String name, RewardToken rewardToken, Boolean isKingPresent, CityColour colour, RegionBoard
-			region, Set<Emporium> citysEmporium, Set<City> nearCities){
+	/**
+	 * Create a new city. By default the set of near cities is empty,
+	 * the king is not present, the array of emporiums is empty,
+	 * the reward token is not present.
+	 * Automatically adds the new city in the set of cities with the input color.
+	 * @param name of the city.
+	 * @param colour of the city
+	 * @param numberOfPlayers of the game. 
+	 * Usefull to choose the size of the emporiums array.
+	 */
+	public City(String name, CityColour colour, int numberOfPlayers){
 		this.name=name;
-		this.rewardToken=rewardToken;
-		this.isKingPresent=isKingPresent;
+		this.isKingPresent=false;
 		this.colour=colour;
-		this.region=region;
-		City.citysEmporiums=citysEmporium;
-		this.nearCities=nearCities;
+		this.citysEmporiums=new Emporium[numberOfPlayers];
+		this.nearCities=new HashSet<City>();
+		colour.addCityOfThisColour(this);
 	}
+
 	
+	
+	public RewardToken getRewardToken() {
+		return rewardToken;
+	}
+
+
+
+	public void setRewardToken(RewardToken rewardToken) {
+		this.rewardToken = rewardToken;
+	}
+
+
+
 	public Boolean getIsKingPresent() {
 		return isKingPresent;
 	}
 
-
-	public CityColour getColour() {
-		return colour;
-	}
-
-
-	public RegionBoard getRegion() {
-		return region;
-	}
-
-
-	public Set<Emporium> getCitysEmporiums() {
-		return citysEmporiums;
-	}
 
 
 	public void setIsKingPresent(Boolean isKingPresent) {
@@ -58,52 +61,42 @@ public class City {
 	}
 
 
-	public RewardToken getRewardToken() {
-		return rewardToken;
-	}
 
-	
 	public String getName() {
 		return name;
 	}
 
-	public Set<City> getNearCities(){
+
+
+	public CityColour getColour() {
+		return colour;
+	}
+
+
+
+	public Emporium[] getCitysEmporiums() {
+		return citysEmporiums;
+	}
+
+
+
+	public Set<City> getNearCities() {
 		return nearCities;
 	}
 	
-	/**
-	 * adds an emporium e to the cities set if the player hasn't any emporium on that city;
-	 * else it returns FALSE
-	 * @param e
-	 */
-	public boolean addEmporium(Emporium e){
-		if(citysEmporiums.contains(e)){
-		citysEmporiums.add(e);
-		return true;}
-		else
-			return false;
+	
+	public void addNearCity(City c){
+		this.nearCities.add(c);
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "City [name=" + name + "]";
 	}
 	
-	/**
-	 * it returns true if city contains an emporium of Player player
-	 * @param player
-	 * @return
-	 */
-	public static boolean containsEmporium(Player player){
-		if(citysEmporiums.contains(Emporium.getEmporiumsPlayer=player)==true)
-			return true;
-		else 
-			return false;
-	}
 	
-	/**
-	 * Djikstra algorithm TODO
-	 * @param City
-	 */
-	public int distance(int City) {
-		// TODO - implement City.distance
-		throw new UnsupportedOperationException();
-	}
 
 
 }

@@ -1,59 +1,50 @@
 package gameStuff;
 
+import java.util.HashSet;
 import java.util.Set;
 
-import players.*;
-
 /**
- * 
- * @author andreapasquali
+ * Models a possible color of a city.  
+ * @author Luca
  *
  */
+
 public class CityColour {
 
 	private final String name;
 	private boolean presenceBonusColour;
-	private final Set<City> colourCities;
+	private final Set<City> citiesOfThisColour;
 	
-	public CityColour(String name, boolean presenceBonusColour, Set<City> colourCities){
-		this.name=name;
-		this.presenceBonusColour=presenceBonusColour;
-		this.colourCities=colourCities;
-	}
-	
-     /**
-	 * returns true if there is an emporium of Player player in every city of this colour.
-	 * @param e
-	 * @return
+	/**
+	 * Initially the bonus color is present and there are not any city of this color.
+	 * The city's constructor will add the cities to the set.
+	 * @param name of the color.
 	 */
-	public boolean checkEmporium(Player player) {
-	if(colourCities.contains(City.containsEmporium(Emporium.getEmporiumsPlayer=player)!=true))
-		return false;
-	else 
-		return true;
+	public CityColour(String name){
+		this.name=name;
+		this.presenceBonusColour=true;
+		this.citiesOfThisColour=new HashSet<City>();
 	}
 	
-	
+	public boolean isPresenceBonusColour() {
+		return presenceBonusColour;
+	}
+
+	public void setPresenceBonusColour(boolean presenceBonusColour) {
+		this.presenceBonusColour = presenceBonusColour;
+	}
+
 	public String getName() {
 		return name;
 	}
 
-
-	public boolean getPresenceBonusColour() {
-		return presenceBonusColour;
+	public Set<City> getCitiesOfThisColour() {
+		return citiesOfThisColour;
 	}
 
-
-	/**
-	 * it changes the presence of Bonus Colour tile from true to false;
-	 * @returns true if it can be done; false if it wasn't already present
-	 */
-	public boolean removeBonusColourTile() {
-		if	(presenceBonusColour==true){
-			presenceBonusColour=false;
-			return true;}
-		else 
-			return presenceBonusColour;
+	public void addCityOfThisColour(City c){
+		this.citiesOfThisColour.add(c);
 	}
+
 
 }
