@@ -13,6 +13,7 @@ public class City {
 	private final String name;
 	private RewardToken rewardToken;
 	private Boolean isKingPresent;
+	private final RegionBoard region;
 	private final CityColour colour;
 	private final Emporium[] citysEmporiums;
 	private final Set<City> nearCities;
@@ -21,19 +22,23 @@ public class City {
 	 * Create a new city. By default the set of near cities is empty,
 	 * the king is not present, the array of emporiums is empty,
 	 * the reward token is not present.
-	 * Automatically adds the new city in the set of cities with the input color.
+	 * Automatically adds the new city in the set of cities of the input color.
+	 * Automatically adds the new city in the set of cities of the input region.
 	 * @param name of the city.
-	 * @param colour of the city
+	 * @param colour of the city.
+	 * @param region of the city.
 	 * @param numberOfPlayers of the game. 
 	 * Usefull to choose the size of the emporiums array.
 	 */
-	public City(String name, CityColour colour, int numberOfPlayers){
+	public City(String name, RegionBoard region, CityColour colour, int numberOfPlayers){
 		this.name=name;
 		this.isKingPresent=false;
+		this.region=region;
 		this.colour=colour;
 		this.citysEmporiums=new Emporium[numberOfPlayers];
 		this.nearCities=new HashSet<City>();
 		colour.addCityOfThisColour(this);
+		region.addCityOfThisRegion(this);
 	}
 
 	
@@ -58,6 +63,12 @@ public class City {
 
 	public void setIsKingPresent(Boolean isKingPresent) {
 		this.isKingPresent = isKingPresent;
+	}
+
+
+
+	public RegionBoard getRegion() {
+		return region;
 	}
 
 

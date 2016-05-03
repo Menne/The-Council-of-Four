@@ -1,8 +1,7 @@
 package gameTable;
  
-import java.util.List;import java.util.Set;
- 
-import gameStuff.ColourBonusTile;
+import java.util.List;
+import java.util.Set; 
 import gameStuff.CouncilBalcony;
 import gameStuff.CouncillorsReserve;
 import gameStuff.KingRewardTile;
@@ -17,18 +16,15 @@ public class GameTable {
 	private final CouncilBalcony councilOfKing;
 	private final CouncillorsReserve councilReserve;
 	private final PoliticsDeck politicsDeck;
-	private final Set<ColourBonusTile> colourBounsTiles;
 	private final Set<KingRewardTile> kingRewardTiles;
                
 	public GameTable(Map map, List<RegionBoard> regionBoards, CouncilBalcony councilOfKing,
-			CouncillorsReserve councilReserve, PoliticsDeck politicsDeck,
-			Set<ColourBonusTile> colourBounsTiles, Set<KingRewardTile> kingRewardTiles){
+			CouncillorsReserve councilReserve, PoliticsDeck politicsDeck, Set<KingRewardTile> kingRewardTiles){
 		this.map=map;
 		this.regionBoards= regionBoards;
 		this.councilOfKing=councilOfKing;
 		this.councilReserve=councilReserve;
 		this.politicsDeck=politicsDeck;
-		this.colourBounsTiles=colourBounsTiles;
 		this.kingRewardTiles=kingRewardTiles;
 	}
 
@@ -50,10 +46,6 @@ public class GameTable {
 
 	public PoliticsDeck getPoliticsDeck() {
 		return politicsDeck;
-	}
-
-	public Set<ColourBonusTile> getColourBounsTiles() {
-		return colourBounsTiles;
 	}
 
 	public Set<KingRewardTile> getKingRewardTiles() {
