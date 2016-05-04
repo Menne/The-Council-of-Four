@@ -27,13 +27,13 @@ public class PickPermitTileBonus implements Bonus {
 
 	/**
 	 * Picks the selected permit tile, and adds each bonus
-	 * @param currentPlayer is the player who is playing the turn
+	 * @param game is the currebt game
 	 */
 	public void assignBonus(Game game) {
 		game.getCurrentPlayer().addTile(this.chosenRegion.pickUncoveredPermitTile(this.numberOfPermitTile));
-		this.chosenRegion.uncoverPermitTiles();
 		for (Bonus bonusToAssign : this.chosenRegion.getUncoveredPermitTiles()[numberOfPermitTile].getBonus())
 			bonusToAssign.assignBonus(game);
+		this.chosenRegion.uncoverPermitTiles();
 	}
 
 }

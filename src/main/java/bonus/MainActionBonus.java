@@ -3,20 +3,19 @@ package bonus;
 import model.Game;
 
 /**
- * 
- * @author andreapasquali
+ * Allows the current player to take another main action
+ * @author Emanuele
  *
  */
 
 public class MainActionBonus implements Bonus {
 
 	/**
-	 * Permits to player p to do another main action
-	 * @param p
+	 * Increments the number of available main actions available
+	 * @param game is the current game
 	 */
 	public void assignBonus(Game game) {
-		// TODO - implement MainActionBonus.assignBonus
-		throw new UnsupportedOperationException();
+		game.incrementMainActionAvailable();
 	}
 
 }
