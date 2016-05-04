@@ -1,4 +1,4 @@
-package players;
+ package players;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -109,11 +109,16 @@ public class Player {
 	}
 	
 	/**
-	 * increments player's nobility position of an "increment"
-	 * @param increment
+	 * Increments player's nobility position of an "increment"
+	 * If the increment is too big the new player's nobility will be the max nobility
+	 * @param increment of nobility
+	 * @param maxNobility the superior limit for the player's nobility
 	 */
-	public void incrementNobility(int increment) {
-		this.nobility+=increment;
+	public void incrementNobility(int increment, int maxNobility) {
+		if(this.nobility+increment<=maxNobility)
+			this.nobility+=increment;
+		else
+			this.nobility=maxNobility;
 	}
 
 	
