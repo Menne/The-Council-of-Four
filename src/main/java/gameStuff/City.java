@@ -5,7 +5,7 @@ import java.util.Set;
 import bonus.Bonus;
 
 /**
- * Models the a city of the game
+ * Models a city of the game
  * @author Luca
  *
  */
