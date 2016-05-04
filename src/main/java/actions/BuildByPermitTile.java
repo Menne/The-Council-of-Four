@@ -50,6 +50,9 @@ public class BuildByPermitTile extends MainAction {
 			for (Bonus bonusToAssign : city.getRewardToken())
 				bonusToAssign.assignBonus(this.game);
 		this.game.getCurrentPlayer().decrementAssistants(assistantsToPay());
+		
+		
+		
 		return true;
 	}
 	
