@@ -26,7 +26,7 @@ public class NobilityBonus implements Bonus{
 	 * @param currentPlayer is the player who is playing the turn
 	 */
 	public void assignBonus(Game game) {
-		game.getCurrentPlayer().incrementNobility(nobilityAdvancement);
+		game.getCurrentPlayer().incrementNobility(nobilityAdvancement, game.getGameTable().getNobilityTrack().getTrack().size());
 		int currentNobility=game.getCurrentPlayer().getNobility();
 		if(!game.getGameTable().getNobilityTrack().getTrack().get(currentNobility).isEmpty())
 			for(Bonus bonus : game.getGameTable().getNobilityTrack().getTrack().get(currentNobility))
