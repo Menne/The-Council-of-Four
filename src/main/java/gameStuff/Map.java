@@ -2,8 +2,9 @@ package gameStuff;
 
 import java.util.Set;
 
-import org.jgrapht.*;
-import org.jgrapht.graph.*;
+import org.jgrapht.UndirectedGraph;
+import org.jgrapht.graph.DefaultEdge;
+import org.jgrapht.graph.SimpleGraph;
 import org.jgrapht.alg.DijkstraShortestPath;
 
 /**

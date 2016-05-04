@@ -2,7 +2,7 @@ package gameStuff;
 
 import java.util.HashSet;
 import java.util.Set;
-import org.jgraph.graph.DefaultEdge;
+import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.UndirectedGraph;
 import org.jgrapht.alg.ConnectivityInspector;
 
