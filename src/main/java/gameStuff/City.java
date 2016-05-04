@@ -16,7 +16,7 @@ public class City {
 	private Boolean isKingPresent;
 	private final RegionBoard region;
 	private final CityColour colour;
-	private final Emporium[] citysEmporiums;
+	private final Set<Emporium> cityEmporiums;
 	private final Set<City> nearCities;
 	
 	/**
@@ -29,14 +29,14 @@ public class City {
 	 * @param colour of the city.
 	 * @param region of the city.
 	 * @param numberOfPlayers of the game. 
-	 * Usefull to choose the size of the emporiums array.
+	 * Useful to choose the size of the emporiums array.
 	 */
 	public City(String name, RegionBoard region, CityColour colour, int numberOfPlayers){
 		this.name=name;
 		this.isKingPresent=false;
 		this.region=region;
 		this.colour=colour;
-		this.citysEmporiums=new Emporium[numberOfPlayers];
+		this.cityEmporiums=new HashSet<Emporium>();
 		this.nearCities=new HashSet<City>();
 		this.rewardToken=new HashSet<Bonus>();
 		colour.addCityOfThisColour(this);
@@ -87,8 +87,8 @@ public class City {
 
 
 
-	public Emporium[] getCitysEmporiums() {
-		return citysEmporiums;
+	public Set<Emporium> getCitysEmporiums() {
+		return cityEmporiums;
 	}
 
 
@@ -103,6 +103,11 @@ public class City {
 	 */
 	public void addNearCity(City c){
 		this.nearCities.add(c);
+	}
+	
+
+	public void addEmporium(Emporium emporium) {
+		this.cityEmporiums.add(emporium);
 	}
 
 

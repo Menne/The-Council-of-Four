@@ -1,34 +1,25 @@
 package bonus;
 
-import gameStuff.PermitTile;
 import model.Game;
 
 /**
- * Obtain the bonuses of a previously purchased permit tile, even the covered ones
+ * This bonus allows the current player to choose from a permit tile he has already picked
+ * (covered or not) and then assigns him the bonus/bonuses associated to the permit tile
+ * This is a particular bonus which requires a choice by the current player.
+ * In order to do this the method assignBonus invokes a particular action which
+ * manages the assignment of the bonus
  * @author Emanuele
  *
  */
 
 public class PurchasedPermitTileBonus implements Bonus {
-	
-	
-	private PermitTile chosenPermitTile;
 
 	/**
-	 * Constructor of PurchasedPermitTileBonus
-	 * @param chosenPermitTile is the permit tile the player has chosen
-	 */
-	public PurchasedPermitTileBonus(PermitTile chosenPermitTile) {
-		this.chosenPermitTile=chosenPermitTile;
-	}
-
-	/**
-	 * For each bonus in the chosen permit tile
-	 * @param currentPlayer is the player who plays the turn
+	 * Invokes the action associated o this bonus
+	 * @param game is the current game
 	 */
 	public void assignBonus(Game game) {
-		for (Bonus bonusToAssign : chosenPermitTile.getBonus())
-			bonusToAssign.assignBonus(game);
+		//TODO
 	}
 
 }
