@@ -1,12 +1,13 @@
 package gameTable;
  
+import java.util.ArrayList;
 import java.util.List;
 import gameStuff.CouncilBalcony;
 import gameStuff.CouncillorsReserve;
-import gameStuff.KingRewardTile;
 import gameStuff.Map;
 import gameStuff.PoliticsDeck;
 import gameStuff.RegionBoard;
+import bonus.ScoreBonus;
  
 public class GameTable {
  
@@ -15,16 +16,16 @@ public class GameTable {
 	private final CouncilBalcony councilOfKing;
 	private final CouncillorsReserve councilReserve;
 	private final PoliticsDeck politicsDeck;
-	private final List<KingRewardTile> kingRewardTiles;
+	private final List<ScoreBonus> kingRewardTiles;
                
 	public GameTable(Map map, List<RegionBoard> regionBoards, CouncilBalcony councilOfKing,
-			CouncillorsReserve councilReserve, PoliticsDeck politicsDeck, List<KingRewardTile> kingRewardTiles){
+			CouncillorsReserve councilReserve, PoliticsDeck politicsDeck){
 		this.map=map;
 		this.regionBoards= regionBoards;
 		this.councilOfKing=councilOfKing;
 		this.councilReserve=councilReserve;
 		this.politicsDeck=politicsDeck;
-		this.kingRewardTiles=kingRewardTiles;
+		this.kingRewardTiles=new ArrayList<ScoreBonus>();
 	}
 
 	public Map getMap() {
@@ -47,8 +48,12 @@ public class GameTable {
 		return politicsDeck;
 	}
 
-	public List<KingRewardTile> getKingRewardTiles() {
+	public List<ScoreBonus> getKingRewardTiles() {
 		return kingRewardTiles;
+	}
+	
+	public void addKingRewardTile(ScoreBonus bonus){
+		this.kingRewardTiles.add(bonus);
 	}
                
 }

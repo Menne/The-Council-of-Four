@@ -2,6 +2,7 @@ package gameStuff;
 
 import java.util.HashSet;
 import java.util.Set;
+import bonus.Bonus;
 
 /**
  * Models the a city of the game
@@ -11,7 +12,7 @@ import java.util.Set;
 public class City {
 
 	private final String name;
-	private RewardToken rewardToken;
+	private final Set<Bonus> rewardToken;
 	private Boolean isKingPresent;
 	private final RegionBoard region;
 	private final CityColour colour;
@@ -37,20 +38,21 @@ public class City {
 		this.colour=colour;
 		this.citysEmporiums=new Emporium[numberOfPlayers];
 		this.nearCities=new HashSet<City>();
+		this.rewardToken=new HashSet<Bonus>();
 		colour.addCityOfThisColour(this);
 		region.addCityOfThisRegion(this);
 	}
 
 	
 	
-	public RewardToken getRewardToken() {
+	public Set<Bonus> getRewardToken() {
 		return rewardToken;
 	}
 
 
 
-	public void setRewardToken(RewardToken rewardToken) {
-		this.rewardToken = rewardToken;
+	public void addBonus(Bonus bonus) {
+		this.rewardToken.add(bonus);
 	}
 
 

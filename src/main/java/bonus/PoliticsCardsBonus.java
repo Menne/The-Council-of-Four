@@ -1,7 +1,6 @@
 package bonus;
 
 import model.Game;
-import players.Player;
 
 /**
  * This bonus lets you pick one or more politics cards
