@@ -1,5 +1,7 @@
 package players;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -24,20 +26,22 @@ public class Player {
 	private final List<PoliticsCard> hand;
 	private final Set<PermitTile> playersPermitTilesTurnedUp;
 	private final Set<PermitTile> playersPermitTilesTurnedDown;
-	private final Emporium[] remainigEmporiums;
+	private final List<Emporium> emporiums;
+	private static final int intialNumberOfEmporiums=10;
 	
-	public Player(int playerNumber, String name, int assistants, Score score, int nobility, int coins,
-			List<PoliticsCard> hand, Set<PermitTile> playersPermitTilesTurnedUp, Set<PermitTile> playersPermitTilesTurnedDown, Emporium[] remainigEmporiums) {
+	public Player(int playerNumber, String name, int assistants, int coins) {
 		this.playerNumber=playerNumber;
 		this.name=name;
 		this.assistants=assistants;
-		this.score=score;
-		this.nobility=nobility;
+		this.score=new Score(0);
+		this.nobility=0;
 		this.coins=coins;
-		this.hand=hand;
-		this.playersPermitTilesTurnedDown=playersPermitTilesTurnedDown;
-		this.playersPermitTilesTurnedUp=playersPermitTilesTurnedUp;
-		this.remainigEmporiums=remainigEmporiums;
+		this.hand=new ArrayList<PoliticsCard>();
+		this.playersPermitTilesTurnedDown=new HashSet<PermitTile>();
+		this.playersPermitTilesTurnedUp=new HashSet<PermitTile>();
+		this.emporiums=new ArrayList<Emporium>();
+		for(int i=0;i<intialNumberOfEmporiums;i++)
+			this.emporiums.add(new Emporium(this));
 	}
 
 	public int getPlayerNumber() {
@@ -70,8 +74,8 @@ public class Player {
 	}
 	
 
-	public Emporium[] getRemainigEmporiums() {
-		return remainigEmporiums;
+	public List<Emporium> getRemainigEmporiums() {
+		return emporiums;
 	}
 
 
@@ -157,20 +161,24 @@ public class Player {
 	}
 	
 	/**
-	 * turn a tile from up to down; it return TRUE if it is possible, FALSE if player hasn't the "tile"
+	 * turn a tile from up to down.
 	 * into his "playersPermitTilesTurnedUp
-	 * @param tile
-	 * @return
+	 * @param tile to cover
+	 * @return TRUE if tile is an uncovered permit tile of the player. FALSE otherwise.
 	 */
 	public boolean turnTileToDown(PermitTile tile){
+		if(!this.playersPermitTilesTurnedUp.contains(tile))
+			return false;
 		playersPermitTilesTurnedDown.add(tile);
 		return this.playersPermitTilesTurnedUp.remove(tile);
 	}
 	
-	
-	//TODO
-	public void removeEmporium(){
-		
+	/**
+	 * remove an emporium
+	 * @return the removed emporium
+	 */
+	public Emporium removeEmporium(){		
+		return this.emporiums.remove(0);
 	}
 
 	@Override
