@@ -22,17 +22,17 @@ public class PermitDeck {
 	}
 	
 	public PermitTile pickPermitTile() {
-		PermitTile pickedPermitTile=this.permitTiles.get(this.permitTiles.indexOf(this.permitTiles.size()));
-		this.permitTiles.remove(this.permitTiles.indexOf(this.permitTiles.size()));
-		return pickedPermitTile;
+		return this.permitTiles.remove(0);
 	}
 	
 	public void addOnBottom (PermitTile permitTilesToAdd) {
-		this.permitTiles.add(0,permitTilesToAdd);
+		int size=this.permitTiles.size();
+		this.permitTiles.add(size-1,permitTilesToAdd);
 	}
 
 	public List<PermitTile> getPermitTiles() {
 		return permitTiles;
 	}
+	
 	
 }

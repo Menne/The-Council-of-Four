@@ -3,7 +3,7 @@ package gameStuff;
 import java.util.HashSet;
 import java.util.Set;
 
-import bonus.Bonus;
+import bonus.ScoreBonus;
 
 /**
  * Models a region board
@@ -15,7 +15,7 @@ public class RegionBoard {
 	private final String name;
 	private final PermitDeck regionPermitDeck;
 	private final CouncilBalcony regionBalcony;
-	private final Bonus regionBonus;
+	private final ScoreBonus regionBonus;
 	private boolean bonusAvailable;
 	private final Set<City> regionCities;
 	private final PermitTile[] uncoveredPermitTiles;
@@ -30,7 +30,7 @@ public class RegionBoard {
 	 * @param regionBonus
 	 */
 	public RegionBoard(String name, PermitDeck regionPermitDeck, 
-			CouncilBalcony regionBalcony, Bonus regionBonus){		
+			CouncilBalcony regionBalcony, ScoreBonus regionBonus){		
 		this.name=name;		
 		this.regionPermitDeck=regionPermitDeck;
 		this.regionBalcony=regionBalcony;		
@@ -73,7 +73,7 @@ public class RegionBoard {
 
 
 
-	public Bonus getRegionBonus() {
+	public ScoreBonus getRegionBonus() {
 		return regionBonus;
 	}
 
