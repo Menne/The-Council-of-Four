@@ -18,13 +18,9 @@ public class ConnectedBuiltCityDiscover {
 	
 	private void addCities(UndirectedGraph<City,DefaultEdge> map, 
 			City cityToCheck, Emporium builedEmporium){
-		
+	
 		this.checkedCities.add(cityToCheck);
-		boolean check=false;
-		for(int i=0; i<cityToCheck.getCitysEmporiums().length; i++)
-			if(cityToCheck.getCitysEmporiums()[i].equals(builedEmporium))
-				check=true;
-		if(!check)
+		if(!cityToCheck.getCityEmporiums().contains(builedEmporium))
 			return;
 		else{
 			this.connectedBonusCities.add(cityToCheck);

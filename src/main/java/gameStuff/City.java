@@ -87,7 +87,7 @@ public class City {
 
 
 
-	public Set<Emporium> getCitysEmporiums() {
+	public Set<Emporium> getCityEmporiums() {
 		return cityEmporiums;
 	}
 
