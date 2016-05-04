@@ -44,7 +44,7 @@ public class ChooseCityBonusAction extends Action {
 	 * @return TRUE if there is player's emporium; FALSE otherwise
 	 */
 	private boolean CkeckCity() {
-		for (Emporium emporium : this.selectedCity.getCitysEmporiums())
+		for (Emporium emporium : this.selectedCity.getCityEmporiums())
 			if (emporium.getEmporiumsPlayer().equals(this.game.getCurrentPlayer()))
 				return true;
 		return false;
