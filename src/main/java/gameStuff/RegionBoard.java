@@ -170,4 +170,11 @@ public class RegionBoard {
 	}
 
 
+
+	@Override
+	public String toString() {
+		return "RegionBoard \n\t name=" + name + "\n\t regionCities=" + regionCities;
+	}
+
+
 }

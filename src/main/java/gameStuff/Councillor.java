@@ -41,5 +41,10 @@ public class Councillor {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Councillor [colour=" + colour + "]";
+	}
 	
 }

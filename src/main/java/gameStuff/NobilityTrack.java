@@ -38,6 +38,11 @@ public class NobilityTrack {
 	public void addBonus(int index, Bonus bonus){
 		this.track.get(index).add(bonus);
 	}
+
+	@Override
+	public String toString() {
+		return "NobilityTrack [track=" + track + "]";
+	}
 	
 	
 	

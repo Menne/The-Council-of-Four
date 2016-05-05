@@ -1,4 +1,7 @@
 package gameStuff;
+
+import java.util.Arrays;
+
 /**
  * Is the schema for the balconies of the game.
  * @author andreapasquali
@@ -43,5 +46,10 @@ public static int getNumberofcouncillors() {
 		return old;
 		
 	}
+
+@Override
+public String toString() {
+	return "CouncilBalcony [councillors=" + Arrays.toString(councillors) + "]";
+}
 
 }

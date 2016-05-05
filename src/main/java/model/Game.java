@@ -73,6 +73,6 @@ public class Game {
 
 	@Override
 	public String toString() {
-		return "Game [players=" + players + ", currentPlayer=" + currentPlayer + ", gameTable=" + gameTable + "]";
+		return "Game\n\n Players: \n" + players + "\n\n CurrentPlayer: \n" + currentPlayer + "\n\n GameTable:\n" + gameTable + "]";
 	}	
 }

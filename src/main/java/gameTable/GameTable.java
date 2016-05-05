@@ -69,9 +69,9 @@ public class GameTable {
 	
 	@Override
 	public String toString() {
-		return "GameTable [map=" + map + ", regionBoards=" + regionBoards + ", councilOfKing=" + councilOfKing
-				+ ", councilReserve=" + councilReserve + ", politicsDeck=" + politicsDeck + ", nobilityTrack="
-				+ nobilityTrack + ", kingRewardTiles=" + kingRewardTiles + "]";
+		return "map=" + map + "\nregionBoards=" + regionBoards + "\n councilOfKing=" + councilOfKing
+				+ "\n councilReserve=" + councilReserve + "\n politicsDeck=" + politicsDeck + "\n nobilityTrack="
+				+ nobilityTrack + "\n kingRewardTiles=" + kingRewardTiles;
 	}
                
 }
