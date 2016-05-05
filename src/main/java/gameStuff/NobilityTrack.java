@@ -8,7 +8,7 @@ import bonus.Bonus;
 
 /**
  * It's a List of sets of bonuses.
- * @author Media
+ * @author Luca
  *
  */
 public class NobilityTrack {

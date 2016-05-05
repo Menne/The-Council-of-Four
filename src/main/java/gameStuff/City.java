@@ -31,7 +31,7 @@ public class City {
 	 * @param numberOfPlayers of the game. 
 	 * Useful to choose the size of the emporiums array.
 	 */
-	public City(String name, RegionBoard region, CityColour colour, int numberOfPlayers){
+	public City(String name, RegionBoard region, CityColour colour){
 		this.name=name;
 		this.isKingPresent=false;
 		this.region=region;
