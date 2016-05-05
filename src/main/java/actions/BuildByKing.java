@@ -39,15 +39,15 @@ public class BuildByKing extends MainAction {
 	/**
 	 * First of all checks if the parameters the current player gave are corrected, 
 	 * then removes the cards from the hand of the player and decrements his coins, 
-	 * then remove the emporium from the hand of the player an adds it on the set of emporiums 
+	 * then removes the emporium from the hand of the player an adds it on the set of emporiums 
 	 * of the selected city, then assigns all the bonuses of liked cities, then decrements player's assistants
 	 * @return TRUE if the action goes well, false otherwise
 	 */
 	public boolean executeAction() {
 		ConnectedBuiltCityDiscover likedCities=new ConnectedBuiltCityDiscover();
 		
-		if (!(checkCityNotContainsEmporium() || checkEnoughAssistants() || 
-				CheckHandSatisfiesBalcony() || CheckEnoughCoins()))
+		if (!(checkCityNotContainsEmporium() && checkEnoughAssistants() && 
+				CheckHandSatisfiesBalcony() && CheckEnoughCoins()))
 			return false;
 		
 		this.game.getCurrentPlayer().decrementCoins(CoinsToPay());
@@ -126,13 +126,14 @@ public class BuildByKing extends MainAction {
 	 */
 	private int CoinsToPay() {
 		int coinsToPay;
-		if (this.cardsToDescard.size()==4)
+		this.game.getGameTable().getCouncilOfKing();
+		if (this.cardsToDescard.size()==CouncilBalcony.getNumberofcouncillors())
 			coinsToPay=0;
 		else
-			coinsToPay=((4-(this.cardsToDescard.size()))*3)+1;
+			coinsToPay=((CouncilBalcony.getNumberofcouncillors()-(this.cardsToDescard.size()))*3)+1;
 		for (PoliticsCard card : cardsToDescard)
 			if (card.getColour().getColour() == "rainbow")
-				coinsToPay+=1;
+				coinsToPay++;
 		return coinsToPay;
 	}
 	

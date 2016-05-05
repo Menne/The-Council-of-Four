@@ -49,7 +49,7 @@ public class AcquirePermitTile extends MainAction {
 	 */
 	public boolean executeAction() {
 		
-		if (!(this.CheckEnoughCoins() || this.CheckHandSatisfiesBalcony()))
+		if (!(this.CheckEnoughCoins() && this.CheckHandSatisfiesBalcony()))
 			return false;
 		
 		for (Bonus bonusToAssign : this.chosenRegion.getUncoveredPermitTiles()[numberOfPermitTile].getBonus())
@@ -69,13 +69,15 @@ public class AcquirePermitTile extends MainAction {
 	 */
 	private int CoinsToPay() {
 		int coinsToPay;
-		if (this.cardsToDescard.size()==4)
+		if (this.cardsToDescard.size()==CouncilBalcony.getNumberofcouncillors())
 			coinsToPay=0;
-		else
-			coinsToPay=((4-(this.cardsToDescard.size()))*3)+1;
+		else {
+			this.chosenRegion.getRegionBalcony();
+			coinsToPay=((CouncilBalcony.getNumberofcouncillors()-(this.cardsToDescard.size()))*3)+1;
+		}
 		for (PoliticsCard card : cardsToDescard)
 			if (card.getColour().getColour() == "rainbow")
-				coinsToPay+=1;
+				coinsToPay++;
 		return coinsToPay;
 	}
 	

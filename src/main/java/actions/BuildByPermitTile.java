@@ -32,7 +32,7 @@ public class BuildByPermitTile extends MainAction {
 	
 	/**
 	 * First of all checks if the parameters the current player gave are corrected,
-	 * then remove the emporium from the hand of the player an adds it on the set of emporiums 
+	 * then removes the emporium from the hand of the player an adds it on the set of emporiums 
 	 * of the selected city, then assigns all the bonuses of liked cities, then decrements player's assistants
 	 * @return TRUE if the action goes well, false otherwise
 	 */
@@ -40,7 +40,7 @@ public class BuildByPermitTile extends MainAction {
 		
 		ConnectedBuiltCityDiscover likedCities=new ConnectedBuiltCityDiscover();
 		
-		if (!(checkCityNotContainsEmporium() || checkPermitTileContainsCity() || checkEnoughAssistants()))
+		if (!(checkCityNotContainsEmporium() && checkPermitTileContainsCity() && checkEnoughAssistants()))
 			return false;
 		
 		Emporium temporaryEmporium=this.game.getCurrentPlayer().removeEmporium();
