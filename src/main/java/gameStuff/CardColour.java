@@ -46,5 +46,10 @@ public class CardColour {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "CardColour [colour=" + colour + "]";
+	}
 	
 }

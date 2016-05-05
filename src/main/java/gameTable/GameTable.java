@@ -70,7 +70,7 @@ public class GameTable {
 	@Override
 	public String toString() {
 		return "map=" + map + "\nregionBoards=" + regionBoards + "\n councilOfKing=" + councilOfKing
-				+ "\n councilReserve=" + councilReserve + "\n politicsDeck=" + politicsDeck + "\n nobilityTrack="
+				+ "\n councilReserve=" + councilReserve +  "\n nobilityTrack="
 				+ nobilityTrack + "\n kingRewardTiles=" + kingRewardTiles;
 	}
                

@@ -26,4 +26,9 @@ public class ScoreBonus implements Bonus{
 	public void assignBonus(Game game){
 		game.getCurrentPlayer().incrementScore(scoreAdvancement, game.getCurrentPlayer().getScore());
 	}
+	
+	@Override
+	public String toString() {
+		return "Score+" + scoreAdvancement;
+	}
 }

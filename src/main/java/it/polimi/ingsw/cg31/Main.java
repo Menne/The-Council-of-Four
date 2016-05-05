@@ -200,6 +200,13 @@ public class Main {
 				new GameTable(map, regionList, kingBalcony, 
 						councillorsReserve, politicsDeck, nobilityTrack);
 		
+		//aggiungo king reward tiles
+		gameTable.addKingRewardTile(new ScoreBonus(25));
+		gameTable.addKingRewardTile(new ScoreBonus(18));
+		gameTable.addKingRewardTile(new ScoreBonus(12));
+		gameTable.addKingRewardTile(new ScoreBonus(7));
+		gameTable.addKingRewardTile(new ScoreBonus(3));
+		
 		//creo game
 		Game game=new Game(players, gameTable);
 		

@@ -28,4 +28,9 @@ public class CoinsBonus implements Bonus{
 		game.getCurrentPlayer().incrementCoins(coinsIncreasement);
 	}
 
+	@Override
+	public String toString() {
+		return "Coins+" + coinsIncreasement;
+	}
+
 }

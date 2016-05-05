@@ -18,4 +18,9 @@ public class MainActionBonus implements Bonus {
 		game.incrementMainActionAvailable();
 	}
 
+	@Override
+	public String toString() {
+		return "MainAction+1";
+	}
+
 }

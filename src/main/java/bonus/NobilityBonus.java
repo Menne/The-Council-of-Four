@@ -33,4 +33,9 @@ public class NobilityBonus implements Bonus{
 				bonus.assignBonus(game);			
 	}
 
+	@Override
+	public String toString() {
+		return "Nobility+" + nobilityAdvancement;
+	}
+
 }

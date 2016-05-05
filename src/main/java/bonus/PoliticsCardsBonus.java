@@ -11,7 +11,6 @@ import model.Game;
 public class PoliticsCardsBonus implements Bonus{
 
 	private final int numberOfCards;
-	private Game game;
 	
 	/**
 	 * constructor of PoliticsCardsBonus
@@ -27,7 +26,12 @@ public class PoliticsCardsBonus implements Bonus{
 	 */
 	public void assignBonus(Game game) {
 		for (int i=0; i<this.numberOfCards; i++)
-			game.getCurrentPlayer().getHand().add(this.game.getGameTable().getPoliticsDeck().pickCard());
+			game.getCurrentPlayer().getHand().add(game.getGameTable().getPoliticsDeck().pickCard());
+	}
+
+	@Override
+	public String toString() {
+		return "PoliticsCards+" + numberOfCards;
 	}
 
 }

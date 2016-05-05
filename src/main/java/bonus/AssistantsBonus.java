@@ -28,4 +28,9 @@ public class AssistantsBonus implements Bonus{
 		game.getCurrentPlayer().incrementAssistants(assistantsIcreasement);
 	}
 
+	@Override
+	public String toString() {
+		return "assistants+" + assistantsIcreasement;
+	}
+
 }
