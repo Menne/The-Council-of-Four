@@ -11,7 +11,7 @@ import gameStuff.RegionBoard;
 import bonus.ScoreBonus;
  
 public class GameTable {
- 
+
 	private final Map map;
 	private final List<RegionBoard> regionBoards;
 	private final CouncilBalcony councilOfKing;
@@ -65,6 +65,13 @@ public class GameTable {
 	 */
 	public void addKingRewardTile(ScoreBonus bonus){
 		this.kingRewardTiles.add(bonus);
+	}
+	
+	@Override
+	public String toString() {
+		return "GameTable [map=" + map + ", regionBoards=" + regionBoards + ", councilOfKing=" + councilOfKing
+				+ ", councilReserve=" + councilReserve + ", politicsDeck=" + politicsDeck + ", nobilityTrack="
+				+ nobilityTrack + ", kingRewardTiles=" + kingRewardTiles + "]";
 	}
                
 }

@@ -38,7 +38,7 @@ public class RegionBoard {
 		this.bonusAvailable=true;
 		this.regionCities=new HashSet<City>();
 		this.uncoveredPermitTiles=new PermitTile[numberOfUncoveredPermitTiles];
-		uncoverPermitTiles();		
+//		uncoverPermitTiles();		
 	}
 	
 	
@@ -117,8 +117,15 @@ public class RegionBoard {
 	public void uncoverPermitTiles(){
 		for(int i=0; i<numberOfUncoveredPermitTiles; i++)
 			if(this.uncoveredPermitTiles[i]==null)
-				this.uncoveredPermitTiles[i]=
-						this.regionPermitDeck.pickPermitTile();
+//				try{
+					this.uncoveredPermitTiles[i]=
+							this.regionPermitDeck.pickPermitTile();
+//					}
+//				catch(IndexOutOfBoundsException e){
+//					System.out.println("Permit deck empty, game cannot go on");
+//					System.exit(-1);
+//				}
+						
 	}
 	
 	

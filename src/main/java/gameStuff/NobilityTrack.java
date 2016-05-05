@@ -31,12 +31,12 @@ public class NobilityTrack {
 	}
 	
 	/**
-	 * Adds a given set of bonuses at the specified index
+	 * Adds a given bonus at the specified index
 	 * @param index where to put the set of bonuses
-	 * @param bonuses to add
+	 * @param bonus to add
 	 */
-	public void setBonus(int index, Set<Bonus> bonuses){
-		this.track.add(index, bonuses);
+	public void addBonus(int index, Bonus bonus){
+		this.track.get(index).add(bonus);
 	}
 	
 	

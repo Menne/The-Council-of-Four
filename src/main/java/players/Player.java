@@ -8,10 +8,11 @@ import java.util.Set;
 import gameStuff.Emporium;
 import gameStuff.PermitTile;
 import gameStuff.PoliticsCard;
+import gameStuff.PoliticsDeck;
 
 /** Player class contains all of the informations about a player
 	 * 
-	 * @author Emanuele
+	 * @author Emanuele, Luca
 	 *
 	 */
 
@@ -28,8 +29,18 @@ public class Player {
 	private final Set<PermitTile> playersPermitTilesTurnedDown;
 	private final List<Emporium> emporiums;
 	private static final int intialNumberOfEmporiums=10;
+	private static final int initialNumberOfCards=6;
 	
-	public Player(int playerNumber, String name, int assistants, int coins) {
+	/**
+	 * Sets nobility and score at 0. 
+	 * Adds to the hand of the player the initial politics cards
+	 * @param playerNumber the sequential number of the player in the game
+	 * @param name of the player
+	 * @param assistants number of initial assistants
+	 * @param coins number of initial coins
+	 */
+	public Player(int playerNumber, String name, int assistants, int coins,
+			PoliticsDeck politicsDeck) {
 		this.playerNumber=playerNumber;
 		this.name=name;
 		this.assistants=assistants;
@@ -37,6 +48,8 @@ public class Player {
 		this.nobility=0;
 		this.coins=coins;
 		this.hand=new ArrayList<PoliticsCard>();
+		for(int i=0;i<initialNumberOfCards;i++)
+			this.addCardToHand(politicsDeck.pickCard());
 		this.playersPermitTilesTurnedDown=new HashSet<PermitTile>();
 		this.playersPermitTilesTurnedUp=new HashSet<PermitTile>();
 		this.emporiums=new ArrayList<Emporium>();

@@ -10,6 +10,8 @@ public abstract class View extends Observable implements Observer {
 		controller.registerObserver(this);
 	}
 	
+	public abstract <I> void input(I input);
+	
 	@Override
 	public abstract <C> void update(Observable o, C change);
 

@@ -14,13 +14,14 @@ public class Controller extends Observable implements Observer{
 
 	private final Game game;
 	
-	public Game getGame() {
-		return game;
-	}
-
 	public Controller(View view, Game game){
 		this.game=game;
 		view.registerObserver(this);
+		this.notifyObservers(this.game);
+	}
+		
+	public Game getGame() {
+		return game;
 	}
 
 	@Override

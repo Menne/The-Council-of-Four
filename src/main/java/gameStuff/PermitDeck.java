@@ -21,8 +21,10 @@ public class PermitDeck {
 		this.permitTiles=new ArrayList<PermitTile>();
 	}
 	
-	public PermitTile pickPermitTile() {
-		return this.permitTiles.remove(0);
+	public PermitTile pickPermitTile() throws IndexOutOfBoundsException{
+		if(!this.permitTiles.isEmpty())
+			return this.permitTiles.remove(0);
+		throw new IndexOutOfBoundsException("The deck is empty");
 	}
 	
 	public void addOnBottom (PermitTile permitTilesToAdd) {
