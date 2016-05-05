@@ -31,7 +31,7 @@ public class BuildByPermitTile extends MainAction {
 	}
 	
 	/**
-	 * First of all checks if the parameters the current player gave you are corrected,
+	 * First of all checks if the parameters the current player gave are corrected,
 	 * then remove the emporium from the hand of the player an adds it on the set of emporiums 
 	 * of the selected city, then assigns all the bonuses of liked cities, then decrements player's assistants
 	 * @return TRUE if the action goes well, false otherwise
@@ -50,8 +50,10 @@ public class BuildByPermitTile extends MainAction {
 				bonusToAssign.assignBonus(this.game);
 		this.game.getCurrentPlayer().decrementAssistants(assistantsToPay());
 		
-		checkRegionBoardCompletelyBuilt();
-		checkCityColourCompletelyBuilt();
+		if (this.selectedCity.getRegion().isBonusAvailable())
+			assignRegionBonus();
+		if (this.selectedCity.getColour().isBonusAvailable())
+			assignColourBonus();
 		
 		return true;
 	}
@@ -96,34 +98,44 @@ public class BuildByPermitTile extends MainAction {
 	 * in case of that, the player picks the region board bonus, and if they are available, 
 	 * he also picks one king reward tile
 	 */
-	private void checkRegionBoardCompletelyBuilt() {
+	private void assignRegionBonus() {
+		int regionCitiesCounter=0;
 		for (City city : this.selectedCity.getRegion().getRegionCities())
 			for (Emporium emporium : city.getCityEmporiums())
 				if (emporium.getEmporiumsPlayer().equals(this.game.getCurrentPlayer()))
-					if (city.getRegion().isBonusAvailable()) {
-						city.getRegion().getRegionBonus().assignBonus(this.game);
-						city.getRegion().notBonusAvailable();
-						if (!(this.game.getGameTable().getKingRewardTiles().isEmpty()))
-							this.game.getGameTable().getKingRewardTiles().remove(0).assignBonus(this.game);
-					}
+					regionCitiesCounter++;
+		if (regionCitiesCounter==this.selectedCity.getRegion().getRegionCities().size()) {
+			this.selectedCity.getRegion().getRegionBonus().assignBonus(this.game);
+			this.selectedCity.getRegion().notBonusAvailable();
+		}
+		if (!(this.game.getGameTable().getKingRewardTiles().isEmpty()))
+			assignKingRewardTile();
 	}
-	
+
 	/**
 	 * Checks if, after an emporium build, the current player has completed the cities of that colour.
 	 * in case of that, the player picks the region board bonus, and if they are available, 
 	 * he also picks one king reward tile
 	 */
-	private void checkCityColourCompletelyBuilt() {
+	private void assignColourBonus() {
+		int colourCitiesCounter=0;
 		for (City city : this.selectedCity.getColour().getCitiesOfThisColour())
 			for (Emporium emporium : city.getCityEmporiums())
 				if (emporium.getEmporiumsPlayer().equals(this.game.getCurrentPlayer()))
-					if (city.getColour().isBonusAvailable()) {
-						city.getColour().getColorBonus().assignBonus(this.game);
-						city.getColour().notBonusAvailable();
-						if (!(this.game.getGameTable().getKingRewardTiles().isEmpty()))
-							this.game.getGameTable().getKingRewardTiles().remove(0).assignBonus(this.game);
-					}
+					colourCitiesCounter++;
+		if (colourCitiesCounter==this.selectedCity.getColour().getCitiesOfThisColour().size()) {
+			this.selectedCity.getColour().getColorBonus().assignBonus(this.game);
+			this.selectedCity.getColour().notBonusAvailable();
+		}
+		if (!(this.game.getGameTable().getKingRewardTiles().isEmpty()))
+			assignKingRewardTile();
+	}
 	
+	/**
+	 * Remove the king reward tile from the game table and assigns it to the player
+	 */
+	private void assignKingRewardTile() {
+		this.game.getGameTable().getKingRewardTiles().remove(0).assignBonus(this.game);
 	}
 
 }
