@@ -1,5 +1,6 @@
 package actions;
 
+import controller.NormalTurn;
 import model.Game;
 
 /**
@@ -31,7 +32,8 @@ public class AdditionalMainAction extends QuickAction {
 	public boolean executeAction() {
 		if(!this.checkAssistants())
 			return false;
-		this.game.incrementMainActionAvailable();
+		NormalTurn currentTurn=(NormalTurn) this.game.getCurrentTurn();
+		currentTurn.decrementMainActionAvailable();
 		this.game.getCurrentPlayer().decrementAssistants(necessaryAssistants);
 		return true;
 	}

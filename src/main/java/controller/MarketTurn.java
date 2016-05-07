@@ -1,7 +1,25 @@
 package controller;
 
-public interface MarketTurn extends Turn {
+import model.Game;
+import observerPattern.Observable;
+import view.View;
 
-	void executeTurn();
+public class MarketTurn extends Turn{
+	
+	public MarketTurn(View view, Game game){
+		super(view,game);
+	}
+
+	@Override
+	public void executeTurn() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public <C> void update(Observable o, C change) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

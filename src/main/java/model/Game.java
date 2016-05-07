@@ -2,6 +2,8 @@
 package model;
  
 import java.util.List;
+
+import controller.Turn;
 import gameTable.GameTable;
 import players.Player;
  
@@ -11,40 +13,31 @@ public class Game {
 	private Player currentPlayer;
 	private final GameTable gameTable;
 	private GameState gameState;
-	private int mainActionAvailable;
-	private int quickActionAvailable;
+	private Turn currentTurn;
                
 	public Game(List<Player> players, GameTable gameTable){
 		this.players=players;
 		this.gameTable=gameTable;
 		this.currentPlayer=this.players.get(0);
 		this.gameState=GameState.RUNNING;
-		this.mainActionAvailable=1;
-		this.quickActionAvailable=1;
 	}
 	
-	public int getMainActionAvailable() {
-		return mainActionAvailable;
+	
+
+	public Turn getCurrentTurn() {
+		return currentTurn;
 	}
 
-	public int getQuickActionAvailable() {
-		return quickActionAvailable;
-	}
-	
-	public void incrementMainActionAvailable(){
-		this.mainActionAvailable++;
-	}
-	
-	public void decrementMainActionAvailable(){
-		this.mainActionAvailable--;
-	}
-	
-	public void decrementQuickActionAvailable(){
-		this.quickActionAvailable--;
+
+
+	public void setCurrentTurn(Turn currentTurn) {
+		this.currentTurn = currentTurn;
 	}
 
-	public void setCurrentPlayer(){
-		this. currentPlayer=this.players.get(this.players.indexOf(currentPlayer)+1);
+
+
+	public void nextPlayer(){
+		this.currentPlayer=this.players.get(this.players.indexOf(currentPlayer)+1);
 	}
 
 	public List<Player> getPlayers() {
@@ -59,9 +52,6 @@ public class Game {
 		return currentPlayer;
 	}
 
-	public void setCurrentPlayer(Player currentPlayer) {
-		this.currentPlayer = currentPlayer;
-	}
 
 	public GameState getGameState() {
 		return gameState;

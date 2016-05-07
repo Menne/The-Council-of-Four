@@ -15,7 +15,7 @@ public class MainActionBonus implements Bonus {
 	 * @param game is the current game
 	 */
 	public void assignBonus(Game game) {
-		game.incrementMainActionAvailable();
+//		game.incrementMainActionAvailable();
 	}
 
 	@Override
