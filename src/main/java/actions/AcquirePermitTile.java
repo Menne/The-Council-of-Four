@@ -31,12 +31,8 @@ public class AcquirePermitTile extends MainAction {
 	 * @param balconyToSatisfy is the council balcony to satisfy
 	 *
 	 */
-	public AcquirePermitTile(Game game, RegionBoard chosenRegion, int numberOfPermitTile, 
-			List<PoliticsCard> cardsToDescard) {
+	public AcquirePermitTile(Game game) {
 		super(game);
-		this.chosenRegion=chosenRegion;
-		this.numberOfPermitTile=numberOfPermitTile;
-		this.cardsToDescard=cardsToDescard;
 	}
 	
 	/**
