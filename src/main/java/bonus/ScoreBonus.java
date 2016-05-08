@@ -1,15 +1,20 @@
 package bonus;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+
 import model.Game;
 
 /**
  * ScoreBonus implements assignBonus method
  * @author Andrea
- *TODO: IMPORTARE CLASSE SCORE
  */
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class ScoreBonus implements Bonus{
 	
+	@XmlElement(name="ScoreBonus")
 	private final int scoreAdvancement;
 	
 	/**

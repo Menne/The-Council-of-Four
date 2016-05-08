@@ -3,6 +3,10 @@ package gameStuff;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+
 import bonus.Bonus;
 
 /**
@@ -11,8 +15,10 @@ import bonus.Bonus;
  *
  */
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class CityColour {
-
+	
+	@XmlElement(name="CityColour")
 	private final String name;
 	private final Bonus colorBonus;
 	private boolean bonusAvailable;
