@@ -51,10 +51,5 @@ public class ChangePermitTiles extends QuickAction implements NeedParameters{
 	}
 
 
-	@Override
-	public AskParameterPack createAskParameterPack() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 				
 }

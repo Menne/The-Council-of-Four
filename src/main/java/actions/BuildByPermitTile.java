@@ -156,10 +156,4 @@ public class BuildByPermitTile extends MainAction implements NeedParameters{
 	}
 
 
-	@Override
-	public AskParameterPack createAskParameterPack() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

@@ -59,10 +59,5 @@ public class ElectCouncillorByAssistant extends QuickAction implements NeedParam
 		return true;
 	}
 
-	@Override
-	public AskParameterPack createAskParameterPack() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

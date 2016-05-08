@@ -92,11 +92,12 @@ public class NormalTurn extends Turn{
 				throw new IllegalArgumentException("Wrong give action pack!");				
 			}	
 		}		
-/*		if(change instanceof GiveParameterPack){
-			GiveParameterPack gpp= (GiveParameterPack) change;			ActionExecutor actionExecutor=
-					new ActionExecutor(game, this.currentAction, gpp.getSelectedParameters());
-			actionExecutor.callAction();			
-		}	*/ 	
+		if(change instanceof GiveParameterPack){
+			GiveParameterPack gpp= (GiveParameterPack) change;
+			ParametersSetter parametersSetter=
+					new ParametersSetter(game, this.currentAction, gpp.getSelectedParameters());
+			parametersSetter			
+		}		
 
 	}
 

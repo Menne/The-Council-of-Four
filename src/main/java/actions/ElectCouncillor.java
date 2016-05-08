@@ -55,10 +55,5 @@ public class ElectCouncillor extends MainAction implements NeedParameters{
 		return true;
 	}
 
-	@Override
-	public AskParameterPack createAskParameterPack() {
-		// TODO Auto-generated method stub
-		return null;
-}
 
 }

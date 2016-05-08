@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import actions.AcquirePermitTile;
-import actions.Action;
 import actions.BuildByKing;
 import actions.BuildByPermitTile;
 import actions.ChangePermitTiles;
 import actions.ElectCouncillor;
 import actions.ElectCouncillorByAssistant;
+import actions.NeedParameters;
 import gameStuff.City;
 import gameStuff.CouncilBalcony;
 import gameStuff.Councillor;
@@ -21,10 +21,10 @@ import model.Game;
 public class ParametersSetter {
 
 	private final Game game;
-	private final Action action;
+	private final NeedParameters action;
 	private final List<String> parameters;
 	
-	public ParametersSetter(Game game, Action action, List<String> parameters){
+	public ParametersSetter(Game game, NeedParameters action, List<String> parameters){
 		this.action=action;
 		this.parameters=parameters;
 		this.game=game;
@@ -35,7 +35,7 @@ public class ParametersSetter {
 	 * crea e ritorna l'azione corrispondente
 	 * @return
 	 */
-	private void parametersSetter(){
+	public void setParameters(){
 		if (this.action instanceof ElectCouncillor) {
 			ElectCouncillor selectedAction=(ElectCouncillor) this.action;
 			selectedAction.setNewCouncillor(councillorTranslator
@@ -45,12 +45,7 @@ public class ParametersSetter {
 		}
 		if (this.action instanceof AcquirePermitTile) {
 			AcquirePermitTile selectedAction=(AcquirePermitTile) this.action;
-			selectedAction.setChosenRegion(regionTranslator
-					(this.parameters.remove(0)));
-			selectedAction.setNumberOfPermitTile(numberOfPermitTileTranslator
-					(this.parameters.remove(0))); 
-			selectedAction.setCardsToDescard(politicsCardsTranslator
-					(this.parameters));
+			
 		}
 		if (this.action instanceof BuildByPermitTile) {
 			BuildByPermitTile selectedAction=(BuildByPermitTile) this.action;
