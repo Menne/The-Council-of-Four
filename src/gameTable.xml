@@ -8,9 +8,13 @@
 		<regionCities>
 			<City>
 				<name>Arkon</name>
-				<region>Sea</region>
 				<isKingPresent>false</isKingPresent>
-				<CityColour>blue</CityColour>
+				<CityColour>
+					<name>blue</name>
+					<colorBonus>
+						<scoreAdvancement>5</scoreAdvancement>
+					</colorBonus>
+				</CityColour>
 				<nearCities>
 					<City>Castrum</City>
 					<City>Burgen</City>
@@ -18,7 +22,6 @@
 			</City>
 			<City>
 				<name>Burgen</name>
-				<region>Sea</region>
 				<isKingPresent>false</isKingPresent>
 				<CityColour>yellow</CityColour>
 				<nearCities>
@@ -29,7 +32,6 @@
 			</City>
 			<City>
 				<name>Castrum</name>
-				<region>Sea</region>
 				<isKingPresent>false</isKingPresent>
 				<CityColour>grey</CityColour>
 				<nearCities>
@@ -39,7 +41,6 @@
 			</City>
 			<City>
 				<name>Dorful</name>
-				<region>Sea</region>
 				<isKingPresent>false</isKingPresent>
 				<CityColour>gray</CityColour>
 				<nearCities>
@@ -49,7 +50,6 @@
 			</City>
 			<City>
 				<name>Esti</name>
-				<region>Sea</region>
 				<isKingPresent>false</isKingPresent>
 				<CityColour>orange</CityColour>
 				<nearCities>
@@ -207,13 +207,101 @@
 			-----------------------------------------
 		</nobilityCells>
 	</NobilityTrack>
+	<CouncillorsReserve>
+		<councillors>
+			<Councillor>
+				<CardColour>orange</CardColour>
+			</Councillor>
+			<Councillor>
+				<CardColour>orange</CardColour>
+			</Councillor>
+			<Councillor>
+				<CardColour>orange</CardColour>
+			</Councillor>
+			<Councillor>
+				<CardColour>orange</CardColour>
+			</Councillor>
+			<Councillor>
+				<CardColour>white</CardColour>
+			</Councillor>
+			<Councillor>
+				<CardColour>white</CardColour>
+			</Councillor>
+			<Councillor>
+				<CardColour>white</CardColour>
+			</Councillor>
+			<Councillor>
+				<CardColour>white</CardColour>
+			</Councillor>
+			<Councillor>
+				<CardColour>pink</CardColour>
+			</Councillor>
+			<Councillor>
+				<CardColour>pink</CardColour>
+			</Councillor>
+			<Councillor>
+				<CardColour>pink</CardColour>
+			</Councillor>
+			<Councillor>
+				<CardColour>pink</CardColour>
+			</Councillor>
+			<Councillor>
+				<CardColour>blue</CardColour>
+			</Councillor>
+			<Councillor>
+				<CardColour>blue</CardColour>
+			</Councillor>
+			<Councillor>
+				<CardColour>blue</CardColour>
+			</Councillor>
+			<Councillor>
+				<CardColour>blue</CardColour>
+			</Councillor>
+			<Councillor>
+				<CardColour>violet</CardColour>
+			</Councillor>
+			<Councillor>
+				<CardColour>violet</CardColour>
+			</Councillor>
+			<Councillor>
+				<CardColour>violet</CardColour>
+			</Councillor>
+			<Councillor>
+				<CardColour>violet</CardColour>
+			</Councillor>
+			<Councillor>
+				<CardColour>black</CardColour>
+			</Councillor>
+			<Councillor>
+				<CardColour>black</CardColour>
+			</Councillor>
+			<Councillor>
+				<CardColour>black</CardColour>
+			</Councillor>
+			<Councillor>
+				<CardColour>black</CardColour>
+			</Councillor>
+		</councillors>
+	</CouncillorsReserve>
+	
 	<kingRewardTiles>
-		<ScoreBonus>25</ScoreBonus>
-		<ScoreBonus>18</ScoreBonus>
-		<ScoreBonus>12</ScoreBonus>
-		<ScoreBonus>7</ScoreBonus>
-		<ScoreBonus>3</ScoreBonus>
+		<ScoreBonus>
+			<scoreAdvancement>25</scoreAdvancement>
+		</ScoreBonus>
+		<ScoreBonus>
+			<scoreAdvancement>18</scoreAdvancement>
+		</ScoreBonus>
+		<ScoreBonus>
+			<scoreAdvancement>12</scoreAdvancement>
+		</ScoreBonus>
+		<ScoreBonus>
+			<scoreAdvancement>7</scoreAdvancement>
+		</ScoreBonus>
+		<ScoreBonus>
+			<scoreAdvancement>3</scoreAdvancement>
+		</ScoreBonus>
 	</kingRewardTiles>
+	
 	<PoliticsDeck>
 		<cardColours>
 			<CardColour>white</CardColour>
@@ -225,4 +313,33 @@
 			<CardColour>rainbow</CardColour>
 		</cardColours>
 	</PoliticsDeck>
+	
+	<PermitDeck>
+		<permitTiles>
+			<PermitTile>
+				<buildableCities>
+					<buildableCity>ananha</buildableCity>
+					<buildableCity></buildableCity>
+				</buildableCities>
+				<bonusSet>
+					<Bonus>
+						<PoliticsCardBonus>1</PoliticsCardBonus>
+					</Bonus>
+					<Bonus></Bonus>
+				</bonusSet>
+			</PermitTile>
+			<PermitTile>
+				<buildableCities>
+					<buildableCity>ananha</buildableCity>
+					<buildableCity></buildableCity>
+				</buildableCities>
+				<bonusSet>
+					<Bonus>
+						<PoliticsCardBonus>1</PoliticsCardBonus>
+					</Bonus>
+					<Bonus></Bonus>
+				</bonusSet>
+			</PermitTile>
+		</permitTiles>
+	</PermitDeck>
 </GameTable>

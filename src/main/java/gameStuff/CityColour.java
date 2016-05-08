@@ -8,6 +8,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 
 import bonus.Bonus;
+import bonus.ScoreBonus;
 
 /**
  * Models a possible color of a city.  
@@ -18,9 +19,10 @@ import bonus.Bonus;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class CityColour {
 	
-	@XmlElement(name="CityColour")
+	@XmlElement(name="name")
 	private final String name;
-	private final Bonus colorBonus;
+	@XmlElement(name="colorBonus")
+	private final ScoreBonus colorBonus;
 	private boolean bonusAvailable;
 	private final Set<City> citiesOfThisColour;
 	
@@ -29,7 +31,7 @@ public class CityColour {
 	 * The city's constructor will add the cities to the set.
 	 * @param name of the color.
 	 */
-	public CityColour(String name, Bonus colorBonus){
+	public CityColour(String name, ScoreBonus colorBonus){
 		this.name=name;
 		this.colorBonus=colorBonus;
 		this.bonusAvailable=true;

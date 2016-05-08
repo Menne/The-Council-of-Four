@@ -9,6 +9,7 @@ public class King {
 
 	private City kingCity;
 	
+	//cambiare costruttore: cercare nelle città quale ha il re e settarla come attributo del king
 	public King(City kingCity){
 		this.kingCity=kingCity;
 		kingCity.setIsKingPresent(true);

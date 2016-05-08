@@ -2,6 +2,9 @@ package gameStuff;
 
 import java.util.Set;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+
 import bonus.Bonus;
 
 /**
@@ -10,6 +13,7 @@ import bonus.Bonus;
 	 *
 	 */
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class PermitTile {
 	
 	private final Set<City> buildableCities;

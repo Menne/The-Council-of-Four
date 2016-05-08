@@ -23,7 +23,7 @@ public class RegionBoard {
 	@XmlElement(name="regionName")
 	private final String name;
 	
-	
+	@XmlElement(name="PermitDeck")
 	private final PermitDeck regionPermitDeck;
 	private final CouncilBalcony regionBalcony;
 	
@@ -53,7 +53,7 @@ public class RegionBoard {
 		this.regionBalcony=regionBalcony;		
 		this.regionBonus=regionBonus;
 		this.bonusAvailable=true;
-		this.regionCities=new HashSet<City>();
+		this.regionCities=new HashSet<City>();//prendo direttamente in input da file CAMBIARE
 		this.uncoveredPermitTiles=new PermitTile[numberOfUncoveredPermitTiles];
 //		uncoverPermitTiles();		
 	}

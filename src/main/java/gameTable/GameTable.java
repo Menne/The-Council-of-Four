@@ -28,6 +28,8 @@ public class GameTable {
 	@XmlElement(name="regionBoard")
 	private final List<RegionBoard> regionBoards;
 	private final CouncilBalcony councilOfKing;
+	
+	@XmlElement(name="CouncillorsReserve")
 	private final CouncillorsReserve councilReserve;
 	
 	@XmlElement(name="PoliticsDeck")

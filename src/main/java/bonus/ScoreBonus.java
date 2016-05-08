@@ -14,7 +14,7 @@ import model.Game;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ScoreBonus implements Bonus{
 	
-	@XmlElement(name="ScoreBonus")
+	@XmlElement(name="scoreAdvancement")
 	private final int scoreAdvancement;
 	
 	/**

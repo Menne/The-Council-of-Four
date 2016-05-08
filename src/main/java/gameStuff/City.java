@@ -46,7 +46,7 @@ public class City {
 	public City(String name, RegionBoard region, CityColour colour){
 		this.name=name;
 		this.isKingPresent=false;
-		this.region=region;
+		this.region=region; //COSTRUTTORE DA CAMBIARE: non passo da file ma deve ricercere autonomamente la regione di appartenenza
 		this.colour=colour;
 		this.cityEmporiums=new HashSet<Emporium>();
 		this.nearCities=new HashSet<City>();

@@ -3,14 +3,22 @@ package gameStuff;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+
 /**	
 * deck of permit tiles
 * @author Emanuele
 *
 */
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class PermitDeck {
-
+	
+	@XmlElementWrapper(name="permitTiles")
+	@XmlElement(name="PermitTile")
 	private final List<PermitTile> permitTiles;
 
 	/**
