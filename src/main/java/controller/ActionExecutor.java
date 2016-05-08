@@ -2,13 +2,7 @@ package controller;
 
 import java.util.List;
 
-import actions.AcquirePermitTile;
 import actions.Action;
-import actions.BuildByPermitTile;
-import gameStuff.City;
-import gameStuff.PermitTile;
-import gameStuff.PoliticsCard;
-import gameStuff.RegionBoard;
 import model.Game;
 
 public class ActionExecutor {
@@ -24,14 +18,15 @@ public class ActionExecutor {
 	}
 	
 	public void callAction(){
-		Action action=this.actionTranslator();
-		action.executeAction();
+//		Action action=this.actionTransaltor();
+//		action.executeAction();
 	}
 	
 	/**
 	 * TODO riceve azione e parametro sottoforma di stringa,
 	 *  crea e ritorna l'azione corrispondente
 	 * @return
+<<<<<<< HEAD
 	 */
 	private Action actionTranslator(){
 		if(action.equals("acquire permit tile")) {
@@ -118,6 +113,12 @@ public class ActionExecutor {
 	private RegionBoard regionTranslator(String regionToTranslate) {
 		RegionBoard regionTranslated=null;
 		return regionTranslated;
+=======
+	 
+	private Action actionTransaltor(){
+		if(action.equals("M1"))
+>>>>>>> branch 'master' of https://Menne@bitbucket.org/Scanna/the-council-of-four.git
 	}
 	
+	**/
 }

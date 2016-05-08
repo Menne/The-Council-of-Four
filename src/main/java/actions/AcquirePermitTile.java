@@ -19,8 +19,9 @@ import model.Game;
 
 public class AcquirePermitTile extends MainAction {
 
+
+	private Integer numberOfPermitTile;
 	private RegionBoard chosenRegion;
-	private int numberOfPermitTile;
 	private List<PoliticsCard> cardsToDescard;
 
 	/**
@@ -35,6 +36,26 @@ public class AcquirePermitTile extends MainAction {
 		super(game);
 	}
 	
+	
+	
+	public void setNumberOfPermitTile(Integer numberOfPermitTile) {
+		this.numberOfPermitTile = numberOfPermitTile;
+	}
+
+
+
+	public void setCardsToDescard(List<PoliticsCard> cardsToDescard) {
+		this.cardsToDescard = cardsToDescard;
+	}
+
+
+
+	public void setChosenRegion(RegionBoard chosenRegion) {
+		this.chosenRegion = chosenRegion;
+	}
+
+
+
 	/**
 	 * Acquire a permit tile from a designated region board by satisfying the councillors:
 	 * 4 cards of the same colour of the councillors,
@@ -43,7 +64,11 @@ public class AcquirePermitTile extends MainAction {
 	 * 1 card of the same colour of the councillors + use 10 coins;
 	 * each rainbow card requires 1 additional coin each to use.
 	 */
-	public boolean executeAction() {
+	public boolean executeAction() throws NullPointerException{
+		if(this.numberOfPermitTile==null||
+				this.cardsToDescard==null||
+				this.chosenRegion==null)
+			throw new NullPointerException("Paramters not setted");
 		
 		if (!(this.CheckEnoughCoins() && this.CheckHandSatisfiesBalcony()))
 			return false;

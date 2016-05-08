@@ -24,19 +24,30 @@ public class BuildByPermitTile extends MainAction {
 	 * Constructor of the BuildByPermitTile
 	 * @param game is the current game
 	 */
-	public BuildByPermitTile(Game game, PermitTile selectedPermitTile, City selectedCity) {
+	public BuildByPermitTile(Game game) {
 		super(game);
-		this.selectedPermitTile=selectedPermitTile;
-		this.selectedCity=selectedCity;
 	}
 	
+	
+	public void setSelectedPermitTile(PermitTile selectedPermitTile) {
+		this.selectedPermitTile = selectedPermitTile;
+	}
+
+
+	public void setSelectedCity(City selectedCity) {
+		this.selectedCity = selectedCity;
+	}
+
+
 	/**
 	 * First of all checks if the parameters the current player gave are corrected,
 	 * then removes the emporium from the hand of the player an adds it on the set of emporiums 
 	 * of the selected city, then assigns all the bonuses of liked cities, then decrements player's assistants
 	 * @return TRUE if the action goes well, false otherwise
 	 */
-	public boolean executeAction() {
+	public boolean executeAction() throws NullPointerException {
+		if(this.selectedCity==null || this.selectedPermitTile==null)
+			throw new NullPointerException("Paramters not setted");
 		
 		ConnectedBuiltCityDiscover likedCities=new ConnectedBuiltCityDiscover();
 		
