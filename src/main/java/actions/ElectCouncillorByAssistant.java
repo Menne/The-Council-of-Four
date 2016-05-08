@@ -14,14 +14,12 @@ import model.Game;
  */
 public class ElectCouncillorByAssistant extends QuickAction {
 
-	private final Councillor newCouncillor;
-	private final CouncilBalcony councilBalcony;
+	private Councillor newCouncillor;
+	private CouncilBalcony councilBalcony;
 	public static final int necessaryAssistants=1;
 	
-	public ElectCouncillorByAssistant(Game game, Councillor newCouncillor, CouncilBalcony councilBalcony){
+	public ElectCouncillorByAssistant(Game game){
 		super(game);
-		this.newCouncillor=newCouncillor;
-		this.councilBalcony=councilBalcony;
 	}
 	
 	private boolean checkAssistants(){
@@ -39,7 +37,9 @@ public class ElectCouncillorByAssistant extends QuickAction {
 	  * decrement an assistant to the current player.
 	  * @return TRUE if the action ends well; FALSE otherwise.
 	 */
-	public boolean executeAction() {
+	public boolean executeAction() throws NullPointerException{
+		if(this.councilBalcony==null || this.newCouncillor==null)
+			throw new NullPointerException("Parameters not setted");
 		Councillor oldCouncillor;
 		if((!this.checkAssistants())||(!this.checkCouncillor()))
 			return false;
