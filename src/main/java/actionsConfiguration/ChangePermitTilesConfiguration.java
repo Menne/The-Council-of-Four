@@ -3,8 +3,8 @@ package actionsConfiguration;
 import java.util.List;
 
 import actions.ChangePermitTiles;
-import actions.NeedParameters;
 import controller.AskParameterPack;
+import gameStuff.RegionBoard;
 import model.Game;
 
 public class ChangePermitTilesConfiguration extends ActionConfiguration{
@@ -18,15 +18,19 @@ public class ChangePermitTilesConfiguration extends ActionConfiguration{
 
 	@Override
 	public AskParameterPack createAskParameterPack() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void setParameters(List<String> stringParameter) {
-		// TODO Auto-generated method stub
-		
+	public void setParameters(List<String> stringParameters) {
+		this.action.setSelectedRegion(regionTranslator
+				(stringParameters.remove(0)));
 	}
 	
+	private RegionBoard regionTranslator(String regionToTranslate) {
+		int numberOfRegion=Integer.parseInt(regionToTranslate);
+		RegionBoard regionTranslated=this.game.getGameTable().getRegionBoards().get(numberOfRegion);
+		return regionTranslated;
+	}
 
 }

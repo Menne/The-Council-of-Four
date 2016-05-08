@@ -2,7 +2,6 @@ package actionsConfiguration;
 
 import java.util.List;
 
-import actions.NeedParameters;
 import controller.AskParameterPack;
 import model.Game;
 
