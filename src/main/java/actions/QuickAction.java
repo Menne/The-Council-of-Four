@@ -8,13 +8,15 @@ import model.Game;
  * @author Luca
  *
  */
-public abstract class QuickAction extends Action {
+public abstract class QuickAction implements Action {
 
+	protected Game game;
+	
 	public QuickAction(Game game){
-		super(game);
+		this.game=game;
 	}
 	
-	protected void decrementAction(){
+	public void decrementAction(){
 		NormalTurn turn=(NormalTurn) this.game.getCurrentTurn();
 		turn.decrementQuickActionAvailable();
 	}

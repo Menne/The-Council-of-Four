@@ -1,5 +1,6 @@
 package actions;
 
+import controller.AskParameterPack;
 import gameStuff.RegionBoard;
 import model.Game;
 
@@ -10,7 +11,7 @@ import model.Game;
  * @author Luca
  *
  */
-public class ChangePermitTiles extends QuickAction {
+public class ChangePermitTiles extends QuickAction implements NeedParameters{
 	
 	private RegionBoard selectedRegion;
 	private static final int necessaryAssistants=1;
@@ -47,6 +48,13 @@ public class ChangePermitTiles extends QuickAction {
 		this.game.getCurrentPlayer().decrementAssistants(necessaryAssistants);
 		this.decrementAction();
 		return true;
+	}
+
+
+	@Override
+	public AskParameterPack createAskParameterPack() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 				
 }

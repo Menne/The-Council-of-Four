@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bonus.Bonus;
+import controller.AskParameterPack;
 import gameStuff.CouncilBalcony;
 import gameStuff.Councillor;
 import gameStuff.PoliticsCard;
@@ -17,7 +18,7 @@ import model.Game;
  *
  */
 
-public class AcquirePermitTile extends MainAction {
+public class AcquirePermitTile extends MainAction implements NeedParameters{
 
 
 	private Integer numberOfPermitTile;
@@ -131,5 +132,34 @@ public class AcquirePermitTile extends MainAction {
 				}
 			}
 		return satisfyCounter == this.cardsToDescard.size();
+	}
+
+
+
+	@Override
+	public AskParameterPack createAskParameterPack() {
+		List<String> parametersName=new ArrayList<String>();
+		parametersName.add("Region where you want to acquire");
+		parametersName.add("Permit tile you want to acquire");
+		parametersName.add("Cards of your hand you want to use to satisfy the council");
+		
+		List<List<String>> acceptableStrings= new ArrayList<List<String>>();
+		List<String> regionNames=new ArrayList<String>();
+		for(RegionBoard region : this.game.getGameTable().getRegionBoards())
+			regionNames.add(region.getName());
+		acceptableStrings.add(regionNames);
+		
+		List<String> permitTileNumbers=new ArrayList<String>();
+		permitTileNumbers.add("0");
+		permitTileNumbers.add("1");
+		acceptableStrings.add(permitTileNumbers);
+		
+		List<String> cardsNumbers=new ArrayList<String>();
+		int maxNumberOfCards=this.game.getCurrentPlayer().getHand().size();
+		for(Integer i=0; i<=maxNumberOfCards; i++)
+			cardsNumbers.add(i.toString());
+		acceptableStrings.add(cardsNumbers);
+						
+		return new AskParameterPack(parametersName, acceptableStrings);		 
 	}
 }

@@ -8,13 +8,15 @@ import model.Game;
  * @author Luca
  *
  */
-public abstract class MainAction extends Action {
+public abstract class MainAction implements Action {
 
+	protected final Game game;
+	
 	public MainAction(Game game){
-		super(game);
+		this.game=game;
 	}
 	
-	protected void decrementAction(){
+	public void decrementAction(){
 		NormalTurn turn= (NormalTurn) this.game.getCurrentTurn();
 		turn.decrementMainActionAvailable();
 	}

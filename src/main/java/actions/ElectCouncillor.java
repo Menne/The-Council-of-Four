@@ -1,5 +1,6 @@
  package actions;
 
+import controller.AskParameterPack;
 import gameStuff.CouncilBalcony;
 import gameStuff.Councillor;
 import model.Game;
@@ -12,7 +13,7 @@ import model.Game;
  * @author Luca
  *
  */
-public class ElectCouncillor extends MainAction {
+public class ElectCouncillor extends MainAction implements NeedParameters{
 
 	private Councillor newCouncillor;
 	private CouncilBalcony councilBalcony;
@@ -34,12 +35,13 @@ public class ElectCouncillor extends MainAction {
 		return this.game.getGameTable().getCouncilReserve()
 				.getCouncillors().contains(this.newCouncillor);
 	}
-/**
- * Substitutes a given councillor in one of the balconies of the game,
- * adds the old substituted councillor in the reserve,
- * gives to the current player 4 coins.
- * @return TRUE if the action ends well; FALSE otherwise.
- */
+	
+	/**
+	 * Substitutes a given councillor in one of the balconies of the game,
+	 * adds the old substituted councillor in the reserve,
+	 * gives to the current player 4 coins.
+	 * @return TRUE if the action ends well; FALSE otherwise.
+	 */
 	public boolean executeAction() throws NullPointerException{
 		if(this.newCouncillor==null || this.councilBalcony==null)
 			throw new NullPointerException("Parameters not setted");
@@ -52,5 +54,11 @@ public class ElectCouncillor extends MainAction {
 		this.decrementAction();
 		return true;
 	}
+
+	@Override
+	public AskParameterPack createAskParameterPack() {
+		// TODO Auto-generated method stub
+		return null;
+}
 
 }
