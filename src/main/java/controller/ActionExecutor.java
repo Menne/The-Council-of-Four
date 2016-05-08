@@ -1,11 +1,17 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import actions.AcquirePermitTile;
 import actions.Action;
+import actions.AdditionalMainAction;
+import actions.BuildByKing;
 import actions.BuildByPermitTile;
+import actions.ChangePermitTiles;
 import actions.ElectCouncillor;
+import actions.ElectCouncillorByAssistant;
+import actions.EngageAssistant;
 import gameStuff.City;
 import gameStuff.CouncilBalcony;
 import gameStuff.Councillor;
@@ -37,6 +43,14 @@ public class ActionExecutor {
 	 * @return
 	 */
 	private Action actionTranslator(){
+		if(action.equals("elect councillor")) {
+			ElectCouncillor electCouncillor=new ElectCouncillor(this.game);
+			electCouncillor.setNewCouncillor(councillorTranslator
+					(this.parameters.remove(0)));
+			electCouncillor.setCouncilBalcony(councilBalconyTranslator
+					(this.parameters.remove(0)));
+			return electCouncillor;
+		}
 		if(action.equals("acquire permit tile")) {
 			AcquirePermitTile acquirePermitTile=new AcquirePermitTile(this.game);
 			acquirePermitTile.setChosenRegion(regionTranslator
@@ -55,33 +69,35 @@ public class ActionExecutor {
 					(this.parameters.remove(0)));
 			return buildByPermitTile;
 		}
-		if(action.equals("ecelct councillor")) {
-			ElectCouncillor electCouncillor=new ElectCouncillor(this.game);
-			electCouncillor.setNewCouncillor(councillorTranslator
+		if(action.equals("build by king")) {
+			BuildByKing buildByKing=new BuildByKing(this.game);
+			buildByKing.setSelectedCity(cityTranslator
 					(this.parameters.remove(0)));
-			electCouncillor.setCouncilBalcony(councilBalconyTranslator
+			buildByKing.setCardsToDescard(politicsCardsTranslator
+					(this.parameters));
+			return buildByKing;
+		}
+		if(action.equals("engage assistant")) {
+			EngageAssistant engageAssistant=new EngageAssistant(this.game);
+			return engageAssistant;
+		}
+		if(action.equals("change permit tiles")) {
+			ChangePermitTiles changePermitTiles=new ChangePermitTiles(this.game);
+			changePermitTiles.setSelectedRegion(regionTranslator
 					(this.parameters.remove(0)));
-			return electCouncillor;
+			return changePermitTiles;
 		}
-		if(action.equals("M4")) {
-			Action acquirePermitTile=new AcquirePermitTile(this.game);
-			return acquirePermitTile;
+		if(action.equals("elect councillor by assistant")) {
+			ElectCouncillorByAssistant electCouncillorByAssistant=new ElectCouncillorByAssistant(this.game);
+			electCouncillorByAssistant.setNewCouncillor(councillorTranslator
+					(this.parameters.remove(0)));
+			electCouncillorByAssistant.setCouncilBalcony(councilBalconyTranslator
+					(this.parameters.remove(0)));
+			return electCouncillorByAssistant;
 		}
-		if(action.equals("q1")) {
-			Action acquirePermitTile=new AcquirePermitTile(this.game);
-			return acquirePermitTile;
-		}
-		if(action.equals("2q")) {
-			Action acquirePermitTile=new AcquirePermitTile(this.game);
-			return acquirePermitTile;
-		}
-		if(action.equals("3q")) {
-			Action acquirePermitTile=new AcquirePermitTile(this.game);
-			return acquirePermitTile;
-		}
-		if(action.equals("4q")) {
-			Action acquirePermitTile=new AcquirePermitTile(this.game);
-			return acquirePermitTile;
+		if(action.equals("additional main action")) {
+			AdditionalMainAction additionalMainAction=new AdditionalMainAction(this.game);
+			return additionalMainAction;
 		}
 		return null;
 		
@@ -108,15 +124,14 @@ public class ActionExecutor {
 	}
 
 	private List<PoliticsCard> politicsCardsTranslator(List<String> cardsToTranslate) {
-		List<PoliticsCard> cardsTranslated = null;
-		return cardsTranslated;
+		List<PoliticsCard> cardsTranslated = new ArrayList<PoliticsCard>();
 		
+		return cardsTranslated;
 	}
 
 	private int numberOfPermitTileTranslator(String numberOfPermitTileToTranslate) {
-		int numberOfPermitTileTranslated=0;
+		int numberOfPermitTileTranslated=Integer.parseInt(numberOfPermitTileToTranslate);
 		return numberOfPermitTileTranslated;
-		
 	}
 
 	private RegionBoard regionTranslator(String regionToTranslate) {
