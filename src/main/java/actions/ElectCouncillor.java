@@ -14,17 +14,23 @@ import model.Game;
  */
 public class ElectCouncillor extends MainAction {
 
-	private final Councillor newCouncillor;
-	private final CouncilBalcony councilBalcony;
+	private Councillor newCouncillor;
+	private CouncilBalcony councilBalcony;
 	private static final int givenCoins=4;
 	
-	public ElectCouncillor(Game game, Councillor newCouncillor, CouncilBalcony councilBalcony){
+	public ElectCouncillor(Game game){
 		super(game);
-		this.newCouncillor=newCouncillor;
-		this.councilBalcony=councilBalcony;
 	}
 	
-	private boolean checkCouncillor(){
+	public void setNewCouncillor(Councillor newCouncillor) {
+		this.newCouncillor = newCouncillor;
+	}
+
+	public void setCouncilBalcony(CouncilBalcony councilBalcony) {
+		this.councilBalcony = councilBalcony;
+	}
+
+	private boolean checkCouncillor() {
 		return this.game.getGameTable().getCouncilReserve()
 				.getCouncillors().contains(this.newCouncillor);
 	}
@@ -34,13 +40,16 @@ public class ElectCouncillor extends MainAction {
  * gives to the current player 4 coins.
  * @return TRUE if the action ends well; FALSE otherwise.
  */
-	public boolean executeAction() {
+	public boolean executeAction() throws NullPointerException{
+		if(this.newCouncillor==null || this.councilBalcony==null)
+			throw new NullPointerException("Parameters not setted");
 		Councillor oldCouncillor;
 		if(!this.checkCouncillor())
 			return false;
 		oldCouncillor=this.councilBalcony.substituteCouncillor(this.newCouncillor);
 		this.game.getGameTable().getCouncilReserve().getCouncillors().add(oldCouncillor);
 		this.game.getCurrentPlayer().incrementCoins(givenCoins);
+		this.decrementAction();
 		return true;
 	}
 

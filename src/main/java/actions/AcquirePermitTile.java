@@ -19,9 +19,10 @@ import model.Game;
 
 public class AcquirePermitTile extends MainAction {
 
-	private int numberOfPermitTile;
-	private List<PoliticsCard> cardsToDescard;
+
+	private Integer numberOfPermitTile;
 	private RegionBoard chosenRegion;
+	private List<PoliticsCard> cardsToDescard;
 
 	/**
 	 * constructor of the action
@@ -31,14 +32,30 @@ public class AcquirePermitTile extends MainAction {
 	 * @param balconyToSatisfy is the council balcony to satisfy
 	 *
 	 */
-	public AcquirePermitTile(Game game, int numberOfPermitTile, 
-			List<PoliticsCard> cardsToDescard, RegionBoard chosenRegion) {
+	public AcquirePermitTile(Game game) {
 		super(game);
-		this.numberOfPermitTile=numberOfPermitTile;
-		this.cardsToDescard=cardsToDescard;
-		this.chosenRegion=chosenRegion;
 	}
 	
+	
+	
+	public void setNumberOfPermitTile(Integer numberOfPermitTile) {
+		this.numberOfPermitTile = numberOfPermitTile;
+	}
+
+
+
+	public void setCardsToDescard(List<PoliticsCard> cardsToDescard) {
+		this.cardsToDescard = cardsToDescard;
+	}
+
+
+
+	public void setChosenRegion(RegionBoard chosenRegion) {
+		this.chosenRegion = chosenRegion;
+	}
+
+
+
 	/**
 	 * Acquire a permit tile from a designated region board by satisfying the councillors:
 	 * 4 cards of the same colour of the councillors,
@@ -47,7 +64,11 @@ public class AcquirePermitTile extends MainAction {
 	 * 1 card of the same colour of the councillors + use 10 coins;
 	 * each rainbow card requires 1 additional coin each to use.
 	 */
-	public boolean executeAction() {
+	public boolean executeAction() throws NullPointerException{
+		if(this.numberOfPermitTile==null||
+				this.cardsToDescard==null||
+				this.chosenRegion==null)
+			throw new NullPointerException("Paramters not setted");
 		
 		if (!(this.CheckEnoughCoins() && this.CheckHandSatisfiesBalcony()))
 			return false;
@@ -59,6 +80,7 @@ public class AcquirePermitTile extends MainAction {
 			this.game.getCurrentPlayer().removeCardFromHand(card);
 		this.game.getCurrentPlayer().addTile(this.chosenRegion.pickUncoveredPermitTile(this.numberOfPermitTile));
 		this.chosenRegion.uncoverPermitTiles();
+		this.decrementAction();
 	    return true;
 	}
 	

@@ -16,4 +16,6 @@ public abstract class Action {
 	}
 	
 	public abstract boolean executeAction();
+	
+	protected abstract void decrementAction();
 }

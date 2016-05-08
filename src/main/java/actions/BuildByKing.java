@@ -21,7 +21,7 @@ import model.Game;
 
 public class BuildByKing extends MainAction {
 
-	private final City selectedCity;
+	private City selectedCity;
 	private List<PoliticsCard> cardsToDescard;
 
 	/**
@@ -30,12 +30,24 @@ public class BuildByKing extends MainAction {
 	 * @param selectedCity is the city in which the current player wants to build
 	 * @param cardsToDescard are the cards used to satisfy the balcony of the king
 	 */
-	public BuildByKing(Game game, City selectedCity, List<PoliticsCard> cardsToDescard){
+	public BuildByKing(Game game){
 		super(game);
-		this.selectedCity=selectedCity;
-		this.cardsToDescard=cardsToDescard;
 	}
 	
+	
+	
+	public void setSelectedCity(City selectedCity) {
+		this.selectedCity = selectedCity;
+	}
+
+
+
+	public void setCardsToDescard(List<PoliticsCard> cardsToDescard) {
+		this.cardsToDescard = cardsToDescard;
+	}
+
+
+
 	/**
 	 * First of all checks if the parameters the current player gave are corrected, 
 	 * then removes the cards from the hand of the player and decrements his coins, 
@@ -43,7 +55,11 @@ public class BuildByKing extends MainAction {
 	 * of the selected city, then assigns all the bonuses of liked cities, then decrements player's assistants
 	 * @return TRUE if the action goes well, false otherwise
 	 */
-	public boolean executeAction() {
+	public boolean executeAction() throws NullPointerException{
+		
+		if(this.cardsToDescard==null || this.selectedCity==null)
+			throw new NullPointerException("Paramters not setted");
+		
 		ConnectedBuiltCityDiscover likedCities=new ConnectedBuiltCityDiscover();
 		
 		if (!(checkCityNotContainsEmporium() && checkEnoughAssistants() && 
@@ -67,6 +83,7 @@ public class BuildByKing extends MainAction {
 			assignRegionBonus();
 		if (this.selectedCity.getColour().isBonusAvailable())
 			assignColourBonus();
+		this.decrementAction();
 		
 		return true;
 	}
