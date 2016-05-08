@@ -22,6 +22,14 @@ public class ElectCouncillorByAssistant extends QuickAction {
 		super(game);
 	}
 	
+	public void setNewCouncillor(Councillor newCouncillor) {
+		this.newCouncillor = newCouncillor;
+	}
+
+	public void setCouncilBalcony(CouncilBalcony councilBalcony) {
+		this.councilBalcony = councilBalcony;
+	}
+
 	private boolean checkAssistants(){
 		return this.game.getCurrentPlayer().getAssistants()>=necessaryAssistants;
 	}
