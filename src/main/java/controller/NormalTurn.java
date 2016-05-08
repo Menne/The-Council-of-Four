@@ -4,9 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import actions.*;
+import actionsConfiguration.AcquirePermitTileConfiguration;
+import actionsConfiguration.ActionConfiguration;
+import actionsConfiguration.BuildByKingConfiguration;
+import actionsConfiguration.BuildByPermitTileConfiguration;
+import actionsConfiguration.ChangePermitTilesConfiguration;
+import actionsConfiguration.ElectCouncillorByAssistantConfiguration;
+import actionsConfiguration.ElectCouncillorConfiguration;
 import model.Game;
 import observerPattern.Observable;
 import view.GiveActionPack;
+import view.GiveParameterPack;
 import view.View;
 
 public class NormalTurn extends Turn{
@@ -14,6 +22,7 @@ public class NormalTurn extends Turn{
 	private int mainActionAvailable;
 	private int quickActionAvailable;
 	private NeedParameters currentAction;
+	private ActionConfiguration currentConfiguration;
 	
 	public NormalTurn(View view, Game game){
 		super(view,game);
@@ -26,8 +35,6 @@ public class NormalTurn extends Turn{
 	public int getMainActionAvailable() {
 		return mainActionAvailable;
 	}
-
-
 
 	public void incrementMainActionAvailable() {
 		this.mainActionAvailable++;
@@ -54,35 +61,48 @@ public class NormalTurn extends Turn{
 	@Override
 	public <C> void update(Observable o, C change) throws IllegalArgumentException{
 		if(change instanceof GiveActionPack){
+		//	ActionConfiguration currentConfiguration;
 			GiveActionPack gap= (GiveActionPack) change;
 			switch(gap.getGivenAction()){ 
 			case "M1":
-				this.currentAction=new ElectCouncillor(this.game);
-				notifyObservers(this.currentAction.createAskParameterPack());				
+				ElectCouncillor m1=new ElectCouncillor(this.game);
+				this.currentAction=m1;
+				this.currentConfiguration=new ElectCouncillorConfiguration(this.game, m1);
+				notifyObservers(this.currentConfiguration.createAskParameterPack());				
 				break;
 			case "M2":
-				this.currentAction=new AcquirePermitTile(this.game);
-				notifyObservers(this.currentAction.createAskParameterPack());
+				AcquirePermitTile m2=new AcquirePermitTile(this.game);
+				this.currentAction=m2;
+				currentConfiguration=new AcquirePermitTileConfiguration(game, m2);
+				notifyObservers(currentConfiguration.createAskParameterPack());
 				break;
 			case "M3":
-				this.currentAction=new BuildByPermitTile(this.game);
-				notifyObservers(this.currentAction.createAskParameterPack());
+				BuildByPermitTile m3=new BuildByPermitTile(this.game);
+				this.currentAction=m3;
+				currentConfiguration=new BuildByPermitTileConfiguration(this.game, m3);
+				notifyObservers(currentConfiguration.createAskParameterPack());
 				break;
 			case "M4":
-				this.currentAction=new BuildByKing(this.game);
-				notifyObservers(this.currentAction.createAskParameterPack());
+				BuildByKing m4=new BuildByKing(this.game);
+				this.currentAction=m4;
+				currentConfiguration=new BuildByKingConfiguration(this.game, m4);
+				notifyObservers(currentConfiguration.createAskParameterPack());
 				break;
 			case "Q1":
 				Action q1 = new EngageAssistant(this.game);
 				q1.executeAction();
 				break;
 			case "Q2":
-				this.currentAction=new ChangePermitTiles(this.game);
-				notifyObservers(this.currentAction.createAskParameterPack());
+				ChangePermitTiles q2=new ChangePermitTiles(this.game);
+				this.currentAction=q2;
+				currentConfiguration=new ChangePermitTilesConfiguration(this.game, q2);  
+				notifyObservers(currentConfiguration.createAskParameterPack());
 				break;
 			case "Q3":
-				this.currentAction=new ElectCouncillorByAssistant(this.game);
-				notifyObservers(this.currentAction.createAskParameterPack());
+				ElectCouncillorByAssistant q3=new ElectCouncillorByAssistant(this.game);
+				this.currentAction=q3;
+				currentConfiguration=new ElectCouncillorByAssistantConfiguration(this.game, q3);
+				notifyObservers(currentConfiguration.createAskParameterPack());
 				break;
 			case "Q4":
 				Action q4 = new AdditionalMainAction(this.game);
@@ -91,12 +111,12 @@ public class NormalTurn extends Turn{
 			default:
 				throw new IllegalArgumentException("Wrong give action pack!");				
 			}	
-		}		
+		}
+		
 		if(change instanceof GiveParameterPack){
 			GiveParameterPack gpp= (GiveParameterPack) change;
-			ParametersSetter parametersSetter=
-					new ParametersSetter(game, this.currentAction, gpp.getSelectedParameters());
-			parametersSetter			
+			this.currentConfiguration.setParameters(gpp.getSelectedParameters());
+			this.currentAction.executeAction();  
 		}		
 
 	}
