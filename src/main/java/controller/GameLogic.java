@@ -30,10 +30,7 @@ public class GameLogic extends Observable {
 				this.game.nextPlayer();
 			}
 			turn=new MarketTurn(view, this.game);
-			turn.executeTurn();
-			
-		
-		
+			turn.executeTurn();				
 		}
 	
 	}

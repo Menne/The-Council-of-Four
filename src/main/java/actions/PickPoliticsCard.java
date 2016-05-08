@@ -9,13 +9,15 @@ import model.Game;
  *
  */
 
-public class PickPoliticsCard extends Action {
+public class PickPoliticsCard implements Action {
+	
+	protected Game game;
 	
 	/**
 	 * constructor of the action
 	 */
 	public PickPoliticsCard (Game game){
-		super(game);
+		this.game=game;
 	}
 	
 	/**
@@ -26,6 +28,11 @@ public class PickPoliticsCard extends Action {
 	public boolean executeAction() {
 		this.game.getCurrentPlayer().getHand().add(this.game.getGameTable().getPoliticsDeck().pickCard());
 		return true;
+	}
+
+	@Override
+	public void decrementAction() {
+		
 	}
 	
 	

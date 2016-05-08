@@ -11,8 +11,9 @@ import model.Game;
  *
  */
 
-public class ChooseCityBonusAction extends Action {
+public class ChooseCityBonusAction implements Action {
 
+	protected Game game;
 	private City selectedCity;
 		
 	/**
@@ -21,7 +22,7 @@ public class ChooseCityBonusAction extends Action {
 	 * @param selectedCity is the city selected by the current player
 	 */
 	public ChooseCityBonusAction(Game game, City selectedCity){
-		super(game);
+		this.game=game;
 		this.selectedCity=selectedCity;
 	}
 		
@@ -48,6 +49,12 @@ public class ChooseCityBonusAction extends Action {
 			if (emporium.getEmporiumsPlayer().equals(this.game.getCurrentPlayer()))
 				return true;
 		return false;
+	}
+
+	@Override
+	public void decrementAction() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

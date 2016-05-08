@@ -1,6 +1,7 @@
 package actions;
 
 import bonus.Bonus;
+import controller.AskParameterPack;
 import gameStuff.City;
 import gameStuff.ConnectedBuiltCityDiscover;
 import gameStuff.Emporium;
@@ -15,7 +16,7 @@ import model.Game;
  *
  */
 
-public class BuildByPermitTile extends MainAction {
+public class BuildByPermitTile extends MainAction implements NeedParameters{
 
 	private PermitTile selectedPermitTile;
 	private City selectedCity;
@@ -70,7 +71,7 @@ public class BuildByPermitTile extends MainAction {
 			assignRegionBonus();
 		if (this.selectedCity.getColour().isBonusAvailable())
 			assignColourBonus();
-		
+		this.decrementAction();
 		return true;
 	}
 	
@@ -152,6 +153,13 @@ public class BuildByPermitTile extends MainAction {
 	 */
 	private void assignKingRewardTile() {
 		this.game.getGameTable().getKingRewardTiles().remove(0).assignBonus(this.game);
+	}
+
+
+	@Override
+	public AskParameterPack createAskParameterPack() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

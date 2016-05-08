@@ -1,5 +1,6 @@
 package actions;
 
+import controller.NormalTurn;
 import model.Game;
 
 /**
@@ -7,9 +8,16 @@ import model.Game;
  * @author Luca
  *
  */
-public abstract class MainAction extends Action {
+public abstract class MainAction implements Action {
 
+	protected final Game game;
+	
 	public MainAction(Game game){
-		super(game);
+		this.game=game;
+	}
+	
+	public void decrementAction(){
+		NormalTurn turn= (NormalTurn) this.game.getCurrentTurn();
+		turn.decrementMainActionAvailable();
 	}
 }

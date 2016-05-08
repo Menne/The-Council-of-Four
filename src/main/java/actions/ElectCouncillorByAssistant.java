@@ -1,5 +1,6 @@
 package actions;
 
+import controller.AskParameterPack;
 import gameStuff.CouncilBalcony;
 import gameStuff.Councillor;
 import model.Game;
@@ -12,7 +13,7 @@ import model.Game;
  * @author Luca
  *
  */
-public class ElectCouncillorByAssistant extends QuickAction {
+public class ElectCouncillorByAssistant extends QuickAction implements NeedParameters{
 
 	private Councillor newCouncillor;
 	private CouncilBalcony councilBalcony;
@@ -54,7 +55,14 @@ public class ElectCouncillorByAssistant extends QuickAction {
 		oldCouncillor=this.councilBalcony.substituteCouncillor(this.newCouncillor);
 		this.game.getGameTable().getCouncilReserve().getCouncillors().add(oldCouncillor);
 		this.game.getCurrentPlayer().decrementAssistants(necessaryAssistants);
+		this.decrementAction();
 		return true;
+	}
+
+	@Override
+	public AskParameterPack createAskParameterPack() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

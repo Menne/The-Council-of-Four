@@ -12,7 +12,7 @@ public class MarketTurn extends Turn{
 
 	@Override
 	public void executeTurn() {
-		// TODO Auto-generated method stub
+		return;
 		
 	}
 

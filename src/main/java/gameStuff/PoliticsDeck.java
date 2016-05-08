@@ -4,15 +4,22 @@ import java.util.Iterator;
 import java.util.Random;
 import java.util.Set;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+
 
 	/**
 	 * Is a generator of random Politics Card
 	 * @author Emanuele
 	 *
 	 */
-
+@XmlAccessorType(XmlAccessType.FIELD)
 public class PoliticsDeck{
 	
+	@XmlElementWrapper(name="cardColours")
+	@XmlElement(name="CardColour")
 	private final Set<CardColour> cardColours;
 	
 	public PoliticsDeck(Set<CardColour> cardColours) {

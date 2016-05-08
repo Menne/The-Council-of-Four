@@ -3,20 +3,17 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import actions.Action;
-import actions.PickPoliticsCard;
-import gameStuff.RegionBoard;
+import actions.*;
 import model.Game;
 import observerPattern.Observable;
 import view.GiveActionPack;
-import view.GiveParameterPack;
 import view.View;
 
-public class NormalTurn extends Turn {
+public class NormalTurn extends Turn{
 	
 	private int mainActionAvailable;
 	private int quickActionAvailable;
-	private String currentAction;
+	private NeedParameters currentAction;
 	
 	public NormalTurn(View view, Game game){
 		super(view,game);
@@ -55,52 +52,52 @@ public class NormalTurn extends Turn {
 
 
 	@Override
-	public <C> void update(Observable o, C change) {
+	public <C> void update(Observable o, C change) throws IllegalArgumentException{
 		if(change instanceof GiveActionPack){
 			GiveActionPack gap= (GiveActionPack) change;
-			this.currentAction=gap.getGivenAction();
-			if(gap.getGivenAction().equals("M1")){
-				//preparo ask parameter pack
-				List<String> parametersName=new ArrayList<String>();
-				parametersName.add("Region where you want to acquire");
-				parametersName.add("Permit tile you want to acquire");
-				parametersName.add("Cards of your hand you want to use to satisfy the council");
-				
-				List<List<String>> acceptableStrings= new ArrayList<List<String>>();
-				List<String> regionNames=new ArrayList<String>();
-				for(RegionBoard region : this.game.getGameTable().getRegionBoards())
-					regionNames.add(region.getName());
-				acceptableStrings.add(regionNames);
-				
-				List<String> permitTileNumbers=new ArrayList<String>();
-				permitTileNumbers.add("0");
-				permitTileNumbers.add("1");
-				acceptableStrings.add(permitTileNumbers);
-				
-				List<String> cardsNumbers=new ArrayList<String>();
-				int maxNumberOfCards=this.game.getCurrentPlayer().getHand().size();
-				for(Integer i=0; i<=maxNumberOfCards; i++)
-					cardsNumbers.add(i.toString());
-				acceptableStrings.add(cardsNumbers);
-								
-				AskParameterPack app=new AskParameterPack(parametersName, acceptableStrings);
-				
-				//invio ask parameter pack
-				notifyObservers(app);
-			}
-			
-			if(gap.getGivenAction().equals("M2")){
-				
-			}		
-		}
-		
-		if(change instanceof GiveParameterPack){
-			GiveParameterPack gpp= (GiveParameterPack) change;
-			ParametersSetter ae=new ParametersSetter(game, this.currentAction, gpp.getSelectedParameters());
-			ae.callAction();
-			
-		}
-		
+			switch(gap.getGivenAction()){ 
+			case "M1":
+				this.currentAction=new ElectCouncillor(this.game);
+				notifyObservers(this.currentAction.createAskParameterPack());				
+				break;
+			case "M2":
+				this.currentAction=new AcquirePermitTile(this.game);
+				notifyObservers(this.currentAction.createAskParameterPack());
+				break;
+			case "M3":
+				this.currentAction=new BuildByPermitTile(this.game);
+				notifyObservers(this.currentAction.createAskParameterPack());
+				break;
+			case "M4":
+				this.currentAction=new BuildByKing(this.game);
+				notifyObservers(this.currentAction.createAskParameterPack());
+				break;
+			case "Q1":
+				Action q1 = new EngageAssistant(this.game);
+				q1.executeAction();
+				break;
+			case "Q2":
+				this.currentAction=new ChangePermitTiles(this.game);
+				notifyObservers(this.currentAction.createAskParameterPack());
+				break;
+			case "Q3":
+				this.currentAction=new ElectCouncillorByAssistant(this.game);
+				notifyObservers(this.currentAction.createAskParameterPack());
+				break;
+			case "Q4":
+				Action q4 = new AdditionalMainAction(this.game);
+				q4.executeAction();
+				break;
+			default:
+				throw new IllegalArgumentException("Wrong give action pack!");				
+			}	
+		}		
+/*		if(change instanceof GiveParameterPack){
+			GiveParameterPack gpp= (GiveParameterPack) change;			ActionExecutor actionExecutor=
+					new ActionExecutor(game, this.currentAction, gpp.getSelectedParameters());
+			actionExecutor.callAction();			
+		}	*/ 	
+
 	}
 
 	@Override
@@ -145,4 +142,5 @@ public class NormalTurn extends Turn {
 							+ "M, Q, MQ");
 		return acceptable;	
 	}
+
 }

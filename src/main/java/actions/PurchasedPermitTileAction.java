@@ -10,8 +10,9 @@ import model.Game;
  *
  */
 
-public class PurchasedPermitTileAction extends Action {
+public class PurchasedPermitTileAction implements Action {
 
+	protected final Game game;
 	private PermitTile selectedPermitTile;
 	
 	/**
@@ -20,7 +21,7 @@ public class PurchasedPermitTileAction extends Action {
 	 * @param selectedPermitTile is the permit tile selected by the current player
 	 */
 	public PurchasedPermitTileAction(Game game, PermitTile selectedPermitTile){
-		super(game);
+		this.game=game;
 		this.selectedPermitTile=selectedPermitTile;
 	}
 	
@@ -31,6 +32,12 @@ public class PurchasedPermitTileAction extends Action {
 		for (Bonus bonusToAssign : this.selectedPermitTile.getBonus())
 			bonusToAssign.assignBonus(this.game);
 		return true;
+	}
+
+	@Override
+	public void decrementAction() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

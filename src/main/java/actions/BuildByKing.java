@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bonus.Bonus;
+import controller.AskParameterPack;
 import gameStuff.City;
 import gameStuff.ConnectedBuiltCityDiscover;
 import gameStuff.CouncilBalcony;
@@ -19,7 +20,7 @@ import model.Game;
  *
  */
 
-public class BuildByKing extends MainAction {
+public class BuildByKing extends MainAction implements NeedParameters{
 
 	private City selectedCity;
 	private List<PoliticsCard> cardsToDescard;
@@ -83,6 +84,7 @@ public class BuildByKing extends MainAction {
 			assignRegionBonus();
 		if (this.selectedCity.getColour().isBonusAvailable())
 			assignColourBonus();
+		this.decrementAction();
 		
 		return true;
 	}
@@ -218,6 +220,14 @@ public class BuildByKing extends MainAction {
 	 */
 	private void assignKingRewardTile() {
 		this.game.getGameTable().getKingRewardTiles().remove(0).assignBonus(this.game);
+	}
+
+
+
+	@Override
+	public AskParameterPack createAskParameterPack() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -3,6 +3,11 @@ package gameStuff;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+
 import bonus.ScoreBonus;
 
 /**
@@ -10,14 +15,25 @@ import bonus.ScoreBonus;
  * @author andreapasquali
  *
  */
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class RegionBoard {
 
+	@XmlElement(name="regionName")
 	private final String name;
+	
+	@XmlElement(name="PermitDeck")
 	private final PermitDeck regionPermitDeck;
 	private final CouncilBalcony regionBalcony;
+	
+	@XmlElement(name="ScoreBonus")
 	private final ScoreBonus regionBonus;
 	private boolean bonusAvailable;
+	
+	@XmlElementWrapper(name="regionCities")
+	@XmlElement(name="name")
 	private final Set<City> regionCities;
+	
 	private final PermitTile[] uncoveredPermitTiles;
 	private static final int numberOfUncoveredPermitTiles=2;
 	
@@ -36,7 +52,7 @@ public class RegionBoard {
 		this.regionBalcony=regionBalcony;		
 		this.regionBonus=regionBonus;
 		this.bonusAvailable=true;
-		this.regionCities=new HashSet<City>();
+		this.regionCities=new HashSet<City>();//prendo direttamente in input da file CAMBIARE
 		this.uncoveredPermitTiles=new PermitTile[numberOfUncoveredPermitTiles];
 //		uncoverPermitTiles();		
 	}

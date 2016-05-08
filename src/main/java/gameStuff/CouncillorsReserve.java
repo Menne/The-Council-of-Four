@@ -1,17 +1,27 @@
 package gameStuff;
 
+import java.util.Collections;
 import java.util.List;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 /**
  * Models the councillor reserve of game
  * @author Luca
  *
  */
+@XmlAccessorType(XmlAccessType.FIELD)
 public class CouncillorsReserve {
 	
+	@XmlElementWrapper(name="councillors")
+	@XmlElement(name="Councillor")
 	private final List<Councillor> councillors;
 	
 	public CouncillorsReserve(List<Councillor> councillors){
 		this.councillors=councillors;
+		Collections.shuffle(this.councillors);
 	}
 	
 	public List<Councillor> getCouncillors() {

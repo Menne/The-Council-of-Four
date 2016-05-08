@@ -2,6 +2,11 @@ package gameStuff;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+
 import bonus.Bonus;
 
 /**
@@ -9,12 +14,19 @@ import bonus.Bonus;
  * @author Luca
  *
  */
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class City {
 
+	@XmlElement(name="name")
 	private final String name;
-	private final Set<Bonus> rewardToken;
+	private Set<Bonus> rewardToken;
+	
+	@XmlElement(name="isKingPresent")
 	private Boolean isKingPresent;
 	private final RegionBoard region;
+	
+	@XmlElement(name="CityColour")
 	private final CityColour colour;
 	private final Set<Emporium> cityEmporiums;
 	private final Set<City> nearCities;
@@ -34,7 +46,7 @@ public class City {
 	public City(String name, RegionBoard region, CityColour colour){
 		this.name=name;
 		this.isKingPresent=false;
-		this.region=region;
+		this.region=region; //COSTRUTTORE DA CAMBIARE: non passo da file ma deve ricercere autonomamente la regione di appartenenza
 		this.colour=colour;
 		this.cityEmporiums=new HashSet<Emporium>();
 		this.nearCities=new HashSet<City>();

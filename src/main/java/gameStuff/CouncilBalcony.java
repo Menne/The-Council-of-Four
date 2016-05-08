@@ -16,11 +16,10 @@ public class CouncilBalcony {
 	 * controls the number of councillors
 	 * @param councillors
 	 */
-	public CouncilBalcony(Councillor[] councillors){
-		if(councillors.length!=numberOfCouncillors)
-			throw new IllegalArgumentException("Council Balcony must be composed of"
-		+numberOfCouncillors+ "councillors!");
-		this.councillors=councillors;
+	public CouncilBalcony(CouncillorsReserve reserve){
+		this.councillors=new Councillor[numberOfCouncillors];
+		for(int i=0; i<numberOfCouncillors; i++)
+			this.councillors[i]=reserve.getCouncillors().remove(i);
 	}
 	
 public Councillor[] getCouncillors() {

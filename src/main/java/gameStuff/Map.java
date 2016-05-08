@@ -12,7 +12,9 @@ import org.jgrapht.alg.DijkstraShortestPath;
  * @author Luca
  *
  */
+
 public class Map {
+
 
 	private final UndirectedGraph<City, DefaultEdge> gameMap;
 	

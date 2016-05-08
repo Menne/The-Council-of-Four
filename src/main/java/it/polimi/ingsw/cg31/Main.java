@@ -63,26 +63,16 @@ public class Main {
 					councillorsList.add(new Councillor(cardColour));
 		Collections.shuffle(councillorsList);
 		
+		//creo la riserva consiglieri passando al costruttore la lista di tutti i consiglieri
+				CouncillorsReserve councillorsReserve=new CouncillorsReserve(councillorsList);
+				
 		//creo i 4 balconi rimuovendo 4 consiglieri alla volta dalla lista
-		Councillor[] arrayOfCouncillors1=new Councillor[4];
-		for(int i=0;i<4;i++)
-			arrayOfCouncillors1[i]=councillorsList.remove(0);
-		CouncilBalcony seaBalcony=new CouncilBalcony(arrayOfCouncillors1);
-		Councillor[] arrayOfCouncillors2=new Councillor[4];
-		for(int i=0;i<4;i++)
-			arrayOfCouncillors2[i]=councillorsList.remove(0);
-		CouncilBalcony hillBalcony=new CouncilBalcony(arrayOfCouncillors2);
-		Councillor[] arrayOfCouncillors3=new Councillor[4];
-		for(int i=0;i<4;i++)
-			arrayOfCouncillors3[i]=councillorsList.remove(0);
-		CouncilBalcony mountainBalcony=new CouncilBalcony(arrayOfCouncillors3);
-		Councillor[] arrayOfCouncillors4=new Councillor[4];
-		for(int i=0;i<4;i++)
-			arrayOfCouncillors4[i]=councillorsList.remove(0);
-		CouncilBalcony kingBalcony=new CouncilBalcony(arrayOfCouncillors4);
+		CouncilBalcony seaBalcony=new CouncilBalcony(councillorsReserve);
+		CouncilBalcony hillBalcony=new CouncilBalcony(councillorsReserve);
+		CouncilBalcony mountainBalcony=new CouncilBalcony(councillorsReserve);
+		CouncilBalcony kingBalcony=new CouncilBalcony(councillorsReserve);
 		
-		//creo la riserva consiglieri passando al costruttore la lista rimanente
-		CouncillorsReserve councillorsReserve=new CouncillorsReserve(councillorsList);
+		
 		
 		//creo permit deck vuoti
 		PermitDeck seaPermitDeck=new PermitDeck();
