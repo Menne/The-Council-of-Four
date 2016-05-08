@@ -96,7 +96,7 @@ public class NormalTurn extends Turn {
 		
 		if(change instanceof GiveParameterPack){
 			GiveParameterPack gpp= (GiveParameterPack) change;
-			ActionExecutor ae=new ActionExecutor(game, this.currentAction, gpp.getSelectedParameters());
+			ParametersSetter ae=new ParametersSetter(game, this.currentAction, gpp.getSelectedParameters());
 			ae.callAction();
 			
 		}

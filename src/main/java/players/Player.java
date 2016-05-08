@@ -1,9 +1,7 @@
  package players;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import gameStuff.Emporium;
 import gameStuff.PermitTile;
@@ -25,8 +23,8 @@ public class Player {
 	private int nobility;
 	private int coins;
 	private final List<PoliticsCard> hand;
-	private final Set<PermitTile> playersPermitTilesTurnedUp;
-	private final Set<PermitTile> playersPermitTilesTurnedDown;
+	private final List<PermitTile> playersPermitTilesTurnedUp;
+	private final List<PermitTile> playersPermitTilesTurnedDown;
 	private final List<Emporium> emporiums;
 	private static final int intialNumberOfEmporiums=10;
 	private static final int initialNumberOfCards=6;
@@ -50,8 +48,8 @@ public class Player {
 		this.hand=new ArrayList<PoliticsCard>();
 		for(int i=0;i<initialNumberOfCards;i++)
 			this.addCardToHand(politicsDeck.pickCard());
-		this.playersPermitTilesTurnedDown=new HashSet<PermitTile>();
-		this.playersPermitTilesTurnedUp=new HashSet<PermitTile>();
+		this.playersPermitTilesTurnedDown=new ArrayList<PermitTile>();
+		this.playersPermitTilesTurnedUp=new ArrayList<PermitTile>();
 		this.emporiums=new ArrayList<Emporium>();
 		for(int i=0;i<intialNumberOfEmporiums;i++)
 			this.emporiums.add(new Emporium(this));
@@ -89,6 +87,14 @@ public class Player {
 
 	public List<Emporium> getRemainigEmporiums() {
 		return emporiums;
+	}
+	
+	public List<PermitTile> getPlayersPermitTilesTurnedUp() {
+		return playersPermitTilesTurnedUp;
+	}
+
+	public List<PermitTile> getPlayersPermitTilesTurnedDown() {
+		return playersPermitTilesTurnedDown;
 	}
 
 
@@ -134,7 +140,6 @@ public class Player {
 			this.nobility=maxNobility;
 	}
 
-	
 	/**
 	 * increments player's coins of a "increment"
 	 * @param increment

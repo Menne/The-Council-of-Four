@@ -60,6 +60,11 @@ public class BuildByPermitTile extends MainAction {
 			for (Bonus bonusToAssign : city.getRewardToken())
 				bonusToAssign.assignBonus(this.game);
 		this.game.getCurrentPlayer().decrementAssistants(assistantsToPay());
+		for (PermitTile permitTileToCover : this.game.getCurrentPlayer().getPlayersPermitTilesTurnedUp())
+			if (this.selectedPermitTile.equals(permitTileToCover)) {
+				this.game.getCurrentPlayer().getPlayersPermitTilesTurnedDown().add(permitTileToCover);
+				this.game.getCurrentPlayer().getPlayersPermitTilesTurnedUp().remove(permitTileToCover);
+			}
 		
 		if (this.selectedCity.getRegion().isBonusAvailable())
 			assignRegionBonus();
