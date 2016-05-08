@@ -61,7 +61,6 @@ public class NormalTurn extends Turn{
 	@Override
 	public <C> void update(Observable o, C change) throws IllegalArgumentException{
 		if(change instanceof GiveActionPack){
-		//	ActionConfiguration currentConfiguration;
 			GiveActionPack gap= (GiveActionPack) change;
 			switch(gap.getGivenAction()){ 
 			case "M1":
@@ -107,6 +106,9 @@ public class NormalTurn extends Turn{
 			case "Q4":
 				Action q4 = new AdditionalMainAction(this.game);
 				q4.executeAction();
+				break;
+			case "X":
+				this.quickActionAvailable=0;
 				break;
 			default:
 				throw new IllegalArgumentException("Wrong give action pack!");				
@@ -155,9 +157,11 @@ public class NormalTurn extends Turn{
 				for(int i=1;i<5;i++)
 					acceptable.add("M"+i);
 			else
-				if(availableActions.equals("Q"))
+				if(availableActions.equals("Q")){
 					for(int i=1;i<5;i++)
 						acceptable.add("Q"+i);
+					acceptable.add("X");
+				}
 				else
 					throw new IllegalArgumentException("Availble actons can be just"
 							+ "M, Q, MQ");
