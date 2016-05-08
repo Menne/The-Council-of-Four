@@ -19,9 +19,9 @@ import model.Game;
 
 public class AcquirePermitTile extends MainAction {
 
+	private RegionBoard chosenRegion;
 	private int numberOfPermitTile;
 	private List<PoliticsCard> cardsToDescard;
-	private RegionBoard chosenRegion;
 
 	/**
 	 * constructor of the action
@@ -31,12 +31,12 @@ public class AcquirePermitTile extends MainAction {
 	 * @param balconyToSatisfy is the council balcony to satisfy
 	 *
 	 */
-	public AcquirePermitTile(Game game, int numberOfPermitTile, 
-			List<PoliticsCard> cardsToDescard, RegionBoard chosenRegion) {
+	public AcquirePermitTile(Game game, RegionBoard chosenRegion, int numberOfPermitTile, 
+			List<PoliticsCard> cardsToDescard) {
 		super(game);
+		this.chosenRegion=chosenRegion;
 		this.numberOfPermitTile=numberOfPermitTile;
 		this.cardsToDescard=cardsToDescard;
-		this.chosenRegion=chosenRegion;
 	}
 	
 	/**
