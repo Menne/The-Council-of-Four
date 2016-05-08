@@ -6,6 +6,7 @@ import java.util.List;
 import actions.BuildByKing;
 import controller.AskParameterPack;
 import gameStuff.City;
+import gameStuff.Emporium;
 import gameStuff.PoliticsCard;
 import gameStuff.RegionBoard;
 import model.Game;
@@ -21,8 +22,26 @@ public class BuildByKingConfiguration extends ActionConfiguration{
 
 	@Override
 	public AskParameterPack createAskParameterPack() {
-		// TODO Auto-generated method stub
-		return null;
+		List<String> parametersName=new ArrayList<String>();
+		parametersName.add("City where you want to build an emporium");
+		parametersName.add("Cards of your hand you want to use to satisfy the council");
+		
+		List<List<String>> acceptableStrings= new ArrayList<List<String>>();
+		
+		/**List<String> ciryName=new ArrayList<String>();
+			for (RegionBoard region : this.game.getGameTable().getRegionBoards())
+				for (City city : region.getRegionCities())
+					for (Emporium emporium : city.getCityEmporiums())
+						if (emporium.getEmporiumsPlayer().equals(this.game.getCurrentPlayer()))
+							acceptableStrings.add(city.getName());*/
+		
+		List<String> cardsNumbers=new ArrayList<String>();
+		int maxNumberOfCards=this.game.getCurrentPlayer().getHand().size();
+		for(Integer i=0; i<=maxNumberOfCards; i++)
+			cardsNumbers.add(i.toString());
+		acceptableStrings.add(cardsNumbers);
+						
+		return new AskParameterPack(parametersName, acceptableStrings);
 	}
 
 	@Override
