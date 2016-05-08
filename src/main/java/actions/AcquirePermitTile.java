@@ -19,9 +19,10 @@ import model.Game;
 
 public class AcquirePermitTile extends MainAction {
 
+
 	private Integer numberOfPermitTile;
-	private List<PoliticsCard> cardsToDescard;
 	private RegionBoard chosenRegion;
+	private List<PoliticsCard> cardsToDescard;
 
 	/**
 	 * constructor of the action
