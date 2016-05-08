@@ -35,10 +35,10 @@ public class ActionExecutor {
 	 */
 	private Action actionTranslator(){
 		if(action.equals("acquire permit tile")) {
-			Action acquirePermitTile=new AcquirePermitTile(this.game, 
-					this.regionTranslator(this.parameters.remove(0)), 
-					this.numberOfPermitTileTranslator(this.parameters.remove(0)), 
-					this.politicsCardsTranslator(this.parameters));
+			Action acquirePermitTile=new AcquirePermitTile(this.game) ;
+				acquirePermitTile.set(this.parameters.remove(0)), 
+				acquirePermitTile.set(this.parameters.remove(0)), 
+				acquirePermitTile.(this.parameters);
 			return acquirePermitTile;
 		}
 		if(action.equals("build by permit tile")) {
