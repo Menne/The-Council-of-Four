@@ -1,6 +1,5 @@
 package actions;
 
-import controller.AskParameterPack;
 import gameStuff.CouncilBalcony;
 import gameStuff.Councillor;
 import model.Game;
