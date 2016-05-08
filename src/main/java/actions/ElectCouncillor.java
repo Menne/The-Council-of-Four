@@ -22,6 +22,14 @@ public class ElectCouncillor extends MainAction {
 		super(game);
 	}
 	
+	public void setNewCouncillor(Councillor newCouncillor) {
+		this.newCouncillor = newCouncillor;
+	}
+
+	public void setCouncilBalcony(CouncilBalcony councilBalcony) {
+		this.councilBalcony = councilBalcony;
+	}
+
 	private boolean checkCouncillor() {
 		return this.game.getGameTable().getCouncilReserve()
 				.getCouncillors().contains(this.newCouncillor);
