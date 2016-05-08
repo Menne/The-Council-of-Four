@@ -20,14 +20,16 @@ public class AcquirePermitTileConfiguration extends ActionConfiguration{
 
 	@Override
 	public AskParameterPack createAskParameterPack() {
+		
 		List<String> parametersName=new ArrayList<String>();
 		parametersName.add("Region where you want to acquire");
 		parametersName.add("Permit tile you want to acquire");
 		parametersName.add("Cards of your hand you want to use to satisfy the council");
 		
 		List<List<String>> acceptableStrings= new ArrayList<List<String>>();
+		
 		List<String> regionNames=new ArrayList<String>();
-		for(RegionBoard region : this.game.getGameTable().getRegionBoards())
+		for (RegionBoard region : this.game.getGameTable().getRegionBoards())
 			regionNames.add(region.getName());
 		acceptableStrings.add(regionNames);
 		
