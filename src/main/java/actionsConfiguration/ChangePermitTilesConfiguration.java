@@ -1,5 +1,6 @@
 package actionsConfiguration;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import actions.ChangePermitTiles;
@@ -18,7 +19,18 @@ public class ChangePermitTilesConfiguration extends ActionConfiguration{
 
 	@Override
 	public AskParameterPack createAskParameterPack() {
-		return null;
+		
+		List<String> parametersName=new ArrayList<String>();
+		parametersName.add("Region where you want to change the permit tiles");
+		
+		List<List<String>> acceptableStrings=new ArrayList<List<String>>();
+		
+		List<String> regionNames=new ArrayList<String>();
+		for (RegionBoard region : this.game.getGameTable().getRegionBoards())
+			regionNames.add(region.getName());
+		acceptableStrings.add(regionNames);
+		
+		return new AskParameterPack(parametersName, acceptableStrings);
 	}
 
 	@Override

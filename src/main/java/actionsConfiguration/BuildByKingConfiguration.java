@@ -22,18 +22,20 @@ public class BuildByKingConfiguration extends ActionConfiguration{
 
 	@Override
 	public AskParameterPack createAskParameterPack() {
+		
 		List<String> parametersName=new ArrayList<String>();
 		parametersName.add("City where you want to build an emporium");
 		parametersName.add("Cards of your hand you want to use to satisfy the council");
 		
-		List<List<String>> acceptableStrings= new ArrayList<List<String>>();
+		List<List<String>> acceptableStrings=new ArrayList<List<String>>();
 		
-		/**List<String> ciryName=new ArrayList<String>();
+		List<String> cityName=new ArrayList<String>();
 			for (RegionBoard region : this.game.getGameTable().getRegionBoards())
 				for (City city : region.getRegionCities())
 					for (Emporium emporium : city.getCityEmporiums())
-						if (emporium.getEmporiumsPlayer().equals(this.game.getCurrentPlayer()))
-							acceptableStrings.add(city.getName());*/
+						if (!emporium.getEmporiumsPlayer().equals(this.game.getCurrentPlayer()))
+							cityName.add(city.getName());
+			acceptableStrings.add(cityName);
 		
 		List<String> cardsNumbers=new ArrayList<String>();
 		int maxNumberOfCards=this.game.getCurrentPlayer().getHand().size();

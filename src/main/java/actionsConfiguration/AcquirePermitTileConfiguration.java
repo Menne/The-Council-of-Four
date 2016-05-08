@@ -26,7 +26,7 @@ public class AcquirePermitTileConfiguration extends ActionConfiguration{
 		parametersName.add("Permit tile you want to acquire");
 		parametersName.add("Cards of your hand you want to use to satisfy the council");
 		
-		List<List<String>> acceptableStrings= new ArrayList<List<String>>();
+		List<List<String>> acceptableStrings=new ArrayList<List<String>>();
 		
 		List<String> regionNames=new ArrayList<String>();
 		for (RegionBoard region : this.game.getGameTable().getRegionBoards())

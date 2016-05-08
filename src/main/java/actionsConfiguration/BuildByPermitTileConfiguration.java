@@ -1,10 +1,12 @@
 package actionsConfiguration;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import actions.BuildByPermitTile;
 import controller.AskParameterPack;
 import gameStuff.City;
+import gameStuff.Emporium;
 import gameStuff.PermitTile;
 import gameStuff.RegionBoard;
 import model.Game;
@@ -21,8 +23,27 @@ public class BuildByPermitTileConfiguration extends ActionConfiguration{
 
 	@Override
 	public AskParameterPack createAskParameterPack() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<String> parametersName=new ArrayList<String>();
+		parametersName.add("City where you want to build an emporium");
+		parametersName.add("Permit tile you want to use to acquire");
+		
+		List<List<String>> acceptableStrings=new ArrayList<List<String>>();
+		
+		List<String> cityName=new ArrayList<String>();
+		for (RegionBoard region : this.game.getGameTable().getRegionBoards())
+			for (City city : region.getRegionCities())
+				for (Emporium emporium : city.getCityEmporiums())
+					if (emporium.getEmporiumsPlayer().equals(this.game.getCurrentPlayer()))
+						cityName.add(city.getName());
+	
+		List<String> permitTilesNumbers=new ArrayList<String>();
+		int maxNumberOfCards=this.game.getCurrentPlayer().getPlayersPermitTilesTurnedUp().size();
+		for(Integer i=0; i<=maxNumberOfCards; i++)
+			permitTilesNumbers.add(i.toString());
+		acceptableStrings.add(permitTilesNumbers);
+	
+		return new AskParameterPack(parametersName, acceptableStrings);
 	}
 
 	@Override

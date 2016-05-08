@@ -1,11 +1,13 @@
 package actionsConfiguration;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import actions.ElectCouncillorByAssistant;
 import controller.AskParameterPack;
 import gameStuff.CouncilBalcony;
 import gameStuff.Councillor;
+import gameStuff.RegionBoard;
 import model.Game;
 
 public class ElectCouncillorByAssistantConfiguration extends ActionConfiguration{
@@ -19,8 +21,25 @@ public class ElectCouncillorByAssistantConfiguration extends ActionConfiguration
 
 	@Override
 	public AskParameterPack createAskParameterPack() {
-		// TODO Auto-generated method stub
-		return null;
+
+		List<String> parametersName=new ArrayList<String>();
+		parametersName.add("Colour of the councillor which you want to pick");
+		parametersName.add("Region where there is the council balcony in which you want to substitue a councillor");
+		
+		List<List<String>> acceptableStrings=new ArrayList<List<String>>();
+		
+		List<String> councillorColours=new ArrayList<String>();
+		for (Councillor councillor : this.game.getGameTable().getCouncilReserve().getCouncillors())
+			if (councillorColours.contains(councillor.getColour().getColour()))
+				councillorColours.add(councillor.getColour().getColour());
+		acceptableStrings.add(councillorColours);
+		
+		List<String> regionNames=new ArrayList<String>();
+		for (RegionBoard region : this.game.getGameTable().getRegionBoards())
+			regionNames.add(region.getName());
+		acceptableStrings.add(regionNames);
+		
+		return new AskParameterPack(parametersName, acceptableStrings);
 	}
 
 	@Override
