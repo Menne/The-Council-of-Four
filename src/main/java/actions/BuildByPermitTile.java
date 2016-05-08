@@ -65,7 +65,7 @@ public class BuildByPermitTile extends MainAction {
 			assignRegionBonus();
 		if (this.selectedCity.getColour().isBonusAvailable())
 			assignColourBonus();
-		
+		this.decrementAction();
 		return true;
 	}
 	

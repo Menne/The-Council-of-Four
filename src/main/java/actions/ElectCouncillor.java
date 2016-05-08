@@ -49,6 +49,7 @@ public class ElectCouncillor extends MainAction {
 		oldCouncillor=this.councilBalcony.substituteCouncillor(this.newCouncillor);
 		this.game.getGameTable().getCouncilReserve().getCouncillors().add(oldCouncillor);
 		this.game.getCurrentPlayer().incrementCoins(givenCoins);
+		this.decrementAction();
 		return true;
 	}
 

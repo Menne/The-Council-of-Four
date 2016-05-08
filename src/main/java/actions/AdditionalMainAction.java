@@ -33,8 +33,9 @@ public class AdditionalMainAction extends QuickAction {
 		if(!this.checkAssistants())
 			return false;
 		NormalTurn currentTurn=(NormalTurn) this.game.getCurrentTurn();
-		currentTurn.decrementMainActionAvailable();
+		currentTurn.incrementMainActionAvailable();
 		this.game.getCurrentPlayer().decrementAssistants(necessaryAssistants);
+		this.decrementAction();
 		return true;
 	}
 

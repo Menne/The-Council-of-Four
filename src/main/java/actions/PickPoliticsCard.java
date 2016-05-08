@@ -27,6 +27,11 @@ public class PickPoliticsCard extends Action {
 		this.game.getCurrentPlayer().getHand().add(this.game.getGameTable().getPoliticsDeck().pickCard());
 		return true;
 	}
+
+	@Override
+	protected void decrementAction() {
+		
+	}
 	
 	
 }

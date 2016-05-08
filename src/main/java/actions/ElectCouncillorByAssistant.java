@@ -54,6 +54,7 @@ public class ElectCouncillorByAssistant extends QuickAction {
 		oldCouncillor=this.councilBalcony.substituteCouncillor(this.newCouncillor);
 		this.game.getGameTable().getCouncilReserve().getCouncillors().add(oldCouncillor);
 		this.game.getCurrentPlayer().decrementAssistants(necessaryAssistants);
+		this.decrementAction();
 		return true;
 	}
 

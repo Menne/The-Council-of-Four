@@ -80,6 +80,7 @@ public class AcquirePermitTile extends MainAction {
 			this.game.getCurrentPlayer().removeCardFromHand(card);
 		this.game.getCurrentPlayer().addTile(this.chosenRegion.pickUncoveredPermitTile(this.numberOfPermitTile));
 		this.chosenRegion.uncoverPermitTiles();
+		this.decrementAction();
 	    return true;
 	}
 	

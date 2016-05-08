@@ -32,5 +32,11 @@ public class PurchasedPermitTileAction extends Action {
 			bonusToAssign.assignBonus(this.game);
 		return true;
 	}
+
+	@Override
+	protected void decrementAction() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
