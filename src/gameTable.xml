@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 
 <GameTable>
+<rewardTokens>
+	<RewardToken>
+		<rewardTokenBonus>
+			<Bonus>asdfghjklsdfghjklsdfghjkl</Bonus>
+			<Bonus>asdfghjklsdfghjklsdfghjkl</Bonus>
+		</rewardTokenBonus>
+	</RewardToken>
+	<RewardToken>
+		<rewardTokenBonus>
+			<Bonus>asdfghjklsdfghjklsdfghjkl</Bonus>
+			<Bonus>asdfghjklsdfghjklsdfghjkl</Bonus>
+		</rewardTokenBonus>
+	</RewardToken>
+	<RewardToken>
+		<rewardTokenBonus>
+			<Bonus>asdfghjklsdfghjklsdfghjkl</Bonus>
+			<Bonus>asdfghjklsdfghjklsdfghjkl</Bonus>
+		</rewardTokenBonus>
+	</RewardToken>
+	------------------------------------------tutti i reward tokens!!!!!!!!
+</rewardTokens>
+
   <map>
 	<RegionBoard>
 		<ScoreBonus>5</ScoreBonus>
@@ -23,7 +45,12 @@
 			<City>
 				<name>Burgen</name>
 				<isKingPresent>false</isKingPresent>
-				<CityColour>yellow</CityColour>
+				<CityColour>
+					<name>yellow</name>
+					<colorBonus>
+						<scoreAdvancement>20</scoreAdvancement>
+					</colorBonus>
+				</CityColour>
 				<nearCities>
 					<City>Arkon</City>
 					<City>Dorful</City>
@@ -33,7 +60,12 @@
 			<City>
 				<name>Castrum</name>
 				<isKingPresent>false</isKingPresent>
-				<CityColour>grey</CityColour>
+				<CityColour>
+					<name>gray</name>
+					<colorBonus>
+						<scoreAdvancement>12</scoreAdvancement>
+					</colorBonus>
+				</CityColour>
 				<nearCities>
 					<City>Arkon</City>
 					<City>Framek</City>
@@ -42,7 +74,12 @@
 			<City>
 				<name>Dorful</name>
 				<isKingPresent>false</isKingPresent>
-				<CityColour>gray</CityColour>
+				<CityColour>
+					<name>gray</name>
+					<colorBonus>
+						<scoreAdvancement>12</scoreAdvancement>
+					</colorBonus>
+				</CityColour>
 				<nearCities>
 					<City>Burgen</City>
 					<City>Graden</City>
@@ -51,13 +88,19 @@
 			<City>
 				<name>Esti</name>
 				<isKingPresent>false</isKingPresent>
-				<CityColour>orange</CityColour>
+				<CityColour>
+					<name>orange</name>
+					<colorBonus>
+						<scoreAdvancement>8</scoreAdvancement>
+					</colorBonus>
+				</CityColour>
 				<nearCities>
 					<City>Burgen</City>
 					<City>Hellar</City>
 				</nearCities>
 			</City>
 		</regionCities>
+		
 		<PermitDeck>
 			<PermitTile>
 				<buildableCities>
@@ -79,103 +122,186 @@
 		<regionCities>
 			<City>
 				<name>Framek</name>
-				<region>Sea</region>
-				<CityColour>blue</CityColour>
+				<isKingPresent>false</isKingPresent>
+				<CityColour>
+					<name>blue</name>
+					<colorBonus>
+						<scoreAdvancement>5</scoreAdvancement>
+					</colorBonus>
+				</CityColour>
 				<nearCities>
 					<City>Castrum</City>
-					<City>Burgen</City>
+					<City>Indur</City>
 				</nearCities>
 			</City>
 			<City>
 				<name>Graden</name>
-				<region>Sea</region>
-				<CityColour>yellow</CityColour>
+				<isKingPresent>false</isKingPresent>
+				<CityColour>
+					<name>gray</name>
+					<colorBonus>
+						<scoreAdvancement>12</scoreAdvancement>
+					</colorBonus>
+				</CityColour>
 				<nearCities>
-					<City>Arkon</City>
+					<City>Juvelar</City>
 					<City>Dorful</City>
-					<City>Esti</City>
 				</nearCities>
 			</City>
 			<City>
 				<name>Hellar</name>
-				<region>Sea</region>
-				<CityColour>grey</CityColour>
+				<isKingPresent>false</isKingPresent>
+				<CityColour>
+					<name>yellow</name>
+					<colorBonus>
+						<scoreAdvancement>20</scoreAdvancement>
+					</colorBonus>
+				</CityColour>
 				<nearCities>
-					<City>Arkon</City>
-					<City>Framek</City>
+					<City>Juvelar</City>
+					<City>Esti</City>
+					<City>Merkatim</City>
 				</nearCities>
 			</City>
 			<City>
 				<name>Indur</name>
-				<region>Sea</region>
-				<CityColour>gray</CityColour>
+				<isKingPresent>false</isKingPresent>
+				<CityColour>
+					<name>orange</name>
+					<colorBonus>
+						<scoreAdvancement>8</scoreAdvancement>
+					</colorBonus>
+				</CityColour>
 				<nearCities>
-					<City>Burgen</City>
-					<City>Graden</City>
+					<City>Juvelar</City>
+					<City>Framek</City>
+					<City>Kultos</City>
 				</nearCities>
 			</City>
 			<City>
 				<name>Juvelar</name>
-				<region>Sea</region>
-				<CityColour>orange</CityColour>
+				<isKingPresent>true</isKingPresent>
+				<CityColour>
+					<name>violet</name>
+					<colorBonus>
+						<scoreAdvancement></scoreAdvancement>
+					</colorBonus>
+				</CityColour>
 				<nearCities>
-					<City>Burgen</City>
+					<City>Indur</City>
+					<City>Graden</City>
 					<City>Hellar</City>
+					<City>Lyram</City>
 				</nearCities>
 			</City>
 		</regionCities>
+	  <PermitDeck>
+			<PermitTile>
+				<buildableCities>
+					<buildableCity>A</buildableCity>
+					<buildableCity>B</buildableCity>
+				</buildableCities>
+				<bonusSet>
+					<AssistantBonus>1</AssistantBonus>
+				</bonusSet>
+			</PermitTile>
+			<PermitTile>
+			-------------------etc
+			</PermitTile>
+		</PermitDeck>	
 	</RegionBoard>
+	
 	<RegionBoard>
 		<ScoreBonus>5</ScoreBonus>
 		<name>Mountains</name>
 		<regionCities>
 			<City>
-				<regionName>Arkon</regionName>
-				<region>Sea</region>
-				<CityColour>blue</CityColour>
+				<name>Kultos</name>
+				<isKingPresent>false</isKingPresent>
+				<CityColour>
+					<name>yellow</name>
+					<colorBonus>
+						<scoreAdvancement>20</scoreAdvancement>
+					</colorBonus>
+				</CityColour>
 				<nearCities>
-					<City>Castrum</City>
-					<City>Burgen</City>
+					<City>Naris</City>
+					<City>Indur</City>
 				</nearCities>
 			</City>
 			<City>
-				<name>Burgen</name>
-				<region>Sea</region>
-				<CityColour>yellow</CityColour>
+				<name>Naris</name>
+				<isKingPresent>false</isKingPresent>
+				<CityColour>
+					<name>orange</name>
+					<colorBonus>
+						<scoreAdvancement>8</scoreAdvancement>
+					</colorBonus>
+				</CityColour>
 				<nearCities>
-					<City>Arkon</City>
-					<City>Dorful</City>
-					<City>Esti</City>
+					<City>Kultos</City>
+					<City>Osium</City>
 				</nearCities>
 			</City>
 			<City>
-				<name>Castrum</name>
-				<region>Sea</region>
-				<CityColour>grey</CityColour>
+				<name>Osium</name>
+				<isKingPresent>false</isKingPresent>
+				<CityColour>
+					<name>yellow</name>
+					<colorBonus>
+						<scoreAdvancement>20</scoreAdvancement>
+					</colorBonus>
+				</CityColour>
 				<nearCities>
-					<City>Arkon</City>
-					<City>Framek</City>
+					<City>Naris</City>
+					<City>Lyram</City>
+					<City>Merkatim</City>
 				</nearCities>
 			</City>
 			<City>
-				<name>Dorful</name>
-				<region>Sea</region>
-				<CityColour>gray</CityColour>
+				<name>Lyram</name>
+				<isKingPresent>false</isKingPresent>
+				<CityColour>
+					<name>gray</name>
+					<colorBonus>
+						<scoreAdvancement>12</scoreAdvancement>
+					</colorBonus>
+				</CityColour>
 				<nearCities>
-					<City>Burgen</City>
-					<City>Graden</City>
+					<City>Osium</City>
+					<City>Juvelar</City>
 				</nearCities>
 			</City>
 			<City>
-				<name>Esti</name>
-				<region>Sea</region>
-				<CityColour>orange</CityColour>
+				<name>Merkatim</name>
+				<isKingPresent>false</isKingPresent>
+				<CityColour>
+					<name>blue</name>
+					<colorBonus>
+						<scoreAdvancement>5</scoreAdvancement>
+					</colorBonus>
+				</CityColour>
 				<nearCities>
-					<City>Burgen</City>
+					<City>Osium</City>
 					<City>Hellar</City>
 				</nearCities>
 			</City>
 		</regionCities>
+		
+	  <PermitDeck>
+			<PermitTile>
+				<buildableCities>
+					<buildableCity>A</buildableCity>
+					<buildableCity>B</buildableCity>
+				</buildableCities>
+				<bonusSet>
+					<AssistantBonus>1</AssistantBonus>
+				</bonusSet>
+			</PermitTile>
+			<PermitTile>
+			-------------------etc
+			</PermitTile>
+		</PermitDeck>
 	</RegionBoard>
   </map>	
 	<NobilityTrack>
@@ -204,7 +330,108 @@
 					<Bonus></Bonus>
 				</BonusSet>
 			</NobilityCell>
-			-----------------------------------------
+			<NobilityCell>
+				<cellNumber>4</cellNumber>
+				<BonusSet>
+					<Bonus></Bonus>
+				</BonusSet>
+			</NobilityCell>
+			<NobilityCell>
+				<cellNumber>5</cellNumber>
+				<BonusSet>
+					<Bonus></Bonus>
+				</BonusSet>
+			</NobilityCell>
+			<NobilityCell>
+				<cellNumber>6</cellNumber>
+				<BonusSet>
+					<Bonus></Bonus>
+				</BonusSet>
+			</NobilityCell>
+			<NobilityCell>
+				<cellNumber>7</cellNumber>
+				<BonusSet>
+					<Bonus></Bonus>
+				</BonusSet>
+			</NobilityCell>
+			<NobilityCell>
+				<cellNumber>8</cellNumber>
+				<BonusSet>
+					<Bonus></Bonus>
+				</BonusSet>
+			</NobilityCell>
+			<NobilityCell>
+				<cellNumber>9</cellNumber>
+				<BonusSet>
+					<Bonus></Bonus>
+				</BonusSet>
+			</NobilityCell>
+			<NobilityCell>
+				<cellNumber>10</cellNumber>
+				<BonusSet>
+					<Bonus></Bonus>
+				</BonusSet>
+			</NobilityCell>
+			<NobilityCell>
+				<cellNumber>11</cellNumber>
+				<BonusSet>
+					<Bonus></Bonus>
+				</BonusSet>
+			</NobilityCell>
+			<NobilityCell>
+				<cellNumber>12</cellNumber>
+				<BonusSet>
+					<Bonus></Bonus>
+				</BonusSet>
+			</NobilityCell>
+			<NobilityCell>
+				<cellNumber>13</cellNumber>
+				<BonusSet>
+					<Bonus></Bonus>
+				</BonusSet>
+			</NobilityCell>
+			<NobilityCell>
+				<cellNumber>14</cellNumber>
+				<BonusSet>
+					<Bonus></Bonus>
+				</BonusSet>
+			</NobilityCell>
+			<NobilityCell>
+				<cellNumber>15</cellNumber>
+				<BonusSet>
+					<Bonus></Bonus>
+				</BonusSet>
+			</NobilityCell>
+			<NobilityCell>
+				<cellNumber>16</cellNumber>
+				<BonusSet>
+					<Bonus></Bonus>
+				</BonusSet>
+			</NobilityCell>
+			<NobilityCell>
+				<cellNumber>17</cellNumber>
+				<BonusSet>
+					<Bonus></Bonus>
+				</BonusSet>
+			</NobilityCell>
+			<NobilityCell>
+				<cellNumber>18</cellNumber>
+				<BonusSet>
+					<Bonus></Bonus>
+				</BonusSet>
+			</NobilityCell>
+			<NobilityCell>
+				<cellNumber>19</cellNumber>
+				<BonusSet>
+					<Bonus></Bonus>
+				</BonusSet>
+			</NobilityCell>
+			<NobilityCell>
+				<cellNumber>20</cellNumber>
+				<BonusSet>
+					<Bonus></Bonus>
+				</BonusSet>
+			</NobilityCell>
 		</nobilityCells>
 	</NobilityTrack>
 	<CouncillorsReserve>

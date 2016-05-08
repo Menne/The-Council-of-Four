@@ -20,7 +20,8 @@ public class City {
 
 	@XmlElement(name="name")
 	private final String name;
-	private Set<Bonus> rewardToken;
+	
+	private Set<Bonus> rewardToken; //NON è PIù UN SET DI BONUS MA è UN OGGETTO REWARD TOKEN! COSTRUTTORE DEVE PRENDERNE UNO RANDOMICAMENTE!!
 	
 	@XmlElement(name="isKingPresent")
 	private Boolean isKingPresent;
