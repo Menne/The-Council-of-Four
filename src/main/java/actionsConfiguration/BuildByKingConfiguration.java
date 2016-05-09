@@ -72,18 +72,17 @@ public class BuildByKingConfiguration extends ActionConfiguration{
 		this.action.setSelectedCity(cityTranslator
 				(stringParameters.remove(0)));
 		List<PoliticsCard> cardsTranslated = new ArrayList<PoliticsCard>();
+		cardsTranslated.add(politicsCardTranslator(stringParameters.remove(0)));
 		for (String parameter : stringParameters)
-			cardsTranslated.add(politicsCardTranslator(parameter));
+			if (!parameter.equals("x"))
+				cardsTranslated.add(politicsCardTranslator(parameter));
 		this.action.setCardsToDescard(cardsTranslated);
 	}
 	
 	private PoliticsCard politicsCardTranslator(String cardToTranslate) {
-		if (cardToTranslate!="x") {
-			Integer numberOfCard=Integer.parseInt(cardToTranslate);
-			PoliticsCard cardTranslated=this.game.getCurrentPlayer().getHand().get(numberOfCard);
-			return cardTranslated;
-		}
-		return null;
+		Integer numberOfCard=Integer.parseInt(cardToTranslate);
+		PoliticsCard cardTranslated=this.game.getCurrentPlayer().getHand().get(numberOfCard);
+		return cardTranslated;
 	}
 	
 	private City cityTranslator(String cityToTranslate) {
