@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Set;
 
 import bonus.*;
@@ -203,12 +204,13 @@ public class Main {
 		//creo game
 		Game game=new Game(players, gameTable);
 		
+		Scanner scanner=new Scanner(System.in);
 		GameLogic gameLogic=new GameLogic(game);
-		View view=new CLI(gameLogic);
+		View view=new CLI(gameLogic, scanner);
 		view.registerObserver(gameLogic);
 		
 		gameLogic.play();
-		
+		scanner.close(); 
 		
 //		System.out.println(game);				
 	}

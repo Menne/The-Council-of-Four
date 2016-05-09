@@ -6,20 +6,22 @@ import java.util.Scanner;
 
 import controller.AskActionPack;
 import controller.AskParameterPack;
+import controller.ErrorSignal;
 import controller.GameLogic;
-import controller.Turn;
 import model.Game;
 import observerPattern.Observable;
 
 public class CLI extends View{
 
-	public CLI(GameLogic gameLogic) {
+	private final Scanner scanner;
+	
+	public CLI(GameLogic gameLogic, Scanner scanner) {
 		super(gameLogic);
+		this.scanner=scanner;
 	}
 
 	@Override
 	public <C> void update(Observable o, C change) {
-		Scanner scanner=new Scanner(System.in);
 		if(change instanceof AskActionPack){
 			AskActionPack notify=(AskActionPack) change;
 			stamp(notify.getGame());
@@ -39,6 +41,8 @@ public class CLI extends View{
 			//invio give action pack
 			notifyObservers(gap);							
 		}
+		
+		
 		if(change instanceof AskParameterPack){
 			AskParameterPack notify=(AskParameterPack) change;
 			//chiedo all'utente di inserire i parametri e li salvo in una lista
@@ -54,13 +58,15 @@ public class CLI extends View{
 					parameter=scanner.nextLine();
 				}
 				selectedParameters.add(parameter);
-			}
-			
+			}		
 			//preparo pacchetto
 			GiveParameterPack gpp = new GiveParameterPack(selectedParameters);
 			notifyObservers(gpp);
 		}
-		scanner.close();
+		
+		if(change instanceof ErrorSignal)
+			System.out.println("Sorry, but you cannot do this action.\n"
+					+ "Check well your game state before choosing action\n\n");
 	}
 	
 	/**
