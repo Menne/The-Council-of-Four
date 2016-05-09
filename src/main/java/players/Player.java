@@ -19,7 +19,7 @@ public class Player {
 	private final int playerNumber;
 	private final String name;
 	private int assistants;
-	private final Score score;
+	private int score;
 	private int nobility;
 	private int coins;
 	private final List<PoliticsCard> hand;
@@ -42,7 +42,7 @@ public class Player {
 		this.playerNumber=playerNumber;
 		this.name=name;
 		this.assistants=assistants;
-		this.score=new Score(0);
+		this.score=0;
 		this.nobility=0;
 		this.coins=coins;
 		this.hand=new ArrayList<PoliticsCard>();
@@ -67,7 +67,7 @@ public class Player {
 		return assistants;
 	}
 	
-	public Score getScore() {
+	public int getScore() {
 		return score;
 	}
 	
@@ -103,8 +103,8 @@ public class Player {
 	 * @param increment
 	 * @param score
 	 */
-	public void incrementScore(int increment, Score score) {
-		score.incrementScore(increment);
+	public void incrementScore(int increment, int score) {
+		this.score+=increment;
 	}
 	
 	/**
@@ -231,8 +231,13 @@ public class Player {
 
 	@Override
 	public String toString() {
-		return "Player [playerNumber=" + playerNumber + ", name=" + name + "]";
+		return "Player [playerNumber=" + playerNumber + ", name=" + name + ", assistants=" + assistants + ", score="
+				+ score + ", nobility=" + nobility + ", coins=" + coins + ", hand=" + hand
+				+ ", playersPermitTilesTurnedUp=" + playersPermitTilesTurnedUp + ", playersPermitTilesTurnedDown="
+				+ playersPermitTilesTurnedDown + ", emporiums=" + emporiums + "]";
 	}
+
+
 	
 	
 }
