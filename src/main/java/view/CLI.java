@@ -13,13 +13,16 @@ import observerPattern.Observable;
 
 public class CLI extends View{
 
-	public CLI(GameLogic gameLogic) {
+	private final Scanner scanner;
+	
+	public CLI(GameLogic gameLogic, Scanner scanner) {
 		super(gameLogic);
+		this.scanner=scanner;
 	}
 
 	@Override
 	public <C> void update(Observable o, C change) {
-		Scanner scanner=new Scanner(System.in);
+//		Scanner scanner=new Scanner(System.in);
 		if(change instanceof AskActionPack){
 			AskActionPack notify=(AskActionPack) change;
 			stamp(notify.getGame());
@@ -54,13 +57,12 @@ public class CLI extends View{
 					parameter=scanner.nextLine();
 				}
 				selectedParameters.add(parameter);
-			}
-			
+			}		
 			//preparo pacchetto
 			GiveParameterPack gpp = new GiveParameterPack(selectedParameters);
 			notifyObservers(gpp);
 		}
-		scanner.close();
+//		scanner.close();
 	}
 	
 	/**
