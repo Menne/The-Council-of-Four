@@ -13,7 +13,6 @@ public class GameLogic extends Observable implements Observer{
 	
 	public GameLogic(Game game){
 		this.game=game;
-//		view.registerObserver(this);
 	}
 	
 
