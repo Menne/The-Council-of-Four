@@ -118,7 +118,7 @@ public class AcquirePermitTile extends MainAction implements NeedParameters{
 	private boolean CheckHandSatisfiesBalcony() {
 		List<Councillor> temporaryBalcony=new ArrayList<Councillor>();
 		int satisfyCounter=0;
-		for (int i=0; i<=CouncilBalcony.getNumberofcouncillors(); i++)
+		for (int i=0; i<=CouncilBalcony.getNumberofcouncillors()-1; i++)
 			temporaryBalcony.add(chosenRegion.getRegionBalcony().getCouncillors()[i]);
 		
 		for (PoliticsCard politicsCardInHand: cardsToDescard) {

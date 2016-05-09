@@ -40,9 +40,10 @@ public class ChangePermitTilesConfiguration extends ActionConfiguration{
 	}
 	
 	private RegionBoard regionTranslator(String regionToTranslate) {
-		int numberOfRegion=Integer.parseInt(regionToTranslate);
-		RegionBoard regionTranslated=this.game.getGameTable().getRegionBoards().get(numberOfRegion);
-		return regionTranslated;
+		for(RegionBoard region : this.game.getGameTable().getRegionBoards())
+			if(regionToTranslate.equals(region.getName()))
+				return region;
+		throw new IllegalArgumentException("regionToTranslate is not a region name");
 	}
 
 }
