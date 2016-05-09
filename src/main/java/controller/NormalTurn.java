@@ -14,6 +14,14 @@ import actionsConfiguration.ElectCouncillorConfiguration;
 import view.GiveActionPack;
 import view.GiveParameterPack;
 
+/**
+ * It's the class that manage the entire turn of a player.
+ * Everything start from executeAction method.
+ * Initially the player has one main action and one quick action available
+ * @author Luca
+ *
+ */
+
 public class NormalTurn extends Turn{
 	
 	private int mainActionAvailable;
@@ -53,7 +61,16 @@ public class NormalTurn extends Turn{
 		this.quickActionAvailable--;
 	}
 
-
+	/**
+	 * Is called from the update method of the GameLogic when the view notify a pack to it .
+	 * If the pack is a GiveActionPack this method instances the right action 
+	 * and asks the parameters to the view (just if the action need them)
+	 * If the pack is a GiveParametersPack this method sets the parameter of the action
+	 * and execute the action.
+	 * If the action execution return false we will restart from the ask action phase.
+	 * @param pack is the pack received from the GameLogic 
+	 * @throws IllegalArgumentException
+	 */
 	public <P> void receivePack(P pack) throws IllegalArgumentException{
 		boolean actionResult;
 		if(pack instanceof GiveActionPack){
@@ -130,7 +147,10 @@ public class NormalTurn extends Turn{
 		}		
 
 	}
-
+	
+	/**
+	 * Is the entry point used from the GameLogic
+	 */
 	@Override
 	public void executeTurn() {
 		Action action= new PickPoliticsCard(this.gameLogic.getGame());
@@ -141,6 +161,10 @@ public class NormalTurn extends Turn{
 				
 	}
 
+	/**
+	 * Represents the ask parameter phase. Passes the AskParameterPack to the view.
+	 * If it has an empty field we will restart from the ask action phase.
+	 */
 	private void askForParameters(){
 		AskParameterPack app=this.currentConfiguration.createAskParameterPack();
 		if(this.isAcceptableParametersEmpty(app.getAcceptableParameters())){
@@ -151,6 +175,9 @@ public class NormalTurn extends Turn{
 			this.gameLogic.notifyObservers(app);
 	}
 	
+	/**
+	 * Represent the ask action phase. Passes the AskActonPack to the view.
+	 */
 	private void askForAction(){
 		List<String> acceptableActions=new ArrayList<String>();
 		acceptableActions=this.acceptableStringForAction();
@@ -158,7 +185,7 @@ public class NormalTurn extends Turn{
 		this.gameLogic.notifyObservers(aap);
 	}
 	
-	
+
 	private List<String> acceptableStringForAction(){
 		List<String> acceptable=new ArrayList<String>();
 		if(this.mainActionAvailable>0 && this.quickActionAvailable>0)
