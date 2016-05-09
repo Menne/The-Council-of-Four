@@ -6,6 +6,7 @@ import java.util.List;
 import actions.BuildByKing;
 import controller.AskParameterPack;
 import gameStuff.City;
+import gameStuff.CouncilBalcony;
 import gameStuff.Emporium;
 import gameStuff.PoliticsCard;
 import gameStuff.RegionBoard;
@@ -25,7 +26,16 @@ public class BuildByKingConfiguration extends ActionConfiguration{
 		
 		List<String> parametersName=new ArrayList<String>();
 		parametersName.add("City where you want to build an emporium");
-		parametersName.add("Cards of your hand you want to use to satisfy the council");
+		parametersName.add("First card of your hand you want to use to satisfy the council");
+		parametersName.add("Second card of your hand you want to use to satisfy the council. \n"
+				+ "Attention: if you don't want to discard cards anymore, you just have to press x. \n"
+				+ "If you press the same card you have discarded before, it will not be considered");
+		parametersName.add("Third card of your hand you want to use to satisfy the council. \n"
+				+ "Attention: if you don't want to discard cards anymore, you just have to press x. \n"
+				+ "If you press the same card you have discarded before, it will not be considered");
+		parametersName.add("Fourth card of your hand you want to use to satisfy the council. \n"
+				+ "Attention: if you don't want to discard cards anymore, you just have to press x. \n"
+				+ "If you press the same card you have discarded before, it will not be considered");
 		
 		List<List<String>> acceptableStrings=new ArrayList<List<String>>();
 		
@@ -44,7 +54,16 @@ public class BuildByKingConfiguration extends ActionConfiguration{
 		for(Integer i=0; i<=maxNumberOfCards; i++)
 			cardsNumbers.add(i.toString());
 		acceptableStrings.add(cardsNumbers);
-						
+		
+		for (int i=0; i<CouncilBalcony.getNumberofcouncillors()-1; i++) {
+			List<String> cardsNumbersPlusExit=new ArrayList<String>();
+			int maxNumberOfCardsPlusExit=this.game.getCurrentPlayer().getHand().size();
+			for(Integer j=0; j<=maxNumberOfCardsPlusExit; j++)
+				cardsNumbersPlusExit.add(j.toString());
+			cardsNumbersPlusExit.add("x");
+			acceptableStrings.add(cardsNumbersPlusExit);
+		}
+		
 		return new AskParameterPack(parametersName, acceptableStrings);
 	}
 
@@ -52,19 +71,19 @@ public class BuildByKingConfiguration extends ActionConfiguration{
 	public void setParameters(List<String> stringParameters) {
 		this.action.setSelectedCity(cityTranslator
 				(stringParameters.remove(0)));
-		this.action.setCardsToDescard(politicsCardsTranslator
-				(stringParameters));
-		
+		List<PoliticsCard> cardsTranslated = new ArrayList<PoliticsCard>();
+		for (String parameter : stringParameters)
+			cardsTranslated.add(politicsCardTranslator(parameter));
+		this.action.setCardsToDescard(cardsTranslated);
 	}
 	
-	private List<PoliticsCard> politicsCardsTranslator(List<String> cardsToTranslate) {
-		List<PoliticsCard> cardsTranslated = new ArrayList<PoliticsCard>();
-		Integer numberOfCard;
-		for (String card : cardsToTranslate) {
-			numberOfCard=Integer.parseInt(card); 
-			cardsTranslated.add(this.game.getCurrentPlayer().getHand().get(numberOfCard));
+	private PoliticsCard politicsCardTranslator(String cardToTranslate) {
+		if (cardToTranslate!="x") {
+			Integer numberOfCard=Integer.parseInt(cardToTranslate);
+			PoliticsCard cardTranslated=this.game.getCurrentPlayer().getHand().get(numberOfCard);
+			return cardTranslated;
 		}
-		return cardsTranslated;
+		return null;
 	}
 	
 	private City cityTranslator(String cityToTranslate) {

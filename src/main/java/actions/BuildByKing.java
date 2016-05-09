@@ -155,24 +155,27 @@ public class BuildByKing extends MainAction implements NeedParameters{
 	}
 	
 	/**
-	 * checks if the player hands cards' colour match with the colour of councillors
+	 * checks if the player hands cards' colour matches with the colour of councillors
 	 * of the selected balcony
 	 */
 	private boolean CheckHandSatisfiesBalcony() {
 		List<Councillor> temporaryBalcony=new ArrayList<Councillor>();
 		int satisfyCounter=0;
-		for (int i=0; i<=CouncilBalcony.getNumberofcouncillors(); i++)
+		for (int i=0; i<=CouncilBalcony.getNumberofcouncillors()-1; i++)
 			temporaryBalcony.add(this.game.getGameTable().getCouncilOfKing().getCouncillors()[i]);
 		
 		for (PoliticsCard politicsCardInHand: cardsToDescard) {
 			if (politicsCardInHand.getColour().getColour() == "rainbow")
 				satisfyCounter++;
-			for (Councillor councillorToCheck : temporaryBalcony)
-				if (councillorToCheck.getColour().equals(politicsCardInHand.getColour())) {
-					temporaryBalcony.remove(councillorToCheck);
+			for (int j=0; j<=temporaryBalcony.size()-1;) {
+				if (temporaryBalcony.get(j).getColour().equals(politicsCardInHand.getColour())) {
+					temporaryBalcony.remove(temporaryBalcony.get(j));
 					satisfyCounter++;
 				}
+				else
+					j++;
 			}
+		}
 		return satisfyCounter == this.cardsToDescard.size();
 	}
 	
