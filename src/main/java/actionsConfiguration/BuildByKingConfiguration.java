@@ -51,14 +51,14 @@ public class BuildByKingConfiguration extends ActionConfiguration{
 		
 		List<String> cardsNumbers=new ArrayList<String>();
 		int maxNumberOfCards=this.game.getCurrentPlayer().getHand().size();
-		for(Integer i=0; i<=maxNumberOfCards; i++)
+		for(Integer i=0; i<maxNumberOfCards; i++)
 			cardsNumbers.add(i.toString());
 		acceptableStrings.add(cardsNumbers);
 		
 		for (int i=0; i<CouncilBalcony.getNumberofcouncillors()-1; i++) {
 			List<String> cardsNumbersPlusExit=new ArrayList<String>();
 			int maxNumberOfCardsPlusExit=this.game.getCurrentPlayer().getHand().size();
-			for(Integer j=0; j<=maxNumberOfCardsPlusExit; j++)
+			for(Integer j=0; j<maxNumberOfCardsPlusExit; j++)
 				cardsNumbersPlusExit.add(j.toString());
 			cardsNumbersPlusExit.add("x");
 			acceptableStrings.add(cardsNumbersPlusExit);

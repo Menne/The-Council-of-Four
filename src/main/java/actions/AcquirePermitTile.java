@@ -119,17 +119,20 @@ public class AcquirePermitTile extends MainAction implements NeedParameters{
 		List<Councillor> temporaryBalcony=new ArrayList<Councillor>();
 		int satisfyCounter=0;
 		for (int i=0; i<=CouncilBalcony.getNumberofcouncillors()-1; i++)
-			temporaryBalcony.add(chosenRegion.getRegionBalcony().getCouncillors()[i]);
+			temporaryBalcony.add(this.game.getGameTable().getCouncilOfKing().getCouncillors()[i]);
 		
 		for (PoliticsCard politicsCardInHand: cardsToDescard) {
 			if (politicsCardInHand.getColour().getColour() == "rainbow")
 				satisfyCounter++;
-			for (Councillor councillorToCheck : temporaryBalcony)
-				if (councillorToCheck.getColour().equals(politicsCardInHand.getColour())) {
-					temporaryBalcony.remove(councillorToCheck);
+			for (int j=0; j<=temporaryBalcony.size()-1;) {
+				if (temporaryBalcony.get(j).getColour().equals(politicsCardInHand.getColour())) {
+					temporaryBalcony.remove(temporaryBalcony.get(j));
 					satisfyCounter++;
 				}
+				else
+					j++;
 			}
+		}
 		return satisfyCounter == this.cardsToDescard.size();
 	}
 

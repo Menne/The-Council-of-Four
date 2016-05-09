@@ -31,8 +31,8 @@ public class CLI extends View{
 			for(String action : notify.getAcceptableString())
 				System.out.println(action);
 			String selectedAction=scanner.nextLine();
-			while(!notify.getAcceptableString().contains(selectedAction)){
-				System.out.println("You have choosen a wrong action. Retry");
+			while(!notify.cutStrings().contains(selectedAction)){
+				System.out.println("You have chosen a wrong action. Retry");
 				selectedAction=scanner.nextLine();
 				}
 			//preparo give action pack
@@ -49,9 +49,9 @@ public class CLI extends View{
 			List<String> selectedParameters=new ArrayList<String>();
 			for(int i=0; i<notify.getParameters().size(); i++){
 				System.out.println("Insert Parameter: "+notify.getParameters().get(i)+
-						". Chose among:\n");
+						". Choose among:\n");
 				for(String possibleString : notify.getAcceptableParameters().get(i))
-					System.out.println(possibleString);
+					System.out.print(possibleString + "\t");
 				String parameter=scanner.nextLine();
 				while(!notify.getAcceptableParameters().get(i).contains(parameter)){
 					System.out.println("Wrong parameter. Retry.");

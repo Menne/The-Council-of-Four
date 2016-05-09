@@ -76,31 +76,31 @@ public class NormalTurn extends Turn{
 		if(pack instanceof GiveActionPack){
 			GiveActionPack gap= (GiveActionPack) pack;
 			switch(gap.getGivenAction()){ 
-			case "M1":
+			case "m1":
 				ElectCouncillor m1=new ElectCouncillor(this.gameLogic.getGame());
 				this.currentAction=m1;
 				this.currentConfiguration=new ElectCouncillorConfiguration(this.gameLogic.getGame(), m1);
 				this.askForParameters();				
 				break;
-			case "M2":
+			case "m2":
 				AcquirePermitTile m2=new AcquirePermitTile(this.gameLogic.getGame());
 				this.currentAction=m2;
 				currentConfiguration=new AcquirePermitTileConfiguration(this.gameLogic.getGame(), m2);
 				this.askForParameters();
 				break;
-			case "M3":
+			case "m3":
 				BuildByPermitTile m3=new BuildByPermitTile(this.gameLogic.getGame());
 				this.currentAction=m3;
 				currentConfiguration=new BuildByPermitTileConfiguration(this.gameLogic.getGame(), m3);
 				this.askForParameters();
 				break;
-			case "M4":
+			case "m4":
 				BuildByKing m4=new BuildByKing(this.gameLogic.getGame());
 				this.currentAction=m4;
 				currentConfiguration=new BuildByKingConfiguration(this.gameLogic.getGame(), m4);
 				this.askForParameters();
 				break;
-			case "Q1":
+			case "q1":
 				Action q1 = new EngageAssistant(this.gameLogic.getGame());
 				actionResult=q1.executeAction();
 				if(!actionResult){
@@ -108,19 +108,19 @@ public class NormalTurn extends Turn{
 					this.askForAction();
 				}
 				break;
-			case "Q2":
+			case "q2":
 				ChangePermitTiles q2=new ChangePermitTiles(this.gameLogic.getGame());
 				this.currentAction=q2;
 				currentConfiguration=new ChangePermitTilesConfiguration(this.gameLogic.getGame(), q2);  
 				this.askForParameters();
 				break;
-			case "Q3":
+			case "q3":
 				ElectCouncillorByAssistant q3=new ElectCouncillorByAssistant(this.gameLogic.getGame());
 				this.currentAction=q3;
 				currentConfiguration=new ElectCouncillorByAssistantConfiguration(this.gameLogic.getGame(), q3);
 				this.askForParameters();
 				break;
-			case "Q4":
+			case "q4":
 				Action q4 = new AdditionalMainAction(this.gameLogic.getGame());
 				actionResult=q4.executeAction();
 				if(!actionResult){
@@ -128,7 +128,7 @@ public class NormalTurn extends Turn{
 					this.askForAction();
 				}
 				break;
-			case "X":
+			case "ex":
 				this.quickActionAvailable=0;
 				break;
 			default:
@@ -186,27 +186,37 @@ public class NormalTurn extends Turn{
 	}
 	
 
-	private List<String> acceptableStringForAction(){
+	private List<String> acceptableStringForAction() {
 		List<String> acceptable=new ArrayList<String>();
-		if(this.mainActionAvailable>0 && this.quickActionAvailable>0)
-			for(int i=1;i<5;i++){
-				acceptable.add("M"+i);
-				acceptable.add("Q"+i);
+		if (this.mainActionAvailable>0 && this.quickActionAvailable>0) {
+			acceptable.add("m1: elect a councillor");
+			acceptable.add("m2: acquire a permit tile");
+			acceptable.add("m3: build an emporium using a permit tile");
+			acceptable.add("m4: build an emporium with the help of the king");
+			acceptable.add("q1: engage an assistant");
+			acceptable.add("q2: change permit tiles");
+			acceptable.add("q3: send an assistant to elect a councillor");
+			acceptable.add("q4: make an additional main action");
+		}
+		else 
+			if (this.mainActionAvailable>0) {
+				acceptable.add("m1: elect a councillor");
+				acceptable.add("m2: acquire a permit tile");
+				acceptable.add("m3: build an emporium using a permit tile");
+				acceptable.add("m4: build an emporium with the help of the king");
 			}
+			else 
+				if (quickActionAvailable>0) {
+					acceptable.add("q1: engage an assistant");
+					acceptable.add("q2: change permit tiles");
+					acceptable.add("q3: send an assistant to elect a councillor");
+					acceptable.add("q4: make an additional main action");
+					acceptable.add("ex: exit turn");
+		}
 		else
-			if(this.mainActionAvailable>0)
-				for(int i=1;i<5;i++)
-					acceptable.add("M"+i);
-			else
-				if(quickActionAvailable>0){
-					for(int i=1;i<5;i++)
-						acceptable.add("Q"+i);
-					acceptable.add("X");
-				}
-				else
-					throw new IllegalArgumentException("Availble actons can be just"
-							+ "M, Q, MQ");
-		return acceptable;	
+			throw new IllegalArgumentException("Availble actons can be just"
+					+ "m, q, mq");
+	return acceptable;	
 	}
 	
 	private boolean isAcceptableParametersEmpty(List<List<String>> acceptableParameters){

@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import model.Game;
@@ -13,13 +14,20 @@ public class AskActionPack {
 		this.acceptableString=acceptableString;
 		this.game=game;
 	}
-
+	
 	public Game getGame() {
 		return game;
 	}
 
 	public List<String> getAcceptableString() {
 		return acceptableString;
+	}
+	
+	public List<String> cutStrings() {
+		List<String> stringsCutted=new ArrayList<String>();
+		for (String stringToCut : this.acceptableString)
+			stringsCutted.add(stringToCut.substring(0, 2));
+		return stringsCutted;
 	}
 	
 	
