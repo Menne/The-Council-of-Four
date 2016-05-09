@@ -30,16 +30,19 @@ public class BuildByPermitTileConfiguration extends ActionConfiguration{
 		
 		List<List<String>> acceptableStrings=new ArrayList<List<String>>();
 		
-		List<String> cityName=new ArrayList<String>();
-		for (RegionBoard region : this.game.getGameTable().getRegionBoards())
-			for (City city : region.getRegionCities())
+		List<String> cityNames=new ArrayList<String>();
+		for(City city : this.game.getGameTable().getMap().getGameMap().vertexSet())
+			if(city.getCityEmporiums().isEmpty())
+				cityNames.add(city.getName());
+			else
 				for (Emporium emporium : city.getCityEmporiums())
-					if (emporium.getEmporiumsPlayer().equals(this.game.getCurrentPlayer()))
-						cityName.add(city.getName());
+					if (!emporium.getEmporiumsPlayer().equals(this.game.getCurrentPlayer()))
+						cityNames.add(city.getName());
+		acceptableStrings.add(cityNames);
 	
 		List<String> permitTilesNumbers=new ArrayList<String>();
 		int maxNumberOfCards=this.game.getCurrentPlayer().getPlayersPermitTilesTurnedUp().size();
-		for(Integer i=0; i<=maxNumberOfCards; i++)
+		for(Integer i=0; i<maxNumberOfCards; i++)
 			permitTilesNumbers.add(i.toString());
 		acceptableStrings.add(permitTilesNumbers);
 	

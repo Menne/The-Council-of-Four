@@ -30,11 +30,13 @@ public class BuildByKingConfiguration extends ActionConfiguration{
 		List<List<String>> acceptableStrings=new ArrayList<List<String>>();
 		
 		List<String> cityNames=new ArrayList<String>();
-			for (RegionBoard region : this.game.getGameTable().getRegionBoards())
-				for (City city : region.getRegionCities())
-					for (Emporium emporium : city.getCityEmporiums())
-						if (!emporium.getEmporiumsPlayer().equals(this.game.getCurrentPlayer()))
-							cityNames.add(city.getName());
+		for(City city : this.game.getGameTable().getMap().getGameMap().vertexSet())
+			if(city.getCityEmporiums().isEmpty())
+				cityNames.add(city.getName());
+			else
+				for (Emporium emporium : city.getCityEmporiums())
+					if (!emporium.getEmporiumsPlayer().equals(this.game.getCurrentPlayer()))
+						cityNames.add(city.getName());
 		acceptableStrings.add(cityNames);
 		
 		List<String> cardsNumbers=new ArrayList<String>();
