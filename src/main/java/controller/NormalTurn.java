@@ -55,6 +55,7 @@ public class NormalTurn extends Turn{
 
 
 	public <P> void receivePack(P pack) throws IllegalArgumentException{
+		boolean actionResult;
 		if(pack instanceof GiveActionPack){
 			GiveActionPack gap= (GiveActionPack) pack;
 			switch(gap.getGivenAction()){ 
@@ -84,7 +85,11 @@ public class NormalTurn extends Turn{
 				break;
 			case "Q1":
 				Action q1 = new EngageAssistant(this.gameLogic.getGame());
-				q1.executeAction();
+				actionResult=q1.executeAction();
+				if(!actionResult){
+					this.gameLogic.notifyObservers(new ErrorSignal());
+					this.askForAction();
+				}
 				break;
 			case "Q2":
 				ChangePermitTiles q2=new ChangePermitTiles(this.gameLogic.getGame());
@@ -100,7 +105,11 @@ public class NormalTurn extends Turn{
 				break;
 			case "Q4":
 				Action q4 = new AdditionalMainAction(this.gameLogic.getGame());
-				q4.executeAction();
+				actionResult=q4.executeAction();
+				if(!actionResult){
+					this.gameLogic.notifyObservers(new ErrorSignal());
+					this.askForAction();
+				}
 				break;
 			case "X":
 				this.quickActionAvailable=0;
@@ -113,7 +122,11 @@ public class NormalTurn extends Turn{
 		if(pack instanceof GiveParameterPack){
 			GiveParameterPack gpp= (GiveParameterPack) pack;
 			this.currentConfiguration.setParameters(gpp.getSelectedParameters());
-			this.currentAction.executeAction();  
+			actionResult=this.currentAction.executeAction();
+			if(!actionResult){
+				this.gameLogic.notifyObservers(new ErrorSignal());
+				this.askForAction();
+			}
 		}		
 
 	}
