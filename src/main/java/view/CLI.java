@@ -6,14 +6,15 @@ import java.util.Scanner;
 
 import controller.AskActionPack;
 import controller.AskParameterPack;
+import controller.GameLogic;
 import controller.Turn;
 import model.Game;
 import observerPattern.Observable;
 
 public class CLI extends View{
 
-	public CLI(Turn turn) {
-		super(turn);
+	public CLI(GameLogic gameLogic) {
+		super(gameLogic);
 	}
 
 	@Override
@@ -66,7 +67,7 @@ public class CLI extends View{
 	 * TODO
 	 */
 	public void stamp(Game game){
-		
+		System.out.println(game);
 	}
 
 

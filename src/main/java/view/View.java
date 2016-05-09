@@ -1,13 +1,14 @@
 package view;
 
+import controller.GameLogic;
 import controller.Turn;
 import observerPattern.Observable;
 import observerPattern.Observer;
 
 public abstract class View extends Observable implements Observer {
 
-	public View(Turn turn){
-		turn.registerObserver(this);
+	public View(GameLogic gameLogic){
+		gameLogic.registerObserver(this);
 	}
 	
 	@Override

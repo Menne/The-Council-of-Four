@@ -11,7 +11,10 @@ import java.util.List;
 import java.util.Set;
 
 import bonus.*;
+import controller.GameLogic;
 import players.*;
+
+import view.*;
 
 public class Main {
 
@@ -64,7 +67,7 @@ public class Main {
 		Collections.shuffle(councillorsList);
 		
 		//creo la riserva consiglieri passando al costruttore la lista di tutti i consiglieri
-				CouncillorsReserve councillorsReserve=new CouncillorsReserve(councillorsList);
+		CouncillorsReserve councillorsReserve=new CouncillorsReserve(councillorsList);
 				
 		//creo i 4 balconi rimuovendo 4 consiglieri alla volta dalla lista
 		CouncilBalcony seaBalcony=new CouncilBalcony(councillorsReserve);
@@ -200,7 +203,14 @@ public class Main {
 		//creo game
 		Game game=new Game(players, gameTable);
 		
-		System.out.println(game);				
+		GameLogic gameLogic=new GameLogic(game);
+		View view=new CLI(gameLogic);
+		view.registerObserver(gameLogic);
+		
+		gameLogic.play();
+		
+		
+//		System.out.println(game);				
 	}
 
 }
