@@ -1,5 +1,6 @@
 package gameStuff;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -189,8 +190,15 @@ public class RegionBoard {
 
 	@Override
 	public String toString() {
-		return "RegionBoard \n\t name=" + name + "\n\t regionCities=" + regionCities;
+		return "RegionBoard [name=" + name + ", regionBalcony="
+				+ regionBalcony + ", regionBonus=" + regionBonus + ", bonusAvailable=" + bonusAvailable
+				+ ", regionCities=" + regionCities + ", uncoveredPermitTiles=" + Arrays.toString(uncoveredPermitTiles)
+				+ "]";
 	}
+
+
+
+
 
 
 }
