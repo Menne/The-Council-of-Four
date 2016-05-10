@@ -26,7 +26,7 @@ public class CLI extends View{
 			AskActionPack notify=(AskActionPack) change;
 			stamp(notify.getGame());
 			//richiesta all'utente dell'azione
-			System.out.println("Player "+notify.getGame().getCurrentPlayer().getName()+
+			System.out.println("\n\nPlayer "+notify.getGame().getCurrentPlayer().getName()+
 					", it's your turn!\n Choose one of the following actions:\n ");
 			for(String action : notify.getAcceptableString())
 				System.out.println(action);
