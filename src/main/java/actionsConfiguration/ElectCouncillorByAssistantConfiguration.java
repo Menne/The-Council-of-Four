@@ -81,7 +81,7 @@ public class ElectCouncillorByAssistantConfiguration extends ActionConfiguration
 	 */
 	private Councillor councillorTranslator(String newCouncillorToTranslate) {
 		for (Councillor newCouncillorTranslated : this.game.getGameTable().getCouncilReserve().getCouncillors())
-			if (newCouncillorTranslated.getColour().equals(newCouncillorToTranslate))
+			if (newCouncillorTranslated.getColour().getColour().equals(newCouncillorToTranslate))
 				return newCouncillorTranslated;
 		return null;
 	}
