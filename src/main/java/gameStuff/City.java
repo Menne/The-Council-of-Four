@@ -1,6 +1,7 @@
 package gameStuff;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -15,19 +16,12 @@ import bonus.Bonus;
  *
  */
 
-@XmlAccessorType(XmlAccessType.FIELD)
 public class City {
 
-	@XmlElement(name="name")
 	private final String name;
-	
-	private Set<Bonus> rewardToken; //NON è PIù UN SET DI BONUS MA è UN OGGETTO REWARD TOKEN! COSTRUTTORE DEVE PRENDERNE UNO RANDOMICAMENTE!!
-	
-	@XmlElement(name="isKingPresent")
+	private Set<Bonus> rewardToken;
 	private Boolean isKingPresent;
 	private final RegionBoard region;
-	
-	@XmlElement(name="CityColour")
 	private final CityColour colour;
 	private final Set<Emporium> cityEmporiums;
 	private final Set<City> nearCities;
@@ -44,14 +38,15 @@ public class City {
 	 * @param numberOfPlayers of the game. 
 	 * Useful to choose the size of the emporiums array.
 	 */
-	public City(String name, RegionBoard region, CityColour colour){
+	public City(String name, RegionBoard region, CityColour colour, List<Set< Bonus>> rewardTokenList){
 		this.name=name;
 		this.isKingPresent=false;
 		this.region=region;
 		this.colour=colour;
 		this.cityEmporiums=new HashSet<Emporium>();
 		this.nearCities=new HashSet<City>();
-		this.rewardToken=new HashSet<Bonus>();
+		if(!colour.getName().equals("KingColour"));
+			this.rewardToken=rewardTokenList.remove(0);
 		colour.addCityOfThisColour(this);
 		region.addCityOfThisRegion(this);
 	}
@@ -61,14 +56,7 @@ public class City {
 	public Set<Bonus> getRewardToken() {
 		return rewardToken;
 	}
-
-
-
-	public void addBonus(Bonus bonus) {
-		this.rewardToken.add(bonus);
-	}
-
-
+	
 
 	public Boolean getIsKingPresent() {
 		return isKingPresent;

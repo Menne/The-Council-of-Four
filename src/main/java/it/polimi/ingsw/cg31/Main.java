@@ -8,10 +8,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Set;
 
 import bonus.*;
+import controller.GameLogic;
 import players.*;
+
+import view.*;
 
 public class Main {
 
@@ -64,7 +68,7 @@ public class Main {
 		Collections.shuffle(councillorsList);
 		
 		//creo la riserva consiglieri passando al costruttore la lista di tutti i consiglieri
-				CouncillorsReserve councillorsReserve=new CouncillorsReserve(councillorsList);
+		CouncillorsReserve councillorsReserve=new CouncillorsReserve(councillorsList);
 				
 		//creo i 4 balconi rimuovendo 4 consiglieri alla volta dalla lista
 		CouncilBalcony seaBalcony=new CouncilBalcony(councillorsReserve);
@@ -88,6 +92,17 @@ public class Main {
 		RegionBoard mountainRegion=
 				new RegionBoard("Mountain", mountainPermitDeck, mountainBalcony, new ScoreBonus(5));
 		
+		//creo lista di reward token
+		List<Set<Bonus>> rewardTokenList = new ArrayList<Set<Bonus>>();
+		for(int i=0; i<16;i++)
+			rewardTokenList.add(new HashSet<Bonus>());
+		for(Set<Bonus> rewardToken : rewardTokenList){
+			rewardToken.add(new ScoreBonus(3));
+			rewardToken.add(new NobilityBonus(1));
+		} 
+			
+		
+		
 		//raggruppo regioni in una lista
 		List<RegionBoard> regionList =new ArrayList<RegionBoard>();
 		regionList.add(seaRegion);
@@ -96,11 +111,11 @@ public class Main {
 		
 		//creo città e le divido in set per regioni
 		Set<City> seaSet=new HashSet<City>();
-		City a=new City("Arkon", seaRegion, Citycolor4);
-		City b=new City("Burgen", seaRegion, Citycolor1);
-		City c=new City("Castrum", seaRegion, Citycolor2);
-		City d=new City("Dorful", seaRegion, Citycolor2);
-		City e=new City("Esti", seaRegion, Citycolor3);
+		City a=new City("Arkon", seaRegion, Citycolor4,rewardTokenList);
+		City b=new City("Burgen", seaRegion, Citycolor1,rewardTokenList);
+		City c=new City("Castrum", seaRegion, Citycolor2,rewardTokenList);
+		City d=new City("Dorful", seaRegion, Citycolor2,rewardTokenList);
+		City e=new City("Esti", seaRegion, Citycolor3,rewardTokenList);
 		seaSet.add(a);
 		seaSet.add(b);
 		seaSet.add(c);
@@ -108,11 +123,11 @@ public class Main {
 		seaSet.add(e);
 		
 		Set<City> hillSet=new HashSet<City>();
-		City f=new City("Framek", hillRegion, Citycolor1);
-		City g=new City("Graden", hillRegion, Citycolor2);
-		City h=new City("Hellar", hillRegion, Citycolor1);
-		City i=new City("Indur", hillRegion, Citycolor3);
-		City j=new City("Juvelar", hillRegion, Citycolor4); //TODO bisogna gestire il fatto che città del re non ha colore
+		City f=new City("Framek", hillRegion, Citycolor1,rewardTokenList);
+		City g=new City("Graden", hillRegion, Citycolor2,rewardTokenList);
+		City h=new City("Hellar", hillRegion, Citycolor1,rewardTokenList);
+		City i=new City("Indur", hillRegion, Citycolor3,rewardTokenList);
+		City j=new City("Juvelar", hillRegion, Citycolor4,rewardTokenList); //TODO bisogna gestire il fatto che città del re non ha colore
 		hillSet.add(f);
 		hillSet.add(g);
 		hillSet.add(h);
@@ -120,11 +135,11 @@ public class Main {
 		hillSet.add(j);
 		
 		Set<City> mountainSet=new HashSet<City>();
-		City k=new City("Kultos", mountainRegion, Citycolor1);
-		City l=new City("Lyram", mountainRegion, Citycolor2);
-		City m=new City("Merkatim", mountainRegion, Citycolor4);
-		City n=new City("Naris", mountainRegion, Citycolor3);
-		City o=new City("Osium", mountainRegion, Citycolor1);
+		City k=new City("Kultos", mountainRegion, Citycolor1,rewardTokenList);
+		City l=new City("Lyram", mountainRegion, Citycolor2,rewardTokenList);
+		City m=new City("Merkatim", mountainRegion, Citycolor4,rewardTokenList);
+		City n=new City("Naris", mountainRegion, Citycolor3,rewardTokenList);
+		City o=new City("Osium", mountainRegion, Citycolor1,rewardTokenList);
 		mountainSet.add(k);
 		mountainSet.add(l);
 		mountainSet.add(m);
@@ -200,7 +215,15 @@ public class Main {
 		//creo game
 		Game game=new Game(players, gameTable);
 		
-		System.out.println(game);				
+		Scanner scanner=new Scanner(System.in);
+		GameLogic gameLogic=new GameLogic(game);
+		View view=new CLI(gameLogic, scanner);
+		view.registerObserver(gameLogic);
+		
+		gameLogic.play();
+		scanner.close(); 
+		
+//		System.out.println(game);				
 	}
 
 }

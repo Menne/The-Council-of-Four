@@ -5,6 +5,7 @@ import java.util.List;
 
 import actions.AcquirePermitTile;
 import controller.AskParameterPack;
+import gameStuff.CouncilBalcony;
 import gameStuff.PoliticsCard;
 import gameStuff.RegionBoard;
 import model.Game;
@@ -24,7 +25,16 @@ public class AcquirePermitTileConfiguration extends ActionConfiguration{
 		List<String> parametersName=new ArrayList<String>();
 		parametersName.add("Region where you want to acquire");
 		parametersName.add("Permit tile you want to acquire");
-		parametersName.add("Cards of your hand you want to use to satisfy the council");
+		parametersName.add("First card of your hand you want to use to satisfy the council");
+		parametersName.add("Second card of your hand you want to use to satisfy the council. \n"
+				+ "Attention: if you don't want to discard cards anymore, you just have to press x. \n"
+				+ "If you press the same card you have discarded before, it will not be considered");
+		parametersName.add("Third card of your hand you want to use to satisfy the council. \n"
+				+ "Attention: if you don't want to discard cards anymore, you just have to press x. \n"
+				+ "If you press the same card you have discarded before, it will not be considered");
+		parametersName.add("Fourth card of your hand you want to use to satisfy the council. \n"
+				+ "Attention: if you don't want to discard cards anymore, you just have to press x. \n"
+				+ "If you press the same card you have discarded before, it will not be considered");
 		
 		List<List<String>> acceptableStrings=new ArrayList<List<String>>();
 		
@@ -40,21 +50,34 @@ public class AcquirePermitTileConfiguration extends ActionConfiguration{
 		
 		List<String> cardsNumbers=new ArrayList<String>();
 		int maxNumberOfCards=this.game.getCurrentPlayer().getHand().size();
-		for(Integer i=0; i<=maxNumberOfCards; i++)
+		for(Integer i=0; i<maxNumberOfCards; i++)
 			cardsNumbers.add(i.toString());
 		acceptableStrings.add(cardsNumbers);
-						
+		
+		for (int i=0; i<CouncilBalcony.getNumberofcouncillors()-1; i++) {
+			List<String> cardsNumbersPlusExit=new ArrayList<String>();
+			int maxNumberOfCardsPlusExit=this.game.getCurrentPlayer().getHand().size();
+			for(Integer j=0; j<maxNumberOfCardsPlusExit; j++)
+				cardsNumbersPlusExit.add(j.toString());
+			cardsNumbersPlusExit.add("x");
+			acceptableStrings.add(cardsNumbersPlusExit);
+		}
+		
 		return new AskParameterPack(parametersName, acceptableStrings);
 	}
 
 	@Override
-	public void setParameters(List<String> stringParameter) {
+	public void setParameters(List<String> stringParameters) {
 		this.action.setChosenRegion(regionTranslator
-				(stringParameter.remove(0)));
+				(stringParameters.remove(0)));
 		this.action.setNumberOfPermitTile(numberOfPermitTileTranslator
-				(stringParameter.remove(0))); 
-		this.action.setCardsToDescard(politicsCardsTranslator
-				(stringParameter));	
+				(stringParameters.remove(0))); 
+		List<PoliticsCard> cardsTranslated = new ArrayList<PoliticsCard>();
+		cardsTranslated.add(politicsCardTranslator(stringParameters.remove(0)));
+		for (String parameter : stringParameters)
+			if (!parameter.equals("x"))
+				cardsTranslated.add(politicsCardTranslator(parameter));
+		this.action.setCardsToDescard(cardsTranslated);
 	}
 	
 	private int numberOfPermitTileTranslator(String numberOfPermitTileToTranslate) {
@@ -63,21 +86,16 @@ public class AcquirePermitTileConfiguration extends ActionConfiguration{
 	}
 	
 	private RegionBoard regionTranslator(String regionToTranslate) {
-		int numberOfRegion=Integer.parseInt(regionToTranslate);
-		RegionBoard regionTranslated=this.game.getGameTable().getRegionBoards().get(numberOfRegion);
-		return regionTranslated;
+		for(RegionBoard region : this.game.getGameTable().getRegionBoards())
+			if(regionToTranslate.equals(region.getName()))
+				return region;
+		throw new IllegalArgumentException("regionToTranslate is not a region name");
 	}
 	
-	private List<PoliticsCard> politicsCardsTranslator(List<String> cardsToTranslate) {
-		List<PoliticsCard> cardsTranslated = new ArrayList<PoliticsCard>();
-		Integer numberOfCard;
-		for (String card : cardsToTranslate) {
-			numberOfCard=Integer.parseInt(card); 
-			cardsTranslated.add(this.game.getCurrentPlayer().getHand().get(numberOfCard));
-		}
-		return cardsTranslated;
+	private PoliticsCard politicsCardTranslator(String cardToTranslate) {
+		Integer numberOfCard=Integer.parseInt(cardToTranslate);
+		PoliticsCard cardTranslated=this.game.getCurrentPlayer().getHand().get(numberOfCard);
+		return cardTranslated;
 	}
 	
-	
-
 }

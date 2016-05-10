@@ -1,22 +1,16 @@
 package controller;
 
-import model.Game;
-import observerPattern.Observable;
-import observerPattern.Observer;
-import view.View;
 
-public abstract class Turn extends Observable implements Observer{
+public abstract class Turn {
 	
-	protected final Game game;
 	
-	public Turn(View view, Game game) {
-		this.game=game;
-		view.registerObserver(this);
+	protected final GameLogic gameLogic;
+	
+	public Turn(GameLogic gameLogic) {
+		this.gameLogic=gameLogic;
 	}
 	
 	public abstract void executeTurn();
 
-	@Override
-	public abstract <C> void update(Observable o, C change);
 
 }

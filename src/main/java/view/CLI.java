@@ -6,30 +6,33 @@ import java.util.Scanner;
 
 import controller.AskActionPack;
 import controller.AskParameterPack;
-import controller.Turn;
+import controller.ErrorSignal;
+import controller.GameLogic;
 import model.Game;
 import observerPattern.Observable;
 
 public class CLI extends View{
 
-	public CLI(Turn turn) {
-		super(turn);
+	private final Scanner scanner;
+	
+	public CLI(GameLogic gameLogic, Scanner scanner) {
+		super(gameLogic);
+		this.scanner=scanner;
 	}
 
 	@Override
 	public <C> void update(Observable o, C change) {
-		Scanner scanner=new Scanner(System.in);
 		if(change instanceof AskActionPack){
 			AskActionPack notify=(AskActionPack) change;
 			stamp(notify.getGame());
 			//richiesta all'utente dell'azione
-			System.out.println("Player "+notify.getGame().getCurrentPlayer().getName()+
+			System.out.println("\n\nPlayer "+notify.getGame().getCurrentPlayer().getName()+
 					", it's your turn!\n Choose one of the following actions:\n ");
 			for(String action : notify.getAcceptableString())
 				System.out.println(action);
 			String selectedAction=scanner.nextLine();
-			while(!notify.getAcceptableString().contains(selectedAction)){
-				System.out.println("You have choosen a wrong action. Retry");
+			while(!notify.cutStrings().contains(selectedAction)){
+				System.out.println("You have chosen a wrong action. Retry");
 				selectedAction=scanner.nextLine();
 				}
 			//preparo give action pack
@@ -38,35 +41,46 @@ public class CLI extends View{
 			//invio give action pack
 			notifyObservers(gap);							
 		}
+		
+		
 		if(change instanceof AskParameterPack){
 			AskParameterPack notify=(AskParameterPack) change;
 			//chiedo all'utente di inserire i parametri e li salvo in una lista
 			List<String> selectedParameters=new ArrayList<String>();
 			for(int i=0; i<notify.getParameters().size(); i++){
 				System.out.println("Insert Parameter: "+notify.getParameters().get(i)+
-						". Chose among:\n");
+						". Choose among:\n");
 				for(String possibleString : notify.getAcceptableParameters().get(i))
-					System.out.println(possibleString);
+					System.out.print(possibleString + "\t");
 				String parameter=scanner.nextLine();
 				while(!notify.getAcceptableParameters().get(i).contains(parameter)){
 					System.out.println("Wrong parameter. Retry.");
 					parameter=scanner.nextLine();
 				}
 				selectedParameters.add(parameter);
-			}
-			
+			}		
 			//preparo pacchetto
 			GiveParameterPack gpp = new GiveParameterPack(selectedParameters);
 			notifyObservers(gpp);
 		}
-		scanner.close();
+		
+		if(change instanceof ErrorSignal){	
+			System.out.println("\n\nSorry, but you cannot do this action.\n"
+					+ "Check well your game state before choosing action\n\n");
+			try{
+				Thread.sleep(5000);
+			}catch(InterruptedException e){
+				System.out.println("Slept to much");
+			}
+			
+		}
 	}
 	
 	/**
 	 * TODO
 	 */
 	public void stamp(Game game){
-		
+		System.out.println(game);
 	}
 
 

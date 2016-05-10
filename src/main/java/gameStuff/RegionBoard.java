@@ -1,5 +1,6 @@
 package gameStuff;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -119,7 +120,7 @@ public class RegionBoard {
 	 * @return the picked uncovered card
 	 */
 	public PermitTile pickUncoveredPermitTile(int index) {
-		if(index>=numberOfUncoveredPermitTiles)
+		if(index>=numberOfUncoveredPermitTiles-1)
 			throw new IllegalArgumentException("Index too big");
 		PermitTile temp=this.uncoveredPermitTiles[index];
 		this.uncoveredPermitTiles[index]=null;
@@ -131,7 +132,7 @@ public class RegionBoard {
 	 * Uncovers a new permit tile in each empty slot.
 	 */
 	public void uncoverPermitTiles(){
-		for(int i=0; i<numberOfUncoveredPermitTiles; i++)
+		for(int i=0; i<numberOfUncoveredPermitTiles-1; i++)
 			if(this.uncoveredPermitTiles[i]==null)
 //				try{
 					this.uncoveredPermitTiles[i]=
@@ -149,7 +150,7 @@ public class RegionBoard {
 	 * Substitutes both of the uncovered permit tiles.
 	 */
 	public void substitutePermitTiles() {
-		for (int i=0; i<=numberOfUncoveredPermitTiles; i++) {
+		for (int i=0; i<=numberOfUncoveredPermitTiles-1; i++) {
 			this.regionPermitDeck.addOnBottom(this.uncoveredPermitTiles[i]);
 			this.uncoveredPermitTiles[i]=null;
 		}
@@ -189,8 +190,15 @@ public class RegionBoard {
 
 	@Override
 	public String toString() {
-		return "RegionBoard \n\t name=" + name + "\n\t regionCities=" + regionCities;
+		return "RegionBoard [name=" + name + ", regionBalcony="
+				+ regionBalcony + ", regionBonus=" + regionBonus + ", bonusAvailable=" + bonusAvailable
+				+ ", regionCities=" + regionCities + ", uncoveredPermitTiles=" + Arrays.toString(uncoveredPermitTiles)
+				+ "]";
 	}
+
+
+
+
 
 
 }

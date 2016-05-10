@@ -46,6 +46,11 @@ public class PoliticsCard {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "PoliticsCard [colour=" + colour + "]";
+	}
 	
 	
 	

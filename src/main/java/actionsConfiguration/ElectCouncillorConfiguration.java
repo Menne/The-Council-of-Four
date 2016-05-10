@@ -1,7 +1,9 @@
 package actionsConfiguration;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import actions.ElectCouncillor;
 import controller.AskParameterPack;
@@ -27,17 +29,18 @@ public class ElectCouncillorConfiguration extends ActionConfiguration{
 		parametersName.add("Region where there is the council balcony in which you want to substitue a councillor");
 		
 		List<List<String>> acceptableStrings=new ArrayList<List<String>>();
+		acceptableStrings.add(new ArrayList<String>());
 		
-		List<String> councillorColours=new ArrayList<String>();
+		Set<String> councillorColours=new HashSet<String>();
 		for (Councillor councillor : this.game.getGameTable().getCouncilReserve().getCouncillors())
-			if (councillorColours.contains(councillor.getColour().getColour()))
-				councillorColours.add(councillor.getColour().getColour());
-		acceptableStrings.add(councillorColours);
+			councillorColours.add(councillor.getColour().getColour());
+		acceptableStrings.get(0).addAll(councillorColours);
 		
 		List<String> regionNames=new ArrayList<String>();
 		for (RegionBoard region : this.game.getGameTable().getRegionBoards())
 			regionNames.add(region.getName());
 		acceptableStrings.add(regionNames);
+
 		
 		return new AskParameterPack(parametersName, acceptableStrings);
 	}
@@ -52,16 +55,16 @@ public class ElectCouncillorConfiguration extends ActionConfiguration{
 	
 	private Councillor councillorTranslator(String newCouncillorToTranslate) {
 		for (Councillor newCouncillorTranslated : this.game.getGameTable().getCouncilReserve().getCouncillors())
-			if (newCouncillorTranslated.getColour().equals(newCouncillorToTranslate))
+			if (newCouncillorTranslated.getColour().getColour().equals(newCouncillorToTranslate))
 				return newCouncillorTranslated;
-		return null;
+		throw new IllegalArgumentException("newCouncillorToTranslate is not a colour name");
 	}
 	
 	private CouncilBalcony councilBalconyTranslator(String councilBalconyToTranslate) {
-		int numberOfRegion=Integer.parseInt(councilBalconyToTranslate);
-		CouncilBalcony councilBalconyTranslated=
-				this.game.getGameTable().getRegionBoards().get(numberOfRegion).getRegionBalcony();
-		return councilBalconyTranslated;
+		for(RegionBoard region : this.game.getGameTable().getRegionBoards())
+			if(councilBalconyToTranslate.equals(region.getName()))
+				return region.getRegionBalcony();
+		throw new IllegalArgumentException("councilBalconyToTranslate is not a region name");
 	}
 
 }

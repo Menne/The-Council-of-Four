@@ -1,13 +1,10 @@
 package controller;
 
-import model.Game;
-import observerPattern.Observable;
-import view.View;
 
 public class MarketTurn extends Turn{
 	
-	public MarketTurn(View view, Game game){
-		super(view,game);
+	public MarketTurn(GameLogic gameLogic){
+		super(gameLogic);
 	}
 
 	@Override
@@ -16,10 +13,5 @@ public class MarketTurn extends Turn{
 		
 	}
 
-	@Override
-	public <C> void update(Observable o, C change) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }
