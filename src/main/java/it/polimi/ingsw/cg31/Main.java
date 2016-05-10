@@ -2,8 +2,10 @@ package it.polimi.ingsw.cg31;
 
 import gameStuff.*;
 import gameTable.GameTable;
+import initializer.Initializer;
 import model.Game;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -20,7 +22,7 @@ import view.*;
 public class Main {
 
 	public static void main(String[] args) {		
-		//creo lista dei possibili card colour
+/*		//creo lista dei possibili card colour
 				List<CardColour> cardColourList=new ArrayList<CardColour>();
 				CardColour CardColour1=new CardColour("White");
 				cardColourList.add(CardColour1);
@@ -213,14 +215,19 @@ public class Main {
 		gameTable.addKingRewardTile(new ScoreBonus(3));
 		
 		//creo game
-		Game game=new Game(players, gameTable);
+		Game game=new Game(players, gameTable);*/
 		
+		Initializer initializer=new Initializer();
 		Scanner scanner=new Scanner(System.in);
-		GameLogic gameLogic=new GameLogic(game);
-		View view=new CLI(gameLogic, scanner);
-		view.registerObserver(gameLogic);
+		try{
+			GameLogic gameLogic=new GameLogic(initializer.initialize());
+			View view=new CLI(gameLogic, scanner);
+			view.registerObserver(gameLogic);
+			gameLogic.play();
+		}catch(IOException e){
+			System.out.println("failed");
+		}
 		
-		gameLogic.play();
 		scanner.close(); 
 		
 //		System.out.println(game);				
