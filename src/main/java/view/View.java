@@ -1,7 +1,6 @@
 package view;
 
 import controller.GameLogic;
-import controller.Turn;
 import observerPattern.Observable;
 import observerPattern.Observer;
 

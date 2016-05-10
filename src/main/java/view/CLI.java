@@ -26,7 +26,7 @@ public class CLI extends View{
 			AskActionPack notify=(AskActionPack) change;
 			stamp(notify.getGame());
 			//richiesta all'utente dell'azione
-			System.out.println("Player "+notify.getGame().getCurrentPlayer().getName()+
+			System.out.println("\n\nPlayer "+notify.getGame().getCurrentPlayer().getName()+
 					", it's your turn!\n Choose one of the following actions:\n ");
 			for(String action : notify.getAcceptableString())
 				System.out.println(action);
@@ -64,9 +64,16 @@ public class CLI extends View{
 			notifyObservers(gpp);
 		}
 		
-		if(change instanceof ErrorSignal)
-			System.out.println("Sorry, but you cannot do this action.\n"
+		if(change instanceof ErrorSignal){	
+			System.out.println("\n\nSorry, but you cannot do this action.\n"
 					+ "Check well your game state before choosing action\n\n");
+			try{
+				Thread.sleep(5000);
+			}catch(InterruptedException e){
+				System.out.println("Slept to much");
+			}
+			
+		}
 	}
 	
 	/**
