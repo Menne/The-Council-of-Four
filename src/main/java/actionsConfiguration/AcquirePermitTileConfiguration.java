@@ -10,15 +10,35 @@ import gameStuff.PoliticsCard;
 import gameStuff.RegionBoard;
 import model.Game;
 
+/**
+ * This class defines the possible strings corresponding to the parameters 
+ * necessary for the action acquire permit tile and gives them to the CLI. 
+ * In a second moment, it receives the input from the CLI and translates it 
+ * into the effective parameters required from the action acquire permit tile
+ * @author Emanuele
+ *
+ */
+
 public class AcquirePermitTileConfiguration extends ActionConfiguration{
 	
 	private AcquirePermitTile action;
 	
+	/**
+	 * Constructor of AcquirePermitTileConfiguration
+	 * @param game is the current game
+	 * @param action is the action which requires to be configured with parameters given by the user
+	 */
 	public AcquirePermitTileConfiguration(Game game, AcquirePermitTile action) {
 		super(game);
 		this.action=action;
 	}
 
+	/**
+	 * This method packs in a AskParameterPack a list of strings from which the user can choose when he inserts
+	 * the parameters of the action, according to the current game state.
+	 * @return a pack to be sent to CLI, which contains the instructions 
+	 * the user can follow to insert the parameters, and the list of possible strings for the selected action
+	 */
 	@Override
 	public AskParameterPack createAskParameterPack() {
 		
@@ -66,6 +86,10 @@ public class AcquirePermitTileConfiguration extends ActionConfiguration{
 		return new AskParameterPack(parametersName, acceptableStrings);
 	}
 
+	/**
+	 * This method sets to the selected action the parameters given by the user, 
+	 * after a translation from the input, which is a list of strings
+	 */
 	@Override
 	public void setParameters(List<String> stringParameters) {
 		this.action.setChosenRegion(regionTranslator
@@ -80,11 +104,21 @@ public class AcquirePermitTileConfiguration extends ActionConfiguration{
 		this.action.setCardsToDescard(cardsTranslated);
 	}
 	
+	/**
+	 * translates the string given from the user into the corresponding number of permit tile
+	 * @param numberOfPermitTileToTranslate is the string corresponding to the index of the permit tile in the selected region
+	 * @return the number of permit tile obtained from the string
+	 */
 	private int numberOfPermitTileTranslator(String numberOfPermitTileToTranslate) {
 		int numberOfPermitTileTranslated=Integer.parseInt(numberOfPermitTileToTranslate);
 		return numberOfPermitTileTranslated;
 	}
 	
+	/**
+	 * translates the string given from the user into the corresponding region board
+	 * @param regionToTranslate is the string corresponding to the name of the selected region board
+	 * @return the region board obtained from the string
+	 */
 	private RegionBoard regionTranslator(String regionToTranslate) {
 		for(RegionBoard region : this.game.getGameTable().getRegionBoards())
 			if(regionToTranslate.equals(region.getName()))
@@ -92,6 +126,11 @@ public class AcquirePermitTileConfiguration extends ActionConfiguration{
 		throw new IllegalArgumentException("regionToTranslate is not a region name");
 	}
 	
+	/**
+	 * translates the string given from the user into the corresponding politics card
+	 * @param cardToTranslate is the string corresponding to the index of the politics card in the hand of the player
+	 * @return the politics card obtained from the string
+	 */
 	private PoliticsCard politicsCardTranslator(String cardToTranslate) {
 		Integer numberOfCard=Integer.parseInt(cardToTranslate);
 		PoliticsCard cardTranslated=this.game.getCurrentPlayer().getHand().get(numberOfCard);
