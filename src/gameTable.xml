@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 
 <GameTable>
-<rewardTokens>
+ <rewardTokens>
 	<RewardToken>
 		<rewardTokenBonus>
 			<Bonus>asdfghjklsdfghjklsdfghjkl</Bonus>
@@ -23,6 +23,20 @@
 	------------------------------------------tutti i reward tokens!!!!!!!!
 </rewardTokens>
 
+	<PoliticsDeck>
+		<cardColours>
+			<CardColour>
+				<colourName>white</colourName>
+			</CardColour>
+			<CardColour>pink</CardColour>
+			<CardColour>blue</CardColour>-----------------------
+			<CardColour>violet</CardColour>
+			<CardColour>orange</CardColour>
+			<CardColour>black</CardColour>
+			<CardColour>rainbow</CardColour>
+		</cardColours>
+	</PoliticsDeck>
+	
   <map>
 	<RegionBoard>
 		<ScoreBonus>5</ScoreBonus>
@@ -529,18 +543,7 @@
 		</ScoreBonus>
 	</kingRewardTiles>
 	
-	<PoliticsDeck>
-		<cardColours>
-			<CardColour>white</CardColour>
-			<CardColour>pink</CardColour>
-			<CardColour>blue</CardColour>
-			<CardColour>violet</CardColour>
-			<CardColour>orange</CardColour>
-			<CardColour>black</CardColour>
-			<CardColour>rainbow</CardColour>
-		</cardColours>
-	</PoliticsDeck>
-	
+
 	<PermitDeck>
 		<permitTiles>
 			<PermitTile>

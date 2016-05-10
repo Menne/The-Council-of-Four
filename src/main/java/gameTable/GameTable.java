@@ -15,13 +15,16 @@ import gameStuff.Map;
 import gameStuff.NobilityTrack;
 import gameStuff.PoliticsDeck;
 import gameStuff.RegionBoard;
-import gameStuff.RewardToken;
+//import gameStuff.RewardToken;
 import bonus.ScoreBonus;
 
 @XmlRootElement(name="GameTable")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class GameTable {
 
+	@XmlElement(name="PoliticsDeck")
+	private final PoliticsDeck politicsDeck;
+	
 	//@XmlElementWrapper(name="rewardTokens")
 	//@XmlElement(name="RewardToken")
 	//private final List<RewardToken> rewardTokens;
@@ -36,10 +39,7 @@ public class GameTable {
 	@XmlElement(name="CouncillorsReserve")
 	private final CouncillorsReserve councilReserve;
 	
-	@XmlElement(name="PoliticsDeck")
-	private final PoliticsDeck politicsDeck;
-	
-	@XmlElement(name="")
+	@XmlElement(name="NobilityTrack")
 	private final NobilityTrack nobilityTrack;
 	
 	@XmlElementWrapper(name="kingRewardTiles")

@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class CardColour {
 
-	@XmlElement(name="CardColour")
+	@XmlElement(name="colourName")
 	private String colour;
 	
 	/**
