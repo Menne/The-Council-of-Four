@@ -3,7 +3,6 @@ package actionsConfiguration;
 import java.util.ArrayList;
 import java.util.List;
 
-import controller.AskParameterPack;
 import model.Game;
 import model.actions.BuildByKing;
 import model.gameTable.City;
@@ -11,6 +10,7 @@ import model.gameTable.CouncilBalcony;
 import model.gameTable.Emporium;
 import model.gameTable.PoliticsCard;
 import model.gameTable.RegionBoard;
+import packdaeliminare.AskParameterPack;
 
 public class BuildByKingConfiguration extends ActionConfiguration{
 	

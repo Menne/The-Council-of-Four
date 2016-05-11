@@ -1,5 +1,6 @@
 package controller;
 
+import model.actions.Action;
 
 public class MarketTurn extends Turn{
 	
@@ -8,10 +9,12 @@ public class MarketTurn extends Turn{
 	}
 
 	@Override
-	public void executeTurn() {
-		return;
+	public void executeActionOfTheTurn(Action action) {
+		// TODO Auto-generated method stub
 		
 	}
+
+
 
 
 }

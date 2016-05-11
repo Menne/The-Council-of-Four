@@ -1,5 +1,6 @@
 package controller;
 
+import model.actions.Action;
 
 public abstract class Turn {
 	
@@ -10,7 +11,7 @@ public abstract class Turn {
 		this.gameLogic=gameLogic;
 	}
 	
-	public abstract void executeTurn();
+	public abstract void executeActionOfTheTurn(Action action);
 
 
 }

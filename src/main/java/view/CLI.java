@@ -4,13 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import controller.AskActionPack;
-import controller.AskParameterPack;
-import controller.ErrorSignal;
 import controller.GameLogic;
 import model.Game;
 import model.Parser;
 import observerPattern.Observable;
+import packdaeliminare.AskActionPack;
+import packdaeliminare.AskParameterPack;
 
 public class CLI extends View{
 
@@ -24,8 +23,7 @@ public class CLI extends View{
 	
 	@Override
 	public void update(ViewNotify notify) {
-		// TODO Auto-generated method stub
-		
+		notify.stamp();
 	}
 	
 	public void input(String input){

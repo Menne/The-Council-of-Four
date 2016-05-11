@@ -3,12 +3,12 @@ package actionsConfiguration;
 import java.util.ArrayList;
 import java.util.List;
 
-import controller.AskParameterPack;
 import model.Game;
 import model.actions.ElectCouncillorByAssistant;
 import model.gameTable.CouncilBalcony;
 import model.gameTable.Councillor;
 import model.gameTable.RegionBoard;
+import packdaeliminare.AskParameterPack;
 
 public class ElectCouncillorByAssistantConfiguration extends ActionConfiguration{
 	
