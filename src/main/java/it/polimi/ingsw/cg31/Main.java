@@ -199,19 +199,18 @@ public class Main {
 		NobilityTrack nobilityTrack=new NobilityTrack(20);
 		nobilityTrack.addBonus(1, new MainActionBonus());
 		
+		List<Bonus> kingRewardTiles=new ArrayList<Bonus>();
+		kingRewardTiles.add(new ScoreBonus(25));
+		kingRewardTiles.add(new ScoreBonus(18));
+		kingRewardTiles.add(new ScoreBonus(12));
+		kingRewardTiles.add(new ScoreBonus(7));
+		kingRewardTiles.add(new ScoreBonus(3));
 		
 		//creo game table
 		GameTable gameTable=
 				new GameTable(map, regionList, kingBalcony, 
-						councillorsReserve, politicsDeck, nobilityTrack);
-		
-		//aggiungo king reward tiles
-		gameTable.addKingRewardTile(new ScoreBonus(25));
-		gameTable.addKingRewardTile(new ScoreBonus(18));
-		gameTable.addKingRewardTile(new ScoreBonus(12));
-		gameTable.addKingRewardTile(new ScoreBonus(7));
-		gameTable.addKingRewardTile(new ScoreBonus(3));
-		
+						councillorsReserve, politicsDeck, nobilityTrack, kingRewardTiles);
+				
 		//creo game
 		Game game=new Game(players, gameTable);
 		

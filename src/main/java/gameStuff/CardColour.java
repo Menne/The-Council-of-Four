@@ -1,18 +1,13 @@
 package gameStuff;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 
 /**
 	 * this class models the colour of a politics card
 	 * @author Emanuele
 	 *
 	 */
-@XmlAccessorType(XmlAccessType.FIELD)
 public class CardColour {
 
-	@XmlElement(name="CardColour")
 	private String colour;
 	
 	/**
@@ -54,7 +49,7 @@ public class CardColour {
 
 	@Override
 	public String toString() {
-		return "CardColour [colour=" + colour + "]";
+		return colour;
 	}
 	
 }

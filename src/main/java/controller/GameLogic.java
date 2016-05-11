@@ -4,7 +4,6 @@ import model.Game;
 import model.GameState;
 import observerPattern.Observable;
 import observerPattern.Observer;
-import view.View;
 
 public class GameLogic extends Observable implements Observer{
 	

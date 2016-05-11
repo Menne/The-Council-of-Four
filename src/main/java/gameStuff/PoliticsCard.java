@@ -49,7 +49,7 @@ public class PoliticsCard {
 
 	@Override
 	public String toString() {
-		return "PoliticsCard [colour=" + colour + "]";
+		return colour.toString();
 	}
 	
 	

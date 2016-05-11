@@ -149,15 +149,15 @@ public class NormalTurn extends Turn{
 	}
 	
 	/**
-	 * Is the entry point used from the GameLogic
+	 * Is the entry point used from the GameLogic,
+	 * start picking a card for  the curentPlayer and ask for the action
 	 */
 	@Override
 	public void executeTurn() {
 		Action action= new PickPoliticsCard(this.gameLogic.getGame());
 		action.executeAction();
-		while(this.mainActionAvailable>0 || this.quickActionAvailable>0){
+		while(this.mainActionAvailable>0 || this.quickActionAvailable>0)
 			this.askForAction();
-		}
 				
 	}
 
@@ -185,7 +185,9 @@ public class NormalTurn extends Turn{
 		this.gameLogic.notifyObservers(aap);
 	}
 	
-
+	/**
+	 * @return the list of acceptable action string according with mainActionAvailable and quickActionAvvailble
+	 */
 	private List<String> acceptableStringForAction() {
 		List<String> acceptable=new ArrayList<String>();
 		if (this.mainActionAvailable>0 && this.quickActionAvailable>0) {
@@ -219,6 +221,11 @@ public class NormalTurn extends Turn{
 	return acceptable;	
 	}
 	
+	/**
+	 * check if the list of list of parameters contains an empty list
+	 * @param acceptableParameters the list of list of parameters to check
+	 * @return TRUE if the list contains an empty list, FALSE otherwise
+	 */
 	private boolean isAcceptableParametersEmpty(List<List<String>> acceptableParameters){
 		for(List<String> parameterList : acceptableParameters)
 			if(parameterList.isEmpty())

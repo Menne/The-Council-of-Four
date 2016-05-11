@@ -234,7 +234,7 @@ public class Player {
 		return "Player [playerNumber=" + playerNumber + ", name=" + name + ", assistants=" + assistants + ", score="
 				+ score + ", nobility=" + nobility + ", coins=" + coins + ", hand=" + hand
 				+ ", playersPermitTilesTurnedUp=" + playersPermitTilesTurnedUp + ", playersPermitTilesTurnedDown="
-				+ playersPermitTilesTurnedDown + ", emporiums=" + emporiums + "]";
+				+ playersPermitTilesTurnedDown + ", emporiums=" + this.emporiums.size() + "]";
 	}
 
 
