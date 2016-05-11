@@ -3,14 +3,14 @@ package actionsConfiguration;
 import java.util.ArrayList;
 import java.util.List;
 
-import actions.BuildByKing;
 import controller.AskParameterPack;
-import gameStuff.City;
-import gameStuff.CouncilBalcony;
-import gameStuff.Emporium;
-import gameStuff.PoliticsCard;
-import gameStuff.RegionBoard;
 import model.Game;
+import model.actions.BuildByKing;
+import model.gameTable.City;
+import model.gameTable.CouncilBalcony;
+import model.gameTable.Emporium;
+import model.gameTable.PoliticsCard;
+import model.gameTable.RegionBoard;
 
 public class BuildByKingConfiguration extends ActionConfiguration{
 	

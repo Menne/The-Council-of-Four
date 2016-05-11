@@ -3,10 +3,10 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import gameStuff.Emporium;
-import gameStuff.PermitTile;
-import gameStuff.PoliticsCard;
-import gameStuff.PoliticsDeck;
+import model.gameTable.Emporium;
+import model.gameTable.PermitTile;
+import model.gameTable.PoliticsCard;
+import model.gameTable.PoliticsDeck;
 
 /** Player class contains all of the informations about a player
 	 * 

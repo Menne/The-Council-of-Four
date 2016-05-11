@@ -5,8 +5,8 @@ import java.io.File;
 import javax.xml.bind.*;
 import javax.xml.bind.annotation.XmlElement;
 
-import gameStuff.Map;
-import gameTable.GameTable;
+import model.gameTable.GameTable;
+import model.gameTable.Map;
 
 
 public class Initializer{

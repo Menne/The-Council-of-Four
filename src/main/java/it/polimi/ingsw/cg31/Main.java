@@ -1,8 +1,25 @@
 package it.polimi.ingsw.cg31;
 
-import gameStuff.*;
-import gameTable.GameTable;
 import model.Game;
+import model.bonus.AssistantsBonus;
+import model.bonus.Bonus;
+import model.bonus.MainActionBonus;
+import model.bonus.NobilityBonus;
+import model.bonus.PoliticsCardsBonus;
+import model.bonus.ScoreBonus;
+import model.gameTable.CardColour;
+import model.gameTable.City;
+import model.gameTable.CityColour;
+import model.gameTable.CouncilBalcony;
+import model.gameTable.Councillor;
+import model.gameTable.CouncillorsReserve;
+import model.gameTable.GameTable;
+import model.gameTable.Map;
+import model.gameTable.NobilityTrack;
+import model.gameTable.PermitDeck;
+import model.gameTable.PermitTile;
+import model.gameTable.PoliticsDeck;
+import model.gameTable.RegionBoard;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,7 +28,6 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
-import bonus.*;
 import controller.GameLogic;
 import players.*;
 

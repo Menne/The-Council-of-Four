@@ -4,7 +4,7 @@ package model;
 import java.util.List;
 
 import controller.Turn;
-import gameTable.GameTable;
+import model.gameTable.GameTable;
 import players.Player;
  
 public class Game {

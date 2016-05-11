@@ -3,12 +3,12 @@ package actionsConfiguration;
 import java.util.ArrayList;
 import java.util.List;
 
-import actions.AcquirePermitTile;
 import controller.AskParameterPack;
-import gameStuff.CouncilBalcony;
-import gameStuff.PoliticsCard;
-import gameStuff.RegionBoard;
 import model.Game;
+import model.actions.AcquirePermitTile;
+import model.gameTable.CouncilBalcony;
+import model.gameTable.PoliticsCard;
+import model.gameTable.RegionBoard;
 
 public class AcquirePermitTileConfiguration extends ActionConfiguration{
 	

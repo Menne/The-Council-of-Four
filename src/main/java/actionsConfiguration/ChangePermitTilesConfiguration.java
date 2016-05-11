@@ -3,10 +3,10 @@ package actionsConfiguration;
 import java.util.ArrayList;
 import java.util.List;
 
-import actions.ChangePermitTiles;
 import controller.AskParameterPack;
-import gameStuff.RegionBoard;
 import model.Game;
+import model.actions.ChangePermitTiles;
+import model.gameTable.RegionBoard;
 
 public class ChangePermitTilesConfiguration extends ActionConfiguration{
 	

@@ -3,7 +3,6 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import actions.*;
 import actionsConfiguration.AcquirePermitTileConfiguration;
 import actionsConfiguration.ActionConfiguration;
 import actionsConfiguration.BuildByKingConfiguration;
@@ -11,6 +10,17 @@ import actionsConfiguration.BuildByPermitTileConfiguration;
 import actionsConfiguration.ChangePermitTilesConfiguration;
 import actionsConfiguration.ElectCouncillorByAssistantConfiguration;
 import actionsConfiguration.ElectCouncillorConfiguration;
+import model.actions.AcquirePermitTile;
+import model.actions.Action;
+import model.actions.AdditionalMainAction;
+import model.actions.BuildByKing;
+import model.actions.BuildByPermitTile;
+import model.actions.ChangePermitTiles;
+import model.actions.ElectCouncillor;
+import model.actions.ElectCouncillorByAssistant;
+import model.actions.EngageAssistant;
+import model.actions.NeedParameters;
+import model.actions.PickPoliticsCard;
 import view.GiveActionPack;
 import view.GiveParameterPack;
 
