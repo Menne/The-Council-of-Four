@@ -12,15 +12,34 @@ import gameStuff.Councillor;
 import gameStuff.RegionBoard;
 import model.Game;
 
+/**
+ * This class defines the possible strings corresponding to the parameters 
+ * necessary for the action elect a councillor and gives them to the CLI. 
+ * In a second moment, it receives the input from the CLI and translates it 
+ * into the effective parameters required from the action elect a councillor
+ * @author Emanuele
+ *
+ */
 public class ElectCouncillorConfiguration extends ActionConfiguration{
 	
 	private ElectCouncillor action;
 	
+	/**
+	 * Constructor of ElectCouncillorConfiguration
+	 * @param game is the current game
+	 * @param action is the action which requires to be configured with parameters given by the user
+	 */
 	public ElectCouncillorConfiguration(Game game, ElectCouncillor action){
 		super(game);
 		this.action=action;
 	}
 
+	/**
+	 * This method packs in a AskParameterPack a list of strings from which the user can choose when he inserts
+	 * the parameters of the action, according to the current game state.
+	 * @return a pack to be sent to CLI, which contains the instructions 
+	 * the user can follow to insert the parameters, and the list of possible strings for the selected action
+	 */
 	@Override
 	public AskParameterPack createAskParameterPack() {
 
@@ -45,6 +64,10 @@ public class ElectCouncillorConfiguration extends ActionConfiguration{
 		return new AskParameterPack(parametersName, acceptableStrings);
 	}
 
+	/**
+	 * This method sets to the selected action the parameters given by the user, 
+	 * after a translation from the input, which is a list of strings
+	 */
 	@Override
 	public void setParameters(List<String> stringParameters) {
 		this.action.setNewCouncillor(councillorTranslator
@@ -53,6 +76,11 @@ public class ElectCouncillorConfiguration extends ActionConfiguration{
 				(stringParameters.remove(0)));
 	}
 	
+	/**
+	 * translates the string given from the user into the corresponding councillor
+	 * @param newCouncillorToTranslate is the string corresponding to the colour of the selected councillor
+	 * @return the councillor obtained from the string
+	 */
 	private Councillor councillorTranslator(String newCouncillorToTranslate) {
 		for (Councillor newCouncillorTranslated : this.game.getGameTable().getCouncilReserve().getCouncillors())
 			if (newCouncillorTranslated.getColour().getColour().equals(newCouncillorToTranslate))
@@ -60,6 +88,11 @@ public class ElectCouncillorConfiguration extends ActionConfiguration{
 		throw new IllegalArgumentException("newCouncillorToTranslate is not a colour name");
 	}
 	
+	/**
+	 * translates the string given from the user into the corresponding council balcony
+	 * @param councilBalconyToTranslate is the string corresponding to the name of the region where there is the selected council balcony
+	 * @return the council balcony obtained from the string
+	 */
 	private CouncilBalcony councilBalconyTranslator(String councilBalconyToTranslate) {
 		for(RegionBoard region : this.game.getGameTable().getRegionBoards())
 			if(councilBalconyToTranslate.equals(region.getName()))
