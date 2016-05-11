@@ -43,7 +43,6 @@ public class Initializer {
 
 	public Game initialize() throws IOException{
 	
-	System.out.println("Initialize parte");
 		
 	FileReader f;
     f=new FileReader("src/main/file.txt");
@@ -60,7 +59,6 @@ public class Initializer {
 	s=b.readLine();
 	
 	while(!s.equals("STOPCOLOURS")){
-		System.out.println("inizializza un colore");
 		cardColourList.add(new CardColour(s));
 		s=b.readLine();
 	}
@@ -81,7 +79,6 @@ public class Initializer {
 	 */
 	List<CityColour> cityColourList=new ArrayList<CityColour>();
 	
-	System.out.println(s);
 	while(!s.equals("STOPCITYCOLOUR")){
 		s=b.readLine();
 		cityColourList.add(new CityColour(s,new ScoreBonus(Integer.parseInt(b.readLine()))));
@@ -128,7 +125,6 @@ public class Initializer {
 	b.readLine();//null
 	s=b.readLine(); //RegionNames
 	
-	System.out.println(s);
 	/*
 	 * inizializzo le regioni
 	 */
@@ -152,7 +148,6 @@ public class Initializer {
 	
 	b.readLine(); //null
 	s=b.readLine(); //rewardTokenList
-	System.out.println(s);
 	
 	/*
 	 * lista di set di bonus (reward tiles)
@@ -189,7 +184,6 @@ public class Initializer {
 	 */
 	Set<City> firstRegionCities=new HashSet<City>();
 	s=b.readLine();
-	System.out.println(s);
 	if(s.equals("FirstRegionCities")){
 		while(!s.equals("STOPFirstRegionCities")){
 		firstRegionCities.add(new City(b.readLine(), regionTranslator(b.readLine(), regionList), cityColourTranslator(b.readLine(), cityColourList),rewardTokenList));
@@ -198,7 +192,6 @@ public class Initializer {
 	
 	Set<City> secondRegionCities=new HashSet<City>();
 	s=b.readLine();
-	System.out.println(s);
 	if(s.equals("SecondRegionCities")){
 		while(!s.equals("STOPSecondRegionCities")){
 		secondRegionCities.add(new City(b.readLine(), regionTranslator(b.readLine(), regionList), cityColourTranslator(b.readLine(), cityColourList),rewardTokenList));
@@ -207,7 +200,6 @@ public class Initializer {
 	
 	Set<City> thirdRegionCities=new HashSet<City>();
 	s=b.readLine();
-	System.out.println(s);
 	if(s.equals("ThirdRegionCities")){
 		while(!s.equals("STOPThirdRegionCities")){
 		thirdRegionCities.add(new City(b.readLine(), regionTranslator(b.readLine(), regionList), cityColourTranslator(b.readLine(), cityColourList),rewardTokenList));
@@ -282,11 +274,9 @@ public class Initializer {
 		}
 	System.out.println("permit tiles prima regione ok");
 	s=b.readLine();//null
-	System.out.println(s);
 	
 	List<PermitTile> secondRegionPermitList = new ArrayList<PermitTile>();
 	s=b.readLine();
-	System.out.println(s);
 	if(s.equals("secondRegionPermitTileList"))
 		while(!s.equals("STOPsecondRegionPermitTileList")){
 			Set<City> buildableCities=new HashSet<City>();
@@ -311,32 +301,27 @@ public class Initializer {
 					tileBonus.add(new ScoreBonus(Integer.parseInt(b.readLine())));
 				s=b.readLine();// STOPTileBonus or NEXTBonus
 			}
-			secondRegionPermitList.add(new PermitTile(buildableCities, tileBonus, firstRegionPermitDeck));
+			secondRegionPermitList.add(new PermitTile(buildableCities, tileBonus, secondRegionPermitDeck));
 			s=b.readLine();
 		}
 		
 		
 	System.out.println("permit tiles seconda regione ok");
-	System.out.println(s);
+
 	b.readLine();//null
 	
 	List<PermitTile> thirdRegionPermitList = new ArrayList<PermitTile>();
 	s=b.readLine();
-	System.out.println(s);
 	if(s.equals("thirdRegionPermitTileList"))
 		while(!s.equals("STOPthirdRegionPermitTileList")){
-			System.out.println(s);
 			Set<City> buildableCities=new HashSet<City>();
 			while(!s.equals("STOPBuildableCities")){
-				System.out.println(s);
 				buildableCities.add(cityTranslator(b.readLine(), allCities));
 				s=b.readLine();//NEXTCity or STOPBuildableCity
 			}
 			Set<Bonus> tileBonus=new HashSet<Bonus>();
 			while(!s.equals("STOPTileBonus")){
-				System.out.println(s);
 				s=b.readLine();
-				System.out.println(s);
 				if(s.equals("AssistantsBonus"))
 					tileBonus.add(new AssistantsBonus(Integer.parseInt(b.readLine())));
 				if(s.equals("CoinsBonus"))
@@ -349,16 +334,13 @@ public class Initializer {
 					tileBonus.add(new PoliticsCardsBonus(Integer.parseInt(b.readLine())));
 				if(s.equals("ScoreBonus"))
 					tileBonus.add(new ScoreBonus(Integer.parseInt(b.readLine())));
-				System.out.println(s);
 				s=b.readLine();// STOPTileBonus or NEXTBonus
-				System.out.println(s);
 			}
 			thirdRegionPermitList.add(new PermitTile(buildableCities, tileBonus, thirdRegionPermitDeck));
 			s=b.readLine();//STOPfirstRegionPermitTileList or NEXTPermitTile
 		}
 	
 	System.out.println("permit tiles terza regione ok");
-	System.out.println(s);
 	
 	b.readLine();//null
 	b.readLine();//NobilityTrack
@@ -390,6 +372,7 @@ public class Initializer {
 		s=b.readLine();//NEXT or STOPNobilityTrack
 	}
 	
+	System.out.println("nobility track ok");
 	
 	List<Bonus> kingRewardTiles= new ArrayList<Bonus>();
 	/*
@@ -401,6 +384,7 @@ public class Initializer {
 			kingRewardTiles.add(new ScoreBonus(Integer.parseInt(b.readLine())));
 			s=b.readLine();//NEXT or STOPKingRewardTile		
 		}
+	System.out.println("king reward tile ok");
 	
 	/*
 	 * inizializzo game table
@@ -409,7 +393,7 @@ public class Initializer {
 			new GameTable(map, regionList, kingBalcony, 
 					councillorsReserve, politicsDeck, nobilityTrack, kingRewardTiles);
 	
-	
+	System.out.println("gametable ok");
 
 	
 	List<Player> players=new ArrayList<Player>();

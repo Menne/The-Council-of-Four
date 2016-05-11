@@ -14,11 +14,8 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 *
 */
 
-@XmlAccessorType(XmlAccessType.FIELD)
 public class PermitDeck {
-	
-	@XmlElementWrapper(name="permitTiles")
-	@XmlElement(name="PermitTile")
+
 	private final List<PermitTile> permitTiles;
 
 	/**

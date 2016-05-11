@@ -17,7 +17,6 @@ public class GameTable {
 	
 	private final Map map;
 	
-
 	private final List<RegionBoard> regionBoards;
 	private final CouncilBalcony councilOfKing;
 	private final CouncillorsReserve councilReserve;

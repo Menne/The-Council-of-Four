@@ -38,7 +38,7 @@ public class RegionBoard {
 		this.regionBalcony=regionBalcony;		
 		this.regionBonus=regionBonus;
 		this.bonusAvailable=true;
-		this.regionCities=new HashSet<City>();//prendo direttamente in input da file CAMBIARE
+		this.regionCities=new HashSet<City>();
 		this.uncoveredPermitTiles=new PermitTile[numberOfUncoveredPermitTiles];		
 	}
 	
@@ -125,8 +125,7 @@ public class RegionBoard {
 				catch(IndexOutOfBoundsException e){
 					System.out.println("Permit deck empty, game cannot go on");
 					System.exit(-1);
-				}
-						
+				}					
 	}
 	
 	
