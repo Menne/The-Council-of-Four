@@ -2,17 +2,18 @@ package controller;
 
 import model.Game;
 import model.GameState;
-import observerPattern.Observable;
+import model.actions.Action;
 import observerPattern.Observer;
 import view.View;
 
-public class GameLogic extends Observable implements Observer{
+public class GameLogic implements Observer<Action>{
 	
 	private final Game game;
 	private Turn currentTurn;
 	
-	public GameLogic(Game game){
+	public GameLogic(Game game, View view){
 		this.game=game;
+		view.registerObserver(this);
 	}
 	
 
@@ -35,16 +36,13 @@ public class GameLogic extends Observable implements Observer{
 		}
 	
 	}
-
-
+	
 	@Override
-	public <C> void update(Observable o, C change) {
-		if(this.currentTurn instanceof NormalTurn){
-			NormalTurn currentTurn=(NormalTurn) this.currentTurn;
-			currentTurn.receivePack(change);
-		}
-		
+	public void update(Action action){
+		action.executeAction();
 	}
 	
 
-}
+		
+	}
+	

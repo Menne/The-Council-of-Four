@@ -1,6 +1,7 @@
 package it.polimi.ingsw.cg31;
 
 import model.Game;
+import model.Parser;
 import model.bonus.AssistantsBonus;
 import model.bonus.Bonus;
 import model.bonus.MainActionBonus;
@@ -231,14 +232,19 @@ public class Main {
 		//creo game
 		Game game=new Game(players, gameTable);
 		
-		Scanner scanner=new Scanner(System.in);
-		GameLogic gameLogic=new GameLogic(game);
-		View view=new CLI(gameLogic, scanner);
-		view.registerObserver(gameLogic);
+		Parser parser=new Parser(game);
+		CLI view=new CLI(game, parser);
+		GameLogic gameLogic=new GameLogic(game, view);
 		
-		gameLogic.play();
-		scanner.close(); 
+		while(true){
+			Scanner scanner=new Scanner(System.in);
+			String input=scanner.nextLine();
+			view.input(input);
+			scanner.close(); 
+		}
 		
+		
+//		gameLogic.play();		
 //		System.out.println(game);				
 	}
 

@@ -5,9 +5,12 @@ import java.util.List;
 
 import controller.Turn;
 import model.gameTable.GameTable;
+import observerPattern.Observable;
 import players.Player;
+import view.View;
+import view.ViewNotify;
  
-public class Game {
+public class Game extends Observable<ViewNotify>{
 	
 	private final List<Player> players;
 	private Player currentPlayer;
@@ -20,6 +23,7 @@ public class Game {
 		this.gameTable=gameTable;
 		this.currentPlayer=this.players.get(0);
 		this.gameState=GameState.RUNNING;
+		
 	}
 	
 	

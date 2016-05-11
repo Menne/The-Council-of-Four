@@ -9,18 +9,30 @@ import controller.AskParameterPack;
 import controller.ErrorSignal;
 import controller.GameLogic;
 import model.Game;
+import model.Parser;
 import observerPattern.Observable;
 
 public class CLI extends View{
 
-	private final Scanner scanner;
+	private final Parser parser;
 	
-	public CLI(GameLogic gameLogic, Scanner scanner) {
-		super(gameLogic);
-		this.scanner=scanner;
+	public CLI(Game game, Parser parser) {
+		super(game);
+		this.parser=parser;
 	}
-
+	
+	
 	@Override
+	public void update(ViewNotify notify) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public void input(String input){
+		
+	}
+	
+/*	@Override
 	public <C> void update(Observable o, C change) {
 		if(change instanceof AskActionPack){
 			AskActionPack notify=(AskActionPack) change;
@@ -74,14 +86,16 @@ public class CLI extends View{
 			}
 			
 		}
-	}
+	}*/
 	
 	/**
 	 * TODO
 	 */
 	public void stamp(Game game){
-		System.out.println(game);
+		System.out.println(game+" ");
 	}
+
+	
 
 
 }
