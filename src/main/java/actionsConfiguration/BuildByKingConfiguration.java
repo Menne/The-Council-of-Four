@@ -12,15 +12,35 @@ import gameStuff.PoliticsCard;
 import gameStuff.RegionBoard;
 import model.Game;
 
+/**
+ * This class defines the possible strings corresponding to the parameters 
+ * necessary for the action build by king and gives them to the CLI. 
+ * In a second moment, it receives the input from the CLI and translates it 
+ * into the effective parameters required from the action build by king
+ * @author Emanuele
+ *
+ */
+
 public class BuildByKingConfiguration extends ActionConfiguration{
 	
 	private BuildByKing action;
 	
+	/**
+	 * Constructor of BuildByKingConfiguration
+	 * @param game is the current game
+	 * @param action is the action which requires to be configured with parameters given by the user
+	 */
 	public BuildByKingConfiguration(Game game, BuildByKing action){
 		super(game);
 		this.action=action;
 	}
 
+	/**
+	 * This method packs in a AskParameterPack a list of strings from which the user can choose when he inserts
+	 * the parameters of the action, according to the current game state.
+	 * @return a pack to be sent to CLI, which contains the instructions 
+	 * the user can follow to insert the parameters, and the list of possible strings for the selected action
+	 */
 	@Override
 	public AskParameterPack createAskParameterPack() {
 		
@@ -67,6 +87,10 @@ public class BuildByKingConfiguration extends ActionConfiguration{
 		return new AskParameterPack(parametersName, acceptableStrings);
 	}
 
+	/**
+	 * This method sets to the selected action the parameters given by the user, 
+	 * after a translation from the input, which is a list of strings
+	 */
 	@Override
 	public void setParameters(List<String> stringParameters) {
 		this.action.setSelectedCity(cityTranslator
@@ -79,12 +103,22 @@ public class BuildByKingConfiguration extends ActionConfiguration{
 		this.action.setCardsToDescard(cardsTranslated);
 	}
 	
+	/**
+	 * translates the string given from the user into the corresponding politics card
+	 * @param cardToTranslate is the string corresponding to the index of the politics card in the hand of the player
+	 * @return the politics card obtained from the string
+	 */
 	private PoliticsCard politicsCardTranslator(String cardToTranslate) {
 		Integer numberOfCard=Integer.parseInt(cardToTranslate);
 		PoliticsCard cardTranslated=this.game.getCurrentPlayer().getHand().get(numberOfCard);
 		return cardTranslated;
 	}
 	
+	/**
+	 * translates the string given from the user into the corresponding city
+	 * @param cityToTranslate is the string corresponding to the name of the selected city
+	 * @return the city obtained from the string
+	 */
 	private City cityTranslator(String cityToTranslate) {
 		for (RegionBoard regionBoard : this.game.getGameTable().getRegionBoards())
 			for (City cityTranslated : regionBoard.getRegionCities())

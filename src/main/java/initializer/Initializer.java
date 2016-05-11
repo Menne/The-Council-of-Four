@@ -39,7 +39,6 @@ import players.Player;
 public class Initializer {
 	
 	private String s;
-	private String temp;
 	
 
 	public Game initialize() throws IOException{
@@ -391,23 +390,27 @@ public class Initializer {
 		s=b.readLine();//NEXT or STOPNobilityTrack
 	}
 	
-
-	/*
-	 * inizializzo game table
-	 */
-	GameTable gameTable=
-			new GameTable(map, regionList, kingBalcony, 
-					councillorsReserve, politicsDeck, nobilityTrack);
 	
+	List<Bonus> kingRewardTiles= new ArrayList<Bonus>();
 	/*
 	 * inizializzo king reward tile
 	 */
 	s=b.readLine();
 	if(s.equals("kingRewardTile"))
 		while(!s.equals("STOPKingRewardTile")){
-			gameTable.addKingRewardTile(new ScoreBonus(Integer.parseInt(b.readLine())));
+			kingRewardTiles.add(new ScoreBonus(Integer.parseInt(b.readLine())));
 			s=b.readLine();//NEXT or STOPKingRewardTile		
 		}
+	
+	/*
+	 * inizializzo game table
+	 */
+	GameTable gameTable=
+			new GameTable(map, regionList, kingBalcony, 
+					councillorsReserve, politicsDeck, nobilityTrack, kingRewardTiles);
+	
+	
+
 	
 	List<Player> players=new ArrayList<Player>();
 	Player player1=new Player(1,"Luca",1,10,politicsDeck);
