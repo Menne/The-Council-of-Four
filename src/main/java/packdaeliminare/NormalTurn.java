@@ -1,4 +1,4 @@
-package controller;
+package packdaeliminare;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +10,7 @@ import actionsConfiguration.BuildByPermitTileConfiguration;
 import actionsConfiguration.ChangePermitTilesConfiguration;
 import actionsConfiguration.ElectCouncillorByAssistantConfiguration;
 import actionsConfiguration.ElectCouncillorConfiguration;
+import controller.GameLogic;
 import model.actions.AcquirePermitTile;
 import model.actions.Action;
 import model.actions.AdditionalMainAction;

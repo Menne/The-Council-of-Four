@@ -1,7 +1,7 @@
 package model.actions;
 
-import controller.NormalTurn;
 import model.Game;
+import packdaeliminare.NormalTurn;
 import view.ErrorNotify;
 
 /**

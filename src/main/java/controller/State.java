@@ -2,9 +2,12 @@ package controller;
 
 import model.actions.Action;
 
-public interface State {
+public interface State{
 
-	public void handleAction(GameLogic gameLogic, Action action);
+	public default void handleAction(GameLogic gameLogic, Action action){
+		System.out.println("richiamato metodo default");
+	}
+
 	
 	
 }

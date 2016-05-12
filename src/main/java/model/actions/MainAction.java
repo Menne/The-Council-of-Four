@@ -1,7 +1,7 @@
 package model.actions;
 
-import controller.NormalTurn;
 import model.Game;
+import packdaeliminare.NormalTurn;
 
 /**
  * The class that models the generic main actions of the game.

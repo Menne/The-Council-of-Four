@@ -1,19 +1,18 @@
 package controller;
 
-import model.actions.Action;
-import model.actions.MainAction;
+import model.actions.*;
 
 public class State11 implements State {
 
-	@Override
-	public void handleAction(GameLogic gameLogic, Action action) {
-		if(action instanceof MainAction)
-			if(action.executeAction())
-				gameLogic.setState(new State01());  			
-		else
-			if(action.executeAction())
-				gameLogic.setState(new State10());
 
+	public void handleAction(GameLogic gameLogic, MainAction action) {
+		if(action.executeAction())
+			gameLogic.setState(new State01());  			
 	}
 
+
+	public void handleAction(GameLogic gameLogic, QuickAction action) {
+		if(action.executeAction())
+			gameLogic.setState(new State10());		
+	}
 }

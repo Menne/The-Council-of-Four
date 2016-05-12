@@ -1,13 +1,10 @@
 package controller;
 
-import model.actions.Action;
+import model.actions.PickPoliticsCard;
 
-public class StartEndState implements State {
+public class StartEndState implements State{
 
-	@Override
-	public void handleAction(GameLogic gameLogic, Action action) {
-		// TODO Auto-generated method stub
-
+	public void handleAction(GameLogic gameLogic, PickPoliticsCard action) {
+		action.executeAction();
 	}
-
 }

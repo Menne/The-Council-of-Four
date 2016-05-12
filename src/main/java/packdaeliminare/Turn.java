@@ -1,5 +1,6 @@
-package controller;
+package packdaeliminare;
 
+import controller.GameLogic;
 import model.actions.Action;
 
 public abstract class Turn {
