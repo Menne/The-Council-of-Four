@@ -1,4 +1,4 @@
-package controller;
+package packdaeliminare;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +10,7 @@ import actionsConfiguration.BuildByPermitTileConfiguration;
 import actionsConfiguration.ChangePermitTilesConfiguration;
 import actionsConfiguration.ElectCouncillorByAssistantConfiguration;
 import actionsConfiguration.ElectCouncillorConfiguration;
+import controller.GameLogic;
 import model.actions.AcquirePermitTile;
 import model.actions.Action;
 import model.actions.AdditionalMainAction;
@@ -21,6 +22,7 @@ import model.actions.ElectCouncillorByAssistant;
 import model.actions.EngageAssistant;
 import model.actions.NeedParameters;
 import model.actions.PickPoliticsCard;
+import players.Player;
 import view.GiveActionPack;
 import view.GiveParameterPack;
 
@@ -36,8 +38,6 @@ public class NormalTurn extends Turn{
 	
 	private int mainActionAvailable;
 	private int quickActionAvailable;
-	private NeedParameters currentAction;
-	private ActionConfiguration currentConfiguration;
 	
 	public NormalTurn(GameLogic gameLogic){
 		super(gameLogic);
@@ -71,6 +71,15 @@ public class NormalTurn extends Turn{
 		this.quickActionAvailable--;
 	}
 
+
+
+	@Override
+	public void executeActionOfTheTurn(Action action) {
+		action.executeAction();	//controllare in action se ho azioni disponibili	
+	}
+
+	
+
 	/**
 	 * Is called from the update method of the GameLogic when the view notify a pack to it .
 	 * If the pack is a GiveActionPack this method instances the right action 
@@ -81,7 +90,7 @@ public class NormalTurn extends Turn{
 	 * @param pack is the pack received from the GameLogic 
 	 * @throws IllegalArgumentException
 	 */
-	public <P> void receivePack(P pack) throws IllegalArgumentException{
+/*	public <P> void receivePack(P pack) throws IllegalArgumentException{
 		boolean actionResult;
 		if(pack instanceof GiveActionPack){
 			GiveActionPack gap= (GiveActionPack) pack;
@@ -156,12 +165,12 @@ public class NormalTurn extends Turn{
 			}
 		}		
 
-	}
+	}*/
 	
 	/**
 	 * Is the entry point used from the GameLogic
 	 */
-	@Override
+/*	@Override
 	public void executeTurn() {
 		Action action= new PickPoliticsCard(this.gameLogic.getGame());
 		action.executeAction();
@@ -169,13 +178,13 @@ public class NormalTurn extends Turn{
 			this.askForAction();
 		}
 				
-	}
+	}*/
 
 	/**
 	 * Represents the ask parameter phase. Passes the AskParameterPack to the view.
 	 * If it has an empty field we will restart from the ask action phase.
 	 */
-	private void askForParameters(){
+/*	private void askForParameters(){
 		AskParameterPack app=this.currentConfiguration.createAskParameterPack();
 		if(this.isAcceptableParametersEmpty(app.getAcceptableParameters())){
 			this.gameLogic.notifyObservers(new ErrorSignal());
@@ -183,12 +192,12 @@ public class NormalTurn extends Turn{
 		}
 		else
 			this.gameLogic.notifyObservers(app);
-	}
+	}*/
 	
 	/**
 	 * Represent the ask action phase. Passes the AskActonPack to the view.
 	 */
-	private void askForAction(){
+/*	private void askForAction(){
 		List<String> acceptableActions=new ArrayList<String>();
 		acceptableActions=this.acceptableStringForAction();
 		AskActionPack aap= new AskActionPack(this.gameLogic.getGame(), acceptableActions);
@@ -235,5 +244,5 @@ public class NormalTurn extends Turn{
 				return true;
 		return false;
 	}
-
+*/
 }

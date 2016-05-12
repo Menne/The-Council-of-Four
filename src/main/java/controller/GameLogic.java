@@ -9,11 +9,17 @@ import view.View;
 public class GameLogic implements Observer<Action>{
 	
 	private final Game game;
-	private Turn currentTurn;
+	private State state;
+	private Action currentAction;
+	private boolean IsActionArrived;
+	
 	
 	public GameLogic(Game game, View view){
 		this.game=game;
 		view.registerObserver(this);
+		this.play();
+		this.IsActionArrived=false;
+		this.state=new StartEndState();
 	}
 	
 
@@ -21,28 +27,28 @@ public class GameLogic implements Observer<Action>{
 	public Game getGame() {
 		return game;
 	}
-
-	public void play() {
-		int numberOfTurns=0;
-		while(!this.game.getGameState().equals(GameState.END)){
-			while(numberOfTurns!=this.game.getPlayers().size()){
-				this.currentTurn=new NormalTurn(this);
-				this.game.setCurrentTurn(this.currentTurn);
-				this.currentTurn.executeTurn();
-				this.game.nextPlayer();
-			}
-			this.currentTurn=new MarketTurn(this);
-			this.currentTurn.executeTurn();				
-		}
 	
+	
+	public void setState(State state) {
+		this.state = state;
 	}
-	
+
+
+
 	@Override
 	public void update(Action action){
-		action.executeAction();
+		this.currentAction=action;
+		this.IsActionArrived=true;
 	}
 	
-
-		
+	
+	public void play() {
+		while(this.game.getGameState()!=GameState.RUNNING){
+			while(!this.IsActionArrived);
+			this.state.handleAction(this, this.currentAction);
+			this.IsActionArrived=false;	
+		}
 	}
+	
+}
 	

@@ -5,12 +5,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import controller.AskParameterPack;
 import model.Game;
 import model.actions.ElectCouncillor;
 import model.gameTable.CouncilBalcony;
 import model.gameTable.Councillor;
 import model.gameTable.RegionBoard;
+import packdaeliminare.AskParameterPack;
 
 public class ElectCouncillorConfiguration extends ActionConfiguration{
 	

@@ -2,8 +2,8 @@ package actionsConfiguration;
 
 import java.util.List;
 
-import controller.AskParameterPack;
 import model.Game;
+import packdaeliminare.AskParameterPack;
 
 public abstract class ActionConfiguration {
 	

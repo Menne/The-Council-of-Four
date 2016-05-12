@@ -3,13 +3,13 @@ package actionsConfiguration;
 import java.util.ArrayList;
 import java.util.List;
 
-import controller.AskParameterPack;
 import model.Game;
 import model.actions.BuildByPermitTile;
 import model.gameTable.City;
 import model.gameTable.Emporium;
 import model.gameTable.PermitTile;
 import model.gameTable.RegionBoard;
+import packdaeliminare.AskParameterPack;
 
 public class BuildByPermitTileConfiguration extends ActionConfiguration{
 	

@@ -1,16 +1,8 @@
 package view;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
-import controller.AskActionPack;
-import controller.AskParameterPack;
-import controller.ErrorSignal;
-import controller.GameLogic;
 import model.Game;
 import model.Parser;
-import observerPattern.Observable;
+
 
 public class CLI extends View{
 
@@ -24,8 +16,7 @@ public class CLI extends View{
 	
 	@Override
 	public void update(ViewNotify notify) {
-		// TODO Auto-generated method stub
-		
+		notify.stamp(this);
 	}
 	
 	public void input(String input){

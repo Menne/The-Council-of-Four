@@ -1,7 +1,8 @@
 package model.actions;
 
-import controller.NormalTurn;
 import model.Game;
+import packdaeliminare.NormalTurn;
+import view.ErrorNotify;
 
 /**
  * It's the quick action "additional main action" it operates
@@ -30,12 +31,14 @@ public class AdditionalMainAction extends QuickAction {
 	 * @return TRUE if the action ends well; FALSE otherwise.
 	 */
 	public boolean executeAction() {
-		if(!this.checkAssistants())
+		if(!this.checkAssistants()){
+			this.game.notifyObserver(new ErrorNotify());
 			return false;
-		NormalTurn currentTurn=(NormalTurn) this.game.getCurrentTurn();
+		}			
+/*		NormalTurn currentTurn=(NormalTurn) this.game.getCurrentTurn();
 		currentTurn.incrementMainActionAvailable();
 		this.game.getCurrentPlayer().decrementAssistants(necessaryAssistants);
-		this.decrementAction();
+		this.decrementAction();*/
 		return true;
 	}
 

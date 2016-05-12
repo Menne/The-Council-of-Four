@@ -3,9 +3,9 @@ package model;
  
 import java.util.List;
 
-import controller.Turn;
 import model.gameTable.GameTable;
 import observerPattern.Observable;
+import packdaeliminare.Turn;
 import players.Player;
 import view.View;
 import view.ViewNotify;
