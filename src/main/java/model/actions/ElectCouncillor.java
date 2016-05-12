@@ -45,12 +45,13 @@ public class ElectCouncillor extends MainAction implements NeedParameters{
 		if(this.newCouncillor==null || this.councilBalcony==null)
 			throw new NullPointerException("Parameters not setted");
 		Councillor oldCouncillor;
-		if(!this.checkCouncillor())
+		if(!this.checkCouncillor()){
+			this.sendErrorNotify();
 			return false;
+		}
 		oldCouncillor=this.councilBalcony.substituteCouncillor(this.newCouncillor);
 		this.game.getGameTable().getCouncilReserve().getCouncillors().add(oldCouncillor);
 		this.game.getCurrentPlayer().incrementCoins(givenCoins);
-		this.decrementAction();
 		return true;
 	}
 

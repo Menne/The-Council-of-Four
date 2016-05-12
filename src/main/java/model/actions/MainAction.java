@@ -1,7 +1,7 @@
 package model.actions;
 
 import model.Game;
-import packdaeliminare.NormalTurn;
+import view.ErrorNotify;
 
 /**
  * The class that models the generic main actions of the game.
@@ -16,8 +16,7 @@ public abstract class MainAction implements Action {
 		this.game=game;
 	}
 	
-	public void decrementAction(){
-		NormalTurn turn= (NormalTurn) this.game.getCurrentTurn();
-		turn.decrementMainActionAvailable();
+	public void sendErrorNotify(){
+		this.game.notifyObserver(new ErrorNotify());
 	}
 }

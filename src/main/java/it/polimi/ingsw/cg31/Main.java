@@ -234,7 +234,7 @@ public class Main {
 		
 		Parser parser=new Parser(game);
 		CLI view=new CLI(game, parser);
-		GameLogic gameLogic=new GameLogic(game, view);
+		new GameLogic(game, view);
 		
 		while(true){
 			Scanner scanner=new Scanner(System.in);

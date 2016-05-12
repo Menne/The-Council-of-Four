@@ -24,11 +24,12 @@ public class EngageAssistant extends QuickAction {
 	 * @return TRUE if the action ends well; FALSE otherwise.
 	 */
 	public boolean executeAction() {
-		if(!this.checkCoins())
-			return false;		
+		if(!this.checkCoins()){
+			this.sendErrorNotify();
+			return false;
+		}
 		this.game.getCurrentPlayer().decrementCoins(necessaryCoins);
 		this.game.getCurrentPlayer().incrementAssistants(1);
-		this.decrementAction();
 		return true;
 	}
 
