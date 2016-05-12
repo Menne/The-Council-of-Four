@@ -15,4 +15,9 @@ public class State11 implements State {
 		if(action.executeAction())
 			gameLogic.setState(new State10());		
 	}
+	
+/*	public void handleAction(GameLogic gameLogic, AdditionalMainActionBonus action){
+		if(action.executeAction())
+			gameLogic.setState(new state);
+	}*/
 }
