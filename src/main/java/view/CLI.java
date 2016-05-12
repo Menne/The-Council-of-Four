@@ -29,7 +29,7 @@ public class CLI extends View{
 	}
 	
 	public void input(String input){
-		
+		this.parser.actionTranslator(input);
 	}
 	
 /*	@Override
