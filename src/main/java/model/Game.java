@@ -2,9 +2,10 @@
 package model;
  
 import java.util.List;
-
-import controller.StartEndState;
 import controller.State;
+import controller.State11;
+import model.actions.Action;
+import model.actions.PickPoliticsCard;
 import model.gameTable.GameTable;
 import observerPattern.Observable;
 import players.Player;
@@ -24,8 +25,9 @@ public class Game extends Observable<ViewNotify>{
 		this.gameTable=gameTable;
 		this.currentPlayer=this.players.get(0);
 		this.gameState=GameState.RUNNING;
-		this.state=new StartEndState();
-		
+		Action pickCard=new PickPoliticsCard(this);
+		pickCard.executeAction();
+		this.state=new State11();		
 	}
 
 
