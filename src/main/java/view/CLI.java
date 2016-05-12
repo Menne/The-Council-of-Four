@@ -1,5 +1,9 @@
 package view;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 import model.Game;
 import model.Parser;
 
@@ -19,8 +23,22 @@ public class CLI extends View{
 		notify.stamp(this);
 	}
 	
-	public void input(String input){
+	public List<String> input(String input) {
+		Scanner scanner=new Scanner(System.in);
+		List<String> stringParameters=new ArrayList<String>();
+		for (List<String> currentListOfStrings : this.parser.actionTranslator(input)) {
+			System.out.println(currentListOfStrings.remove(0));
+			for (String currentString : currentListOfStrings)
+				System.out.print(currentString + "\t");
+			String parameter=scanner.nextLine();
+			while(!currentListOfStrings.contains(parameter)){
+				System.out.println("Wrong parameter. Retry.");
+				parameter=scanner.nextLine();
+			}
+			stringParameters.add(parameter);
 		this.parser.actionTranslator(input);
+		}
+		return stringParameters;
 	}
 	
 /*	@Override

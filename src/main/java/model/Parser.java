@@ -6,6 +6,7 @@ import java.util.List;
 import model.gameTable.City;
 import model.gameTable.CouncilBalcony;
 import model.gameTable.Councillor;
+import model.gameTable.Emporium;
 import model.gameTable.PermitTile;
 import model.gameTable.PoliticsCard;
 import model.gameTable.RegionBoard;
@@ -18,94 +19,169 @@ public class Parser {
 		this.game=game;
 	}
 	
-	
-	public void actionTranslator(String input) {
+	public List<List<String>> actionTranslator(String input) {
 		switch (input) {
-		case "m1":
-			this.m1AcceptableParameters();
-			break;
-		case "m2":
-			this.m2AcceptableParameters();
-			break;
-		case "m3":
-			this.m3AcceptableParameters();
-			break;
-		case "m4":
-			this.m4AcceptableParameters();
-			break;
-		case "q1":
-			this.q1AcceptableParameters();
-			break;
-		case "q2":
-			this.q2AcceptableParameters();
-			break;
-		case "q3":
-			this.q3AcceptableParameters();
-			break;
-		case "q4":
-			this.q4AcceptableParameters();
+		case "m1": //eleggi consigliere
+			return this.m1AcceptableParameters();
+		case "m2": //acquista tessera permesso
+			return this.m2AcceptableParameters();
+		case "m3": //build an emporium with a permit tile
+			return this.m3AcceptableParameters();
+		case "m4": //build an emporium with king
+			return this.m4AcceptableParameters();
+		case "q1": //ingaggiare aiutante
+			return this.q1AcceptableParameters();
+		case "q2": //cambiare tessere permesso
+			return this.q2AcceptableParameters();
+		case "q3": //eleggi consigliere con aiutante
+			return this.q3AcceptableParameters();
+		case "q4": //azione principale aggiuntiva
+			return this.q4AcceptableParameters();
 		}
+		return null;
 	}
+
+
 
 	private List<List<String>> m1AcceptableParameters() {
 		List<List<String>> acceptableStrings=new ArrayList<List<String>>();
-		acceptableStrings.add(acceptableRegions());
-		acceptableStrings.add(acceptableNumberOfPermitTile());
+		acceptableStrings.add(acceptableCouncillors());
+		acceptableStrings.add(acceptableCouncilBalcony());
 		return acceptableStrings;
 	}
-	
+
 	private List<List<String>> m2AcceptableParameters() {
 		List<List<String>> acceptableStrings=new ArrayList<List<String>>();
 		acceptableStrings.add(acceptableRegions());
 		acceptableStrings.add(acceptableNumberOfPermitTile());
+		acceptableStrings.add(acceptableFirstPoliticsCard());
+		for (int i=0; i<=CouncilBalcony.getNumberofcouncillors(); i++)
+			acceptableStrings.add(acceptablePoliticsCards());
 		return acceptableStrings;
 	}
-
-	private List<String> acceptableNumberOfPermitTile() {
-		List<String> acceptableStrings=new ArrayList<String>();
-		acceptableStrings.add("Permit tile you want to acquire");
-		acceptableStrings.add("0");
-		acceptableStrings.add("1");
+	
+	private List<List<String>> m3AcceptableParameters() {
+		List<List<String>> acceptableStrings=new ArrayList<List<String>>();
+		acceptableStrings.add(acceptableCities());
+		acceptableStrings.add(acceptablePermitTiles());
 		return acceptableStrings;
 	}
-
-	private List<String> acceptableRegions() {
-		List<String> acceptableStrings=new ArrayList<String>();
-		acceptableStrings.add("Region where you want to acquire");
-		for (RegionBoard region : this.game.getGameTable().getRegionBoards())
-			acceptableStrings.add(region.getName());
+	
+	private List<List<String>> m4AcceptableParameters() {
+		List<List<String>> acceptableStrings=new ArrayList<List<String>>();
+		acceptableStrings.add(acceptableCities());
+		acceptableStrings.add(acceptableFirstPoliticsCard());
+		for (int i=0; i<=CouncilBalcony.getNumberofcouncillors(); i++)
+			acceptableStrings.add(acceptablePoliticsCards());
 		return acceptableStrings;
 	}
-
-	private List<String> acceptablePoliticsCards() {
-		List<String> acceptableStrings=new ArrayList<String>();
-		acceptableStrings.add("First card of your hand you want to use to satisfy the council");
-		for (PoliticsCard card : this.game.getCurrentPlayer().getHand())
-			acceptableStrings.add(card.getColour().getColour());
-		return acceptableStrings;
-	}
-
-
+	
+	private List<List<String>> q1AcceptableParameters() {
+		return null;
+		// TODO Auto-generated method stub
 		
-		
-		
-		for (int i=0; i<CouncilBalcony.getNumberofcouncillors()-1; i++) {
-			List<String> cardsNumbersPlusExit=new ArrayList<String>();
-			int maxNumberOfCardsPlusExit=this.game.getCurrentPlayer().getHand().size();
-			for(Integer j=0; j<maxNumberOfCardsPlusExit; j++)
-				cardsNumbersPlusExit.add(j.toString());
-			cardsNumbersPlusExit.add("x");
-			acceptableStrings.add(cardsNumbersPlusExit);
-		}
+	}
+
+	private List<List<String>> q2AcceptableParameters() {
+		List<List<String>> acceptableStrings=new ArrayList<List<String>>();
+		acceptableStrings.add(acceptableRegions());
 		return acceptableStrings;
+	}
+
+	private  List<List<String>> q3AcceptableParameters() {
+		List<List<String>> acceptableStrings=new ArrayList<List<String>>();
+		acceptableStrings.add(acceptableCouncillors());
+		acceptableStrings.add(acceptableCouncilBalcony());
+		return acceptableStrings;
+	}
+
+	private List<List<String>> q4AcceptableParameters() {
+		return null;
+		// TODO Auto-generated method stub
 		
 	}
 	
-	private PoliticsCard politicsCardParser(String cardToTranslate) {
-		Integer numberOfCard=Integer.parseInt(cardToTranslate);
-		PoliticsCard cardTranslated=this.game.getCurrentPlayer().getHand().get(numberOfCard);
-		return cardTranslated;
+	
+
+	
+
+
+	private List<String> acceptableNumberOfPermitTile() {
+		List<String> acceptableNumber=new ArrayList<String>();
+		acceptableNumber.add("Permit tile you want to acquire");
+		acceptableNumber.add("0");
+		acceptableNumber.add("1");
+		return acceptableNumber;
 	}
+
+	private List<String> acceptableRegions() {
+		List<String> acceptableRegionNames=new ArrayList<String>();
+		acceptableRegionNames.add("Region where you want to acquire");
+		for (RegionBoard region : this.game.getGameTable().getRegionBoards())
+			acceptableRegionNames.add(region.getName());
+		return acceptableRegionNames;
+	}
+
+	private List<String> acceptableFirstPoliticsCard() {
+		List<String> acceptableColours=new ArrayList<String>();
+		acceptableColours.add("First card of your hand you want to use to satisfy the council");
+		for(PoliticsCard card : this.game.getCurrentPlayer().getHand())
+			acceptableColours.add(card.getColour().getColour());
+		return acceptableColours;
+	}
+	
+	private List<String> acceptablePoliticsCards() {
+		List<String> acceptableColoursPlusExit=new ArrayList<String>();
+		acceptableColoursPlusExit.add("Second card of your hand you want to use to satisfy the council. \n"
+				+ "Attention: if you don't want to discard cards anymore, you just have to press x. \n"
+				+ "If you press the same card you have discarded before, it will not be considered");		int maxNumberOfCardsPlusExit=this.game.getCurrentPlayer().getHand().size();
+		for(Integer j=0; j<maxNumberOfCardsPlusExit; j++)
+			acceptableColoursPlusExit.add(j.toString());
+		acceptableColoursPlusExit.add("x");
+		return acceptableColoursPlusExit;
+	}
+	
+	private List<String> acceptableCouncillors() {
+		List<String> councillorColours=new ArrayList<String>();
+		councillorColours.add("Colour of the councillor which you want to pick");
+		for (Councillor councillor : this.game.getGameTable().getCouncilReserve().getCouncillors())
+			councillorColours.add(councillor.getColour().getColour());
+		return councillorColours;
+	}
+	
+	private List<String> acceptableCouncilBalcony() {
+		List<String> acceptableRegionNames=new ArrayList<String>();
+		acceptableRegionNames.add("Region where there is the council balcony in which you want to substitue a councillor");
+		for (RegionBoard region : this.game.getGameTable().getRegionBoards())
+			acceptableRegionNames.add(region.getName());
+		return acceptableRegionNames;
+	}
+	
+	public List<String> acceptableCities() {
+		List<String> acceptableCityNames=new ArrayList<String>();
+		acceptableCityNames.add("City where you want to build an emporium");
+		for(City city : this.game.getGameTable().getMap().getGameMap().vertexSet())
+			if(city.getCityEmporiums().isEmpty())
+				acceptableCityNames.add(city.getName());
+			else
+				for (Emporium emporium : city.getCityEmporiums())
+					if (!emporium.getEmporiumsPlayer().equals(this.game.getCurrentPlayer()))
+						acceptableCityNames.add(city.getName());
+		return acceptableCityNames;
+	}
+	
+	private List<String> acceptablePermitTiles() {
+		List<String> acceptableTiles=new ArrayList<String>();
+		acceptableTiles.add("Permit tile you want to use to acquire");
+		int maxNumberOfCards=this.game.getCurrentPlayer().getPlayersPermitTilesTurnedUp().size();
+		for(Integer i=0; i<maxNumberOfCards; i++)
+			acceptableTiles.add(i.toString());
+		return acceptableTiles;
+	}
+		
+	
+	
+	
 	
 	private RegionBoard regionTranslator(String regionToTranslate) {
 		for(RegionBoard region : this.game.getGameTable().getRegionBoards())
