@@ -10,6 +10,4 @@ public abstract interface Action {
 
 	
 	public abstract boolean executeAction();
-	
-	public abstract void decrementAction();
 }

@@ -35,10 +35,6 @@ public class AdditionalMainAction extends QuickAction {
 			this.game.notifyObserver(new ErrorNotify());
 			return false;
 		}			
-/*		NormalTurn currentTurn=(NormalTurn) this.game.getCurrentTurn();
-		currentTurn.incrementMainActionAvailable();
-		this.game.getCurrentPlayer().decrementAssistants(necessaryAssistants);
-		this.decrementAction();*/
 		return true;
 	}
 

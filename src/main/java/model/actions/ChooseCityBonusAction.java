@@ -51,10 +51,5 @@ public class ChooseCityBonusAction implements Action {
 		return false;
 	}
 
-	@Override
-	public void decrementAction() {
-		// TODO Auto-generated method stub
-		
-	}
 	
 }

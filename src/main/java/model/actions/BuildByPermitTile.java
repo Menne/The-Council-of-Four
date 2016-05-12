@@ -51,9 +51,10 @@ public class BuildByPermitTile extends MainAction implements NeedParameters{
 		
 		ConnectedBuiltCityDiscover likedCities=new ConnectedBuiltCityDiscover();
 		
-		if (!(checkCityNotContainsEmporium() && checkPermitTileContainsCity() && checkEnoughAssistants()))
+		if (!(checkCityNotContainsEmporium() && checkPermitTileContainsCity() && checkEnoughAssistants())){
+			this.sendErrorNotify();
 			return false;
-		
+		}
 		Emporium temporaryEmporium=this.game.getCurrentPlayer().removeEmporium();
 		this.selectedCity.addEmporium(temporaryEmporium);
 		for (City city : likedCities.getConnectedBuiltCities(this.game.getGameTable().getMap().getGameMap(), this.selectedCity, temporaryEmporium))
@@ -70,7 +71,6 @@ public class BuildByPermitTile extends MainAction implements NeedParameters{
 			assignRegionBonus();
 		if (this.selectedCity.getColour().isBonusAvailable())
 			assignColourBonus();
-		this.decrementAction();
 		return true;
 	}
 	

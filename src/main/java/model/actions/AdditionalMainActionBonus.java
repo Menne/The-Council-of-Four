@@ -10,10 +10,5 @@ public class AdditionalMainActionBonus implements Action {
 		return true;
 	}
 
-	@Override
-	public void decrementAction() {
-		// TODO Auto-generated method stub
-
-	}
 
 }

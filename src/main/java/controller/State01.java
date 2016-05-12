@@ -1,5 +1,6 @@
 package controller;
 
+import model.Game;
 import model.actions.AdditionalMainAction;
 import model.actions.MainAction;
 import model.actions.QuickAction;
@@ -7,22 +8,22 @@ import view.ErrorNotify;
 
 public class State01 implements State {
 
-	public void handleAction(GameLogic gameLogic, MainAction action) {
-		gameLogic.getGame().notifyObserver(new ErrorNotify());				
+	public void handleAction(Game game, MainAction action) {
+		game.notifyObserver(new ErrorNotify());				
 	}
 
 	
-	public void handleAction(GameLogic gameLogic, QuickAction action) {
+	public void handleAction(Game game, QuickAction action) {
 		if(action.executeAction()){
-			gameLogic.setState(new StartEndState());
-			gameLogic.getGame().nextPlayer();
+			game.setState(new StartEndState());
+			game.nextPlayer();
 		}		
 	}
 	
 	
-	public void handleAction(GameLogic gameLogic, AdditionalMainAction action) {
+	public void handleAction(Game game, AdditionalMainAction action) {
 		if(action.executeAction())
-			gameLogic.setState(new State10());
+			game.setState(new State10());
 		
 	}
 }

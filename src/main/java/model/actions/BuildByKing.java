@@ -63,8 +63,10 @@ public class BuildByKing extends MainAction implements NeedParameters{
 		ConnectedBuiltCityDiscover likedCities=new ConnectedBuiltCityDiscover();
 		
 		if (!(checkCityNotContainsEmporium() && checkEnoughAssistants() && 
-				CheckHandSatisfiesBalcony() && CheckEnoughCoins()))
+				CheckHandSatisfiesBalcony() && CheckEnoughCoins())){
+			this.sendErrorNotify();
 			return false;
+		}
 		
 		this.game.getCurrentPlayer().decrementCoins(CoinsToPay());
 		for (PoliticsCard card : cardsToDescard)
@@ -83,7 +85,6 @@ public class BuildByKing extends MainAction implements NeedParameters{
 			assignRegionBonus();
 		if (this.selectedCity.getColour().isBonusAvailable())
 			assignColourBonus();
-		this.decrementAction();
 		
 		return true;
 	}

@@ -70,8 +70,11 @@ public class AcquirePermitTile extends MainAction implements NeedParameters{
 				this.chosenRegion==null)
 			throw new NullPointerException("Paramters not setted");
 		
-		if (!(this.CheckEnoughCoins() && this.CheckHandSatisfiesBalcony()))
+		if (!(this.CheckEnoughCoins() && this.CheckHandSatisfiesBalcony())){
+			this.sendErrorNotify();
 			return false;
+		}
+			
 		
 		for (Bonus bonusToAssign : this.chosenRegion.getUncoveredPermitTiles()[numberOfPermitTile].getBonus())
 			bonusToAssign.assignBonus(this.game);
@@ -80,7 +83,6 @@ public class AcquirePermitTile extends MainAction implements NeedParameters{
 			this.game.getCurrentPlayer().removeCardFromHand(card);
 		this.game.getCurrentPlayer().addTile(this.chosenRegion.pickUncoveredPermitTile(this.numberOfPermitTile));
 		this.chosenRegion.uncoverPermitTiles();
-		this.decrementAction();
 	    return true;
 	}
 	

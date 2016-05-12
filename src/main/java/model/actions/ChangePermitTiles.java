@@ -39,13 +39,14 @@ public class ChangePermitTiles extends QuickAction implements NeedParameters{
 		
 		if(this.selectedRegion==null)
 			throw new NullPointerException("Paramters not setted");
-		if(!this.checkAssistant())
+		if(!this.checkAssistant()){
+			this.sendErrorNotify();
 			return false;
+		}
 		for(RegionBoard region : this.game.getGameTable().getRegionBoards())
 			if(region.equals(selectedRegion))
 				region.substitutePermitTiles();
 		this.game.getCurrentPlayer().decrementAssistants(necessaryAssistants);
-		this.decrementAction();
 		return true;
 	}
 

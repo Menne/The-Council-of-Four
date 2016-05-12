@@ -49,12 +49,13 @@ public class ElectCouncillorByAssistant extends QuickAction implements NeedParam
 		if(this.councilBalcony==null || this.newCouncillor==null)
 			throw new NullPointerException("Parameters not setted");
 		Councillor oldCouncillor;
-		if((!this.checkAssistants())||(!this.checkCouncillor()))
+		if((!this.checkAssistants())||(!this.checkCouncillor())){
+			this.sendErrorNotify();
 			return false;
+		}
 		oldCouncillor=this.councilBalcony.substituteCouncillor(this.newCouncillor);
 		this.game.getGameTable().getCouncilReserve().getCouncillors().add(oldCouncillor);
 		this.game.getCurrentPlayer().decrementAssistants(necessaryAssistants);
-		this.decrementAction();
 		return true;
 	}
 

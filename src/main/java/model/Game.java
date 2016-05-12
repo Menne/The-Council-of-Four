@@ -3,11 +3,11 @@ package model;
  
 import java.util.List;
 
+import controller.StartEndState;
+import controller.State;
 import model.gameTable.GameTable;
 import observerPattern.Observable;
-import packdaeliminare.Turn;
 import players.Player;
-import view.View;
 import view.ViewNotify;
  
 public class Game extends Observable<ViewNotify>{
@@ -16,28 +16,17 @@ public class Game extends Observable<ViewNotify>{
 	private Player currentPlayer;
 	private final GameTable gameTable;
 	private GameState gameState;
-	private Turn currentTurn;
+	private State state;
+	
                
 	public Game(List<Player> players, GameTable gameTable){
 		this.players=players;
 		this.gameTable=gameTable;
 		this.currentPlayer=this.players.get(0);
 		this.gameState=GameState.RUNNING;
+		this.state=new StartEndState();
 		
 	}
-	
-	
-
-	public Turn getCurrentTurn() {
-		return currentTurn;
-	}
-
-
-
-	public void setCurrentTurn(Turn currentTurn) {
-		this.currentTurn = currentTurn;
-	}
-
 
 
 	public void nextPlayer(){
@@ -60,6 +49,16 @@ public class Game extends Observable<ViewNotify>{
 	public GameState getGameState() {
 		return gameState;
 	}
+
+	public State getState() {
+		return state;
+	}
+
+
+	public void setState(State state) {
+		this.state = state;
+	}
+
 
 	public void setGameState(GameState gameState) {
 		this.gameState = gameState;
