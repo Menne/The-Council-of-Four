@@ -16,11 +16,15 @@ public class State10 implements State{
 
 	public void handleAction(Game game, MainAction action) {
 		if(action.executeAction()){
-			game.nextPlayer();
-			Action pickCard= new PickPoliticsCard(game);
-			pickCard.executeAction();
-			game.setState(new State11());
-			}		
+			if(!game.isAdditionalMainActionBonus()){
+				game.nextPlayer();
+				Action pickCard= new PickPoliticsCard(game);
+				pickCard.executeAction();
+				game.setState(new State11());
+			}
+		}
+		else
+			game.setAdditionalMainActionBonus(false);			
 	}
 
 	@Override

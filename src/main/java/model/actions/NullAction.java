@@ -1,14 +1,12 @@
 package model.actions;
 
-import model.Game;
 
-public class AdditionalMainActionBonus implements Action {
+public class NullAction implements Action {
+	
 
 	@Override
 	public boolean executeAction() {
-		 
 		return true;
 	}
-
 
 }

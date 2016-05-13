@@ -18,6 +18,7 @@ public class Game extends Observable<ViewNotify>{
 	private final GameTable gameTable;
 	private GameState gameState;
 	private State state;
+	private boolean additionalMainActionBonus;
 	
                
 	public Game(List<Player> players, GameTable gameTable){
@@ -27,7 +28,8 @@ public class Game extends Observable<ViewNotify>{
 		this.gameState=GameState.RUNNING;
 		Action pickCard=new PickPoliticsCard(this);
 		pickCard.executeAction();
-		this.state=new State11();		
+		this.state=new State11();
+		this.additionalMainActionBonus=false;
 	}
 
 
@@ -65,6 +67,17 @@ public class Game extends Observable<ViewNotify>{
 	public void setGameState(GameState gameState) {
 		this.gameState = gameState;
 	}
+
+	
+	public boolean isAdditionalMainActionBonus() {
+		return additionalMainActionBonus;
+	}
+
+
+	public void setAdditionalMainActionBonus(boolean additionalMainActionBonus) {
+		this.additionalMainActionBonus = additionalMainActionBonus;
+	}
+
 
 	@Override
 	public String toString() {

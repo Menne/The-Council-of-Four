@@ -9,6 +9,7 @@ import model.actions.AdditionalMainAction;
 import model.actions.ChangePermitTiles;
 import model.actions.ElectCouncillorByAssistant;
 import model.actions.EngageAssistant;
+import model.actions.NullAction;
 import model.actions.PickPoliticsCard;
 import model.actions.QuickAction;
 
@@ -28,6 +29,14 @@ public class State01 implements State {
 		if(action.executeAction())
 			game.setState(new State10());		
 	}
+	
+	
+	public void handleAction(Game game, NullAction action){
+		game.nextPlayer();
+		Action pickCard= new PickPoliticsCard(game);
+		pickCard.executeAction();
+		game.setState(new State11());
+	}
 
 
 	@Override
@@ -36,7 +45,8 @@ public class State01 implements State {
 		acceptableActions.add(new EngageAssistant(game));
 		acceptableActions.add(new ChangePermitTiles(game));
 		acceptableActions.add(new ElectCouncillorByAssistant(game));
-		acceptableActions.add(new AdditionalMainAction(game));		
+		acceptableActions.add(new AdditionalMainAction(game));
+		acceptableActions.add(new NullAction());
 		return acceptableActions;
 	}
 }

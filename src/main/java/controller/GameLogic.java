@@ -23,7 +23,7 @@ public class GameLogic implements Observer<Action>{
 	
 	@Override
 	public void update(Action action){
-		this.game.getState().handleAction(game, action);
+		this.game.getState().handleAction(this.game, action);
 	}
 }
 	

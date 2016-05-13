@@ -10,7 +10,10 @@ public class State11 implements State {
 
 	public void handleAction(Game game, MainAction action) {
 		if(action.executeAction())
-			game.setState(new State01());
+			if(!game.isAdditionalMainActionBonus())
+				game.setState(new State01());
+			else
+				game.setAdditionalMainActionBonus(false);
 	}
 
 
@@ -18,7 +21,7 @@ public class State11 implements State {
 		if(action.executeAction())
 			game.setState(new State10());		
 	}
-
+	 
 
 	@Override
 	public List<Action> getAcceptableActions(Game game) {
@@ -35,8 +38,5 @@ public class State11 implements State {
 	}
 	
 	
-/*	public void handleAction(GameLogic gameLogic, AdditionalMainActionBonus action){
-		if(action.executeAction())
-			gameLogic.setState(new state);
-	}*/
+	
 }
