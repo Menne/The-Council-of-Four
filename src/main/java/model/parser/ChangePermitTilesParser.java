@@ -3,13 +3,24 @@ package model.parser;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChangePermitTilesParser implements ActionParser {
+import model.actions.Action;
+import model.actions.ChangePermitTiles;
+
+public class ChangePermitTilesParser implements ActionParserVisitor {
 
 	@Override
 	public List<List<String>> acceptableParameters(Parser parser) {
 		List<List<String>> acceptableStrings=new ArrayList<List<String>>();
 		acceptableStrings.add(parser.acceptableRegions());
 		return acceptableStrings;
+	}
+
+	@Override
+	public Action parametersParser(List<String> stringParameters, Parser parser) {
+		ChangePermitTiles changePermitTiles=new ChangePermitTiles(parser.game);
+		changePermitTiles.setSelectedRegion(parser.regionTranslator
+				(stringParameters.remove(0)));
+		return changePermitTiles;
 	}
 
 }

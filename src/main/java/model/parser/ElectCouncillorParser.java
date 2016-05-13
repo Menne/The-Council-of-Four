@@ -3,7 +3,10 @@ package model.parser;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ElectCouncillorParser implements ActionParser {
+import model.actions.Action;
+import model.actions.ElectCouncillor;
+
+public class ElectCouncillorParser implements ActionParserVisitor {
 
 	@Override
 	public List<List<String>> acceptableParameters(Parser parser) {
@@ -12,5 +15,15 @@ public class ElectCouncillorParser implements ActionParser {
 		acceptableStrings.add(parser.acceptableCouncilBalcony());
 		return acceptableStrings;
 	}
+
+	@Override
+	public Action parametersParser(List<String> stringParameters, Parser parser) {
+		ElectCouncillor electCouncillor=new ElectCouncillor(parser.game);
+		electCouncillor.setNewCouncillor(parser.councillorTranslator
+					(stringParameters.remove(0)));
+		electCouncillor.setCouncilBalcony(parser.councilBalconyTranslator
+					(stringParameters.remove(0)));
+		return electCouncillor;
+		}
 
 }

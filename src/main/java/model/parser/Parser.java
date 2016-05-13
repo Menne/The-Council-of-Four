@@ -14,37 +14,40 @@ import model.gameTable.RegionBoard;
 
 public class Parser {
 
-	private final Game game;
-	private ActionParser currentAction;
+	protected final Game game;
+	private ActionParserVisitor selectedAction;
 	
 	public Parser(Game game){
 		this.game=game;
-		this.currentAction=null;
+		this.selectedAction=null;
 	}
 	
+	public ActionParserVisitor getSelectedAction() {
+		return selectedAction;
+	}
 	
 	public List<List<String>> actionParser(String input) {
 		switch (input) {
 		case "m1":
-			this.currentAction=new ElectCouncillorParser();
-			return this.currentAction.acceptableParameters(this);
+			this.selectedAction=new ElectCouncillorParser();
+			return this.selectedAction.acceptableParameters(this);
 		case "m2":
-			this.currentAction=new AcquirePermitTileParser();
-			return this.currentAction.acceptableParameters(this);
+			this.selectedAction=new AcquirePermitTileParser();
+			return this.selectedAction.acceptableParameters(this);
 		case "m3":
-			this.currentAction=new BuildWithPermitTileParser();
-			return this.currentAction.acceptableParameters(this);
+			this.selectedAction=new BuildWithPermitTileParser();
+			return this.selectedAction.acceptableParameters(this);
 		case "m4":
-			this.currentAction=new BuildWithKingParser();
-			return this.currentAction.acceptableParameters(this);
+			this.selectedAction=new BuildWithKingParser();
+			return this.selectedAction.acceptableParameters(this);
 		case "q1":
 			break;
 		case "q2":
-			this.currentAction=new ChangePermitTilesParser();
-			return this.currentAction.acceptableParameters(this);
+			this.selectedAction=new ChangePermitTilesParser();
+			return this.selectedAction.acceptableParameters(this);
 		case "q3":
-			this.currentAction=new ElectCouncillorByAssistantParser();
-			return this.currentAction.acceptableParameters(this);
+			this.selectedAction=new ElectCouncillorByAssistantParser();
+			return this.selectedAction.acceptableParameters(this);
 		case "q4":
 			break;
 		}
@@ -129,25 +132,31 @@ public class Parser {
 
 	
 	
-	private RegionBoard regionTranslator(String regionToTranslate) {
+	protected RegionBoard regionTranslator(String regionToTranslate) {
 		for(RegionBoard region : this.game.getGameTable().getRegionBoards())
 			if(regionToTranslate.equals(region.getName()))
 				return region;
 		throw new IllegalArgumentException("regionToTranslate is not a region name");
 	}
 	
-	private int numberOfPermitTileTranslator(String numberOfPermitTileToTranslate) {
+	protected int numberOfPermitTileTranslator(String numberOfPermitTileToTranslate) {
 		int numberOfPermitTileTranslated=Integer.parseInt(numberOfPermitTileToTranslate);
 		return numberOfPermitTileTranslated;
 	}
 	
-	private PermitTile permitTileTranslator(String permitTileToTranslate) {
+	protected PermitTile permitTileTranslator(String permitTileToTranslate) {
 		int numberOfPermitTile=Integer.parseInt(permitTileToTranslate);
 		PermitTile permitTileTranslated=this.game.getCurrentPlayer().getPlayersPermitTilesTurnedUp().get(numberOfPermitTile);
 		return permitTileTranslated;
 	}
 	
-	private City cityTranslator(String cityToTranslate) {
+	protected PoliticsCard politicsCardTranslator(String cardToTranslate) {
+		Integer numberOfCard=Integer.parseInt(cardToTranslate);
+		PoliticsCard cardTranslated=this.game.getCurrentPlayer().getHand().get(numberOfCard);
+		return cardTranslated;
+	}
+	
+	protected City cityTranslator(String cityToTranslate) {
 		for (RegionBoard regionBoard : this.game.getGameTable().getRegionBoards())
 			for (City cityTranslated : regionBoard.getRegionCities())
 				if (cityTranslated.getName().equals(cityToTranslate))
@@ -155,14 +164,14 @@ public class Parser {
 		return null;
 	}
 	
-	private Councillor councillorTranslator(String newCouncillorToTranslate) {
+	protected Councillor councillorTranslator(String newCouncillorToTranslate) {
 		for (Councillor newCouncillorTranslated : this.game.getGameTable().getCouncilReserve().getCouncillors())
 			if (newCouncillorTranslated.getColour().getColour().equals(newCouncillorToTranslate))
 				return newCouncillorTranslated;
 		throw new IllegalArgumentException("newCouncillorToTranslate is not a colour name");
 	}
 	
-	private CouncilBalcony councilBalconyTranslator(String councilBalconyToTranslate) {
+	protected CouncilBalcony councilBalconyTranslator(String councilBalconyToTranslate) {
 		for(RegionBoard region : this.game.getGameTable().getRegionBoards())
 			if(councilBalconyToTranslate.equals(region.getName()))
 				return region.getRegionBalcony();

@@ -37,6 +37,8 @@ public class CLI extends View{
 			}
 			stringParameters.add(parameter);
 		}
+		scanner.close();
+		notifyObserver(this.parser.getSelectedAction().parametersParser(stringParameters, this.parser));
 		
 	}
 	
