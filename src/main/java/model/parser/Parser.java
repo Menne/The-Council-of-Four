@@ -1,8 +1,9 @@
-package model;
+package model.parser;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Game;
 import model.gameTable.City;
 import model.gameTable.CouncilBalcony;
 import model.gameTable.Councillor;
@@ -14,99 +15,44 @@ import model.gameTable.RegionBoard;
 public class Parser {
 
 	private final Game game;
+	private ActionParser currentAction;
 	
 	public Parser(Game game){
 		this.game=game;
+		this.currentAction=null;
 	}
 	
-	public List<List<String>> actionTranslator(String input) {
+	
+	public List<List<String>> actionParser(String input) {
 		switch (input) {
-		case "m1": //eleggi consigliere
-			return this.m1AcceptableParameters();
-		case "m2": //acquista tessera permesso
-			return this.m2AcceptableParameters();
-		case "m3": //build an emporium with a permit tile
-			return this.m3AcceptableParameters();
-		case "m4": //build an emporium with king
-			return this.m4AcceptableParameters();
-		case "q1": //ingaggiare aiutante
-			return this.q1AcceptableParameters();
-		case "q2": //cambiare tessere permesso
-			return this.q2AcceptableParameters();
-		case "q3": //eleggi consigliere con aiutante
-			return this.q3AcceptableParameters();
-		case "q4": //azione principale aggiuntiva
-			return this.q4AcceptableParameters();
+		case "m1":
+			this.currentAction=new ElectCouncillorParser();
+			return this.currentAction.acceptableParameters(this);
+		case "m2":
+			this.currentAction=new AcquirePermitTileParser();
+			return this.currentAction.acceptableParameters(this);
+		case "m3":
+			this.currentAction=new BuildWithPermitTileParser();
+			return this.currentAction.acceptableParameters(this);
+		case "m4":
+			this.currentAction=new BuildWithKingParser();
+			return this.currentAction.acceptableParameters(this);
+		case "q1":
+			break;
+		case "q2":
+			this.currentAction=new ChangePermitTilesParser();
+			return this.currentAction.acceptableParameters(this);
+		case "q3":
+			this.currentAction=new ElectCouncillorByAssistantParser();
+			return this.currentAction.acceptableParameters(this);
+		case "q4":
+			break;
 		}
 		return null;
 	}
 
 
-
-	private List<List<String>> m1AcceptableParameters() {
-		List<List<String>> acceptableStrings=new ArrayList<List<String>>();
-		acceptableStrings.add(acceptableCouncillors());
-		acceptableStrings.add(acceptableCouncilBalcony());
-		return acceptableStrings;
-	}
-
-	private List<List<String>> m2AcceptableParameters() {
-		List<List<String>> acceptableStrings=new ArrayList<List<String>>();
-		acceptableStrings.add(acceptableRegions());
-		acceptableStrings.add(acceptableNumberOfPermitTile());
-		acceptableStrings.add(acceptableFirstPoliticsCard());
-		for (int i=0; i<=CouncilBalcony.getNumberofcouncillors(); i++)
-			acceptableStrings.add(acceptablePoliticsCards());
-		return acceptableStrings;
-	}
-	
-	private List<List<String>> m3AcceptableParameters() {
-		List<List<String>> acceptableStrings=new ArrayList<List<String>>();
-		acceptableStrings.add(acceptableCities());
-		acceptableStrings.add(acceptablePermitTiles());
-		return acceptableStrings;
-	}
-	
-	private List<List<String>> m4AcceptableParameters() {
-		List<List<String>> acceptableStrings=new ArrayList<List<String>>();
-		acceptableStrings.add(acceptableCities());
-		acceptableStrings.add(acceptableFirstPoliticsCard());
-		for (int i=0; i<=CouncilBalcony.getNumberofcouncillors(); i++)
-			acceptableStrings.add(acceptablePoliticsCards());
-		return acceptableStrings;
-	}
-	
-	private List<List<String>> q1AcceptableParameters() {
-		return null;
-		// TODO Auto-generated method stub
-		
-	}
-
-	private List<List<String>> q2AcceptableParameters() {
-		List<List<String>> acceptableStrings=new ArrayList<List<String>>();
-		acceptableStrings.add(acceptableRegions());
-		return acceptableStrings;
-	}
-
-	private  List<List<String>> q3AcceptableParameters() {
-		List<List<String>> acceptableStrings=new ArrayList<List<String>>();
-		acceptableStrings.add(acceptableCouncillors());
-		acceptableStrings.add(acceptableCouncilBalcony());
-		return acceptableStrings;
-	}
-
-	private List<List<String>> q4AcceptableParameters() {
-		return null;
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
-
-	
-
-
-	private List<String> acceptableNumberOfPermitTile() {
+	protected List<String> acceptableNumberOfPermitTile() {
 		List<String> acceptableNumber=new ArrayList<String>();
 		acceptableNumber.add("Permit tile you want to acquire");
 		acceptableNumber.add("0");
@@ -114,7 +60,7 @@ public class Parser {
 		return acceptableNumber;
 	}
 
-	private List<String> acceptableRegions() {
+	protected List<String> acceptableRegions() {
 		List<String> acceptableRegionNames=new ArrayList<String>();
 		acceptableRegionNames.add("Region where you want to acquire");
 		for (RegionBoard region : this.game.getGameTable().getRegionBoards())
@@ -122,7 +68,7 @@ public class Parser {
 		return acceptableRegionNames;
 	}
 
-	private List<String> acceptableFirstPoliticsCard() {
+	protected List<String> acceptableFirstPoliticsCard() {
 		List<String> acceptableColours=new ArrayList<String>();
 		acceptableColours.add("First card of your hand you want to use to satisfy the council");
 		for(PoliticsCard card : this.game.getCurrentPlayer().getHand())
@@ -130,7 +76,7 @@ public class Parser {
 		return acceptableColours;
 	}
 	
-	private List<String> acceptablePoliticsCards() {
+	protected List<String> acceptablePoliticsCards() {
 		List<String> acceptableColoursPlusExit=new ArrayList<String>();
 		acceptableColoursPlusExit.add("Second card of your hand you want to use to satisfy the council. \n"
 				+ "Attention: if you don't want to discard cards anymore, you just have to press x. \n"
@@ -141,7 +87,7 @@ public class Parser {
 		return acceptableColoursPlusExit;
 	}
 	
-	private List<String> acceptableCouncillors() {
+	protected List<String> acceptableCouncillors() {
 		List<String> councillorColours=new ArrayList<String>();
 		councillorColours.add("Colour of the councillor which you want to pick");
 		for (Councillor councillor : this.game.getGameTable().getCouncilReserve().getCouncillors())
@@ -149,7 +95,7 @@ public class Parser {
 		return councillorColours;
 	}
 	
-	private List<String> acceptableCouncilBalcony() {
+	protected List<String> acceptableCouncilBalcony() {
 		List<String> acceptableRegionNames=new ArrayList<String>();
 		acceptableRegionNames.add("Region where there is the council balcony in which you want to substitue a councillor");
 		for (RegionBoard region : this.game.getGameTable().getRegionBoards())
@@ -157,7 +103,7 @@ public class Parser {
 		return acceptableRegionNames;
 	}
 	
-	public List<String> acceptableCities() {
+	protected List<String> acceptableCities() {
 		List<String> acceptableCityNames=new ArrayList<String>();
 		acceptableCityNames.add("City where you want to build an emporium");
 		for(City city : this.game.getGameTable().getMap().getGameMap().vertexSet())
@@ -170,7 +116,7 @@ public class Parser {
 		return acceptableCityNames;
 	}
 	
-	private List<String> acceptablePermitTiles() {
+	protected List<String> acceptablePermitTiles() {
 		List<String> acceptableTiles=new ArrayList<String>();
 		acceptableTiles.add("Permit tile you want to use to acquire");
 		int maxNumberOfCards=this.game.getCurrentPlayer().getPlayersPermitTilesTurnedUp().size();
@@ -180,7 +126,7 @@ public class Parser {
 	}
 		
 	
-	
+
 	
 	
 	private RegionBoard regionTranslator(String regionToTranslate) {

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import model.Game;
-import model.Parser;
+import model.parser.Parser;
 
 
 public class CLI extends View{
@@ -23,10 +23,10 @@ public class CLI extends View{
 		notify.stamp(this);
 	}
 	
-	public List<String> input(String input) {
+	public void input(String input) {
 		Scanner scanner=new Scanner(System.in);
 		List<String> stringParameters=new ArrayList<String>();
-		for (List<String> currentListOfStrings : this.parser.actionTranslator(input)) {
+		for (List<String> currentListOfStrings : this.parser.actionParser(input)) {
 			System.out.println(currentListOfStrings.remove(0));
 			for (String currentString : currentListOfStrings)
 				System.out.print(currentString + "\t");
@@ -36,9 +36,8 @@ public class CLI extends View{
 				parameter=scanner.nextLine();
 			}
 			stringParameters.add(parameter);
-		this.parser.actionTranslator(input);
 		}
-		return stringParameters;
+		
 	}
 	
 /*	@Override

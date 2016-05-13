@@ -1,7 +1,6 @@
 package it.polimi.ingsw.cg31;
 
 import model.Game;
-import model.Parser;
 import model.bonus.AssistantsBonus;
 import model.bonus.Bonus;
 import model.bonus.MainActionBonus;
@@ -21,6 +20,7 @@ import model.gameTable.PermitDeck;
 import model.gameTable.PermitTile;
 import model.gameTable.PoliticsDeck;
 import model.gameTable.RegionBoard;
+import model.parser.Parser;
 
 import java.util.ArrayList;
 import java.util.Collections;
