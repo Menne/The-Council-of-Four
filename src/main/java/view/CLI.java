@@ -25,13 +25,17 @@ public class CLI extends View{
 	
 	public void input(String input) {
 		switch (input) {
-			case "a":
+			case "action":
 				this.action();
 				break;
-			case "m":
+			case "market":
+				System.out.println("You can't access to the market at this moment");
 				break;
-			case "e":
+			case "exit":
+				System.out.println("Bye bye!");
 				break;
+			default:
+				System.out.println("Sorry, I didn't understand");
 		}
 	}
 	
@@ -65,7 +69,6 @@ public class CLI extends View{
 		}
 		scanner.close();
 		notifyObserver(this.parser.getCurrentParser().parametersParser(stringParameters, this.parser));
-		
 	}
 	
 

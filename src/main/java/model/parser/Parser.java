@@ -57,6 +57,7 @@ public class Parser {
 	
 	
 	
+	
 	protected List<String> acceptableNumberOfPermitTile() {
 		List<String> acceptableNumber=new ArrayList<String>();
 		acceptableNumber.add("Permit tile you want to acquire");
@@ -88,7 +89,7 @@ public class Parser {
 				+ "If you press the same card you have discarded before, it will not be considered");		
 		for(PoliticsCard card : this.game.getCurrentPlayer().getHand())
 			acceptableColoursPlusExit.add(card.getColour().getColour());
-		acceptableColoursPlusExit.add("exit");
+		acceptableColoursPlusExit.add("stop");
 		return acceptableColoursPlusExit;
 	}
 	
@@ -102,9 +103,11 @@ public class Parser {
 	
 	protected List<String> acceptableCouncilBalcony() {
 		List<String> acceptableRegionNames=new ArrayList<String>();
-		acceptableRegionNames.add("Region where there is the council balcony in which you want to substitue a councillor");
+		acceptableRegionNames.add("Region where there is the council balcony in which you want to substitue a councillor. "
+				+ "If you want to choose the countil of the king, press kingcouncil");
 		for (RegionBoard region : this.game.getGameTable().getRegionBoards())
 			acceptableRegionNames.add(region.getName());
+		acceptableRegionNames.add("kingcouncil");
 		return acceptableRegionNames;
 	}
 	
@@ -130,6 +133,7 @@ public class Parser {
 		return acceptableTiles;
 	}
 		
+	
 	
 	
 	protected RegionBoard regionTranslator(String regionToTranslate) {
@@ -177,6 +181,9 @@ public class Parser {
 		for(RegionBoard region : this.game.getGameTable().getRegionBoards())
 			if(councilBalconyToTranslate.equals(region.getName()))
 				return region.getRegionBalcony();
+			else
+				if (councilBalconyToTranslate.equals("kingcouncil"))
+					return this.game.getGameTable().getCouncilOfKing();
 		throw new IllegalArgumentException("councilBalconyToTranslate is not a region name");
 	}
 	

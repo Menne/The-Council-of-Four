@@ -236,18 +236,16 @@ public class Main {
 		CLI view=new CLI(game, parser);
 		new GameLogic(game, view);
 		
-		while(true){
-			Scanner scanner=new Scanner(System.in);
+		@SuppressWarnings("resource")
+		Scanner scanner=new Scanner(System.in);
+		
+		while (true){
 			System.out.println("Player " + game.getCurrentPlayer().getName() + 
-					", it's yout turn! what do you want to do? For action, press a");
+					", it's yout turn! what do you want to do? For action, press 'action'");
 			String input=scanner.nextLine();
 			view.input(input);
-			scanner.close(); 
 		}
-		
-		
-//		gameLogic.play();		
-//		System.out.println(game);				
+					
 	}
 
 }

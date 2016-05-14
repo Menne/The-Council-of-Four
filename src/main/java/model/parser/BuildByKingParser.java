@@ -11,7 +11,7 @@ import model.gameTable.PoliticsCard;
 public class BuildByKingParser implements ActionParserVisitor {
 
 	private BuildByKing selectedAction;
-			
+	
 	public BuildByKingParser(BuildByKing selectedAction) {
 		this.selectedAction=selectedAction;
 	}
@@ -31,10 +31,11 @@ public class BuildByKingParser implements ActionParserVisitor {
 		selectedAction.setSelectedCity(parser.cityTranslator
 				(stringParameters.remove(0)));
 		List<PoliticsCard> cardsTranslated = new ArrayList<PoliticsCard>();
-		cardsTranslated.add(parser.politicsCardTranslator(stringParameters.remove(0)));
-		for (String parameter : stringParameters)
+		for (String parameter : stringParameters) {
+			cardsTranslated.add(parser.politicsCardTranslator(stringParameters.remove(0)));
 			if (!parameter.equals("stop"))
-				cardsTranslated.add(parser.politicsCardTranslator(parameter));
+				break;
+		}
 		selectedAction.setCardsToDescard(cardsTranslated);
 		return selectedAction;
 	}
