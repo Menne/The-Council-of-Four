@@ -38,8 +38,6 @@ public class Game extends Observable<ViewNotify>{
 
 
 	public void normalNextPlayer(){
-		this.players.add(0,this.players.remove(this.players.lastIndexOf(players)));
-		this.currentPlayer=this.players.get(0);
 	}
 	
 	public void randomNextPlayer(){

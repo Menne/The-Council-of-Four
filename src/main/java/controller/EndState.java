@@ -39,15 +39,7 @@ public class EndState implements State {
 		throw new RuntimeException("There are not such transictions for this state");
 	}
 
-<<<<<<< HEAD
-	@Override
-	public void act(Action action, Game game) {
-		game.normalNextPlayer();
-		game.setState(new BeginState());
-		game.getState().act(action, game);
-	}
-=======
->>>>>>> branch 'mvc' of https://Squalipa@bitbucket.org/Scanna/the-council-of-four.git
+
 
 	@Override
 	public List<Action> getAcceptableActions(Game game) {
