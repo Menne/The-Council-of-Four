@@ -34,15 +34,15 @@ public class State10 implements State{
 
 
 	@Override
-	public State nullActionTransition() throws RuntimeException{
+	public State moveToNextTransition() throws RuntimeException{
 		
 		throw new RuntimeException("There are not such transictions for this state");
 	}
 
-
 	@Override
-	public void act(Action action,Game game) {
-		action.executeAction();		
+	public State pickPoliticsCardTransition() throws RuntimeException{
+		
+		throw new RuntimeException("There are not such transictions for this state");
 	}
 	
 	
@@ -56,6 +56,9 @@ public class State10 implements State{
 		
 		return acceptableActions;
 	}
+
+
+
 
 
 	

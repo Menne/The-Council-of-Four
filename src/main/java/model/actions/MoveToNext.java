@@ -3,16 +3,17 @@ package model.actions;
 import model.Game;
 import model.parser.ActionParserVisitor;
 
-public class NullAction extends QuickAction {
+public class MoveToNext extends QuickAction {
 
-	public NullAction(Game game){
+	public MoveToNext(Game game){
 		super(game);
 	}
 
 	@Override
 	public boolean executeAction() {
+		this.game.nextPlayer();
 		
-		this.game.setState(this.game.getState().nullActionTransition());
+		this.game.setState(this.game.getState().moveToNextTransition());
 		return true;
 	}
 

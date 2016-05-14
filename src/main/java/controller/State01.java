@@ -9,7 +9,7 @@ import model.actions.AdditionalMainAction;
 import model.actions.ChangePermitTiles;
 import model.actions.ElectCouncillorByAssistant;
 import model.actions.EngageAssistant;
-import model.actions.NullAction;
+import model.actions.MoveToNext;
 
 public class State01 implements State {
 
@@ -35,15 +35,15 @@ public class State01 implements State {
 
 
 	@Override
-	public State nullActionTransition() {
+	public State moveToNextTransition() {
 		
-		return new EndState();
+		return new BeginState();
 	}
 
-
 	@Override
-	public void act(Action action, Game game) {
-		action.executeAction();
+	public State pickPoliticsCardTransition() throws RuntimeException{
+		
+		throw new RuntimeException("There are not such transictions for this state");
 	}
 	
 
@@ -54,9 +54,12 @@ public class State01 implements State {
 		acceptableActions.add(new ChangePermitTiles(game));
 		acceptableActions.add(new ElectCouncillorByAssistant(game));
 		acceptableActions.add(new AdditionalMainAction(game));
-		acceptableActions.add(new NullAction(game));
+		acceptableActions.add(new MoveToNext(game));
 		return acceptableActions;
 	}
+
+
+
 
 
 	

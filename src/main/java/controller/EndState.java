@@ -5,8 +5,9 @@ import java.util.List;
 
 import model.Game;
 import model.actions.Action;
+import model.actions.MoveToNext;
 
-public class EndState implements State{
+public class EndState implements State {
 
 	@Override
 	public State mainActionTransition() throws RuntimeException{
@@ -15,33 +16,35 @@ public class EndState implements State{
 	}
 
 	@Override
-	public State quickActionTransition() throws RuntimeException{
+	public State quickActionTransition()  throws RuntimeException{
 		
 		throw new RuntimeException("There are not such transictions for this state");
 	}
 
 	@Override
-	public State additionalMainActionTransition() throws RuntimeException{
+	public State additionalMainActionTransition()  throws RuntimeException{
 		
 		throw new RuntimeException("There are not such transictions for this state");
 	}
 
 	@Override
-	public State nullActionTransition() throws RuntimeException{
+	public State moveToNextTransition() {
+		
+		return new BeginState();
+	}
+
+	@Override
+	public State pickPoliticsCardTransition() throws RuntimeException{
 		
 		throw new RuntimeException("There are not such transictions for this state");
 	}
 
-	@Override
-	public void act(Action action, Game game) {
-		game.nextPlayer();
-		game.setState(new BeginState());
-		game.getState().act(action, game);
-	}
 
 	@Override
 	public List<Action> getAcceptableActions(Game game) {
-		return new ArrayList<Action>();
+		List<Action> acceptableActions=new ArrayList<Action>();
+		acceptableActions.add(new MoveToNext(game));
+		return acceptableActions;
 	}
 
 }
