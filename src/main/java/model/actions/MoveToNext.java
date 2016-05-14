@@ -11,7 +11,7 @@ public class MoveToNext extends QuickAction {
 
 	@Override
 	public boolean executeAction() {
-		this.game.nextPlayer();
+		this.game.normalNextPlayer();
 		
 		this.game.setState(this.game.getState().moveToNextTransition());
 		return true;
