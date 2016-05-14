@@ -40,6 +40,7 @@ public class EndState implements NormalTurnState {
 	}
 
 
+
 	@Override
 	public List<Action> getAcceptableActions(Game game) {
 		List<Action> acceptableActions=new ArrayList<Action>();

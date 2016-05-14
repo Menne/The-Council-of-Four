@@ -15,11 +15,9 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 	 * @author Emanuele
 	 *
 	 */
-@XmlAccessorType(XmlAccessType.FIELD)
+
 public class PoliticsDeck{
-	
-	@XmlElementWrapper(name="cardColours")
-	@XmlElement(name="CardColour")
+
 	private final Set<CardColour> cardColours;
 	
 	public PoliticsDeck(Set<CardColour> cardColours) {

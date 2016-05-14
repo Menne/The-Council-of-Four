@@ -2,8 +2,10 @@
 package model;
  
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-
+import java.util.Random;
+import java.util.Set;
 
 import controller.BeginState;
 import controller.NormalTurnState;
@@ -33,8 +35,19 @@ public class Game extends Observable<ViewNotify>{
 	}
 
 
-	public void nextPlayer(){
-		this.currentPlayer=this.players.get(this.players.indexOf(currentPlayer)+1);
+	public void normalNextPlayer(){
+	}
+	
+	public void randomNextPlayer(){
+		Set<Player> randomPlayers=new HashSet<Player>();
+		Random random= new Random();
+		randomPlayers.add(players.get(random.nextInt(this.players.size())));
+	}
+	
+	public void lastLapNextPlayer(){
+		players.remove(0);
+		this.players.add(0,this.players.remove(this.players.lastIndexOf(players)));
+		this.currentPlayer=this.players.get(0);
 	}
 	
 	public void pickPoliticsCard(){
