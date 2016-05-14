@@ -1,4 +1,4 @@
-
+ 
 package model;
  
 import java.util.ArrayList;
@@ -6,7 +6,7 @@ import java.util.List;
 
 
 import controller.BeginState;
-import controller.State;
+import controller.NormalTurnState;
 import controller.State11;
 import model.bonus.ScoreBonus;
 import model.gameTable.GameTable;
@@ -19,8 +19,7 @@ public class Game extends Observable<ViewNotify>{
 	private final List<Player> players;
 	private Player currentPlayer;
 	private final GameTable gameTable;
-	private GameState gameState;
-	private State state;
+	private NormalTurnState state;
 	private boolean additionalMainActionBonus;
 	
                
@@ -28,7 +27,6 @@ public class Game extends Observable<ViewNotify>{
 		this.players=players;
 		this.gameTable=gameTable;
 		this.currentPlayer=this.players.get(0);
-		this.gameState=GameState.RUNNING;
 		this.state=new BeginState();
 		this.state=new State11();
 		this.additionalMainActionBonus=false;
@@ -55,24 +53,15 @@ public class Game extends Observable<ViewNotify>{
 		return currentPlayer;
 	}
 
-
-	public GameState getGameState() {
-		return gameState;
-	}
-
-	public State getState() {
+	public NormalTurnState getState() {
 		return state;
 	}
 
 
-	public void setState(State state) {
+	public void setState(NormalTurnState state) {
 		this.state = state;
 	}
 
-
-	public void setGameState(GameState gameState) {
-		this.gameState = gameState;
-	}
 
 	public boolean isAdditionalMainActionBonus() {
 		return additionalMainActionBonus;

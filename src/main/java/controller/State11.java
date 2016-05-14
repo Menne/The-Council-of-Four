@@ -6,34 +6,34 @@ import java.util.List;
 import model.Game;
 import model.actions.*;
 
-public class State11 implements State {
+public class State11 implements NormalTurnState {
 
 	@Override
-	public State mainActionTransition() {
+	public NormalTurnState mainActionTransition() {
 		
 		return new State01();
 	}
 
 	@Override
-	public State quickActionTransition() {
+	public NormalTurnState quickActionTransition() {
 		
 		return new State10();
 	}
 
 	@Override
-	public State additionalMainActionTransition() throws RuntimeException{
+	public NormalTurnState additionalMainActionTransition() throws RuntimeException{
 
 		throw new RuntimeException("There are not such transictions for this state");
 	}
 
 	@Override
-	public State moveToNextTransition() throws RuntimeException{
+	public NormalTurnState moveToNextTransition() throws RuntimeException{
 		
 		throw new RuntimeException("There are not such transictions for this state");
 	}
 	
 	@Override
-	public State pickPoliticsCardTransition() throws RuntimeException{
+	public NormalTurnState pickPoliticsCardTransition() throws RuntimeException{
 		
 		throw new RuntimeException("There are not such transictions for this state");
 	}
