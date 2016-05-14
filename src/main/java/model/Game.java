@@ -102,9 +102,9 @@ public class Game extends Observable<ViewNotify>{
 		}
 		for(Player player: this.players){
 			if(player.getNobility()==first)
-				player.incrementScore(5);
+				player.incrementScore(5,player.getScore());
 			if(player.getNobility()==second)
-				player.incrementScore(2);
+				player.incrementScore(2,player.getScore());
 		}
 	}
 	
@@ -116,7 +116,7 @@ public class Game extends Observable<ViewNotify>{
 		}
 		for(Player player : this.players)
 			if(player.getPlayersPermitTilesTurnedDown().size()+player.getPlayersPermitTilesTurnedUp().size()==numberOfPermitTiles)
-				player.incrementScore(3);
+				player.incrementScore(3, player.getScore());
 	}
 	
 	public Player selectWinner(){
