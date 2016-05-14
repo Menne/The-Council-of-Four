@@ -3,6 +3,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import model.bonus.ScoreBonus;
 import model.gameTable.Emporium;
 import model.gameTable.PermitTile;
 import model.gameTable.PoliticsCard;
@@ -28,6 +29,7 @@ public class Player {
 	private final List<Emporium> emporiums;
 	private static final int intialNumberOfEmporiums=10;
 	private static final int initialNumberOfCards=6;
+	private final List<ScoreBonus> playersFinalBonus;
 	
 	/**
 	 * Sets nobility and score at 0. 
@@ -53,6 +55,7 @@ public class Player {
 		this.emporiums=new ArrayList<Emporium>();
 		for(int i=0;i<intialNumberOfEmporiums;i++)
 			this.emporiums.add(new Emporium(this));
+		this.playersFinalBonus=new ArrayList<ScoreBonus>();
 	}
 
 	public int getPlayerNumber() {
@@ -97,13 +100,16 @@ public class Player {
 		return playersPermitTilesTurnedDown;
 	}
 
+	public List<ScoreBonus> getPlayersFinalBonus() {
+		return playersFinalBonus;
+	}
 
 	/**
 	 * increment player's Score of an "increment" calling the method incrementScore in the class Score
 	 * @param increment
 	 * @param score
 	 */
-	public void incrementScore(int increment, int score) {
+	public void incrementScore(int increment) {
 		this.score+=increment;
 	}
 	
@@ -159,6 +165,13 @@ public class Player {
 			}
 		else
 			return false;
+	}
+	/**
+	 * adds a bonus to playersFinalBonus list
+	 * @param bonus
+	 */
+	public void addFinalBonus(ScoreBonus bonus){
+		playersFinalBonus.add(bonus);
 	}
 	
 	/**
@@ -236,8 +249,6 @@ public class Player {
 				+ ", playersPermitTilesTurnedUp=" + playersPermitTilesTurnedUp + ", playersPermitTilesTurnedDown="
 				+ playersPermitTilesTurnedDown + ", emporiums=" + emporiums + "]";
 	}
-
-
 	
 	
 }
