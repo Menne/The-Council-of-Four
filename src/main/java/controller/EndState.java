@@ -34,7 +34,7 @@ public class EndState implements State{
 
 	@Override
 	public void act(Action action, Game game) {
-		game.nextPlayer();
+		game.normalNextPlayer();
 		game.setState(new BeginState());
 		game.getState().act(action, game);
 	}
