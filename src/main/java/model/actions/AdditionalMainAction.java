@@ -1,6 +1,7 @@
 package model.actions;
 
 import model.Game;
+import model.parser.ActionParserVisitor;
 import view.ErrorNotify;
 
 /**
@@ -35,6 +36,16 @@ public class AdditionalMainAction extends QuickAction {
 			return false;
 		}			
 		return true;
+	}
+	
+	@Override
+	public String toString() {
+		return "q4: get an additionalo main action";
+	}
+
+	@Override
+	public ActionParserVisitor setParser() {
+		return null;
 	}
 
 }

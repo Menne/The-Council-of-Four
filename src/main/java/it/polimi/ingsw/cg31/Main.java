@@ -238,6 +238,8 @@ public class Main {
 		
 		while(true){
 			Scanner scanner=new Scanner(System.in);
+			System.out.println("Player " + game.getCurrentPlayer().getName() + 
+					", it's yout turn! what do you want to do? For action, press a");
 			String input=scanner.nextLine();
 			view.input(input);
 			scanner.close(); 

@@ -9,6 +9,12 @@ import model.gameTable.CouncilBalcony;
 import model.gameTable.PoliticsCard;
 
 public class AcquirePermitTileParser implements ActionParserVisitor {
+	
+	private AcquirePermitTile selectedAction;
+			
+	public AcquirePermitTileParser(AcquirePermitTile selectedAction) {
+		this.selectedAction=selectedAction;
+	}
 
 	@Override
 	public List<List<String>> acceptableParameters(Parser parser) {
@@ -16,25 +22,24 @@ public class AcquirePermitTileParser implements ActionParserVisitor {
 		acceptableStrings.add(parser.acceptableRegions());
 		acceptableStrings.add(parser.acceptableNumberOfPermitTile());
 		acceptableStrings.add(parser.acceptableFirstPoliticsCard());
-		for (int i=0; i<=CouncilBalcony.getNumberofcouncillors(); i++)
+		for (int i=1; i<CouncilBalcony.getNumberofcouncillors(); i++)
 			acceptableStrings.add(parser.acceptablePoliticsCards());
 		return acceptableStrings;
 	}
 
 	@Override
 	public Action parametersParser(List<String> stringParameters, Parser parser) {
-		AcquirePermitTile acquirePermitTile=new AcquirePermitTile(parser.game);
-		acquirePermitTile.setChosenRegion(parser.regionTranslator
+		selectedAction.setChosenRegion(parser.regionTranslator
 				(stringParameters.remove(0)));
-		acquirePermitTile.setNumberOfPermitTile(parser.numberOfPermitTileTranslator
+		selectedAction.setNumberOfPermitTile(parser.numberOfPermitTileTranslator
 				(stringParameters.remove(0))); 
 		List<PoliticsCard> cardsTranslated = new ArrayList<PoliticsCard>();
 		cardsTranslated.add(parser.politicsCardTranslator(stringParameters.remove(0)));
 		for (String parameter : stringParameters)
-			if (!parameter.equals("x"))
+			if (!parameter.equals("stop"))
 				cardsTranslated.add(parser.politicsCardTranslator(parameter));
-		acquirePermitTile.setCardsToDescard(cardsTranslated);
-		return acquirePermitTile;
+		selectedAction.setCardsToDescard(cardsTranslated);
+		return selectedAction;
 	}
 
 }

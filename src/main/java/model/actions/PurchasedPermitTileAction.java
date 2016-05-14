@@ -3,6 +3,7 @@ package model.actions;
 import model.Game;
 import model.bonus.Bonus;
 import model.gameTable.PermitTile;
+import model.parser.ActionParserVisitor;
 
 /**
  * It's the class that models the action associated to the choice of the PurchasedPermitTile.
@@ -32,6 +33,12 @@ public class PurchasedPermitTileAction implements Action {
 		for (Bonus bonusToAssign : this.selectedPermitTile.getBonus())
 			bonusToAssign.assignBonus(this.game);
 		return true;
+	}
+
+	@Override
+	public ActionParserVisitor setParser() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

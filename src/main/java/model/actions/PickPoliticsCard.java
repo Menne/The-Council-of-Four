@@ -1,6 +1,7 @@
 package model.actions;
 
 import model.Game;
+import model.parser.ActionParserVisitor;
 
 /**
  * this class extends an abstract action, in particular it 
@@ -28,6 +29,12 @@ public class PickPoliticsCard implements Action {
 	public boolean executeAction() {
 		this.game.getCurrentPlayer().getHand().add(this.game.getGameTable().getPoliticsDeck().pickCard());
 		return true;
+	}
+
+	@Override
+	public ActionParserVisitor setParser() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

@@ -8,6 +8,12 @@ import model.actions.ChangePermitTiles;
 
 public class ChangePermitTilesParser implements ActionParserVisitor {
 
+	private ChangePermitTiles selectedAction;
+			
+	public ChangePermitTilesParser(ChangePermitTiles selectedAction) {
+		this.selectedAction=selectedAction;
+	}
+
 	@Override
 	public List<List<String>> acceptableParameters(Parser parser) {
 		List<List<String>> acceptableStrings=new ArrayList<List<String>>();
@@ -17,10 +23,9 @@ public class ChangePermitTilesParser implements ActionParserVisitor {
 
 	@Override
 	public Action parametersParser(List<String> stringParameters, Parser parser) {
-		ChangePermitTiles changePermitTiles=new ChangePermitTiles(parser.game);
-		changePermitTiles.setSelectedRegion(parser.regionTranslator
+		selectedAction.setSelectedRegion(parser.regionTranslator
 				(stringParameters.remove(0)));
-		return changePermitTiles;
+		return selectedAction;
 	}
 
 }

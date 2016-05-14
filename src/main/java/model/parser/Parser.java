@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Game;
+import model.actions.Action;
 import model.gameTable.City;
 import model.gameTable.CouncilBalcony;
 import model.gameTable.Councillor;
@@ -15,46 +16,47 @@ import model.gameTable.RegionBoard;
 public class Parser {
 
 	protected final Game game;
-	private ActionParserVisitor selectedAction;
+	private ActionParserVisitor currentParser;
 	
 	public Parser(Game game){
 		this.game=game;
-		this.selectedAction=null;
+		this.currentParser=null;
 	}
 	
-	public ActionParserVisitor getSelectedAction() {
-		return selectedAction;
+	public ActionParserVisitor getCurrentParser() {
+		return currentParser;
+	}
+
+
+	public List<String> availableActions() {
+		List<Action> availableActions=this.game.getState().getAcceptableActions(game);
+		List<String> acceptableStrings=new ArrayList<String>();
+		for (Action action : availableActions)
+			acceptableStrings.add(action.toString());
+		return acceptableStrings;
 	}
 	
-	public List<List<String>> actionParser(String input) {
-		switch (input) {
-		case "m1":
-			this.selectedAction=new ElectCouncillorParser();
-			return this.selectedAction.acceptableParameters(this);
-		case "m2":
-			this.selectedAction=new AcquirePermitTileParser();
-			return this.selectedAction.acceptableParameters(this);
-		case "m3":
-			this.selectedAction=new BuildWithPermitTileParser();
-			return this.selectedAction.acceptableParameters(this);
-		case "m4":
-			this.selectedAction=new BuildWithKingParser();
-			return this.selectedAction.acceptableParameters(this);
-		case "q1":
-			break;
-		case "q2":
-			this.selectedAction=new ChangePermitTilesParser();
-			return this.selectedAction.acceptableParameters(this);
-		case "q3":
-			this.selectedAction=new ElectCouncillorByAssistantParser();
-			return this.selectedAction.acceptableParameters(this);
-		case "q4":
-			break;
-		}
+	public List<String> cutActions(List<String> acceptableStrings) {
+		List<String> cuttedStrings=new ArrayList<String>();
+		for (String cuttedAction : acceptableStrings)
+			cuttedStrings.add(cuttedAction.substring(0,2));
+		return cuttedStrings;
+	}
+	
+	
+	
+	
+	public List<List<String>> actionParser(String selectedAction) {
+		for (Action availableAction : this.game.getState().getAcceptableActions(game))
+			if (selectedAction.equals(availableAction.toString().substring(0,2))) {
+				this.currentParser=availableAction.setParser();
+				return currentParser.acceptableParameters(this);
+			}
 		return null;
 	}
-
-
+	
+	
+	
 	protected List<String> acceptableNumberOfPermitTile() {
 		List<String> acceptableNumber=new ArrayList<String>();
 		acceptableNumber.add("Permit tile you want to acquire");
@@ -81,12 +83,12 @@ public class Parser {
 	
 	protected List<String> acceptablePoliticsCards() {
 		List<String> acceptableColoursPlusExit=new ArrayList<String>();
-		acceptableColoursPlusExit.add("Second card of your hand you want to use to satisfy the council. \n"
-				+ "Attention: if you don't want to discard cards anymore, you just have to press x. \n"
-				+ "If you press the same card you have discarded before, it will not be considered");		int maxNumberOfCardsPlusExit=this.game.getCurrentPlayer().getHand().size();
-		for(Integer j=0; j<maxNumberOfCardsPlusExit; j++)
-			acceptableColoursPlusExit.add(j.toString());
-		acceptableColoursPlusExit.add("x");
+		acceptableColoursPlusExit.add("Other card of your hand you want to use to satisfy the council. \n"
+				+ "Attention: if you don't want to discard cards anymore, you just have to write 'stop'. \n"
+				+ "If you press the same card you have discarded before, it will not be considered");		
+		for(PoliticsCard card : this.game.getCurrentPlayer().getHand())
+			acceptableColoursPlusExit.add(card.getColour().getColour());
+		acceptableColoursPlusExit.add("exit");
 		return acceptableColoursPlusExit;
 	}
 	
@@ -129,8 +131,6 @@ public class Parser {
 	}
 		
 	
-
-	
 	
 	protected RegionBoard regionTranslator(String regionToTranslate) {
 		for(RegionBoard region : this.game.getGameTable().getRegionBoards())
@@ -151,9 +151,11 @@ public class Parser {
 	}
 	
 	protected PoliticsCard politicsCardTranslator(String cardToTranslate) {
-		Integer numberOfCard=Integer.parseInt(cardToTranslate);
-		PoliticsCard cardTranslated=this.game.getCurrentPlayer().getHand().get(numberOfCard);
-		return cardTranslated;
+		for (PoliticsCard cardTranslated : this.game.getCurrentPlayer().getHand()) {
+			if (cardTranslated.getColour().getColour().equals(cardToTranslate))
+				return cardTranslated;
+		}
+		return null;
 	}
 	
 	protected City cityTranslator(String cityToTranslate) {

@@ -24,9 +24,35 @@ public class CLI extends View{
 	}
 	
 	public void input(String input) {
+		switch (input) {
+			case "a":
+				this.action();
+				break;
+			case "m":
+				break;
+			case "e":
+				break;
+		}
+	}
+	
+	
+	public void action() {
+		System.out.println("Ok, you have choosed to make an action. Please select one "
+				+ "from the following actions you can make");
+		List<String> acceptableActions=this.parser.availableActions();
+		for (String acceptableString : acceptableActions)
+			System.out.println(acceptableString);
+		
 		Scanner scanner=new Scanner(System.in);
+		String selectedAction=scanner.nextLine();
+		while(!this.parser.cutActions(acceptableActions).contains(selectedAction)){
+			System.out.println("Wrong action. Retry.");
+			selectedAction=scanner.nextLine();
+		}
+		
+		List<List<String>> acceptableParameters=this.parser.actionParser(selectedAction);
 		List<String> stringParameters=new ArrayList<String>();
-		for (List<String> currentListOfStrings : this.parser.actionParser(input)) {
+		for (List<String> currentListOfStrings : acceptableParameters) {
 			System.out.println(currentListOfStrings.remove(0));
 			for (String currentString : currentListOfStrings)
 				System.out.print(currentString + "\t");
@@ -38,66 +64,11 @@ public class CLI extends View{
 			stringParameters.add(parameter);
 		}
 		scanner.close();
-		notifyObserver(this.parser.getSelectedAction().parametersParser(stringParameters, this.parser));
+		notifyObserver(this.parser.getCurrentParser().parametersParser(stringParameters, this.parser));
 		
 	}
 	
-/*	@Override
-	public <C> void update(Observable o, C change) {
-		if(change instanceof AskActionPack){
-			AskActionPack notify=(AskActionPack) change;
-			stamp(notify.getGame());
-			//richiesta all'utente dell'azione
-			System.out.println("\n\nPlayer "+notify.getGame().getCurrentPlayer().getName()+
-					", it's your turn!\n Choose one of the following actions:\n ");
-			for(String action : notify.getAcceptableString())
-				System.out.println(action);
-			String selectedAction=scanner.nextLine();
-			while(!notify.cutStrings().contains(selectedAction)){
-				System.out.println("You have chosen a wrong action. Retry");
-				selectedAction=scanner.nextLine();
-				}
-			//preparo give action pack
-			GiveActionPack gap=new GiveActionPack(selectedAction);
-			
-			//invio give action pack
-			notifyObservers(gap);							
-		}
-		
-		
-		if(change instanceof AskParameterPack){
-			AskParameterPack notify=(AskParameterPack) change;
-			//chiedo all'utente di inserire i parametri e li salvo in una lista
-			List<String> selectedParameters=new ArrayList<String>();
-			for(int i=0; i<notify.getParameters().size(); i++){
-				System.out.println("Insert Parameter: "+notify.getParameters().get(i)+
-						". Choose among:\n");
-				for(String possibleString : notify.getAcceptableParameters().get(i))
-					System.out.print(possibleString + "\t");
-				String parameter=scanner.nextLine();
-				while(!notify.getAcceptableParameters().get(i).contains(parameter)){
-					System.out.println("Wrong parameter. Retry.");
-					parameter=scanner.nextLine();
-				}
-				selectedParameters.add(parameter);
-			}		
-			//preparo pacchetto
-			GiveParameterPack gpp = new GiveParameterPack(selectedParameters);
-			notifyObservers(gpp);
-		}
-		
-		if(change instanceof ErrorSignal){	
-			System.out.println("\n\nSorry, but you cannot do this action.\n"
-					+ "Check well your game state before choosing action\n\n");
-			try{
-				Thread.sleep(5000);
-			}catch(InterruptedException e){
-				System.out.println("Slept to much");
-			}
-			
-		}
-	}*/
-	
+
 	/**
 	 * TODO
 	 */

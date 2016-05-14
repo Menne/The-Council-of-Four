@@ -8,6 +8,12 @@ import model.actions.ElectCouncillor;
 
 public class ElectCouncillorParser implements ActionParserVisitor {
 
+	private ElectCouncillor selectedAction;
+			
+	public ElectCouncillorParser(ElectCouncillor selectedAction) {
+		this.selectedAction=selectedAction;
+	}
+
 	@Override
 	public List<List<String>> acceptableParameters(Parser parser) {
 		List<List<String>> acceptableStrings=new ArrayList<List<String>>();
@@ -18,12 +24,11 @@ public class ElectCouncillorParser implements ActionParserVisitor {
 
 	@Override
 	public Action parametersParser(List<String> stringParameters, Parser parser) {
-		ElectCouncillor electCouncillor=new ElectCouncillor(parser.game);
-		electCouncillor.setNewCouncillor(parser.councillorTranslator
+		selectedAction.setNewCouncillor(parser.councillorTranslator
 					(stringParameters.remove(0)));
-		electCouncillor.setCouncilBalcony(parser.councilBalconyTranslator
+		selectedAction.setCouncilBalcony(parser.councilBalconyTranslator
 					(stringParameters.remove(0)));
-		return electCouncillor;
+		return selectedAction;
 		}
 
 }

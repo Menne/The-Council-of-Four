@@ -6,7 +6,13 @@ import java.util.List;
 import model.actions.Action;
 import model.actions.BuildByPermitTile;
 
-public class BuildWithPermitTileParser implements ActionParserVisitor {
+public class BuildByPermitTileParser implements ActionParserVisitor {
+
+	private BuildByPermitTile selectedAction;
+			
+	public BuildByPermitTileParser(BuildByPermitTile selectedAction) {
+		this.selectedAction=selectedAction;
+	}
 
 	@Override
 	public List<List<String>> acceptableParameters(Parser parser) {
@@ -18,12 +24,11 @@ public class BuildWithPermitTileParser implements ActionParserVisitor {
 
 	@Override
 	public Action parametersParser(List<String> stringParameters, Parser parser) {
-		BuildByPermitTile buildByPermitTile=new BuildByPermitTile(parser.game);
-		buildByPermitTile.setSelectedCity(parser.cityTranslator
+		selectedAction.setSelectedCity(parser.cityTranslator
 				(stringParameters.remove(0)));
-		buildByPermitTile.setSelectedPermitTile(parser.permitTileTranslator
+		selectedAction.setSelectedPermitTile(parser.permitTileTranslator
 				(stringParameters.remove(0)));
-		return buildByPermitTile;
+		return selectedAction;
 	}
 
 }

@@ -9,6 +9,8 @@ import model.gameTable.CouncilBalcony;
 import model.gameTable.Councillor;
 import model.gameTable.PoliticsCard;
 import model.gameTable.RegionBoard;
+import model.parser.AcquirePermitTileParser;
+import model.parser.ActionParserVisitor;
 
 /**
  * This class is the main action "acquire permit tile", it operates on the 
@@ -138,4 +140,14 @@ public class AcquirePermitTile extends MainAction implements NeedParameters{
 		return satisfyCounter == this.cardsToDescard.size();
 	}
 
+	@Override
+	public String toString() {
+		return "m2: acquire a permit tile";
+	}
+
+	@Override
+	public ActionParserVisitor setParser() {
+		return new AcquirePermitTileParser(this);
+	}
+	
 }

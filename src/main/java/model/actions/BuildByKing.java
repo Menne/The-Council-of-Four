@@ -12,6 +12,8 @@ import model.gameTable.Councillor;
 import model.gameTable.Emporium;
 import model.gameTable.PoliticsCard;
 import model.gameTable.RegionBoard;
+import model.parser.ActionParserVisitor;
+import model.parser.BuildByKingParser;
 
 /**
  * This class models the build an emporium with king's help action
@@ -225,5 +227,16 @@ public class BuildByKing extends MainAction implements NeedParameters{
 		this.game.getGameTable().getKingRewardTiles().remove(0).assignBonus(this.game);
 	}
 
+	@Override
+	public String toString() {
+		return "m4: build an emporium with the help of the king";
+	}
+
+
+
+	@Override
+	public ActionParserVisitor setParser() {
+		return new BuildByKingParser(this);	
+	}
 
 }

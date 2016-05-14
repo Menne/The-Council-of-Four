@@ -1,6 +1,7 @@
 package model.actions;
 
 import model.Game;
+import model.parser.ActionParserVisitor;
 /**
  * It's the quick action "engage assistants" it operates on the 
  * protected attribute game through the method executeAction.
@@ -31,6 +32,17 @@ public class EngageAssistant extends QuickAction {
 		this.game.getCurrentPlayer().decrementCoins(necessaryCoins);
 		this.game.getCurrentPlayer().incrementAssistants(1);
 		return true;
+	}
+	
+	@Override
+	public String toString() {
+		return "q1: engage an assistant";
+	}
+
+	@Override
+	public ActionParserVisitor setParser() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
