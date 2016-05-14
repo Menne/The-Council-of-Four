@@ -19,4 +19,8 @@ public abstract class QuickAction implements Action {
 	public void sendErrorNotify(){
 		this.game.notifyObserver(new ErrorNotify());
 	}
+	
+	public void nextState(){
+		this.game.setState(this.game.getState().quickActionTransition());
+	}
 }

@@ -34,7 +34,9 @@ public class AdditionalMainAction extends QuickAction {
 		if(!this.checkAssistants()){
 			this.game.notifyObserver(new ErrorNotify());
 			return false;
-		}			
+		}	
+		
+		this.game.setState(this.game.getState().additionalMainActionTransition());
 		return true;
 	}
 	

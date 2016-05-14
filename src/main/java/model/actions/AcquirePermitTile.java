@@ -85,6 +85,8 @@ public class AcquirePermitTile extends MainAction implements NeedParameters{
 			this.game.getCurrentPlayer().removeCardFromHand(card);
 		this.game.getCurrentPlayer().addTile(this.chosenRegion.pickUncoveredPermitTile(this.numberOfPermitTile));
 		this.chosenRegion.uncoverPermitTiles();
+		
+		this.nextState();
 	    return true;
 	}
 	

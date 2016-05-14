@@ -54,7 +54,7 @@ public class State01 implements State {
 		acceptableActions.add(new ChangePermitTiles(game));
 		acceptableActions.add(new ElectCouncillorByAssistant(game));
 		acceptableActions.add(new AdditionalMainAction(game));
-		acceptableActions.add(new NullAction());
+		acceptableActions.add(new NullAction(game));
 		return acceptableActions;
 	}
 

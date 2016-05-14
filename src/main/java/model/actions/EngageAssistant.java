@@ -31,6 +31,8 @@ public class EngageAssistant extends QuickAction {
 		}
 		this.game.getCurrentPlayer().decrementCoins(necessaryCoins);
 		this.game.getCurrentPlayer().incrementAssistants(1);
+		
+		this.nextState();
 		return true;
 	}
 	

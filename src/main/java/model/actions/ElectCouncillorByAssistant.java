@@ -58,6 +58,8 @@ public class ElectCouncillorByAssistant extends QuickAction implements NeedParam
 		oldCouncillor=this.councilBalcony.substituteCouncillor(this.newCouncillor);
 		this.game.getGameTable().getCouncilReserve().getCouncillors().add(oldCouncillor);
 		this.game.getCurrentPlayer().decrementAssistants(necessaryAssistants);
+		
+		this.nextState();
 		return true;
 	}
 

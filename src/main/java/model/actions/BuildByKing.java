@@ -88,6 +88,7 @@ public class BuildByKing extends MainAction implements NeedParameters{
 		if (this.selectedCity.getColour().isBonusAvailable())
 			assignColourBonus();
 		
+		this.nextState();
 		return true;
 	}
 	

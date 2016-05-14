@@ -1,12 +1,18 @@
 package model.actions;
 
+import model.Game;
 import model.parser.ActionParserVisitor;
 
-public class NullAction implements Action {
-	
+public class NullAction extends QuickAction {
+
+	public NullAction(Game game){
+		super(game);
+	}
 
 	@Override
 	public boolean executeAction() {
+		
+		this.game.setState(this.game.getState().nullActionTransition());
 		return true;
 	}
 

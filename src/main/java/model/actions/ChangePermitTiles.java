@@ -49,6 +49,8 @@ public class ChangePermitTiles extends QuickAction implements NeedParameters{
 			if(region.equals(selectedRegion))
 				region.substitutePermitTiles();
 		this.game.getCurrentPlayer().decrementAssistants(necessaryAssistants);
+		
+		this.nextState();
 		return true;
 	}
 

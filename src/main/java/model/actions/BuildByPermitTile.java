@@ -73,6 +73,8 @@ public class BuildByPermitTile extends MainAction implements NeedParameters{
 			assignRegionBonus();
 		if (this.selectedCity.getColour().isBonusAvailable())
 			assignColourBonus();
+		
+		this.nextState();
 		return true;
 	}
 	
