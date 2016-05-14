@@ -25,9 +25,9 @@ public class ElectCouncillorParser implements ActionParserVisitor {
 	@Override
 	public Action parametersParser(List<String> stringParameters, Parser parser) {
 		selectedAction.setNewCouncillor(parser.councillorTranslator
-					(stringParameters.remove(0)));
+				(stringParameters.remove(0)));
 		selectedAction.setCouncilBalcony(parser.councilBalconyTranslator
-					(stringParameters.remove(0)));
+				(stringParameters.remove(0)));
 		return selectedAction;
 		}
 
