@@ -22,38 +22,19 @@ public class CLI extends View{
 	public void update(ViewNotify notify) {
 		notify.stamp(this);
 	}
+
 	
-	public void input(String input) {
-		switch (input) {
-			case "action":
-				this.action();
-				break;
-			case "market":
-				System.out.println("You can't access to the market at this moment");
-				break;
-			case "exit":
-				System.out.println("Bye bye!");
-				break;
-			default:
-				System.out.println("Sorry, I didn't understand");
+	public boolean input(String input) {
+		if (this.parser.availableActions().contains(input)) {
+			insertParameters(input);
+			return true;
 		}
+		else
+			return false;
 	}
-	
-	
-	public void action() {
-		System.out.println("Ok, you have choosed to make an action. Please select one "
-				+ "from the following actions you can make");
-		List<String> acceptableActions=this.parser.availableActions();
-		for (String acceptableString : acceptableActions)
-			System.out.println(acceptableString);
 		
+	public void insertParameters(String selectedAction) {
 		Scanner scanner=new Scanner(System.in);
-		String selectedAction=scanner.nextLine();
-		while(!this.parser.cutActions(acceptableActions).contains(selectedAction)){
-			System.out.println("Wrong action. Retry.");
-			selectedAction=scanner.nextLine();
-		}
-		
 		List<List<String>> acceptableParameters=this.parser.actionParser(selectedAction);
 		List<String> stringParameters=new ArrayList<String>();
 		for (List<String> currentListOfStrings : acceptableParameters) {

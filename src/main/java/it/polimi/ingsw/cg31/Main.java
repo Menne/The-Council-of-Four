@@ -239,11 +239,14 @@ public class Main {
 		@SuppressWarnings("resource")
 		Scanner scanner=new Scanner(System.in);
 		
-		while (true){
+		while (true) {
 			System.out.println("Player " + game.getCurrentPlayer().getName() + 
-					", it's yout turn! what do you want to do? For action, press 'action'");
+					", it's yout turn! what do you want to do?");
 			String input=scanner.nextLine();
-			view.input(input);
+			while (!view.input(input)) {
+				System.out.println("Sorry, I didn't understand, can you repeat?");
+				input=scanner.nextLine();
+			}
 		}
 					
 	}
