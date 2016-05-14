@@ -7,30 +7,30 @@ import model.Game;
 import model.actions.Action;
 import model.actions.PickPoliticsCard;
 
-public class BeginState implements State {
+public class BeginState implements NormalTurnState {
 
 	@Override
-	public State mainActionTransition() throws RuntimeException{
+	public NormalTurnState mainActionTransition() throws RuntimeException{
 		throw new RuntimeException("There are not such transictions for this state");
 	}
 
 	@Override
-	public State quickActionTransition() throws RuntimeException{
+	public NormalTurnState quickActionTransition() throws RuntimeException{
 		throw new RuntimeException("There are not such transictions for this state");
 	}
 
 	@Override
-	public State additionalMainActionTransition() throws RuntimeException{
+	public NormalTurnState additionalMainActionTransition() throws RuntimeException{
 		throw new RuntimeException("There are not such transictions for this state");
 	}
 
 	@Override
-	public State moveToNextTransition() throws RuntimeException{
+	public NormalTurnState moveToNextTransition() throws RuntimeException{
 		throw new RuntimeException("There are not such transictions for this state");
 	}
 	
 	@Override
-	public State pickPoliticsCardTransition() {
+	public NormalTurnState pickPoliticsCardTransition() {
 		return new State11();
 	}	
 	
