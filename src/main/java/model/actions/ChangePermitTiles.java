@@ -2,6 +2,8 @@ package model.actions;
 
 import model.Game;
 import model.gameTable.RegionBoard;
+import model.parser.ActionParserVisitor;
+import model.parser.ChangePermitTilesParser;
 
 /**
  * It's the quick action "change permit tiles" it operates on the 
@@ -50,6 +52,15 @@ public class ChangePermitTiles extends QuickAction implements NeedParameters{
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "q2: change the permit tiles of a region";
+	}
 
+
+	@Override
+	public ActionParserVisitor setParser() {
+		return new ChangePermitTilesParser(this);
+	}
 				
 }

@@ -6,6 +6,8 @@ import model.gameTable.City;
 import model.gameTable.ConnectedBuiltCityDiscover;
 import model.gameTable.Emporium;
 import model.gameTable.PermitTile;
+import model.parser.ActionParserVisitor;
+import model.parser.BuildByPermitTileParser;
 
 /**
  * This action allows the current player to build in one city from those which
@@ -153,6 +155,16 @@ public class BuildByPermitTile extends MainAction implements NeedParameters{
 	private void assignKingRewardTile() {
 		this.game.getGameTable().getKingRewardTiles().remove(0).assignBonus(this.game);
 	}
+	
+	@Override
+	public String toString() {
+		return "m3: build an emporium using a permit tile";
+	}
 
+
+	@Override
+	public ActionParserVisitor setParser() {
+		return new BuildByPermitTileParser(this);
+	}
 
 }

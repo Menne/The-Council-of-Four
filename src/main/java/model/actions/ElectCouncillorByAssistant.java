@@ -3,6 +3,8 @@ package model.actions;
 import model.Game;
 import model.gameTable.CouncilBalcony;
 import model.gameTable.Councillor;
+import model.parser.ActionParserVisitor;
+import model.parser.ElectCouncillorByAssistantParser;
 
 /**
  * It's the quick action "elect councillor" it operates on the 
@@ -59,5 +61,14 @@ public class ElectCouncillorByAssistant extends QuickAction implements NeedParam
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "q3: elect a councillor by sending an assistant";
+	}
+
+	@Override
+	public ActionParserVisitor setParser() {
+		return new ElectCouncillorByAssistantParser(this);
+	}
 
 }

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import model.Game;
-import model.Parser;
+import model.parser.Parser;
 
 
 public class CLI extends View{
@@ -23,10 +23,40 @@ public class CLI extends View{
 		notify.stamp(this);
 	}
 	
-	public List<String> input(String input) {
-		 Scanner scanner=new Scanner(System.in);
+	public void input(String input) {
+		switch (input) {
+			case "action":
+				this.action();
+				break;
+			case "market":
+				System.out.println("You can't access to the market at this moment");
+				break;
+			case "exit":
+				System.out.println("Bye bye!");
+				break;
+			default:
+				System.out.println("Sorry, I didn't understand");
+		}
+	}
+	
+	
+	public void action() {
+		System.out.println("Ok, you have choosed to make an action. Please select one "
+				+ "from the following actions you can make");
+		List<String> acceptableActions=this.parser.availableActions();
+		for (String acceptableString : acceptableActions)
+			System.out.println(acceptableString);
+		
+		Scanner scanner=new Scanner(System.in);
+		String selectedAction=scanner.nextLine();
+		while(!this.parser.cutActions(acceptableActions).contains(selectedAction)){
+			System.out.println("Wrong action. Retry.");
+			selectedAction=scanner.nextLine();
+		}
+		
+		List<List<String>> acceptableParameters=this.parser.actionParser(selectedAction);
 		List<String> stringParameters=new ArrayList<String>();
-		for (List<String> currentListOfStrings : this.parser.actionTranslator(input)) {
+		for (List<String> currentListOfStrings : acceptableParameters) {
 			System.out.println(currentListOfStrings.remove(0));
 			for (String currentString : currentListOfStrings)
 				System.out.print(currentString + "\t");
@@ -36,67 +66,12 @@ public class CLI extends View{
 				parameter=scanner.nextLine();
 			}
 			stringParameters.add(parameter);
-		this.parser.actionTranslator(input);
 		}
-		return stringParameters;
+		scanner.close();
+		notifyObserver(this.parser.getCurrentParser().parametersParser(stringParameters, this.parser));
 	}
 	
-/*	@Override
-	public <C> void update(Observable o, C change) {
-		if(change instanceof AskActionPack){
-			AskActionPack notify=(AskActionPack) change;
-			stamp(notify.getGame());
-			//richiesta all'utente dell'azione
-			System.out.println("\n\nPlayer "+notify.getGame().getCurrentPlayer().getName()+
-					", it's your turn!\n Choose one of the following actions:\n ");
-			for(String action : notify.getAcceptableString())
-				System.out.println(action);
-			String selectedAction=scanner.nextLine();
-			while(!notify.cutStrings().contains(selectedAction)){
-				System.out.println("You have chosen a wrong action. Retry");
-				selectedAction=scanner.nextLine();
-				}
-			//preparo give action pack
-			GiveActionPack gap=new GiveActionPack(selectedAction);
-			
-			//invio give action pack
-			notifyObservers(gap);							
-		}
-		
-		
-		if(change instanceof AskParameterPack){
-			AskParameterPack notify=(AskParameterPack) change;
-			//chiedo all'utente di inserire i parametri e li salvo in una lista
-			List<String> selectedParameters=new ArrayList<String>();
-			for(int i=0; i<notify.getParameters().size(); i++){
-				System.out.println("Insert Parameter: "+notify.getParameters().get(i)+
-						". Choose among:\n");
-				for(String possibleString : notify.getAcceptableParameters().get(i))
-					System.out.print(possibleString + "\t");
-				String parameter=scanner.nextLine();
-				while(!notify.getAcceptableParameters().get(i).contains(parameter)){
-					System.out.println("Wrong parameter. Retry.");
-					parameter=scanner.nextLine();
-				}
-				selectedParameters.add(parameter);
-			}		
-			//preparo pacchetto
-			GiveParameterPack gpp = new GiveParameterPack(selectedParameters);
-			notifyObservers(gpp);
-		}
-		
-		if(change instanceof ErrorSignal){	
-			System.out.println("\n\nSorry, but you cannot do this action.\n"
-					+ "Check well your game state before choosing action\n\n");
-			try{
-				Thread.sleep(5000);
-			}catch(InterruptedException e){
-				System.out.println("Slept to much");
-			}
-			
-		}
-	}*/
-	
+
 	/**
 	 * TODO
 	 */

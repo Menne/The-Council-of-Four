@@ -3,6 +3,8 @@
 import model.Game;
 import model.gameTable.CouncilBalcony;
 import model.gameTable.Councillor;
+import model.parser.ActionParserVisitor;
+import model.parser.ElectCouncillorParser;
 
 /**
  * It's the main action "elect councillor" it operates on the 
@@ -55,5 +57,14 @@ public class ElectCouncillor extends MainAction implements NeedParameters{
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "m1: elect a councillor";
+	}
+
+	@Override
+	public ActionParserVisitor setParser() {
+		return new ElectCouncillorParser(this);
+	}
 
 }

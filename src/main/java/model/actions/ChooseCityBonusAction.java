@@ -4,6 +4,7 @@ import model.Game;
 import model.bonus.Bonus;
 import model.gameTable.City;
 import model.gameTable.Emporium;
+import model.parser.ActionParserVisitor;
 
 /**
  * This class models the action associated to the choice of the ChooseCityBonus.
@@ -49,6 +50,12 @@ public class ChooseCityBonusAction implements Action {
 			if (emporium.getEmporiumsPlayer().equals(this.game.getCurrentPlayer()))
 				return true;
 		return false;
+	}
+
+	@Override
+	public ActionParserVisitor setParser() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

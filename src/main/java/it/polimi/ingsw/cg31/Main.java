@@ -1,7 +1,6 @@
 package it.polimi.ingsw.cg31;
 
 import model.Game;
-import model.Parser;
 import model.bonus.AssistantsBonus;
 import model.bonus.Bonus;
 import model.bonus.MainActionBonus;
@@ -21,6 +20,7 @@ import model.gameTable.PermitDeck;
 import model.gameTable.PermitTile;
 import model.gameTable.PoliticsDeck;
 import model.gameTable.RegionBoard;
+import model.parser.Parser;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -236,16 +236,16 @@ public class Main {
 		CLI view=new CLI(game, parser);
 		new GameLogic(game, view);
 		
-		while(true){
-			Scanner scanner=new Scanner(System.in);
+		@SuppressWarnings("resource")
+		Scanner scanner=new Scanner(System.in);
+		
+		while (true){
+			System.out.println("Player " + game.getCurrentPlayer().getName() + 
+					", it's yout turn! what do you want to do? For action, press 'action'");
 			String input=scanner.nextLine();
 			view.input(input);
-			scanner.close(); 
 		}
-		
-		
-//		gameLogic.play();		
-//		System.out.println(game);				
+					
 	}
 
 }
