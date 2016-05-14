@@ -24,7 +24,7 @@ public class CLI extends View{
 	}
 	
 	public List<String> input(String input) {
-		Scanner scanner=new Scanner(System.in);
+		 Scanner scanner=new Scanner(System.in);
 		List<String> stringParameters=new ArrayList<String>();
 		for (List<String> currentListOfStrings : this.parser.actionTranslator(input)) {
 			System.out.println(currentListOfStrings.remove(0));

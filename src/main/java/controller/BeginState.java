@@ -4,61 +4,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Game;
-import model.actions.AcquirePermitTile;
 import model.actions.Action;
-import model.actions.BuildByKing;
-import model.actions.BuildByPermitTile;
-import model.actions.ElectCouncillor;
 
-public class State10 implements State{
-	
+public class BeginState implements State {
+
 	@Override
-	public State mainActionTransition() {
-		
-		return new EndState();
+	public State mainActionTransition() throws RuntimeException{
+		throw new RuntimeException("There are not such transictions for this state");
 	}
-
 
 	@Override
 	public State quickActionTransition() throws RuntimeException{
-		
 		throw new RuntimeException("There are not such transictions for this state");
 	}
-
 
 	@Override
 	public State additionalMainActionTransition() throws RuntimeException{
-		
 		throw new RuntimeException("There are not such transictions for this state");
 	}
-
 
 	@Override
 	public State nullActionTransition() throws RuntimeException{
-		
 		throw new RuntimeException("There are not such transictions for this state");
 	}
 
-
 	@Override
-	public void act(Action action,Game game) {
-		action.executeAction();		
+	public void act(Action action, Game game) {
+		game.pickPoliticsCard();
+		game.setState(new State11());
+		game.getState().act(action, game);
 	}
-	
-	
+
 	@Override
 	public List<Action> getAcceptableActions(Game game) {
-		List<Action> acceptableActions=new ArrayList<Action>();
-		acceptableActions.add(new ElectCouncillor(game));
-		acceptableActions.add(new AcquirePermitTile(game));
-		acceptableActions.add(new BuildByPermitTile(game));
-		acceptableActions.add(new BuildByKing(game));
-		
-		return acceptableActions;
+		return new ArrayList<Action>();
 	}
 
-
-	
-
-	
 }

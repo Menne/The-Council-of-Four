@@ -10,34 +10,42 @@ import model.actions.ChangePermitTiles;
 import model.actions.ElectCouncillorByAssistant;
 import model.actions.EngageAssistant;
 import model.actions.NullAction;
-import model.actions.PickPoliticsCard;
-import model.actions.QuickAction;
 
 public class State01 implements State {
 
-	public void handleAction(Game game, QuickAction action) {
-		if(action.executeAction()){			
-			game.nextPlayer();
-			Action pickCard= new PickPoliticsCard(game);
-			pickCard.executeAction();
-			game.setState(new State11());
-		}		
-	}
-	
-	
-	public void handleAction(Game game, AdditionalMainAction action) {
-		if(action.executeAction())
-			game.setState(new State10());		
-	}
-	
-	
-	public void handleAction(Game game, NullAction action){
-		game.nextPlayer();
-		Action pickCard= new PickPoliticsCard(game);
-		pickCard.executeAction();
-		game.setState(new State11());
+	@Override
+	public State mainActionTransition() throws RuntimeException{
+		
+		throw new RuntimeException("There are not such transictions for this state");
 	}
 
+
+	@Override
+	public State quickActionTransition() {
+		
+		return new EndState();
+	}
+
+
+	@Override
+	public State additionalMainActionTransition() {
+		
+		return new State10();
+	}
+
+
+	@Override
+	public State nullActionTransition() {
+		
+		return new EndState();
+	}
+
+
+	@Override
+	public void act(Action action, Game game) {
+		action.executeAction();
+	}
+	
 
 	@Override
 	public List<Action> getAcceptableActions(Game game) {
@@ -49,6 +57,12 @@ public class State01 implements State {
 		acceptableActions.add(new NullAction());
 		return acceptableActions;
 	}
+
+
+	
+
+
+	
 }
 
 

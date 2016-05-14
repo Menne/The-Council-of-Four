@@ -8,21 +8,36 @@ import model.actions.*;
 
 public class State11 implements State {
 
-	public void handleAction(Game game, MainAction action) {
-		if(action.executeAction())
-			if(!game.isAdditionalMainActionBonus())
-				game.setState(new State01());
-			else
-				game.setAdditionalMainActionBonus(false);
+	@Override
+	public State mainActionTransition() {
+		
+		return new State01();
 	}
 
-
-	public void handleAction(Game game, QuickAction action) {
-		if(action.executeAction())
-			game.setState(new State10());		
+	@Override
+	public State quickActionTransition() {
+		
+		return new State10();
 	}
-	 
 
+	@Override
+	public State additionalMainActionTransition() throws RuntimeException{
+
+		throw new RuntimeException("There are not such transictions for this state");
+	}
+
+	@Override
+	public State nullActionTransition() throws RuntimeException{
+		
+		throw new RuntimeException("There are not such transictions for this state");
+	}
+
+	@Override
+	public void act(Action action, Game game) {
+		action.executeAction();		
+	}
+
+	
 	@Override
 	public List<Action> getAcceptableActions(Game game) {
 		List<Action> acceptableActions=new ArrayList<Action>();
@@ -32,10 +47,14 @@ public class State11 implements State {
 		acceptableActions.add(new BuildByKing(game));
 		acceptableActions.add(new EngageAssistant(game));
 		acceptableActions.add(new ChangePermitTiles(game));
-		acceptableActions.add(new ElectCouncillorByAssistant(game));
+		acceptableActions.add(new ElectCouncillorByAssistant(game)); 
 		
 		return acceptableActions;
 	}
+
+
+
+	
 	
 	
 	

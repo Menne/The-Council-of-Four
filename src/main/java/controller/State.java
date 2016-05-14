@@ -7,9 +7,16 @@ import model.actions.Action;
 
 public interface State{
 
-	public default void handleAction(Game game, Action action) throws IllegalArgumentException{
-		throw new IllegalArgumentException("Wrong action has been passed to the controller");
-	}
+	public State mainActionTransition();
+	
+	public State quickActionTransition();
+	
+	public State additionalMainActionTransition();
+	
+	public State nullActionTransition();
+	
+	public void act(Action action, Game game);
+	
 	
 	public List<Action> getAcceptableActions(Game game);
 	

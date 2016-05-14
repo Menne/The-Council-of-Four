@@ -2,10 +2,10 @@
 package model;
  
 import java.util.List;
+
+import controller.BeginState;
 import controller.State;
 import controller.State11;
-import model.actions.Action;
-import model.actions.PickPoliticsCard;
 import model.gameTable.GameTable;
 import observerPattern.Observable;
 import players.Player;
@@ -26,8 +26,7 @@ public class Game extends Observable<ViewNotify>{
 		this.gameTable=gameTable;
 		this.currentPlayer=this.players.get(0);
 		this.gameState=GameState.RUNNING;
-		Action pickCard=new PickPoliticsCard(this);
-		pickCard.executeAction();
+		this.state=new BeginState();
 		this.state=new State11();
 		this.additionalMainActionBonus=false;
 	}
@@ -35,6 +34,10 @@ public class Game extends Observable<ViewNotify>{
 
 	public void nextPlayer(){
 		this.currentPlayer=this.players.get(this.players.indexOf(currentPlayer)+1);
+	}
+	
+	public void pickPoliticsCard(){
+		this.currentPlayer.getHand().add(this.gameTable.getPoliticsDeck().pickCard());
 	}
 
 	public List<Player> getPlayers() {
