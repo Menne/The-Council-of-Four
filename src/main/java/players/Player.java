@@ -103,7 +103,7 @@ public class Player {
 	 * @param increment
 	 * @param score
 	 */
-	public void incrementScore(int increment, int score) {
+	public void incrementScore(int increment) {
 		this.score+=increment;
 	}
 	

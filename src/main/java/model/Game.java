@@ -1,11 +1,10 @@
 
 package model;
  
+import java.util.ArrayList;
 import java.util.List;
+
 import controller.State;
-import controller.State11;
-import model.actions.Action;
-import model.actions.PickPoliticsCard;
 import model.gameTable.GameTable;
 import observerPattern.Observable;
 import players.Player;
@@ -18,7 +17,6 @@ public class Game extends Observable<ViewNotify>{
 	private final GameTable gameTable;
 	private GameState gameState;
 	private State state;
-	private boolean additionalMainActionBonus;
 	
                
 	public Game(List<Player> players, GameTable gameTable){
@@ -26,10 +24,7 @@ public class Game extends Observable<ViewNotify>{
 		this.gameTable=gameTable;
 		this.currentPlayer=this.players.get(0);
 		this.gameState=GameState.RUNNING;
-		Action pickCard=new PickPoliticsCard(this);
-		pickCard.executeAction();
-		this.state=new State11();
-		this.additionalMainActionBonus=false;
+		
 	}
 
 
@@ -68,19 +63,62 @@ public class Game extends Observable<ViewNotify>{
 		this.gameState = gameState;
 	}
 
-	
-	public boolean isAdditionalMainActionBonus() {
-		return additionalMainActionBonus;
-	}
-
-
-	public void setAdditionalMainActionBonus(boolean additionalMainActionBonus) {
-		this.additionalMainActionBonus = additionalMainActionBonus;
-	}
-
-
 	@Override
 	public String toString() {
 		return "Game\n\n Players: \n" + players + "\n\n CurrentPlayer: \n" + currentPlayer + "\n\n GameTable:\n" + gameTable + "]";
 	}	
+	
+	public void assignBonusNobilityEndGame(){
+		int first=0;
+		int second=0;
+		for(Player player: this.players){
+			if(player.getNobility()>first){
+				second=first;
+				first=player.getNobility();
+			}
+			if(player.getNobility()<first && player.getNobility()>second){
+					second=player.getNobility();
+			}
+		}
+		for(Player player: this.players){
+			if(player.getNobility()==first)
+				player.incrementScore(5);
+			if(player.getNobility()==second)
+				player.incrementScore(2);
+		}
+	}
+	
+	public void assignBonusPermitTilesEndGame(){
+		int numberOfPermitTiles=0;
+		for(Player player : this.players){
+			if(player.getPlayersPermitTilesTurnedDown().size()+player.getPlayersPermitTilesTurnedUp().size()>numberOfPermitTiles)
+				numberOfPermitTiles=player.getPlayersPermitTilesTurnedDown().size()+player.getPlayersPermitTilesTurnedUp().size();
+		}
+		for(Player player : this.players)
+			if(player.getPlayersPermitTilesTurnedDown().size()+player.getPlayersPermitTilesTurnedUp().size()==numberOfPermitTiles)
+				player.incrementScore(3);
+	}
+	
+	public Player selectWinner(){
+		int winnerScore=0;
+		Player currentWinnerPlayer = null;
+		for(Player player : this.players){
+			if(player.getScore()>winnerScore)
+				winnerScore=player.getScore();
+		}
+		List<Player> winnerPlayers= new ArrayList<Player>(); //list of players with the winnerScore (per gestire il caso di pareggio)  
+		for(Player player : this.players){
+			if(player.getScore()==winnerScore)
+				winnerPlayers.add(player);
+		}
+		if(winnerPlayers.size()==1)
+			return winnerPlayers.get(0);
+		int drawScore=0;
+		for(Player player: winnerPlayers){
+			if(player.getPlayersPermitTilesTurnedDown().size()+player.getPlayersPermitTilesTurnedUp().size()+player.getAssistants()>drawScore)
+				drawScore=player.getPlayersPermitTilesTurnedDown().size()+player.getPlayersPermitTilesTurnedUp().size()+player.getAssistants();
+				currentWinnerPlayer=player;
+			}
+		return currentWinnerPlayer;
+	}
 }
