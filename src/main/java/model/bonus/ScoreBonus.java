@@ -1,20 +1,15 @@
 package model.bonus;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-
 import model.Game;
+import players.Player;
 
 /**
  * ScoreBonus implements assignBonus method
  * @author Andrea
  */
 
-@XmlAccessorType(XmlAccessType.FIELD)
 public class ScoreBonus implements Bonus{
 	
-	@XmlElement(name="scoreAdvancement")
 	private final int scoreAdvancement;
 	
 	/**
@@ -29,7 +24,11 @@ public class ScoreBonus implements Bonus{
 	 * @param currentPlayer
 	 */
 	public void assignBonus(Game game){
-		game.getCurrentPlayer().incrementScore(scoreAdvancement, game.getCurrentPlayer().getScore());
+		game.getCurrentPlayer().incrementScore(scoreAdvancement);
+	}
+	
+	public void assignBonusToPlayer(Player player){
+		player.incrementScore(this.scoreAdvancement);
 	}
 	
 	@Override

@@ -195,7 +195,8 @@ public class BuildByKing extends MainAction implements NeedParameters{
 				if (emporium.getEmporiumsPlayer().equals(this.game.getCurrentPlayer()))
 					regionCitiesCounter++;
 		if (regionCitiesCounter==this.selectedCity.getRegion().getRegionCities().size()) {
-			this.selectedCity.getRegion().getRegionBonus().assignBonus(this.game);
+			this.game.getCurrentPlayer().getPlayersFinalBonus().add(
+					this.selectedCity.getRegion().getRegionBonus());
 			this.selectedCity.getRegion().notBonusAvailable();
 		}
 		if (!(this.game.getGameTable().getKingRewardTiles().isEmpty()))
@@ -214,7 +215,8 @@ public class BuildByKing extends MainAction implements NeedParameters{
 				if (emporium.getEmporiumsPlayer().equals(this.game.getCurrentPlayer()))
 					colourCitiesCounter++;
 		if (colourCitiesCounter==this.selectedCity.getColour().getCitiesOfThisColour().size()) {
-			this.selectedCity.getColour().getColorBonus().assignBonus(this.game);
+			this.game.getCurrentPlayer().getPlayersFinalBonus().add(
+					this.selectedCity.getColour().getColorBonus());
 			this.selectedCity.getColour().notBonusAvailable();
 		}
 		if (!(this.game.getGameTable().getKingRewardTiles().isEmpty()))
@@ -225,7 +227,8 @@ public class BuildByKing extends MainAction implements NeedParameters{
 	 * Remove the king reward tile from the game table and assigns it to the player
 	 */
 	private void assignKingRewardTile() {
-		this.game.getGameTable().getKingRewardTiles().remove(0).assignBonus(this.game);
+		this.game.getCurrentPlayer().getPlayersFinalBonus().add(
+				this.game.getGameTable().getKingRewardTiles().remove(0));
 	}
 
 	@Override

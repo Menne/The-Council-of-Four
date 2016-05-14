@@ -8,6 +8,7 @@ import java.util.List;
 import controller.BeginState;
 import controller.State;
 import controller.State11;
+import model.bonus.ScoreBonus;
 import model.gameTable.GameTable;
 import observerPattern.Observable;
 import players.Player;
@@ -88,9 +89,13 @@ public class Game extends Observable<ViewNotify>{
 		return "Game\n\n Players: \n" + players + "\n\n CurrentPlayer: \n" + currentPlayer + "\n\n GameTable:\n" + gameTable + "]";
 	}	
 	
+	/**
+	 * assigns 5 point to first players and 2 to seconds
+	 */
 	public void assignBonusNobilityEndGame(){
 		int first=0;
 		int second=0;
+		int count=0;
 		for(Player player: this.players){
 			if(player.getNobility()>first){
 				second=first;
@@ -101,13 +106,31 @@ public class Game extends Observable<ViewNotify>{
 			}
 		}
 		for(Player player: this.players){
-			if(player.getNobility()==first)
-				player.incrementScore(5,player.getScore());
-			if(player.getNobility()==second)
-				player.incrementScore(2,player.getScore());
+			if(player.getNobility()==first){
+				player.incrementScore(5);
+				count++;
+			}
+		}
+		if(count==1){
+			for(Player player: this.players)
+				if(player.getNobility()==second)
+					player.incrementScore(2);
 		}
 	}
 	
+	/**
+	 * assigns to every player his list of score bonus
+	 */
+	public void assignFinalBonus(){
+		for(Player player : this.players){
+			for(ScoreBonus scoreBonus: player.getPlayersFinalBonus())
+				scoreBonus.assignBonusToPlayer(player);
+		}
+	}
+	
+	/**
+	 * assigns 5 points to the player who has more permit tiles
+	 */
 	public void assignBonusPermitTilesEndGame(){
 		int numberOfPermitTiles=0;
 		for(Player player : this.players){
@@ -116,9 +139,13 @@ public class Game extends Observable<ViewNotify>{
 		}
 		for(Player player : this.players)
 			if(player.getPlayersPermitTilesTurnedDown().size()+player.getPlayersPermitTilesTurnedUp().size()==numberOfPermitTiles)
-				player.incrementScore(3, player.getScore());
+				player.incrementScore(3);
 	}
 	
+	/**
+	 * recognises which player has won the game
+	 * @return
+	 */
 	public Player selectWinner(){
 		int winnerScore=0;
 		Player currentWinnerPlayer = null;

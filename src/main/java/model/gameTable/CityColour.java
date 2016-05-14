@@ -58,7 +58,7 @@ public class CityColour {
 
 
 
-	public Bonus getColorBonus() {
+	public ScoreBonus getColorBonus() {
 		return colorBonus;
 	}
 
