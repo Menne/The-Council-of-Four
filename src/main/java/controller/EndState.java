@@ -7,34 +7,34 @@ import model.Game;
 import model.actions.Action;
 import model.actions.MoveToNext;
 
-public class EndState implements NormalTurnState {
+public class EndState implements State {
 
 	@Override
-	public NormalTurnState mainActionTransition() throws RuntimeException{
+	public State mainActionTransition() throws RuntimeException{
 		
 		throw new RuntimeException("There are not such transictions for this state");
 	}
 
 	@Override
-	public NormalTurnState quickActionTransition()  throws RuntimeException{
+	public State quickActionTransition()  throws RuntimeException{
 		
 		throw new RuntimeException("There are not such transictions for this state");
 	}
 
 	@Override
-	public NormalTurnState additionalMainActionTransition()  throws RuntimeException{
+	public State additionalMainActionTransition()  throws RuntimeException{
 		
 		throw new RuntimeException("There are not such transictions for this state");
 	}
 
 	@Override
-	public NormalTurnState moveToNextTransition() {
+	public State moveToNextTransition() {
 		
 		return new BeginState();
 	}
 
 	@Override
-	public NormalTurnState pickPoliticsCardTransition() throws RuntimeException{
+	public State pickPoliticsCardTransition() throws RuntimeException{
 		
 		throw new RuntimeException("There are not such transictions for this state");
 	}

@@ -8,7 +8,8 @@ import java.util.Random;
 import java.util.Set;
 
 import controller.BeginState;
-import controller.NormalTurnState;
+import controller.State;
+import controller.State;
 import controller.State11;
 import model.bonus.ScoreBonus;
 import model.gameTable.GameTable;
@@ -21,8 +22,9 @@ public class Game extends Observable<ViewNotify>{
 	private final List<Player> players;
 	private Player currentPlayer;
 	private final GameTable gameTable;
-	private NormalTurnState state;
+	private State state;
 	private boolean additionalMainActionBonus;
+	private boolean lastLap;
 	
                
 	public Game(List<Player> players, GameTable gameTable){
@@ -30,8 +32,8 @@ public class Game extends Observable<ViewNotify>{
 		this.gameTable=gameTable;
 		this.currentPlayer=this.players.get(0);
 		this.state=new BeginState();
-		this.state=new State11();
 		this.additionalMainActionBonus=false;
+		this.lastLap=false;
 	}
 
 
@@ -66,12 +68,12 @@ public class Game extends Observable<ViewNotify>{
 		return currentPlayer;
 	}
 
-	public NormalTurnState getState() {
+	public State getState() {
 		return state;
 	}
 
 
-	public void setState(NormalTurnState state) {
+	public void setState(State state) {
 		this.state = state;
 	}
 
@@ -83,6 +85,16 @@ public class Game extends Observable<ViewNotify>{
 
 	public void setAdditionalMainActionBonus(boolean additionalMainActionBonus) {
 		this.additionalMainActionBonus = additionalMainActionBonus;
+	}
+
+
+	public boolean isLastLap() {
+		return lastLap;
+	}
+
+
+	public void setLastLap(boolean lastLap) {
+		this.lastLap = lastLap;
 	}
 
 

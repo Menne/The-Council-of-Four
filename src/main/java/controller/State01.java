@@ -11,37 +11,37 @@ import model.actions.ElectCouncillorByAssistant;
 import model.actions.EngageAssistant;
 import model.actions.MoveToNext;
 
-public class State01 implements NormalTurnState {
+public class State01 implements State {
 
 	@Override
-	public NormalTurnState mainActionTransition() throws RuntimeException{
+	public State mainActionTransition() throws RuntimeException{
 		
 		throw new RuntimeException("There are not such transictions for this state");
 	}
 
 
 	@Override
-	public NormalTurnState quickActionTransition() {
+	public State quickActionTransition() {
 		
 		return new EndState();
 	}
 
 
 	@Override
-	public NormalTurnState additionalMainActionTransition() {
+	public State additionalMainActionTransition() {
 		
 		return new State10();
 	}
 
 
 	@Override
-	public NormalTurnState moveToNextTransition() {
+	public State moveToNextTransition() {
 		
 		return new BeginState();
 	}
 
 	@Override
-	public NormalTurnState pickPoliticsCardTransition() throws RuntimeException{
+	public State pickPoliticsCardTransition() throws RuntimeException{
 		
 		throw new RuntimeException("There are not such transictions for this state");
 	}

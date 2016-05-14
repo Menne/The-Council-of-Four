@@ -11,8 +11,11 @@ public class MoveToNext extends QuickAction {
 
 	@Override
 	public boolean executeAction() {
+		if(this.game.getCurrentPlayer().getPlayerNumber()==this.game.getPlayers().size())
+			this.game.normalNextPlayer();
+		if(this.game.isLastLap())
+			this.game.lastLapNextPlayer();
 		this.game.normalNextPlayer();
-		
 		this.game.setState(this.game.getState().moveToNextTransition());
 		return true;
 	}

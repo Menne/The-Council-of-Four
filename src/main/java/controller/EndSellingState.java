@@ -5,34 +5,34 @@ import java.util.List;
 import model.Game;
 import model.actions.Action;
 
-public class EndSellingState implements NormalTurnState {
+public class EndSellingState implements State {
 
 	@Override
-	public NormalTurnState mainActionTransition() {
+	public State mainActionTransition() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public NormalTurnState quickActionTransition() {
+	public State quickActionTransition() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public NormalTurnState additionalMainActionTransition() {
+	public State additionalMainActionTransition() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public NormalTurnState moveToNextTransition() {
+	public State moveToNextTransition() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public NormalTurnState pickPoliticsCardTransition() {
+	public State pickPoliticsCardTransition() {
 		// TODO Auto-generated method stub
 		return null;
 	}
