@@ -13,9 +13,9 @@ public interface State{
 	
 	public State additionalMainActionTransition();
 	
-	public State nullActionTransition();
+	public State moveToNextTransition();
 	
-	public void act(Action action, Game game);
+	public State pickPoliticsCardTransition();
 	
 	
 	public List<Action> getAcceptableActions(Game game);

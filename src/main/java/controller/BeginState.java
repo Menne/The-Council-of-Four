@@ -5,6 +5,7 @@ import java.util.List;
 
 import model.Game;
 import model.actions.Action;
+import model.actions.PickPoliticsCard;
 
 public class BeginState implements State {
 
@@ -24,20 +25,24 @@ public class BeginState implements State {
 	}
 
 	@Override
-	public State nullActionTransition() throws RuntimeException{
+	public State moveToNextTransition() throws RuntimeException{
 		throw new RuntimeException("There are not such transictions for this state");
 	}
-
+	
 	@Override
-	public void act(Action action, Game game) {
-		game.pickPoliticsCard();
-		game.setState(new State11());
-		game.getState().act(action, game);
-	}
+	public State pickPoliticsCardTransition() {
+		return new State11();
+	}	
+	
 
 	@Override
 	public List<Action> getAcceptableActions(Game game) {
-		return new ArrayList<Action>();
+		List<Action> acceptableAction= new ArrayList<Action>();
+		acceptableAction.add(new PickPoliticsCard(game));
+		
+		return acceptableAction;
 	}
+
+	
 
 }
