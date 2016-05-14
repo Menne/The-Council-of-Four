@@ -1,11 +1,15 @@
-
+ 
 package model;
  
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
-
+import java.util.Random;
+import java.util.Set;
 
 import controller.BeginState;
+import controller.State;
 import controller.State;
 import controller.State11;
 import model.bonus.ScoreBonus;
@@ -17,26 +21,47 @@ import view.ViewNotify;
 public class Game extends Observable<ViewNotify>{
 	
 	private final List<Player> players;
+	private final List<Player> marketPlayerList;
 	private Player currentPlayer;
 	private final GameTable gameTable;
-	private GameState gameState;
 	private State state;
 	private boolean additionalMainActionBonus;
+	private boolean lastLap;
 	
                
 	public Game(List<Player> players, GameTable gameTable){
 		this.players=players;
 		this.gameTable=gameTable;
 		this.currentPlayer=this.players.get(0);
-		this.gameState=GameState.RUNNING;
 		this.state=new BeginState();
-		this.state=new State11();
 		this.additionalMainActionBonus=false;
+		this.lastLap=false;
+		this.marketPlayerList=new ArrayList<Player>();
+		this.marketPlayerList.addAll(players);
 	}
 
 
-	public void nextPlayer(){
-		this.currentPlayer=this.players.get(this.players.indexOf(currentPlayer)+1);
+	public void normalNextPlayer(){
+		Player temporaryPlayer=this.currentPlayer;
+		this.players.remove(0);
+		this.players.add(this.players.size(), temporaryPlayer);
+		this.currentPlayer=this.players.get(0);
+	}
+	
+
+	public void randomNextPlayer(){
+		Player temporaryPlayer=this.currentPlayer;
+		this.marketPlayerList.remove(0);
+		this.marketPlayerList.add(this.marketPlayerList.size(), temporaryPlayer);
+		this.currentPlayer=this.marketPlayerList.get(0);
+	}
+	
+	
+	public void lastLapNextPlayer() throws IndexOutOfBoundsException{
+		players.remove(0);
+		if(players.isEmpty())
+			throw new IndexOutOfBoundsException("List of players is empty");
+		this.currentPlayer=this.players.get(0);
 	}
 	
 	public void pickPoliticsCard(){
@@ -46,6 +71,10 @@ public class Game extends Observable<ViewNotify>{
 	public List<Player> getPlayers() {
 		return players;
 	}
+	
+	public List<Player> getRandomPlayers() {
+		return marketPlayerList;
+	}
 
 	public GameTable getGameTable() {
 		return gameTable;
@@ -53,11 +82,6 @@ public class Game extends Observable<ViewNotify>{
 
 	public Player getCurrentPlayer() {
 		return currentPlayer;
-	}
-
-
-	public GameState getGameState() {
-		return gameState;
 	}
 
 	public State getState() {
@@ -70,10 +94,6 @@ public class Game extends Observable<ViewNotify>{
 	}
 
 
-	public void setGameState(GameState gameState) {
-		this.gameState = gameState;
-	}
-
 	public boolean isAdditionalMainActionBonus() {
 		return additionalMainActionBonus;
 	}
@@ -81,6 +101,16 @@ public class Game extends Observable<ViewNotify>{
 
 	public void setAdditionalMainActionBonus(boolean additionalMainActionBonus) {
 		this.additionalMainActionBonus = additionalMainActionBonus;
+	}
+
+
+	public boolean isLastLap() {
+		return lastLap;
+	}
+
+
+	public void setLastLap(boolean lastLap) {
+		this.lastLap = lastLap;
 	}
 
 
@@ -168,4 +198,5 @@ public class Game extends Observable<ViewNotify>{
 			}
 		return currentWinnerPlayer;
 	}
+
 }

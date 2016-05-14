@@ -40,6 +40,7 @@ public class EndState implements State {
 	}
 
 
+
 	@Override
 	public List<Action> getAcceptableActions(Game game) {
 		List<Action> acceptableActions=new ArrayList<Action>();
