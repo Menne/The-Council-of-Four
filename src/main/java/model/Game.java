@@ -2,6 +2,7 @@
 package model;
  
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
@@ -20,6 +21,7 @@ import view.ViewNotify;
 public class Game extends Observable<ViewNotify>{
 	
 	private final List<Player> players;
+	private final List<Player> marketPlayerList;
 	private Player currentPlayer;
 	private final GameTable gameTable;
 	private State state;
@@ -34,21 +36,31 @@ public class Game extends Observable<ViewNotify>{
 		this.state=new BeginState();
 		this.additionalMainActionBonus=false;
 		this.lastLap=false;
+		this.marketPlayerList=new ArrayList<Player>();
+		this.marketPlayerList.addAll(players);
 	}
 
 
 	public void normalNextPlayer(){
+		Player temporaryPlayer=this.currentPlayer;
+		this.players.remove(0);
+		this.players.add(this.players.size(), temporaryPlayer);
+		this.currentPlayer=this.players.get(0);
 	}
 	
+
 	public void randomNextPlayer(){
-		Set<Player> randomPlayers=new HashSet<Player>();
-		Random random= new Random();
-		randomPlayers.add(players.get(random.nextInt(this.players.size())));
+		Player temporaryPlayer=this.currentPlayer;
+		this.marketPlayerList.remove(0);
+		this.marketPlayerList.add(this.marketPlayerList.size(), temporaryPlayer);
+		this.currentPlayer=this.marketPlayerList.get(0);
 	}
 	
-	public void lastLapNextPlayer(){
+	
+	public void lastLapNextPlayer() throws IndexOutOfBoundsException{
 		players.remove(0);
-		this.players.add(0,this.players.remove(this.players.lastIndexOf(players)));
+		if(players.isEmpty())
+			throw new IndexOutOfBoundsException("List of players is empty");
 		this.currentPlayer=this.players.get(0);
 	}
 	
@@ -58,6 +70,10 @@ public class Game extends Observable<ViewNotify>{
 
 	public List<Player> getPlayers() {
 		return players;
+	}
+	
+	public List<Player> getRandomPlayers() {
+		return marketPlayerList;
 	}
 
 	public GameTable getGameTable() {
@@ -182,4 +198,5 @@ public class Game extends Observable<ViewNotify>{
 			}
 		return currentWinnerPlayer;
 	}
+
 }
