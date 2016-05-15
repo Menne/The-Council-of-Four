@@ -8,26 +8,6 @@ import model.actions.Action;
 import model.actions.PickPoliticsCard;
 
 public class BeginState implements State {
-
-	@Override
-	public State mainActionTransition() throws RuntimeException{
-		throw new RuntimeException("There are not such transictions for this state");
-	}
-
-	@Override
-	public State quickActionTransition() throws RuntimeException{
-		throw new RuntimeException("There are not such transictions for this state");
-	}
-
-	@Override
-	public State additionalMainActionTransition() throws RuntimeException{
-		throw new RuntimeException("There are not such transictions for this state");
-	}
-
-	@Override
-	public State moveToNextTransition() throws RuntimeException{
-		throw new RuntimeException("There are not such transictions for this state");
-	}
 	
 	@Override
 	public State pickPoliticsCardTransition() {

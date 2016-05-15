@@ -7,18 +7,50 @@ import model.actions.Action;
 
 public interface State{
 
-	public State mainActionTransition();
+	public default State mainActionTransition() throws RuntimeException{
+		
+		throw new RuntimeException("There are not such transictions for this state");
+	}
+
 	
-	public State quickActionTransition();
+	public default State quickActionTransition()throws RuntimeException{
+		
+		throw new RuntimeException("There are not such transictions for this state");
+	}
+
 	
-	public State additionalMainActionTransition();
+	public default State additionalMainActionTransition() throws RuntimeException{
+		
+		throw new RuntimeException("There are not such transictions for this state");
+	}
+
 	
-	public State moveToNextTransition();
+	public default State pickPoliticsCardTransition() throws RuntimeException{
+		
+		throw new RuntimeException("There are not such transictions for this state");
+	}
+
 	
-	public State pickPoliticsCardTransition();
+	public default State sellActionTransition() throws RuntimeException{
+		
+		throw new RuntimeException("There are not such transictions for this state");
+	}
+
 	
+	public default State buyActionTransition() throws RuntimeException{
+		
+		throw new RuntimeException("There are not such transictions for this state");
+	}
+
 	
+	public default State moveToNextTransition(Game game) throws RuntimeException{
+		
+		throw new RuntimeException("There are not such transictions for this state");
+	}
+
+		
 	public List<Action> getAcceptableActions(Game game);
+
 	
 	public String toString(Game game);
 	

@@ -20,7 +20,8 @@ public class MoveToNext extends QuickAction {
 		if(this.game.isLastLap())
 			this.game.lastLapNextPlayer();
 		this.game.normalNextPlayer();
-		this.game.setState(this.game.getState().moveToNextTransition());
+		 
+		this.game.setState(this.game.getState().moveToNextTransition(this.game));
 		return true;
 	}
 

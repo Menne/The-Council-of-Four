@@ -20,25 +20,7 @@ public class State11 implements State {
 		return new State10();
 	}
 
-	@Override
-	public State additionalMainActionTransition() throws RuntimeException{
-
-		throw new RuntimeException("There are not such transictions for this state");
-	}
-
-	@Override
-	public State moveToNextTransition() throws RuntimeException{
-		
-		throw new RuntimeException("There are not such transictions for this state");
-	}
 	
-	@Override
-	public State pickPoliticsCardTransition() throws RuntimeException{
-		
-		throw new RuntimeException("There are not such transictions for this state");
-	}
-
-
 	
 	@Override
 	public List<Action> getAcceptableActions(Game game) {
@@ -60,15 +42,5 @@ public class State11 implements State {
 			availableActions+= "\n" + action.toString();
 		return availableActions;
 	}
-	
-	
-	
 
-
-
-
-	
-	
-	
-	
 }

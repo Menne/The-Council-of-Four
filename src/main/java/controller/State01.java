@@ -14,13 +14,6 @@ import model.actions.MoveToNext;
 public class State01 implements State {
 
 	@Override
-	public State mainActionTransition() throws RuntimeException{
-		
-		throw new RuntimeException("There are not such transictions for this state");
-	}
-
-
-	@Override
 	public State quickActionTransition() {
 		
 		return new EndState();
@@ -35,18 +28,14 @@ public class State01 implements State {
 
 
 	@Override
-	public State moveToNextTransition() {
+	public State moveToNextTransition(Game game) {
 		
-		return new BeginState();
-	}
-
-	@Override
-	public State pickPoliticsCardTransition() throws RuntimeException{
-		
-		throw new RuntimeException("There are not such transictions for this state");
+		if(game.getCurrentPlayer().getPlayerNumber()!=game.getPlayers().size())
+			return new BeginState();
+		return new BeginSellingState();
 	}
 	
-
+	
 	@Override
 	public List<Action> getAcceptableActions(Game game) {
 		List<Action> acceptableActions=new ArrayList<Action>();
