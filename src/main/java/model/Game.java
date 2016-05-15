@@ -1,28 +1,22 @@
  
 package model;
- 
+
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Random;
-import java.util.Set;
 
 import controller.BeginState;
 import controller.State;
-import controller.State;
-import controller.State11;
 import model.bonus.ScoreBonus;
 import model.gameTable.GameTable;
+import model.market.Market;
 import observerPattern.Observable;
 import players.Player;
-import view.GameNotify;
 import view.ViewNotify;
  
 public class Game extends Observable<ViewNotify>{
 	
 	private final List<Player> players;
-	private final List<Player> marketPlayerList;
+	private final Market market;
 	private Player currentPlayer;
 	private final GameTable gameTable;
 	private State state;
@@ -37,32 +31,29 @@ public class Game extends Observable<ViewNotify>{
 		this.state=new BeginState();
 		this.additionalMainActionBonus=false;
 		this.lastLap=false;
-		this.marketPlayerList=new ArrayList<Player>();
-		this.marketPlayerList.addAll(players);
+		this.market=new Market(players);		
 	}
 
 
-	public void normalNextPlayer(){
-		Player temporaryPlayer=this.currentPlayer;
-		this.players.remove(0);
-		this.players.add(this.players.size(), temporaryPlayer);
-		this.currentPlayer=this.players.get(0);
+	public void nextPlayer(){
+		if(!lastLap){
+			Player temporaryPlayer=this.currentPlayer;
+			this.players.remove(0);
+			this.players.add(this.players.size(), temporaryPlayer);
+			this.currentPlayer=this.players.get(0);
+		}
+		else{
+			players.remove(0);
+			if(players.isEmpty())
+				throw new IndexOutOfBoundsException("List of players is empty");
+			this.currentPlayer=this.players.get(0);
+		}
 	}
 	
-
-	public void randomNextPlayer(){
-		Player temporaryPlayer=this.currentPlayer;
-		this.marketPlayerList.remove(0);
-		this.marketPlayerList.add(this.marketPlayerList.size(), temporaryPlayer);
-		this.currentPlayer=this.marketPlayerList.get(0);
-	}
-	
-	
-	public void lastLapNextPlayer() throws IndexOutOfBoundsException{
-		players.remove(0);
-		if(players.isEmpty())
-			throw new IndexOutOfBoundsException("List of players is empty");
-		this.currentPlayer=this.players.get(0);
+	public void startMarket(){
+		this.market.clearMarket();
+		this.market.shuffleBuyingPlayerList();
+		this.market.sellingNextPlayer();
 	}
 	
 	public void pickPoliticsCard(){
@@ -71,10 +62,6 @@ public class Game extends Observable<ViewNotify>{
 
 	public List<Player> getPlayers() {
 		return players;
-	}
-	
-	public List<Player> getRandomPlayers() {
-		return marketPlayerList;
 	}
 
 	public GameTable getGameTable() {

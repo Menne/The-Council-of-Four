@@ -1,11 +1,8 @@
 package model.gameTable;
 
 import java.util.Set;
-
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-
 import model.bonus.Bonus;
+import model.market.Marketable;
 
 /**
 	 * this class models a permit tile
@@ -13,8 +10,7 @@ import model.bonus.Bonus;
 	 *
 	 */
 
-@XmlAccessorType(XmlAccessType.FIELD)
-public class PermitTile {
+public class PermitTile implements Marketable{
 	
 	private final Set<City> buildableCities;
 	private final Set<Bonus> bonus;
