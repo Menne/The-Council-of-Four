@@ -26,20 +26,29 @@ public class CLI extends View{
 	
 	public boolean input(String input) {
 		if (this.parser.availableActions().contains(input)) {
-			insertParameters(input);
+			this.insertParameters(input);
 			return true;
 		}
 		else
 			return false;
 	}
-		
-	public void insertParameters(String selectedAction) {
+	
+	public boolean insertParameters(String selectedAction) {
 		Scanner scanner=new Scanner(System.in);
 		List<List<String>> acceptableParameters=this.parser.actionParser(selectedAction);
 		List<String> stringParameters=new ArrayList<String>();
+		System.out.println(acceptableParameters.remove(0));
+		if (acceptableParameters.isEmpty())
+			notifyObserver(this.parser.getCurrentParser().parametersParser(stringParameters, this.parser));
 		for (List<String> currentListOfStrings : acceptableParameters) {
 			System.out.println(currentListOfStrings.remove(0));
-			for (String currentString : currentListOfStrings)
+			if (currentListOfStrings.isEmpty()) {
+				System.out.println("Sorry, but you can't do this action. "
+						+ "Check out your current game state!");
+				scanner.close();
+				return false;
+			}
+			for (String currentString : currentListOfStrings) 
 				System.out.print(currentString + "\t");
 			String parameter=scanner.nextLine();
 			while(!currentListOfStrings.contains(parameter)){
@@ -50,6 +59,7 @@ public class CLI extends View{
 		}
 		scanner.close();
 		notifyObserver(this.parser.getCurrentParser().parametersParser(stringParameters, this.parser));
+		return true;
 	}
 	
 

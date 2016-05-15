@@ -236,10 +236,10 @@ public class Main {
 		CLI view=new CLI(game, parser);
 		new GameLogic(game, view);
 		
-		@SuppressWarnings("resource")
-		Scanner scanner=new Scanner(System.in);
+
 		
 		while (true) {
+			Scanner scanner=new Scanner(System.in);
 			System.out.println("Player " + game.getCurrentPlayer().getName() + 
 					", it's yout turn! what do you want to do?");
 			String input=scanner.nextLine();
@@ -247,6 +247,7 @@ public class Main {
 				System.out.println("Sorry, I didn't understand, can you repeat?");
 				input=scanner.nextLine();
 			}
+			scanner.close();
 		}
 					
 	}

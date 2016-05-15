@@ -38,14 +38,10 @@ public class Parser {
 	 * @return the list of strings of initials
 	 */
 	public List<String> availableActions() {
-		List<Action> availableActions=this.game.getState().getAcceptableActions(game);
 		List<String> acceptableStrings=new ArrayList<String>();
-		for (Action action : availableActions)
-			acceptableStrings.add(action.toString());
-		List<String> cuttedStrings=new ArrayList<String>();
-		for (String cuttedAction : acceptableStrings)
-			cuttedStrings.add(cuttedAction.substring(0,2));
-		return cuttedStrings;
+		for (Action action : this.game.getState().getAcceptableActions(game))
+			acceptableStrings.add(action.toString().substring(0,2));
+		return acceptableStrings;
 	}
 	
 	
@@ -56,11 +52,9 @@ public class Parser {
 	 */
 	public List<List<String>> actionParser(String selectedAction) {
 		for (Action availableAction : this.game.getState().getAcceptableActions(game))
-			if (selectedAction.equals(availableAction.toString().substring(0,2))) {
+			if (selectedAction.equals(availableAction.toString().substring(0,2))) 
 				this.currentParser=availableAction.setParser();
-				return currentParser.acceptableParameters(this);
-			}
-		return null;
+		return currentParser.acceptableParameters(this);
 	}
 	
 	
@@ -97,8 +91,8 @@ public class Parser {
 	/**
 	 * This method builds a list of strings from which the user can choose when he inserts
 	 * the parameters of the action, according to the current game state.
-	 * @return which contains the the list of possible strings for the selected action,
-	 * the first element of the list are the instructions the user must follow to insert the parameters,
+	 * @return a list which contains the the list of possible strings for the selected action,
+	 * the first element of the list is the instructions the user must follow to insert the parameters
 	 */
 	protected List<String> acceptableFirstPoliticsCard() {
 		List<String> acceptableColours=new ArrayList<String>();

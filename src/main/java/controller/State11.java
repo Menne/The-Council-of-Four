@@ -49,11 +49,19 @@ public class State11 implements State {
 		acceptableActions.add(new BuildByKing(game));
 		acceptableActions.add(new EngageAssistant(game));
 		acceptableActions.add(new ChangePermitTiles(game));
-		acceptableActions.add(new ElectCouncillorByAssistant(game)); 
-		
+		acceptableActions.add(new ElectCouncillorByAssistant(game));
 		return acceptableActions;
 	}
 
+	public String toString(Game game) {
+		String availableActions = null;
+		for (Action action : this.getAcceptableActions(game))
+			availableActions+= "\n" + action.toString();
+		return availableActions;
+	}
+	
+	
+	
 
 
 

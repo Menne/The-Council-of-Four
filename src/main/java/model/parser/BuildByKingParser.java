@@ -19,6 +19,9 @@ public class BuildByKingParser implements ActionParserVisitor {
 	@Override
 	public List<List<String>> acceptableParameters(Parser parser) {
 		List<List<String>> acceptableStrings=new ArrayList<List<String>>();
+		List<String> message=new ArrayList<String>();
+		message.add("Ok, you have choosed to build an emporium with the help of the king. Now I need some more infos, like:");
+		acceptableStrings.add(message);
 		acceptableStrings.add(parser.acceptableCities());
 		acceptableStrings.add(parser.acceptableFirstPoliticsCard());
 		for (int i=1; i<CouncilBalcony.getNumberofcouncillors(); i++)

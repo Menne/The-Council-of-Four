@@ -17,6 +17,9 @@ public class ChangePermitTilesParser implements ActionParserVisitor {
 	@Override
 	public List<List<String>> acceptableParameters(Parser parser) {
 		List<List<String>> acceptableStrings=new ArrayList<List<String>>();
+		List<String> message=new ArrayList<String>();
+		message.add("Ok, you have choosed to change the uncovered tiles of a region. Now I need some more infos, like:");
+		acceptableStrings.add(message);
 		acceptableStrings.add(parser.acceptableRegions());
 		return acceptableStrings;
 	}

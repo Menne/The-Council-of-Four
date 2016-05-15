@@ -2,6 +2,7 @@ package model.actions;
 
 import model.Game;
 import model.parser.ActionParserVisitor;
+import model.parser.PickPoliticsCardParser;
 
 public class PickPoliticsCard implements Action {
 
@@ -15,14 +16,20 @@ public class PickPoliticsCard implements Action {
 	public boolean executeAction() {
 		this.game.getCurrentPlayer().getHand().add(this.game.getGameTable().getPoliticsDeck().pickCard());
 		
-		this.game.setState(this.game.getState().quickActionTransition());
+		this.game.setState(this.game.getState().pickPoliticsCardTransition());
 		return true;
 	}
 
+	
+	@Override
+	public String toString() {
+		return "pc: pick a politics card";
+	}
+	
+	
 	@Override
 	public ActionParserVisitor setParser() {
-		// TODO Auto-generated method stub
-		return null;
+		return new PickPoliticsCardParser(this);	
 	}
 
 }

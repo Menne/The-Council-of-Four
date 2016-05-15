@@ -19,6 +19,9 @@ public class AcquirePermitTileParser implements ActionParserVisitor {
 	@Override
 	public List<List<String>> acceptableParameters(Parser parser) {
 		List<List<String>> acceptableStrings=new ArrayList<List<String>>();
+		List<String> message=new ArrayList<String>();
+		message.add("Ok, you have choosed to acquire a permit tile. Now I need some more infos, like:");
+		acceptableStrings.add(message);
 		acceptableStrings.add(parser.acceptableRegions());
 		acceptableStrings.add(parser.acceptableNumberOfPermitTile());
 		acceptableStrings.add(parser.acceptableFirstPoliticsCard());
