@@ -48,4 +48,10 @@ public class EndState implements State {
 		return acceptableActions;
 	}
 
+	@Override
+	public String toString(Game game) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

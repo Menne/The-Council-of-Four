@@ -16,6 +16,7 @@ import model.bonus.ScoreBonus;
 import model.gameTable.GameTable;
 import observerPattern.Observable;
 import players.Player;
+import view.GameNotify;
 import view.ViewNotify;
  
 public class Game extends Observable<ViewNotify>{
@@ -116,7 +117,8 @@ public class Game extends Observable<ViewNotify>{
 
 	@Override
 	public String toString() {
-		return "Game\n\n Players: \n" + players + "\n\n CurrentPlayer: \n" + currentPlayer + "\n\n GameTable:\n" + gameTable + "]";
+		return "Game\n\n Players: \n" + players + "\n\n CurrentPlayer: \n" + currentPlayer + "\n\n GameTable:\n" + gameTable
+				+"\n\n"+state.toString(this);
 	}	
 	
 	/**

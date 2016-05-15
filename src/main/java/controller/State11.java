@@ -54,7 +54,8 @@ public class State11 implements State {
 	}
 
 	public String toString(Game game) {
-		String availableActions = null;
+		String availableActions = "Player"+game.getCurrentPlayer().getName()+
+				"is your turn! Your available actions are the following, choose one of them.\n";
 		for (Action action : this.getAcceptableActions(game))
 			availableActions+= "\n" + action.toString();
 		return availableActions;

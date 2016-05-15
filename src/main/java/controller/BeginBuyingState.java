@@ -43,4 +43,10 @@ public class BeginBuyingState implements State {
 		return null;
 	}
 
+	@Override
+	public String toString(Game game) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

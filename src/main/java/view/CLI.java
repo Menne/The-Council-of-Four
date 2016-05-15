@@ -11,10 +11,12 @@ import model.parser.Parser;
 public class CLI extends View{
 
 	private final Parser parser;
+	private final Scanner scanner;
 	
-	public CLI(Game game, Parser parser) {
+	public CLI(Game game, Parser parser, Scanner scanner) {
 		super(game);
 		this.parser=parser;
+		this.scanner=scanner;
 	}
 	
 	
@@ -24,22 +26,27 @@ public class CLI extends View{
 	}
 
 	
-	public boolean input(String input) {
+	public void input(String input) {
 		if (this.parser.availableActions().contains(input)) {
 			this.insertParameters(input);
-			return true;
 		}
 		else
-			return false;
+			System.out.println("Sorry, action not available!");	
 	}
 	
 	public boolean insertParameters(String selectedAction) {
-		Scanner scanner=new Scanner(System.in);
-		List<List<String>> acceptableParameters=this.parser.actionParser(selectedAction);
+//		Scanner scanner=new Scanner(System.in);
+		
+		//the list of parameters that that the action needs
 		List<String> stringParameters=new ArrayList<String>();
+		
+		//for each parameter that the action needs, this list contains the list of acceptable strings
+		List<List<String>> acceptableParameters=this.parser.actionParser(selectedAction);
+		
 		System.out.println(acceptableParameters.remove(0));
+		
 		if (acceptableParameters.isEmpty()) {
-			scanner.close();
+//			scanner.close();
 			notifyObserver(this.parser.getCurrentParser().parametersParser(stringParameters, this.parser));
 			return true;
 		}
@@ -48,7 +55,7 @@ public class CLI extends View{
 			if (currentListOfStrings.isEmpty()) {
 				System.out.println("Sorry, but you can't do this action. "
 						+ "Check out your current game state!");
-				scanner.close();
+//				scanner.close();
 				return false;
 			}
 			for (String currentString : currentListOfStrings) 
@@ -60,18 +67,11 @@ public class CLI extends View{
 			}
 			stringParameters.add(parameter);
 		}
-		scanner.close();
+//		scanner.close();
 		notifyObserver(this.parser.getCurrentParser().parametersParser(stringParameters, this.parser));
 		return true;
 	}
 	
-
-	/**
-	 * TODO
-	 */
-	public void stamp(Game game){
-		System.out.println(game+" ");
-	}
 
 	
 

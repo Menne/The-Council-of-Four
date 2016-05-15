@@ -3,6 +3,7 @@ package model.actions;
 import model.Game;
 import model.parser.ActionParserVisitor;
 import model.parser.PickPoliticsCardParser;
+import view.CardNotify;
 
 public class PickPoliticsCard implements Action {
 
@@ -17,6 +18,7 @@ public class PickPoliticsCard implements Action {
 		this.game.getCurrentPlayer().getHand().add(this.game.getGameTable().getPoliticsDeck().pickCard());
 		
 		this.game.setState(this.game.getState().pickPoliticsCardTransition());
+		this.game.notifyObserver(new CardNotify(this.game));
 		return true;
 	}
 

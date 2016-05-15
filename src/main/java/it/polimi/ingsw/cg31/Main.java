@@ -22,6 +22,7 @@ import model.gameTable.PoliticsDeck;
 import model.gameTable.RegionBoard;
 import model.parser.Parser;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -36,7 +37,10 @@ import view.*;
 
 public class Main {
 
-	public static void main(String[] args) {		
+	public static void main(String[] args) throws IOException{
+		@SuppressWarnings("resource")
+		Scanner scanner=new Scanner(System.in);
+		
 		//creo lista dei possibili card colour
 				List<CardColour> cardColourList=new ArrayList<CardColour>();
 				CardColour CardColour1=new CardColour("White");
@@ -233,22 +237,13 @@ public class Main {
 		Game game=new Game(players, gameTable);
 		
 		Parser parser=new Parser(game);
-		CLI view=new CLI(game, parser);
+		CLI view=new CLI(game, parser, scanner);
 		new GameLogic(game, view);
 		
-		@SuppressWarnings("resource")
-		Scanner scanner=new Scanner(System.in);
-		
-		while (true) {
-			System.out.println("Player " + game.getCurrentPlayer().getName() + 
-					", it's yout turn! what do you want to do?");
+		while(true){
 			String input=scanner.nextLine();
-			while (!view.input(input)) {
-				System.out.println("Sorry, I didn't understand, can you repeat?");
-				input=scanner.nextLine();
-			}
+			view.input(input);
 		}
-					
 	}
-
+					
 }
