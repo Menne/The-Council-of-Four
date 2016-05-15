@@ -38,8 +38,11 @@ public class CLI extends View{
 		List<List<String>> acceptableParameters=this.parser.actionParser(selectedAction);
 		List<String> stringParameters=new ArrayList<String>();
 		System.out.println(acceptableParameters.remove(0));
-		if (acceptableParameters.isEmpty())
+		if (acceptableParameters.isEmpty()) {
+			scanner.close();
 			notifyObserver(this.parser.getCurrentParser().parametersParser(stringParameters, this.parser));
+			return true;
+		}
 		for (List<String> currentListOfStrings : acceptableParameters) {
 			System.out.println(currentListOfStrings.remove(0));
 			if (currentListOfStrings.isEmpty()) {
