@@ -11,6 +11,7 @@ import model.gameTable.PoliticsCard;
 import model.gameTable.RegionBoard;
 import model.parser.AcquirePermitTileParser;
 import model.parser.ActionParserVisitor;
+import view.GameNotify;
 
 /**
  * This class is the main action "acquire permit tile", it operates on the 
@@ -87,6 +88,7 @@ public class AcquirePermitTile extends MainAction implements NeedParameters{
 		this.chosenRegion.uncoverPermitTiles();
 		
 		this.nextState();
+		this.game.notifyObserver(new GameNotify(this.game));
 	    return true;
 	}
 	

@@ -2,6 +2,7 @@ package model.actions;
 
 import model.Game;
 import model.parser.ActionParserVisitor;
+import view.GameNotify;
 /**
  * It's the quick action "engage assistants" it operates on the 
  * protected attribute game through the method executeAction.
@@ -33,6 +34,7 @@ public class EngageAssistant extends QuickAction {
 		this.game.getCurrentPlayer().incrementAssistants(1);
 		
 		this.nextState();
+		this.game.notifyObserver(new GameNotify(this.game));
 		return true;
 	}
 	

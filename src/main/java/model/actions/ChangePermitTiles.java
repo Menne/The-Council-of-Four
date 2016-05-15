@@ -4,6 +4,7 @@ import model.Game;
 import model.gameTable.RegionBoard;
 import model.parser.ActionParserVisitor;
 import model.parser.ChangePermitTilesParser;
+import view.GameNotify;
 
 /**
  * It's the quick action "change permit tiles" it operates on the 
@@ -51,6 +52,7 @@ public class ChangePermitTiles extends QuickAction implements NeedParameters{
 		this.game.getCurrentPlayer().decrementAssistants(necessaryAssistants);
 		
 		this.nextState();
+		this.game.notifyObserver(new GameNotify(this.game));
 		return true;
 	}
 

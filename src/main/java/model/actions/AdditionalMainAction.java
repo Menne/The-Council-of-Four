@@ -3,6 +3,7 @@ package model.actions;
 import model.Game;
 import model.parser.ActionParserVisitor;
 import view.ErrorNotify;
+import view.GameNotify;
 
 /**
  * It's the quick action "additional main action" it operates
@@ -37,6 +38,7 @@ public class AdditionalMainAction extends QuickAction {
 		}	
 		
 		this.game.setState(this.game.getState().additionalMainActionTransition());
+		this.game.notifyObserver(new GameNotify(this.game));
 		return true;
 	}
 	

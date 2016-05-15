@@ -5,6 +5,7 @@ import model.gameTable.CouncilBalcony;
 import model.gameTable.Councillor;
 import model.parser.ActionParserVisitor;
 import model.parser.ElectCouncillorByAssistantParser;
+import view.GameNotify;
 
 /**
  * It's the quick action "elect councillor" it operates on the 
@@ -60,6 +61,7 @@ public class ElectCouncillorByAssistant extends QuickAction implements NeedParam
 		this.game.getCurrentPlayer().decrementAssistants(necessaryAssistants);
 		
 		this.nextState();
+		this.game.notifyObserver(new GameNotify(this.game));
 		return true;
 	}
 

@@ -8,7 +8,11 @@ public class MoveToNext extends QuickAction {
 	public MoveToNext(Game game){
 		super(game);
 	}
-
+	
+	
+	/**
+	 * TODO
+	 */
 	@Override
 	public boolean executeAction() {
 		if(this.game.getCurrentPlayer().getPlayerNumber()==this.game.getPlayers().size())

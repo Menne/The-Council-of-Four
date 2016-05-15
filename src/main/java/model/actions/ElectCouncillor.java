@@ -5,6 +5,7 @@ import model.gameTable.CouncilBalcony;
 import model.gameTable.Councillor;
 import model.parser.ActionParserVisitor;
 import model.parser.ElectCouncillorParser;
+import view.GameNotify;
 
 /**
  * It's the main action "elect councillor" it operates on the 
@@ -56,6 +57,7 @@ public class ElectCouncillor extends MainAction implements NeedParameters{
 		this.game.getCurrentPlayer().incrementCoins(givenCoins);
 		
 		this.nextState();
+		this.game.notifyObserver(new GameNotify(this.game));
 		return true;
 	}
 

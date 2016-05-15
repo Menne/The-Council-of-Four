@@ -8,6 +8,7 @@ import model.gameTable.Emporium;
 import model.gameTable.PermitTile;
 import model.parser.ActionParserVisitor;
 import model.parser.BuildByPermitTileParser;
+import view.GameNotify;
 
 /**
  * This action allows the current player to build in one city from those which
@@ -75,6 +76,7 @@ public class BuildByPermitTile extends MainAction implements NeedParameters{
 			assignColourBonus();
 		
 		this.nextState();
+		this.game.notifyObserver(new GameNotify(this.game));
 		return true;
 	}
 	

@@ -14,6 +14,7 @@ import model.gameTable.PoliticsCard;
 import model.gameTable.RegionBoard;
 import model.parser.ActionParserVisitor;
 import model.parser.BuildByKingParser;
+import view.GameNotify;
 
 /**
  * This class models the build an emporium with king's help action
@@ -89,6 +90,7 @@ public class BuildByKing extends MainAction implements NeedParameters{
 			assignColourBonus();
 		
 		this.nextState();
+		this.game.notifyObserver(new GameNotify(this.game));
 		return true;
 	}
 	
