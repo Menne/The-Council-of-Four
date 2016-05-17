@@ -17,35 +17,7 @@ public class State10 implements State{
 		
 		return new EndState();
 	}
-
-
-	@Override
-	public State quickActionTransition() throws RuntimeException{
 		
-		throw new RuntimeException("There are not such transictions for this state");
-	}
-
-
-	@Override
-	public State additionalMainActionTransition() throws RuntimeException{
-		
-		throw new RuntimeException("There are not such transictions for this state");
-	}
-
-
-	@Override
-	public State moveToNextTransition() throws RuntimeException{
-		
-		throw new RuntimeException("There are not such transictions for this state");
-	}
-
-	@Override
-	public State pickPoliticsCardTransition() throws RuntimeException{
-		
-		throw new RuntimeException("There are not such transictions for this state");
-	}
-	
-	
 	@Override
 	public List<Action> getAcceptableActions(Game game) {
 		List<Action> acceptableActions=new ArrayList<Action>();

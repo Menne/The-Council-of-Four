@@ -11,16 +11,16 @@ public class MoveToNext extends QuickAction {
 	
 	
 	/**
-	 * TODO
+	 * If the lap is finished starts the market phase, otherwise sets the next player.
 	 */
 	@Override
 	public boolean executeAction() {
-		if(this.game.getCurrentPlayer().getPlayerNumber()==this.game.getPlayers().size())
-			this.game.normalNextPlayer();
-		if(this.game.isLastLap())
-			this.game.lastLapNextPlayer();
-		this.game.normalNextPlayer();
-		this.game.setState(this.game.getState().moveToNextTransition());
+		if(this.game.getCurrentPlayer().getPlayerNumber()!=this.game.getPlayers().size())
+			this.game.nextPlayer();
+		else
+			this.game.startMarket();
+		 
+		this.game.setState(this.game.getState().moveToNextTransition(this.game));
 		return true;
 	}
 

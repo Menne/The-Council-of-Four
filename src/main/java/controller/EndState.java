@@ -7,39 +7,15 @@ import model.Game;
 import model.actions.Action;
 import model.actions.MoveToNext;
 
-public class EndState implements State {
+public class EndState implements State{
 
 	@Override
-	public State mainActionTransition() throws RuntimeException{
+	public State moveToNextTransition(Game game) {
 		
-		throw new RuntimeException("There are not such transictions for this state");
+		if(game.getCurrentPlayer().getPlayerNumber()!=game.getPlayers().size())
+			return new BeginState();
+		return new BeginSellingState();
 	}
-
-	@Override
-	public State quickActionTransition()  throws RuntimeException{
-		
-		throw new RuntimeException("There are not such transictions for this state");
-	}
-
-	@Override
-	public State additionalMainActionTransition()  throws RuntimeException{
-		
-		throw new RuntimeException("There are not such transictions for this state");
-	}
-
-	@Override
-	public State moveToNextTransition() {
-		
-		return new BeginState();
-	}
-
-	@Override
-	public State pickPoliticsCardTransition() throws RuntimeException{
-		
-		throw new RuntimeException("There are not such transictions for this state");
-	}
-
-
 
 	@Override
 	public List<Action> getAcceptableActions(Game game) {
@@ -53,5 +29,4 @@ public class EndState implements State {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }

@@ -1,12 +1,14 @@
 package model.gameTable;
 
-	/**
+import model.market.Marketable;
+
+/**
 	 * this class models a politics card
 	 * @author Emanuele
 	 *
 	 */
 
-public class PoliticsCard {
+public class PoliticsCard implements Marketable{
 	
 	private final CardColour colour;
 	
