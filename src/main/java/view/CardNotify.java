@@ -11,7 +11,7 @@ public class CardNotify implements ViewNotify {
 	}
 	
 	@Override
-	public void stamp(View view) {
+	public void stamp(CLI view) {
 		System.out.println("Card Picked! This is your hand:\n"+
 				this.game.getCurrentPlayer().getHand()+
 				"\n"+this.game.getState().toString(game));

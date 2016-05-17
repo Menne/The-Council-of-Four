@@ -171,7 +171,7 @@ public class BuildByPermitTile extends MainAction implements NeedParameters{
 
 	@Override
 	public ActionParserVisitor setParser() {
-		return new BuildByPermitTileParser(this);
+		return new BuildByPermitTileParser(this, game);
 	}
 
 }

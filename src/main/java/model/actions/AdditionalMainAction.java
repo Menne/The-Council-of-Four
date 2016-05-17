@@ -33,7 +33,7 @@ public class AdditionalMainAction extends QuickAction {
 	 */
 	public boolean executeAction() {
 		if(!this.checkAssistants()){
-			this.game.notifyObserver(new ErrorNotify());
+			this.game.notifyObserver(new ErrorNotify("You can't do this action"));
 			return false;
 		}	
 		

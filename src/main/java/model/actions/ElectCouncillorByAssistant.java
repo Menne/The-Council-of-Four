@@ -72,7 +72,7 @@ public class ElectCouncillorByAssistant extends QuickAction implements NeedParam
 
 	@Override
 	public ActionParserVisitor setParser() {
-		return new ElectCouncillorByAssistantParser(this);
+		return new ElectCouncillorByAssistantParser(this, this.game);
 	}
 
 }

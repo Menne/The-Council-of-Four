@@ -151,7 +151,7 @@ public class AcquirePermitTile extends MainAction implements NeedParameters{
 
 	@Override
 	public ActionParserVisitor setParser() {
-		return new AcquirePermitTileParser(this);
+		return new AcquirePermitTileParser(this, game);
 	}
 	
 }

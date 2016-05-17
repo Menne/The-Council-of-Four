@@ -1,34 +1,40 @@
 package model.parser;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import model.Game;
 import model.actions.Action;
 import model.actions.ChangePermitTiles;
+import view.ActionNotify;
+import view.ParametersNotify;
 
 public class ChangePermitTilesParser implements ActionParserVisitor {
 
 	private ChangePermitTiles selectedAction;
-			
-	public ChangePermitTilesParser(ChangePermitTiles selectedAction) {
+	private String currentParameter;
+	private Game game;
+	
+	public ChangePermitTilesParser(ChangePermitTiles selectedAction, Game game) {
 		this.selectedAction=selectedAction;
+		this.currentParameter=null;
+		this.game=game;
+	}
+	
+	public void setCurrentParameter(String currentParameter) {
+		this.currentParameter=currentParameter;
 	}
 
+	
 	@Override
-	public List<List<String>> acceptableParameters(Parser parser) {
-		List<List<String>> acceptableStrings=new ArrayList<List<String>>();
-		List<String> message=new ArrayList<String>();
-		message.add("Ok, you have choosed to change the uncovered tiles of a region. Now I need some more infos, like:");
-		acceptableStrings.add(message);
-		acceptableStrings.add(parser.acceptableRegions());
-		return acceptableStrings;
+	public Action setParameters(Parser parser) {
+		this.game.notifyObserver(new ActionNotify
+				("Ok! you have chosen to change the permit tiles of a region. Now I need some other infos, like:"));
+		
+		this.game.notifyObserver(new ActionNotify
+				("the name of the region in which you want to pick"));
+		this.game.notifyObserver(new ParametersNotify(parser.acceptableRegions(), this));
+		this.selectedAction.setSelectedRegion(parser.regionTranslator(currentParameter));
+		
+		return this.selectedAction;
 	}
 
-	@Override
-	public Action parametersParser(List<String> stringParameters, Parser parser) {
-		selectedAction.setSelectedRegion(parser.regionTranslator
-				(stringParameters.remove(0)));
-		return selectedAction;
-	}
 
 }

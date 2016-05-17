@@ -2,7 +2,6 @@ package model.actions;
 
 import model.Game;
 import model.parser.ActionParserVisitor;
-import model.parser.PickPoliticsCardParser;
 import view.CardNotify;
 
 public class PickPoliticsCard implements Action {
@@ -31,7 +30,7 @@ public class PickPoliticsCard implements Action {
 	
 	@Override
 	public ActionParserVisitor setParser() {
-		return new PickPoliticsCardParser(this);	
+		return null;	
 	}
 
 }
