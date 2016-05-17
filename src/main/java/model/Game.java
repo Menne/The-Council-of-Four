@@ -3,10 +3,7 @@ package model;
  
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Random;
-import java.util.Set;
 
 import controller.BeginState;
 import controller.NormalTurnState;
@@ -36,7 +33,6 @@ public class Game extends Observable<ViewNotify>{
 		this.additionalMainActionBonus=false;
 		this.marketPlayerList=new ArrayList<Player>();
 		this.marketPlayerList.addAll(players);
-		Collections.shuffle(this.marketPlayerList);
 	}
 
 
@@ -47,6 +43,9 @@ public class Game extends Observable<ViewNotify>{
 		this.currentPlayer=this.players.get(0);
 	}
 	
+	public void randomizeMarketPlayersList(){
+		Collections.shuffle(this.marketPlayerList);
+	}
 
 	public void randomNextPlayer(){
 		Player temporaryPlayer=this.currentPlayer;
