@@ -9,30 +9,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import bonus.AssistantsBonus;
-import bonus.Bonus;
-import bonus.ChooseCityBonus;
-import bonus.CoinsBonus;
-import bonus.MainActionBonus;
-import bonus.NobilityBonus;
-//import bonus.PickPermitTileBonus;
-import bonus.PoliticsCardsBonus;
-import bonus.PurchasedPermitTileBonus;
-import bonus.ScoreBonus;
-import gameStuff.CardColour;
-import gameStuff.City;
-import gameStuff.CityColour;
-import gameStuff.CouncilBalcony;
-import gameStuff.Councillor;
-import gameStuff.CouncillorsReserve;
-import gameStuff.King;
-import gameStuff.Map;
-import gameStuff.NobilityTrack;
-import gameStuff.PermitDeck;
-import gameStuff.PermitTile;
-import gameStuff.PoliticsDeck;
-import gameStuff.RegionBoard;
-import gameTable.GameTable;
+import model.bonus.*;
+import model.gameTable.*;
 import model.Game;
 import players.Player;
 
@@ -220,7 +198,7 @@ public class Initializer {
 	/*
 	 * inizializzo re
 	 */
-	King king=new King(searchColoredCity(allCities, cityColourTranslator("KingColour", cityColourList)));
+	new King(searchColoredCity(allCities, cityColourTranslator("KingColour", cityColourList)));
 	
 	/*
 	 * riempio le liste di città vicine di ogni città
@@ -374,7 +352,7 @@ public class Initializer {
 	
 	System.out.println("nobility track ok");
 	
-	List<Bonus> kingRewardTiles= new ArrayList<Bonus>();
+	List<ScoreBonus> kingRewardTiles= new ArrayList<ScoreBonus>();
 	/*
 	 * inizializzo king reward tile
 	 */

@@ -3,10 +3,13 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import gameStuff.Emporium;
-import gameStuff.PermitTile;
-import gameStuff.PoliticsCard;
-import gameStuff.PoliticsDeck;
+import model.bonus.Bonus;
+import model.bonus.ScoreBonus;
+import model.gameTable.Assistant;
+import model.gameTable.Emporium;
+import model.gameTable.PermitTile;
+import model.gameTable.PoliticsCard;
+import model.gameTable.PoliticsDeck;
 
 /** Player class contains all of the informations about a player
 	 * 
@@ -18,7 +21,7 @@ public class Player {
 
 	private final int playerNumber;
 	private final String name;
-	private int assistants;
+	private List<Assistant> assistants;
 	private int score;
 	private int nobility;
 	private int coins;
@@ -26,8 +29,10 @@ public class Player {
 	private final List<PermitTile> playersPermitTilesTurnedUp;
 	private final List<PermitTile> playersPermitTilesTurnedDown;
 	private final List<Emporium> emporiums;
+	private final List<ScoreBonus> playersFinalBonus;
 	private static final int intialNumberOfEmporiums=10;
 	private static final int initialNumberOfCards=6;
+	
 	
 	/**
 	 * Sets nobility and score at 0. 
@@ -41,7 +46,9 @@ public class Player {
 			PoliticsDeck politicsDeck) {
 		this.playerNumber=playerNumber;
 		this.name=name;
-		this.assistants=assistants;
+		this.assistants=new ArrayList<Assistant>();
+		for(int i=0; i<assistants; i++)
+			this.assistants.add(new Assistant());
 		this.score=0;
 		this.nobility=0;
 		this.coins=coins;
@@ -53,6 +60,7 @@ public class Player {
 		this.emporiums=new ArrayList<Emporium>();
 		for(int i=0;i<intialNumberOfEmporiums;i++)
 			this.emporiums.add(new Emporium(this));
+		this.playersFinalBonus=new ArrayList<ScoreBonus>();
 	}
 
 	public int getPlayerNumber() {
@@ -63,8 +71,8 @@ public class Player {
 		return name;
 	}
 	
-	public int getAssistants() {
-		return assistants;
+	public int getNumberOfAssistants() {
+		return this.assistants.size();
 	}
 	
 	public int getScore() {
@@ -97,13 +105,16 @@ public class Player {
 		return playersPermitTilesTurnedDown;
 	}
 
+	public List<ScoreBonus> getPlayersFinalBonus() {
+		return playersFinalBonus;
+	}
 
 	/**
 	 * increment player's Score of an "increment" calling the method incrementScore in the class Score
 	 * @param increment
 	 * @param score
 	 */
-	public void incrementScore(int increment, int score) {
+	public void incrementScore(int increment) {
 		this.score+=increment;
 	}
 	
@@ -112,7 +123,8 @@ public class Player {
 	 * @param increment
 	 */
 	public void incrementAssistants(int increment) {
-		this.assistants+=increment;
+		for(int i=0; i<increment; i++)
+			this.assistants.add(new Assistant());
 	}
 	/**
 	 * decrements number of player's assistances if it has more assistances than the decrement.
@@ -120,11 +132,11 @@ public class Player {
 	 * @param decrement
 	 */
 	public boolean decrementAssistants(int decrement) {
-		if(assistants>=decrement){
-			this.assistants-=decrement;
-			return true;}
-		else
+		if(this.assistants.size()<decrement)
 			return false;
+		for(int i=0; i<decrement; i++)
+			this.assistants.remove(0);
+		return true;
 	}
 	
 	/**
@@ -159,6 +171,13 @@ public class Player {
 			}
 		else
 			return false;
+	}
+	/**
+	 * adds a bonus to playersFinalBonus list
+	 * @param bonus
+	 */
+	public void addFinalBonus(ScoreBonus bonus){
+		playersFinalBonus.add(bonus);
 	}
 	
 	/**
@@ -236,8 +255,6 @@ public class Player {
 				+ ", playersPermitTilesTurnedUp=" + playersPermitTilesTurnedUp + ", playersPermitTilesTurnedDown="
 				+ playersPermitTilesTurnedDown + ", emporiums=" + this.emporiums.size() + "]";
 	}
-
-
 	
 	
 }

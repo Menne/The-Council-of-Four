@@ -3,46 +3,29 @@ package observerPattern;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Is the pattern class of the observable.
- * It has the reference to its observers.
- * @author Luca
- *
- */
-public abstract class Observable {
 
-	private List<Observer> observers;
+public abstract class Observable<C> {
 	
-	/**
-	 * It just initialize the list with an arrayList
-	 */
+	private List<Observer<C>> observers;
+	
 	public Observable(){
-		observers=new ArrayList<Observer>();
+		this.observers = new ArrayList<Observer<C>>();
 	}
 	
-	/**
-	 * Register a given observer
-	 * @param o Is the observer to attach
-	 */
-	public void registerObserver(Observer o){
+	public void registerObserver(Observer<C> o){
 		this.observers.add(o);
 	}
-	/**
-	 * Remove a given observer
-	 * @param o Is the observer to remove
-	 */
-	public void deleteObserver(Observer o){
+	
+	public void unregisterObserver(Observer<C> o){
 		this.observers.remove(o);
 	}
-	
-	/**
-	 * Call the update method of all its observers
-	 * @param Is the generic change the the observable did
-	 * and want to notify to its observers 
-	 */
-	public <C> void notifyObservers(C change){
-		for(Observer o: this.observers){
-			o.update(this, change); 
+
+	public void notifyObserver(C c){		//è cambiato un oggetto e sta a noi dire di che tipo è l'oggetto e quindi castarlo a seconda del tipo
+											//
+		for(Observer<C> o: this.observers){
+			 o.update(c);
 		}
 	}
+	
 }
+
