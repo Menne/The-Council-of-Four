@@ -1,37 +1,45 @@
 package model.parser;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import model.Game;
 import model.actions.Action;
 import model.actions.ElectCouncillorByAssistant;
+import view.ActionNotify;
+import view.ParametersNotify;
 
 public class ElectCouncillorByAssistantParser implements ActionParserVisitor {
 
 	private ElectCouncillorByAssistant selectedAction;
-			
-	public ElectCouncillorByAssistantParser(ElectCouncillorByAssistant selectedAction) {
+	private String currentParameter;
+	private Game game;
+	
+	public ElectCouncillorByAssistantParser(ElectCouncillorByAssistant selectedAction, Game game) {
 		this.selectedAction=selectedAction;
+		this.currentParameter=null;
+		this.game=game;
 	}
 
 	@Override
-	public List<List<String>> acceptableParameters(Parser parser) {
-		List<List<String>> acceptableStrings=new ArrayList<List<String>>();
-		List<String> message=new ArrayList<String>();
-		message.add("Ok, you have choosed to send an assistant to elect a councillor. Now I need some more infos, like:");
-		acceptableStrings.add(message);
-		acceptableStrings.add(parser.acceptableCouncillors());
-		acceptableStrings.add(parser.acceptableCouncilBalcony());
-		return acceptableStrings;
+	public void setCurrentParameter(String currentParameter) {
+		this.currentParameter=currentParameter;
 	}
+	
 
 	@Override
-	public Action parametersParser(List<String> stringParameters, Parser parser) {
-		selectedAction.setNewCouncillor(parser.councillorTranslator
-				(stringParameters.remove(0)));
-		selectedAction.setCouncilBalcony(parser.councilBalconyTranslator
-				(stringParameters.remove(0)));
-		return selectedAction;
+	public Action setParameters(Parser parser) {
+		this.game.notifyObserver(new ActionNotify
+				("Ok! you have chosen to elect a councillor. Now I need some other infos, like:"));
+		
+		this.game.notifyObserver(new ActionNotify
+				("the colour of the councillor you want to elect"));
+		this.game.notifyObserver(new ParametersNotify(parser.acceptableCouncillors(), this));
+		this.selectedAction.setNewCouncillor(parser.councillorTranslator(currentParameter));
+		
+		this.game.notifyObserver(new ActionNotify
+				("the name of the region in which you want to change the councillor"));
+		this.game.notifyObserver(new ParametersNotify(parser.acceptableCouncilBalcony(), this));
+		this.selectedAction.setCouncilBalcony(parser.councilBalconyTranslator(currentParameter));
+		
+		return this.selectedAction;
 	}
 
 }

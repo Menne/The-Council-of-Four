@@ -17,7 +17,7 @@ public abstract class MainAction implements Action {
 	}
 	
 	public void sendErrorNotify(){
-		this.game.notifyObserver(new ErrorNotify());
+		this.game.notifyObserver(new ErrorNotify("You can't do this action"));
 	}
 	
 	public void nextState(){

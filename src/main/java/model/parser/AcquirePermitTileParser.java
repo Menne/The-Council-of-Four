@@ -1,48 +1,49 @@
 package model.parser;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import model.Game;
 import model.actions.AcquirePermitTile;
 import model.actions.Action;
-import model.gameTable.CouncilBalcony;
-import model.gameTable.PoliticsCard;
+import view.ActionNotify;
+import view.ParametersNotify;
 
 public class AcquirePermitTileParser implements ActionParserVisitor {
 	
 	private AcquirePermitTile selectedAction;
-			
-	public AcquirePermitTileParser(AcquirePermitTile selectedAction) {
+	private String currentParameter;
+	private Game game;
+	
+	public AcquirePermitTileParser(AcquirePermitTile selectedAction, Game game) {
 		this.selectedAction=selectedAction;
+		this.currentParameter=null;
+		this.game=game;
 	}
 
-	@Override
-	public List<List<String>> acceptableParameters(Parser parser) {
-		List<List<String>> acceptableStrings=new ArrayList<List<String>>();
-		List<String> message=new ArrayList<String>();
-		message.add("Ok, you have choosed to acquire a permit tile. Now I need some more infos, like:");
-		acceptableStrings.add(message);
-		acceptableStrings.add(parser.acceptableRegions());
-		acceptableStrings.add(parser.acceptableNumberOfPermitTile());
-		acceptableStrings.add(parser.acceptableFirstPoliticsCard());
-		for (int i=1; i<CouncilBalcony.getNumberofcouncillors(); i++)
-			acceptableStrings.add(parser.acceptablePoliticsCards());
-		return acceptableStrings;
+	public void setCurrentParameter(String currentParameter) {
+		this.currentParameter=currentParameter;
 	}
-
+	
+	
 	@Override
-	public Action parametersParser(List<String> stringParameters, Parser parser) {
-		selectedAction.setChosenRegion(parser.regionTranslator
-				(stringParameters.remove(0)));
-		selectedAction.setNumberOfPermitTile(parser.numberOfPermitTileTranslator
-				(stringParameters.remove(0))); 
-		List<PoliticsCard> cardsTranslated = new ArrayList<PoliticsCard>();
-		cardsTranslated.add(parser.politicsCardTranslator(stringParameters.remove(0)));
-		for (String parameter : stringParameters)
-			if (!parameter.equals("stop"))
-				cardsTranslated.add(parser.politicsCardTranslator(parameter));
-		selectedAction.setCardsToDescard(cardsTranslated);
-		return selectedAction;
+	public Action setParameters(Parser parser) {
+		this.game.notifyObserver(new ActionNotify
+				("Ok! you have chosen to acquire a permit tile. Now I need some other infos, like:"));
+		
+		this.game.notifyObserver(new ActionNotify
+				("the name of the region in which you want to pick"));
+		this.game.notifyObserver(new ParametersNotify(parser.acceptableRegions(), this));
+		this.selectedAction.setChosenRegion(parser.regionTranslator(currentParameter));
+		
+		this.game.notifyObserver(new ActionNotify
+				("the number of permit tile you want to pick"));
+		this.game.notifyObserver(new ParametersNotify(parser.acceptableNumberOfPermitTile(), this));
+		this.selectedAction.setNumberOfPermitTile(parser.numberOfPermitTileTranslator(currentParameter));
+		
+		this.game.notifyObserver(new ActionNotify
+				("the colours of the cards in your hand you want to descard"));
+		this.game.notifyObserver(new ParametersNotify(parser.acceptablePoliticsCards(), this));
+		this.selectedAction.setCardsToDescard(parser.politicsCardsTranslator(currentParameter));
+		
+		return this.selectedAction;
 	}
 
 }

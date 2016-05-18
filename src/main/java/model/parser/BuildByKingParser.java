@@ -1,46 +1,45 @@
 package model.parser;
 
-import java.util.ArrayList;
-import java.util.List;
 
+import model.Game;
 import model.actions.Action;
 import model.actions.BuildByKing;
-import model.gameTable.CouncilBalcony;
-import model.gameTable.PoliticsCard;
+import view.ActionNotify;
+import view.ParametersNotify;
 
 public class BuildByKingParser implements ActionParserVisitor {
 
 	private BuildByKing selectedAction;
+	private String currentParameter;
+	private Game game;
 	
-	public BuildByKingParser(BuildByKing selectedAction) {
+	public BuildByKingParser(BuildByKing selectedAction, Game game) {
 		this.selectedAction=selectedAction;
-	}
-	
-	@Override
-	public List<List<String>> acceptableParameters(Parser parser) {
-		List<List<String>> acceptableStrings=new ArrayList<List<String>>();
-		List<String> message=new ArrayList<String>();
-		message.add("Ok, you have choosed to build an emporium with the help of the king. Now I need some more infos, like:");
-		acceptableStrings.add(message);
-		acceptableStrings.add(parser.acceptableCities());
-		acceptableStrings.add(parser.acceptableFirstPoliticsCard());
-		for (int i=1; i<CouncilBalcony.getNumberofcouncillors(); i++)
-			acceptableStrings.add(parser.acceptablePoliticsCards());
-		return acceptableStrings;
+		this.currentParameter=null;
+		this.game=game;
 	}
 
+	public void setCurrentParameter(String currentParameter) {
+		this.currentParameter=currentParameter;
+	}
+	
+	
 	@Override
-	public Action parametersParser(List<String> stringParameters, Parser parser) {
-		selectedAction.setSelectedCity(parser.cityTranslator
-				(stringParameters.remove(0)));
-		List<PoliticsCard> cardsTranslated = new ArrayList<PoliticsCard>();
-		for (String parameter : stringParameters) {
-			cardsTranslated.add(parser.politicsCardTranslator(stringParameters.remove(0)));
-			if (!parameter.equals("stop"))
-				break;
-		}
-		selectedAction.setCardsToDescard(cardsTranslated);
-		return selectedAction;
+	public Action setParameters(Parser parser) {
+		this.game.notifyObserver(new ActionNotify
+				("Ok! you have chosen to build an emporium with the help of the king. Now I need some other infos, like:"));
+		
+		this.game.notifyObserver(new ActionNotify
+				("the name of the city in which you want to build"));
+		this.game.notifyObserver(new ParametersNotify(parser.acceptableCities(), this));
+		this.selectedAction.setSelectedCity(parser.cityTranslator(currentParameter));
+		
+		this.game.notifyObserver(new ActionNotify
+				("the colour of the cards you want to descard"));
+		this.game.notifyObserver(new ParametersNotify(parser.acceptablePoliticsCards(), this));
+		this.selectedAction.setCardsToDescard(parser.politicsCardsTranslator(currentParameter));
+	
+		return this.selectedAction;
 	}
 
 }

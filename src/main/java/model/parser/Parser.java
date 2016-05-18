@@ -2,6 +2,7 @@ package model.parser;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import model.Game;
 import model.actions.Action;
@@ -12,11 +13,11 @@ import model.gameTable.Emporium;
 import model.gameTable.PermitTile;
 import model.gameTable.PoliticsCard;
 import model.gameTable.RegionBoard;
+import view.ErrorNotify;
 
 public class Parser {
 
 	protected final Game game;
-	private ActionParserVisitor currentParser;
 	
 	/**
 	 * Constructor of the parser
@@ -24,11 +25,6 @@ public class Parser {
 	 */
 	public Parser(Game game){
 		this.game=game;
-		this.currentParser=null;
-	}
-	
-	public ActionParserVisitor getCurrentParser() {
-		return currentParser;
 	}
 
 	
@@ -47,14 +43,23 @@ public class Parser {
 	
 	
 	/**
-	 * This method reads the action inserted by the user and initializes the specific parser to translate the parameters
-	 * @return the acceptable parameters of the selected action
+	 * This method reads the string inserted by the user and returns the corresponding action
+	 * @return the corresponding available action
 	 */
-	public List<List<String>> actionParser(String selectedAction) {
+	public Action actionParser(String selectedAction) {
 		for (Action availableAction : this.game.getState().getAcceptableActions(game))
-			if (selectedAction.equals(availableAction.toString().substring(0,2))) 
-				this.currentParser=availableAction.setParser();
-		return currentParser.acceptableParameters(this);
+			if (selectedAction.equals(availableAction.toString().substring(0,2)))
+				return availableAction;
+		return null;
+	}
+	
+	/**
+	 * This method translates the strings of parameters into effective parameters and sets them to the action
+	 * @param selectedAction is the action without parameters set
+	 * @return the selected action with the parameters set
+	 */
+	public Action parametersParser(Action selectedAction) {
+		return selectedAction.setParser().setParameters(this);
 	}
 	
 	
@@ -64,11 +69,9 @@ public class Parser {
 	 * This method builds a list of strings from which the user can choose when he inserts
 	 * the parameters of the action, according to the current game state.
 	 * @return which contains the the list of possible strings for the selected action,
-	 * the first element of the list are the instructions the user must follow to insert the parameters,
 	 */
 	protected List<String> acceptableNumberOfPermitTile() {
 		List<String> acceptableNumber=new ArrayList<String>();
-		acceptableNumber.add("Permit tile you want to acquire");
 		acceptableNumber.add("0");
 		acceptableNumber.add("1");
 		return acceptableNumber;
@@ -78,27 +81,25 @@ public class Parser {
 	 * This method builds a list of strings from which the user can choose when he inserts
 	 * the parameters of the action, according to the current game state.
 	 * @return which contains the the list of possible strings for the selected action,
-	 * the first element of the list are the instructions the user must follow to insert the parameters,
 	 */
 	protected List<String> acceptableRegions() {
 		List<String> acceptableRegionNames=new ArrayList<String>();
-		acceptableRegionNames.add("Region where you want to acquire");
 		for (RegionBoard region : this.game.getGameTable().getRegionBoards())
 			acceptableRegionNames.add(region.getName());
 		return acceptableRegionNames;
 	}
-
+	
 	/**
 	 * This method builds a list of strings from which the user can choose when he inserts
 	 * the parameters of the action, according to the current game state.
-	 * @return a list which contains the the list of possible strings for the selected action,
-	 * the first element of the list is the instructions the user must follow to insert the parameters
+	 * @return which contains the the list of possible strings for the selected action,
 	 */
-	protected List<String> acceptableFirstPoliticsCard() {
-		List<String> acceptableColours=new ArrayList<String>();
-		acceptableColours.add("First card of your hand you want to use to satisfy the council");
+	protected List<String> acceptablePoliticsCards() {
+		List<String> acceptableColours=new ArrayList<String>();	
 		for(PoliticsCard card : this.game.getCurrentPlayer().getHand())
 			acceptableColours.add(card.getColour().getColour());
+		if (acceptableColours.isEmpty())
+			this.game.notifyObserver(new ErrorNotify("It seems that your hand is empty..."));
 		return acceptableColours;
 	}
 	
@@ -106,28 +107,9 @@ public class Parser {
 	 * This method builds a list of strings from which the user can choose when he inserts
 	 * the parameters of the action, according to the current game state.
 	 * @return which contains the the list of possible strings for the selected action,
-	 * the first element of the list are the instructions the user must follow to insert the parameters,
-	 */
-	protected List<String> acceptablePoliticsCards() {
-		List<String> acceptableColoursPlusExit=new ArrayList<String>();
-		acceptableColoursPlusExit.add("Other card of your hand you want to use to satisfy the council. \n"
-				+ "Attention: if you don't want to discard cards anymore, you just have to write 'stop'. \n"
-				+ "If you press the same card you have discarded before, it will not be considered");		
-		for(PoliticsCard card : this.game.getCurrentPlayer().getHand())
-			acceptableColoursPlusExit.add(card.getColour().getColour());
-		acceptableColoursPlusExit.add("stop");
-		return acceptableColoursPlusExit;
-	}
-	
-	/**
-	 * This method builds a list of strings from which the user can choose when he inserts
-	 * the parameters of the action, according to the current game state.
-	 * @return which contains the the list of possible strings for the selected action,
-	 * the first element of the list are the instructions the user must follow to insert the parameters,
 	 */
 	protected List<String> acceptableCouncillors() {
 		List<String> councillorColours=new ArrayList<String>();
-		councillorColours.add("Colour of the councillor which you want to pick");
 		for (Councillor councillor : this.game.getGameTable().getCouncilReserve().getCouncillors())
 			councillorColours.add(councillor.getColour().getColour());
 		return councillorColours;
@@ -137,12 +119,9 @@ public class Parser {
 	 * This method builds a list of strings from which the user can choose when he inserts
 	 * the parameters of the action, according to the current game state.
 	 * @return which contains the the list of possible strings for the selected action,
-	 * the first element of the list are the instructions the user must follow to insert the parameters,
 	 */
 	protected List<String> acceptableCouncilBalcony() {
 		List<String> acceptableRegionNames=new ArrayList<String>();
-		acceptableRegionNames.add("Region where there is the council balcony in which you want to substitue a councillor. "
-				+ "If you want to choose the countil of the king, press kingcouncil");
 		for (RegionBoard region : this.game.getGameTable().getRegionBoards())
 			acceptableRegionNames.add(region.getName());
 		acceptableRegionNames.add("kingcouncil");
@@ -153,11 +132,9 @@ public class Parser {
 	 * This method builds a list of strings from which the user can choose when he inserts
 	 * the parameters of the action, according to the current game state.
 	 * @return which contains the the list of possible strings for the selected action,
-	 * the first element of the list are the instructions the user must follow to insert the parameters,
 	 */
 	protected List<String> acceptableCities() {
 		List<String> acceptableCityNames=new ArrayList<String>();
-		acceptableCityNames.add("City where you want to build an emporium");
 		for(City city : this.game.getGameTable().getMap().getGameMap().vertexSet())
 			if(city.getCityEmporiums().isEmpty())
 				acceptableCityNames.add(city.getName());
@@ -172,14 +149,14 @@ public class Parser {
 	 * This method builds a list of strings from which the user can choose when he inserts
 	 * the parameters of the action, according to the current game state.
 	 * @return which contains the the list of possible strings for the selected action,
-	 * the first element of the list are the instructions the user must follow to insert the parameters,
 	 */
 	protected List<String> acceptablePermitTiles() {
 		List<String> acceptableTiles=new ArrayList<String>();
-		acceptableTiles.add("Permit tile you want to use to acquire");
 		int maxNumberOfCards=this.game.getCurrentPlayer().getPlayersPermitTilesTurnedUp().size();
 		for(Integer i=0; i<maxNumberOfCards; i++)
 			acceptableTiles.add(i.toString());
+		if (acceptableTiles.isEmpty())
+			this.game.notifyObserver(new ErrorNotify("It seems that you haven't permit tiles..."));
 		return acceptableTiles;
 	}
 		
@@ -224,13 +201,16 @@ public class Parser {
 	 * @param cardToTranslate is the string corresponding to the colour of the politics card in the hand of the player
 	 * @return the politics card obtained from the string
 	 */
-	protected PoliticsCard politicsCardTranslator(String cardToTranslate) {
-		for (PoliticsCard cardTranslated : this.game.getCurrentPlayer().getHand()) {
-			if (cardTranslated.getColour().getColour().equals(cardToTranslate))
-				return cardTranslated;
-		}
-		return null;
+	protected List<PoliticsCard> politicsCardsTranslator(String cardsToTranslate) {
+		List<PoliticsCard> cardsTranslated=new ArrayList<PoliticsCard>();
+		StringTokenizer st = new StringTokenizer(cardsToTranslate);
+	    while (st.hasMoreTokens())
+	    	for (PoliticsCard cardTranslated : this.game.getCurrentPlayer().getHand())
+	    		if (cardTranslated.getColour().getColour().equals(st))
+	    			cardsTranslated.add(cardTranslated);
+		return cardsTranslated;
 	}
+
 	
 	/**
 	 * Translates the string given from the user into the corresponding city

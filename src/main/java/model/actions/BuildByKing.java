@@ -242,7 +242,7 @@ public class BuildByKing extends MainAction implements NeedParameters{
 
 	@Override
 	public ActionParserVisitor setParser() {
-		return new BuildByKingParser(this);	
+		return new BuildByKingParser(this, game);	
 	}
 
 }

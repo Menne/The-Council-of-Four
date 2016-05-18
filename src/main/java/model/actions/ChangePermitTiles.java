@@ -64,7 +64,7 @@ public class ChangePermitTiles extends QuickAction implements NeedParameters{
 
 	@Override
 	public ActionParserVisitor setParser() {
-		return new ChangePermitTilesParser(this);
+		return new ChangePermitTilesParser(this, game);
 	}
 				
 }

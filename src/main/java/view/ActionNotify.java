@@ -1,10 +1,10 @@
 package view;
 
-public class ErrorNotify implements ViewNotify {
+public class ActionNotify implements ViewNotify {
 
 	private String message;
 
-	public ErrorNotify(String message) {
+	public ActionNotify(String message) {
 		this.message=message;
 	}
 

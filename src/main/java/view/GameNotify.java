@@ -11,7 +11,7 @@ public class GameNotify implements ViewNotify {
 	}
 
 	@Override
-	public void stamp(View view) {
+	public void stamp(CLI view) {
 		System.out.println(game.toString());
 		
 	}

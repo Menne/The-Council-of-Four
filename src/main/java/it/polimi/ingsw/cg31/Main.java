@@ -38,7 +38,6 @@ import view.*;
 public class Main {
 
 	public static void main(String[] args) throws IOException{
-		@SuppressWarnings("resource")
 		Scanner scanner=new Scanner(System.in);
 		
 		//creo lista dei possibili card colour

@@ -1,37 +1,45 @@
 package model.parser;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import model.Game;
 import model.actions.Action;
 import model.actions.BuildByPermitTile;
+import view.ActionNotify;
+import view.ParametersNotify;
 
 public class BuildByPermitTileParser implements ActionParserVisitor {
 
 	private BuildByPermitTile selectedAction;
-			
-	public BuildByPermitTileParser(BuildByPermitTile selectedAction) {
+	private String currentParameter;
+	private Game game;
+	
+	public void setCurrentParameter(String currentParameter) {
+		this.currentParameter=currentParameter;
+	}
+
+	
+	public BuildByPermitTileParser(BuildByPermitTile selectedAction, Game game) {
 		this.selectedAction=selectedAction;
+		this.currentParameter=null;
+		this.game=game;
 	}
 
+	
 	@Override
-	public List<List<String>> acceptableParameters(Parser parser) {
-		List<List<String>> acceptableStrings=new ArrayList<List<String>>();
-		List<String> message=new ArrayList<String>();
-		message.add("Ok, you have choosed to build an emporium using a permit tile. Now I need some more infos, like:");
-		acceptableStrings.add(message);
-		acceptableStrings.add(parser.acceptableCities());
-		acceptableStrings.add(parser.acceptablePermitTiles());
-		return acceptableStrings;
-	}
-
-	@Override
-	public Action parametersParser(List<String> stringParameters, Parser parser) {
-		selectedAction.setSelectedCity(parser.cityTranslator
-				(stringParameters.remove(0)));
-		selectedAction.setSelectedPermitTile(parser.permitTileTranslator
-				(stringParameters.remove(0)));
-		return selectedAction;
+	public Action setParameters(Parser parser) {
+		this.game.notifyObserver(new ActionNotify
+				("Ok! you have chosen to build an emporium with a permit tile. Now I need some other infos, like:"));
+		
+		this.game.notifyObserver(new ActionNotify
+				("the name of the city in which you want to build"));
+		this.game.notifyObserver(new ParametersNotify(parser.acceptableCities(), this));
+		this.selectedAction.setSelectedCity(parser.cityTranslator(currentParameter));
+		
+		this.game.notifyObserver(new ActionNotify
+				("the permit tile you want to use"));
+		this.game.notifyObserver(new ParametersNotify(parser.acceptablePermitTiles(), this));
+		this.selectedAction.setSelectedPermitTile(parser.permitTileTranslator(currentParameter));
+		
+		return this.selectedAction;
 	}
 
 }

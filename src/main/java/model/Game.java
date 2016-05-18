@@ -54,6 +54,7 @@ public class Game extends Observable<ViewNotify>{
 		this.market.clearMarket();
 		this.market.shuffleBuyingPlayerList();
 		this.market.sellingNextPlayer();
+
 	}
 	
 	public void pickPoliticsCard(){

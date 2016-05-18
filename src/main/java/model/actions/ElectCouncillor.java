@@ -68,7 +68,7 @@ public class ElectCouncillor extends MainAction implements NeedParameters{
 
 	@Override
 	public ActionParserVisitor setParser() {
-		return new ElectCouncillorParser(this);
+		return new ElectCouncillorParser(this, game);
 	}
 
 }
