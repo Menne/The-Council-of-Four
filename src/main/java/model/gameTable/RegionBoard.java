@@ -4,11 +4,6 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-
 import model.bonus.ScoreBonus;
 
 /**
@@ -17,22 +12,14 @@ import model.bonus.ScoreBonus;
  *
  */
 
-@XmlAccessorType(XmlAccessType.FIELD)
+
 public class RegionBoard {
 
-	@XmlElement(name="regionName")
 	private final String name;
-	
-	@XmlElement(name="PermitDeck")
 	private final PermitDeck regionPermitDeck;
 	private final CouncilBalcony regionBalcony;
-	
-	@XmlElement(name="ScoreBonus")
 	private final ScoreBonus regionBonus;
 	private boolean bonusAvailable;
-	
-	@XmlElementWrapper(name="regionCities")
-	@XmlElement(name="name")
 	private final Set<City> regionCities;
 	
 	private final PermitTile[] uncoveredPermitTiles;
@@ -53,9 +40,8 @@ public class RegionBoard {
 		this.regionBalcony=regionBalcony;		
 		this.regionBonus=regionBonus;
 		this.bonusAvailable=true;
-		this.regionCities=new HashSet<City>();//prendo direttamente in input da file CAMBIARE
-		this.uncoveredPermitTiles=new PermitTile[numberOfUncoveredPermitTiles];
-//		uncoverPermitTiles();		
+		this.regionCities=new HashSet<City>();
+		this.uncoveredPermitTiles=new PermitTile[numberOfUncoveredPermitTiles];		
 	}
 	
 	
@@ -132,16 +118,10 @@ public class RegionBoard {
 	 * Uncovers a new permit tile in each empty slot.
 	 */
 	public void uncoverPermitTiles(){
-		for(int i=0; i<numberOfUncoveredPermitTiles-1; i++)
+		for(int i=0; i<numberOfUncoveredPermitTiles; i++)
 			if(this.uncoveredPermitTiles[i]==null)
-//				try{
-					this.uncoveredPermitTiles[i]=
-							this.regionPermitDeck.pickPermitTile();
-//					}
-//				catch(IndexOutOfBoundsException e){
-//					System.out.println("Permit deck empty, game cannot go on");
-//					System.exit(-1);
-//				}
+				this.uncoveredPermitTiles[i]=
+						this.regionPermitDeck.pickPermitTile();
 						
 	}
 	
@@ -190,10 +170,9 @@ public class RegionBoard {
 
 	@Override
 	public String toString() {
-		return "RegionBoard [name=" + name + ", regionBalcony="
-				+ regionBalcony + ", regionBonus=" + regionBonus + ", bonusAvailable=" + bonusAvailable
-				+ ", regionCities=" + regionCities + ", uncoveredPermitTiles=" + Arrays.toString(uncoveredPermitTiles)
-				+ "]";
+		return  name + "\t"
+				+ regionBalcony + "\t" + "\tTiles=" + Arrays.toString(uncoveredPermitTiles)+ regionBonus + "\t" + bonusAvailable
+				+ "\n" + regionCities +"\n\n";
 	}
 
 

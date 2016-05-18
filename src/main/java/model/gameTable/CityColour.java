@@ -3,10 +3,6 @@ package model.gameTable;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-
 import model.bonus.ScoreBonus;
 
 /**
@@ -15,12 +11,9 @@ import model.bonus.ScoreBonus;
  *
  */
 
-@XmlAccessorType(XmlAccessType.FIELD)
 public class CityColour {
 	
-	@XmlElement(name="name")
 	private final String name;
-	@XmlElement(name="colorBonus")
 	private final ScoreBonus colorBonus;
 	private boolean bonusAvailable;
 	private final Set<City> citiesOfThisColour;

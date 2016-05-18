@@ -48,7 +48,7 @@ public static int getNumberofcouncillors() {
 
 @Override
 public String toString() {
-	return "CouncilBalcony [councillors=" + Arrays.toString(councillors) + "]";
+	return Arrays.toString(councillors);
 }
 
 }

@@ -62,7 +62,7 @@ public class State01 implements State {
 
 
 	public String toString(Game game) {
-		String availableActions = null;
+		String availableActions="";
 		for (Action action : this.getAcceptableActions(game))
 			availableActions+= "\n" + action.toString();
 		return availableActions;

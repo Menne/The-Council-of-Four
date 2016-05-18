@@ -50,7 +50,7 @@ public class CouncillorsReserve {
 
 	@Override
 	public String toString() {
-		return "CouncillorsReserve [councillors=" + councillors + "]";
+		return "CouncillorsReserve= " + councillors + "]";
 	}
 
 }

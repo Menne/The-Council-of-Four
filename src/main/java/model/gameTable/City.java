@@ -3,7 +3,6 @@ package model.gameTable;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import model.bonus.Bonus;
 
 /**
@@ -140,7 +139,7 @@ public class City {
 
 	@Override
 	public String toString() {
-		return "City [name=" + name + "]";
+		return name+"\t"+cityEmporiums+"\t"+rewardToken+"\n";
 	}
 	
 	

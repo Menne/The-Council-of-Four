@@ -9,7 +9,7 @@ import model.parser.Parser;
 import java.io.IOException;
 import java.util.Scanner;
 
-import controller.GameLogic;
+import controller.Controller;
 
 import view.*;
 
@@ -22,7 +22,7 @@ public class Main {
 		Game game=init.initialize();
 		Parser parser=new Parser(game);
 		CLI view=new CLI(game, parser, scanner);
-		new GameLogic(game, view); 
+		new Controller(game, view); 
 
 		while(true){
 			String input=scanner.nextLine();

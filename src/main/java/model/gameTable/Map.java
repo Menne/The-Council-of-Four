@@ -1,5 +1,6 @@
 package model.gameTable;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import org.jgrapht.UndirectedGraph;
@@ -45,7 +46,9 @@ public class Map {
 	
 	@Override
 	public String toString() {
-		return "Map [gameMap=" + gameMap + "]";
+		Set<City> cities=new HashSet<City>();
+		cities=gameMap.vertexSet();
+		return "Map \n"+cities;
 	}
 	
 	

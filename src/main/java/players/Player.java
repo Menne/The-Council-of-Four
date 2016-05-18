@@ -3,7 +3,6 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import model.bonus.Bonus;
 import model.bonus.ScoreBonus;
 import model.gameTable.Assistant;
 import model.gameTable.Emporium;
@@ -250,10 +249,10 @@ public class Player {
 
 	@Override
 	public String toString() {
-		return "Player [playerNumber=" + playerNumber + ", name=" + name + ", assistants=" + assistants + ", score="
-				+ score + ", nobility=" + nobility + ", coins=" + coins + ", hand=" + hand
+		return "Player " + playerNumber + "\t" + name + "\tassistants=" + assistants.size() + "\tscore="
+				+ score + "\tnobility=" + nobility + "\tcoins=" + coins + "\n hand=" + hand
 				+ ", playersPermitTilesTurnedUp=" + playersPermitTilesTurnedUp + ", playersPermitTilesTurnedDown="
-				+ playersPermitTilesTurnedDown + ", emporiums=" + this.emporiums.size() + "]";
+				+ playersPermitTilesTurnedDown + ", emporiums=" + this.emporiums.size() + "]\n\n";
 	}
 	
 	

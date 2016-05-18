@@ -9,26 +9,24 @@ public class BuyingState implements State {
 
 	@Override
 	public State buyActionTransition(Game game) {
+		game.getMarket().buyingNextPlayer();
 		if(game.getMarket().isBuyingPhaseFinished()){
 			game.nextPlayer();
 			return new BeginState();
 		}
-		else{
-			game.getMarket().buyingNextPlayer();
+		else
 			return this;
-		}
 	}
 
 	@Override
 	public State moveToNextTransition(Game game) {
+		game.getMarket().buyingNextPlayer();
 		if(game.getMarket().isBuyingPhaseFinished()){
 			game.nextPlayer();
 			return new BeginState();
 		}
-		else{
-			game.getMarket().buyingNextPlayer();
+		else			
 			return this;
-		}
 	}
 
 	@Override

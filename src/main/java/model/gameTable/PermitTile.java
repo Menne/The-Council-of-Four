@@ -1,5 +1,6 @@
 package model.gameTable;
 
+import java.util.HashSet;
 import java.util.Set;
 import model.bonus.Bonus;
 import model.market.Marketable;
@@ -12,7 +13,7 @@ import players.Player;
 	 */
 
 public class PermitTile implements Marketable{
-	
+
 	private final Set<City> buildableCities;
 	private final Set<Bonus> bonus;
 	
@@ -76,6 +77,14 @@ public class PermitTile implements Marketable{
 	public void removeObjectFromPlayer(Player player) {
 		player.getPlayersPermitTilesTurnedUp().remove(this);
 		
+	}
+	
+	@Override
+	public String toString() {
+		Set<String> cities=new HashSet<String>();
+		for(City city : buildableCities)
+			cities.add(city.getName());
+		return cities + "\t" + bonus;
 	}
 	
 	
