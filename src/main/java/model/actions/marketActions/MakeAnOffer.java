@@ -30,7 +30,9 @@ public class MakeAnOffer implements Action{
 	public boolean executeAction() {
 		this.game.getMarket().addOffer(
 				this.game.getMarket().getCurrentPlayer(), offeringObject, price);
+		this.game.setState(this.game.getState().sellActionTransition());
 		return true;
+		
 	}
 
 	@Override

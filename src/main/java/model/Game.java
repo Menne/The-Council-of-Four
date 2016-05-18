@@ -6,7 +6,6 @@ import java.util.List;
 
 import controller.BeginState;
 import controller.State;
-import model.bonus.Bonus;
 import model.bonus.ScoreBonus;
 import model.gameTable.GameTable;
 import model.market.Market;
