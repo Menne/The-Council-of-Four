@@ -34,7 +34,7 @@ public class ElectCouncillorByAssistant extends QuickAction implements NeedParam
 	}
 
 	private boolean checkAssistants(){
-		return this.game.getCurrentPlayer().getAssistants()>=necessaryAssistants;
+		return this.game.getCurrentPlayer().getNumberOfAssistants()>=necessaryAssistants;
 	}
 	
 	private boolean checkCouncillor(){

@@ -77,6 +77,11 @@ public class Game extends Observable<ViewNotify>{
 	}
 
 
+	public Market getMarket() {
+		return market;
+	}
+
+
 	public void setState(State state) {
 		this.state = state;
 	}
@@ -181,8 +186,8 @@ public class Game extends Observable<ViewNotify>{
 			return winnerPlayers.get(0);
 		int drawScore=0;
 		for(Player player: winnerPlayers){
-			if(player.getPlayersPermitTilesTurnedDown().size()+player.getPlayersPermitTilesTurnedUp().size()+player.getAssistants()>drawScore)
-				drawScore=player.getPlayersPermitTilesTurnedDown().size()+player.getPlayersPermitTilesTurnedUp().size()+player.getAssistants();
+			if(player.getPlayersPermitTilesTurnedDown().size()+player.getPlayersPermitTilesTurnedUp().size()+player.getNumberOfAssistants()>drawScore)
+				drawScore=player.getPlayersPermitTilesTurnedDown().size()+player.getPlayersPermitTilesTurnedUp().size()+player.getNumberOfAssistants();
 				currentWinnerPlayer=player;
 			}
 		return currentWinnerPlayer;

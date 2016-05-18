@@ -122,7 +122,7 @@ public class BuildByKing extends MainAction implements NeedParameters{
 	 * @return TRUE if the assistants are enough, FALSE otherwise
 	 */
 	private boolean checkEnoughAssistants() {
-		return this.game.getCurrentPlayer().getAssistants() >= 
+		return this.game.getCurrentPlayer().getNumberOfAssistants() >= 
 				assistantsToPay();
 	}
 	

@@ -29,7 +29,7 @@ public class ChangePermitTiles extends QuickAction implements NeedParameters{
 	
 	
 	private boolean checkAssistant(){
-		return this.game.getCurrentPlayer().getAssistants()>=necessaryAssistants;
+		return this.game.getCurrentPlayer().getNumberOfAssistants()>=necessaryAssistants;
 	}
 	
 	

@@ -13,9 +13,16 @@ import model.actions.ElectCouncillor;
 public class State10 implements State{
 	
 	@Override
-	public State mainActionTransition() {
+	public State mainActionTransition(Game game) {
 		
-		return new EndState();
+		if(game.getCurrentPlayer().getPlayerNumber()!=game.getPlayers().size()){
+			game.nextPlayer();
+			return new BeginState();
+		}
+		else{
+			game.startMarket();
+			return new SellingState();
+		}
 	}
 		
 	@Override

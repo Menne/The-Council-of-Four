@@ -5,14 +5,25 @@ import java.util.List;
 import model.Game;
 import model.actions.Action;
 
-public class EndBuyingState implements State{
+public class SellingState implements State {
+
+	@Override
+	public State sellActionTransition() {
+		
+		return this;
+	}
 
 	@Override
 	public State moveToNextTransition(Game game) {
-		// TODO Auto-generated method stub
-		return null;
+		if(game.getMarket().isSellingPhaseFinished()){
+			game.nextPlayer();
+			return new BuyingState();
+		}			
+		else{
+			game.getMarket().sellingNextPlayer();
+			return this;
+		}
 	}
-
 
 	@Override
 	public List<Action> getAcceptableActions(Game game) {

@@ -15,10 +15,6 @@ public class MoveToNext extends QuickAction {
 	 */
 	@Override
 	public boolean executeAction() {
-		if(this.game.getCurrentPlayer().getPlayerNumber()!=this.game.getPlayers().size())
-			this.game.nextPlayer();
-		else
-			this.game.startMarket();
 		 
 		this.game.setState(this.game.getState().moveToNextTransition(this.game));
 		return true;

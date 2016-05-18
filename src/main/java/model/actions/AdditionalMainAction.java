@@ -20,7 +20,7 @@ public class AdditionalMainAction extends QuickAction {
 	}
 	
 	private boolean checkAssistants(){
-		if(this.game.getCurrentPlayer().getAssistants()>=necessaryAssistants)
+		if(this.game.getCurrentPlayer().getNumberOfAssistants()>=necessaryAssistants)
 			return true;
 		else
 			return false;

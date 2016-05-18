@@ -14,9 +14,15 @@ import model.actions.MoveToNext;
 public class State01 implements State {
 
 	@Override
-	public State quickActionTransition() {
-		
-		return new EndState();
+	public State quickActionTransition(Game game) {
+		if(game.getCurrentPlayer().getPlayerNumber()!=game.getPlayers().size()){
+			game.nextPlayer();
+			return new BeginState();
+		}
+		else{
+			game.startMarket();
+			return new SellingState();
+		}
 	}
 
 
@@ -30,9 +36,16 @@ public class State01 implements State {
 	@Override
 	public State moveToNextTransition(Game game) {
 		
-		if(game.getCurrentPlayer().getPlayerNumber()!=game.getPlayers().size())
+		if(game.getCurrentPlayer().getPlayerNumber()!=game.getPlayers().size()){
+			game.nextPlayer();
 			return new BeginState();
-		return new BeginSellingState();
+		}
+		else{
+			game.startMarket();
+			return new SellingState();
+		}
+			
+		
 	}
 	
 	

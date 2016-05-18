@@ -21,6 +21,6 @@ public abstract class MainAction implements Action {
 	}
 	
 	public void nextState(){
-		this.game.setState(this.game.getState().mainActionTransition());
+		this.game.setState(this.game.getState().mainActionTransition(this.game));
 	}
 }

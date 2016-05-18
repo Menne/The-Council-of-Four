@@ -7,13 +7,13 @@ import model.actions.Action;
 
 public interface State{
 
-	public default State mainActionTransition() throws RuntimeException{
+	public default State mainActionTransition(Game game) throws RuntimeException{
 		
 		throw new RuntimeException("There are not such transictions for this state");
 	}
 
 	
-	public default State quickActionTransition()throws RuntimeException{
+	public default State quickActionTransition(Game game)throws RuntimeException{
 		
 		throw new RuntimeException("There are not such transictions for this state");
 	}
@@ -37,7 +37,7 @@ public interface State{
 	}
 
 	
-	public default State buyActionTransition() throws RuntimeException{
+	public default State buyActionTransition(Game game) throws RuntimeException{
 		
 		throw new RuntimeException("There are not such transictions for this state");
 	}

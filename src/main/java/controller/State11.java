@@ -9,13 +9,13 @@ import model.actions.*;
 public class State11 implements State {
 
 	@Override
-	public State mainActionTransition() {
+	public State mainActionTransition(Game game) {
 		
 		return new State01();
 	}
 
 	@Override
-	public State quickActionTransition() {
+	public State quickActionTransition(Game game) {
 		
 		return new State10();
 	}

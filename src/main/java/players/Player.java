@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.bonus.ScoreBonus;
+import model.gameTable.Assistant;
 import model.gameTable.Emporium;
 import model.gameTable.PermitTile;
 import model.gameTable.PoliticsCard;
@@ -19,7 +20,7 @@ public class Player {
 
 	private final int playerNumber;
 	private final String name;
-	private int assistants;
+	private List<Assistant> assistants;
 	private int score;
 	private int nobility;
 	private int coins;
@@ -27,9 +28,10 @@ public class Player {
 	private final List<PermitTile> playersPermitTilesTurnedUp;
 	private final List<PermitTile> playersPermitTilesTurnedDown;
 	private final List<Emporium> emporiums;
+	private final List<ScoreBonus> playersFinalBonus;
 	private static final int intialNumberOfEmporiums=10;
 	private static final int initialNumberOfCards=6;
-	private final List<ScoreBonus> playersFinalBonus;
+	
 	
 	/**
 	 * Sets nobility and score at 0. 
@@ -43,7 +45,8 @@ public class Player {
 			PoliticsDeck politicsDeck) {
 		this.playerNumber=playerNumber;
 		this.name=name;
-		this.assistants=assistants;
+		for(int i=0; i<assistants; i++)
+			this.assistants.add(new Assistant());
 		this.score=0;
 		this.nobility=0;
 		this.coins=coins;
@@ -66,8 +69,8 @@ public class Player {
 		return name;
 	}
 	
-	public int getAssistants() {
-		return assistants;
+	public int getNumberOfAssistants() {
+		return this.assistants.size();
 	}
 	
 	public int getScore() {
@@ -118,7 +121,8 @@ public class Player {
 	 * @param increment
 	 */
 	public void incrementAssistants(int increment) {
-		this.assistants+=increment;
+		for(int i=0; i<increment; i++)
+			this.assistants.add(new Assistant());
 	}
 	/**
 	 * decrements number of player's assistances if it has more assistances than the decrement.
@@ -126,11 +130,11 @@ public class Player {
 	 * @param decrement
 	 */
 	public boolean decrementAssistants(int decrement) {
-		if(assistants>=decrement){
-			this.assistants-=decrement;
-			return true;}
-		else
+		if(this.assistants.size()<decrement)
 			return false;
+		for(int i=0; i<decrement; i++)
+			this.assistants.remove(0);
+		return true;
 	}
 	
 	/**
