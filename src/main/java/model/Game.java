@@ -6,7 +6,6 @@ import java.util.List;
 
 import controller.BeginState;
 import controller.State;
-import model.bonus.Bonus;
 import model.bonus.ScoreBonus;
 import model.gameTable.GameTable;
 import model.market.Market;
@@ -111,7 +110,7 @@ public class Game extends Observable<ViewNotify>{
 
 	@Override
 	public String toString() {
-		return "Game\n\n Players: \n" + players + "\n\n CurrentPlayer: \n" + currentPlayer + "\n\n GameTable:\n" + gameTable
+		return "Game\n\n Players: \n" + players + "\n\n CurrentPlayer: \n" + currentPlayer + "\n\n" + gameTable
 				+"\n\n"+state.toString(this);
 	}	
 	

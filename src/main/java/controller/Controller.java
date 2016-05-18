@@ -6,11 +6,11 @@ import observerPattern.Observer;
 import view.GameNotify;
 import view.View;
 
-public class GameLogic implements Observer<Action>{
+public class Controller implements Observer<Action>{
 	
 	private final Game game;
 	
-	public GameLogic(Game game, View view){
+	public Controller(Game game, View view){
 		this.game=game;
 		view.registerObserver(this);
 		game.notifyObserver(new GameNotify(game));

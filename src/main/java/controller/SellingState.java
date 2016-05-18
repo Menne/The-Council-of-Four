@@ -15,14 +15,13 @@ public class SellingState implements State {
 
 	@Override
 	public State moveToNextTransition(Game game) {
+		game.getMarket().sellingNextPlayer();
 		if(game.getMarket().isSellingPhaseFinished()){
 			game.nextPlayer();
 			return new BuyingState();
 		}			
-		else{
-			game.getMarket().sellingNextPlayer();
+		else
 			return this;
-		}
 	}
 
 	@Override

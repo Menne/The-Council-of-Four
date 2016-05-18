@@ -72,7 +72,7 @@ public class Initializer {
 	 */
 	List<Councillor> councillorsList=new ArrayList<Councillor>();
 	for(CardColour cardColour : cardColourList)
-		if(!cardColour.equals("Rainbow"))
+		if(!cardColour.getColour().equals("Rainbow"))
 			for(int i=0;i<Integer.parseInt(s);i++)
 				councillorsList.add(new Councillor(cardColour));
 	Collections.shuffle(councillorsList);

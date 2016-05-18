@@ -51,7 +51,7 @@ public class PoliticsCard implements Marketable{
 
 	@Override
 	public String toString() {
-		return "PoliticsCard [colour=" + colour + "]";
+		return colour.toString();
 	}
 	
 	

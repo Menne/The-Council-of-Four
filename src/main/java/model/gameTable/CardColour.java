@@ -54,7 +54,7 @@ public class CardColour {
 
 	@Override
 	public String toString() {
-		return "CardColour [colour=" + colour + "]";
+		return colour;
 	}
 	
 }

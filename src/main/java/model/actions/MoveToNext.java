@@ -2,6 +2,7 @@ package model.actions;
 
 import model.Game;
 import model.parser.ActionParserVisitor;
+import view.GameNotify;
 
 public class MoveToNext extends QuickAction {
 
@@ -17,12 +18,13 @@ public class MoveToNext extends QuickAction {
 	public boolean executeAction() {
 		 
 		this.game.setState(this.game.getState().moveToNextTransition(this.game));
+		this.game.notifyObserver(new GameNotify(game));
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "exit: if you want to finish the turn";
+		return "ex: if you want to finish the turn";
 	}
 
 	@Override

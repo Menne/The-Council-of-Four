@@ -1,5 +1,6 @@
 package model.gameTable;
 
+import java.util.HashSet;
 import java.util.Set;
 import model.bonus.Bonus;
 import model.market.Marketable;
@@ -11,7 +12,7 @@ import model.market.Marketable;
 	 */
 
 public class PermitTile implements Marketable{
-	
+
 	private final Set<City> buildableCities;
 	private final Set<Bonus> bonus;
 	
@@ -63,6 +64,14 @@ public class PermitTile implements Marketable{
 		} else if (!buildableCities.equals(other.buildableCities))
 			return false;
 		return true;
+	}
+	
+	@Override
+	public String toString() {
+		Set<String> cities=new HashSet<String>();
+		for(City city : buildableCities)
+			cities.add(city.getName());
+		return cities + "\t" + bonus;
 	}
 	
 	
