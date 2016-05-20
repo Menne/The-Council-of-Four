@@ -28,10 +28,10 @@ public class State10 implements State{
 	@Override
 	public List<Action> getAcceptableActions(Game game) {
 		List<Action> acceptableActions=new ArrayList<Action>();
-		acceptableActions.add(new ElectCouncillor(game));
-		acceptableActions.add(new AcquirePermitTile(game));
-		acceptableActions.add(new BuildByPermitTile(game));
-		acceptableActions.add(new BuildByKing(game));
+		acceptableActions.add(new ElectCouncillor());
+		acceptableActions.add(new AcquirePermitTile());
+		acceptableActions.add(new BuildByPermitTile());
+		acceptableActions.add(new BuildByKing());
 		
 		return acceptableActions;
 	}

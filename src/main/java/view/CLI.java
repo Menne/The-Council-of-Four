@@ -13,8 +13,8 @@ public class CLI extends View{
 	private final Parser parser;
 	private final Scanner scanner;
 	
-	public CLI(Game game, Parser parser, Scanner scanner) {
-		super(game);
+	public CLI(Parser parser, Scanner scanner) {
+		super();
 		this.parser=parser;
 		this.scanner=scanner;
 	}
@@ -27,7 +27,7 @@ public class CLI extends View{
 
 	@Override
 	public void update(ViewNotify notify) {
-		notify.stamp(this);
+		notify.stamp();
 	}
 
 	

@@ -9,18 +9,13 @@ import view.ErrorNotify;
  *
  */
 public abstract class MainAction implements Action {
-
-	protected final Game game;
 	
-	public MainAction(Game game){
-		this.game=game;
+	public void sendErrorNotify(Game game){
+		game.notifyObserver(new ErrorNotify("You can't do this action"));
 	}
 	
-	public void sendErrorNotify(){
-		this.game.notifyObserver(new ErrorNotify("You can't do this action"));
-	}
 	
-	public void nextState(){
-		this.game.setState(this.game.getState().mainActionTransition(this.game));
+	public void nextState(Game game){
+		game.setState(game.getState().mainActionTransition(game));
 	}
 }

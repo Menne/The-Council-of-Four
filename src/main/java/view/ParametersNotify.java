@@ -15,14 +15,14 @@ public class ParametersNotify implements ViewNotify {
 	}
 
 	@Override
-	public void stamp(CLI view) {
-		System.out.println(parameters);
+	public void stamp() {
+/*		System.out.println(parameters);
 		String input=view.getScanner().nextLine();
 			while (!parameters.contains(input)) {
 				System.out.println("Wrong parameter. Retry");
 				input=view.getScanner().nextLine();
 			}
-		this.currentParser.setCurrentParameter(input);
+		this.currentParser.setCurrentParameter(input);*/
 	}
 
 }

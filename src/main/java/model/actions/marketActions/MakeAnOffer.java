@@ -27,14 +27,14 @@ public class MakeAnOffer implements Action{
 
 
 	@Override
-	public boolean executeAction() {
-		this.game.getMarket().addOffer(
-				this.game.getMarket().getCurrentPlayer(), offeringObject, price);
+	public boolean executeAction(Game game) {
+		game.getMarket().addOffer(
+				game.getMarket().getCurrentPlayer(), offeringObject, price);
 		return true;
 	}
 
 	@Override
-	public ActionParserVisitor setParser() {
+	public ActionParserVisitor setParser(Game game) {
 		// TODO Auto-generated method stub
 		return null;
 	}

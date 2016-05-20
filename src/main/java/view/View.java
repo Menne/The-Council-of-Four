@@ -7,8 +7,7 @@ import observerPattern.Observer;
 
 public abstract class View extends Observable<Action> implements Observer<ViewNotify> {
 
-	public View(Game Game){
-		Game.registerObserver(this);
+	public View(){
 	}
 	
 	@Override

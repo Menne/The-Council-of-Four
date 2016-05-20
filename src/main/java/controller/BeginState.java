@@ -18,7 +18,7 @@ public class BeginState implements State {
 	@Override
 	public List<Action> getAcceptableActions(Game game) {
 		List<Action> acceptableAction= new ArrayList<Action>();
-		acceptableAction.add(new PickPoliticsCard(game));
+		acceptableAction.add(new PickPoliticsCard());
 		
 		return acceptableAction;
 	}

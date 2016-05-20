@@ -12,29 +12,26 @@ import view.GameNotify;
 public class EngageAssistant extends QuickAction {
 
 	private static final int necessaryCoins=3;
+
 	
-	public EngageAssistant(Game game){
-		super(game);
-	}
-	
-	private boolean checkCoins(){
-		return this.game.getCurrentPlayer().getCoins()>=necessaryCoins;
+	private boolean checkCoins(Game game){
+		return game.getCurrentPlayer().getCoins()>=necessaryCoins;
 	}
 
 	/**
 	 * Decrements 3 coins to the current player and gives him an assistant.
 	 * @return TRUE if the action ends well; FALSE otherwise.
 	 */
-	public boolean executeAction() {
-		if(!this.checkCoins()){
-			this.sendErrorNotify();
+	public boolean executeAction(Game game) {
+		if(!this.checkCoins(game)){
+			this.sendErrorNotify(game);
 			return false;
 		}
-		this.game.getCurrentPlayer().decrementCoins(necessaryCoins);
-		this.game.getCurrentPlayer().incrementAssistants(1);
+		game.getCurrentPlayer().decrementCoins(necessaryCoins);
+		game.getCurrentPlayer().incrementAssistants(1);
 		
-		this.nextState();
-		this.game.notifyObserver(new GameNotify(this.game));
+		this.nextState(game);
+		game.notifyObserver(new GameNotify(game));
 		return true;
 	}
 	
@@ -44,7 +41,7 @@ public class EngageAssistant extends QuickAction {
 	}
 
 	@Override
-	public ActionParserVisitor setParser() {
+	public ActionParserVisitor setParser(Game game) {
 		// TODO Auto-generated method stub
 		return null;
 	}

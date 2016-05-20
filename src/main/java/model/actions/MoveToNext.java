@@ -5,20 +5,15 @@ import model.parser.ActionParserVisitor;
 import view.GameNotify;
 
 public class MoveToNext extends QuickAction {
-
-	public MoveToNext(Game game){
-		super(game);
-	}
-	
 	
 	/**
 	 * If the lap is finished starts the market phase, otherwise sets the next player.
 	 */
 	@Override
-	public boolean executeAction() {
+	public boolean executeAction(Game game) {
 		 
-		this.game.setState(this.game.getState().moveToNextTransition(this.game));
-		this.game.notifyObserver(new GameNotify(game));
+		game.setState(game.getState().moveToNextTransition(game));
+		game.notifyObserver(new GameNotify(game));
 		return true;
 	}
 
@@ -28,7 +23,7 @@ public class MoveToNext extends QuickAction {
 	}
 
 	@Override
-	public ActionParserVisitor setParser() {
+	public ActionParserVisitor setParser(Game game) {
 		// TODO Auto-generated method stub
 		return null;
 	}

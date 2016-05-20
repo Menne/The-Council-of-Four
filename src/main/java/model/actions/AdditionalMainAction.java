@@ -15,12 +15,8 @@ public class AdditionalMainAction extends QuickAction {
 
 	private static final int necessaryAssistants=3;
 	
-	public AdditionalMainAction(Game game){
-		super(game);
-	}
-	
-	private boolean checkAssistants(){
-		if(this.game.getCurrentPlayer().getNumberOfAssistants()>=necessaryAssistants)
+	private boolean checkAssistants(Game game){
+		if(game.getCurrentPlayer().getNumberOfAssistants()>=necessaryAssistants)
 			return true;
 		else
 			return false;
@@ -31,14 +27,14 @@ public class AdditionalMainAction extends QuickAction {
 	 * an additional main action
 	 * @return TRUE if the action ends well; FALSE otherwise.
 	 */
-	public boolean executeAction() {
-		if(!this.checkAssistants()){
-			this.game.notifyObserver(new ErrorNotify("You can't do this action"));
+	public boolean executeAction(Game game) {
+		if(!this.checkAssistants(game)){
+			game.notifyObserver(new ErrorNotify("You can't do this action"));
 			return false;
 		}	
 		
-		this.game.setState(this.game.getState().additionalMainActionTransition());
-		this.game.notifyObserver(new GameNotify(this.game));
+		game.setState(game.getState().additionalMainActionTransition());
+		game.notifyObserver(new GameNotify(game));
 		return true;
 	}
 	
@@ -48,7 +44,7 @@ public class AdditionalMainAction extends QuickAction {
 	}
 
 	@Override
-	public ActionParserVisitor setParser() {
+	public ActionParserVisitor setParser(Game game) {
 		return null;
 	}
 

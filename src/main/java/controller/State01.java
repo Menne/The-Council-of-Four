@@ -52,11 +52,11 @@ public class State01 implements State {
 	@Override
 	public List<Action> getAcceptableActions(Game game) {
 		List<Action> acceptableActions=new ArrayList<Action>();
-		acceptableActions.add(new EngageAssistant(game));
-		acceptableActions.add(new ChangePermitTiles(game));
-		acceptableActions.add(new ElectCouncillorByAssistant(game));
-		acceptableActions.add(new AdditionalMainAction(game));
-		acceptableActions.add(new MoveToNext(game));
+		acceptableActions.add(new EngageAssistant());
+		acceptableActions.add(new ChangePermitTiles());
+		acceptableActions.add(new ElectCouncillorByAssistant());
+		acceptableActions.add(new AdditionalMainAction());
+		acceptableActions.add(new MoveToNext());
 		return acceptableActions;
 	}
 

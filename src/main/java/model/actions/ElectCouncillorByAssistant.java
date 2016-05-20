@@ -21,10 +21,6 @@ public class ElectCouncillorByAssistant extends QuickAction implements NeedParam
 	private CouncilBalcony councilBalcony;
 	public static final int necessaryAssistants=1;
 	
-	public ElectCouncillorByAssistant(Game game){
-		super(game);
-	}
-	
 	public void setNewCouncillor(Councillor newCouncillor) {
 		this.newCouncillor = newCouncillor;
 	}
@@ -33,12 +29,12 @@ public class ElectCouncillorByAssistant extends QuickAction implements NeedParam
 		this.councilBalcony = councilBalcony;
 	}
 
-	private boolean checkAssistants(){
-		return this.game.getCurrentPlayer().getNumberOfAssistants()>=necessaryAssistants;
+	private boolean checkAssistants(Game game){
+		return game.getCurrentPlayer().getNumberOfAssistants()>=necessaryAssistants;
 	}
 	
-	private boolean checkCouncillor(){
-		return this.game.getGameTable().getCouncilReserve()
+	private boolean checkCouncillor(Game game){
+		return game.getGameTable().getCouncilReserve()
 				.getCouncillors().contains(this.newCouncillor);
 	}
 
@@ -48,20 +44,20 @@ public class ElectCouncillorByAssistant extends QuickAction implements NeedParam
 	  * decrement an assistant to the current player.
 	  * @return TRUE if the action ends well; FALSE otherwise.
 	 */
-	public boolean executeAction() throws NullPointerException{
+	public boolean executeAction(Game game) throws NullPointerException{
 		if(this.councilBalcony==null || this.newCouncillor==null)
 			throw new NullPointerException("Parameters not setted");
 		Councillor oldCouncillor;
-		if((!this.checkAssistants())||(!this.checkCouncillor())){
-			this.sendErrorNotify();
+		if((!this.checkAssistants(game))||(!this.checkCouncillor(game))){
+			this.sendErrorNotify(game);
 			return false;
 		}
 		oldCouncillor=this.councilBalcony.substituteCouncillor(this.newCouncillor);
-		this.game.getGameTable().getCouncilReserve().getCouncillors().add(oldCouncillor);
-		this.game.getCurrentPlayer().decrementAssistants(necessaryAssistants);
+		game.getGameTable().getCouncilReserve().getCouncillors().add(oldCouncillor);
+		game.getCurrentPlayer().decrementAssistants(necessaryAssistants);
 		
-		this.nextState();
-		this.game.notifyObserver(new GameNotify(this.game));
+		this.nextState(game);
+		game.notifyObserver(new GameNotify(game));
 		return true;
 	}
 
@@ -71,8 +67,8 @@ public class ElectCouncillorByAssistant extends QuickAction implements NeedParam
 	}
 
 	@Override
-	public ActionParserVisitor setParser() {
-		return new ElectCouncillorByAssistantParser(this, this.game);
+	public ActionParserVisitor setParser(Game game) {
+		return new ElectCouncillorByAssistantParser(this, game);
 	}
 
 }

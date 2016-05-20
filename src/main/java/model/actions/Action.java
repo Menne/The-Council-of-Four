@@ -1,5 +1,6 @@
 package model.actions;
 
+import model.Game;
 import model.parser.ActionParserVisitor;
 
 /**
@@ -11,7 +12,7 @@ import model.parser.ActionParserVisitor;
 public abstract interface Action {
 
 	
-	public abstract boolean executeAction();
+	public abstract boolean executeAction(Game game);
 
-	public abstract ActionParserVisitor setParser();
+	public abstract ActionParserVisitor setParser(Game game);
 }

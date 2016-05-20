@@ -21,10 +21,6 @@ public class ElectCouncillor extends MainAction implements NeedParameters{
 	private CouncilBalcony councilBalcony;
 	private static final int givenCoins=4;
 	
-	public ElectCouncillor(Game game){
-		super(game);
-	}
-	
 	public void setNewCouncillor(Councillor newCouncillor) {
 		this.newCouncillor = newCouncillor;
 	}
@@ -33,8 +29,8 @@ public class ElectCouncillor extends MainAction implements NeedParameters{
 		this.councilBalcony = councilBalcony;
 	}
 
-	private boolean checkCouncillor() {
-		return this.game.getGameTable().getCouncilReserve()
+	private boolean checkCouncillor(Game game) {
+		return game.getGameTable().getCouncilReserve()
 				.getCouncillors().contains(this.newCouncillor);
 	}
 	
@@ -44,20 +40,20 @@ public class ElectCouncillor extends MainAction implements NeedParameters{
 	 * gives to the current player 4 coins.
 	 * @return TRUE if the action ends well; FALSE otherwise.
 	 */
-	public boolean executeAction() throws NullPointerException{
+	public boolean executeAction(Game game) throws NullPointerException{
 		if(this.newCouncillor==null || this.councilBalcony==null)
 			throw new NullPointerException("Parameters not setted");
 		Councillor oldCouncillor;
-		if(!this.checkCouncillor()){
-			this.sendErrorNotify();
+		if(!this.checkCouncillor(game)){
+			this.sendErrorNotify(game);
 			return false;
 		}
 		oldCouncillor=this.councilBalcony.substituteCouncillor(this.newCouncillor);
-		this.game.getGameTable().getCouncilReserve().getCouncillors().add(oldCouncillor);
-		this.game.getCurrentPlayer().incrementCoins(givenCoins);
+		game.getGameTable().getCouncilReserve().getCouncillors().add(oldCouncillor);
+		game.getCurrentPlayer().incrementCoins(givenCoins);
 		
-		this.nextState();
-		this.game.notifyObserver(new GameNotify(this.game));
+		this.nextState(game);
+		game.notifyObserver(new GameNotify(game));
 		return true;
 	}
 
@@ -67,7 +63,7 @@ public class ElectCouncillor extends MainAction implements NeedParameters{
 	}
 
 	@Override
-	public ActionParserVisitor setParser() {
+	public ActionParserVisitor setParser(Game game) {
 		return new ElectCouncillorParser(this, game);
 	}
 

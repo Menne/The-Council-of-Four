@@ -59,7 +59,7 @@ public class Parser {
 	 * @return the selected action with the parameters set
 	 */
 	public Action parametersParser(Action selectedAction) {
-		return selectedAction.setParser().setParameters(this);
+		return selectedAction.setParser(this.game).setParameters(this);
 	}
 	
 	

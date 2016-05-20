@@ -9,7 +9,7 @@ public class ActionNotify implements ViewNotify {
 	}
 
 	@Override
-	public void stamp(CLI view) {
+	public void stamp() {
 		System.out.println(message);
 	}
 

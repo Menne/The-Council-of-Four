@@ -18,18 +18,13 @@ public class ChangePermitTiles extends QuickAction implements NeedParameters{
 	private RegionBoard selectedRegion;
 	private static final int necessaryAssistants=1;
 	
-	public  ChangePermitTiles(Game game){
-		super(game);
-	}
-	
-	
 	public void setSelectedRegion(RegionBoard selectedRegion) {
 		this.selectedRegion = selectedRegion;
 	}
 	
 	
-	private boolean checkAssistant(){
-		return this.game.getCurrentPlayer().getNumberOfAssistants()>=necessaryAssistants;
+	private boolean checkAssistant(Game game){
+		return game.getCurrentPlayer().getNumberOfAssistants()>=necessaryAssistants;
 	}
 	
 	
@@ -38,21 +33,21 @@ public class ChangePermitTiles extends QuickAction implements NeedParameters{
 	 * and decrements the necessary assistant to the current player.
 	 * @return TRUE if the action ends well; FALSE otherwise.
 	 */
-	public boolean executeAction() throws NullPointerException{
+	public boolean executeAction(Game game) throws NullPointerException{
 		
 		if(this.selectedRegion==null)
 			throw new NullPointerException("Paramters not setted");
-		if(!this.checkAssistant()){
-			this.sendErrorNotify();
+		if(!this.checkAssistant(game)){
+			this.sendErrorNotify(game);
 			return false;
 		}
-		for(RegionBoard region : this.game.getGameTable().getRegionBoards())
+		for(RegionBoard region : game.getGameTable().getRegionBoards())
 			if(region.equals(selectedRegion))
 				region.substitutePermitTiles();
-		this.game.getCurrentPlayer().decrementAssistants(necessaryAssistants);
+		game.getCurrentPlayer().decrementAssistants(necessaryAssistants);
 		
-		this.nextState();
-		this.game.notifyObserver(new GameNotify(this.game));
+		this.nextState(game);
+		game.notifyObserver(new GameNotify(game));
 		return true;
 	}
 
@@ -63,8 +58,11 @@ public class ChangePermitTiles extends QuickAction implements NeedParameters{
 
 
 	@Override
-	public ActionParserVisitor setParser() {
+	public ActionParserVisitor setParser(Game game) {
 		return new ChangePermitTilesParser(this, game);
 	}
 				
-}
+
+
+
+	}

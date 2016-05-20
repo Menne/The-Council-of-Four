@@ -17,7 +17,7 @@ public class Main {
 
 	public static void main(String[] args) throws IOException{
 		
-		Scanner scanner=new Scanner(System.in);
+/*		Scanner scanner=new Scanner(System.in);
 		Initializer init=new Initializer();
 		Game game=init.initialize();
 		Parser parser=new Parser(game);
@@ -27,7 +27,7 @@ public class Main {
 		while(true){
 			String input=scanner.nextLine();
 			view.input(input);
-		}
+		}*/
 	}
 					
 }

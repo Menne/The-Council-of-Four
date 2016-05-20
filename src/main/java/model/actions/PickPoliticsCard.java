@@ -6,18 +6,12 @@ import view.CardNotify;
 
 public class PickPoliticsCard implements Action {
 
-	private final Game game;
-	
-	public PickPoliticsCard(Game game) {
-		this.game=game;
-	}
-	
 	@Override
-	public boolean executeAction() {
-		this.game.getCurrentPlayer().getHand().add(this.game.getGameTable().getPoliticsDeck().pickCard());
+	public boolean executeAction(Game game) {
+		game.getCurrentPlayer().getHand().add(game.getGameTable().getPoliticsDeck().pickCard());
 		
-		this.game.setState(this.game.getState().pickPoliticsCardTransition());
-		this.game.notifyObserver(new CardNotify(this.game));
+		game.setState(game.getState().pickPoliticsCardTransition());
+		game.notifyObserver(new CardNotify(game));
 		return true;
 	}
 
@@ -29,7 +23,7 @@ public class PickPoliticsCard implements Action {
 	
 	
 	@Override
-	public ActionParserVisitor setParser() {
+	public ActionParserVisitor setParser(Game game) {
 		return null;	
 	}
 

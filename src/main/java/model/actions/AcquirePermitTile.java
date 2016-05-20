@@ -26,19 +26,6 @@ public class AcquirePermitTile extends MainAction implements NeedParameters{
 	private Integer numberOfPermitTile;
 	private RegionBoard chosenRegion;
 	private List<PoliticsCard> cardsToDescard;
-
-	/**
-	 * constructor of the action
-	 * @param game is the private attribute inherited from the superclass
-	 * @param permitTileToPick is the permit tile you want to pick
-	 * @param cardsToDescard are the cards in the hand you use to satisfy the councillors
-	 * @param balconyToSatisfy is the council balcony to satisfy
-	 *
-	 */
-	public AcquirePermitTile(Game game) {
-		super(game);
-	}
-	
 	
 	
 	public void setNumberOfPermitTile(Integer numberOfPermitTile) {
@@ -67,28 +54,28 @@ public class AcquirePermitTile extends MainAction implements NeedParameters{
 	 * 1 card of the same colour of the councillors + use 10 coins;
 	 * each rainbow card requires 1 additional coin each to use.
 	 */
-	public boolean executeAction() throws NullPointerException{
+	public boolean executeAction(Game game) throws NullPointerException{
 		if(this.numberOfPermitTile==null||
 				this.cardsToDescard==null||
 				this.chosenRegion==null)
 			throw new NullPointerException("Paramters not setted");
 		
-		if (!(this.CheckEnoughCoins() && this.CheckHandSatisfiesBalcony())){
-			this.sendErrorNotify();
+		if (!(this.CheckEnoughCoins(game) && this.CheckHandSatisfiesBalcony(game))){
+			this.sendErrorNotify(game);
 			return false;
 		}
 			
 		
 		for (Bonus bonusToAssign : this.chosenRegion.getUncoveredPermitTiles()[numberOfPermitTile].getBonus())
-			bonusToAssign.assignBonus(this.game);
-		this.game.getCurrentPlayer().decrementCoins(CoinsToPay());
+			bonusToAssign.assignBonus(game);
+		game.getCurrentPlayer().decrementCoins(CoinsToPay());
 		for (PoliticsCard card : cardsToDescard)
-			this.game.getCurrentPlayer().removeCardFromHand(card);
-		this.game.getCurrentPlayer().addTile(this.chosenRegion.pickUncoveredPermitTile(this.numberOfPermitTile));
+			game.getCurrentPlayer().removeCardFromHand(card);
+		game.getCurrentPlayer().addTile(this.chosenRegion.pickUncoveredPermitTile(this.numberOfPermitTile));
 		this.chosenRegion.uncoverPermitTiles();
 		
-		this.nextState();
-		this.game.notifyObserver(new GameNotify(this.game));
+		this.nextState(game);
+		game.notifyObserver(new GameNotify(game));
 	    return true;
 	}
 	
@@ -114,8 +101,8 @@ public class AcquirePermitTile extends MainAction implements NeedParameters{
 	/**
 	 * checks if the player has enough coins
 	 */
-	private boolean CheckEnoughCoins() {
-		return this.game.getCurrentPlayer().getCoins() >= 
+	private boolean CheckEnoughCoins(Game game) {
+		return game.getCurrentPlayer().getCoins() >= 
 				CoinsToPay();
 	}
 	
@@ -123,11 +110,11 @@ public class AcquirePermitTile extends MainAction implements NeedParameters{
 	 * checks if the player hands cards' colour match with the colour of councillors
 	 * of the selected balcony
 	 */
-	private boolean CheckHandSatisfiesBalcony() {
+	private boolean CheckHandSatisfiesBalcony(Game game) {
 		List<Councillor> temporaryBalcony=new ArrayList<Councillor>();
 		int satisfyCounter=0;
 		for (int i=0; i<=CouncilBalcony.getNumberofcouncillors()-1; i++)
-			temporaryBalcony.add(this.game.getGameTable().getCouncilOfKing().getCouncillors()[i]);
+			temporaryBalcony.add(game.getGameTable().getCouncilOfKing().getCouncillors()[i]);
 		
 		for (PoliticsCard politicsCardInHand: cardsToDescard) {
 			if (politicsCardInHand.getColour().getColour() == "rainbow")
@@ -150,7 +137,7 @@ public class AcquirePermitTile extends MainAction implements NeedParameters{
 	}
 
 	@Override
-	public ActionParserVisitor setParser() {
+	public ActionParserVisitor setParser(Game game) {
 		return new AcquirePermitTileParser(this, game);
 	}
 	

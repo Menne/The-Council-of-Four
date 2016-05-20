@@ -25,13 +25,13 @@ public class State11 implements State {
 	@Override
 	public List<Action> getAcceptableActions(Game game) {
 		List<Action> acceptableActions=new ArrayList<Action>();
-		acceptableActions.add(new ElectCouncillor(game));
-		acceptableActions.add(new AcquirePermitTile(game));
-		acceptableActions.add(new BuildByPermitTile(game));
-		acceptableActions.add(new BuildByKing(game));
-		acceptableActions.add(new EngageAssistant(game));
-		acceptableActions.add(new ChangePermitTiles(game));
-		acceptableActions.add(new ElectCouncillorByAssistant(game));
+		acceptableActions.add(new ElectCouncillor());
+		acceptableActions.add(new AcquirePermitTile());
+		acceptableActions.add(new BuildByPermitTile());
+		acceptableActions.add(new BuildByKing());
+		acceptableActions.add(new EngageAssistant());
+		acceptableActions.add(new ChangePermitTiles());
+		acceptableActions.add(new ElectCouncillorByAssistant());
 		return acceptableActions;
 	}
 
