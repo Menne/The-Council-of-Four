@@ -7,13 +7,9 @@ import model.parser.ActionParserVisitor;
 
 public class MakeAnOffer implements Action{
 	
-	private final Game game;
+
 	private Marketable offeringObject;
 	private int price;
-	
-	public MakeAnOffer(Game game){
-		this.game=game;
-	}
 	
 	
 	public void setOfferingObject(Marketable offeringObject) {
@@ -30,7 +26,9 @@ public class MakeAnOffer implements Action{
 	public boolean executeAction(Game game) {
 		game.getMarket().addOffer(
 				game.getMarket().getCurrentPlayer(), offeringObject, price);
+		game.setState(game.getState().sellActionTransition());
 		return true;
+		
 	}
 
 	@Override

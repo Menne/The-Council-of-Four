@@ -1,6 +1,7 @@
 package model.gameTable;
 
 import model.market.Marketable;
+import players.Player;
 
 /**
 	 * this class models a politics card
@@ -52,6 +53,20 @@ public class PoliticsCard implements Marketable{
 	@Override
 	public String toString() {
 		return colour.toString();
+	}
+
+	@Override
+	public void addObjectToPlayer(Player player) {
+		
+		player.getHand().add(this);
+		
+	}
+
+	@Override
+	public void removeObjectFromPlayer(Player player) {
+
+		player.getHand().remove(this);
+		
 	}
 	
 	

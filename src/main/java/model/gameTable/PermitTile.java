@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 import model.bonus.Bonus;
 import model.market.Marketable;
+import players.Player;
 
 /**
 	 * this class models a permit tile
@@ -64,6 +65,18 @@ public class PermitTile implements Marketable{
 		} else if (!buildableCities.equals(other.buildableCities))
 			return false;
 		return true;
+	}
+
+	
+	@Override
+	public void addObjectToPlayer(Player player) {
+		player.getPlayersPermitTilesTurnedUp().add(this);
+	}
+
+	@Override
+	public void removeObjectFromPlayer(Player player) {
+		player.getPlayersPermitTilesTurnedUp().remove(this);
+		
 	}
 	
 	@Override
