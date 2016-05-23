@@ -1,7 +1,6 @@
 package model.actions;
 
 import model.Game;
-import model.parser.ActionParserVisitor;
 import view.GameNotify;
 
 public class MoveToNext extends QuickAction {
@@ -20,12 +19,6 @@ public class MoveToNext extends QuickAction {
 	@Override
 	public String toString() {
 		return "ex: if you want to finish the turn";
-	}
-
-	@Override
-	public ActionParserVisitor setParser(Game game) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	
 	

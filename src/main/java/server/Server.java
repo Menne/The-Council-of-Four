@@ -7,7 +7,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import controller.Controller;
-import initializer.Initializer;
 import model.Game;
 
 
@@ -18,8 +17,7 @@ public class Server {
 	private final Controller controller;
 	
 	public Server() throws IOException{
-		Initializer init=new Initializer();
-		this.game=init.initialize();
+		this.game=new Game();
 		this.controller=new Controller(this.game);
 	}
 	
@@ -34,7 +32,7 @@ public class Server {
 		while(true){
 			
 			Socket socket=serverSocket.accept();
-			ServerSocketView view=new ServerSocketView(socket,game);
+			ServerSocketView view=new ServerSocketView(socket);
 			
 			this.game.registerObserver(view);
 			view.registerObserver(controller);

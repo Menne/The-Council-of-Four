@@ -1,11 +1,13 @@
  
 package model;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import controller.BeginState;
 import controller.State;
+import initializer.Initializer;
 import model.bonus.ScoreBonus;
 import model.gameTable.GameTable;
 import model.market.Market;
@@ -24,14 +26,15 @@ public class Game extends Observable<ViewNotify>{
 	private boolean lastLap;
 	
                
-	public Game(List<Player> players, GameTable gameTable){
-		this.players=players;
-		this.gameTable=gameTable;
+	public Game() throws IOException{
+		this.players=new ArrayList<Player>();
+		Initializer init= new Initializer();
+		this.gameTable=init.initialize();
 		this.currentPlayer=this.players.get(0);
 		this.state=new BeginState();
 		this.additionalMainActionBonus=false;
 		this.lastLap=false;
-		this.market=new Market(players);		
+		this.market=new Market(this.players);		
 	}
 
 
@@ -105,6 +108,11 @@ public class Game extends Observable<ViewNotify>{
 
 	public void setLastLap(boolean lastLap) {
 		this.lastLap = lastLap;
+	}
+	
+	public void addPlayer(){
+		int numOfPlayers=this.players.size();
+		this.players.add(new Player(numOfPlayers+1, numOfPlayers+1, numOfPlayers+10, this.gameTable.getPoliticsDeck()));
 	}
 
 

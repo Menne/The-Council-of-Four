@@ -5,6 +5,13 @@ import java.util.List;
 
 import model.Game;
 import model.actions.*;
+import model.actions.standardAction.AcquirePermitTile;
+import model.actions.standardAction.BuildByKing;
+import model.actions.standardAction.BuildByPermitTile;
+import model.actions.standardAction.ChangePermitTiles;
+import model.actions.standardAction.ElectCouncillor;
+import model.actions.standardAction.ElectCouncillorByAssistant;
+import model.actions.standardAction.EngageAssistant;
 
 public class State11 implements State {
 
@@ -36,7 +43,7 @@ public class State11 implements State {
 	}
 
 	public String toString(Game game) {
-		String availableActions = "Player"+game.getCurrentPlayer().getName()+
+		String availableActions = "Player"+game.getCurrentPlayer().getPlayerNumber()+
 				"is your turn! Your available actions are the following, choose one of them.\n";
 		for (Action action : this.getAcceptableActions(game))
 			availableActions+= "\n" + action.toString();

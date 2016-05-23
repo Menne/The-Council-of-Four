@@ -7,7 +7,7 @@ import java.net.Socket;
 
 import model.Game;
 import model.actions.Action;
-import query.Query;
+import model.actions.AddPlayer;
 import view.View;
 import view.ViewNotify;
 
@@ -16,13 +16,12 @@ public class ServerSocketView extends View implements Runnable {
 	private final Socket socket;
 	private final ObjectInputStream socketIn;
 	private final ObjectOutputStream socketOut;
-	private final Game game;
 	
-	public ServerSocketView(Socket socket, Game game) throws IOException{
+	public ServerSocketView(Socket socket) throws IOException{
 		this.socket=socket;
 		this.socketIn=new ObjectInputStream(socket.getInputStream());
 		this.socketOut=new ObjectOutputStream(socket.getOutputStream());
-		this.game=game;
+		this.notifyObserver(new AddPlayer());
 	}
 	
 	
@@ -33,17 +32,9 @@ public class ServerSocketView extends View implements Runnable {
 			try {
 				
 				Object object = this.socketIn.readObject();
-				if (object instanceof Action){
 					
-					Action action=(Action) object;				
-					this.notifyObserver(action);
-				}
-				if(object instanceof Query){
-					Query query=(Query) object;
-					this.socketOut.writeObject(query.perform(this.game));
-					this.socketOut.flush(); 
-				}
-				
+				Action action=(Action) object;				
+				this.notifyObserver(action);
 				
 			} catch (ClassNotFoundException | IOException e) {
 				// TODO Auto-generated catch block

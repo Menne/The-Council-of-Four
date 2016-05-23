@@ -1,7 +1,6 @@
 package model.actions;
 
 import model.Game;
-import model.parser.ActionParserVisitor;
 
 /**
  * It's the class that models the generic action.
@@ -13,6 +12,4 @@ public abstract interface Action {
 
 	
 	public abstract boolean executeAction(Game game);
-
-	public abstract ActionParserVisitor setParser(Game game);
 }

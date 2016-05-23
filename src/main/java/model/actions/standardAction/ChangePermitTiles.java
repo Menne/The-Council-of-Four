@@ -1,9 +1,9 @@
-package model.actions;
+package model.actions.standardAction;
 
 import model.Game;
+import model.actions.NeedParameters;
+import model.actions.QuickAction;
 import model.gameTable.RegionBoard;
-import model.parser.ActionParserVisitor;
-import model.parser.ChangePermitTilesParser;
 import view.GameNotify;
 
 /**
@@ -54,14 +54,7 @@ public class ChangePermitTiles extends QuickAction implements NeedParameters{
 	@Override
 	public String toString() {
 		return "q2: change the permit tiles of a region";
-	}
-
-
-	@Override
-	public ActionParserVisitor setParser(Game game) {
-		return new ChangePermitTilesParser(this, game);
-	}
-				
+	}		
 
 
 

@@ -1,7 +1,7 @@
-package model.actions;
+package model.actions.standardAction;
 
 import model.Game;
-import model.parser.ActionParserVisitor;
+import model.actions.QuickAction;
 import view.ErrorNotify;
 import view.GameNotify;
 
@@ -43,9 +43,5 @@ public class AdditionalMainAction extends QuickAction {
 		return "q4: get an additionalo main action";
 	}
 
-	@Override
-	public ActionParserVisitor setParser(Game game) {
-		return null;
-	}
 
 }

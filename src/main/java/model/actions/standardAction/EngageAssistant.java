@@ -1,7 +1,7 @@
-package model.actions;
+package model.actions.standardAction;
 
 import model.Game;
-import model.parser.ActionParserVisitor;
+import model.actions.QuickAction;
 import view.GameNotify;
 /**
  * It's the quick action "engage assistants" it operates on the 
@@ -39,11 +39,4 @@ public class EngageAssistant extends QuickAction {
 	public String toString() {
 		return "q1: engage an assistant";
 	}
-
-	@Override
-	public ActionParserVisitor setParser(Game game) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

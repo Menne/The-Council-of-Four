@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Game;
-import model.actions.AcquirePermitTile;
 import model.actions.Action;
-import model.actions.BuildByKing;
-import model.actions.BuildByPermitTile;
-import model.actions.ElectCouncillor;
+import model.actions.standardAction.AcquirePermitTile;
+import model.actions.standardAction.BuildByKing;
+import model.actions.standardAction.BuildByPermitTile;
+import model.actions.standardAction.ElectCouncillor;
 
 public class State10 implements State{
 	
