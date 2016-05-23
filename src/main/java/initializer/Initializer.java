@@ -135,14 +135,9 @@ public class Initializer {
 	while(!s.equals("STOPRewardTokenList")) {
 		rewardTokenList.add(new HashSet<Bonus>());
 		while(!s.equals("NextRewardToken")){
-			System.out.println("è entrato nel while per inizializzare con:");
 			s=b.readLine();
-			System.out.println(s);
 			if(s.equals("AssistantsBonus")){
-				System.out.println("Assistants bonus");
-				s=b.readLine();
-				System.out.println(s);
-				rewardTokenList.get(i).add(new AssistantsBonus(Integer.parseInt(s)));}
+				rewardTokenList.get(i).add(new AssistantsBonus(Integer.parseInt(b.readLine())));}
 			System.out.println(rewardTokenList.get(i));
 			if(s.equals("CoinsBonus"))
 				rewardTokenList.get(i).add(new CoinsBonus(Integer.parseInt(b.readLine())));
@@ -160,7 +155,6 @@ public class Initializer {
 				rewardTokenList.get(i).add(new ScoreBonus(Integer.parseInt(b.readLine())));
 			System.out.println(rewardTokenList.get(i));
 			s=b.readLine(); //NextRewardToken or NEXTBonus (with next bonus it doesn't exit from the while)
-			System.out.println(s);
 		}
 		s=b.readLine();
 		i++;	
