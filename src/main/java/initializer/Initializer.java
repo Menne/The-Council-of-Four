@@ -132,23 +132,35 @@ public class Initializer {
 	 */
 	List<Set<Bonus>> rewardTokenList= new ArrayList<Set<Bonus>>();
 	int i=0;
-	while(!s.equals("STOPRewardTokenList")) {//legge da file il numero di reward token
+	while(!s.equals("STOPRewardTokenList")) {
 		rewardTokenList.add(new HashSet<Bonus>());
 		while(!s.equals("NextRewardToken")){
+			System.out.println("è entrato nel while per inizializzare con:");
 			s=b.readLine();
-			if(s.equals("AssistantsBonus"))
-				rewardTokenList.get(i).add(new AssistantsBonus(Integer.parseInt(b.readLine())));
+			System.out.println(s);
+			if(s.equals("AssistantsBonus")){
+				System.out.println("Assistants bonus");
+				s=b.readLine();
+				System.out.println(s);
+				rewardTokenList.get(i).add(new AssistantsBonus(Integer.parseInt(s)));}
+			System.out.println(rewardTokenList.get(i));
 			if(s.equals("CoinsBonus"))
 				rewardTokenList.get(i).add(new CoinsBonus(Integer.parseInt(b.readLine())));
+			System.out.println(rewardTokenList.get(i));
 			if(s.equals("MainActionBonus"))
 				rewardTokenList.get(i).add(new MainActionBonus());
+			System.out.println(rewardTokenList.get(i));
 			if(s.equals("NobilityBonus"))
 				rewardTokenList.get(i).add(new NobilityBonus(Integer.parseInt(b.readLine())));
+			System.out.println(rewardTokenList.get(i));
 			if(s.equals("PoliticsCardsBonus"))
 				rewardTokenList.get(i).add(new PoliticsCardsBonus(Integer.parseInt(b.readLine())));
+			System.out.println(rewardTokenList.get(i));
 			if(s.equals("ScoreBonus"))
 				rewardTokenList.get(i).add(new ScoreBonus(Integer.parseInt(b.readLine())));
+			System.out.println(rewardTokenList.get(i));
 			s=b.readLine(); //NextRewardToken or NEXTBonus (with next bonus it doesn't exit from the while)
+			System.out.println(s);
 		}
 		s=b.readLine();
 		i++;	
