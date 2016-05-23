@@ -1,16 +1,16 @@
-package model.actions;
+package model.actions.standardAction;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import model.Game;
+import model.actions.MainAction;
+import model.actions.NeedParameters;
 import model.bonus.Bonus;
 import model.gameTable.CouncilBalcony;
 import model.gameTable.Councillor;
 import model.gameTable.PoliticsCard;
 import model.gameTable.RegionBoard;
-import model.parser.AcquirePermitTileParser;
-import model.parser.ActionParserVisitor;
 import view.GameNotify;
 
 /**
@@ -134,11 +134,6 @@ public class AcquirePermitTile extends MainAction implements NeedParameters{
 	@Override
 	public String toString() {
 		return "m2: acquire a permit tile";
-	}
-
-	@Override
-	public ActionParserVisitor setParser(Game game) {
-		return new AcquirePermitTileParser(this, game);
 	}
 	
 }

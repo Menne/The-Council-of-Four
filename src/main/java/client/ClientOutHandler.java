@@ -4,14 +4,20 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
-import query.GetActions;
+import client.ModelDTO.GameDTO;
+
+
 
 public class ClientOutHandler implements Runnable {
 
 	private ObjectOutputStream socketOut;
+	private final GameDTO clientGame;
+	
+	
 
-	public ClientOutHandler(ObjectOutputStream socketOut) {
+	public ClientOutHandler(ObjectOutputStream socketOut, GameDTO game) {
 		this.socketOut = socketOut;
+		this.clientGame=game;
 	}
 	
 	
@@ -23,8 +29,10 @@ public class ClientOutHandler implements Runnable {
 			
 			try {
 				
-				this.socketOut.writeObject(new GetActions());
-				this.socketOut.flush();
+				String inputLine = stdin.nextLine();
+				socketOut.writeObject(inputLine);
+				socketOut.flush();
+
 				
 			} catch (IOException e) {
 				// TODO Auto-generated catch block

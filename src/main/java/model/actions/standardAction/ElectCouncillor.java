@@ -1,10 +1,10 @@
- package model.actions;
+ package model.actions.standardAction;
 
 import model.Game;
+import model.actions.MainAction;
+import model.actions.NeedParameters;
 import model.gameTable.CouncilBalcony;
 import model.gameTable.Councillor;
-import model.parser.ActionParserVisitor;
-import model.parser.ElectCouncillorParser;
 import view.GameNotify;
 
 /**
@@ -62,9 +62,5 @@ public class ElectCouncillor extends MainAction implements NeedParameters{
 		return "m1: elect a councillor";
 	}
 
-	@Override
-	public ActionParserVisitor setParser(Game game) {
-		return new ElectCouncillorParser(this, game);
-	}
 
 }

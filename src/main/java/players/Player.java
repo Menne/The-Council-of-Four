@@ -19,7 +19,7 @@ import model.gameTable.PoliticsDeck;
 public class Player {
 
 	private final int playerNumber;
-	private final String name;
+//	private final String name;
 	private List<Assistant> assistants;
 	private int score;
 	private int nobility;
@@ -41,10 +41,10 @@ public class Player {
 	 * @param assistants number of initial assistants
 	 * @param coins number of initial coins
 	 */
-	public Player(int playerNumber, String name, int assistants, int coins,
+	public Player(int playerNumber,/* String name,*/ int assistants, int coins,
 			PoliticsDeck politicsDeck) {
 		this.playerNumber=playerNumber;
-		this.name=name;
+//		this.name=name;
 		this.assistants=new ArrayList<Assistant>();
 		for(int i=0; i<assistants; i++)
 			this.assistants.add(new Assistant());
@@ -66,9 +66,9 @@ public class Player {
 		return playerNumber;
 	}
 	
-	public String getName() {
+/*	public String getName() {
 		return name;
-	}
+	}*/
 	
 	public int getNumberOfAssistants() {
 		return this.assistants.size();
@@ -222,11 +222,13 @@ public class Player {
 		return this.emporiums.remove(0);
 	}
 
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + playerNumber;
 		return result;
 	}
 
@@ -239,17 +241,14 @@ public class Player {
 		if (getClass() != obj.getClass())
 			return false;
 		Player other = (Player) obj;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
+		if (playerNumber != other.playerNumber)
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Player " + playerNumber + "\t" + name + "\tassistants=" + assistants.size() + "\tscore="
+		return "Player " + playerNumber + "\tassistants=" + assistants.size() + "\tscore="
 				+ score + "\tnobility=" + nobility + "\tcoins=" + coins + "\n hand=" + hand
 				+ ", playersPermitTilesTurnedUp=" + playersPermitTilesTurnedUp + ", playersPermitTilesTurnedDown="
 				+ playersPermitTilesTurnedDown + ", emporiums=" + this.emporiums.size() + "]\n\n";

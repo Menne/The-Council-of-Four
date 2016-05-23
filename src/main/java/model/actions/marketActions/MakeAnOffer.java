@@ -3,7 +3,6 @@ package model.actions.marketActions;
 import model.Game;
 import model.actions.Action;
 import model.market.Marketable;
-import model.parser.ActionParserVisitor;
 
 public class MakeAnOffer implements Action{
 	
@@ -31,10 +30,5 @@ public class MakeAnOffer implements Action{
 		
 	}
 
-	@Override
-	public ActionParserVisitor setParser(Game game) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

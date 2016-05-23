@@ -1,13 +1,13 @@
-package model.actions;
+package model.actions.standardAction;
 
 import model.Game;
+import model.actions.MainAction;
+import model.actions.NeedParameters;
 import model.bonus.Bonus;
 import model.gameTable.City;
 import model.gameTable.ConnectedBuiltCityDiscover;
 import model.gameTable.Emporium;
 import model.gameTable.PermitTile;
-import model.parser.ActionParserVisitor;
-import model.parser.BuildByPermitTileParser;
 import view.GameNotify;
 
 /**
@@ -160,10 +160,5 @@ public class BuildByPermitTile extends MainAction implements NeedParameters{
 		return "m3: build an emporium using a permit tile";
 	}
 
-
-	@Override
-	public ActionParserVisitor setParser(Game game) {
-		return new BuildByPermitTileParser(this, game);
-	}
 
 }

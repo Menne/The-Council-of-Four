@@ -1,10 +1,10 @@
-package model.actions;
+package model.actions.standardAction;
 
 import model.Game;
+import model.actions.NeedParameters;
+import model.actions.QuickAction;
 import model.gameTable.CouncilBalcony;
 import model.gameTable.Councillor;
-import model.parser.ActionParserVisitor;
-import model.parser.ElectCouncillorByAssistantParser;
 import view.GameNotify;
 
 /**
@@ -64,11 +64,6 @@ public class ElectCouncillorByAssistant extends QuickAction implements NeedParam
 	@Override
 	public String toString() {
 		return "q3: elect a councillor by sending an assistant";
-	}
-
-	@Override
-	public ActionParserVisitor setParser(Game game) {
-		return new ElectCouncillorByAssistantParser(this, game);
 	}
 
 }

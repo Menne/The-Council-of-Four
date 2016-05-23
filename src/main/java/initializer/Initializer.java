@@ -1,7 +1,6 @@
 package initializer;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.BufferedReader;import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,15 +10,13 @@ import java.util.Set;
 
 import model.bonus.*;
 import model.gameTable.*;
-import model.Game;
-import players.Player;
 
 public class Initializer {
 	
 	private String s;
 	
 
-	public Game initialize() throws IOException{
+	public GameTable initialize() throws IOException{
 	
 		
 	FileReader f;
@@ -382,22 +379,11 @@ public class Initializer {
 	GameTable gameTable=
 			new GameTable(map, regionList, kingBalcony, 
 					councillorsReserve, politicsDeck, nobilityTrack, kingRewardTiles);
-	
-	System.out.println("gametable ok");
-
-	
-	List<Player> players=new ArrayList<Player>();
-	Player player1=new Player(1,"Luca",1,10,politicsDeck);
-	players.add(player1);
-	Player player2=new Player(2,"Menne",2,11,politicsDeck);
-	players.add(player2);
-	Player player3=new Player(3,"Andrea",3,12,politicsDeck);
-	players.add(player3);
-	
 	b.close();
+	System.out.println("gametable ok");
+	return gameTable;
 	
-	Game game=new Game(players, gameTable);
-	return game;
+
 	}
 	
 	

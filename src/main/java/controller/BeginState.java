@@ -25,7 +25,7 @@ public class BeginState implements State {
 
 	
 	public String toString(Game game) {
-		String availableActions = "Player "+game.getCurrentPlayer().getName()+
+		String availableActions = "Player "+game.getCurrentPlayer().getPlayerNumber()+
 				" is your turn! Pick a politics card pressing pc.\n";
 		return availableActions;
 	}
