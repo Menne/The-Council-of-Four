@@ -5,11 +5,11 @@ import java.util.List;
 
 import model.Game;
 import model.actions.Action;
-import model.actions.AdditionalMainAction;
-import model.actions.ChangePermitTiles;
-import model.actions.ElectCouncillorByAssistant;
-import model.actions.EngageAssistant;
 import model.actions.MoveToNext;
+import model.actions.standardAction.AdditionalMainAction;
+import model.actions.standardAction.ChangePermitTiles;
+import model.actions.standardAction.ElectCouncillorByAssistant;
+import model.actions.standardAction.EngageAssistant;
 
 public class State01 implements State {
 

@@ -9,6 +9,10 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import client.ModelDTO.GameDTO;
+import initializer.Initializer;
+import model.Game;
+
 public class ClientSocket {
 
 	private final static int PORT = 29999;
@@ -22,11 +26,13 @@ public class ClientSocket {
 		
 		ExecutorService executor=Executors.newFixedThreadPool(2);
 		
+		GameDTO clientGame=new GameDTO();
+		
 		executor.submit(new ClientOutHandler(
-				new ObjectOutputStream(socket.getOutputStream())));
+				new ObjectOutputStream(socket.getOutputStream()),clientGame));
 
 		executor.submit(new ClientInHandler(
-				new ObjectInputStream(socket.getInputStream())));
+				new ObjectInputStream(socket.getInputStream()),clientGame));
 			
 	}
 	

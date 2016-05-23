@@ -1,9 +1,7 @@
-package model.actions;
+package model.actions.bonusAction;
 
 import model.Game;
-import model.bonus.Bonus;
-import model.gameTable.PermitTile;
-import model.parser.ActionParserVisitor;
+import model.actions.Action;
 
 /**
  * It's the class that models the action associated to the choice of the PurchasedPermitTile.
@@ -17,12 +15,6 @@ public class PurchasedPermitTileAction implements Action {
 	public boolean executeAction(Game game) {
 		// TODO Auto-generated method stub
 		return false;
-	}
-
-	@Override
-	public ActionParserVisitor setParser(Game game) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	
 }

@@ -1,21 +1,10 @@
 package it.polimi.ingsw.cg31;
 
 
-import initializer.Initializer;
-import model.Game;
-
-import model.parser.Parser;
-
-import java.io.IOException;
-import java.util.Scanner;
-
-import controller.Controller;
-
-import view.*;
 
 public class Main {
 
-	public static void main(String[] args) throws IOException{
+	public static void main(String[] args){
 		
 /*		Scanner scanner=new Scanner(System.in);
 		Initializer init=new Initializer();

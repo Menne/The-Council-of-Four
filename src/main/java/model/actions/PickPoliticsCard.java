@@ -1,8 +1,7 @@
 package model.actions;
 
 import model.Game;
-import model.parser.ActionParserVisitor;
-import view.CardNotify;
+import view.GameNotify;
 
 public class PickPoliticsCard implements Action {
 
@@ -11,7 +10,7 @@ public class PickPoliticsCard implements Action {
 		game.getCurrentPlayer().getHand().add(game.getGameTable().getPoliticsDeck().pickCard());
 		
 		game.setState(game.getState().pickPoliticsCardTransition());
-		game.notifyObserver(new CardNotify(game));
+		game.notifyObserver(new GameNotify(game));
 		return true;
 	}
 
@@ -19,12 +18,6 @@ public class PickPoliticsCard implements Action {
 	@Override
 	public String toString() {
 		return "pc: pick a politics card";
-	}
-	
-	
-	@Override
-	public ActionParserVisitor setParser(Game game) {
-		return null;	
 	}
 
 }

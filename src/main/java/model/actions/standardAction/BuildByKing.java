@@ -1,9 +1,11 @@
-package model.actions;
+package model.actions.standardAction;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import model.Game;
+import model.actions.MainAction;
+import model.actions.NeedParameters;
 import model.bonus.Bonus;
 import model.gameTable.City;
 import model.gameTable.ConnectedBuiltCityDiscover;
@@ -12,8 +14,6 @@ import model.gameTable.Councillor;
 import model.gameTable.Emporium;
 import model.gameTable.PoliticsCard;
 import model.gameTable.RegionBoard;
-import model.parser.ActionParserVisitor;
-import model.parser.BuildByKingParser;
 import view.GameNotify;
 
 /**
@@ -225,13 +225,6 @@ public class BuildByKing extends MainAction implements NeedParameters{
 	@Override
 	public String toString() {
 		return "m4: build an emporium with the help of the king";
-	}
-
-
-
-	@Override
-	public ActionParserVisitor setParser(Game game) {
-		return new BuildByKingParser(this, game);	
 	}
 
 }
