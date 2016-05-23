@@ -30,7 +30,7 @@ public class Game extends Observable<ViewNotify>{
 		this.players=new ArrayList<Player>();
 		Initializer init= new Initializer();
 		this.gameTable=init.initialize();
-		this.currentPlayer=this.players.get(0);
+//		this.currentPlayer=this.players.get(0);
 		this.state=new BeginState();
 		this.additionalMainActionBonus=false;
 		this.lastLap=false;

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.jgrapht.UndirectedGraph;
-
+import client.actionDTO.ActionDTO;
 import model.gameTable.CardColour;
 
 public class GameDTO {
@@ -16,6 +16,7 @@ public class GameDTO {
 //	private List<Set<String>> clientNobilityTrack;
 	private List<PlayerDTO> clientPlayers;
 	private PlayerDTO currentPlayer;
+	private List<ActionDTO> availableActions;
 	
 	public GameDTO(){
 		this.clientRegions=new ArrayList<RegionDTO>();
@@ -71,6 +72,14 @@ public class GameDTO {
 
 	public void setCurrentPlayer(PlayerDTO currentPlayer) {
 		this.currentPlayer = currentPlayer;
+	}
+
+	public List<ActionDTO> getAvailableActions() {
+		return availableActions;
+	}
+
+	public void setAvailableActions(List<ActionDTO> availableActions) {
+		this.availableActions = availableActions;
 	}
 	
 	
