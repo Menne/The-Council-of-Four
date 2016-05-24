@@ -5,9 +5,12 @@ import java.util.List;
 
 import org.jgrapht.UndirectedGraph;
 import client.actionDTO.ActionDTO;
+import client.clientView.notifies.ClientViewNotify;
+import client.parser.Parser;
 import model.gameTable.CardColour;
+import observerPattern.Observable;
 
-public class GameDTO {
+public class GameDTO extends Observable<ClientViewNotify> {
 	
 	private UndirectedGraph<CityDTO, org.jgrapht.graph.DefaultEdge> clientMap;
 	private List<RegionDTO> clientRegions;
@@ -17,6 +20,7 @@ public class GameDTO {
 	private List<PlayerDTO> clientPlayers;
 	private PlayerDTO currentPlayer;
 	private List<ActionDTO> availableActions;
+	private Parser parser;
 	
 	public GameDTO(){
 		this.clientRegions=new ArrayList<RegionDTO>();
@@ -24,6 +28,7 @@ public class GameDTO {
 		this.clientCouncillorReserve=new ArrayList<CardColour>();
 //		this.clientNobilityTrack=new ArrayList<Set<String>>();
 		this.clientPlayers=new ArrayList<PlayerDTO>();
+		this.parser=new Parser(this);
 	}
 
 	public UndirectedGraph<CityDTO, org.jgrapht.graph.DefaultEdge> getClientMap() {
@@ -82,5 +87,8 @@ public class GameDTO {
 		this.availableActions = availableActions;
 	}
 	
+	public Parser getParser() {
+		return parser;
+	}
 	
 }

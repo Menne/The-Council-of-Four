@@ -1,6 +1,9 @@
 package client.actionDTO;
 
 import client.ModelDTO.CityDTO;
+import client.ModelDTO.GameDTO;
+import client.parser.ActionParserVisitor;
+import client.parser.BuildByPermitTileParser;
 import model.gameTable.PermitTile;
 
 public class BuildByPermitTileDTO implements ActionDTO{
@@ -24,6 +27,11 @@ public class BuildByPermitTileDTO implements ActionDTO{
 	@Override
 	public String toString() {
 		return "m3: build an emporium using a permit tile";
+	}
+
+	@Override
+	public ActionParserVisitor setParser(GameDTO game) {
+		return new BuildByPermitTileParser(this, game);
 	}
 	
 	

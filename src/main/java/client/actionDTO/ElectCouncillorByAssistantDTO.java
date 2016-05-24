@@ -1,14 +1,17 @@
 package client.actionDTO;
 
+import client.ModelDTO.GameDTO;
+import client.parser.ActionParserVisitor;
+import client.parser.ElectCouncillorByAssistantParser;
 import model.gameTable.CardColour;
 
-public class ElectCouncillorByAssistantsDTO implements ActionDTO{
+public class ElectCouncillorByAssistantDTO implements ActionDTO{
 		
 	private final CardColour newCouncillor;
 	private final CardColour[] councilBalcony;
 		
 		
-	public ElectCouncillorByAssistantsDTO(CardColour newCouncillor, CardColour[] councilBalcony){
+	public ElectCouncillorByAssistantDTO(CardColour newCouncillor, CardColour[] councilBalcony){
 		this.newCouncillor=newCouncillor;
 		this.councilBalcony=councilBalcony;
 	}
@@ -24,6 +27,11 @@ public class ElectCouncillorByAssistantsDTO implements ActionDTO{
 	@Override
 	public String toString() {
 		return "q3: elect a councillor by sending an assistant";
+	}
+
+	@Override
+	public ActionParserVisitor setParser(GameDTO game) {
+		return new ElectCouncillorByAssistantParser(this, game);
 	}
 }
 	

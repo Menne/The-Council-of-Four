@@ -1,7 +1,7 @@
 package model.actions.standardAction;
 
+import client.actionDTO.NeedParameters;
 import model.Game;
-import model.actions.NeedParameters;
 import model.actions.QuickAction;
 import model.gameTable.RegionBoard;
 import view.GameNotify;

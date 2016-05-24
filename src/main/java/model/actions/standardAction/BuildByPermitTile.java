@@ -1,8 +1,8 @@
 package model.actions.standardAction;
 
+import client.actionDTO.NeedParameters;
 import model.Game;
 import model.actions.MainAction;
-import model.actions.NeedParameters;
 import model.bonus.Bonus;
 import model.gameTable.City;
 import model.gameTable.ConnectedBuiltCityDiscover;
