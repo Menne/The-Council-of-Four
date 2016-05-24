@@ -715,4 +715,3 @@ NEXT
 NEXT
 3
 STOPKingRewardTile
-
