@@ -16,12 +16,12 @@ public class PlayerDTO implements ModelDTO<Player>{
 	private int coins;
 	private int emporiums;
 	private List<CardColourDTO> hand;
-	private List<PermitTile> availablePermitTiles;
+	private List<PermitTileDTO> availablePermitTiles;
 	
 	public PlayerDTO(){
 		
 		this.hand=new ArrayList<CardColourDTO>();
-		this.availablePermitTiles=new ArrayList<PermitTile>();
+		this.availablePermitTiles=new ArrayList<PermitTileDTO>();
 	}
 
 	@Override
@@ -96,11 +96,11 @@ public class PlayerDTO implements ModelDTO<Player>{
 		this.hand = hand;
 	}
 
-	public List<PermitTile> getAvailablePermitTiles() {
+	public List<PermitTileDTO> getAvailablePermitTiles() {
 		return availablePermitTiles;
 	}
 
-	public void setAvailablePermitTiles(List<PermitTile> availablePermitTiles) {
+	public void setAvailablePermitTiles(List<PermitTileDTO> availablePermitTiles) {
 		this.availablePermitTiles = availablePermitTiles;
 	}
 
