@@ -6,6 +6,9 @@ import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import org.modelmapper.PropertyMap;
+
+import client.ModelDTO.GameDTO;
 import controller.Controller;
 import model.Game;
 
@@ -15,10 +18,12 @@ public class Server {
 	private final static int PORT=29999;
 	private final Game game;
 	private final Controller controller;
+	private final GameDTO gameDTO;
 	
 	public Server() throws IOException{
 		this.game=new Game();
 		this.controller=new Controller(this.game);
+		this.gameDTO=new GameDTO();
 	}
 	
 	public void startSocket() throws IOException{
