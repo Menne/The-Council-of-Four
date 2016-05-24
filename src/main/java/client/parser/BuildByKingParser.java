@@ -31,13 +31,13 @@ public class BuildByKingParser implements ActionParserVisitor {
 		
 		this.game.notifyObserver(new ActionNotify
 				("the name of the city in which you want to build"));
-	//	this.game.notifyObserver(new ParametersNotify(parser.acceptableCities(), this));
+		this.game.notifyObserver(new ParametersNotify(parser.acceptableCities(), this));
 		this.selectedAction.setSelectedCity(parser.cityTranslator(currentParameter));
 		
 		this.game.notifyObserver(new ActionNotify
 				("the colour of the cards you want to descard"));
-	//	this.game.notifyObserver(new ParametersNotify(parser.acceptablePoliticsCards(), this));
-	//	this.selectedAction.setCardsToDescard(parser.politicsCardsTranslator(currentParameter));
+		this.game.notifyObserver(new ParametersNotify(parser.acceptablePoliticsCards(), this));
+		this.selectedAction.setCardsToDescard(parser.politicsCardsTranslator(currentParameter));
 	
 		return this.selectedAction;
 	}

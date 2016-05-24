@@ -11,6 +11,7 @@ import client.ModelDTO.PermitTileDTO;
 import client.ModelDTO.PlayerDTO;
 import client.ModelDTO.RegionDTO;
 import client.actionDTO.ActionDTO;
+import client.clientView.notifies.ClientErrorNotify;
 import model.Game;
 import model.actions.Action;
 import model.gameTable.CardColour;
@@ -102,14 +103,14 @@ public class Parser {
 	 * the parameters of the action, according to the current game state.
 	 * @return which contains the the list of possible strings for the selected action,
 	 */
-/*	protected List<String> acceptablePoliticsCards() {
+	protected List<String> acceptablePoliticsCards() {
 		List<String> acceptableColours=new ArrayList<String>();	
 		for(CardColourDTO card : this.game.getCurrentPlayer().getHand())
 			acceptableColours.add(card.getName());
 		if (acceptableColours.isEmpty())
-	//		this.game.notifyObserver(new ErrorNotify("It seems that your hand is empty..."));
+			this.game.notifyObserver(new ClientErrorNotify("It seems that your hand is empty..."));
 		return acceptableColours;
-	}*/
+	}
 	
 	/**
 	 * This method builds a list of strings from which the user can choose when he inserts
@@ -141,10 +142,10 @@ public class Parser {
 	 * the parameters of the action, according to the current game state.
 	 * @return which contains the the list of possible strings for the selected action,
 	 */
-/*	protected List<String> acceptableCities() {
+	protected List<String> acceptableCities() {
 		List<String> acceptableCityNames=new ArrayList<String>();
-		for(RegionDTO region : this.game.getClientRegions())
-			for (CityDTO city : region)
+		for (RegionDTO region : this.game.getClientRegions())
+			for (CityDTO city : region.getCities())
 				if(city.getBuildedEmporiums().isEmpty())
 					acceptableCityNames.add(city.getName());
 				else
@@ -152,7 +153,7 @@ public class Parser {
 						if (!emporium.equals(this.game.getCurrentPlayer()))
 							acceptableCityNames.add(city.getName());
 		return acceptableCityNames;
-	}*/
+	}
 	
 	/**
 	 * This method builds a list of strings from which the user can choose when he inserts
@@ -164,8 +165,8 @@ public class Parser {
 		int maxNumberOfCards=this.game.getCurrentPlayer().getAvailablePermitTiles().size();
 		for(Integer i=0; i<maxNumberOfCards; i++)
 			acceptableTiles.add(i.toString());
-	//	if (acceptableTiles.isEmpty())
-	//		this.game.notifyObserver(new ErrorNotify("It seems that you haven't permit tiles..."));
+		if (acceptableTiles.isEmpty())
+			this.game.notifyObserver(new ClientErrorNotify("It seems that you haven't permit tiles..."));
 		return acceptableTiles;
 	}
 		
@@ -199,11 +200,11 @@ public class Parser {
 	 * @param permitTileToTranslate is the string corresponding to the index of the permit tile in the hand of the player
 	 * @return the permit tile obtained from the string
 	 */
-	//protected PermitTileDTO permitTileTranslator(String permitTileToTranslate) {
-	//	int numberOfPermitTile=Integer.parseInt(permitTileToTranslate);
-	//	PermitTileDTO permitTileTranslated=this.game.getCurrentPlayer().getAvailablePermitTiles().get(numberOfPermitTile);
-	//	return permitTileTranslated;
-//	}
+	/*protected PermitTileDTO permitTileTranslator(String permitTileToTranslate) {
+		int numberOfPermitTile=Integer.parseInt(permitTileToTranslate);
+		PermitTileDTO permitTileTranslated=this.game.getCurrentPlayer().getAvailablePermitTiles().get(numberOfPermitTile);
+		return permitTileTranslated;
+	}*/
 	
 	/**
 	 * Translates the string given from the user into the corresponding politics card
