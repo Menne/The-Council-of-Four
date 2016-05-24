@@ -201,7 +201,7 @@ public class Initializer {
 	/*
 	 * inizializzo re
 	 */
-	new King(searchColoredCity(allCities, cityColourTranslator("KingColour", cityColourList)));
+	King king=new King(searchColoredCity(allCities, cityColourTranslator("KingColour", cityColourList)));
 	
 	/*
 	 * riempio le liste di città vicine di ogni città
@@ -219,7 +219,7 @@ public class Initializer {
 	/*
 	 * inizializzo la mappa passando il set di tutte le città
 	 */
-	Map map=new Map(allCities);
+	Map map=new Map(allCities, king);
 
 	/*
 	 * riempio i permit deck di ogni regione inizializzando ogni permit tile

@@ -5,7 +5,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-import model.Game;
 import model.actions.Action;
 import model.actions.AddPlayer;
 import view.View;

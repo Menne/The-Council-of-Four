@@ -18,20 +18,26 @@ public class Map {
 
 
 	private final UndirectedGraph<City, DefaultEdge> gameMap;
+	private final King king;
 	
 	/**
 	 * Creates the game map as a simple graph starting from a set of cities.
 	 * Each city has the reference to the set of its near cities.
 	 * @param cities of the game map
 	 */
-	public Map(Set<City> cities){
+	public Map(Set<City> cities, King king){
 		this.gameMap=new SimpleGraph<City, DefaultEdge>(DefaultEdge.class);
 		for(City city : cities)
 			this.gameMap.addVertex(city);
 		for(City city1 : cities)
 			for(City city2 : city1.getNearCities())
 				if(!this.gameMap.containsEdge(city1,city2))
-					this.gameMap.addEdge(city1, city2);				
+					this.gameMap.addEdge(city1, city2);		
+		this.king=king;
+	}
+
+	public King getKing() {
+		return king;
 	}
 
 	public UndirectedGraph<City, DefaultEdge> getGameMap() {

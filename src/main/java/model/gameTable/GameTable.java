@@ -13,6 +13,7 @@ public class GameTable {
 	private final NobilityTrack nobilityTrack;
 	private final List<ScoreBonus> kingRewardTiles;
                
+	
 	public GameTable(Map map, List<RegionBoard> regionBoards, CouncilBalcony councilOfKing,
 			CouncillorsReserve councilReserve, PoliticsDeck politicsDeck, NobilityTrack nobilityTrack,
 			List<ScoreBonus> kingRewardTiles){
