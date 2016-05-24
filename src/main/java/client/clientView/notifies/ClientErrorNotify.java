@@ -2,11 +2,11 @@ package client.clientView.notifies;
 
 import client.clientView.CLI;
 
-public class ErrorNotify implements ClientViewNotify {
+public class ClientErrorNotify implements ClientViewNotify {
 
 	private String message;
 
-	public ErrorNotify(String message) {
+	public ClientErrorNotify(String message) {
 		this.message=message;
 	}
 
