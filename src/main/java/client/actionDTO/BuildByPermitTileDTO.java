@@ -2,16 +2,19 @@ package client.actionDTO;
 
 import client.ModelDTO.CityDTO;
 import client.ModelDTO.GameDTO;
+import client.ModelDTO.PermitTileDTO;
 import client.parser.ActionParserVisitor;
 import client.parser.BuildByPermitTileParser;
+import model.Game;
+import model.actions.Action;
 import model.gameTable.PermitTile;
 
 public class BuildByPermitTileDTO implements ActionDTO{
 	
-	private  PermitTile selectedPermitTile;
+	private  PermitTileDTO selectedPermitTile;
 	private  CityDTO selectedCity;
 
-	public PermitTile getSelectedPermitTile() {
+	public PermitTileDTO getSelectedPermitTile() {
 		return selectedPermitTile;
 	}
 
@@ -19,7 +22,7 @@ public class BuildByPermitTileDTO implements ActionDTO{
 		return selectedCity;
 	}
 
-	public void setSelectedPermitTile(PermitTile selectedPermitTile) {
+	public void setSelectedPermitTile(PermitTileDTO selectedPermitTile) {
 		this.selectedPermitTile = selectedPermitTile;
 	}
 
@@ -35,6 +38,12 @@ public class BuildByPermitTileDTO implements ActionDTO{
 	@Override
 	public ActionParserVisitor setParser(GameDTO game) {
 		return new BuildByPermitTileParser(this, game);
+	}
+
+	@Override
+	public Action map(Game game) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

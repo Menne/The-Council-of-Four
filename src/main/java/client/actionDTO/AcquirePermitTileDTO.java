@@ -2,17 +2,21 @@ package client.actionDTO;
 
 import java.util.List;
 
+import client.ModelDTO.CardColourDTO;
 import client.ModelDTO.GameDTO;
 import client.ModelDTO.RegionDTO;
 import client.parser.AcquirePermitTileParser;
 import client.parser.ActionParserVisitor;
+import model.Game;
+import model.actions.Action;
+import model.actions.standardAction.AcquirePermitTile;
 import model.gameTable.CardColour;
 
 public class AcquirePermitTileDTO implements ActionDTO {
 
 	private Integer numberOfPermitTile;
 	private RegionDTO chosenRegion;
-	private List<CardColour> cardsToDescard;
+	private List<CardColourDTO> cardsToDescard;
 
 	public int getNumberOfPermitTiles() {
 		return numberOfPermitTile;
@@ -22,7 +26,7 @@ public class AcquirePermitTileDTO implements ActionDTO {
 		return chosenRegion;
 	}
 
-	public List<CardColour> getCardsToDescard() {
+	public List<CardColourDTO> getCardsToDescard() {
 		return cardsToDescard;
 	}
 	
@@ -30,7 +34,7 @@ public class AcquirePermitTileDTO implements ActionDTO {
 		this.numberOfPermitTile=numberOfPermitTile;
 	}
 
-	public void setCardsToDescard(List<CardColour> cardsToDescard) {
+	public void setCardsToDescard(List<CardColourDTO> cardsToDescard) {
 		this.cardsToDescard=cardsToDescard;
 	}
 
@@ -46,6 +50,13 @@ public class AcquirePermitTileDTO implements ActionDTO {
 	@Override
 	public ActionParserVisitor setParser(GameDTO game) {
 		return new AcquirePermitTileParser(this, game);
+	}
+
+	@Override
+	public Action map(Game game) {
+		AcquirePermitTile action = new AcquirePermitTile();
+		
+		return null;
 	}
 
 }

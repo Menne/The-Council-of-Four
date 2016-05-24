@@ -2,7 +2,7 @@ package model.actions.standardAction;
 
 import client.actionDTO.NeedParameters;
 import client.actionDTO.ActionDTO;
-import client.actionDTO.ElectCouncillorByAssistantsDTO;
+import client.actionDTO.ElectCouncillorByAssistantDTO;
 import model.Game;
 import model.actions.QuickAction;
 import model.gameTable.CouncilBalcony;
@@ -70,7 +70,7 @@ public class ElectCouncillorByAssistant extends QuickAction implements NeedParam
 
 	@Override
 	public ActionDTO map() {
-		return new ElectCouncillorByAssistantsDTO();
+		return new ElectCouncillorByAssistantDTO();
 	}
 
 }

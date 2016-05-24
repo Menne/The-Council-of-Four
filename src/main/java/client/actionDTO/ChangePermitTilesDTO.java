@@ -4,6 +4,8 @@ import client.ModelDTO.GameDTO;
 import client.ModelDTO.RegionDTO;
 import client.parser.ActionParserVisitor;
 import client.parser.ChangePermitTilesParser;
+import model.Game;
+import model.actions.Action;
 
 public class ChangePermitTilesDTO implements ActionDTO {
 
@@ -26,6 +28,12 @@ public class ChangePermitTilesDTO implements ActionDTO {
 	@Override
 	public ActionParserVisitor setParser(GameDTO game) {
 		return new ChangePermitTilesParser(this, game);
+	}
+
+	@Override
+	public Action map(Game game) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	
