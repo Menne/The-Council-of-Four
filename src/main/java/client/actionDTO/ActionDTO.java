@@ -1,5 +1,8 @@
 package client.actionDTO;
 
-public interface ActionDTO {
+import model.Game;
+import model.actions.Action;
 
+public interface ActionDTO {
+	
 }
