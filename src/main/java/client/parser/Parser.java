@@ -12,17 +12,6 @@ import client.ModelDTO.PlayerDTO;
 import client.ModelDTO.RegionDTO;
 import client.actionDTO.ActionDTO;
 import client.clientView.notifies.ClientErrorNotify;
-import model.Game;
-import model.actions.Action;
-import model.gameTable.CardColour;
-import model.gameTable.City;
-import model.gameTable.CouncilBalcony;
-import model.gameTable.Councillor;
-import model.gameTable.Emporium;
-import model.gameTable.PermitTile;
-import model.gameTable.PoliticsCard;
-import model.gameTable.RegionBoard;
-import view.ErrorNotify;
 
 public class Parser {
 
@@ -169,7 +158,7 @@ public class Parser {
 			this.game.notifyObserver(new ClientErrorNotify("It seems that you haven't permit tiles..."));
 		return acceptableTiles;
 	}
-		
+	
 	
 	//Now there are the methods which get the possible parameters from the current game
 	
@@ -200,11 +189,11 @@ public class Parser {
 	 * @param permitTileToTranslate is the string corresponding to the index of the permit tile in the hand of the player
 	 * @return the permit tile obtained from the string
 	 */
-	/*protected PermitTileDTO permitTileTranslator(String permitTileToTranslate) {
+	protected PermitTileDTO permitTileTranslator(String permitTileToTranslate) {
 		int numberOfPermitTile=Integer.parseInt(permitTileToTranslate);
 		PermitTileDTO permitTileTranslated=this.game.getCurrentPlayer().getAvailablePermitTiles().get(numberOfPermitTile);
 		return permitTileTranslated;
-	}*/
+	}
 	
 	/**
 	 * Translates the string given from the user into the corresponding politics card
@@ -216,11 +205,10 @@ public class Parser {
 		StringTokenizer st = new StringTokenizer(cardsToTranslate);
 	    while (st.hasMoreTokens())
 	    	for (CardColourDTO cardTranslated : this.game.getCurrentPlayer().getHand())
-	    		if (cardTranslated.getName().equals(st))
+	    		if (cardTranslated.getName().contains(st.nextToken()))
 	    			cardsTranslated.add(cardTranslated);
 		return cardsTranslated;
 	}
-
 	
 	/**
 	 * Translates the string given from the user into the corresponding city
