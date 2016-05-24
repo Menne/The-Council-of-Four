@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import client.actionDTO.NeedParameters;
+import client.actionDTO.AcquirePermitTileDTO;
+import client.actionDTO.ActionDTO;
 import model.Game;
 import model.actions.MainAction;
 import model.bonus.Bonus;
@@ -134,6 +136,13 @@ public class AcquirePermitTile extends MainAction implements NeedParameters{
 	@Override
 	public String toString() {
 		return "m2: acquire a permit tile";
+	}
+
+
+
+	@Override
+	public ActionDTO map() {
+		return new AcquirePermitTileDTO();
 	}
 	
 }

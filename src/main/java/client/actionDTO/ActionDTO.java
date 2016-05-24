@@ -5,6 +5,6 @@ import client.parser.ActionParserVisitor;
 
 public interface ActionDTO {
 
-	ActionParserVisitor setParser(GameDTO game);
+	public ActionParserVisitor setParser(GameDTO game);
 
 }

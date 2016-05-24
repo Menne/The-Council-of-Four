@@ -1,5 +1,7 @@
 package model.actions.standardAction;
 
+import client.actionDTO.ActionDTO;
+import client.actionDTO.EngageAssistantDTO;
 import model.Game;
 import model.actions.QuickAction;
 import view.GameNotify;
@@ -38,5 +40,10 @@ public class EngageAssistant extends QuickAction {
 	@Override
 	public String toString() {
 		return "q1: engage an assistant";
+	}
+
+	@Override
+	public ActionDTO map() {
+		return new EngageAssistantDTO();
 	}
 }

@@ -1,6 +1,8 @@
- package model.actions.standardAction;
+package model.actions.standardAction;
 
 import client.actionDTO.NeedParameters;
+import client.actionDTO.ActionDTO;
+import client.actionDTO.ElectCouncillorDTO;
 import model.Game;
 import model.actions.MainAction;
 import model.gameTable.CouncilBalcony;
@@ -60,6 +62,11 @@ public class ElectCouncillor extends MainAction implements NeedParameters{
 	@Override
 	public String toString() {
 		return "m1: elect a councillor";
+	}
+
+	@Override
+	public ActionDTO map() {
+		return new ElectCouncillorDTO();
 	}
 
 

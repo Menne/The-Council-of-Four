@@ -1,6 +1,8 @@
 package model.actions.standardAction;
 
 import client.actionDTO.NeedParameters;
+import client.actionDTO.ActionDTO;
+import client.actionDTO.BuildByPermitTileDTO;
 import model.Game;
 import model.actions.MainAction;
 import model.bonus.Bonus;
@@ -158,6 +160,12 @@ public class BuildByPermitTile extends MainAction implements NeedParameters{
 	@Override
 	public String toString() {
 		return "m3: build an emporium using a permit tile";
+	}
+
+
+	@Override
+	public ActionDTO map() {
+		return new BuildByPermitTileDTO();
 	}
 
 
