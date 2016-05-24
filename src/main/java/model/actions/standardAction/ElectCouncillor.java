@@ -1,10 +1,10 @@
- package model.actions.standardAction;
+package model.actions.standardAction;
 
+import client.actionDTO.NeedParameters;
 import client.actionDTO.ActionDTO;
 import client.actionDTO.ElectCouncillorDTO;
 import model.Game;
 import model.actions.MainAction;
-import model.actions.NeedParameters;
 import model.gameTable.CouncilBalcony;
 import model.gameTable.Councillor;
 import view.GameNotify;

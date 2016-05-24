@@ -1,9 +1,9 @@
 package model.actions.standardAction;
 
+import client.actionDTO.NeedParameters;
 import client.actionDTO.ActionDTO;
 import client.actionDTO.ElectCouncillorByAssistantsDTO;
 import model.Game;
-import model.actions.NeedParameters;
 import model.actions.QuickAction;
 import model.gameTable.CouncilBalcony;
 import model.gameTable.Councillor;

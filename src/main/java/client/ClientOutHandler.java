@@ -2,47 +2,34 @@ package client;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.util.Scanner;
 
-import client.ModelDTO.GameDTO;
-
-
+import client.clientController.ClientController;
 
 public class ClientOutHandler implements Runnable {
 
 	private ObjectOutputStream socketOut;
-	private final GameDTO clientGame;
+	private ClientController clientController;
 	
-	
-
-	public ClientOutHandler(ObjectOutputStream socketOut, GameDTO game) {
+	public ClientOutHandler(ObjectOutputStream socketOut, ClientController clientController) {
 		this.socketOut = socketOut;
-		this.clientGame=game;
+		this.clientController=clientController;
 	}
 	
-	
+
 	@Override
 	public void run() {
-		Scanner stdin=new Scanner(System.in);
-		
-		while(true){
-			
+		while (true)
 			try {
-				
-				String inputLine = stdin.nextLine();
-				socketOut.writeObject(inputLine);
-				socketOut.flush();
-
+				if (clientController.isSend()) {
+					socketOut.writeObject(clientController.getSelectedAction());
+					socketOut.flush();
+				}
+				clientController.setSend(false);
 				
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-
-			
-		}
-
 	}
 
 }

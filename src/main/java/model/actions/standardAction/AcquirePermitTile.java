@@ -3,11 +3,11 @@ package model.actions.standardAction;
 import java.util.ArrayList;
 import java.util.List;
 
+import client.actionDTO.NeedParameters;
 import client.actionDTO.AcquirePermitTileDTO;
 import client.actionDTO.ActionDTO;
 import model.Game;
 import model.actions.MainAction;
-import model.actions.NeedParameters;
 import model.bonus.Bonus;
 import model.gameTable.CouncilBalcony;
 import model.gameTable.Councillor;

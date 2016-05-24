@@ -1,8 +1,10 @@
 package client.actionDTO;
 
-import model.Game;
-import model.actions.Action;
+import client.ModelDTO.GameDTO;
+import client.parser.ActionParserVisitor;
 
-public interface ActionDTO {
-	
+	public interface ActionDTO {
+
+		public ActionParserVisitor setParser(GameDTO game);
+
 }

@@ -4,17 +4,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
-
 import client.actionDTO.ActionDTO;
+import client.clientView.notifies.ClientViewNotify;
+import client.parser.Parser;
 import model.Game;
-import model.actions.Action;
+import observerPattern.Observable;
 import model.bonus.Bonus;
+import model.actions.Action;
 import model.gameTable.CouncilBalcony;
 import model.gameTable.Councillor;
 import model.gameTable.RegionBoard;
 import players.Player;
 
-public class GameDTO implements ModelDTO<Game>{
+public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Game> {
 	
 	private List<RegionDTO> clientRegions;
 	private CardColourDTO[] clientKingBalcony;
@@ -23,6 +25,7 @@ public class GameDTO implements ModelDTO<Game>{
 	private List<PlayerDTO> clientPlayers;
 	private PlayerDTO currentPlayer;
 	private List<ActionDTO> availableActions;
+	private Parser parser;
 	
 	public GameDTO(){
 		this.clientRegions=new ArrayList<RegionDTO>();
@@ -30,6 +33,7 @@ public class GameDTO implements ModelDTO<Game>{
 		this.clientCouncillorReserve=new ArrayList<CardColourDTO>();
 		this.clientNobilityTrack=new ArrayList<Set<Bonus>>();
 		this.clientPlayers=new ArrayList<PlayerDTO>();
+		this.parser=new Parser(this);
 	}
 
 	@Override
@@ -135,5 +139,8 @@ public class GameDTO implements ModelDTO<Game>{
 
 	
 	
+	public Parser getParser() {
+		return parser;
+	}
 	
 }

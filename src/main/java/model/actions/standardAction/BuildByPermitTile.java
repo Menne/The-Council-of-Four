@@ -1,10 +1,10 @@
 package model.actions.standardAction;
 
+import client.actionDTO.NeedParameters;
 import client.actionDTO.ActionDTO;
 import client.actionDTO.BuildByPermitTileDTO;
 import model.Game;
 import model.actions.MainAction;
-import model.actions.NeedParameters;
 import model.bonus.Bonus;
 import model.gameTable.City;
 import model.gameTable.ConnectedBuiltCityDiscover;

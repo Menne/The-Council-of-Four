@@ -3,6 +3,9 @@ package client.actionDTO;
 import java.util.List;
 
 import client.ModelDTO.CityDTO;
+import client.ModelDTO.GameDTO;
+import client.parser.ActionParserVisitor;
+import client.parser.BuildByKingParser;
 import model.gameTable.CardColour;
 
 public class BuildByKingDTO implements ActionDTO{
@@ -29,6 +32,11 @@ public class BuildByKingDTO implements ActionDTO{
 	@Override
 	public String toString() {
 		return "m4: build an emporium with the help of the king";
+	}
+
+	@Override
+	public ActionParserVisitor setParser(GameDTO game) {
+		return new BuildByKingParser(this, game);
 	}
 	
 }
