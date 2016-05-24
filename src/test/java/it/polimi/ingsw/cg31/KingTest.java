@@ -30,9 +30,9 @@ public class KingTest {
 		City a=null;
 
 		for(City city: game.getGameTable().getRegionBoards().get(1).getRegionCities()){
-			if(city.getColour().getName()=="YELLOW")
+			if(city.getName()=="Hellar")
 				a=city;}
 		game.getGameTable().getMap().getKing().moveKing(a);
-		assertEquals(a, game.getGameTable().getMap().getKing().getKingPresence());
+		assertEquals(a.getName(), game.getGameTable().getMap().getKing().getKingPresence().getName());
 	}
 }
