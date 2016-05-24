@@ -7,13 +7,8 @@ import model.gameTable.CardColour;
 
 public class BuildByKingDTO implements ActionDTO{
 
-	private final CityDTO selectedCity;
-	private final List<CardColour> cardsToDescard;
-	
-	public BuildByKingDTO(CityDTO selectedCity, List<CardColour> cardsToDescard){
-		this.selectedCity=selectedCity;
-		this.cardsToDescard=cardsToDescard;
-	}
+	private CityDTO selectedCity;
+	private List<CardColour> cardsToDescard;
 
 	public CityDTO getSelectedCity() {
 		return selectedCity;
@@ -21,6 +16,14 @@ public class BuildByKingDTO implements ActionDTO{
 
 	public List<CardColour> getCardsToDescard() {
 		return cardsToDescard;
+	}
+
+	public void setSelectedCity(CityDTO selectedCity) {
+		this.selectedCity = selectedCity;
+	}
+
+	public void setCardsToDescard(List<CardColour> cardsToDescard) {
+		this.cardsToDescard = cardsToDescard;
 	}
 
 	@Override

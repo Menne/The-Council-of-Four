@@ -1,5 +1,7 @@
 package model.actions.standardAction;
 
+import client.actionDTO.ActionDTO;
+import client.actionDTO.AddictionalMainActionDTO;
 import model.Game;
 import model.actions.QuickAction;
 import view.ErrorNotify;
@@ -41,6 +43,11 @@ public class AdditionalMainAction extends QuickAction {
 	@Override
 	public String toString() {
 		return "q4: get an additionalo main action";
+	}
+
+	@Override
+	public ActionDTO map() {
+		return new AddictionalMainActionDTO();
 	}
 
 

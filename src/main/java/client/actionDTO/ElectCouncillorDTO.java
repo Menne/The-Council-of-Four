@@ -5,13 +5,8 @@ import model.gameTable.CardColour;
 
 public class ElectCouncillorDTO implements ActionDTO {
 	
-	private final CardColour newCouncillor;
-	private final CardColour[] councilBalcony;
-	
-	public ElectCouncillorDTO(CardColour newCouncillor, CardColour[] councilBalcony){
-		this.newCouncillor=newCouncillor;
-		this.councilBalcony=councilBalcony;
-	}
+	private CardColour newCouncillor;
+	private CardColour[] councilBalcony;
 
 	public CardColour getNewCouncillor() {
 		return newCouncillor;
@@ -19,6 +14,15 @@ public class ElectCouncillorDTO implements ActionDTO {
 
 	public CardColour[] getCouncilBalcony() {
 		return councilBalcony;
+	}
+	
+	
+	public void setNewCouncillor(CardColour newCouncillor) {
+		this.newCouncillor = newCouncillor;
+	}
+
+	public void setCouncilBalcony(CardColour[] councilBalcony) {
+		this.councilBalcony = councilBalcony;
 	}
 
 	@Override

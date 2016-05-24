@@ -5,13 +5,8 @@ import model.gameTable.PermitTile;
 
 public class BuildByPermitTileDTO implements ActionDTO{
 	
-	private final PermitTile selectedPermitTile;
-	private final CityDTO selectedCity;
-	
-	public BuildByPermitTileDTO(PermitTile selectedPermitTile, CityDTO selectedCity){
-		this.selectedCity=selectedCity;
-		this.selectedPermitTile=selectedPermitTile;
-	}
+	private  PermitTile selectedPermitTile;
+	private  CityDTO selectedCity;
 
 	public PermitTile getSelectedPermitTile() {
 		return selectedPermitTile;
@@ -19,6 +14,14 @@ public class BuildByPermitTileDTO implements ActionDTO{
 
 	public CityDTO getSelectedCity() {
 		return selectedCity;
+	}
+
+	public void setSelectedPermitTile(PermitTile selectedPermitTile) {
+		this.selectedPermitTile = selectedPermitTile;
+	}
+
+	public void setSelectedCity(CityDTO selectedCity) {
+		this.selectedCity = selectedCity;
 	}
 
 	@Override

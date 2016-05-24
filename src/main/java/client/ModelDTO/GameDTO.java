@@ -7,6 +7,7 @@ import java.util.Set;
 
 import client.actionDTO.ActionDTO;
 import model.Game;
+import model.actions.Action;
 import model.bonus.Bonus;
 import model.gameTable.CouncilBalcony;
 import model.gameTable.Councillor;
@@ -58,6 +59,13 @@ public class GameDTO implements ModelDTO<Game>{
 		}
 		
 		this.clientNobilityTrack=realObject.getGameTable().getNobilityTrack().getTrack();
+		
+		PlayerDTO playerDTO=new PlayerDTO();
+		playerDTO.map(realObject.getCurrentPlayer());
+		this.currentPlayer=playerDTO;
+		
+		for(Action action : realObject.getState().getAcceptableActions(realObject))
+			availableActions.add(action.map());
 	}
 
 	

@@ -1,6 +1,6 @@
 package client.actionDTO;
 
-public class EngageAssistantDTO {
+public class EngageAssistantDTO implements ActionDTO{
 
 	@Override
 	public String toString() {

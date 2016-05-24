@@ -4,14 +4,15 @@ import client.ModelDTO.RegionDTO;
 
 public class ChangePermitTilesDTO implements ActionDTO {
 
-	private final RegionDTO selectedRegion;
+	private RegionDTO selectedRegion;
 
-	public ChangePermitTilesDTO(RegionDTO selectedRegion){
-		this.selectedRegion=selectedRegion;
-	}
 
 	public RegionDTO getSelectedRegion() {
 		return selectedRegion;
+	}
+
+	public void setSelectedRegion(RegionDTO selectedRegion) {
+		this.selectedRegion = selectedRegion;
 	}
 
 	@Override
