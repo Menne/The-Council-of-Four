@@ -3,12 +3,14 @@ package client.ModelDTO;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 import client.actionDTO.ActionDTO;
 import client.clientView.notifies.ClientViewNotify;
 import client.parser.Parser;
 import model.Game;
 import observerPattern.Observable;
+import model.bonus.Bonus;
 import model.gameTable.CouncilBalcony;
 import model.gameTable.Councillor;
 import model.gameTable.RegionBoard;
@@ -19,7 +21,7 @@ public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Ga
 	private List<RegionDTO> clientRegions;
 	private CardColourDTO[] clientKingBalcony;
 	private List<CardColourDTO> clientCouncillorReserve;
-//	private List<Set<String>> clientNobilityTrack;
+	private List<Set<Bonus>> clientNobilityTrack;
 	private List<PlayerDTO> clientPlayers;
 	private PlayerDTO currentPlayer;
 	private List<ActionDTO> availableActions;
@@ -29,7 +31,7 @@ public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Ga
 		this.clientRegions=new ArrayList<RegionDTO>();
 		this.clientKingBalcony=new CardColourDTO[4];
 		this.clientCouncillorReserve=new ArrayList<CardColourDTO>();
-//		this.clientNobilityTrack=new ArrayList<Set<String>>();
+		this.clientNobilityTrack=new ArrayList<Set<Bonus>>();
 		this.clientPlayers=new ArrayList<PlayerDTO>();
 		this.parser=new Parser(this);
 	}
@@ -59,9 +61,67 @@ public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Ga
 			playerDTO.map(player);
 			this.clientPlayers.add(playerDTO);
 		}
+		
+		this.clientNobilityTrack=realObject.getGameTable().getNobilityTrack().getTrack();
 	}
 
 	
+	public List<RegionDTO> getClientRegions() {
+		return clientRegions;
+	}
+
+	public void setClientRegions(List<RegionDTO> clientRegions) {
+		this.clientRegions = clientRegions;
+	}
+
+	public CardColourDTO[] getClientKingBalcony() {
+		return clientKingBalcony;
+	}
+
+	public void setClientKingBalcony(CardColourDTO[] clientKingBalcony) {
+		this.clientKingBalcony = clientKingBalcony;
+	}
+
+	public List<CardColourDTO> getClientCouncillorReserve() {
+		return clientCouncillorReserve;
+	}
+
+	public void setClientCouncillorReserve(List<CardColourDTO> clientCouncillorReserve) {
+		this.clientCouncillorReserve = clientCouncillorReserve;
+	}
+
+	public List<Set<Bonus>> getClientNobilityTrack() {
+		return clientNobilityTrack;
+	}
+
+	public void setClientNobilityTrack(List<Set<Bonus>> clientNobilityTrack) {
+		this.clientNobilityTrack = clientNobilityTrack;
+	}
+
+	public List<PlayerDTO> getClientPlayers() {
+		return clientPlayers;
+	}
+
+	public void setClientPlayers(List<PlayerDTO> clientPlayers) {
+		this.clientPlayers = clientPlayers;
+	}
+
+	public PlayerDTO getCurrentPlayer() {
+		return currentPlayer;
+	}
+
+	public void setCurrentPlayer(PlayerDTO currentPlayer) {
+		this.currentPlayer = currentPlayer;
+	}
+
+	public List<ActionDTO> getAvailableActions() {
+		return availableActions;
+	}
+
+	public void setAvailableActions(List<ActionDTO> availableActions) {
+		this.availableActions = availableActions;
+	}
+
 	@Override
 	public String toString() {
 		return "GameDTO [clientRegions=" + clientRegions + ", clientKingBalcony="

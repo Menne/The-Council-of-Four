@@ -3,6 +3,7 @@ package client.ModelDTO;
 import java.util.HashSet;
 import java.util.Set;
 
+import model.bonus.Bonus;
 import model.gameTable.City;
 import model.gameTable.Emporium;
 
@@ -12,6 +13,7 @@ public class CityDTO implements ModelDTO<City>{
 	private boolean isKingPresent;
 	private CityColourDTO colour;
 	private Set<PlayerDTO> buildedEmporiums;
+	private Set<Bonus> rewardToken;
 	
 	public CityDTO(){		
 		this.buildedEmporiums=new HashSet<PlayerDTO>();
@@ -31,9 +33,51 @@ public class CityDTO implements ModelDTO<City>{
 			playerDTO.map(emporium.getEmporiumsPlayer());
 			this.buildedEmporiums.add(playerDTO);
 		}
+		
+		this.rewardToken=realObject.getRewardToken();
 	}
 	
 	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public boolean isKingPresent() {
+		return isKingPresent;
+	}
+
+	public void setKingPresent(boolean isKingPresent) {
+		this.isKingPresent = isKingPresent;
+	}
+
+	public CityColourDTO getColour() {
+		return colour;
+	}
+
+	public void setColour(CityColourDTO colour) {
+		this.colour = colour;
+	}
+
+	public Set<PlayerDTO> getBuildedEmporiums() {
+		return buildedEmporiums;
+	}
+
+	public void setBuildedEmporiums(Set<PlayerDTO> buildedEmporiums) {
+		this.buildedEmporiums = buildedEmporiums;
+	}
+
+	public Set<Bonus> getRewardToken() {
+		return rewardToken;
+	}
+
+	public void setRewardToken(Set<Bonus> rewardToken) {
+		this.rewardToken = rewardToken;
+	}
+
 	@Override
 	public String toString() {
 		return "CityDTO [name=" + name + ", isKingPresent=" + isKingPresent + ", colour=" + colour
