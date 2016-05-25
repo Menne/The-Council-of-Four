@@ -6,6 +6,8 @@ import client.parser.ActionParserVisitor;
 import client.parser.ChangePermitTilesParser;
 import model.Game;
 import model.actions.Action;
+import model.actions.standardAction.ChangePermitTiles;
+import model.gameTable.RegionBoard;
 
 public class ChangePermitTilesDTO implements ActionDTO {
 
@@ -32,8 +34,12 @@ public class ChangePermitTilesDTO implements ActionDTO {
 
 	@Override
 	public Action map(Game game) {
-		// TODO Auto-generated method stub
-		return null;
+		ChangePermitTiles action=new ChangePermitTiles();
+		
+		for(RegionBoard region : game.getGameTable().getRegionBoards())
+			if(region.getName().equals(this.selectedRegion.getName()))
+				action.setSelectedRegion(region);
+		return action;
 	}
 	
 	

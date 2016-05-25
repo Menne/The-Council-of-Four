@@ -1,6 +1,5 @@
 package view;
 
-import model.Game;
 import model.actions.Action;
 import observerPattern.Observable;
 import observerPattern.Observer;

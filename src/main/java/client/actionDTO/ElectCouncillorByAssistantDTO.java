@@ -1,12 +1,14 @@
 package client.actionDTO;
 
-import client.ModelDTO.CardColourDTO;
-import client.ModelDTO.GameDTO;
+import client.ModelDTO.CardColourDTO;import client.ModelDTO.GameDTO;
 import client.parser.ActionParserVisitor;
 import client.parser.ElectCouncillorByAssistantParser;
 import model.Game;
 import model.actions.Action;
-import model.gameTable.CardColour;
+import model.actions.standardAction.ElectCouncillorByAssistant;
+import model.gameTable.CouncilBalcony;
+import model.gameTable.Councillor;
+import model.gameTable.RegionBoard;
 
 public class ElectCouncillorByAssistantDTO implements ActionDTO{
 		
@@ -42,8 +44,26 @@ public class ElectCouncillorByAssistantDTO implements ActionDTO{
 
 	@Override
 	public Action map(Game game) {
-		// TODO Auto-generated method stub
-		return null;
+		ElectCouncillorByAssistant action =new ElectCouncillorByAssistant();
+		
+		for(RegionBoard region : game.getGameTable().getRegionBoards())
+			if(checkCouncilBalcony(region.getRegionBalcony()))
+				action.setCouncilBalcony(region.getRegionBalcony());
+		if(checkCouncilBalcony(game.getGameTable().getCouncilOfKing()))
+			action.setCouncilBalcony(game.getGameTable().getCouncilOfKing());
+		
+		for(Councillor councillor : game.getGameTable().getCouncilReserve().getCouncillors())
+			if(councillor.getColour().getColour().equals(this.newCouncillor.getName()))
+				action.setNewCouncillor(councillor);
+			
+		return action;
+	}
+	
+	private boolean checkCouncilBalcony(CouncilBalcony realBalcony){
+		for(int i=0; i<CouncilBalcony.getNumberofcouncillors(); i++)
+			if(!realBalcony.getCouncillors()[i].getColour().getColour().equals(this.councilBalcony[i].getName()))
+				return false;
+		return true;
 	}
 }
 	
