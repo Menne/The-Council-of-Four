@@ -2,7 +2,7 @@ package model.gameTable;
 import players.Player;
 
 /**
- * 
+ * modelizes the emporium object and has only the emporium's handler(player) as attribute
  * @author andreapasquali
  *
  */

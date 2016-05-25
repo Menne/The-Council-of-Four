@@ -102,12 +102,13 @@ public class RegionBoard {
 	/**
 	 * Picks an uncovered permit tile among the available-one.
 	 * After the execution of this method there is an empty slot.
-	 * @param index
+	 * @param index is the position of the permit tile that the player want to to pick
 	 * @return the picked uncovered card
+	 * @throws IllegalArgumentException if index > 2 or < 0 
 	 */
 	public PermitTile pickUncoveredPermitTile(int index) {
 		if(index>=numberOfUncoveredPermitTiles-1)
-			throw new IllegalArgumentException("Index too big");
+			throw new IllegalArgumentException("Index doesn't exist");
 		PermitTile temp=this.uncoveredPermitTiles[index];
 		this.uncoveredPermitTiles[index]=null;
 		return temp;
@@ -127,10 +128,14 @@ public class RegionBoard {
 	
 	
 	/**
-	 * Substitutes both of the uncovered permit tiles.
+	 * Substitutes both of the uncovered permit tiles: adds them to the bottom of the permit deck
+	 * and calls the method uncoverPermitTiles.
+	 * @throws IndexOutOfBoundsException if cards in the deck are too few (if there are less than 2 cards)
 	 */
 	public void substitutePermitTiles() {
-		for (int i=0; i<=numberOfUncoveredPermitTiles-1; i++) {
+		if (regionPermitDeck.getPermitTiles().size()<2)
+			throw new IndexOutOfBoundsException("Permit deck has too few cards to do the substitution"); 
+		for (int i=0; i<numberOfUncoveredPermitTiles; i++) {
 			this.regionPermitDeck.addOnBottom(this.uncoveredPermitTiles[i]);
 			this.uncoveredPermitTiles[i]=null;
 		}
