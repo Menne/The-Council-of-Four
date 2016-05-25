@@ -7,7 +7,6 @@ import org.junit.Test;
 
 import model.Game;
 import model.gameTable.City;
-import model.gameTable.King;
 
 
 public class KingTest {

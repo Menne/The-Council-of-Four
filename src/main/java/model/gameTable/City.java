@@ -14,7 +14,7 @@ import model.bonus.Bonus;
 public class City {
 
 	private final String name;
-	private Set<Bonus> rewardToken;
+	private final Set<Bonus> rewardToken;
 	private Boolean isKingPresent;
 	private final RegionBoard region;
 	private final CityColour colour;
@@ -40,8 +40,9 @@ public class City {
 		this.colour=colour;
 		this.cityEmporiums=new HashSet<Emporium>();
 		this.nearCities=new HashSet<City>();
-		if(!colour.getName().equals("KingColour"));
-			this.rewardToken=rewardTokenList.remove(0);
+		this.rewardToken=new HashSet<Bonus>();
+		if(!colour.getName().equals("KingColour"))
+			this.rewardToken.addAll(rewardTokenList.remove(0));
 		colour.addCityOfThisColour(this);
 		region.addCityOfThisRegion(this);
 	}
