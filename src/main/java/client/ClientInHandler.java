@@ -21,8 +21,8 @@ public class ClientInHandler implements Runnable {
 		while (true){
 			try {
 				Object object = socketIn.readObject();
-				UpdateNotify updatedGame=(UpdateNotify) object;
-				clientController.updateGame(updatedGame);
+				ClientNotify clientNotify=(ClientNotify) object;
+				this.clientController.updateFromIn(clientNotify);
 				
 			} catch (ClassNotFoundException | IOException e) {
 				// TODO Auto-generated catch block

@@ -1,6 +1,6 @@
 package client.clientController;
 
-import client.UpdateNotify;
+import client.ClientNotify;
 import client.ModelDTO.GameDTO;
 import client.actionDTO.ActionDTO;
 import observerPattern.Observer;
@@ -28,8 +28,8 @@ public class ClientController implements Observer<ActionDTO> {
 		return selectedAction;
 	}
 	
-	public void updateGame(UpdateNotify updatedGame) {
-		this.clientGame=updatedGame.getUpdatedGame();
+	public void updateFromIn(ClientNotify clientNotify){
+		clientNotify.act(this.clientGame);
 	}
 	
 	@Override

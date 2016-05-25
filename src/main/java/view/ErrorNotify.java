@@ -1,5 +1,8 @@
 package view;
 
+import client.ClientNotify;
+import client.ErrorDTONotify;
+
 public class ErrorNotify implements ViewNotify {
 
 	private String message;
@@ -9,8 +12,8 @@ public class ErrorNotify implements ViewNotify {
 	}
 
 	@Override
-	public void stamp() {
-		System.out.println(message);
+	public ClientNotify toClientNotify() {
+		return new ErrorDTONotify(this.message);
 	}
 
 }

@@ -50,7 +50,14 @@ public class ServerSocketView extends View implements Runnable {
 
 	@Override
 	public void update(ViewNotify notify) {
-		notify.stamp();
+		try {
+			
+			this.socketOut.writeObject(notify.toClientNotify());
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 

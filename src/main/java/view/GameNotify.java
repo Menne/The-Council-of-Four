@@ -1,5 +1,8 @@
 package view;
 
+import client.ClientNotify;
+import client.GameDTONotify;
+import client.ModelDTO.GameDTO;
 import model.Game;
 
 public class GameNotify implements ViewNotify {
@@ -11,8 +14,10 @@ public class GameNotify implements ViewNotify {
 	}
 
 	@Override
-	public void stamp() {
-		System.out.println(game.toString());
+	public ClientNotify toClientNotify() {
+		GameDTO gameDTO=new GameDTO();
+		gameDTO.map(this.game);
+		return new GameDTONotify(gameDTO);
 		
 	}
 

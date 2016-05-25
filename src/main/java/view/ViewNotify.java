@@ -1,7 +1,9 @@
 package view;
 
+import client.ClientNotify;
+
 public interface ViewNotify {
 	
-	public void stamp();
+	public ClientNotify toClientNotify();
 
 }
