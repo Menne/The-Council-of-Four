@@ -1,7 +1,9 @@
 package model.actions.standardAction;
 
+import client.actionDTO.NeedParameters;
+import client.actionDTO.ActionDTO;
+import client.actionDTO.ElectCouncillorByAssistantDTO;
 import model.Game;
-import model.actions.NeedParameters;
 import model.actions.QuickAction;
 import model.gameTable.CouncilBalcony;
 import model.gameTable.Councillor;
@@ -64,6 +66,11 @@ public class ElectCouncillorByAssistant extends QuickAction implements NeedParam
 	@Override
 	public String toString() {
 		return "q3: elect a councillor by sending an assistant";
+	}
+
+	@Override
+	public ActionDTO map() {
+		return new ElectCouncillorByAssistantDTO();
 	}
 
 }

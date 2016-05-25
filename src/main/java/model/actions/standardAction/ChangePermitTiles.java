@@ -1,7 +1,9 @@
 package model.actions.standardAction;
 
+import client.actionDTO.NeedParameters;
+import client.actionDTO.ActionDTO;
+import client.actionDTO.ChangePermitTilesDTO;
 import model.Game;
-import model.actions.NeedParameters;
 import model.actions.QuickAction;
 import model.gameTable.RegionBoard;
 import view.GameNotify;
@@ -54,6 +56,13 @@ public class ChangePermitTiles extends QuickAction implements NeedParameters{
 	@Override
 	public String toString() {
 		return "q2: change the permit tiles of a region";
+	}
+
+
+	@Override
+	public ActionDTO map() {
+		
+		return new ChangePermitTilesDTO();
 	}		
 
 

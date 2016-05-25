@@ -1,5 +1,6 @@
 package model.actions.bonusAction;
 
+import client.actionDTO.ActionDTO;
 import model.Game;
 import model.actions.Action;
 
@@ -15,6 +16,12 @@ public class PurchasedPermitTileAction implements Action {
 	public boolean executeAction(Game game) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public ActionDTO map() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

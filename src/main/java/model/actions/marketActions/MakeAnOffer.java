@@ -1,5 +1,6 @@
 package model.actions.marketActions;
 
+import client.actionDTO.ActionDTO;
 import model.Game;
 import model.actions.Action;
 import model.market.Marketable;
@@ -28,6 +29,13 @@ public class MakeAnOffer implements Action{
 		game.setState(game.getState().sellActionTransition());
 		return true;
 		
+	}
+
+
+	@Override
+	public ActionDTO map() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

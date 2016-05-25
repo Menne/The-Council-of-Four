@@ -1,5 +1,7 @@
 package model.actions;
 
+import client.actionDTO.ActionDTO;
+import client.actionDTO.PickPoliticsCardDTO;
 import model.Game;
 import view.GameNotify;
 
@@ -18,6 +20,12 @@ public class PickPoliticsCard implements Action {
 	@Override
 	public String toString() {
 		return "pc: pick a politics card";
+	}
+
+
+	@Override
+	public ActionDTO map() {
+		return new PickPoliticsCardDTO();
 	}
 
 }

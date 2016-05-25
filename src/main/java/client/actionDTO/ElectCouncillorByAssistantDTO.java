@@ -3,15 +3,16 @@ package client.actionDTO;
 import client.ModelDTO.CardColourDTO;
 import client.ModelDTO.GameDTO;
 import client.parser.ActionParserVisitor;
-import client.parser.ElectCouncillorParser;
+import client.parser.ElectCouncillorByAssistantParser;
 import model.Game;
 import model.actions.Action;
 import model.gameTable.CardColour;
 
-public class ElectCouncillorDTO implements ActionDTO {
-	
+public class ElectCouncillorByAssistantDTO implements ActionDTO{
+		
 	private CardColourDTO newCouncillor;
 	private CardColourDTO[] councilBalcony;
+
 
 	public CardColourDTO getNewCouncillor() {
 		return newCouncillor;
@@ -20,8 +21,7 @@ public class ElectCouncillorDTO implements ActionDTO {
 	public CardColourDTO[] getCouncilBalcony() {
 		return councilBalcony;
 	}
-	
-	
+
 	public void setNewCouncillor(CardColourDTO newCouncillor) {
 		this.newCouncillor = newCouncillor;
 	}
@@ -32,12 +32,12 @@ public class ElectCouncillorDTO implements ActionDTO {
 
 	@Override
 	public String toString() {
-		return "m1: elect a councillor";
+		return "q3: elect a councillor by sending an assistant";
 	}
 
 	@Override
 	public ActionParserVisitor setParser(GameDTO game) {
-		return new ElectCouncillorParser(this, game);
+		return new ElectCouncillorByAssistantParser(this, game);
 	}
 
 	@Override
@@ -45,6 +45,5 @@ public class ElectCouncillorDTO implements ActionDTO {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
 }
+	

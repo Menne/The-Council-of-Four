@@ -1,5 +1,6 @@
 package model.actions.bonusAction;
 
+import client.actionDTO.ActionDTO;
 import model.Game;
 import model.actions.Action;
 import model.bonus.Bonus;
@@ -50,6 +51,12 @@ public class ChooseCityBonusAction implements Action {
 			if (emporium.getEmporiumsPlayer().equals(this.game.getCurrentPlayer()))
 				return true;
 		return false;
+	}
+
+	@Override
+	public ActionDTO map() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

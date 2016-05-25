@@ -1,5 +1,6 @@
 package model.actions;
 
+import client.actionDTO.ActionDTO;
 import model.Game;
 
 /**
@@ -12,4 +13,6 @@ public abstract interface Action {
 
 	
 	public abstract boolean executeAction(Game game);
+	
+	public ActionDTO map();
 }

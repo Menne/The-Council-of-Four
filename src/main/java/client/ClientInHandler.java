@@ -3,29 +3,26 @@ package client;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
-import client.ModelDTO.GameDTO;
-import model.Game;
-import view.ViewNotify;
+import client.clientController.ClientController;
 
 public class ClientInHandler implements Runnable {
 	
 	private ObjectInputStream socketIn;
-	private final GameDTO clientGame;
+	private ClientController clientController;
 	
-	public ClientInHandler(ObjectInputStream socketIn, GameDTO game) {
+	public ClientInHandler(ObjectInputStream socketIn, ClientController clientController) {
 		this.socketIn=socketIn;
-		this.clientGame=game;
+		this.clientController=clientController;
 	}
 
+	
 	@Override
 	public void run() {
-		
-		while(true){
+		while (true){
 			try {
-				
 				Object object = socketIn.readObject();
-				ViewNotify viewNotify=(ViewNotify) object;
-				viewNotify.stamp();
+				UpdateNotify updatedGame=(UpdateNotify) object;
+				clientController.updateGame(updatedGame);
 				
 			} catch (ClassNotFoundException | IOException e) {
 				// TODO Auto-generated catch block
