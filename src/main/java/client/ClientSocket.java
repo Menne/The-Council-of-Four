@@ -29,6 +29,7 @@ public class ClientSocket {
 	}
 	
 	public static void main(String[] args) throws UnknownHostException, IOException {
+
 		
 		ClientSocket client=new ClientSocket();
 		GameDTO clientGame=new GameDTO();
