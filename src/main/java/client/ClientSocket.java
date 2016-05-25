@@ -11,6 +11,7 @@ import java.util.concurrent.Executors;
 import client.ModelDTO.GameDTO;
 import client.clientController.ClientController;
 import client.clientView.CLI;
+import client.clientView.notifies.WelcomeNotify;
 
 public class ClientSocket {
 
@@ -30,7 +31,6 @@ public class ClientSocket {
 	
 	public static void main(String[] args) throws UnknownHostException, IOException {
 
-		
 		ClientSocket client=new ClientSocket();
 		GameDTO clientGame=new GameDTO();
 		ClientController clientController=new ClientController(clientGame);
@@ -38,5 +38,7 @@ public class ClientSocket {
 		
 		client.startClient(clientController);
 		view.input();
+		
+		clientGame.notifyObserver(new WelcomeNotify());
 	}
 }
