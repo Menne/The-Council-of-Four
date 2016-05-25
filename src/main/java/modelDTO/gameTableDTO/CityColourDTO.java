@@ -1,5 +1,6 @@
 package modelDTO.gameTableDTO;
 
+import modelDTO.ModelDTO;
 import server.model.gameTable.CityColour;
 
 public class CityColourDTO implements ModelDTO<CityColour>{
@@ -26,7 +27,7 @@ public class CityColourDTO implements ModelDTO<CityColour>{
 
 	@Override
 	public String toString() {
-		return "CityColourDTO [name=" + name + "]";
+		return name;
 	}
 
 	

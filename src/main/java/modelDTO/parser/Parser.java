@@ -1,20 +1,25 @@
 package modelDTO.parser;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import modelDTO.actionsDTO.ActionDTO;
 import client.view.notifies.ClientErrorNotify;
 import modelDTO.GameDTO;
-import modelDTO.actionsDTO.ActionDTO;
-import modelDTO.gameTableDTO.CardColourDTO;
-import modelDTO.gameTableDTO.CityDTO;
 import modelDTO.gameTableDTO.PermitTileDTO;
 import modelDTO.gameTableDTO.PlayerDTO;
 import modelDTO.gameTableDTO.RegionDTO;
+import modelDTO.gameTableDTO.CardColourDTO;
+import modelDTO.gameTableDTO.CityDTO;
 
-public class Parser {
+public class Parser implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2353940067165055254L;
 	protected final GameDTO game;
 	
 	/**

@@ -1,5 +1,6 @@
 package modelDTO.gameTableDTO;
 
+import modelDTO.ModelDTO;
 import server.model.gameTable.CardColour;
 
 public class CardColourDTO implements ModelDTO<CardColour>{
@@ -26,7 +27,7 @@ public class CardColourDTO implements ModelDTO<CardColour>{
 
 	@Override
 	public String toString() {
-		return "CardColourDTO [name=" + name + "]";
+		return name;
 	}
 	
 	

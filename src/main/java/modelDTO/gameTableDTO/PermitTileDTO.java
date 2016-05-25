@@ -6,6 +6,8 @@ import java.util.Set;
 import server.model.bonus.Bonus;
 import server.model.gameTable.City;
 import server.model.gameTable.PermitTile;
+import modelDTO.ModelDTO;
+import modelDTO.gameTableDTO.CityDTO;
 
 public class PermitTileDTO implements ModelDTO<PermitTile>{
 
@@ -49,7 +51,10 @@ public class PermitTileDTO implements ModelDTO<PermitTile>{
 
 	@Override
 	public String toString() {
-		return "PermitTileDTO [buildablecities=" + buildablecities + ", bonuses=" + bonuses + "]";
+		Set<String> cities=new HashSet<String>();
+		for(CityDTO cityDTO : buildablecities)
+			cities.add(cityDTO.getName());
+		return cities + "\t" + bonuses;
 	}
 	
 	

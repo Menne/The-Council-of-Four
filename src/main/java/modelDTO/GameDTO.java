@@ -5,21 +5,19 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
-import client.view.notifies.ClientViewNotify;
 import modelDTO.actionsDTO.ActionDTO;
-import modelDTO.gameTableDTO.CardColourDTO;
-import modelDTO.gameTableDTO.ModelDTO;
+import client.view.notifies.ClientViewNotify;
 import modelDTO.gameTableDTO.PlayerDTO;
 import modelDTO.gameTableDTO.RegionDTO;
 import modelDTO.parser.Parser;
 import observerPattern.Observable;
 import players.Player;
 import server.model.Game;
-import server.model.actions.Action;
 import server.model.bonus.Bonus;
 import server.model.gameTable.CouncilBalcony;
 import server.model.gameTable.Councillor;
 import server.model.gameTable.RegionBoard;
+import modelDTO.gameTableDTO.CardColourDTO;
 
 public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Game> {
 	
@@ -47,6 +45,7 @@ public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Ga
 
 	@Override
 	public void map(Game realObject) {
+		
 		for(RegionBoard region : realObject.getGameTable().getRegionBoards()){
 			RegionDTO regionDTO=new RegionDTO();
 			regionDTO.map(region);
@@ -72,13 +71,16 @@ public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Ga
 		}
 		
 		this.clientNobilityTrack=realObject.getGameTable().getNobilityTrack().getTrack();
-		
-		PlayerDTO playerDTO=new PlayerDTO();
-		playerDTO.map(realObject.getCurrentPlayer());
-		this.currentPlayer=playerDTO;
-		
+			
+		if(realObject.getCurrentPlayer()!=null){
+			PlayerDTO playerDTO=new PlayerDTO();
+			playerDTO.map(realObject.getCurrentPlayer());
+			this.currentPlayer=playerDTO;
+		}
+/*TODO it does not enter in the cycle, why?!?!
 		for(Action action : realObject.getState().getAcceptableActions(realObject))
 			availableActions.add(action.map());
+*/
 	}
 
 	
@@ -140,10 +142,9 @@ public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Ga
 
 	@Override
 	public String toString() {
-		return "GameDTO [clientRegions=" + clientRegions + ", clientKingBalcony="
-				+ Arrays.toString(clientKingBalcony) + ", clientCouncillorReserve=" + clientCouncillorReserve
-				+ ", clientPlayers=" + clientPlayers + ", currentPlayer=" + currentPlayer + ", availableActions="
-				+ availableActions + "]";
+		return "\nGameDTO\n Players:\n" + clientPlayers + "\n\nCurrentPlayer:\n" + currentPlayer + "\n" +
+				 clientRegions + " \n "+ Arrays.toString(clientKingBalcony) +"\n"+
+				 clientCouncillorReserve + "\n" + clientNobilityTrack;
 	}
 
 	

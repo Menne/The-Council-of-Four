@@ -1,4 +1,4 @@
-package modelDTO.gameTableDTO;
+package modelDTO;
 
 import java.io.Serializable;
 
