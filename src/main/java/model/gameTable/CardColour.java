@@ -5,6 +5,7 @@ package model.gameTable;
 	 * @author Emanuele
 	 *
 	 */
+
 public class CardColour {
 
 	private String colour;

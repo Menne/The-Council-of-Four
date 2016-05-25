@@ -37,7 +37,7 @@ public class BuildByPermitTileParser implements ActionParserVisitor {
 		this.game.notifyObserver(new ActionNotify
 				("the permit tile you want to use"));
 		this.game.notifyObserver(new ParametersNotify(parser.acceptablePermitTiles(), this));
-	//	this.selectedAction.setSelectedPermitTile(parser.permitTileTranslator(currentParameter));
+		this.selectedAction.setSelectedPermitTile(parser.permitTileTranslator(currentParameter));
 		
 		return this.selectedAction;
 	}

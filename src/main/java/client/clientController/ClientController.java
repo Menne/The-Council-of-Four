@@ -3,8 +3,6 @@ package client.clientController;
 import client.UpdateNotify;
 import client.ModelDTO.GameDTO;
 import client.actionDTO.ActionDTO;
-import client.clientView.CLI;
-import client.clientView.ClientView;
 import observerPattern.Observer;
 
 public class ClientController implements Observer<ActionDTO> {

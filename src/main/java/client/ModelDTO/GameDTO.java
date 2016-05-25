@@ -138,9 +138,8 @@ public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Ga
 	}
 
 	
-	
 	public Parser getParser() {
-		return parser;
+		return this.parser;
 	}
 	
 }

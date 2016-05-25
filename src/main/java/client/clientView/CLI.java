@@ -11,11 +11,10 @@ import client.parser.Parser;
 
 public class CLI extends ClientView{
 
-	private static GameDTO clientGame;
 	private final Parser parser;
 	private Scanner scanner;
 	
-	public CLI(Parser parser) {
+	public CLI(GameDTO clientGame, Parser parser) {
 		super(clientGame);
 		this.parser=parser;
 		this.scanner=new Scanner(System.in);

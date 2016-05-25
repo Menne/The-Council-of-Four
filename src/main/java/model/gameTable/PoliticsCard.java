@@ -62,6 +62,7 @@ public class PoliticsCard implements Marketable{
 		
 	}
 
+	
 	@Override
 	public void removeObjectFromPlayer(Player player) {
 

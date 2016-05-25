@@ -1,18 +1,13 @@
 package model.gameTable;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-
 /**
  * 
  * @author andreapasquali
  *
  */
-@XmlAccessorType(XmlAccessType.FIELD)
+
 public class Councillor {
-	
-	@XmlElement(name="CardColour")
+
 	private CardColour colour;
 	
 	public Councillor(CardColour colour){
