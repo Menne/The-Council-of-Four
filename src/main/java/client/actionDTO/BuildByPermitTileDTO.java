@@ -1,5 +1,8 @@
 package client.actionDTO;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import client.ModelDTO.CityDTO;
 import client.ModelDTO.GameDTO;
 import client.ModelDTO.PermitTileDTO;
@@ -41,9 +44,20 @@ public class BuildByPermitTileDTO implements ActionDTO{
 				action.setSelectedCity(city);
 		
 		for(PermitTile permitTile : game.getCurrentPlayer().getPlayersPermitTilesTurnedUp())
-			if(permitTile.getBonus().equals(this.selectedPermitTile.getBonuses()));
-			//TODO
+			if(permitTile.getBonus().equals(this.selectedPermitTile.getBonuses()))
+				if(checkBuildableCities(permitTile.getBuildableCities()))
+					action.setSelectedPermitTile(permitTile);
 		return action;
+	}
+	
+	private boolean checkBuildableCities(Set<City> realBuildableCities){
+		Set<String> realBuildableCitiesString =new HashSet<String>();
+		Set<String> buildableCitiesDTOString = new HashSet<String>();
+		for(City city : realBuildableCities)
+			realBuildableCitiesString.add(city.getName());
+		for(CityDTO cityDTO : this.selectedPermitTile.getBuildablecities())
+			buildableCitiesDTOString.add(cityDTO.getName());
+		return realBuildableCitiesString.equals(buildableCitiesDTOString);
 	}
 
 	@Override
