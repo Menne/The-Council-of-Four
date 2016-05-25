@@ -6,9 +6,9 @@ import java.io.IOException;
 
 import org.junit.Test;
 
-import model.Game;
-import model.gameTable.CardColour;
-import model.gameTable.PoliticsCard;
+import server.model.Game;
+import server.model.gameTable.CardColour;
+import server.model.gameTable.PoliticsCard;
 
 public class PoliticsCardsTest {
 

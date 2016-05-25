@@ -8,11 +8,11 @@ import client.ModelDTO.GameDTO;
 import client.ModelDTO.PermitTileDTO;
 import client.parser.ActionParserVisitor;
 import client.parser.BuildByPermitTileParser;
-import model.Game;
-import model.actions.Action;
-import model.actions.standardAction.BuildByPermitTile;
-import model.gameTable.City;
-import model.gameTable.PermitTile;
+import server.model.Game;
+import server.model.actions.Action;
+import server.model.actions.standardAction.BuildByPermitTile;
+import server.model.gameTable.City;
+import server.model.gameTable.PermitTile;
 
 public class BuildByPermitTileDTO implements ActionDTO{
 	

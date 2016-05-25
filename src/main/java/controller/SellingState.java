@@ -2,8 +2,8 @@ package controller;
 
 import java.util.List;
 
-import model.Game;
-import model.actions.Action;
+import server.model.Game;
+import server.model.actions.Action;
 
 public class SellingState implements State {
 

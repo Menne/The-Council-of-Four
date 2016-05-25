@@ -3,9 +3,9 @@ package client.ModelDTO;
 import java.util.HashSet;
 import java.util.Set;
 
-import model.bonus.Bonus;
-import model.gameTable.City;
-import model.gameTable.PermitTile;
+import server.model.bonus.Bonus;
+import server.model.gameTable.City;
+import server.model.gameTable.PermitTile;
 
 public class PermitTileDTO implements ModelDTO<PermitTile>{
 

@@ -2,9 +2,9 @@ package client.actionDTO;
 
 import client.ModelDTO.GameDTO;
 import client.parser.ActionParserVisitor;
-import model.Game;
-import model.actions.Action;
-import model.actions.MoveToNext;
+import server.model.Game;
+import server.model.actions.Action;
+import server.model.actions.MoveToNext;
 
 public class MoveToNextDTO implements ActionDTO {
 

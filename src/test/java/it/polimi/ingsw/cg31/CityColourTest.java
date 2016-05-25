@@ -7,10 +7,10 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import model.bonus.ScoreBonus;
-import model.gameTable.City;
-import model.gameTable.CityColour;
-import model.gameTable.RegionBoard;
+import server.model.bonus.ScoreBonus;
+import server.model.gameTable.City;
+import server.model.gameTable.CityColour;
+import server.model.gameTable.RegionBoard;
 
 public class CityColourTest {
 

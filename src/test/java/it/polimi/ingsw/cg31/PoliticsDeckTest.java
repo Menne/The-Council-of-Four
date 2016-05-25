@@ -7,9 +7,9 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import model.gameTable.CardColour;
-import model.gameTable.PoliticsCard;
-import model.gameTable.PoliticsDeck;
+import server.model.gameTable.CardColour;
+import server.model.gameTable.PoliticsCard;
+import server.model.gameTable.PoliticsDeck;
 
 public class PoliticsDeckTest {
 

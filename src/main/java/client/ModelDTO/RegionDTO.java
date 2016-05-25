@@ -4,9 +4,9 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import model.gameTable.City;
-import model.gameTable.CouncilBalcony;
-import model.gameTable.RegionBoard;
+import server.model.gameTable.City;
+import server.model.gameTable.CouncilBalcony;
+import server.model.gameTable.RegionBoard;
 
 public class RegionDTO implements ModelDTO<RegionBoard>{
 

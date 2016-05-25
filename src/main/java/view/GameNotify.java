@@ -3,7 +3,7 @@ package view;
 import client.ClientNotify;
 import client.GameDTONotify;
 import client.ModelDTO.GameDTO;
-import model.Game;
+import server.model.Game;
 
 public class GameNotify implements ViewNotify {
 	

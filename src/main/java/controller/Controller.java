@@ -1,8 +1,8 @@
 package controller;
 
-import model.Game;
-import model.actions.Action;
 import observerPattern.Observer;
+import server.model.Game;
+import server.model.actions.Action;
 import view.GameNotify;
 
 public class Controller implements Observer<Action>{

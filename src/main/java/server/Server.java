@@ -6,7 +6,7 @@ import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import controller.Controller;
-import model.Game;
+import server.model.Game;
 
 
 public class Server {

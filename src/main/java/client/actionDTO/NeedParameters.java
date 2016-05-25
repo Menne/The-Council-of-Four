@@ -1,6 +1,6 @@
 package client.actionDTO;
 
-import model.actions.Action;
+import server.model.actions.Action;
 
 public interface NeedParameters extends Action{
 

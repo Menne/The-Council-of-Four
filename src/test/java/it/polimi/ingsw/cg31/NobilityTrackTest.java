@@ -10,10 +10,10 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import model.Game;
-import model.bonus.Bonus;
-import model.bonus.ScoreBonus;
-import model.gameTable.NobilityTrack;
+import server.model.Game;
+import server.model.bonus.Bonus;
+import server.model.bonus.ScoreBonus;
+import server.model.gameTable.NobilityTrack;
 
 public class NobilityTrackTest {
 

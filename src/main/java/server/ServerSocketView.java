@@ -6,8 +6,8 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 import client.actionDTO.ActionDTO;
-import model.Game;
-import model.actions.AddPlayer;
+import server.model.Game;
+import server.model.actions.AddPlayer;
 import view.View;
 import view.ViewNotify;
 

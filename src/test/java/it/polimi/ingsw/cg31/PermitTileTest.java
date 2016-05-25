@@ -8,13 +8,13 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import model.Game;
-import model.bonus.AssistantsBonus;
-import model.bonus.Bonus;
-import model.bonus.ScoreBonus;
-import model.gameTable.City;
-import model.gameTable.PermitDeck;
-import model.gameTable.PermitTile;
+import server.model.Game;
+import server.model.bonus.AssistantsBonus;
+import server.model.bonus.Bonus;
+import server.model.bonus.ScoreBonus;
+import server.model.gameTable.City;
+import server.model.gameTable.PermitDeck;
+import server.model.gameTable.PermitTile;
 
 public class PermitTileTest {
 	

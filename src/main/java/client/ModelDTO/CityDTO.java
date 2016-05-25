@@ -3,9 +3,9 @@ package client.ModelDTO;
 import java.util.HashSet;
 import java.util.Set;
 
-import model.bonus.Bonus;
-import model.gameTable.City;
-import model.gameTable.Emporium;
+import server.model.bonus.Bonus;
+import server.model.gameTable.City;
+import server.model.gameTable.Emporium;
 
 public class CityDTO implements ModelDTO<City>{
 

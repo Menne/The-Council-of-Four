@@ -3,12 +3,12 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import model.bonus.ScoreBonus;
-import model.gameTable.Assistant;
-import model.gameTable.Emporium;
-import model.gameTable.PermitTile;
-import model.gameTable.PoliticsCard;
-import model.gameTable.PoliticsDeck;
+import server.model.bonus.ScoreBonus;
+import server.model.gameTable.Assistant;
+import server.model.gameTable.Emporium;
+import server.model.gameTable.PermitTile;
+import server.model.gameTable.PoliticsCard;
+import server.model.gameTable.PoliticsDeck;
 
 /** Player class contains all of the informations about a player
 	 * 

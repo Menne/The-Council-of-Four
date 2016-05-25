@@ -1,8 +1,8 @@
 package view;
 
-import model.actions.Action;
 import observerPattern.Observable;
 import observerPattern.Observer;
+import server.model.actions.Action;
 
 public abstract class View extends Observable<Action> implements Observer<ViewNotify> {
 

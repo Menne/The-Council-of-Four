@@ -3,12 +3,12 @@ package client.actionDTO;
 import client.ModelDTO.CardColourDTO;import client.ModelDTO.GameDTO;
 import client.parser.ActionParserVisitor;
 import client.parser.ElectCouncillorByAssistantParser;
-import model.Game;
-import model.actions.Action;
-import model.actions.standardAction.ElectCouncillorByAssistant;
-import model.gameTable.CouncilBalcony;
-import model.gameTable.Councillor;
-import model.gameTable.RegionBoard;
+import server.model.Game;
+import server.model.actions.Action;
+import server.model.actions.standardAction.ElectCouncillorByAssistant;
+import server.model.gameTable.CouncilBalcony;
+import server.model.gameTable.Councillor;
+import server.model.gameTable.RegionBoard;
 
 public class ElectCouncillorByAssistantDTO implements ActionDTO{
 		

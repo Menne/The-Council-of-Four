@@ -2,8 +2,9 @@ package client.ModelDTO;
 
 import java.util.ArrayList;
 import java.util.List;
-import model.gameTable.PoliticsCard;
+
 import players.Player;
+import server.model.gameTable.PoliticsCard;
 
 public class PlayerDTO implements ModelDTO<Player>{
 

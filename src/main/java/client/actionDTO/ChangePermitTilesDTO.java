@@ -4,10 +4,10 @@ import client.ModelDTO.GameDTO;
 import client.ModelDTO.RegionDTO;
 import client.parser.ActionParserVisitor;
 import client.parser.ChangePermitTilesParser;
-import model.Game;
-import model.actions.Action;
-import model.actions.standardAction.ChangePermitTiles;
-import model.gameTable.RegionBoard;
+import server.model.Game;
+import server.model.actions.Action;
+import server.model.actions.standardAction.ChangePermitTiles;
+import server.model.gameTable.RegionBoard;
 
 public class ChangePermitTilesDTO implements ActionDTO {
 

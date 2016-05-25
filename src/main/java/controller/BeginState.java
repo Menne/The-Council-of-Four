@@ -3,9 +3,9 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Game;
-import model.actions.Action;
-import model.actions.PickPoliticsCard;
+import server.model.Game;
+import server.model.actions.Action;
+import server.model.actions.PickPoliticsCard;
 
 public class BeginState implements State {
 	

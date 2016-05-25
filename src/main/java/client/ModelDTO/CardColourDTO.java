@@ -1,6 +1,6 @@
 package client.ModelDTO;
 
-import model.gameTable.CardColour;
+import server.model.gameTable.CardColour;
 
 public class CardColourDTO implements ModelDTO<CardColour>{
 

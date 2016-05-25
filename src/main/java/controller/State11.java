@@ -3,15 +3,15 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Game;
-import model.actions.*;
-import model.actions.standardAction.AcquirePermitTile;
-import model.actions.standardAction.BuildByKing;
-import model.actions.standardAction.BuildByPermitTile;
-import model.actions.standardAction.ChangePermitTiles;
-import model.actions.standardAction.ElectCouncillor;
-import model.actions.standardAction.ElectCouncillorByAssistant;
-import model.actions.standardAction.EngageAssistant;
+import server.model.Game;
+import server.model.actions.*;
+import server.model.actions.standardAction.AcquirePermitTile;
+import server.model.actions.standardAction.BuildByKing;
+import server.model.actions.standardAction.BuildByPermitTile;
+import server.model.actions.standardAction.ChangePermitTiles;
+import server.model.actions.standardAction.ElectCouncillor;
+import server.model.actions.standardAction.ElectCouncillorByAssistant;
+import server.model.actions.standardAction.EngageAssistant;
 
 public class State11 implements State {
 

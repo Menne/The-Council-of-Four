@@ -7,14 +7,14 @@ import java.util.Set;
 import client.actionDTO.ActionDTO;
 import client.clientView.notifies.ClientViewNotify;
 import client.parser.Parser;
-import model.Game;
 import observerPattern.Observable;
-import model.bonus.Bonus;
-import model.actions.Action;
-import model.gameTable.CouncilBalcony;
-import model.gameTable.Councillor;
-import model.gameTable.RegionBoard;
 import players.Player;
+import server.model.Game;
+import server.model.actions.Action;
+import server.model.bonus.Bonus;
+import server.model.gameTable.CouncilBalcony;
+import server.model.gameTable.Councillor;
+import server.model.gameTable.RegionBoard;
 
 public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Game> {
 	

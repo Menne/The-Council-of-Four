@@ -3,12 +3,12 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Game;
-import model.actions.Action;
-import model.actions.standardAction.AcquirePermitTile;
-import model.actions.standardAction.BuildByKing;
-import model.actions.standardAction.BuildByPermitTile;
-import model.actions.standardAction.ElectCouncillor;
+import server.model.Game;
+import server.model.actions.Action;
+import server.model.actions.standardAction.AcquirePermitTile;
+import server.model.actions.standardAction.BuildByKing;
+import server.model.actions.standardAction.BuildByPermitTile;
+import server.model.actions.standardAction.ElectCouncillor;
 
 public class State10 implements State{
 	

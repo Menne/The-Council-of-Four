@@ -6,8 +6,8 @@ import java.io.IOException;
 
 import org.junit.Test;
 
-import model.Game;
-import model.gameTable.Assistant;
+import server.model.Game;
+import server.model.gameTable.Assistant;
 
 public class AssistantsTest {
 

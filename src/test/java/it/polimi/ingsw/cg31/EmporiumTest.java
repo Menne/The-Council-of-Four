@@ -6,8 +6,8 @@ import java.io.IOException;
 
 import org.junit.Test;
 
-import model.Game;
-import model.gameTable.Emporium;
+import server.model.Game;
+import server.model.gameTable.Emporium;
 
 
 

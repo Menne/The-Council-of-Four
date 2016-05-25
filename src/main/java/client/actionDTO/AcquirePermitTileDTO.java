@@ -9,12 +9,12 @@ import client.ModelDTO.GameDTO;
 import client.ModelDTO.RegionDTO;
 import client.parser.AcquirePermitTileParser;
 import client.parser.ActionParserVisitor;
-import model.Game;
-import model.actions.Action;
-import model.actions.standardAction.AcquirePermitTile;
-import model.gameTable.CardColour;
-import model.gameTable.PoliticsCard;
-import model.gameTable.RegionBoard;
+import server.model.Game;
+import server.model.actions.Action;
+import server.model.actions.standardAction.AcquirePermitTile;
+import server.model.gameTable.CardColour;
+import server.model.gameTable.PoliticsCard;
+import server.model.gameTable.RegionBoard;
 
 public class AcquirePermitTileDTO implements ActionDTO {
 

@@ -8,12 +8,12 @@ import client.ModelDTO.CityDTO;
 import client.ModelDTO.GameDTO;
 import client.parser.ActionParserVisitor;
 import client.parser.BuildByKingParser;
-import model.Game;
-import model.actions.Action;
-import model.actions.standardAction.BuildByKing;
-import model.gameTable.CardColour;
-import model.gameTable.City;
-import model.gameTable.PoliticsCard;
+import server.model.Game;
+import server.model.actions.Action;
+import server.model.actions.standardAction.BuildByKing;
+import server.model.gameTable.CardColour;
+import server.model.gameTable.City;
+import server.model.gameTable.PoliticsCard;
 
 public class BuildByKingDTO implements ActionDTO{
 

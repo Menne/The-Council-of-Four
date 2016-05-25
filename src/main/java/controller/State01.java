@@ -3,13 +3,13 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Game;
-import model.actions.Action;
-import model.actions.MoveToNext;
-import model.actions.standardAction.AdditionalMainAction;
-import model.actions.standardAction.ChangePermitTiles;
-import model.actions.standardAction.ElectCouncillorByAssistant;
-import model.actions.standardAction.EngageAssistant;
+import server.model.Game;
+import server.model.actions.Action;
+import server.model.actions.MoveToNext;
+import server.model.actions.standardAction.AdditionalMainAction;
+import server.model.actions.standardAction.ChangePermitTiles;
+import server.model.actions.standardAction.ElectCouncillorByAssistant;
+import server.model.actions.standardAction.EngageAssistant;
 
 public class State01 implements State {
 
