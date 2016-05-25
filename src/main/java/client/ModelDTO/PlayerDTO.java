@@ -29,6 +29,7 @@ public class PlayerDTO implements ModelDTO<Player>{
 
 	@Override
 	public void map(Player realObject) {
+		
 		this.playerNumber=realObject.getPlayerNumber();
 		this.assistants=realObject.getNumberOfAssistants();
 		this.score=realObject.getScore();
@@ -109,9 +110,10 @@ public class PlayerDTO implements ModelDTO<Player>{
 
 	@Override
 	public String toString() {
-		return "PlayerDTO [playerNumber=" + playerNumber + ", assistants=" + assistants + ", score=" + score
-				+ ", nobility=" + nobility + ", coins=" + coins + ", emporiums=" + emporiums + ", hand=" + hand
-				+ ", availablePermitTiles=" + availablePermitTiles + "]";
+		return "Player " + playerNumber + "\tassistants=" + assistants + "\tscore="
+				+ score + "\tnobility=" + nobility + "\tcoins=" + coins + "\n hand=" + hand
+				+ ", playersPermitTilesTurnedUp=" + availablePermitTiles +
+				 ", emporiums=" + this.emporiums + "]\n\n";
 	}
 
 

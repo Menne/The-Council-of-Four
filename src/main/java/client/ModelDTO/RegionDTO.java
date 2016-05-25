@@ -109,8 +109,8 @@ public class RegionDTO implements ModelDTO<RegionBoard>{
 
 	@Override
 	public String toString() {
-		return "RegionDTO [name=" + name + ", balcony=" + Arrays.toString(balcony) + ", cities=" + cities
-				+ ", uncoveredPermitTiles=" + Arrays.toString(uncoveredPermitTiles) + "]";
+		return  "\n"+name + "\t" + Arrays.toString(balcony) + "\tTiles:" + Arrays.toString(uncoveredPermitTiles)+
+				"\t" + cities;
 	}
 
 	

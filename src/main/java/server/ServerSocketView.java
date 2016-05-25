@@ -50,9 +50,9 @@ public class ServerSocketView extends View implements Runnable {
 	@Override
 	public void update(ViewNotify notify) {
 		try {
-			System.out.println("player almost Added");
+	
 			this.socketOut.writeObject(notify.toClientNotify());
-			
+			System.out.println("sent notify to client");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

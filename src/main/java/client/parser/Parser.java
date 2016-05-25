@@ -1,5 +1,6 @@
 package client.parser;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -13,8 +14,12 @@ import client.ModelDTO.RegionDTO;
 import client.actionDTO.ActionDTO;
 import client.clientView.notifies.ClientErrorNotify;
 
-public class Parser {
+public class Parser implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2353940067165055254L;
 	protected final GameDTO game;
 	
 	/**

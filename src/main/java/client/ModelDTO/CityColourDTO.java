@@ -26,7 +26,7 @@ public class CityColourDTO implements ModelDTO<CityColour>{
 
 	@Override
 	public String toString() {
-		return "CityColourDTO [name=" + name + "]";
+		return name;
 	}
 
 	

@@ -49,7 +49,10 @@ public class PermitTileDTO implements ModelDTO<PermitTile>{
 
 	@Override
 	public String toString() {
-		return "PermitTileDTO [buildablecities=" + buildablecities + ", bonuses=" + bonuses + "]";
+		Set<String> cities=new HashSet<String>();
+		for(CityDTO cityDTO : buildablecities)
+			cities.add(cityDTO.getName());
+		return cities + "\t" + bonuses;
 	}
 	
 	

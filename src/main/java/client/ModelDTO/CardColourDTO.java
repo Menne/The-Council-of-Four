@@ -26,7 +26,7 @@ public class CardColourDTO implements ModelDTO<CardColour>{
 
 	@Override
 	public String toString() {
-		return "CardColourDTO [name=" + name + "]";
+		return name;
 	}
 	
 	

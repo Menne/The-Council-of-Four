@@ -84,8 +84,7 @@ public class CityDTO implements ModelDTO<City>{
 
 	@Override
 	public String toString() {
-		return "CityDTO [name=" + name + ", isKingPresent=" + isKingPresent + ", colour=" + colour
-				+ ", buildedEmporiums=" + buildedEmporiums + "]";
+		return name+"\t"+buildedEmporiums+"\t"+rewardToken+"\n";
 	}
 
 
