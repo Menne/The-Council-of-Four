@@ -33,8 +33,8 @@ public class PermitDeck {
 	}
 	
 	/**
-	 * 
-	 * @param permitTilesToAdd
+	 * adds to the bottom of the list the permit tile
+	 * @param permitTilesToAdd is the permit tile to add to the bottom
 	 */
 	public void addOnBottom (PermitTile permitTilesToAdd) {
 		int size=this.permitTiles.size();

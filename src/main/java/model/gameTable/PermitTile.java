@@ -74,9 +74,10 @@ public class PermitTile implements Marketable{
 	}
 
 	@Override
-	public void removeObjectFromPlayer(Player player) {
+	public void removeObjectFromPlayer(Player player) throws IllegalArgumentException{
+		if(!player.getPlayersPermitTilesTurnedUp().contains(this))
+			throw new IllegalArgumentException("player hasn't this tile turned up");
 		player.getPlayersPermitTilesTurnedUp().remove(this);
-		
 	}
 	
 	@Override
