@@ -1,5 +1,7 @@
 package client.actionDTO;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import client.ModelDTO.CardColourDTO;
@@ -11,6 +13,8 @@ import model.Game;
 import model.actions.Action;
 import model.actions.standardAction.AcquirePermitTile;
 import model.gameTable.CardColour;
+import model.gameTable.PoliticsCard;
+import model.gameTable.RegionBoard;
 
 public class AcquirePermitTileDTO implements ActionDTO {
 
@@ -56,7 +60,26 @@ public class AcquirePermitTileDTO implements ActionDTO {
 	public Action map(Game game) {
 		AcquirePermitTile action = new AcquirePermitTile();
 		
-		return null;
+		action.setNumberOfPermitTile(this.numberOfPermitTile);
+		
+		for(RegionBoard region : game.getGameTable().getRegionBoards())
+			if(region.getName().equals(this.chosenRegion.getName()))
+				action.setChosenRegion(region);
+		
+		List<PoliticsCard> convertedCards =new ArrayList<PoliticsCard>();
+		for(CardColourDTO cardColourDTO : this.cardsToDescard)
+			convertedCards.add(new PoliticsCard(new CardColour(cardColourDTO.getName())));
+		action.setCardsToDescard(convertedCards);
+		
+		return action;
 	}
-
+	
+	public static void main(String[] args) throws IOException{
+		Game game=new Game();
+		AcquirePermitTileDTO apt=new AcquirePermitTileDTO();
+		RegionDTO regionDTO=new RegionDTO();
+		regionDTO.map(game.getGameTable().getRegionBoards().get(0));
+		apt.setChosenRegion(regionDTO);
+		apt.map(game);
+	}
 }

@@ -1,5 +1,6 @@
 package client.actionDTO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import client.ModelDTO.CardColourDTO;
@@ -9,7 +10,10 @@ import client.parser.ActionParserVisitor;
 import client.parser.BuildByKingParser;
 import model.Game;
 import model.actions.Action;
+import model.actions.standardAction.BuildByKing;
 import model.gameTable.CardColour;
+import model.gameTable.City;
+import model.gameTable.PoliticsCard;
 
 public class BuildByKingDTO implements ActionDTO{
 
@@ -33,6 +37,23 @@ public class BuildByKingDTO implements ActionDTO{
 	}
 
 	@Override
+	public Action map(Game game) {
+		BuildByKing action=new BuildByKing();
+		
+		for(City city : game.getGameTable().getMap().getGameMap().vertexSet())
+			if(city.getName().equals(this.selectedCity.getName()))
+				action.setSelectedCity(city);
+		
+		List<PoliticsCard> convertedCards =new ArrayList<PoliticsCard>();
+		for(CardColourDTO cardColourDTO : this.cardsToDescard)
+			convertedCards.add(new PoliticsCard(new CardColour(cardColourDTO.getName())));
+		action.setCardsToDescard(convertedCards);
+		
+		return action;
+	}
+	
+	
+	@Override
 	public String toString() {
 		return "m4: build an emporium with the help of the king";
 	}
@@ -40,12 +61,6 @@ public class BuildByKingDTO implements ActionDTO{
 	@Override
 	public ActionParserVisitor setParser(GameDTO game) {
 		return new BuildByKingParser(this, game);
-	}
-
-	@Override
-	public Action map(Game game) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	
 }

@@ -31,7 +31,7 @@ public class ClientSocket {
 	
 	public static void main(String[] args) throws UnknownHostException, IOException {
 		ClientSocket client=new ClientSocket();
-		ClientController clientController=new ClientController(new GameDTO());
+		ClientController clientController=new ClientController(new  GameDTO());
 		client.startClient(clientController);
 		
 	}
