@@ -47,6 +47,11 @@ public interface State{
 		
 		throw new RuntimeException("There are not such transictions for this state");
 	}
+	
+	public default State addPlayerTransition(Game game) throws RuntimeException{
+		
+		throw new RuntimeException("There are not such transictions for this state");
+	}
 
 		
 	public List<Action> getAcceptableActions(Game game);

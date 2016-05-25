@@ -23,6 +23,7 @@ public class Controller implements Observer<Action>{
 	
 	@Override
 	public void update(Action action){
+		System.out.println("player almost Added");
 		action.executeAction(this.game);
 	}
 

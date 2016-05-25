@@ -31,7 +31,10 @@ public class Server {
 		while(true){
 			
 			Socket socket=serverSocket.accept();
+			System.out.println("Client Socket Accepted!");
+			
 			ServerSocketView view=new ServerSocketView(socket,game);
+			
 			
 			this.game.registerObserver(view);
 			view.registerObserver(controller);

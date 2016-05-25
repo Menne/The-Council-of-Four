@@ -19,7 +19,7 @@ import model.gameTable.PoliticsDeck;
 public class Player {
 
 	private final int playerNumber;
-//	private final String name;
+	private final String name;
 	private List<Assistant> assistants;
 	private int score;
 	private int nobility;
@@ -41,10 +41,10 @@ public class Player {
 	 * @param assistants number of initial assistants
 	 * @param coins number of initial coins
 	 */
-	public Player(int playerNumber,/* String name,*/ int assistants, int coins,
+	public Player(int playerNumber, String name, int assistants, int coins,
 			PoliticsDeck politicsDeck) {
 		this.playerNumber=playerNumber;
-//		this.name=name;
+		this.name=name;
 		this.assistants=new ArrayList<Assistant>();
 		for(int i=0; i<assistants; i++)
 			this.assistants.add(new Assistant());
@@ -66,9 +66,9 @@ public class Player {
 		return playerNumber;
 	}
 	
-/*	public String getName() {
+	public String getName() {
 		return name;
-	}*/
+	}
 	
 	public int getNumberOfAssistants() {
 		return this.assistants.size();

@@ -17,7 +17,7 @@ public class EmporiumTest {
 	@Test
 	public void testIfEmporiumsGetterReturnsTheRightPlayer() throws IOException {
 		Game game=new Game();
-		game.addPlayer();
+		game.addPlayer("Luca");
 		Emporium e= new Emporium(game.getPlayers().get(0));
 		
 		assertEquals(game.getPlayers().get(0), e.getEmporiumsPlayer());

@@ -23,7 +23,7 @@ public class PoliticsCardsTest {
 	public void testIfAddObjectToPlayerWorks() throws IOException{
 		Game game=new Game();
 		PoliticsCard card= game.getGameTable().getPoliticsDeck().pickCard();
-		game.addPlayer();
+		game.addPlayer("Luca");
 		card.addObjectToPlayer(game.getPlayers().get(0));
 		
 		assertEquals(game.getPlayers().get(0).getHand().get(6), card);
@@ -33,7 +33,7 @@ public class PoliticsCardsTest {
 	public void testRemoveCard() throws IOException{
 		Game game=new Game();
 		PoliticsCard card= game.getGameTable().getPoliticsDeck().pickCard();
-		game.addPlayer();
+		game.addPlayer("Luca");
 		if(game.getPlayers().get(0).getHand().contains(card)){
 			card.removeObjectFromPlayer(game.getPlayers().get(0));
 			assertEquals(5, game.getPlayers().get(0).getHand().size());

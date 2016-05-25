@@ -51,7 +51,7 @@ public class PermitTileTest {
 	@Test
 	public void testAddObjectToPlayer() throws IOException {
 		Game game=new Game();
-		game.addPlayer();
+		game.addPlayer("Luca");
 		Set<City> cities= new HashSet<City>();
 		cities.addAll(game.getGameTable().getRegionBoards().get(0).getRegionCities());
 		Bonus bonus1=new ScoreBonus(1);
@@ -68,7 +68,7 @@ public class PermitTileTest {
 	@Test
 	public void testRemoveObjectFromPlayer() throws IOException {
 		Game game=new Game();
-		game.addPlayer();
+		game.addPlayer("Luca");
 		Set<City> cities= new HashSet<City>();
 		cities.addAll(game.getGameTable().getRegionBoards().get(0).getRegionCities());
 		Bonus bonus1=new ScoreBonus(1);
@@ -86,7 +86,7 @@ public class PermitTileTest {
 	@Test(expected=IllegalArgumentException.class)
 	public void testIfRemoveObjectFromPlayerThrowsException() throws IOException {
 		Game game=new Game();
-		game.addPlayer();
+		game.addPlayer("Luca");
 		Set<City> cities= new HashSet<City>();
 		cities.addAll(game.getGameTable().getRegionBoards().get(0).getRegionCities());
 		Bonus bonus1=new ScoreBonus(1);

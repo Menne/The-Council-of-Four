@@ -110,9 +110,9 @@ public class Game extends Observable<ViewNotify>{
 		this.lastLap = lastLap;
 	}
 	
-	public void addPlayer(){
+	public void addPlayer(String playerName){
 		int numOfPlayers=this.players.size();
-		this.players.add(new Player(numOfPlayers+1, numOfPlayers+1, numOfPlayers+10, this.gameTable.getPoliticsDeck()));
+		this.players.add(new Player(numOfPlayers+1, playerName, numOfPlayers+1, numOfPlayers+10, this.gameTable.getPoliticsDeck()));
 	}
 
 

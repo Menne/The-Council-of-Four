@@ -23,7 +23,6 @@ public class ServerSocketView extends View implements Runnable {
 		this.game=game;
 		this.socketIn=new ObjectInputStream(socket.getInputStream());
 		this.socketOut=new ObjectOutputStream(socket.getOutputStream());
-		this.notifyObserver(new AddPlayer());
 	}
 	
 	

@@ -122,7 +122,7 @@ public class CityTest {
 	@Test
 	public void testAddEmporiumsAndGetEmporiums() throws IOException {
 		Game game=new Game();
-		game.addPlayer();
+		game.addPlayer("Luca");
 		ScoreBonus bonus= new ScoreBonus(1);
 		CityColour colour= new CityColour("blu", bonus);
 		List<Set<Bonus>> list= new ArrayList<Set<Bonus>>();
