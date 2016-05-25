@@ -18,6 +18,10 @@ import players.Player;
 
 public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Game> {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8250245390720798602L;
 	private List<RegionDTO> clientRegions;
 	private CardColourDTO[] clientKingBalcony;
 	private List<CardColourDTO> clientCouncillorReserve;

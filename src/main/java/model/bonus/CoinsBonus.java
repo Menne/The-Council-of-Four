@@ -10,6 +10,10 @@ import model.Game;
 
 public class CoinsBonus implements Bonus{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 916889648569669576L;
 	private final int coinsIncreasement;
 
 	/**

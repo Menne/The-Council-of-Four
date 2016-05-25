@@ -16,6 +16,10 @@ import model.gameTable.PermitTile;
 
 public class BuildByPermitTileDTO implements ActionDTO{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8061305769975404856L;
 	private  PermitTileDTO selectedPermitTile;
 	private  CityDTO selectedCity;
 

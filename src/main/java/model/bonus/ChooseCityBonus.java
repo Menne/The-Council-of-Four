@@ -15,6 +15,11 @@ import model.Game;
 public class ChooseCityBonus implements Bonus{
 	
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4260484811602988062L;
+
+	/**
 	 * Invokes the action associated o this bonus
 	 * @param game is the current game
 	 */

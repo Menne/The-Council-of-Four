@@ -12,6 +12,10 @@ import model.gameTable.RegionBoard;
 
 public class ElectCouncillorByAssistantDTO implements ActionDTO{
 		
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6230692405420942190L;
 	private CardColourDTO newCouncillor;
 	private CardColourDTO[] councilBalcony;
 

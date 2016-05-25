@@ -18,6 +18,11 @@ import model.gameTable.RegionBoard;
 
 public class AcquirePermitTileDTO implements ActionDTO {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8143885166021767590L;
+	
 	private Integer numberOfPermitTile;
 	private RegionDTO chosenRegion;
 	private List<CardColourDTO> cardsToDescard;

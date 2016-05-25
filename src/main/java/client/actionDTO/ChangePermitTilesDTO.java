@@ -11,6 +11,10 @@ import model.gameTable.RegionBoard;
 
 public class ChangePermitTilesDTO implements ActionDTO {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3441345313935469077L;
 	private RegionDTO selectedRegion;
 
 

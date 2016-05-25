@@ -9,6 +9,10 @@ import model.gameTable.Emporium;
 
 public class CityDTO implements ModelDTO<City>{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3576160634819872933L;
 	private String name;
 	private boolean isKingPresent;
 	private CityColourDTO colour;

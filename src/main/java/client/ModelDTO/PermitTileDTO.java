@@ -9,6 +9,10 @@ import model.gameTable.PermitTile;
 
 public class PermitTileDTO implements ModelDTO<PermitTile>{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2049414013378014856L;
 	private Set<CityDTO> buildablecities;
 	private Set<Bonus> bonuses;
 	

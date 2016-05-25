@@ -5,6 +5,10 @@ import client.ModelDTO.GameDTO;
 
 public class GameDTONotify implements ClientNotify{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2738890859980426145L;
 	private GameDTO updatedGame;
 	
 	public GameDTONotify(GameDTO updatedGame) {

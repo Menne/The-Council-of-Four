@@ -2,13 +2,15 @@ package client.ModelDTO;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import model.gameTable.PermitTile;
 import model.gameTable.PoliticsCard;
 import players.Player;
 
 public class PlayerDTO implements ModelDTO<Player>{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7091136957135865278L;
 	private int playerNumber;
 	private int assistants;
 	private int score;

@@ -1,6 +1,8 @@
 package client.ModelDTO;
 
-public interface ModelDTO<O> {
+import java.io.Serializable;
+
+public interface ModelDTO<O> extends Serializable{
 
 	public void map(O realObject);
 }

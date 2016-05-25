@@ -4,6 +4,10 @@ import model.gameTable.CardColour;
 
 public class CardColourDTO implements ModelDTO<CardColour>{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8929965571917578063L;
 	private String name;
 	
 	@Override

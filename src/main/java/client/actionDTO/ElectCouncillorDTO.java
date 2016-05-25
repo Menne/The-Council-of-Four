@@ -13,6 +13,10 @@ import model.gameTable.RegionBoard;
 
 public class ElectCouncillorDTO implements ActionDTO {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1250515570460488100L;
 	private CardColourDTO newCouncillor;
 	private CardColourDTO[] councilBalcony;
 

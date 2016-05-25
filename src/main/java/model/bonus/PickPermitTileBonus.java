@@ -12,6 +12,10 @@ import model.gameTable.RegionBoard;
 
 public class PickPermitTileBonus implements Bonus {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5266466654375532116L;
 	private final RegionBoard chosenRegion;
 	private final int numberOfPermitTile;
 

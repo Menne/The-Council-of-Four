@@ -17,6 +17,10 @@ import model.gameTable.PoliticsCard;
 
 public class BuildByKingDTO implements ActionDTO{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3717084594434999743L;
 	private CityDTO selectedCity;
 	private List<CardColourDTO> cardsToDescard;
 

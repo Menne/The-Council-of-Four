@@ -10,6 +10,10 @@ import model.Game;
 
 public class PoliticsCardsBonus implements Bonus{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6544835437746891576L;
 	private final int numberOfCards;
 	
 	/**

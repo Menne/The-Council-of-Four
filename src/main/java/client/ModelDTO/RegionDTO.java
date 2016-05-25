@@ -6,11 +6,14 @@ import java.util.Set;
 
 import model.gameTable.City;
 import model.gameTable.CouncilBalcony;
-import model.gameTable.PermitTile;
 import model.gameTable.RegionBoard;
 
 public class RegionDTO implements ModelDTO<RegionBoard>{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6668103687292375094L;
 	private String name;
 	private CardColourDTO[] balcony;
 	private Set<CityDTO> cities;

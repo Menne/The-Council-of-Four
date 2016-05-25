@@ -10,6 +10,10 @@ import model.Game;
 
 public class AssistantsBonus implements Bonus{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2791888304194029622L;
 	private final int assistantsIcreasement;
 
 	/**

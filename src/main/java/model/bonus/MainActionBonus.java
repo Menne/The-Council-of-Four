@@ -11,6 +11,11 @@ import model.Game;
 public class MainActionBonus implements Bonus {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5913736619122310756L;
+
+	/**
 	 * Increments the number of available main actions available
 	 * @param game is the current game
 	 */

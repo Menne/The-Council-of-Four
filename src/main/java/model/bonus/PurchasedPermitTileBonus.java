@@ -15,6 +15,11 @@ import model.Game;
 public class PurchasedPermitTileBonus implements Bonus {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5619798617816315708L;
+
+	/**
 	 * Invokes the action associated o this bonus
 	 * @param game is the current game
 	 */
