@@ -19,9 +19,12 @@ public class PermitDeckTest {
 		assertEquals(t, game.getGameTable().getRegionBoards().get(0).getRegionPermitDeck().pickPermitTile());
 	}
 	
-	@Test
-	public void testIfPickPermitTileThrowsException(){
-		
+	@Test(expected=IndexOutOfBoundsException.class)
+	public void testIfPickPermitTileThrowsException() throws IOException{
+		Game game=new Game();
+		while(!game.getGameTable().getRegionBoards().get(0).getRegionPermitDeck().getPermitTiles().isEmpty())
+			game.getGameTable().getRegionBoards().get(0).getRegionPermitDeck().pickPermitTile();
+		game.getGameTable().getRegionBoards().get(0).getRegionPermitDeck().pickPermitTile();
 	}
 	
 	@Test

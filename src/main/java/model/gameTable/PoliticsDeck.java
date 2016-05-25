@@ -23,7 +23,7 @@ public class PoliticsDeck{
 	 * Private because used just from the pick card method.
 	 * @return a random colour among the available colours.
 	 */
-	private CardColour randomColour(){
+	public CardColour randomColour(){
 		int rnd=new Random().nextInt(cardColours.size());
 		int i=0;
 		Iterator<CardColour> iter=this.cardColours.iterator();
