@@ -7,6 +7,7 @@ import java.util.List;
 
 import controller.BeginState;
 import controller.State;
+import controller.WaitingForPlayersState;
 import initializer.Initializer;
 import model.bonus.ScoreBonus;
 import model.gameTable.GameTable;
@@ -29,9 +30,8 @@ public class Game extends Observable<ViewNotify>{
 	public Game() throws IOException{
 		this.players=new ArrayList<Player>();
 		Initializer init= new Initializer();
-		this.gameTable=init.initialize();
-//		this.currentPlayer=this.players.get(0);
-		this.state=new BeginState();
+		this.gameTable=init.initialize();		
+		this.state=new WaitingForPlayersState();
 		this.additionalMainActionBonus=false;
 		this.lastLap=false;
 		this.market=new Market(this.players);		
@@ -110,6 +110,11 @@ public class Game extends Observable<ViewNotify>{
 		this.lastLap = lastLap;
 	}
 	
+	public void setCurrentPlayer(Player currentPlayer) {
+		this.currentPlayer = currentPlayer;
+	}
+
+
 	public void addPlayer(String playerName){
 		int numOfPlayers=this.players.size();
 		this.players.add(new Player(numOfPlayers+1, playerName, numOfPlayers+1, numOfPlayers+10, this.gameTable.getPoliticsDeck()));

@@ -31,7 +31,7 @@ public class ServerSocketView extends View implements Runnable {
 		while(true){
 			
 			try {
-				
+
 				Object object = this.socketIn.readObject();
 					
 				ActionDTO actionDTO=(ActionDTO) object;				
@@ -50,7 +50,7 @@ public class ServerSocketView extends View implements Runnable {
 	@Override
 	public void update(ViewNotify notify) {
 		try {
-			
+			System.out.println("player almost Added");
 			this.socketOut.writeObject(notify.toClientNotify());
 			
 		} catch (IOException e) {

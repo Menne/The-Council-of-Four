@@ -17,6 +17,7 @@ public class GameNotify implements ViewNotify {
 	public ClientNotify toClientNotify() {
 		GameDTO gameDTO=new GameDTO();
 		gameDTO.map(this.game);
+		System.out.println("player almost Added!!!!!");
 		return new GameDTONotify(gameDTO);
 		
 	}

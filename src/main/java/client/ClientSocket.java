@@ -18,27 +18,36 @@ public class ClientSocket {
 	private final static int PORT = 29999;
 	private final static String IP = "127.0.0.1";
 	
-	public void startClient(ClientController clientController)
+	public void startClient()
 				throws UnknownHostException, IOException {
 		Socket socket=new Socket(IP, PORT);
 		System.out.println("Connection created");
+		
+		
+		GameDTO clientGame=new GameDTO();
+		
+		CLI view=new CLI(clientGame.getParser());
+		
+		
+		clientGame.registerObserver(view);
+		
 		ExecutorService executor=Executors.newFixedThreadPool(2);
-		executor.submit(new ClientOutHandler(
-				new ObjectOutputStream(socket.getOutputStream()), clientController));
+		ClientOutHandler clientOutHandler=new ClientOutHandler(
+				new ObjectOutputStream(socket.getOutputStream()));
+		executor.submit(clientOutHandler);
+		ClientController clientController=new ClientController(clientGame, clientOutHandler);
+		view.registerObserver(clientController);
 		executor.submit(new ClientInHandler(
 				new ObjectInputStream(socket.getInputStream()), clientController));
+		
+		clientGame.notifyObserver(new WelcomeNotify());
+		view.input();
 	}
 	
 	public static void main(String[] args) throws UnknownHostException, IOException {
 
 		ClientSocket client=new ClientSocket();
-		GameDTO clientGame=new GameDTO();
-		ClientController clientController=new ClientController(clientGame);
-		CLI view=new CLI(clientGame, clientGame.getParser());
-		
-		client.startClient(clientController);
-		view.input();
-		
-		clientGame.notifyObserver(new WelcomeNotify());
+		client.startClient();
+				
 	}
 }

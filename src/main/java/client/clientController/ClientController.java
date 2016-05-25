@@ -1,32 +1,23 @@
 package client.clientController;
 
+import java.io.IOException;
+
 import client.ClientNotify;
+import client.ClientOutHandler;
 import client.ModelDTO.GameDTO;
 import client.actionDTO.ActionDTO;
 import observerPattern.Observer;
 
 public class ClientController implements Observer<ActionDTO> {
 
-	private boolean send;
-	private ActionDTO selectedAction;
 	private GameDTO clientGame;
+	private final ClientOutHandler clientOutHandler;
 
-	public ClientController(GameDTO clientGame) {
+	public ClientController(GameDTO clientGame, ClientOutHandler clientOutHandler) {
 		this.clientGame=clientGame;
-		this.send=false;
+		this.clientOutHandler=clientOutHandler;
 	}
 	
-	public boolean isSend() {
-		return send;
-	}
-	
-	public void setSend(boolean send) {
-		this.send = send;
-	}
-
-	public ActionDTO getSelectedAction() {
-		return selectedAction;
-	}
 	
 	public void updateFromIn(ClientNotify clientNotify){
 		clientNotify.act(this.clientGame);
@@ -34,8 +25,15 @@ public class ClientController implements Observer<ActionDTO> {
 	
 	@Override
 	public void update(ActionDTO selectedAction) {
-		this.selectedAction=selectedAction;
-		this.send=true;
+		try {
+			
+			this.clientOutHandler.getSocketOut().writeObject(selectedAction);
+			this.clientOutHandler.getSocketOut().flush();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

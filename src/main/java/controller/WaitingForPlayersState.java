@@ -18,8 +18,10 @@ public class WaitingForPlayersState implements State {
 	
 	@Override
 	public State addPlayerTransition(Game game) {
-		if(game.getPlayers().size()==2)
+		if(game.getPlayers().size()==2){
+			game.setCurrentPlayer(game.getPlayers().get(0));
 			return new BeginState();
+		}
 		else
 			return this;
 	}

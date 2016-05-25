@@ -17,6 +17,7 @@ public class AddPlayer implements Action {
 
 	@Override
 	public boolean executeAction(Game game) {
+		
 		game.addPlayer(this.playerName);
 		game.setState(game.getState().addPlayerTransition(game));
 		game.notifyObserver(new GameNotify(game));

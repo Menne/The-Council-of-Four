@@ -2,7 +2,6 @@ package client.clientView;
 
 import java.util.Scanner;
 
-import client.ModelDTO.GameDTO;
 import client.actionDTO.ActionDTO;
 import client.actionDTO.NeedParameters;
 import client.clientView.notifies.ClientViewNotify;
@@ -14,8 +13,7 @@ public class CLI extends ClientView{
 	private final Parser parser;
 	private Scanner scanner;
 	
-	public CLI(GameDTO clientGame, Parser parser) {
-		super(clientGame);
+	public CLI(Parser parser) {
 		this.parser=parser;
 		this.scanner=new Scanner(System.in);
 	}
