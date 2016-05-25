@@ -4,6 +4,7 @@ import client.ModelDTO.GameDTO;
 import client.parser.ActionParserVisitor;
 import model.Game;
 import model.actions.Action;
+import model.actions.AddPlayer;
 
 public class AddPlayerDTO implements ActionDTO {
 
@@ -22,12 +23,9 @@ public class AddPlayerDTO implements ActionDTO {
 
 	@Override
 	public Action map(Game game) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public String getPlayerName() {
-		return playerName;
+		AddPlayer action = new AddPlayer();
+		action.setPlayerName(this.playerName);
+		return action;
 	}
 
 	public void setPlayerName(String playerName) {

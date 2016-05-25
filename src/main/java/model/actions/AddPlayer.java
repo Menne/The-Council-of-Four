@@ -1,6 +1,7 @@
 package model.actions;
 
 import client.actionDTO.ActionDTO;
+import client.actionDTO.AddPlayerDTO;
 import model.Game;
 import view.GameNotify;
 
@@ -17,14 +18,14 @@ public class AddPlayer implements Action {
 	@Override
 	public boolean executeAction(Game game) {
 		game.addPlayer(this.playerName);
+		game.setState(game.getState().addPlayerTransition(game));
 		game.notifyObserver(new GameNotify(game));
 		return true;
 	}
 
 	@Override
 	public ActionDTO map() {
-		// TODO Auto-generated method stub
-		return null;
+		return new AddPlayerDTO();
 	}
 
 }
