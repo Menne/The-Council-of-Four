@@ -4,7 +4,7 @@ import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.EngageAssistantDTO;
 import server.model.Game;
 import server.model.actions.QuickAction;
-import server.view.serverSocketViewNotifies.GameNotify;
+import server.view.notifies.GameNotify;
 /**
  * It's the quick action "engage assistants" it operates on the 
  * protected attribute game through the method executeAction.

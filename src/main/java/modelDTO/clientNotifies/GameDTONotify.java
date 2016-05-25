@@ -1,7 +1,6 @@
-package server.view.clientNotifies;
+package modelDTO.clientNotifies;
 
 import modelDTO.GameDTO;
-
 
 public class GameDTONotify implements ClientNotify{
 	

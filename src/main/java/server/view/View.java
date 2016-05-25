@@ -3,7 +3,7 @@ package server.view;
 import observerPattern.Observable;
 import observerPattern.Observer;
 import server.model.actions.Action;
-import server.view.serverSocketViewNotifies.ViewNotify;
+import server.view.notifies.ViewNotify;
 
 public abstract class View extends Observable<Action> implements Observer<ViewNotify> {
 

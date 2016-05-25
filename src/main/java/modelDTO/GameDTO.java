@@ -13,6 +13,7 @@ import modelDTO.parser.Parser;
 import observerPattern.Observable;
 import players.Player;
 import server.model.Game;
+import server.model.actions.Action;
 import server.model.bonus.Bonus;
 import server.model.gameTable.CouncilBalcony;
 import server.model.gameTable.Councillor;
@@ -40,6 +41,7 @@ public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Ga
 		this.clientCouncillorReserve=new ArrayList<CardColourDTO>();
 		this.clientNobilityTrack=new ArrayList<Set<Bonus>>();
 		this.clientPlayers=new ArrayList<PlayerDTO>();
+		this.availableActions=new ArrayList<ActionDTO>();
 		this.parser=new Parser(this);
 	}
 
@@ -76,11 +78,11 @@ public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Ga
 			PlayerDTO playerDTO=new PlayerDTO();
 			playerDTO.map(realObject.getCurrentPlayer());
 			this.currentPlayer=playerDTO;
-		}
-/*TODO it does not enter in the cycle, why?!?!
+		System.out.println("azioni disponibili:");
 		for(Action action : realObject.getState().getAcceptableActions(realObject))
-			availableActions.add(action.map());
-*/
+			this.availableActions.add(action.map());
+		}
+
 	}
 
 	
@@ -144,7 +146,8 @@ public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Ga
 	public String toString() {
 		return "\nGameDTO\n Players:\n" + clientPlayers + "\n\nCurrentPlayer:\n" + currentPlayer + "\n" +
 				 clientRegions + " \n "+ Arrays.toString(clientKingBalcony) +"\n"+
-				 clientCouncillorReserve + "\n" + clientNobilityTrack;
+				 clientCouncillorReserve + "\n" + clientNobilityTrack +
+				 "\n\nYou have to choose from one of the following actions:\n" + availableActions;
 	}
 
 	

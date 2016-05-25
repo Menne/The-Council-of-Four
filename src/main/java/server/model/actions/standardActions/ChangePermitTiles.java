@@ -6,7 +6,7 @@ import modelDTO.actionsDTO.NeedParameters;
 import server.model.Game;
 import server.model.actions.QuickAction;
 import server.model.gameTable.RegionBoard;
-import server.view.serverSocketViewNotifies.GameNotify;
+import server.view.notifies.GameNotify;
 
 /**
  * It's the quick action "change permit tiles" it operates on the 

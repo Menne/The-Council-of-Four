@@ -7,7 +7,7 @@ import java.net.Socket;
 
 import modelDTO.actionsDTO.ActionDTO;
 import server.model.Game;
-import server.view.serverSocketViewNotifies.ViewNotify;
+import server.view.notifies.ViewNotify;
 
 public class ServerSocketView extends View implements Runnable {
 

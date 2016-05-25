@@ -3,7 +3,7 @@ package server.model.actions;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.PickPoliticsCardDTO;
 import server.model.Game;
-import server.view.serverSocketViewNotifies.GameNotify;
+import server.view.notifies.GameNotify;
 
 public class PickPoliticsCard implements Action {
 

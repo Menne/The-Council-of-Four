@@ -7,7 +7,7 @@ import server.model.Game;
 import server.model.actions.MainAction;
 import server.model.gameTable.CouncilBalcony;
 import server.model.gameTable.Councillor;
-import server.view.serverSocketViewNotifies.GameNotify;
+import server.view.notifies.GameNotify;
 
 /**
  * It's the main action "elect councillor" it operates on the 

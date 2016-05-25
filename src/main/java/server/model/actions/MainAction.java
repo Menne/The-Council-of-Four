@@ -1,7 +1,7 @@
 package server.model.actions;
 
 import server.model.Game;
-import server.view.serverSocketViewNotifies.ErrorNotify;
+import server.view.notifies.ErrorNotify;
 
 /**
  * The class that models the generic main actions of the game.

@@ -1,7 +1,7 @@
-package server.view.serverSocketViewNotifies;
+package server.view.notifies;
 
-import server.view.clientNotifies.ClientNotify;
-import server.view.clientNotifies.ErrorDTONotify;
+import modelDTO.clientNotifies.ClientNotify;
+import modelDTO.clientNotifies.ErrorDTONotify;
 
 public class ErrorNotify implements ViewNotify {
 

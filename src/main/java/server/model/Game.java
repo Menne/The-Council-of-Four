@@ -11,10 +11,9 @@ import players.Player;
 import server.model.bonus.ScoreBonus;
 import server.model.gameTable.GameTable;
 import server.model.market.Market;
-import server.model.stateMachine.BeginState;
 import server.model.stateMachine.State;
 import server.model.stateMachine.WaitingForPlayersState;
-import server.view.serverSocketViewNotifies.ViewNotify;
+import server.view.notifies.ViewNotify;
  
 public class Game extends Observable<ViewNotify>{
 	

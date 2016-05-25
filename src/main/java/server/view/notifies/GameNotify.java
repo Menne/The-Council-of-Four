@@ -1,8 +1,8 @@
-package server.view.serverSocketViewNotifies;
+package server.view.notifies;
 
-import server.view.clientNotifies.ClientNotify;
-import server.view.clientNotifies.GameDTONotify;
 import modelDTO.GameDTO;
+import modelDTO.clientNotifies.ClientNotify;
+import modelDTO.clientNotifies.GameDTONotify;
 import server.model.Game;
 
 public class GameNotify implements ViewNotify {

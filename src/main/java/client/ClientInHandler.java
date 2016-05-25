@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 
 import client.controller.ClientController;
-import server.view.clientNotifies.ClientNotify;
+import modelDTO.clientNotifies.ClientNotify;
 
 public class ClientInHandler implements Runnable {
 	

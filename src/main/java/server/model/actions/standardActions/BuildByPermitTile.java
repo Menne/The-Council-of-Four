@@ -10,7 +10,7 @@ import server.model.gameTable.City;
 import server.model.gameTable.ConnectedBuiltCityDiscover;
 import server.model.gameTable.Emporium;
 import server.model.gameTable.PermitTile;
-import server.view.serverSocketViewNotifies.GameNotify;
+import server.view.notifies.GameNotify;
 
 /**
  * This action allows the current player to build in one city from those which

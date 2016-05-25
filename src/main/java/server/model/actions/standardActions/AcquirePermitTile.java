@@ -13,7 +13,7 @@ import server.model.gameTable.CouncilBalcony;
 import server.model.gameTable.Councillor;
 import server.model.gameTable.PoliticsCard;
 import server.model.gameTable.RegionBoard;
-import server.view.serverSocketViewNotifies.GameNotify;
+import server.view.notifies.GameNotify;
 
 /**
  * This class is the main action "acquire permit tile", it operates on the 

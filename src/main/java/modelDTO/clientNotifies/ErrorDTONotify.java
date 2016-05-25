@@ -1,4 +1,4 @@
-package server.view.clientNotifies;
+package modelDTO.clientNotifies;
 
 import modelDTO.GameDTO;
 

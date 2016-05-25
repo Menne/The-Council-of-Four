@@ -4,8 +4,8 @@ import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.AddictionalMainActionDTO;
 import server.model.Game;
 import server.model.actions.QuickAction;
-import server.view.serverSocketViewNotifies.ErrorNotify;
-import server.view.serverSocketViewNotifies.GameNotify;
+import server.view.notifies.ErrorNotify;
+import server.view.notifies.GameNotify;
 
 /**
  * It's the quick action "additional main action" it operates

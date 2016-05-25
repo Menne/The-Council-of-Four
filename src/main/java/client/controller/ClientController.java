@@ -5,8 +5,8 @@ import java.io.IOException;
 import client.ClientOutHandler;
 import modelDTO.GameDTO;
 import modelDTO.actionsDTO.ActionDTO;
+import modelDTO.clientNotifies.ClientNotify;
 import observerPattern.Observer;
-import server.view.clientNotifies.ClientNotify;
 
 public class ClientController implements Observer<ActionDTO> {
 

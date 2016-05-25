@@ -22,5 +22,9 @@ public class PickPoliticsCardDTO implements ActionDTO {
 	public ActionParserVisitor setParser(GameDTO game) {
 		return null;
 	}
+	
+	public String toString() {
+		return "pc: pick a politics card";
+	}
 
 }

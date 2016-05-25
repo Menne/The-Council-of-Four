@@ -16,7 +16,7 @@ import server.model.gameTable.Councillor;
 import server.model.gameTable.Emporium;
 import server.model.gameTable.PoliticsCard;
 import server.model.gameTable.RegionBoard;
-import server.view.serverSocketViewNotifies.GameNotify;
+import server.view.notifies.GameNotify;
 
 /**
  * This class models the build an emporium with king's help action

@@ -31,6 +31,7 @@ public class CLI extends ClientView{
 	public void input() {
 		while (true) {
 			String input=this.scanner.nextLine();
+			System.out.println(this.parser.availableActions());
 			if (this.parser.availableActions().contains(input)) {
 				ActionDTO selectedAction=this.parser.actionParser(input);
 				this.checkIfParametersNeeded(selectedAction);

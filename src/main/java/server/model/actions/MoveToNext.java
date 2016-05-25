@@ -3,7 +3,7 @@ package server.model.actions;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.MoveToNextDTO;
 import server.model.Game;
-import server.view.serverSocketViewNotifies.GameNotify;
+import server.view.notifies.GameNotify;
 
 public class MoveToNext extends QuickAction {
 	
