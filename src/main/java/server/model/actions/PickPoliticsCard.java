@@ -1,9 +1,9 @@
 package server.model.actions;
 
-import client.actionDTO.ActionDTO;
-import client.actionDTO.PickPoliticsCardDTO;
+import modelDTO.actionsDTO.ActionDTO;
+import modelDTO.actionsDTO.PickPoliticsCardDTO;
 import server.model.Game;
-import view.GameNotify;
+import server.view.serverSocketViewNotifies.GameNotify;
 
 public class PickPoliticsCard implements Action {
 

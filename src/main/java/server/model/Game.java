@@ -5,16 +5,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import controller.BeginState;
-import controller.State;
-import controller.WaitingForPlayersState;
 import initializer.Initializer;
 import observerPattern.Observable;
 import players.Player;
 import server.model.bonus.ScoreBonus;
 import server.model.gameTable.GameTable;
 import server.model.market.Market;
-import view.ViewNotify;
+import server.model.stateMachine.BeginState;
+import server.model.stateMachine.State;
+import server.model.stateMachine.WaitingForPlayersState;
+import server.view.serverSocketViewNotifies.ViewNotify;
  
 public class Game extends Observable<ViewNotify>{
 	

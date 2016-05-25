@@ -8,10 +8,10 @@ import java.net.UnknownHostException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import client.ModelDTO.GameDTO;
-import client.clientController.ClientController;
-import client.clientView.CLI;
-import client.clientView.notifies.WelcomeNotify;
+import client.controller.ClientController;
+import client.view.CLI;
+import client.view.notifies.WelcomeNotify;
+import modelDTO.GameDTO;
 
 public class ClientSocket {
 

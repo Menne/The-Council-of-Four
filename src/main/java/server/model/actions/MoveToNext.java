@@ -1,9 +1,9 @@
 package server.model.actions;
 
-import client.actionDTO.ActionDTO;
-import client.actionDTO.MoveToNextDTO;
+import modelDTO.actionsDTO.ActionDTO;
+import modelDTO.actionsDTO.MoveToNextDTO;
 import server.model.Game;
-import view.GameNotify;
+import server.view.serverSocketViewNotifies.GameNotify;
 
 public class MoveToNext extends QuickAction {
 	

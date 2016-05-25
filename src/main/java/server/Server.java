@@ -5,8 +5,10 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import controller.Controller;
+
+import server.controller.Controller;
 import server.model.Game;
+import server.view.ServerSocketView;
 
 
 public class Server {

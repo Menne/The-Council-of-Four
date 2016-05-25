@@ -1,6 +1,6 @@
 package server.model.actions;
 
-import client.actionDTO.ActionDTO;
+import modelDTO.actionsDTO.ActionDTO;
 import server.model.Game;
 
 /**

@@ -1,9 +1,9 @@
 package server.model.actions;
 
-import client.actionDTO.ActionDTO;
-import client.actionDTO.AddPlayerDTO;
+import modelDTO.actionsDTO.ActionDTO;
+import modelDTO.actionsDTO.AddPlayerDTO;
 import server.model.Game;
-import view.GameNotify;
+import server.view.serverSocketViewNotifies.GameNotify;
 
 
 public class AddPlayer implements Action {

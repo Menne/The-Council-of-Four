@@ -1,6 +1,6 @@
 package server.model.actions.marketActions;
 
-import client.actionDTO.ActionDTO;
+import modelDTO.actionsDTO.ActionDTO;
 import server.model.Game;
 import server.model.actions.Action;
 import server.model.market.Offer;

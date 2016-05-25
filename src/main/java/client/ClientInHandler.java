@@ -3,7 +3,8 @@ package client;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
-import client.clientController.ClientController;
+import client.controller.ClientController;
+import server.view.clientNotifies.ClientNotify;
 
 public class ClientInHandler implements Runnable {
 	
