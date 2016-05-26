@@ -28,4 +28,9 @@ public class AssistantsBonusTest {
 		new AssistantsBonus(0);
 	}
 
+	@Test(expected= IllegalArgumentException.class)
+	public void testNegativeException() throws IOException{
+		new AssistantsBonus(-3);
+	}
+
 }

@@ -22,4 +22,13 @@ public class CoinsBonusTest {
 		assertEquals(temp+3, game.getCurrentPlayer().getCoins());
 	}
 
+	@Test(expected=IllegalArgumentException.class)
+	public void testException(){
+		new CoinsBonus(0);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testNegativeException(){
+		new CoinsBonus(-2);
+	}
 }

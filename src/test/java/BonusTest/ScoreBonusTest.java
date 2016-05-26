@@ -30,4 +30,8 @@ public class ScoreBonusTest {
 		assertEquals(1, game.getPlayers().get(0).getScore());
 	}
 
+	@Test(expected=IllegalArgumentException.class)
+	public void testNegativeException(){
+		new ScoreBonus(-2);
+	}
 }
