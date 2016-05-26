@@ -1,6 +1,7 @@
 package model.bonus;
 
 import model.Game;
+import players.Player;
 
 /**
  * AssistantsBonus implements the Bonus Class
@@ -25,7 +26,15 @@ public class AssistantsBonus implements Bonus{
 	 * @param currentPlayer is the player who is playing the turn
 	 */
 	public void assignBonus(Game game) {
-		game.getCurrentPlayer().incrementAssistants(assistantsIcreasement);
+		game.getCurrentPlayer().incrementAssistants(this.assistantsIcreasement);
+	}
+	
+	/**
+	 * Assigns to player the number of assistances 
+	 * @param player
+	 */
+	public void assignBonusToPlayer(Player player) {
+		player.incrementAssistants(this.assistantsIcreasement);
 	}
 
 	@Override

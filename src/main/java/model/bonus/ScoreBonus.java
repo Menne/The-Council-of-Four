@@ -20,13 +20,17 @@ public class ScoreBonus implements Bonus{
 		this.scoreAdvancement=scoreAdvancement;
 	}
 	/**
-	 * assignBonus assigns to player p the "advancement" score
-	 * @param currentPlayer
+	 * assignBonus assigns to the current player the "advancement" score
+	 * @param game that has the current player and can assign directly to the right player this bonus
 	 */
 	public void assignBonus(Game game){
 		game.getCurrentPlayer().incrementScore(scoreAdvancement);
 	}
 	
+	/**
+	 * assigns to player p the score bonus
+	 * @param player to which the method assigns the bonus
+	 */
 	public void assignBonusToPlayer(Player player){
 		player.incrementScore(this.scoreAdvancement);
 	}
