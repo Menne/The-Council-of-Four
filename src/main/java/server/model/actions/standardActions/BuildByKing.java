@@ -5,7 +5,6 @@ import java.util.List;
 
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.BuildByKingDTO;
-import modelDTO.actionsDTO.NeedParameters;
 import server.model.Game;
 import server.model.actions.MainAction;
 import server.model.bonus.Bonus;
@@ -24,7 +23,7 @@ import server.view.notifies.GameNotify;
  *
  */
 
-public class BuildByKing extends MainAction implements NeedParameters{
+public class BuildByKing extends MainAction {
 
 	private City selectedCity;
 	private List<PoliticsCard> cardsToDescard;

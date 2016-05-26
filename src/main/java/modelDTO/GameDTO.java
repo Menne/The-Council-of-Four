@@ -78,11 +78,10 @@ public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Ga
 			PlayerDTO playerDTO=new PlayerDTO();
 			playerDTO.map(realObject.getCurrentPlayer());
 			this.currentPlayer=playerDTO;
-		System.out.println("azioni disponibili:");
+		}
+		
 		for(Action action : realObject.getState().getAcceptableActions(realObject))
 			this.availableActions.add(action.map());
-		}
-
 	}
 
 	

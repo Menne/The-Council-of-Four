@@ -15,7 +15,7 @@ import server.model.gameTable.CardColour;
 import server.model.gameTable.City;
 import server.model.gameTable.PoliticsCard;
 
-public class BuildByKingDTO implements ActionDTO{
+public class BuildByKingDTO implements ActionDTO, ActionWithParameters {
 
 	/**
 	 * 
