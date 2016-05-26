@@ -11,7 +11,7 @@ import server.model.gameTable.CouncilBalcony;
 import server.model.gameTable.Councillor;
 import server.model.gameTable.RegionBoard;
 
-public class ElectCouncillorDTO implements ActionDTO {
+public class ElectCouncillorDTO implements ActionDTO, ActionWithParameters {
 	
 	/**
 	 * 

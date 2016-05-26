@@ -14,7 +14,7 @@ import server.model.actions.standardActions.BuildByPermitTile;
 import server.model.gameTable.City;
 import server.model.gameTable.PermitTile;
 
-public class BuildByPermitTileDTO implements ActionDTO{
+public class BuildByPermitTileDTO implements ActionDTO, ActionWithParameters {
 	
 	/**
 	 * 

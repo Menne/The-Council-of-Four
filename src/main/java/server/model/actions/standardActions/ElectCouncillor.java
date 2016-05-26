@@ -2,7 +2,6 @@ package server.model.actions.standardActions;
 
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.ElectCouncillorDTO;
-import modelDTO.actionsDTO.NeedParameters;
 import server.model.Game;
 import server.model.actions.MainAction;
 import server.model.gameTable.CouncilBalcony;
@@ -17,7 +16,7 @@ import server.view.notifies.GameNotify;
  * @author Luca
  *
  */
-public class ElectCouncillor extends MainAction implements NeedParameters{
+public class ElectCouncillor extends MainAction {
 
 	private Councillor newCouncillor;
 	private CouncilBalcony councilBalcony;

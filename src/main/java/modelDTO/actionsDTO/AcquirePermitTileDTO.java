@@ -15,7 +15,7 @@ import server.model.gameTable.CardColour;
 import server.model.gameTable.PoliticsCard;
 import server.model.gameTable.RegionBoard;
 
-public class AcquirePermitTileDTO implements ActionDTO {
+public class AcquirePermitTileDTO implements ActionDTO, ActionWithParameters {
 
 	/**
 	 * 

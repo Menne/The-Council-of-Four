@@ -9,7 +9,7 @@ import server.model.actions.Action;
 import server.model.actions.standardActions.ChangePermitTiles;
 import server.model.gameTable.RegionBoard;
 
-public class ChangePermitTilesDTO implements ActionDTO {
+public class ChangePermitTilesDTO implements ActionDTO, ActionWithParameters {
 
 	/**
 	 * 
