@@ -14,7 +14,6 @@ public class ChangePermitTilesParser implements ActionParserVisitor {
 	
 	public ChangePermitTilesParser(ChangePermitTilesDTO selectedAction, GameDTO game) {
 		this.selectedAction=selectedAction;
-		this.currentParameter=null;
 		this.game=game;
 	}
 	
@@ -35,6 +34,5 @@ public class ChangePermitTilesParser implements ActionParserVisitor {
 		
 		return this.selectedAction;
 	}
-
 
 }

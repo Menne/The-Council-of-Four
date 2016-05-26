@@ -5,7 +5,6 @@ import java.util.List;
 
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.BuildByPermitTileDTO;
-import modelDTO.actionsDTO.NeedParameters;
 import players.Player;
 import server.model.Game;
 import server.model.actions.MainAction;
@@ -24,7 +23,7 @@ import server.view.notifies.GameNotify;
  *
  */
 
-public class BuildByPermitTile extends MainAction implements NeedParameters{
+public class BuildByPermitTile extends MainAction {
 
 	private PermitTile selectedPermitTile;
 	private City selectedCity;

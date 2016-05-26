@@ -5,7 +5,6 @@ import java.util.List;
 
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.ElectCouncillorByAssistantDTO;
-import modelDTO.actionsDTO.NeedParameters;
 import players.Player;
 import server.model.Game;
 import server.model.actions.QuickAction;
@@ -21,7 +20,7 @@ import server.view.notifies.GameNotify;
  * @author Luca
  *
  */
-public class ElectCouncillorByAssistant extends QuickAction implements NeedParameters{
+public class ElectCouncillorByAssistant extends QuickAction {
 
 	private Councillor newCouncillor;
 	private CouncilBalcony councilBalcony;

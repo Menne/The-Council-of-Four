@@ -5,9 +5,6 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.management.MXBean;
-
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import server.model.gameTable.CardColour;

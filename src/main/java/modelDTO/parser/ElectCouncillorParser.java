@@ -14,7 +14,6 @@ public class ElectCouncillorParser implements ActionParserVisitor {
 	
 	public ElectCouncillorParser(ElectCouncillorDTO selectedAction, GameDTO game) {
 		this.selectedAction=selectedAction;
-		this.currentParameter=null;
 		this.game=game;
 	}
 	
@@ -26,7 +25,7 @@ public class ElectCouncillorParser implements ActionParserVisitor {
 	@Override
 	public ActionDTO setParameters(Parser parser) {
 		this.game.notifyObserver(new ActionNotify
-				("Ok! you have chosen to send an assistant to elect a councillor. Now I need some other infos, like:"));
+				("Ok! you have chosen to elect a councillor. Now I need some other infos, like:"));
 		
 		this.game.notifyObserver(new ActionNotify
 				("the colour of the councillor you want to elect"));

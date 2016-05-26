@@ -5,7 +5,6 @@ import java.util.List;
 
 import modelDTO.actionsDTO.AcquirePermitTileDTO;
 import modelDTO.actionsDTO.ActionDTO;
-import modelDTO.actionsDTO.NeedParameters;
 import players.Player;
 import server.model.Game;
 import server.model.actions.MainAction;
@@ -23,7 +22,7 @@ import server.view.notifies.GameNotify;
  *
  */
 
-public class AcquirePermitTile extends MainAction implements NeedParameters{
+public class AcquirePermitTile extends MainAction {
 
 
 	private Integer numberOfPermitTile;

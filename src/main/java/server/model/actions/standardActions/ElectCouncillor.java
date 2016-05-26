@@ -5,7 +5,6 @@ import java.util.List;
 
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.ElectCouncillorDTO;
-import modelDTO.actionsDTO.NeedParameters;
 import players.Player;
 import server.model.Game;
 import server.model.actions.MainAction;
@@ -21,7 +20,7 @@ import server.view.notifies.GameNotify;
  * @author Luca
  *
  */
-public class ElectCouncillor extends MainAction implements NeedParameters{
+public class ElectCouncillor extends MainAction {
 
 	private Councillor newCouncillor;
 	private CouncilBalcony councilBalcony;

@@ -19,8 +19,11 @@ public class ScoreBonus implements Bonus{
 	/**
 	 * Constructor of ScoreBonus
 	 * @param scoreAdvancement is the amount of advancement in the score track
+	 * @throws IllegalArgumentException if scoreAdvancement is negative
 	 */
-	public ScoreBonus(int scoreAdvancement){
+	public ScoreBonus(int scoreAdvancement) throws IllegalArgumentException{
+		if(scoreAdvancement<0)
+			throw new IllegalArgumentException("you can't initialize a bonus with a negative advancement");
 		this.scoreAdvancement=scoreAdvancement;
 	}
 	/**

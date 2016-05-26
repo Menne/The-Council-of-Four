@@ -27,18 +27,27 @@ public class BuildByPermitTileParser implements ActionParserVisitor {
 	@Override
 	public ActionDTO setParameters(Parser parser) {
 		this.game.notifyObserver(new ActionNotify
-				("Ok! you have chosen to build an emporium with a permit tile. Now I need some other infos, like:"));
+				("Ok! you have chosen to build an emporium with a permit tile."));
+			
+		if (!parser.acceptablePermitTiles().isEmpty()) {
+			
+			this.game.notifyObserver(new ActionNotify("Now I need some other infos, like:"));
 		
-		this.game.notifyObserver(new ActionNotify
-				("the name of the city in which you want to build"));
-		this.game.notifyObserver(new ParametersNotify(parser.acceptableCities(), this));
-		this.selectedAction.setSelectedCity(parser.cityTranslator(currentParameter));
+			this.game.notifyObserver(new ActionNotify
+					("the name of the city in which you want to build"));
+			this.game.notifyObserver(new ParametersNotify(parser.acceptableCities(), this));
+			this.selectedAction.setSelectedCity(parser.cityTranslator(currentParameter));
 		
-		this.game.notifyObserver(new ActionNotify
-				("the permit tile you want to use"));
-		this.game.notifyObserver(new ParametersNotify(parser.acceptablePermitTiles(), this));
-		this.selectedAction.setSelectedPermitTile(parser.permitTileTranslator(currentParameter));
+			this.game.notifyObserver(new ActionNotify
+					("the permit tile you want to use"));
+			this.game.notifyObserver(new ParametersNotify(parser.acceptablePermitTiles(), this));
+			this.selectedAction.setSelectedPermitTile(parser.permitTileTranslator(currentParameter));
 		
+		}
+		else 
+			this.game.notifyObserver(new ActionNotify
+					("but it seems that you haven't any permit tile turned up! Select another action please"));
+
 		return this.selectedAction;
 	}
 

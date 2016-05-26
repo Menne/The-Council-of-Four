@@ -1,8 +1,8 @@
 package modelDTO.parser;
 
-
 import client.view.notifies.ActionNotify;
 import client.view.notifies.ParametersNotify;
+import client.view.notifies.PoliticsCardsNotify;
 import modelDTO.GameDTO;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.BuildByKingDTO;
@@ -15,7 +15,6 @@ public class BuildByKingParser implements ActionParserVisitor {
 	
 	public BuildByKingParser(BuildByKingDTO selectedAction, GameDTO game) {
 		this.selectedAction=selectedAction;
-		this.currentParameter=null;
 		this.game=game;
 	}
 
@@ -27,18 +26,27 @@ public class BuildByKingParser implements ActionParserVisitor {
 	@Override
 	public ActionDTO setParameters(Parser parser) {
 		this.game.notifyObserver(new ActionNotify
-				("Ok! you have chosen to build an emporium with the help of the king. Now I need some other infos, like:"));
+				("Ok! you have chosen to build an emporium with the help of the king."));
 		
-		this.game.notifyObserver(new ActionNotify
-				("the name of the city in which you want to build"));
-		this.game.notifyObserver(new ParametersNotify(parser.acceptableCities(), this));
-		this.selectedAction.setSelectedCity(parser.cityTranslator(currentParameter));
+		if (!parser.acceptablePoliticsCards().isEmpty()) {
+			
+			this.game.notifyObserver(new ActionNotify("Now I need some other infos, like:"));
 		
-		this.game.notifyObserver(new ActionNotify
-				("the colour of the cards you want to descard"));
-		this.game.notifyObserver(new ParametersNotify(parser.acceptablePoliticsCards(), this));
-		this.selectedAction.setCardsToDescard(parser.politicsCardsTranslator(currentParameter));
-	
+			this.game.notifyObserver(new ActionNotify
+					("the name of the city in which you want to build"));
+			this.game.notifyObserver(new ParametersNotify(parser.acceptableCities(), this));
+			this.selectedAction.setSelectedCity(parser.cityTranslator(currentParameter));
+			
+			this.game.notifyObserver(new ActionNotify
+					("the colour of the cards you want to descard"));
+			this.game.notifyObserver(new PoliticsCardsNotify(parser.acceptablePoliticsCards(), this));
+			this.selectedAction.setCardsToDescard(parser.politicsCardsTranslator(currentParameter));
+		
+		}
+		else 
+			this.game.notifyObserver(new ActionNotify
+					("but it seems that you haven't any politics card in your hand! Select another action please"));
+		
 		return this.selectedAction;
 	}
 

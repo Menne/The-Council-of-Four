@@ -5,7 +5,6 @@ import java.util.List;
 
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.ChangePermitTilesDTO;
-import modelDTO.actionsDTO.NeedParameters;
 import players.Player;
 import server.model.Game;
 import server.model.actions.QuickAction;
@@ -19,7 +18,7 @@ import server.view.notifies.GameNotify;
  * @author Luca
  *
  */
-public class ChangePermitTiles extends QuickAction implements NeedParameters{
+public class ChangePermitTiles extends QuickAction {
 	
 	private RegionBoard selectedRegion;
 	private static final int necessaryAssistants=1;

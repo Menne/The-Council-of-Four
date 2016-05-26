@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import client.view.notifies.ClientViewNotify;
 import modelDTO.actionsDTO.ActionDTO;
-import modelDTO.actionsDTO.NeedParameters;
+import modelDTO.actionsDTO.ActionWithParameters;
 import modelDTO.parser.Parser;
 
 
@@ -31,7 +31,6 @@ public class CLI extends ClientView{
 	public void input() {
 		while (true) {
 			String input=this.scanner.nextLine();
-			System.out.println(this.parser.availableActions());
 			if (this.parser.availableActions().contains(input)) {
 				ActionDTO selectedAction=this.parser.actionParser(input);
 				this.checkIfParametersNeeded(selectedAction);
@@ -42,7 +41,7 @@ public class CLI extends ClientView{
 	}
 	
 	public void checkIfParametersNeeded(ActionDTO selectedAction) {
-		if (selectedAction instanceof NeedParameters)
+		if (selectedAction instanceof ActionWithParameters)
 			this.insertParameters(selectedAction);
 		else
 			notifyObserver(selectedAction);

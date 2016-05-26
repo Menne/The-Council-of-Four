@@ -23,8 +23,11 @@ public class PickPermitTileBonus implements Bonus {
 	 * constructor of PickPermitTileBonus
 	 * @param chosenRegion is the region you have chosen
 	 * @param numberOfPermitTile is the number of the permit tile you have chosen
+	 * @throws IllegalArgumentException if number of permit tile isn't 0 or 1
 	 */
-	public PickPermitTileBonus(RegionBoard chosenRegion, int numberOfPermitTile) {
+	public PickPermitTileBonus(RegionBoard chosenRegion, int numberOfPermitTile) throws IllegalArgumentException {
+		if(numberOfPermitTile>1 || numberOfPermitTile<0)
+			throw new IllegalArgumentException("the permit tile doesn't exist");
 		this.chosenRegion=chosenRegion;
 		this.numberOfPermitTile=numberOfPermitTile;
 	}
