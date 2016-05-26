@@ -26,7 +26,7 @@ public class AddPlayer implements Action {
 		List<Player> interestedPlayers=new ArrayList<Player>();
 		interestedPlayers.add(player);
 		game.notifyObserver(new PlayerAddedNotify(player,interestedPlayers));
-		game.setState(game.getState().addPlayerTransition(game));
+		game.getState().addPlayerTransition(game);
 		return true;
 	}
 
