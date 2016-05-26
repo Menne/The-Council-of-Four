@@ -19,6 +19,7 @@ import server.model.gameTable.CouncilBalcony;
 import server.model.gameTable.Councillor;
 import server.model.gameTable.RegionBoard;
 import modelDTO.gameTableDTO.CardColourDTO;
+import modelDTO.gameTableDTO.MarketDTO;
 
 public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Game> {
 	
@@ -33,6 +34,7 @@ public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Ga
 	private List<PlayerDTO> clientPlayers;
 	private PlayerDTO currentPlayer;
 	private List<ActionDTO> availableActions;
+	private MarketDTO market;
 	private Parser parser;
 	
 	public GameDTO(){
@@ -42,6 +44,7 @@ public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Ga
 		this.clientNobilityTrack=new ArrayList<Set<Bonus>>();
 		this.clientPlayers=new ArrayList<PlayerDTO>();
 		this.availableActions=new ArrayList<ActionDTO>();
+		this.market=new MarketDTO(clientPlayers);
 		this.parser=new Parser(this);
 	}
 
