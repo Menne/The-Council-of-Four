@@ -19,8 +19,11 @@ public class PoliticsCardsBonus implements Bonus{
 	/**
 	 * constructor of PoliticsCardsBonus
 	 * @param numberOfCards is the amount of cards you want to add to player's hand
+	 * @throws IllegalArgumentException if number of cards is negative or 0
 	 */
-	public PoliticsCardsBonus(int numberOfCards){
+	public PoliticsCardsBonus(int numberOfCards) throws IllegalArgumentException{
+		if(numberOfCards<=0)
+			throw new IllegalArgumentException("the number of cards of a bonus can't be negative or 0");
 		this.numberOfCards=numberOfCards;
 	}
 
