@@ -21,6 +21,7 @@ public class ClientController implements Observer<ActionDTO> {
 	
 	public void updateFromIn(ClientNotify clientNotify){
 		clientNotify.act(this.clientGame);
+		System.out.println(this.clientGame);
 	}
 	
 	@Override
