@@ -19,8 +19,11 @@ public class AssistantsBonus implements Bonus{
 	/**
 	 * Constructor of AssistantsBonus
 	 * @param assistantsIcreasement is the increasement of assistants
+	 * @throws IllegalArgumentException if assistantIncreasement is 0 or negative
 	 */
-	public  AssistantsBonus(int assistantsIcreasement){
+	public  AssistantsBonus(int assistantsIcreasement) throws IllegalArgumentException{
+		if(assistantsIcreasement<=0)
+			throw new IllegalArgumentException("you can't create a bonus with 0 or negative number of assistants");
 		this.assistantsIcreasement=assistantsIcreasement;
 	}
 	

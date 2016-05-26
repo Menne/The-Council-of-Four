@@ -6,9 +6,8 @@ import java.io.IOException;
 
 import org.junit.Test;
 
-import model.bonus.ScoreBonus;
-import players.Player;
 import server.model.Game;
+import server.model.bonus.ScoreBonus;
 
 public class ScoreBonusTest {
 
@@ -16,7 +15,7 @@ public class ScoreBonusTest {
 	public void testAssignBonus() throws IOException {
 		Game game=new Game();
 		game.addPlayer("Andrea");
-		game.nextPlayer();
+		game.setCurrentPlayer(game.getPlayers().get(0));
 		ScoreBonus bonus=new ScoreBonus(1);
 		bonus.assignBonus(game);
 		assertEquals(1, game.getCurrentPlayer().getScore());
@@ -31,4 +30,8 @@ public class ScoreBonusTest {
 		assertEquals(1, game.getPlayers().get(0).getScore());
 	}
 
+	@Test(expected=IllegalArgumentException.class)
+	public void testNegativeException(){
+		new ScoreBonus(-2);
+	}
 }

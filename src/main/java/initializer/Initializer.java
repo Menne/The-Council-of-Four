@@ -56,7 +56,8 @@ public class Initializer {
 	
 	while(!s.equals("STOPCITYCOLOUR")){
 		s=b.readLine();
-		cityColourList.add(new CityColour(s,new ScoreBonus(Integer.parseInt(b.readLine()))));
+		if(s!="KingColour")
+			cityColourList.add(new CityColour(s,new ScoreBonus(Integer.parseInt(b.readLine()))));
 		s=b.readLine();
 	}
 	System.out.println("Colori città ok");

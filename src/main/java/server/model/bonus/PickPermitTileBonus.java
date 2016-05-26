@@ -2,6 +2,7 @@ package server.model.bonus;
 
 
 import server.model.Game;
+import server.model.gameTable.PermitTile;
 import server.model.gameTable.RegionBoard;
 
 /**
@@ -24,7 +25,9 @@ public class PickPermitTileBonus implements Bonus {
 	 * @param chosenRegion is the region you have chosen
 	 * @param numberOfPermitTile is the number of the permit tile you have chosen
 	 */
-	public PickPermitTileBonus(RegionBoard chosenRegion, int numberOfPermitTile) {
+	public PickPermitTileBonus(RegionBoard chosenRegion, int numberOfPermitTile) throws IllegalArgumentException {
+		if(numberOfPermitTile>1)
+			throw new IllegalArgumentException("the permit tile doesn't exist");
 		this.chosenRegion=chosenRegion;
 		this.numberOfPermitTile=numberOfPermitTile;
 	}
