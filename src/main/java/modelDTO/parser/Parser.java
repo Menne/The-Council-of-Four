@@ -158,8 +158,6 @@ public class Parser implements Serializable{
 		int maxNumberOfCards=this.game.getCurrentPlayer().getAvailablePermitTiles().size();
 		for(Integer i=0; i<maxNumberOfCards; i++)
 			acceptableTiles.add(i.toString());
-		if (acceptableTiles.isEmpty())
-			this.game.notifyObserver(new ClientErrorNotify("It seems that you haven't permit tiles..."));
 		return acceptableTiles;
 	}
 	

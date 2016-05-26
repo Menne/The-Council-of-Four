@@ -25,18 +25,27 @@ public class BuildByKingParser implements ActionParserVisitor {
 	@Override
 	public ActionDTO setParameters(Parser parser) {
 		this.game.notifyObserver(new ActionNotify
-				("Ok! you have chosen to build an emporium with the help of the king. Now I need some other infos, like:"));
+				("Ok! you have chosen to build an emporium with the help of the king."));
 		
-		this.game.notifyObserver(new ActionNotify
-				("the name of the city in which you want to build"));
-		this.game.notifyObserver(new ParametersNotify(parser.acceptableCities(), this));
-		this.selectedAction.setSelectedCity(parser.cityTranslator(currentParameter));
+		if (!parser.acceptablePoliticsCards().isEmpty()) {
+			
+			this.game.notifyObserver(new ActionNotify("Now I need some other infos, like:"));
 		
-		this.game.notifyObserver(new ActionNotify
-				("the colour of the cards you want to descard"));
-		this.game.notifyObserver(new ParametersNotify(parser.acceptablePoliticsCards(), this));
-		this.selectedAction.setCardsToDescard(parser.politicsCardsTranslator(currentParameter));
-	
+			this.game.notifyObserver(new ActionNotify
+					("the name of the city in which you want to build"));
+			this.game.notifyObserver(new ParametersNotify(parser.acceptableCities(), this));
+			this.selectedAction.setSelectedCity(parser.cityTranslator(currentParameter));
+			
+			this.game.notifyObserver(new ActionNotify
+					("the colour of the cards you want to descard"));
+			this.game.notifyObserver(new ParametersNotify(parser.acceptablePoliticsCards(), this));
+			this.selectedAction.setCardsToDescard(parser.politicsCardsTranslator(currentParameter));
+		
+		}
+		else 
+			this.game.notifyObserver(new ActionNotify
+					("but it seems that you haven't any politics card in your hand! Select another action please"));
+		
 		return this.selectedAction;
 	}
 
