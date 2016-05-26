@@ -2,6 +2,7 @@ package modelDTO.parser;
 
 import client.view.notifies.ActionNotify;
 import client.view.notifies.ParametersNotify;
+import client.view.notifies.PoliticsCardsNotify;
 import modelDTO.GameDTO;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.BuildByKingDTO;
@@ -38,7 +39,7 @@ public class BuildByKingParser implements ActionParserVisitor {
 			
 			this.game.notifyObserver(new ActionNotify
 					("the colour of the cards you want to descard"));
-			this.game.notifyObserver(new ParametersNotify(parser.acceptablePoliticsCards(), this));
+			this.game.notifyObserver(new PoliticsCardsNotify(parser.acceptablePoliticsCards(), this));
 			this.selectedAction.setCardsToDescard(parser.politicsCardsTranslator(currentParameter));
 		
 		}

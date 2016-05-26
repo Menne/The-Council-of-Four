@@ -126,7 +126,7 @@ public class Parser implements Serializable{
 		List<String> acceptableRegionNames=new ArrayList<String>();
 		for (RegionDTO region : this.game.getClientRegions())
 			acceptableRegionNames.add(region.getName());
-		acceptableRegionNames.add("kingcouncil");
+		acceptableRegionNames.add("King council");
 		return acceptableRegionNames;
 	}
 	
@@ -220,7 +220,7 @@ public class Parser implements Serializable{
 			for (CityDTO cityTranslated : regionBoard.getCities())
 				if (cityTranslated.getName().equals(cityToTranslate))
 					return cityTranslated;
-		return null;
+		throw new IllegalArgumentException("newCityToTranslate is not a city name");
 	}
 	
 	/**
@@ -246,7 +246,7 @@ public class Parser implements Serializable{
 			if(councilBalconyToTranslate.equals(region.getName()))
 				return region.getBalcony();
 			else
-				if (councilBalconyToTranslate.equals("kingcouncil"))
+				if (councilBalconyToTranslate.equals("King council"))
 					return this.game.getClientKingBalcony();
 		throw new IllegalArgumentException("councilBalconyToTranslate is not a region name");
 	}
