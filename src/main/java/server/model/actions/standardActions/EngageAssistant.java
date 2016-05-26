@@ -1,7 +1,11 @@
 package server.model.actions.standardActions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.EngageAssistantDTO;
+import players.Player;
 import server.model.Game;
 import server.model.actions.QuickAction;
 import server.view.notifies.GameNotify;
@@ -25,15 +29,18 @@ public class EngageAssistant extends QuickAction {
 	 * @return TRUE if the action ends well; FALSE otherwise.
 	 */
 	public boolean executeAction(Game game) {
+		List<Player> interestedPlayers=new ArrayList<Player>();
+		interestedPlayers.add(game.getCurrentPlayer());
+		
 		if(!this.checkCoins(game)){
-			this.sendErrorNotify(game);
+			this.sendErrorNotify(game,interestedPlayers);
 			return false;
 		}
 		game.getCurrentPlayer().decrementCoins(necessaryCoins);
 		game.getCurrentPlayer().incrementAssistants(1);
 		
 		this.nextState(game);
-		game.notifyObserver(new GameNotify(game));
+		game.notifyObserver(new GameNotify(game, interestedPlayers));
 		return true;
 	}
 	

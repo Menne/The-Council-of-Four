@@ -14,6 +14,7 @@ public class PlayerDTO implements ModelDTO<Player>{
 	 * 
 	 */
 	private static final long serialVersionUID = -7091136957135865278L;
+	private String name;
 	private int playerNumber;
 	private int assistants;
 	private int score;
@@ -32,6 +33,7 @@ public class PlayerDTO implements ModelDTO<Player>{
 	@Override
 	public void map(Player realObject) {
 		
+		this.name=realObject.getName();
 		this.playerNumber=realObject.getPlayerNumber();
 		this.assistants=realObject.getNumberOfAssistants();
 		this.score=realObject.getScore();
@@ -46,6 +48,14 @@ public class PlayerDTO implements ModelDTO<Player>{
 		
 	}
 	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public int getPlayerNumber() {
 		return playerNumber;
 	}

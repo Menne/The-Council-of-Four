@@ -11,7 +11,6 @@ public class Controller implements Observer<Action>{
 	
 	public Controller(Game game){
 		this.game=game;
-		game.notifyObserver(new GameNotify(game));
 	}
 	
 

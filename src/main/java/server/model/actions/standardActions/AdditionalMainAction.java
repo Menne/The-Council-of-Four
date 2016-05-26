@@ -1,7 +1,11 @@
 package server.model.actions.standardActions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.AddictionalMainActionDTO;
+import players.Player;
 import server.model.Game;
 import server.model.actions.QuickAction;
 import server.view.notifies.ErrorNotify;
@@ -30,13 +34,16 @@ public class AdditionalMainAction extends QuickAction {
 	 * @return TRUE if the action ends well; FALSE otherwise.
 	 */
 	public boolean executeAction(Game game) {
+		List<Player> interestedPlayers=new ArrayList<Player>();
+		interestedPlayers.add(game.getCurrentPlayer());
+		
 		if(!this.checkAssistants(game)){
-			game.notifyObserver(new ErrorNotify("You can't do this action"));
+			game.notifyObserver(new ErrorNotify("You can't do this action",interestedPlayers));
 			return false;
 		}	
 		
 		game.setState(game.getState().additionalMainActionTransition());
-		game.notifyObserver(new GameNotify(game));
+		game.notifyObserver(new GameNotify(game,interestedPlayers));
 		return true;
 	}
 	

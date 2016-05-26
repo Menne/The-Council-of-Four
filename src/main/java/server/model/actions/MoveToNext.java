@@ -1,7 +1,11 @@
-package server.model.actions;
+ package server.model.actions;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.MoveToNextDTO;
+import players.Player;
 import server.model.Game;
 import server.view.notifies.GameNotify;
 
@@ -14,7 +18,9 @@ public class MoveToNext extends QuickAction {
 	public boolean executeAction(Game game) {
 		 
 		game.setState(game.getState().moveToNextTransition(game));
-		game.notifyObserver(new GameNotify(game));
+		List<Player> interestedPlayers=new ArrayList<Player>();
+		interestedPlayers.add(game.getCurrentPlayer());
+		game.notifyObserver(new GameNotify(game, interestedPlayers));
 		return true;
 	}
 

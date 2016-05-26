@@ -1,8 +1,12 @@
 package server.model.actions.standardActions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.ElectCouncillorByAssistantDTO;
 import modelDTO.actionsDTO.NeedParameters;
+import players.Player;
 import server.model.Game;
 import server.model.actions.QuickAction;
 import server.model.gameTable.CouncilBalcony;
@@ -49,9 +53,13 @@ public class ElectCouncillorByAssistant extends QuickAction implements NeedParam
 	public boolean executeAction(Game game) throws NullPointerException{
 		if(this.councilBalcony==null || this.newCouncillor==null)
 			throw new NullPointerException("Parameters not setted");
+		
+		List<Player> interestedPlayers=new ArrayList<Player>();
+		interestedPlayers.add(game.getCurrentPlayer());
+		
 		Councillor oldCouncillor;
 		if((!this.checkAssistants(game))||(!this.checkCouncillor(game))){
-			this.sendErrorNotify(game);
+			this.sendErrorNotify(game, interestedPlayers);
 			return false;
 		}
 		oldCouncillor=this.councilBalcony.substituteCouncillor(this.newCouncillor);
@@ -59,7 +67,7 @@ public class ElectCouncillorByAssistant extends QuickAction implements NeedParam
 		game.getCurrentPlayer().decrementAssistants(necessaryAssistants);
 		
 		this.nextState(game);
-		game.notifyObserver(new GameNotify(game));
+		game.notifyObserver(new GameNotify(game,interestedPlayers));
 		return true;
 	}
 

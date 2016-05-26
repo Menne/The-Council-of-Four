@@ -1,8 +1,12 @@
 package server.model.actions.standardActions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.ChangePermitTilesDTO;
 import modelDTO.actionsDTO.NeedParameters;
+import players.Player;
 import server.model.Game;
 import server.model.actions.QuickAction;
 import server.model.gameTable.RegionBoard;
@@ -39,8 +43,12 @@ public class ChangePermitTiles extends QuickAction implements NeedParameters{
 		
 		if(this.selectedRegion==null)
 			throw new NullPointerException("Paramters not setted");
+		
+		List<Player> interestedPlayers=new ArrayList<Player>();
+		interestedPlayers.add(game.getCurrentPlayer());
+		
 		if(!this.checkAssistant(game)){
-			this.sendErrorNotify(game);
+			this.sendErrorNotify(game, interestedPlayers);
 			return false;
 		}
 		for(RegionBoard region : game.getGameTable().getRegionBoards())
@@ -49,7 +57,7 @@ public class ChangePermitTiles extends QuickAction implements NeedParameters{
 		game.getCurrentPlayer().decrementAssistants(necessaryAssistants);
 		
 		this.nextState(game);
-		game.notifyObserver(new GameNotify(game));
+		game.notifyObserver(new GameNotify(game,interestedPlayers));
 		return true;
 	}
 

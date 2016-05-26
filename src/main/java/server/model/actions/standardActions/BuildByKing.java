@@ -6,6 +6,7 @@ import java.util.List;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.BuildByKingDTO;
 import modelDTO.actionsDTO.NeedParameters;
+import players.Player;
 import server.model.Game;
 import server.model.actions.MainAction;
 import server.model.bonus.Bonus;
@@ -50,6 +51,8 @@ public class BuildByKing extends MainAction implements NeedParameters{
 	 * @return TRUE if the action goes well, false otherwise
 	 */
 	public boolean executeAction(Game game) throws NullPointerException{
+		List<Player> interestedPlayers=new ArrayList<Player>();
+		interestedPlayers.add(game.getCurrentPlayer());
 		
 		if(this.cardsToDescard==null || this.selectedCity==null)
 			throw new NullPointerException("Paramters not setted");
@@ -58,7 +61,7 @@ public class BuildByKing extends MainAction implements NeedParameters{
 		
 		if (!(checkCityNotContainsEmporium(game) && checkEnoughAssistants(game) && 
 				CheckHandSatisfiesBalcony(game) && CheckEnoughCoins(game))){
-			this.sendErrorNotify(game);
+			this.sendErrorNotify(game, interestedPlayers);
 			return false;
 		}
 		
@@ -81,7 +84,7 @@ public class BuildByKing extends MainAction implements NeedParameters{
 			assignColourBonus(game);
 		
 		this.nextState(game);
-		game.notifyObserver(new GameNotify(game));
+		game.notifyObserver(new GameNotify(game, interestedPlayers));
 		return true;
 	}
 	

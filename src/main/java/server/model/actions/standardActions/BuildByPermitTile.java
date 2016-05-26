@@ -1,8 +1,12 @@
 package server.model.actions.standardActions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.BuildByPermitTileDTO;
 import modelDTO.actionsDTO.NeedParameters;
+import players.Player;
 import server.model.Game;
 import server.model.actions.MainAction;
 import server.model.bonus.Bonus;
@@ -46,10 +50,13 @@ public class BuildByPermitTile extends MainAction implements NeedParameters{
 		if(this.selectedCity==null || this.selectedPermitTile==null)
 			throw new NullPointerException("Paramters not setted");
 		
+		List<Player> interestedPlayers=new ArrayList<Player>();
+		interestedPlayers.add(game.getCurrentPlayer());
+		
 		ConnectedBuiltCityDiscover likedCities=new ConnectedBuiltCityDiscover();
 		
 		if (!(checkCityNotContainsEmporium(game) && checkPermitTileContainsCity() && checkEnoughAssistants(game))){
-			this.sendErrorNotify(game);
+			this.sendErrorNotify(game, interestedPlayers);
 			return false;
 		}
 		Emporium temporaryEmporium=game.getCurrentPlayer().removeEmporium();
@@ -70,7 +77,7 @@ public class BuildByPermitTile extends MainAction implements NeedParameters{
 			assignColourBonus(game);
 		
 		this.nextState(game);
-		game.notifyObserver(new GameNotify(game));
+		game.notifyObserver(new GameNotify(game, interestedPlayers));
 		return true;
 	}
 	

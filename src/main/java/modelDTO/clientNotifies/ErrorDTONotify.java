@@ -1,6 +1,7 @@
 package modelDTO.clientNotifies;
 
 import modelDTO.GameDTO;
+import modelDTO.gameTableDTO.PlayerDTO;
 
 public class ErrorDTONotify implements ClientNotify{
 
@@ -15,7 +16,7 @@ public class ErrorDTONotify implements ClientNotify{
 	}
 
 	@Override
-	public void act(GameDTO gameDTOtoupdate) {
+	public void act(GameDTO gameDTOtoupdate, PlayerDTO playerDTO) {
 		System.out.println(this.message);
 		
 	}

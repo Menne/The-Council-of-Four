@@ -6,6 +6,7 @@ import java.util.List;
 import modelDTO.actionsDTO.AcquirePermitTileDTO;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.NeedParameters;
+import players.Player;
 import server.model.Game;
 import server.model.actions.MainAction;
 import server.model.bonus.Bonus;
@@ -62,12 +63,13 @@ public class AcquirePermitTile extends MainAction implements NeedParameters{
 				this.chosenRegion==null)
 			throw new NullPointerException("Paramters not setted");
 		
+		List<Player> interestedPlayers=new ArrayList<Player>();
+		interestedPlayers.add(game.getCurrentPlayer());
 		if (!(this.CheckEnoughCoins(game) && this.CheckHandSatisfiesBalcony(game))){
-			this.sendErrorNotify(game);
+			this.sendErrorNotify(game, interestedPlayers);
 			return false;
 		}
-			
-		
+					
 		for (Bonus bonusToAssign : this.chosenRegion.getUncoveredPermitTiles()[numberOfPermitTile].getBonus())
 			bonusToAssign.assignBonus(game);
 		game.getCurrentPlayer().decrementCoins(CoinsToPay());
@@ -77,7 +79,8 @@ public class AcquirePermitTile extends MainAction implements NeedParameters{
 		this.chosenRegion.uncoverPermitTiles();
 		
 		this.nextState(game);
-		game.notifyObserver(new GameNotify(game));
+			
+		game.notifyObserver(new GameNotify(game, interestedPlayers));
 	    return true;
 	}
 	

@@ -1,5 +1,8 @@
 package server.model.actions;
 
+import java.util.List;
+
+import players.Player;
 import server.model.Game;
 import server.view.notifies.ErrorNotify;
 
@@ -10,8 +13,8 @@ import server.view.notifies.ErrorNotify;
  */
 public abstract class MainAction implements Action {
 	
-	public void sendErrorNotify(Game game){
-		game.notifyObserver(new ErrorNotify("You can't do this action"));
+	public void sendErrorNotify(Game game, List<Player> interestedPlayers){
+		game.notifyObserver(new ErrorNotify("You can't do this action", interestedPlayers));
 	}
 	
 	

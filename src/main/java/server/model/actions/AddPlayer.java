@@ -1,9 +1,13 @@
 package server.model.actions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.AddPlayerDTO;
+import players.Player;
 import server.model.Game;
-import server.view.notifies.GameNotify;
+import server.view.notifies.PlayerAddedNotify;
 
 
 public class AddPlayer implements Action {
@@ -18,9 +22,11 @@ public class AddPlayer implements Action {
 	@Override
 	public boolean executeAction(Game game) {
 		
-		game.addPlayer(this.playerName);
+		Player player =game.addPlayer(this.playerName);
+		List<Player> interestedPlayers=new ArrayList<Player>();
+		interestedPlayers.add(player);
+		game.notifyObserver(new PlayerAddedNotify(player,interestedPlayers));
 		game.setState(game.getState().addPlayerTransition(game));
-		game.notifyObserver(new GameNotify(game));
 		return true;
 	}
 

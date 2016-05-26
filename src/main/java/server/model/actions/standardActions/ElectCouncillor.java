@@ -1,8 +1,12 @@
 package server.model.actions.standardActions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.ElectCouncillorDTO;
 import modelDTO.actionsDTO.NeedParameters;
+import players.Player;
 import server.model.Game;
 import server.model.actions.MainAction;
 import server.model.gameTable.CouncilBalcony;
@@ -45,9 +49,13 @@ public class ElectCouncillor extends MainAction implements NeedParameters{
 	public boolean executeAction(Game game) throws NullPointerException{
 		if(this.newCouncillor==null || this.councilBalcony==null)
 			throw new NullPointerException("Parameters not setted");
+		
+		List<Player> interestedPlayers=new ArrayList<Player>();
+		interestedPlayers.add(game.getCurrentPlayer());
+		
 		Councillor oldCouncillor;
 		if(!this.checkCouncillor(game)){
-			this.sendErrorNotify(game);
+			this.sendErrorNotify(game,interestedPlayers);
 			return false;
 		}
 		oldCouncillor=this.councilBalcony.substituteCouncillor(this.newCouncillor);
@@ -55,7 +63,7 @@ public class ElectCouncillor extends MainAction implements NeedParameters{
 		game.getCurrentPlayer().incrementCoins(givenCoins);
 		
 		this.nextState(game);
-		game.notifyObserver(new GameNotify(game));
+		game.notifyObserver(new GameNotify(game, interestedPlayers));
 		return true;
 	}
 

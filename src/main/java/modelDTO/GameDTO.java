@@ -145,8 +145,7 @@ public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Ga
 	public String toString() {
 		return "\nGameDTO\n Players:\n" + clientPlayers + "\n\nCurrentPlayer:\n" + currentPlayer + "\n" +
 				 clientRegions + " \n "+ Arrays.toString(clientKingBalcony) +"\n"+
-				 clientCouncillorReserve + "\n" + clientNobilityTrack +
-				 "\n\nYou have to choose from one of the following actions:\n" + availableActions;
+				 clientCouncillorReserve + "\n" + clientNobilityTrack ;
 	}
 
 	

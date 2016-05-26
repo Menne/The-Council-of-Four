@@ -114,9 +114,12 @@ public class Game extends Observable<ViewNotify>{
 	}
 
 
-	public void addPlayer(String playerName){
+	public Player addPlayer(String playerName){
 		int numOfPlayers=this.players.size();
-		this.players.add(new Player(numOfPlayers+1, playerName, numOfPlayers+1, numOfPlayers+10, this.gameTable.getPoliticsDeck()));
+		Player player = new Player(
+				numOfPlayers+1, playerName, numOfPlayers+1, numOfPlayers+10, this.gameTable.getPoliticsDeck());
+		this.players.add(player);
+		return player;
 	}
 
 
