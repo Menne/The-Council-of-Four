@@ -14,7 +14,6 @@ public class ElectCouncillorParser implements ActionParserVisitor {
 	
 	public ElectCouncillorParser(ElectCouncillorDTO selectedAction, GameDTO game) {
 		this.selectedAction=selectedAction;
-		this.currentParameter=null;
 		this.game=game;
 	}
 	

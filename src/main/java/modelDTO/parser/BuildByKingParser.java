@@ -1,6 +1,5 @@
 package modelDTO.parser;
 
-
 import client.view.notifies.ActionNotify;
 import client.view.notifies.ParametersNotify;
 import modelDTO.GameDTO;
@@ -15,7 +14,6 @@ public class BuildByKingParser implements ActionParserVisitor {
 	
 	public BuildByKingParser(BuildByKingDTO selectedAction, GameDTO game) {
 		this.selectedAction=selectedAction;
-		this.currentParameter=null;
 		this.game=game;
 	}
 
