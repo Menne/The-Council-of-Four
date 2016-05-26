@@ -1,13 +1,14 @@
 package model.bonus;
 
-import model.Game;
 import players.Player;
+import server.model.bonus.Bonus;
 
 /**
  * ScoreBonus implements assignBonus method
  * @author Andrea
  */
 
+@SuppressWarnings("serial")
 public class ScoreBonus implements Bonus{
 	
 	private final int scoreAdvancement;
@@ -19,13 +20,7 @@ public class ScoreBonus implements Bonus{
 	public ScoreBonus(int scoreAdvancement){
 		this.scoreAdvancement=scoreAdvancement;
 	}
-	/**
-	 * assignBonus assigns to the current player the "advancement" score
-	 * @param game that has the current player and can assign directly to the right player this bonus
-	 */
-	public void assignBonus(Game game){
-		game.getCurrentPlayer().incrementScore(scoreAdvancement);
-	}
+
 	
 	/**
 	 * assigns to player p the score bonus
@@ -38,5 +33,16 @@ public class ScoreBonus implements Bonus{
 	@Override
 	public String toString() {
 		return "Score+" + scoreAdvancement;
+	}
+	
+	/**
+	 * assignBonus assigns to the current player the "advancement" score
+	 * @param game that has the current player and can assign directly to the right player this bonus
+	 */
+	
+	@Override
+	public void assignBonus(server.model.Game game) {
+		game.getCurrentPlayer().incrementScore(scoreAdvancement);
+		
 	}
 }

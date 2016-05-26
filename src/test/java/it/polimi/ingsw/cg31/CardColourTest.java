@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import model.gameTable.CardColour;
+import server.model.gameTable.CardColour;
 
 public class CardColourTest {
 

@@ -8,13 +8,13 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import model.Game;
-import model.bonus.AssistantsBonus;
-import model.bonus.Bonus;
-import model.bonus.ScoreBonus;
-import model.gameTable.City;
-import model.gameTable.PermitDeck;
-import model.gameTable.PermitTile;
+import server.model.Game;
+import server.model.bonus.AssistantsBonus;
+import server.model.bonus.Bonus;
+import server.model.bonus.ScoreBonus;
+import server.model.gameTable.City;
+import server.model.gameTable.PermitDeck;
+import server.model.gameTable.PermitTile;
 
 public class PermitTileTest {
 	
@@ -51,7 +51,7 @@ public class PermitTileTest {
 	@Test
 	public void testAddObjectToPlayer() throws IOException {
 		Game game=new Game();
-		game.addPlayer();
+		game.addPlayer("Luca");
 		Set<City> cities= new HashSet<City>();
 		cities.addAll(game.getGameTable().getRegionBoards().get(0).getRegionCities());
 		Bonus bonus1=new ScoreBonus(1);
@@ -68,7 +68,7 @@ public class PermitTileTest {
 	@Test
 	public void testRemoveObjectFromPlayer() throws IOException {
 		Game game=new Game();
-		game.addPlayer();
+		game.addPlayer("Luca");
 		Set<City> cities= new HashSet<City>();
 		cities.addAll(game.getGameTable().getRegionBoards().get(0).getRegionCities());
 		Bonus bonus1=new ScoreBonus(1);
@@ -86,7 +86,7 @@ public class PermitTileTest {
 	@Test(expected=IllegalArgumentException.class)
 	public void testIfRemoveObjectFromPlayerThrowsException() throws IOException {
 		Game game=new Game();
-		game.addPlayer();
+		game.addPlayer("Luca");
 		Set<City> cities= new HashSet<City>();
 		cities.addAll(game.getGameTable().getRegionBoards().get(0).getRegionCities());
 		Bonus bonus1=new ScoreBonus(1);

@@ -6,12 +6,12 @@ import java.io.IOException;
 
 import org.junit.Test;
 
-import model.Game;
-import model.bonus.ScoreBonus;
-import model.gameTable.City;
-import model.gameTable.CouncilBalcony;
-import model.gameTable.PermitDeck;
-import model.gameTable.PermitTile;
+import server.model.Game;
+import server.model.bonus.ScoreBonus;
+import server.model.gameTable.City;
+import server.model.gameTable.CouncilBalcony;
+import server.model.gameTable.PermitDeck;
+import server.model.gameTable.PermitTile;
 
 public class RegionBoardTest {
 

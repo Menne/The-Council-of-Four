@@ -3,7 +3,8 @@ package client;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
-import client.clientController.ClientController;
+import client.controller.ClientController;
+import modelDTO.clientNotifies.ClientNotify;
 
 public class ClientInHandler implements Runnable {
 	
@@ -21,8 +22,8 @@ public class ClientInHandler implements Runnable {
 		while (true){
 			try {
 				Object object = socketIn.readObject();
-				UpdateNotify updatedGame=(UpdateNotify) object;
-				clientController.updateGame(updatedGame);
+				ClientNotify clientNotify=(ClientNotify) object;
+				this.clientController.updateFromIn(clientNotify);
 				
 			} catch (ClassNotFoundException | IOException e) {
 				// TODO Auto-generated catch block

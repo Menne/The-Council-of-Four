@@ -7,10 +7,10 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import model.bonus.AssistantsBonus;
-import model.bonus.Bonus;
-import model.bonus.ScoreBonus;
-import model.gameTable.RewardToken;
+import server.model.bonus.AssistantsBonus;
+import server.model.bonus.Bonus;
+import server.model.bonus.ScoreBonus;
+import server.model.gameTable.RewardToken;
 
 public class RewardTokenTest {
 

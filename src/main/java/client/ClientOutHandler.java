@@ -1,35 +1,24 @@
 package client;
 
-import java.io.IOException;
 import java.io.ObjectOutputStream;
 
-import client.clientController.ClientController;
 
 public class ClientOutHandler implements Runnable {
 
-	private ObjectOutputStream socketOut;
-	private ClientController clientController;
+	private final ObjectOutputStream socketOut;
 	
-	public ClientOutHandler(ObjectOutputStream socketOut, ClientController clientController) {
+	public ClientOutHandler(ObjectOutputStream socketOut) {
 		this.socketOut = socketOut;
-		this.clientController=clientController;
 	}
 	
+	
+	public ObjectOutputStream getSocketOut() {
+		return socketOut;
+	}
 
 	@Override
 	public void run() {
-		while (true)
-			try {
-				if (clientController.isSend()) {
-					socketOut.writeObject(clientController.getSelectedAction());
-					socketOut.flush();
-				}
-				clientController.setSend(false);
-				
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		while (true);	
 	}
 
 }

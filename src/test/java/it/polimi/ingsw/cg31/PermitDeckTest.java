@@ -7,8 +7,8 @@ import java.io.IOException;
 
 import org.junit.Test;
 
-import model.Game;
-import model.gameTable.PermitTile;
+import server.model.Game;
+import server.model.gameTable.PermitTile;
 
 public class PermitDeckTest {
 

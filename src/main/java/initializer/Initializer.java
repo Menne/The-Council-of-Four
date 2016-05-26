@@ -8,8 +8,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import model.bonus.*;
-import model.gameTable.*;
+import server.model.bonus.*;
+import server.model.gameTable.*;
 
 public class Initializer {
 	

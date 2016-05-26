@@ -5,8 +5,8 @@ import java.io.IOException;
 
 import org.junit.Test;
 
-import model.Game;
-import model.gameTable.City;
+import server.model.Game;
+import server.model.gameTable.City;
 
 
 public class KingTest {

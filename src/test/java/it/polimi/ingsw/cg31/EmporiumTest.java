@@ -6,8 +6,8 @@ import java.io.IOException;
 
 import org.junit.Test;
 
-import model.Game;
-import model.gameTable.Emporium;
+import server.model.Game;
+import server.model.gameTable.Emporium;
 
 
 
@@ -17,7 +17,7 @@ public class EmporiumTest {
 	@Test
 	public void testIfEmporiumsGetterReturnsTheRightPlayer() throws IOException {
 		Game game=new Game();
-		game.addPlayer();
+		game.addPlayer("Luca");
 		Emporium e= new Emporium(game.getPlayers().get(0));
 		
 		assertEquals(game.getPlayers().get(0), e.getEmporiumsPlayer());

@@ -1,7 +1,7 @@
 package model.bonus;
 
-import model.Game;
 import players.Player;
+import server.model.bonus.Bonus;
 
 /**
  * AssistantsBonus implements the Bonus Class
@@ -9,6 +9,7 @@ import players.Player;
  *
  */
 
+@SuppressWarnings("serial")
 public class AssistantsBonus implements Bonus{
 
 	private final int assistantsIcreasement;
@@ -21,13 +22,7 @@ public class AssistantsBonus implements Bonus{
 		this.assistantsIcreasement=assistantsIcreasement;
 	}
 	
-	/**
-	 * Assigns to the current player a number assistantsIcreasement of assistants
-	 * @param currentPlayer is the player who is playing the turn
-	 */
-	public void assignBonus(Game game) {
-		game.getCurrentPlayer().incrementAssistants(this.assistantsIcreasement);
-	}
+
 	
 	/**
 	 * Assigns to player the number of assistances 
@@ -40,6 +35,16 @@ public class AssistantsBonus implements Bonus{
 	@Override
 	public String toString() {
 		return "assistants+" + assistantsIcreasement;
+	}
+
+	/**
+	 * Assigns to the current player a number assistantsIcreasement of assistants
+	 * @param currentPlayer is the player who is playing the turn
+	 */
+	@Override
+	public void assignBonus(server.model.Game game) {
+		game.getCurrentPlayer().incrementAssistants(this.assistantsIcreasement);
+		
 	}
 
 }

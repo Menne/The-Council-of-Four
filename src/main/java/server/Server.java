@@ -5,8 +5,10 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import controller.Controller;
-import model.Game;
+
+import server.controller.Controller;
+import server.model.Game;
+import server.view.ServerSocketView;
 
 
 public class Server {
@@ -31,7 +33,10 @@ public class Server {
 		while(true){
 			
 			Socket socket=serverSocket.accept();
+			System.out.println("Client Socket Accepted!");
+			
 			ServerSocketView view=new ServerSocketView(socket,game);
+			
 			
 			this.game.registerObserver(view);
 			view.registerObserver(controller);

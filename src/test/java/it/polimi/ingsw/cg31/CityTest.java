@@ -10,12 +10,12 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import model.Game;
-import model.bonus.Bonus;
-import model.bonus.ScoreBonus;
-import model.gameTable.City;
-import model.gameTable.CityColour;
-import model.gameTable.Emporium;
+import server.model.Game;
+import server.model.bonus.Bonus;
+import server.model.bonus.ScoreBonus;
+import server.model.gameTable.City;
+import server.model.gameTable.CityColour;
+import server.model.gameTable.Emporium;
 
 public class CityTest {
 
@@ -122,7 +122,7 @@ public class CityTest {
 	@Test
 	public void testAddEmporiumsAndGetEmporiums() throws IOException {
 		Game game=new Game();
-		game.addPlayer();
+		game.addPlayer("Luca");
 		ScoreBonus bonus= new ScoreBonus(1);
 		CityColour colour= new CityColour("blu", bonus);
 		List<Set<Bonus>> list= new ArrayList<Set<Bonus>>();

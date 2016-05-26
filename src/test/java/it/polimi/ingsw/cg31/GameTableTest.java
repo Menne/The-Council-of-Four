@@ -8,14 +8,15 @@ import java.util.List;
 
 import org.junit.Test;
 
-import model.Game;
-import model.bonus.ScoreBonus;
-import model.gameTable.CouncilBalcony;
-import model.gameTable.CouncillorsReserve;
-import model.gameTable.Map;
-import model.gameTable.NobilityTrack;
-import model.gameTable.PoliticsDeck;
-import model.gameTable.RegionBoard;
+import server.model.Game;
+import server.model.bonus.ScoreBonus;
+import server.model.gameTable.CouncilBalcony;
+import server.model.gameTable.CouncillorsReserve;
+import server.model.gameTable.Map;
+import server.model.gameTable.NobilityTrack;
+import server.model.gameTable.PoliticsDeck;
+import server.model.gameTable.RegionBoard;
+
 
 public class GameTableTest {
 
