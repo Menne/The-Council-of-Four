@@ -1,6 +1,6 @@
 package server.model.stateMachine;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import server.model.Game;
@@ -17,10 +17,7 @@ public class BeginState implements State {
 
 	@Override
 	public List<Action> getAcceptableActions(Game game) {
-		List<Action> acceptableAction= new ArrayList<Action>();
-		acceptableAction.add(new PickPoliticsCard());
-		
-		return acceptableAction;
+		return Arrays.asList(new PickPoliticsCard());
 	}
 
 	

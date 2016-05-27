@@ -1,6 +1,6 @@
 package server.model.stateMachine;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import server.model.Game;
@@ -31,15 +31,14 @@ public class State11 implements State {
 	
 	@Override
 	public List<Action> getAcceptableActions(Game game) {
-		List<Action> acceptableActions=new ArrayList<Action>();
-		acceptableActions.add(new ElectCouncillor());
-		acceptableActions.add(new AcquirePermitTile());
-		acceptableActions.add(new BuildByPermitTile());
-		acceptableActions.add(new BuildByKing());
-		acceptableActions.add(new EngageAssistant());
-		acceptableActions.add(new ChangePermitTiles());
-		acceptableActions.add(new ElectCouncillorByAssistant());
-		return acceptableActions;
+		return Arrays.asList(
+				new ElectCouncillor(),
+				new AcquirePermitTile(),
+				new BuildByPermitTile(),
+				new BuildByKing(),
+				new EngageAssistant(),
+				new ChangePermitTiles(),
+				new ElectCouncillorByAssistant());
 	}
 
 	public String toString(Game game) {

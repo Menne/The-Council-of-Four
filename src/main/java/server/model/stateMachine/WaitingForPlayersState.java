@@ -1,6 +1,6 @@
 package server.model.stateMachine;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import server.model.Game;
@@ -12,9 +12,8 @@ public class WaitingForPlayersState implements State {
 
 	@Override
 	public List<Action> getAcceptableActions(Game game) {
-		List<Action> acceptableActions =new ArrayList<Action>();
-		acceptableActions.add(new AddPlayer());
-		return acceptableActions;
+		return Arrays.asList(
+				new AddPlayer());
 	}
 	
 	@Override
