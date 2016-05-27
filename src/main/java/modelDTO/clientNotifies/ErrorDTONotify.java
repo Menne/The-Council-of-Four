@@ -1,7 +1,7 @@
 package modelDTO.clientNotifies;
 
 import modelDTO.GameDTO;
-import modelDTO.gameTableDTO.PlayerDTO;
+import modelDTO.playerDTO.PlayerDTO;
 
 public class ErrorDTONotify implements ClientNotify{
 

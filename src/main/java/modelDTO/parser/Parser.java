@@ -8,8 +8,8 @@ import modelDTO.actionsDTO.ActionDTO;
 import client.view.notifies.ClientErrorNotify;
 import modelDTO.GameDTO;
 import modelDTO.gameTableDTO.PermitTileDTO;
-import modelDTO.gameTableDTO.PlayerDTO;
 import modelDTO.gameTableDTO.RegionDTO;
+import modelDTO.playerDTO.PlayerDTO;
 import modelDTO.gameTableDTO.CardColourDTO;
 import modelDTO.gameTableDTO.CityDTO;
 

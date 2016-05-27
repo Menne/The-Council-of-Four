@@ -3,7 +3,6 @@ package server.controller;
 import observerPattern.Observer;
 import server.model.Game;
 import server.model.actions.Action;
-import server.view.notifies.GameNotify;
 
 public class Controller implements Observer<Action>{
 	

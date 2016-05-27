@@ -7,9 +7,10 @@ import java.util.Set;
 
 import modelDTO.actionsDTO.ActionDTO;
 import client.view.notifies.ClientViewNotify;
-import modelDTO.gameTableDTO.PlayerDTO;
 import modelDTO.gameTableDTO.RegionDTO;
+import modelDTO.marketDTO.MarketDTO;
 import modelDTO.parser.Parser;
+import modelDTO.playerDTO.PlayerDTO;
 import observerPattern.Observable;
 import players.Player;
 import server.model.Game;
@@ -19,7 +20,6 @@ import server.model.gameTable.CouncilBalcony;
 import server.model.gameTable.Councillor;
 import server.model.gameTable.RegionBoard;
 import modelDTO.gameTableDTO.CardColourDTO;
-import modelDTO.gameTableDTO.MarketDTO;
 
 public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Game> {
 	
@@ -44,7 +44,7 @@ public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Ga
 		this.clientNobilityTrack=new ArrayList<Set<Bonus>>();
 		this.clientPlayers=new ArrayList<PlayerDTO>();
 		this.availableActions=new ArrayList<ActionDTO>();
-		this.market=new MarketDTO(clientPlayers);
+		this.market=new MarketDTO();
 		this.parser=new Parser(this);
 	}
 
@@ -85,6 +85,8 @@ public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Ga
 		
 		for(Action action : realObject.getState().getAcceptableActions(realObject))
 			this.availableActions.add(action.map());
+		
+		this.market.map(realObject.getMarket());
 	}
 
 	
@@ -143,7 +145,17 @@ public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Ga
 	public void setAvailableActions(List<ActionDTO> availableActions) {
 		this.availableActions = availableActions;
 	}
+	
 
+	public MarketDTO getMarket() {
+		return market;
+	}
+
+	public void setMarket(MarketDTO market) {
+		this.market = market;
+	}
+
+	
 	@Override
 	public String toString() {
 		return "\nGameDTO\n Players:\n" + clientPlayers + "\n\nCurrentPlayer:\n" + currentPlayer + "\n" +

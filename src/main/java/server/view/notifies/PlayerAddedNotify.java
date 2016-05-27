@@ -4,7 +4,7 @@ import java.util.List;
 
 import modelDTO.clientNotifies.ClientNotify;
 import modelDTO.clientNotifies.PlayerDTONotify;
-import modelDTO.gameTableDTO.PlayerDTO;
+import modelDTO.playerDTO.PlayerDTO;
 import players.Player;
 
 public class PlayerAddedNotify implements ViewNotify {

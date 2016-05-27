@@ -1,4 +1,4 @@
-package modelDTO.gameTableDTO;
+package modelDTO.playerDTO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +7,7 @@ import players.Player;
 import server.model.gameTable.PoliticsCard;
 import modelDTO.ModelDTO;
 import modelDTO.gameTableDTO.CardColourDTO;
+import modelDTO.gameTableDTO.PermitTileDTO;
 
 public class PlayerDTO implements ModelDTO<Player>{
 

@@ -3,7 +3,7 @@ package modelDTO.clientNotifies;
 import java.io.Serializable;
 
 import modelDTO.GameDTO;
-import modelDTO.gameTableDTO.PlayerDTO;
+import modelDTO.playerDTO.PlayerDTO;
 
 public interface ClientNotify extends Serializable{
 
