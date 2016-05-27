@@ -26,5 +26,4 @@ public class BeginState implements State {
 				" is your turn! Pick a politics card pressing pc.\n";
 		return availableActions;
 	}
-
 }

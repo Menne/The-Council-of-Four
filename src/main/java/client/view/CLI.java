@@ -30,6 +30,7 @@ public class CLI extends ClientView{
 	
 	public void input() {
 		while (true) {
+//			System.out.println("insert action: "+parser.availableActions());
 			String input=this.scanner.nextLine();
 			if (this.parser.availableActions().contains(input)) {
 				ActionDTO selectedAction=this.parser.actionParser(input);

@@ -1,39 +1,54 @@
  
 package server.model;
 
-import java.io.IOException;
-import java.util.ArrayList;
+import java.io.IOException;import java.util.ArrayList;
 import java.util.List;
 
 import initializer.Initializer;
 import observerPattern.Observable;
 import players.Player;
 import server.model.bonus.ScoreBonus;
+import server.model.gameTable.Emporium;
 import server.model.gameTable.GameTable;
 import server.model.market.Market;
+import server.model.stateMachine.BeginState;
 import server.model.stateMachine.State;
-import server.model.stateMachine.WaitingForPlayersState;
+import server.view.notifies.GameNotify;
 import server.view.notifies.ViewNotify;
  
 public class Game extends Observable<ViewNotify>{
 	
-	private final List<Player> players;
-	private final Market market;
+	private  List<Player> players;
+	private  Market market;
 	private Player currentPlayer;
-	private final GameTable gameTable;
+	private GameTable gameTable;
 	private State state;
 	private boolean additionalMainActionBonus;
 	private boolean lastLap;
+	private static final int initialNumberOfCards=6;
+	private static final int intialNumberOfEmporiums=10;
 	
-               
-	public Game() throws IOException{
-		this.players=new ArrayList<Player>();
+	
+	public void start(List<Player> playerList) throws IOException{
 		Initializer init= new Initializer();
-		this.gameTable=init.initialize();		
-		this.state=new WaitingForPlayersState();
+		this.gameTable=init.initialize();
+		this.players=playerList;
+		for(Player player : players){
+			player.incrementAssistants(player.getPlayerNumber());
+			player.setScore(0);
+			player.setNobility(0);
+			player.setCoins(player.getPlayerNumber()+9);
+			for(int i=0;i<initialNumberOfCards;i++)
+				player.addCardToHand(this.gameTable.getPoliticsDeck().pickCard());
+			for(int i=0;i<intialNumberOfEmporiums;i++)
+				player.getRemainigEmporiums().add(new Emporium(player));
+		}
+		this.currentPlayer=this.players.get(0);
+		this.state=new BeginState();
 		this.additionalMainActionBonus=false;
 		this.lastLap=false;
-		this.market=new Market(this.players);		
+		this.market=new Market(this.players);
+		this.notifyObserver(new GameNotify(this, players));
 	}
 
 
@@ -115,9 +130,7 @@ public class Game extends Observable<ViewNotify>{
 
 
 	public Player addPlayer(String playerName){
-		int numOfPlayers=this.players.size();
-		Player player = new Player(
-				numOfPlayers+1, playerName, numOfPlayers+1, numOfPlayers+10, this.gameTable.getPoliticsDeck());
+		Player player = new Player();
 		this.players.add(player);
 		return player;
 	}

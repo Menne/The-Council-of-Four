@@ -6,9 +6,12 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 import modelDTO.actionsDTO.ActionDTO;
+import modelDTO.actionsDTO.AddPlayerDTO;
+import modelDTO.clientNotifies.ErrorDTONotify;
+import modelDTO.clientNotifies.PlayerDTONotify;
+import modelDTO.playerDTO.PlayerDTO;
 import players.Player;
 import server.model.Game;
-import server.view.notifies.PlayerAddedNotify;
 import server.view.notifies.ViewNotify;
 
 public class ServerSocketView extends View implements Runnable {
@@ -17,16 +20,16 @@ public class ServerSocketView extends View implements Runnable {
 	private final ObjectInputStream socketIn;
 	private final ObjectOutputStream socketOut;
 	private final Game game;
-	private Player player;
+	private final Player player;
 	
-	public ServerSocketView(Socket socket, Game game) throws IOException{
+	public ServerSocketView(Socket socket, Game game, Player player) throws IOException{
 		this.socket=socket;
 		this.game=game;
+		this.player=player;
 		this.socketIn=new ObjectInputStream(socket.getInputStream());
 		this.socketOut=new ObjectOutputStream(socket.getOutputStream());
 	}
-	
-	
+
 	@Override
 	public void run() {
 		while(true){
@@ -35,8 +38,23 @@ public class ServerSocketView extends View implements Runnable {
 
 				Object object = this.socketIn.readObject();
 				
-				ActionDTO actionDTO=(ActionDTO) object;				
-				this.notifyObserver(actionDTO.map(this.game));
+				if(object instanceof AddPlayerDTO){
+					AddPlayerDTO notify=(AddPlayerDTO) object;
+					this.player.setName(notify.getPlayerName());
+					PlayerDTO playerDTO = new PlayerDTO();
+					playerDTO.map(player);
+					System.out.println("scrivendo...");
+					this.socketOut.writeObject(new PlayerDTONotify(playerDTO));
+					System.out.println("scritto!");
+				}
+				
+				else if(this.player.equals(game.getCurrentPlayer())){
+						ActionDTO actionDTO=(ActionDTO) object;				
+						this.notifyObserver(actionDTO.map(this.game));
+				}
+					else
+						this.socketOut.writeObject(new ErrorDTONotify("Sorry, is not your turn!"));
+					
 				
 			} catch (ClassNotFoundException | IOException e) {
 				// TODO Auto-generated catch block
@@ -51,12 +69,7 @@ public class ServerSocketView extends View implements Runnable {
 	@Override
 	public void update(ViewNotify notify) {
 		try {
-			if(notify instanceof PlayerAddedNotify && this.player==null){
-				PlayerAddedNotify playerAddedNotify=(PlayerAddedNotify) notify;
-				this.player=playerAddedNotify.getPlayer();
-				System.out.println("view di "+this.player.getName()+": settato player");
-			}
-			
+	
 			if((notify.sendTo().contains(this.player))){
 				this.socketOut.writeObject(notify.toClientNotify());
 				System.out.println("view: notifica inviata al player "+this.player.getName());

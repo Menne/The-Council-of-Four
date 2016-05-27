@@ -17,20 +17,20 @@ public class PlayerDTONotify implements ClientNotify {
 	public PlayerDTONotify(PlayerDTO playerDTO) {
 		this.playerDTO=playerDTO;
 		this.message="Hi,"+ playerDTO.getName()+" you are the player number: "+playerDTO.getPlayerNumber()+
-				"we are waiting for more players...";
+				"\nWe are waiting for more players...";
 	}
 	
 	@Override
 	public void act(GameDTO gameDTOtoupdate, PlayerDTO playerDTO) {
-		playerDTO.setAssistants(this.playerDTO.getAssistants());
-		playerDTO.setAvailablePermitTiles(this.playerDTO.getAvailablePermitTiles());
-		playerDTO.setCoins(this.playerDTO.getCoins());
-		playerDTO.setEmporiums(this.playerDTO.getCoins());
-		playerDTO.setHand(this.playerDTO.getHand());
-		playerDTO.setName(this.playerDTO.getName());
-		playerDTO.setNobility(this.playerDTO.getNobility());
+//		playerDTO.setAssistants(this.playerDTO.getAssistants());
+//		playerDTO.setAvailablePermitTiles(this.playerDTO.getAvailablePermitTiles());
+//		playerDTO.setCoins(this.playerDTO.getCoins());
+//		playerDTO.setEmporiums(this.playerDTO.getCoins());
+//		playerDTO.setHand(this.playerDTO.getHand());
+//		playerDTO.setName(this.playerDTO.getName());
+//		playerDTO.setNobility(this.playerDTO.getNobility());
 		playerDTO.setPlayerNumber(this.playerDTO.getPlayerNumber());
-		playerDTO.setScore(this.playerDTO.getScore());
+//		playerDTO.setScore(this.playerDTO.getScore());
 
 		gameDTOtoupdate.notifyObserver(new PlayerUpdatedNotify(this.message));
 	}

@@ -8,7 +8,6 @@ import server.model.gameTable.Assistant;
 import server.model.gameTable.Emporium;
 import server.model.gameTable.PermitTile;
 import server.model.gameTable.PoliticsCard;
-import server.model.gameTable.PoliticsDeck;
 
 /** Player class contains all of the informations about a player
 	 * 
@@ -18,9 +17,9 @@ import server.model.gameTable.PoliticsDeck;
 
 public class Player {
 
-	private final int playerNumber;
-	private final String name;
-	private List<Assistant> assistants;
+	private int playerNumber;
+	private  String name;
+	private final List<Assistant> assistants;
 	private int score;
 	private int nobility;
 	private int coins;
@@ -29,8 +28,6 @@ public class Player {
 	private final List<PermitTile> playersPermitTilesTurnedDown;
 	private final List<Emporium> emporiums;
 	private final List<ScoreBonus> playersFinalBonus;
-	private static final int intialNumberOfEmporiums=10;
-	private static final int initialNumberOfCards=6;
 	
 	
 	/**
@@ -41,27 +38,15 @@ public class Player {
 	 * @param assistants number of initial assistants
 	 * @param coins number of initial coins
 	 */
-	public Player(int playerNumber, String name, int assistants, int coins,
-			PoliticsDeck politicsDeck) {
-		this.playerNumber=playerNumber;
-		this.name=name;
+	public Player() {
 		this.assistants=new ArrayList<Assistant>();
-		for(int i=0; i<assistants; i++)
-			this.assistants.add(new Assistant());
-		this.score=0;
-		this.nobility=0;
-		this.coins=coins;
 		this.hand=new ArrayList<PoliticsCard>();
-		for(int i=0;i<initialNumberOfCards;i++)
-			this.addCardToHand(politicsDeck.pickCard());
 		this.playersPermitTilesTurnedDown=new ArrayList<PermitTile>();
 		this.playersPermitTilesTurnedUp=new ArrayList<PermitTile>();
 		this.emporiums=new ArrayList<Emporium>();
-		for(int i=0;i<intialNumberOfEmporiums;i++)
-			this.emporiums.add(new Emporium(this));
 		this.playersFinalBonus=new ArrayList<ScoreBonus>();
 	}
-
+	
 	public int getPlayerNumber() {
 		return playerNumber;
 	}
@@ -106,6 +91,26 @@ public class Player {
 
 	public List<ScoreBonus> getPlayersFinalBonus() {
 		return playersFinalBonus;
+	}
+
+	public void setPlayerNumber(int playerNumber) {
+		this.playerNumber = playerNumber;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+
+	public void setNobility(int nobility) {
+		this.nobility = nobility;
+	}
+
+	public void setCoins(int coins) {
+		this.coins = coins;
 	}
 
 	/**
