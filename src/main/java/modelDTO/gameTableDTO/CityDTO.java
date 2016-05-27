@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import modelDTO.ModelDTO;
-import modelDTO.gameTableDTO.PlayerDTO;
+import modelDTO.playerDTO.PlayerDTO;
 import server.model.bonus.Bonus;
 import server.model.gameTable.City;
 import server.model.gameTable.Emporium;

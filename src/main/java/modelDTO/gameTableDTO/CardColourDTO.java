@@ -1,9 +1,10 @@
 package modelDTO.gameTableDTO;
 
 import modelDTO.ModelDTO;
+import modelDTO.marketDTO.MarketableDTO;
 import server.model.gameTable.CardColour;
 
-public class CardColourDTO implements ModelDTO<CardColour>{
+public class CardColourDTO implements ModelDTO<CardColour>, MarketableDTO{
 
 	/**
 	 * 
@@ -29,6 +30,7 @@ public class CardColourDTO implements ModelDTO<CardColour>{
 	public String toString() {
 		return name;
 	}
+
 	
 	
 }

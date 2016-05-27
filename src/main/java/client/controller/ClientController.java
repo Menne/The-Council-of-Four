@@ -6,7 +6,7 @@ import client.ClientOutHandler;
 import modelDTO.GameDTO;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.clientNotifies.ClientNotify;
-import modelDTO.gameTableDTO.PlayerDTO;
+import modelDTO.playerDTO.PlayerDTO;
 import observerPattern.Observer;
 
 public class ClientController implements Observer<ActionDTO> {

@@ -65,4 +65,18 @@ public class Market {
 	public boolean isBuyingPhaseFinished(){
 		return this.buyingPlayerList.isEmpty();
 	}
+
+	public List<Offer> getOffersList() {
+		return offersList;
+	}
+
+	public List<Player> getSellingPlayerList() {
+		return sellingPlayerList;
+	}
+
+	public List<Player> getBuyingPlayerList() {
+		return buyingPlayerList;
+	}
+	
+	
 }

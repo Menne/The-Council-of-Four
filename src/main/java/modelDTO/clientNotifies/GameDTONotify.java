@@ -2,7 +2,7 @@ package modelDTO.clientNotifies;
 
 import client.view.notifies.GameUpdatedNotify;
 import modelDTO.GameDTO;
-import modelDTO.gameTableDTO.PlayerDTO;
+import modelDTO.playerDTO.PlayerDTO;
 
 public class GameDTONotify implements ClientNotify{
 	

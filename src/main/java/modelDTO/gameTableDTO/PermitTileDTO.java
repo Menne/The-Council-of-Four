@@ -8,8 +8,9 @@ import server.model.gameTable.City;
 import server.model.gameTable.PermitTile;
 import modelDTO.ModelDTO;
 import modelDTO.gameTableDTO.CityDTO;
+import modelDTO.marketDTO.MarketableDTO;
 
-public class PermitTileDTO implements ModelDTO<PermitTile>{
+public class PermitTileDTO implements ModelDTO<PermitTile>, MarketableDTO {
 
 	/**
 	 * 
