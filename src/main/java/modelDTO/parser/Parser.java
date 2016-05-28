@@ -9,6 +9,7 @@ import client.view.notifies.ClientErrorNotify;
 import modelDTO.GameDTO;
 import modelDTO.gameTableDTO.PermitTileDTO;
 import modelDTO.gameTableDTO.RegionDTO;
+import modelDTO.marketDTO.OfferDTO;
 import modelDTO.playerDTO.PlayerDTO;
 import modelDTO.gameTableDTO.CardColourDTO;
 import modelDTO.gameTableDTO.CityDTO;
@@ -161,6 +162,18 @@ public class Parser implements Serializable{
 		return acceptableTiles;
 	}
 	
+	/**
+	 * This method builds a list of strings from which the user can choose when he inserts
+	 * the parameters of the action, according to the current game state.
+	 * @return which contains the the list of possible strings for the selected action,
+	 */
+	protected List<String> acceptableOffers() {
+		List<String> acceptableOffers=new ArrayList<String>();
+		for (OfferDTO acceptableOffer : this.game.getMarket().getOffersList())
+			acceptableOffers.add(acceptableOffer.getOfferedObject().toString());
+		return acceptableOffers;
+	}
+	
 	
 	//Now there are the methods which get the possible parameters from the current game
 	
@@ -242,13 +255,26 @@ public class Parser implements Serializable{
 	 * @return the council balcony obtained from the string
 	 */
 	protected CardColourDTO[] councilBalconyTranslator(String councilBalconyToTranslate) {
-		for(RegionDTO region : this.game.getClientRegions())
+		for (RegionDTO region : this.game.getClientRegions())
 			if(councilBalconyToTranslate.equals(region.getName()))
 				return region.getBalcony();
 			else
 				if (councilBalconyToTranslate.equals("King council"))
 					return this.game.getClientKingBalcony();
 		throw new IllegalArgumentException("councilBalconyToTranslate is not a region name");
+	}
+
+	/**
+	 * Translates the string given from the user into the corresponding council balcony
+	 * @param councilBalconyToTranslate is the string corresponding to the name of the region where there is the selected council balcony,
+	 * or corresponding to the council of king
+	 * @return the council balcony obtained from the string
+	 */
+	public OfferDTO OfferTranslator(String currentParameter) {
+		for (OfferDTO offer : this.game.getMarket().getOffersList())
+			if (offer.getOfferedObject().toString().equals(currentParameter))
+				return offer;
+		throw new IllegalArgumentException("this offer is not valid");
 	}
 	
 }
