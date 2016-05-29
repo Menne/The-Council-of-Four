@@ -51,6 +51,6 @@ public class CouncilBalconyAndCouncillorTest {
 		CouncillorsReserve reserve= new CouncillorsReserve(councillors);
 		CouncilBalcony balcony= new CouncilBalcony(reserve);
 		balcony.substituteCouncillor(a);
-		assertTrue(true);
+		assertTrue(false);
 	}
 }

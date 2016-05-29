@@ -3,10 +3,12 @@ package BonusTest;
 import static org.junit.Assert.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Test;
 
-
+import players.Player;
 import server.model.Game;
 import server.model.bonus.AssistantsBonus;
 
@@ -15,7 +17,10 @@ public class AssistantsBonusTest {
 	@Test
 	public void test() throws IOException {
 		Game game=new Game();
-		game.addPlayer("Andrea");
+		List<Player> players = new ArrayList<Player>();
+		Player a = new Player();
+		players.add(a);
+		game.start(players);
 		game.setCurrentPlayer(game.getPlayers().get(0));
 		AssistantsBonus bonus= new AssistantsBonus(1);
 		int temp=game.getPlayers().get(0).getNumberOfAssistants();

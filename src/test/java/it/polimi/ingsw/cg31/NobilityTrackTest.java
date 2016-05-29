@@ -10,6 +10,7 @@ import java.util.Set;
 
 import org.junit.Test;
 
+import players.Player;
 import server.model.Game;
 import server.model.bonus.Bonus;
 import server.model.bonus.ScoreBonus;
@@ -20,6 +21,10 @@ public class NobilityTrackTest {
 	@Test
 	public void testGetNobilityTrack() throws IOException{
 		Game game=new Game();
+		List<Player> players = new ArrayList<Player>();
+		Player a = new Player();
+		players.add(a);
+		game.start(players);
 		NobilityTrack nobilityTrack=new NobilityTrack(20);
 		assertEquals(nobilityTrack.getClass(), game.getGameTable().getNobilityTrack().getClass());
 	}

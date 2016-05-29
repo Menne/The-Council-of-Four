@@ -197,7 +197,6 @@ public class Game extends Observable<ViewNotify>{
 	
 	/**
 	 * recognises which player has won the game
-	 * @return
 	 */
 	public Player selectWinner(){
 		int winnerScore=0;

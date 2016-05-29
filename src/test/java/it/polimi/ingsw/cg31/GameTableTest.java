@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.junit.Test;
 
+import players.Player;
 import server.model.Game;
 import server.model.bonus.ScoreBonus;
 import server.model.gameTable.CouncilBalcony;
@@ -23,6 +24,10 @@ public class GameTableTest {
 	@Test
 	public void test() throws IOException {
 		Game game=new Game();
+		List<Player> players = new ArrayList<Player>();
+		Player a = new Player();
+		players.add(a);
+		game.start(players);
 		assertEquals(Map.class, game.getGameTable().getMap().getClass());
 		List<RegionBoard> regions= new ArrayList<RegionBoard>();
 		assertEquals(regions.getClass(), game.getGameTable().getRegionBoards().getClass());

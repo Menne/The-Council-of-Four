@@ -10,6 +10,7 @@ import java.util.Set;
 
 import org.junit.Test;
 
+import players.Player;
 import server.model.Game;
 import server.model.bonus.Bonus;
 import server.model.bonus.ScoreBonus;
@@ -21,7 +22,12 @@ public class CityTest {
 
 	@Test
 	public void testIfIsKingPresentReturnFalse() throws IOException {
+		
 		Game game=new Game();
+		List<Player> players = new ArrayList<Player>();
+		Player a = new Player();
+		players.add(a);
+		game.start(players);
 		ScoreBonus bonus= new ScoreBonus(1);
 		CityColour colour= new CityColour("blu", bonus);
 		List<Set<Bonus>> list= new ArrayList<Set<Bonus>>();
@@ -36,6 +42,10 @@ public class CityTest {
 	@Test
 	public void testIfIsKingPresentReturnTrueAfterTheMethodSetIsKingPresent() throws IOException {
 		Game game=new Game();
+		List<Player> players = new ArrayList<Player>();
+		Player a = new Player();
+		players.add(a);
+		game.start(players);
 		ScoreBonus bonus= new ScoreBonus(1);
 		CityColour colour= new CityColour("KingColour", bonus);
 		List<Set<Bonus>> list= new ArrayList<Set<Bonus>>();
@@ -51,6 +61,10 @@ public class CityTest {
 	@Test
 	public void testGetRewardToken() throws IOException {
 		Game game=new Game();
+		List<Player> players = new ArrayList<Player>();
+		Player a = new Player();
+		players.add(a);
+		game.start(players);
 		ScoreBonus bonus= new ScoreBonus(1);
 		CityColour colour= new CityColour("blu", bonus);
 		List<Set<Bonus>> list= new ArrayList<Set<Bonus>>();
@@ -65,6 +79,10 @@ public class CityTest {
 	@Test
 	public void testConstructorDoesnTGiveBonusToKingCity() throws IOException {
 		Game game=new Game();
+		List<Player> players = new ArrayList<Player>();
+		Player a = new Player();
+		players.add(a);
+		game.start(players);
 		ScoreBonus bonus= new ScoreBonus(1);
 		CityColour colour= new CityColour("KingColour", bonus);
 		List<Set<Bonus>> list= new ArrayList<Set<Bonus>>();
@@ -80,6 +98,10 @@ public class CityTest {
 	@Test
 	public void testGetRegion() throws IOException {
 		Game game=new Game();
+		List<Player> players = new ArrayList<Player>();
+		Player a = new Player();
+		players.add(a);
+		game.start(players);
 		ScoreBonus bonus= new ScoreBonus(1);
 		CityColour colour= new CityColour("blu", bonus);
 		List<Set<Bonus>> list= new ArrayList<Set<Bonus>>();
@@ -94,6 +116,10 @@ public class CityTest {
 	@Test
 	public void testGetName() throws IOException {
 		Game game=new Game();
+		List<Player> players = new ArrayList<Player>();
+		Player a = new Player();
+		players.add(a);
+		game.start(players);
 		ScoreBonus bonus= new ScoreBonus(1);
 		CityColour colour= new CityColour("blu", bonus);
 		List<Set<Bonus>> list= new ArrayList<Set<Bonus>>();
@@ -108,6 +134,10 @@ public class CityTest {
 	@Test
 	public void testGetColour() throws IOException {
 		Game game=new Game();
+		List<Player> players = new ArrayList<Player>();
+		Player a = new Player();
+		players.add(a);
+		game.start(players);
 		ScoreBonus bonus= new ScoreBonus(1);
 		CityColour colour= new CityColour("blu", bonus);
 		List<Set<Bonus>> list= new ArrayList<Set<Bonus>>();
@@ -122,7 +152,10 @@ public class CityTest {
 	@Test
 	public void testAddEmporiumsAndGetEmporiums() throws IOException {
 		Game game=new Game();
-		game.addPlayer("Luca");
+		List<Player> players = new ArrayList<Player>();
+		Player a = new Player();
+		players.add(a);
+		game.start(players);
 		ScoreBonus bonus= new ScoreBonus(1);
 		CityColour colour= new CityColour("blu", bonus);
 		List<Set<Bonus>> list= new ArrayList<Set<Bonus>>();
@@ -141,6 +174,10 @@ public class CityTest {
 	@Test
 	public void testAddAndGetNearCity() throws IOException {
 		Game game=new Game();
+		List<Player> players = new ArrayList<Player>();
+		Player a = new Player();
+		players.add(a);
+		game.start(players);
 		ScoreBonus bonus= new ScoreBonus(1);
 		CityColour colour= new CityColour("KingColour", bonus);
 		List<Set<Bonus>> list= new ArrayList<Set<Bonus>>();

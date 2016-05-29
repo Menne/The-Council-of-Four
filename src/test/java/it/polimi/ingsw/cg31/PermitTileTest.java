@@ -3,11 +3,14 @@ package it.polimi.ingsw.cg31;
 import static org.junit.Assert.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.junit.Test;
 
+import players.Player;
 import server.model.Game;
 import server.model.bonus.AssistantsBonus;
 import server.model.bonus.Bonus;
@@ -21,6 +24,10 @@ public class PermitTileTest {
 	@Test
 	public void testGetterOfBuildableCities() throws IOException {
 		Game game=new Game();
+		List<Player> players = new ArrayList<Player>();
+		Player a = new Player();
+		players.add(a);
+		game.start(players);
 		Set<City> cities= new HashSet<City>();
 		cities.addAll(game.getGameTable().getRegionBoards().get(0).getRegionCities());
 		Bonus bonus1=new ScoreBonus(1);
@@ -36,6 +43,10 @@ public class PermitTileTest {
 	@Test
 	public void testGetterOfBonuses() throws IOException {
 		Game game=new Game();
+		List<Player> players = new ArrayList<Player>();
+		Player a = new Player();
+		players.add(a);
+		game.start(players);
 		Set<City> cities= new HashSet<City>();
 		cities.addAll(game.getGameTable().getRegionBoards().get(0).getRegionCities());
 		Bonus bonus1=new ScoreBonus(1);
@@ -51,7 +62,10 @@ public class PermitTileTest {
 	@Test
 	public void testAddObjectToPlayer() throws IOException {
 		Game game=new Game();
-		game.addPlayer("Luca");
+		List<Player> players = new ArrayList<Player>();
+		Player a = new Player();
+		players.add(a);
+		game.start(players);
 		Set<City> cities= new HashSet<City>();
 		cities.addAll(game.getGameTable().getRegionBoards().get(0).getRegionCities());
 		Bonus bonus1=new ScoreBonus(1);
@@ -68,7 +82,10 @@ public class PermitTileTest {
 	@Test
 	public void testRemoveObjectFromPlayer() throws IOException {
 		Game game=new Game();
-		game.addPlayer("Luca");
+		List<Player> players = new ArrayList<Player>();
+		Player a = new Player();
+		players.add(a);
+		game.start(players);
 		Set<City> cities= new HashSet<City>();
 		cities.addAll(game.getGameTable().getRegionBoards().get(0).getRegionCities());
 		Bonus bonus1=new ScoreBonus(1);
@@ -86,7 +103,10 @@ public class PermitTileTest {
 	@Test(expected=IllegalArgumentException.class)
 	public void testIfRemoveObjectFromPlayerThrowsException() throws IOException {
 		Game game=new Game();
-		game.addPlayer("Luca");
+		List<Player> players = new ArrayList<Player>();
+		Player a = new Player();
+		players.add(a);
+		game.start(players);
 		Set<City> cities= new HashSet<City>();
 		cities.addAll(game.getGameTable().getRegionBoards().get(0).getRegionCities());
 		Bonus bonus1=new ScoreBonus(1);
