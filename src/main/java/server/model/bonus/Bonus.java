@@ -9,7 +9,7 @@ import server.model.Game;
  * @author andreapasquali
  * 
  */
-
+@FunctionalInterface
 public interface Bonus extends Serializable{
 	/**
 	 * This is an abstract assignment of a bonus

@@ -31,6 +31,7 @@ public class CoinsBonus implements Bonus{
 	 * Assigns to the current player a coinsIncreasement number of coins
 	 * @param currentPlayer is the player who is playing the turn
 	 */
+	@Override
 	public void assignBonus(Game game) {
 		game.getCurrentPlayer().incrementCoins(coinsIncreasement);
 	}

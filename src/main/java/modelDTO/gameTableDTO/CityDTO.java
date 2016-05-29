@@ -22,7 +22,7 @@ public class CityDTO implements ModelDTO<City>{
 	private Set<Bonus> rewardToken;
 	
 	public CityDTO(){		
-		this.buildedEmporiums=new HashSet<PlayerDTO>();
+		this.buildedEmporiums=new HashSet<>();
 	}
 
 	@Override

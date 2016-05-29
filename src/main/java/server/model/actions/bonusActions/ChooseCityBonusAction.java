@@ -32,9 +32,10 @@ public class ChooseCityBonusAction implements Action {
 	 * If there is the current player's emporium i the selected city,
 	 * assigns the bonus/bonuses of the city to the current player
 	 */
+	@Override
 	public boolean executeAction(Game game) {
 			
-		if (!(CkeckCity(game)))
+		if (!(CkeckCity()))
 			return false;
 			
 		for (Bonus bonusToAssign : this.selectedCity.getRewardToken())
@@ -46,7 +47,7 @@ public class ChooseCityBonusAction implements Action {
 	 * Checks if the selected city contains an emporium of the current player
 	 * @return TRUE if there is player's emporium; FALSE otherwise
 	 */
-	private boolean CkeckCity(Game game) {
+	private boolean CkeckCity() {
 		for (Emporium emporium : this.selectedCity.getCityEmporiums())
 			if (emporium.getEmporiumsPlayer().equals(this.game.getCurrentPlayer()))
 				return true;

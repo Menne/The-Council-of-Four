@@ -56,13 +56,14 @@ public class AcquirePermitTile extends MainAction {
 	 * 1 card of the same colour of the councillors + use 10 coins;
 	 * each rainbow card requires 1 additional coin each to use.
 	 */
+	@Override
 	public boolean executeAction(Game game) throws NullPointerException{
 		if(this.numberOfPermitTile==null||
 				this.cardsToDescard==null||
 				this.chosenRegion==null)
 			throw new NullPointerException("Paramters not setted");
 		
-		List<Player> interestedPlayers=new ArrayList<Player>();
+		List<Player> interestedPlayers=new ArrayList<>();
 		interestedPlayers.add(game.getCurrentPlayer());
 		if (!(this.CheckEnoughCoins(game) && this.CheckHandSatisfiesBalcony(game))){
 			this.sendErrorNotify(game, interestedPlayers);

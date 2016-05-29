@@ -15,7 +15,7 @@ public class PickPoliticsCard implements Action {
 	public boolean executeAction(Game game) {
 		game.getCurrentPlayer().getHand().add(game.getGameTable().getPoliticsDeck().pickCard());
 		
-		List<Player> interestedPlayers=new ArrayList<Player>();
+		List<Player> interestedPlayers=new ArrayList<>();
 		interestedPlayers.add(game.getCurrentPlayer());
 		
 		game.setState(game.getState().pickPoliticsCardTransition());

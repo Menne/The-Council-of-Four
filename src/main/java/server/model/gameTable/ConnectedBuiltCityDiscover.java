@@ -18,8 +18,8 @@ public class ConnectedBuiltCityDiscover {
 	private final Set<City> checkedCities;
 	
 	public ConnectedBuiltCityDiscover(){
-		this.connectedBonusCities=new HashSet<City>();
-		this.checkedCities=new HashSet<City>();
+		this.connectedBonusCities=new HashSet<>();
+		this.checkedCities=new HashSet<>();
 	}
 	/**
 	 * Adds to the set "connectedBonusCities" all the city of the map 

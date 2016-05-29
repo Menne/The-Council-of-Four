@@ -49,11 +49,12 @@ public class ElectCouncillorByAssistant extends QuickAction {
 	  * decrement an assistant to the current player.
 	  * @return TRUE if the action ends well; FALSE otherwise.
 	 */
+	@Override
 	public boolean executeAction(Game game) throws NullPointerException{
 		if(this.councilBalcony==null || this.newCouncillor==null)
 			throw new NullPointerException("Parameters not setted");
 		
-		List<Player> interestedPlayers=new ArrayList<Player>();
+		List<Player> interestedPlayers=new ArrayList<>();
 		interestedPlayers.add(game.getCurrentPlayer());
 		
 		Councillor oldCouncillor;

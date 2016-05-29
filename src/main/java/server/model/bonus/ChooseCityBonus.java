@@ -23,6 +23,7 @@ public class ChooseCityBonus implements Bonus{
 	 * Invokes the action associated o this bonus
 	 * @param game is the current game
 	 */
+	@Override
 	public void assignBonus(Game game) {
 		//TODO
 	}

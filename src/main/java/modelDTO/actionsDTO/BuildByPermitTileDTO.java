@@ -48,15 +48,15 @@ public class BuildByPermitTileDTO implements ActionDTO, ActionWithParameters {
 				action.setSelectedCity(city);
 		
 		for(PermitTile permitTile : game.getCurrentPlayer().getPlayersPermitTilesTurnedUp())
-			if(permitTile.getBonus().equals(this.selectedPermitTile.getBonuses()))
-				if(checkBuildableCities(permitTile.getBuildableCities()))
-					action.setSelectedPermitTile(permitTile);
+			if(permitTile.getBonus().equals(this.selectedPermitTile.getBonuses())&&
+					checkBuildableCities(permitTile.getBuildableCities()))
+				action.setSelectedPermitTile(permitTile);
 		return action;
 	}
 	
 	private boolean checkBuildableCities(Set<City> realBuildableCities){
-		Set<String> realBuildableCitiesString =new HashSet<String>();
-		Set<String> buildableCitiesDTOString = new HashSet<String>();
+		Set<String> realBuildableCitiesString =new HashSet<>();
+		Set<String> buildableCitiesDTOString = new HashSet<>();
 		for(City city : realBuildableCities)
 			realBuildableCitiesString.add(city.getName());
 		for(CityDTO cityDTO : this.selectedPermitTile.getBuildablecities())

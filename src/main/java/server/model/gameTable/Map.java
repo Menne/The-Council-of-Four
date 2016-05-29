@@ -1,6 +1,5 @@
 package server.model.gameTable;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import org.jgrapht.UndirectedGraph;
@@ -26,7 +25,7 @@ public class Map {
 	 * @param cities of the game map
 	 */
 	public Map(Set<City> cities, King king){
-		this.gameMap=new SimpleGraph<City, DefaultEdge>(DefaultEdge.class);
+		this.gameMap=new SimpleGraph<>(DefaultEdge.class);
 		for(City city : cities)
 			this.gameMap.addVertex(city);
 		for(City city1 : cities)
@@ -46,14 +45,13 @@ public class Map {
 
 	public int getShortestPathLenght(City c1, City c2){
 		DijkstraShortestPath<City, DefaultEdge> dijkstraAlg=
-				new DijkstraShortestPath<City, DefaultEdge>(this.gameMap, c1, c2);
+				new DijkstraShortestPath<>(this.gameMap, c1, c2);
 		return (int)dijkstraAlg.getPathLength();
 	}
 	
 	@Override
 	public String toString() {
-		Set<City> cities=new HashSet<City>();
-		cities=gameMap.vertexSet();
+		Set<City> cities=gameMap.vertexSet();
 		return "Map \n"+cities;
 	}
 	

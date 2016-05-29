@@ -39,12 +39,12 @@ public class Player {
 	 * @param coins number of initial coins
 	 */
 	public Player() {
-		this.assistants=new ArrayList<Assistant>();
-		this.hand=new ArrayList<PoliticsCard>();
-		this.playersPermitTilesTurnedDown=new ArrayList<PermitTile>();
-		this.playersPermitTilesTurnedUp=new ArrayList<PermitTile>();
-		this.emporiums=new ArrayList<Emporium>();
-		this.playersFinalBonus=new ArrayList<ScoreBonus>();
+		this.assistants=new ArrayList<>();
+		this.hand=new ArrayList<>();
+		this.playersPermitTilesTurnedDown=new ArrayList<>();
+		this.playersPermitTilesTurnedUp=new ArrayList<>();
+		this.emporiums=new ArrayList<>();
+		this.playersFinalBonus=new ArrayList<>();
 	}
 	
 	public int getPlayerNumber() {

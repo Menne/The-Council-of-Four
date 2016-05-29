@@ -25,9 +25,8 @@ public class PoliticsDeck{
 	 */
 	public CardColour randomColour(){
 		int rnd=new Random().nextInt(cardColours.size());
-		int i=0;
 		Iterator<CardColour> iter=this.cardColours.iterator();
-		for(i=0; i<rnd; i++)
+		for(int i=0; i<rnd; i++)
 			iter.next();
 		return iter.next();
 	}

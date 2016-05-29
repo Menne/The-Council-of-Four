@@ -18,7 +18,7 @@ public class PermitDeck {
 	 * @param permit tiles are the tiles of the deck
 	 */
 	public PermitDeck() {
-		this.permitTiles=new ArrayList<PermitTile>();
+		this.permitTiles=new ArrayList<>();
 	}
 	
 	/**

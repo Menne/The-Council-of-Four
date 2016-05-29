@@ -70,7 +70,7 @@ public class ServerSocketView extends View implements Runnable {
 	public void update(ViewNotify notify) {
 		try {
 	
-			if((notify.sendTo().contains(this.player))){
+			if(notify.sendTo().contains(this.player)){
 				this.socketOut.writeObject(notify.toClientNotify());
 				System.out.println("view: notifica inviata al player "+this.player.getName());
 			}

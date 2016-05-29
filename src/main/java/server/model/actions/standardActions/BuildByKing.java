@@ -49,8 +49,9 @@ public class BuildByKing extends MainAction {
 	 * of the selected city, then assigns all the bonuses of liked cities, then decrements player's assistants
 	 * @return TRUE if the action goes well, false otherwise
 	 */
+	@Override
 	public boolean executeAction(Game game) throws NullPointerException{
-		List<Player> interestedPlayers=new ArrayList<Player>();
+		List<Player> interestedPlayers=new ArrayList<>();
 		interestedPlayers.add(game.getCurrentPlayer());
 		
 		if(this.cardsToDescard==null || this.selectedCity==null)

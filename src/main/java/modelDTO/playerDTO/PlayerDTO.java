@@ -27,8 +27,8 @@ public class PlayerDTO implements ModelDTO<Player>{
 	
 	public PlayerDTO(){
 		
-		this.hand=new ArrayList<CardColourDTO>();
-		this.availablePermitTiles=new ArrayList<PermitTileDTO>();
+		this.hand=new ArrayList<>();
+		this.availablePermitTiles=new ArrayList<>();
 	}
 
 	@Override
@@ -41,11 +41,11 @@ public class PlayerDTO implements ModelDTO<Player>{
 		this.nobility=realObject.getNobility();
 		this.coins=realObject.getCoins();
 		this.emporiums=realObject.getRemainigEmporiums().size();
-/*		for(PoliticsCard card : realObject.getHand()){
+		for(PoliticsCard card : realObject.getHand()){
 			CardColourDTO cardColourDTO=new CardColourDTO();
 			cardColourDTO.map(card.getColour());
 			this.hand.add(cardColourDTO);
-		}*/
+		}
 		
 	}
 	

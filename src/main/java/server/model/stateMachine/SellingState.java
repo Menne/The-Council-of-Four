@@ -1,9 +1,12 @@
 package server.model.stateMachine;
 
+import java.util.Arrays;
 import java.util.List;
 
 import server.model.Game;
 import server.model.actions.Action;
+import server.model.actions.MoveToNext;
+import server.model.actions.marketActions.MakeAnOffer;
 
 public class SellingState implements State {
 
@@ -26,8 +29,7 @@ public class SellingState implements State {
 
 	@Override
 	public List<Action> getAcceptableActions(Game game) {
-		// TODO Auto-generated method stub
-		return null;
+		return Arrays.asList(new MakeAnOffer(), new MoveToNext());
 	}
 
 	@Override

@@ -45,11 +45,12 @@ public class ElectCouncillor extends MainAction {
 	 * gives to the current player 4 coins.
 	 * @return TRUE if the action ends well; FALSE otherwise.
 	 */
+	@Override
 	public boolean executeAction(Game game) throws NullPointerException{
 		if(this.newCouncillor==null || this.councilBalcony==null)
 			throw new NullPointerException("Parameters not setted");
 		
-		List<Player> interestedPlayers=new ArrayList<Player>();
+		List<Player> interestedPlayers=new ArrayList<>();
 		interestedPlayers.add(game.getCurrentPlayer());
 		
 		Councillor oldCouncillor;

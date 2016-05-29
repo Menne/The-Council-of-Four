@@ -1,5 +1,7 @@
 package modelDTO.marketDTO;
 
+import java.io.Serializable;
+
 import modelDTO.gameTableDTO.CardColourDTO;
 import modelDTO.gameTableDTO.PermitTileDTO;
 import modelDTO.playerDTO.AssistantDTO;
@@ -7,8 +9,12 @@ import server.model.gameTable.PermitTile;
 import server.model.gameTable.PoliticsCard;
 import server.model.market.Offer;
 
-public class OfferDTO {
+public class OfferDTO implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5468761096841322975L;
 	private String offeringPlayerDTO;
 	private MarketableDTO offeredObjectDTO;
 	private int price;

@@ -1,5 +1,7 @@
 package modelDTO.marketDTO;
 
-public interface MarketableDTO {
+import java.io.Serializable;
+
+public interface MarketableDTO extends Serializable {
 
 }

@@ -34,7 +34,7 @@ public class State10 implements State{
 				new BuildByKing());
 	}
 
-
+	@Override
 	public String toString(Game game) {
 		String availableActions = null;
 		for (Action action : this.getAcceptableActions(game))

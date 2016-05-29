@@ -70,20 +70,11 @@ public class AcquirePermitTileDTO implements ActionDTO, ActionWithParameters {
 			if(region.getName().equals(this.chosenRegion.getName()))
 				action.setChosenRegion(region);
 		
-		List<PoliticsCard> convertedCards =new ArrayList<PoliticsCard>();
+		List<PoliticsCard> convertedCards =new ArrayList<>();
 		for(CardColourDTO cardColourDTO : this.cardsToDescard)
 			convertedCards.add(new PoliticsCard(new CardColour(cardColourDTO.getName())));
 		action.setCardsToDescard(convertedCards);
 		
 		return action;
 	}
-	
-	/*public static void main(String[] args) throws IOException{
-		Game game=new Game();
-		AcquirePermitTileDTO apt=new AcquirePermitTileDTO();
-		RegionDTO regionDTO=new RegionDTO();
-		regionDTO.map(game.getGameTable().getRegionBoards().get(0));
-		apt.setChosenRegion(regionDTO);
-		apt.map(game);
-	}*/
 }

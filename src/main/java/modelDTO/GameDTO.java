@@ -38,12 +38,12 @@ public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Ga
 	private Parser parser;
 	
 	public GameDTO(){
-		this.clientRegions=new ArrayList<RegionDTO>();
+		this.clientRegions=new ArrayList<>();
 		this.clientKingBalcony=new CardColourDTO[4];
-		this.clientCouncillorReserve=new ArrayList<CardColourDTO>();
-		this.clientNobilityTrack=new ArrayList<Set<Bonus>>();
-		this.clientPlayers=new ArrayList<PlayerDTO>();
-		this.availableActions=new ArrayList<ActionDTO>();
+		this.clientCouncillorReserve=new ArrayList<>();
+		this.clientNobilityTrack=new ArrayList<>();
+		this.clientPlayers=new ArrayList<>();
+		this.availableActions=new ArrayList<>();
 		this.market=new MarketDTO();
 		this.parser=new Parser(this);
 	}

@@ -17,7 +17,7 @@ public class AcceptAnOfferParser implements ActionParserVisitor {
 		this.game=game;
 	}
 	
-	
+	@Override
 	public void setCurrentParameter(String currentParameter) {
 		this.currentParameter=currentParameter;
 	}
