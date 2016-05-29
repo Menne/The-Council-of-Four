@@ -41,11 +41,11 @@ public class PlayerDTO implements ModelDTO<Player>{
 		this.nobility=realObject.getNobility();
 		this.coins=realObject.getCoins();
 		this.emporiums=realObject.getRemainigEmporiums().size();
-		for(PoliticsCard card : realObject.getHand()){
+/*		for(PoliticsCard card : realObject.getHand()){
 			CardColourDTO cardColourDTO=new CardColourDTO();
 			cardColourDTO.map(card.getColour());
 			this.hand.add(cardColourDTO);
-		}
+		}*/
 		
 	}
 	
@@ -67,6 +67,14 @@ public class PlayerDTO implements ModelDTO<Player>{
 
 	public int getAssistants() {
 		return assistants;
+	}
+
+	public List<CardColourDTO> getHand() {
+		return hand;
+	}
+
+	public void setHand(List<CardColourDTO> hand) {
+		this.hand = hand;
 	}
 
 	public void setAssistants(int assistants) {
@@ -105,14 +113,6 @@ public class PlayerDTO implements ModelDTO<Player>{
 		this.emporiums = emporiums;
 	}
 
-	public List<CardColourDTO> getHand() {
-		return hand;
-	}
-
-	public void setHand(List<CardColourDTO> hand) {
-		this.hand = hand;
-	}
-
 	public List<PermitTileDTO> getAvailablePermitTiles() {
 		return availablePermitTiles;
 	}
@@ -123,9 +123,8 @@ public class PlayerDTO implements ModelDTO<Player>{
 
 	@Override
 	public String toString() {
-		return "Player " + playerNumber + "\tassistants=" + assistants + "\tscore="
-				+ score + "\tnobility=" + nobility + "\tcoins=" + coins + "\n hand=" + hand
-				+ ", playersPermitTilesTurnedUp=" + availablePermitTiles +
+		return "Player " + playerNumber + "\tname: "+ name + "\tassistants=" + assistants + "\tscore="
+				+ score + "\tnobility=" + nobility + "\tcoins=" + coins + ", playersPermitTilesTurnedUp=" + availablePermitTiles +
 				 ", emporiums=" + this.emporiums + "]\n\n";
 	}
 

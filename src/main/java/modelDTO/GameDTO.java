@@ -27,13 +27,13 @@ public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Ga
 	 * 
 	 */
 	private static final long serialVersionUID = 8250245390720798602L;
-	private List<RegionDTO> clientRegions;
+	private ArrayList<RegionDTO> clientRegions;
 	private CardColourDTO[] clientKingBalcony;
-	private List<CardColourDTO> clientCouncillorReserve;
-	private List<Set<Bonus>> clientNobilityTrack;
-	private List<PlayerDTO> clientPlayers;
+	private ArrayList<CardColourDTO> clientCouncillorReserve;
+	private ArrayList<Set<Bonus>> clientNobilityTrack;
+	private ArrayList<PlayerDTO> clientPlayers;
 	private PlayerDTO currentPlayer;
-	private List<ActionDTO> availableActions;
+	private ArrayList<ActionDTO> availableActions;
 	private MarketDTO market;
 	private Parser parser;
 	
@@ -75,7 +75,7 @@ public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Ga
 			this.clientPlayers.add(playerDTO);
 		}
 		
-		this.clientNobilityTrack=realObject.getGameTable().getNobilityTrack().getTrack();
+		this.clientNobilityTrack=(ArrayList<Set<Bonus>>) realObject.getGameTable().getNobilityTrack().getTrack();
 			
 		if(realObject.getCurrentPlayer()!=null){
 			PlayerDTO playerDTO=new PlayerDTO();
@@ -95,7 +95,7 @@ public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Ga
 	}
 
 	public void setClientRegions(List<RegionDTO> clientRegions) {
-		this.clientRegions = clientRegions;
+		this.clientRegions = (ArrayList<RegionDTO>) clientRegions;
 	}
 
 	public CardColourDTO[] getClientKingBalcony() {
@@ -111,7 +111,7 @@ public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Ga
 	}
 
 	public void setClientCouncillorReserve(List<CardColourDTO> clientCouncillorReserve) {
-		this.clientCouncillorReserve = clientCouncillorReserve;
+		this.clientCouncillorReserve = (ArrayList<CardColourDTO>) clientCouncillorReserve;
 	}
 
 	public List<Set<Bonus>> getClientNobilityTrack() {
@@ -119,7 +119,7 @@ public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Ga
 	}
 
 	public void setClientNobilityTrack(List<Set<Bonus>> clientNobilityTrack) {
-		this.clientNobilityTrack = clientNobilityTrack;
+		this.clientNobilityTrack = (ArrayList<Set<Bonus>>) clientNobilityTrack;
 	}
 
 	public List<PlayerDTO> getClientPlayers() {
@@ -127,7 +127,7 @@ public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Ga
 	}
 
 	public void setClientPlayers(List<PlayerDTO> clientPlayers) {
-		this.clientPlayers = clientPlayers;
+		this.clientPlayers = (ArrayList<PlayerDTO>) clientPlayers;
 	}
 
 	public PlayerDTO getCurrentPlayer() {
@@ -143,7 +143,7 @@ public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Ga
 	}
 
 	public void setAvailableActions(List<ActionDTO> availableActions) {
-		this.availableActions = availableActions;
+		this.availableActions = (ArrayList<ActionDTO>) availableActions;
 	}
 	
 
