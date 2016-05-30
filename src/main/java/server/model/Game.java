@@ -136,13 +136,6 @@ public class Game extends Observable<ViewNotify>{
 	}
 
 
-	public Player addPlayer(String playerName){
-		Player player = new Player();
-		this.players.add(player);
-		return player;
-	}
-
-
 	@Override
 	public String toString() {
 		return "Game\n\n Players: \n" + players + "\n\n CurrentPlayer: \n" + currentPlayer + "\n\n" + gameTable

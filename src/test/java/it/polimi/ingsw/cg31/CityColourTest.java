@@ -50,7 +50,7 @@ public class CityColourTest {
 		RegionBoard r=new RegionBoard(null, null, null, null);
 		City city=new City("a", r , colour, null);
 		colour.addCityOfThisColour(city);
-		Set<City> colourCity= new HashSet<City>();
+		Set<City> colourCity= new HashSet<>();
 		colourCity.add(city);
 		assertEquals(colourCity, colour.getCitiesOfThisColour());
 	}

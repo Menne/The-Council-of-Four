@@ -24,14 +24,14 @@ public class CityTest {
 	public void testIfIsKingPresentReturnFalse() throws IOException {
 		
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);
 		ScoreBonus bonus= new ScoreBonus(1);
 		CityColour colour= new CityColour("blu", bonus);
 		List<Set<Bonus>> list= new ArrayList<Set<Bonus>>();
-		Set<Bonus> set= new HashSet<Bonus>();
+		Set<Bonus> set= new HashSet<>();
 		Bonus bonus1= new ScoreBonus(1);
 		set.add(bonus1);
 		list.add(set);
@@ -42,14 +42,14 @@ public class CityTest {
 	@Test
 	public void testIfIsKingPresentReturnTrueAfterTheMethodSetIsKingPresent() throws IOException {
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);
 		ScoreBonus bonus= new ScoreBonus(1);
 		CityColour colour= new CityColour("KingColour", bonus);
 		List<Set<Bonus>> list= new ArrayList<Set<Bonus>>();
-		Set<Bonus> set= new HashSet<Bonus>();
+		Set<Bonus> set= new HashSet<>();
 		Bonus bonus1= new ScoreBonus(1);
 		set.add(bonus1);
 		list.add(set);
@@ -61,14 +61,14 @@ public class CityTest {
 	@Test
 	public void testGetRewardToken() throws IOException {
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);
 		ScoreBonus bonus= new ScoreBonus(1);
 		CityColour colour= new CityColour("blu", bonus);
 		List<Set<Bonus>> list= new ArrayList<Set<Bonus>>();
-		Set<Bonus> set= new HashSet<Bonus>();
+		Set<Bonus> set= new HashSet<>();
 		Bonus bonus1= new ScoreBonus(1);
 		set.add(bonus1);
 		list.add(set);
@@ -79,33 +79,33 @@ public class CityTest {
 	@Test
 	public void testConstructorDoesnTGiveBonusToKingCity() throws IOException {
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);
 		ScoreBonus bonus= new ScoreBonus(1);
 		CityColour colour= new CityColour("KingColour", bonus);
 		List<Set<Bonus>> list= new ArrayList<Set<Bonus>>();
-		Set<Bonus> set= new HashSet<Bonus>();
+		Set<Bonus> set= new HashSet<>();
 		Bonus bonus1= new ScoreBonus(1);
 		set.add(bonus1);
 		list.add(set);
 		City city=new City("città1",game.getGameTable().getRegionBoards().get(0), colour, list);
-		Set<Bonus> set1= new HashSet<Bonus>();
+		Set<Bonus> set1= new HashSet<>();
 		assertEquals(set1, city.getRewardToken());
 	}
 	
 	@Test
 	public void testGetRegion() throws IOException {
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);
 		ScoreBonus bonus= new ScoreBonus(1);
 		CityColour colour= new CityColour("blu", bonus);
 		List<Set<Bonus>> list= new ArrayList<Set<Bonus>>();
-		Set<Bonus> set= new HashSet<Bonus>();
+		Set<Bonus> set= new HashSet<>();
 		Bonus bonus1= new ScoreBonus(1);
 		set.add(bonus1);
 		list.add(set);
@@ -116,14 +116,14 @@ public class CityTest {
 	@Test
 	public void testGetName() throws IOException {
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);
 		ScoreBonus bonus= new ScoreBonus(1);
 		CityColour colour= new CityColour("blu", bonus);
 		List<Set<Bonus>> list= new ArrayList<Set<Bonus>>();
-		Set<Bonus> set= new HashSet<Bonus>();
+		Set<Bonus> set= new HashSet<>();
 		Bonus bonus1= new ScoreBonus(1);
 		set.add(bonus1);
 		list.add(set);
@@ -134,14 +134,14 @@ public class CityTest {
 	@Test
 	public void testGetColour() throws IOException {
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);
 		ScoreBonus bonus= new ScoreBonus(1);
 		CityColour colour= new CityColour("blu", bonus);
 		List<Set<Bonus>> list= new ArrayList<Set<Bonus>>();
-		Set<Bonus> set= new HashSet<Bonus>();
+		Set<Bonus> set= new HashSet<>();
 		Bonus bonus1= new ScoreBonus(1);
 		set.add(bonus1);
 		list.add(set);
@@ -152,21 +152,21 @@ public class CityTest {
 	@Test
 	public void testAddEmporiumsAndGetEmporiums() throws IOException {
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);
 		ScoreBonus bonus= new ScoreBonus(1);
 		CityColour colour= new CityColour("blu", bonus);
 		List<Set<Bonus>> list= new ArrayList<Set<Bonus>>();
-		Set<Bonus> set= new HashSet<Bonus>();
+		Set<Bonus> set= new HashSet<>();
 		Bonus bonus1= new ScoreBonus(1);
 		set.add(bonus1);
 		list.add(set);
 		City city=new City("città1",game.getGameTable().getRegionBoards().get(0), colour, list);
 		Emporium e=new Emporium(game.getPlayers().get(0));
 		city.addEmporium(e);
-		Set<Emporium> emporiums= new HashSet<Emporium>();
+		Set<Emporium> emporiums= new HashSet<>();
 		emporiums.add(e);
 		assertEquals(emporiums, city.getCityEmporiums());
 	}
@@ -174,7 +174,7 @@ public class CityTest {
 	@Test
 	public void testAddAndGetNearCity() throws IOException {
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);
@@ -184,7 +184,7 @@ public class CityTest {
 		City city=new City("città1",game.getGameTable().getRegionBoards().get(0), colour, list);
 		City nearCity=new City("città2",game.getGameTable().getRegionBoards().get(0), colour, list);
 		city.addNearCity(nearCity);
-		Set<City> cities=new HashSet<City>();
+		Set<City> cities=new HashSet<>();
 		cities.add(nearCity);
 		assertEquals(cities, city.getNearCities());
 	}

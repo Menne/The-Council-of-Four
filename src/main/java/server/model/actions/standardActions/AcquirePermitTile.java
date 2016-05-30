@@ -74,8 +74,11 @@ public class AcquirePermitTile extends MainAction {
 		for (Bonus bonusToAssign : this.chosenRegion.getUncoveredPermitTiles()[numberOfPermitTile].getBonus())
 			bonusToAssign.assignBonus(game);
 		game.getCurrentPlayer().decrementCoins(CoinsToPay());
-		for (PoliticsCard card : cardsToDescard)
+		for (PoliticsCard card : cardsToDescard){
+			if(!game.getCurrentPlayer().getHand().contains(card))
+				throw new IllegalArgumentException("Current player hasn't theese cards");
 			game.getCurrentPlayer().removeCardFromHand(card);
+		}
 		game.getCurrentPlayer().addTile(this.chosenRegion.pickUncoveredPermitTile(this.numberOfPermitTile));
 		this.chosenRegion.uncoverPermitTiles();
 		
@@ -92,17 +95,20 @@ public class AcquirePermitTile extends MainAction {
 	 * Calculate the coins you have to pay according to the cards you
 	 * selected and the number of rainbow politics cards
 	 * @return the amount of coins
+	 * @throws IndexOutOfBoundsException if the list of cards to discard is empty
 	 */
-	private int CoinsToPay() {
+	private int CoinsToPay(){
 		int coinsToPay;
+		
+		if(this.cardsToDescard.isEmpty())
+			throw new IndexOutOfBoundsException("you have selected 0 cards to buy a permit tile");
 		if (this.cardsToDescard.size()==CouncilBalcony.getNumberofcouncillors())
 			coinsToPay=0;
 		else {
-			this.chosenRegion.getRegionBalcony();
 			coinsToPay=((CouncilBalcony.getNumberofcouncillors()-(this.cardsToDescard.size()))*3)+1;
 		}
 		for (PoliticsCard card : cardsToDescard)
-			if (card.getColour().getColour() == "rainbow")
+			if ("Rainbow".equals(card.getColour().getColour()))
 				coinsToPay++;
 		return coinsToPay;
 	}
@@ -126,7 +132,7 @@ public class AcquirePermitTile extends MainAction {
 			temporaryBalcony.add(game.getGameTable().getCouncilOfKing().getCouncillors()[i]);
 		
 		for (PoliticsCard politicsCardInHand: cardsToDescard) {
-			if (politicsCardInHand.getColour().getColour() == "rainbow")
+			if (politicsCardInHand.getColour().getColour() == "Rainbow")
 				satisfyCounter++;
 			for (int j=0; j<=temporaryBalcony.size()-1;) {
 				if (temporaryBalcony.get(j).getColour().equals(politicsCardInHand.getColour())) {

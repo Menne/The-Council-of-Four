@@ -41,7 +41,7 @@ public class CouncilBalconyAndCouncillorTest {
 		Councillor c=new Councillor(z);
 		Councillor d=new Councillor(w);
 		
-		List<Councillor> councillors= new ArrayList<Councillor>();
+		List<Councillor> councillors= new ArrayList<>();
 		councillors.add(a);
 		councillors.add(b);
 		councillors.add(c);

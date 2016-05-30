@@ -45,7 +45,7 @@ public class AdditionalMainAction extends QuickAction {
 			game.notifyObserver(new ErrorNotify("You can't do this action",interestedPlayers));
 			return false;
 		}	
-		
+		game.getCurrentPlayer().decrementAssistants(necessaryAssistants);
 		game.setState(game.getState().additionalMainActionTransition());
 		
 		game.notifyObserver(new GameTableNotify(game, new ArrayList<Player>(game.getPlayers())));

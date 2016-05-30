@@ -17,7 +17,7 @@ public class AssistantsTest {
 	@Test
 	public void test() throws IOException {
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player p = new Player();
 		players.add(p);
 		game.start(players);
@@ -30,7 +30,7 @@ public class AssistantsTest {
 	@Test
 	public void testRemoveFromPlayer() throws IOException {
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player p = new Player();
 		players.add(p);
 		game.start(players);
@@ -44,7 +44,7 @@ public class AssistantsTest {
 	@Test(expected=IllegalArgumentException.class)
 	public void testExceptionOfRemove() throws IOException{
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player p= new Player();
 		players.add(p);
 		game.start(players);

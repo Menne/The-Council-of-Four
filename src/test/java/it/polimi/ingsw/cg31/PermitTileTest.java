@@ -24,15 +24,15 @@ public class PermitTileTest {
 	@Test
 	public void testGetterOfBuildableCities() throws IOException {
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);
-		Set<City> cities= new HashSet<City>();
+		Set<City> cities= new HashSet<>();
 		cities.addAll(game.getGameTable().getRegionBoards().get(0).getRegionCities());
 		Bonus bonus1=new ScoreBonus(1);
 		Bonus bonus2=new AssistantsBonus(2);
-		Set<Bonus> bonuses=new HashSet<Bonus>();
+		Set<Bonus> bonuses=new HashSet<>();
 		bonuses.add(bonus2);
 		bonuses.add(bonus1);
 		PermitDeck deck= new PermitDeck();
@@ -43,15 +43,15 @@ public class PermitTileTest {
 	@Test
 	public void testGetterOfBonuses() throws IOException {
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);
-		Set<City> cities= new HashSet<City>();
+		Set<City> cities= new HashSet<>();
 		cities.addAll(game.getGameTable().getRegionBoards().get(0).getRegionCities());
 		Bonus bonus1=new ScoreBonus(1);
 		Bonus bonus2=new AssistantsBonus(2);
-		Set<Bonus> bonuses=new HashSet<Bonus>();
+		Set<Bonus> bonuses=new HashSet<>();
 		bonuses.add(bonus2);
 		bonuses.add(bonus1);
 		PermitDeck deck= new PermitDeck();
@@ -62,15 +62,15 @@ public class PermitTileTest {
 	@Test
 	public void testAddObjectToPlayer() throws IOException {
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);
-		Set<City> cities= new HashSet<City>();
+		Set<City> cities= new HashSet<>();
 		cities.addAll(game.getGameTable().getRegionBoards().get(0).getRegionCities());
 		Bonus bonus1=new ScoreBonus(1);
 		Bonus bonus2=new AssistantsBonus(2);
-		Set<Bonus> bonuses=new HashSet<Bonus>();
+		Set<Bonus> bonuses=new HashSet<>();
 		bonuses.add(bonus2);
 		bonuses.add(bonus1);
 		PermitDeck deck= new PermitDeck();
@@ -82,15 +82,15 @@ public class PermitTileTest {
 	@Test
 	public void testRemoveObjectFromPlayer() throws IOException {
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);
-		Set<City> cities= new HashSet<City>();
+		Set<City> cities= new HashSet<>();
 		cities.addAll(game.getGameTable().getRegionBoards().get(0).getRegionCities());
 		Bonus bonus1=new ScoreBonus(1);
 		Bonus bonus2=new AssistantsBonus(2);
-		Set<Bonus> bonuses=new HashSet<Bonus>();
+		Set<Bonus> bonuses=new HashSet<>();
 		bonuses.add(bonus2);
 		bonuses.add(bonus1);
 		PermitDeck deck= new PermitDeck();
@@ -103,15 +103,15 @@ public class PermitTileTest {
 	@Test(expected=IllegalArgumentException.class)
 	public void testIfRemoveObjectFromPlayerThrowsException() throws IOException {
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);
-		Set<City> cities= new HashSet<City>();
+		Set<City> cities= new HashSet<>();
 		cities.addAll(game.getGameTable().getRegionBoards().get(0).getRegionCities());
 		Bonus bonus1=new ScoreBonus(1);
 		Bonus bonus2=new AssistantsBonus(2);
-		Set<Bonus> bonuses=new HashSet<Bonus>();
+		Set<Bonus> bonuses=new HashSet<>();
 		bonuses.add(bonus2);
 		bonuses.add(bonus1);
 		PermitDeck deck= new PermitDeck();

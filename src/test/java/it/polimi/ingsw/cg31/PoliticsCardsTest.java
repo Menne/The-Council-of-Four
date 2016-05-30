@@ -18,7 +18,7 @@ public class PoliticsCardsTest {
 	@Test
 	public void testIfCardsHaveTheAttributeCardColour() throws IOException {
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);
@@ -29,12 +29,11 @@ public class PoliticsCardsTest {
 	@Test
 	public void testIfAddObjectToPlayerWorks() throws IOException{
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);
 		PoliticsCard card= game.getGameTable().getPoliticsDeck().pickCard();
-		game.addPlayer("Luca");
 		card.addObjectToPlayer(game.getPlayers().get(0));
 		
 		assertEquals(game.getPlayers().get(0).getHand().get(6), card);
@@ -43,12 +42,11 @@ public class PoliticsCardsTest {
 	@Test
 	public void testRemoveCard() throws IOException{
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);
 		PoliticsCard card= game.getGameTable().getPoliticsDeck().pickCard();
-		game.addPlayer("Luca");
 		if(game.getPlayers().get(0).getHand().contains(card)){
 			card.removeObjectFromPlayer(game.getPlayers().get(0));
 			assertEquals(5, game.getPlayers().get(0).getHand().size());
@@ -60,7 +58,7 @@ public class PoliticsCardsTest {
 	@Test
 	public void testToString() throws IOException{
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);

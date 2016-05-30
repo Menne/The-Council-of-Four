@@ -34,7 +34,7 @@ public class PickPermitTileBonus implements Bonus {
 
 	/**
 	 * Picks the selected permit tile, and adds each bonus
-	 * @param game is the currebt game
+	 * @param game is the current game
 	 */
 	@Override
 	public void assignBonus(Game game) {
