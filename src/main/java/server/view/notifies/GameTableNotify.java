@@ -23,12 +23,18 @@ public class GameTableNotify implements ViewNotify {
 		GameTableDTO gameTableDTO=new GameTableDTO();
 		gameTableDTO.map(this.game);
 		return new GameTableDTONotify(gameTableDTO);
-		
 	}
 
 	@Override
 	public List<Player> sendTo() {
 		return this.interestedPlayers;
 	}
+
+	@Override
+	public String toString() {
+		return "GameTableNotify" + interestedPlayers;
+	}
+	
+	
 
 }

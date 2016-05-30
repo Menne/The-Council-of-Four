@@ -30,4 +30,11 @@ public class PlayerNotify implements ViewNotify {
 		return this.interestedPlayers;
 	}
 
+	@Override
+	public String toString() {
+		return "PlayerNotify" + interestedPlayers;
+	}
+	
+	
+
 }

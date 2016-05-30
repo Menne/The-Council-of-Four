@@ -28,7 +28,7 @@ public class GameTableDTO extends Observable<ClientViewNotify> implements ModelD
 	private ArrayList<CardColourDTO> clientCouncillorReserve;
 	private ArrayList<Set<Bonus>> clientNobilityTrack;
 	private ArrayList<GenericPlayerDTO> clientPlayers;
-	private GenericPlayerDTO currentPlayer;
+	private String currentPlayer;
 	
 	public GameTableDTO() {
 		this.clientRegions=new ArrayList<RegionDTO>();
@@ -110,18 +110,18 @@ public class GameTableDTO extends Observable<ClientViewNotify> implements ModelD
 		this.clientPlayers = (ArrayList<GenericPlayerDTO>) clientPlayers;
 	}
 
-	public GenericPlayerDTO getCurrentPlayer() {
+	public String getCurrentPlayer() {
 		return currentPlayer;
 	}
 
-	public void setCurrentPlayer(GenericPlayerDTO currentPlayer) {
+	public void setCurrentPlayer(String currentPlayer) {
 		this.currentPlayer = currentPlayer;
 	}
 
 	
 	@Override
 	public String toString() {
-		return "\nGameDTO\n Players:\n" + clientPlayers + "\n\nCurrentPlayer:\n" + currentPlayer + "\n" +
+		return "\nUpdated game table:\n Players:\n" + clientPlayers + "\n\nNow is plaiyng:\n" + currentPlayer + "\n" +
 				 clientRegions + " \n "+ Arrays.toString(clientKingBalcony) +"\n"+
 				 clientCouncillorReserve + "\n" + clientNobilityTrack ;
 	}

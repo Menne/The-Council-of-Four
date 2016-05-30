@@ -25,7 +25,6 @@ public class AvailableActionsNotify implements ViewNotify {
 		List<ActionDTO> availableActionsDTO=new ArrayList<ActionDTO>();
 		for (Action action : this.game.getState().getAcceptableActions(this.game))
 			availableActionsDTO.add(action.map());
-		System.out.println("server: ho aggiornato le azioni  "+availableActionsDTO);
 		return new AvailableActionsDTONotify(availableActionsDTO);
 	}
 

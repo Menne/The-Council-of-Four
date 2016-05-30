@@ -46,9 +46,7 @@ public class ServerSocketView extends View implements Runnable {
 					ClientPlayerDTO clientPlayerDTO=new ClientPlayerDTO();
 					genericPlayerDTO.map(player);
 					clientPlayerDTO.map(player);
-					System.out.println("scrivendo...");
 					this.socketOut.writeObject(new PlayerAcceptedDTONotify(genericPlayerDTO));
-					System.out.println("scritto!");
 				}
 				
 				else if(this.player.equals(game.getCurrentPlayer())){
@@ -75,7 +73,7 @@ public class ServerSocketView extends View implements Runnable {
 	
 			if(notify.sendTo().contains(this.player)){
 				this.socketOut.writeObject(notify.toClientNotify());
-				System.out.println("view: notifica inviata al player "+this.player.getName());
+				System.out.println("ho inviato la notifica "+notify.toString());
 			}
 			
 		} catch (IOException e) {

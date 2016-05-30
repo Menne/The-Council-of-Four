@@ -81,17 +81,9 @@ public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Ga
 		this.market = market;
 	}
 
-	
-	@Override
-	public String toString() {
-		return "\nGameDTO\n\nCurrentPlayer:\n" + clientPlayer + "\n";
-	}
-
-	
 	public Parser getParser() {
 		return this.parser;
 	}
 
-	
 	
 }

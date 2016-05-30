@@ -21,7 +21,6 @@ public class AvailableActionsDTONotify implements ClientNotify {
 	@Override
 	public void act(GameDTO gameDTOtoupdate) {
 		gameDTOtoupdate.setAvailableActions(this.availableActions);
-		System.out.println("ssv: ho impacchettato le azioni  "+gameDTOtoupdate.getAvailableActions());
 		gameDTOtoupdate.notifyObserver(new ClientAvailableActionsNotify(gameDTOtoupdate.getAvailableActions()));
 	}
 
