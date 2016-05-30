@@ -31,6 +31,7 @@ public class PoliticsCardsBonus implements Bonus{
 	 * assigns politics cards one by one to the hand of the current player
 	 * @param currentPlayer is the player who is playing the turn
 	 */
+	@Override
 	public void assignBonus(Game game) {
 		for (int i=0; i<this.numberOfCards; i++)
 			game.getCurrentPlayer().getHand().add(game.getGameTable().getPoliticsDeck().pickCard());

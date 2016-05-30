@@ -47,8 +47,8 @@ public class MakeAnOfferDTO implements ActionDTO, ActionWithParameters {
 		if (this.offeringObjectDTO instanceof PermitTileDTO) {
 			PermitTileDTO offeringPermitTileDTO=(PermitTileDTO) offeringObjectDTO;
 			for(PermitTile permitTile : game.getCurrentPlayer().getPlayersPermitTilesTurnedUp())
-				if(permitTile.getBonus().equals(offeringPermitTileDTO.getBonuses()))
-					if(this.checkBuildableCities(offeringPermitTileDTO, permitTile.getBuildableCities()))
+				if(permitTile.getBonus().equals(offeringPermitTileDTO.getBonuses())&&
+					this.checkBuildableCities(offeringPermitTileDTO, permitTile.getBuildableCities()))
 						action.setOfferingObject(permitTile);
 		}
 		if (this.offeringObjectDTO instanceof AssistantDTO) {
@@ -61,8 +61,8 @@ public class MakeAnOfferDTO implements ActionDTO, ActionWithParameters {
 	}
 
 	private boolean checkBuildableCities(PermitTileDTO offeringPermitTileDTO, Set<City> realBuildableCities) {
-		Set<String> realBuildableCitiesString =new HashSet<String>();
-		Set<String> buildableCitiesDTOString = new HashSet<String>();
+		Set<String> realBuildableCitiesString =new HashSet<>();
+		Set<String> buildableCitiesDTOString = new HashSet<>();
 		for(City city : realBuildableCities)
 			realBuildableCitiesString.add(city.getName());
 		for(CityDTO cityDTO : offeringPermitTileDTO.getBuildablecities())

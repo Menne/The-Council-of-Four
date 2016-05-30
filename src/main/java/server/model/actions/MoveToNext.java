@@ -18,7 +18,7 @@ public class MoveToNext extends QuickAction {
 	public boolean executeAction(Game game) {
 		 
 		game.setState(game.getState().moveToNextTransition(game));
-		List<Player> interestedPlayers=new ArrayList<Player>();
+		List<Player> interestedPlayers=new ArrayList<>();
 		interestedPlayers.add(game.getCurrentPlayer());
 		game.notifyObserver(new GameTableNotify(game, interestedPlayers));
 		return true;

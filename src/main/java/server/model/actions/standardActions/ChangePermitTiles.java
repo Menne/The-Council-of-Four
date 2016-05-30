@@ -41,12 +41,13 @@ public class ChangePermitTiles extends QuickAction {
 	 * and decrements the necessary assistant to the current player.
 	 * @return TRUE if the action ends well; FALSE otherwise.
 	 */
+	@Override
 	public boolean executeAction(Game game) throws NullPointerException{
 		
 		if(this.selectedRegion==null)
 			throw new NullPointerException("Paramters not setted");
 		
-		List<Player> interestedPlayers=new ArrayList<Player>();
+		List<Player> interestedPlayers=new ArrayList<>();
 		interestedPlayers.add(game.getCurrentPlayer());
 		
 		if(!this.checkAssistant(game)){

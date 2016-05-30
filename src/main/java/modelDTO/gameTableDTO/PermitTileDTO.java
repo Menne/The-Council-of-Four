@@ -20,8 +20,8 @@ public class PermitTileDTO implements ModelDTO<PermitTile>, MarketableDTO {
 	private Set<Bonus> bonuses;
 	
 	public PermitTileDTO(){
-		this.buildablecities=new HashSet<CityDTO>();
-		this.bonuses=new HashSet<Bonus>();
+		this.buildablecities=new HashSet<>();
+		this.bonuses=new HashSet<>();
 	}
 
 	@Override
@@ -52,7 +52,7 @@ public class PermitTileDTO implements ModelDTO<PermitTile>, MarketableDTO {
 
 	@Override
 	public String toString() {
-		Set<String> cities=new HashSet<String>();
+		Set<String> cities=new HashSet<>();
 		for(CityDTO cityDTO : buildablecities)
 			cities.add(cityDTO.getName());
 		return cities + "\t" + bonuses;

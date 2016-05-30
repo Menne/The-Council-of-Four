@@ -32,6 +32,7 @@ public class NobilityBonus implements Bonus{
 	 * If the new nobility slot has bonuses inside it will assign them to the player
 	 * @param currentPlayer is the player who is playing the turn
 	 */
+	@Override
 	public void assignBonus(Game game) {
 		game.getCurrentPlayer().incrementNobility(nobilityAdvancement, game.getGameTable().getNobilityTrack().getTrack().size());
 		int currentNobility=game.getCurrentPlayer().getNobility();

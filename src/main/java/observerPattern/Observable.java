@@ -9,7 +9,7 @@ public abstract class Observable<C> {
 	private List<Observer<C>> observers;
 	
 	public Observable(){
-		this.observers = new ArrayList<Observer<C>>();
+		this.observers = new ArrayList<>();
 	}
 	
 	public void registerObserver(Observer<C> o){

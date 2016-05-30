@@ -19,6 +19,7 @@ public class MainActionBonus implements Bonus {
 	 * Increments the number of available main actions available
 	 * @param game is the current game
 	 */
+	@Override
 	public void assignBonus(Game game) {
 		game.setAdditionalMainActionBonus(true);
 	}

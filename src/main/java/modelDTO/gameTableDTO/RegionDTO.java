@@ -25,7 +25,7 @@ public class RegionDTO implements ModelDTO<RegionBoard>{
 	public RegionDTO(){
 		
 		this.balcony=new CardColourDTO[4]; 
-		this.cities=new HashSet<CityDTO>();		
+		this.cities=new HashSet<>();		
 		this.uncoveredPermitTiles=new PermitTileDTO[2];
 	}
 

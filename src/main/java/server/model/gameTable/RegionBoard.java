@@ -40,7 +40,7 @@ public class RegionBoard {
 		this.regionBalcony=regionBalcony;		
 		this.regionBonus=regionBonus;
 		this.bonusAvailable=true;
-		this.regionCities=new HashSet<City>();
+		this.regionCities=new HashSet<>();
 		this.uncoveredPermitTiles=new PermitTile[numberOfUncoveredPermitTiles];		
 	}
 	

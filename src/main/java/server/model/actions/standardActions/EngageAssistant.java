@@ -31,8 +31,9 @@ public class EngageAssistant extends QuickAction {
 	 * Decrements 3 coins to the current player and gives him an assistant.
 	 * @return TRUE if the action ends well; FALSE otherwise.
 	 */
+	@Override
 	public boolean executeAction(Game game) {
-		List<Player> interestedPlayers=new ArrayList<Player>();
+		List<Player> interestedPlayers=new ArrayList<>();
 		interestedPlayers.add(game.getCurrentPlayer());
 		
 		if(!this.checkCoins(game)){

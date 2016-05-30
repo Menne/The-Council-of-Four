@@ -30,6 +30,7 @@ public class ScoreBonus implements Bonus{
 	 * assignBonus assigns to player p the "advancement" score
 	 * @param currentPlayer
 	 */
+	@Override
 	public void assignBonus(Game game){
 		game.getCurrentPlayer().incrementScore(scoreAdvancement);
 	}

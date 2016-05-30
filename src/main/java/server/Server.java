@@ -22,7 +22,7 @@ public class Server {
 	private Controller currentController;
 	
 	public Server(){
-		this.currentPlayerList=new ArrayList<Player>();
+		this.currentPlayerList=new ArrayList<>();
 		this.currentGame=new Game();
 		this.currentController=new Controller(currentGame);
 	}

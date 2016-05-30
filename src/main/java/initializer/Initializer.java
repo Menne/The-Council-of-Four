@@ -14,7 +14,8 @@ import server.model.gameTable.*;
 public class Initializer {
 	
 	private String s;
-	
+	@SuppressWarnings("unused")
+	private String r;
 
 	public GameTable initialize() throws IOException{
 	
@@ -59,8 +60,8 @@ public class Initializer {
 		s=b.readLine();
 	}
 	
-	b.readLine();//null
-	b.readLine();//NumberOfCouncillorOfEveryColour
+	r=b.readLine();//null
+	r=b.readLine();//NumberOfCouncillorOfEveryColour
 	s=b.readLine();// numero di consiglieri di ogni colore
 	/*
 	 * Inizializzo tutti i consiglieri (passo da file solo il numero di consiglieri per ogni colore)
@@ -92,8 +93,8 @@ public class Initializer {
 	PermitDeck secondRegionPermitDeck=new PermitDeck();
 	PermitDeck thirdRegionPermitDeck=new PermitDeck();
 	
-	b.readLine();//null
-	s=b.readLine(); //RegionNames
+	r=b.readLine();//null
+	r=b.readLine(); //RegionNames
 	
 	/*
 	 * inizializzo le regioni
@@ -105,7 +106,7 @@ public class Initializer {
 	RegionBoard thirdRegion=
 			new RegionBoard(b.readLine(), thirdRegionPermitDeck, thirdRegionBalcony, new ScoreBonus(Integer.parseInt(b.readLine())));
 	
-	b.readLine();
+	r=b.readLine();
 	/*
 	 * lista di tutte le regioni
 	 */
@@ -114,8 +115,8 @@ public class Initializer {
 	regionList.add(secondRegion);
 	regionList.add(thirdRegion);
 	
-	b.readLine(); //null
-	s=b.readLine(); //rewardTokenList
+	r=b.readLine(); //null
+	r=b.readLine(); //rewardTokenList
 	
 	/*
 	 * lista di set di bonus (reward tiles)
@@ -144,7 +145,7 @@ public class Initializer {
 		i++;	
 	}
 	
-	b.readLine();
+	r=b.readLine();
 	
 	/*
 	 * inizializzo e riempio le liste di città di ogni regione
@@ -266,7 +267,7 @@ public class Initializer {
 			s=b.readLine();
 		}
 
-	b.readLine();//null
+	r=b.readLine();//null
 	
 	List<PermitTile> thirdRegionPermitList = new ArrayList<>();
 	s=b.readLine();
@@ -298,8 +299,8 @@ public class Initializer {
 			s=b.readLine();//STOPfirstRegionPermitTileList or NEXTPermitTile
 		}
 	
-	b.readLine();//null
-	b.readLine();//NobilityTrack
+	r=b.readLine();//null
+	r=b.readLine();//NobilityTrack
 	
 	/*
 	 * inizializzo nobility track e assegno bonus alle caselle

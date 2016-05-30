@@ -48,11 +48,12 @@ public class BuildByPermitTile extends MainAction {
 	 * of the selected city, then assigns all the bonuses of liked cities, then decrements player's assistants
 	 * @return TRUE if the action goes well, false otherwise
 	 */
+	@Override
 	public boolean executeAction(Game game) throws NullPointerException {
 		if(this.selectedCity==null || this.selectedPermitTile==null)
 			throw new NullPointerException("Paramters not setted");
 		
-		List<Player> interestedPlayers=new ArrayList<Player>();
+		List<Player> interestedPlayers=new ArrayList<>();
 		interestedPlayers.add(game.getCurrentPlayer());
 		
 		ConnectedBuiltCityDiscover likedCities=new ConnectedBuiltCityDiscover();

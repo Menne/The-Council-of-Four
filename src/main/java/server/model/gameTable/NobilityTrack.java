@@ -22,7 +22,7 @@ public class NobilityTrack {
 	 * @param lenght of the track.
 	 */
 	public NobilityTrack(int lenght){
-		this.track=new ArrayList<Set<Bonus>>();
+		this.track=new ArrayList<>();
 		for(int i=0; i<lenght; i++)
 			this.track.add(new HashSet<Bonus>());
 	}

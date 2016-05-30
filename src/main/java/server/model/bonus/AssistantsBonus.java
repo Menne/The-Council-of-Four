@@ -31,6 +31,7 @@ public class AssistantsBonus implements Bonus{
 	 * Assigns to the current player a number assistantsIcreasement of assistants
 	 * @param currentPlayer is the player who is playing the turn
 	 */
+	@Override
 	public void assignBonus(Game game) {
 		game.getCurrentPlayer().incrementAssistants(assistantsIcreasement);
 	}

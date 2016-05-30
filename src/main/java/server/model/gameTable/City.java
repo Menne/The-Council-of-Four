@@ -39,10 +39,10 @@ public class City {
 		this.isKingPresent=false;
 		this.region=region;
 		this.colour=colour;
-		this.cityEmporiums=new HashSet<Emporium>();
-		this.nearCities=new HashSet<City>();
-		this.rewardToken=new HashSet<Bonus>();
-		if(!colour.getName().equals("KingColour"))
+		this.cityEmporiums=new HashSet<>();
+		this.nearCities=new HashSet<>();
+		this.rewardToken=new HashSet<>();
+		if(!"KingColour".equals(colour.getName()))
 			this.rewardToken.addAll(rewardTokenList.remove(0));
 		colour.addCityOfThisColour(this);
 		region.addCityOfThisRegion(this);

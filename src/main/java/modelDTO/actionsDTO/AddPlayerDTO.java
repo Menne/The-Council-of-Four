@@ -34,6 +34,7 @@ public class AddPlayerDTO implements ActionDTO {
 		this.playerName = playerName;
 	}
 	
+	@Override
 	public String toString() {
 		return "player added";
 	}

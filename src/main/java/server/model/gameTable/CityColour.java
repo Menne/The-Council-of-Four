@@ -27,7 +27,7 @@ public class CityColour {
 		this.name=name;
 		this.colorBonus=colorBonus;
 		this.bonusAvailable=true;
-		this.citiesOfThisColour=new HashSet<City>();
+		this.citiesOfThisColour=new HashSet<>();
 	}
 	
 

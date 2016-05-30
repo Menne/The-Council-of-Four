@@ -48,7 +48,7 @@ public class BuildByKingDTO implements ActionDTO, ActionWithParameters {
 			if(city.getName().equals(this.selectedCity.getName()))
 				action.setSelectedCity(city);
 		
-		List<PoliticsCard> convertedCards =new ArrayList<PoliticsCard>();
+		List<PoliticsCard> convertedCards =new ArrayList<>();
 		for(CardColourDTO cardColourDTO : this.cardsToDescard)
 			convertedCards.add(new PoliticsCard(new CardColour(cardColourDTO.getName())));
 		action.setCardsToDescard(convertedCards);

@@ -20,7 +20,7 @@ public class BeginState implements State {
 		return Arrays.asList(new PickPoliticsCard());
 	}
 
-	
+	@Override
 	public String toString(Game game) {
 		String availableActions = "Player "+game.getCurrentPlayer().getPlayerNumber()+
 				" is your turn! Pick a politics card pressing pc.\n";

@@ -36,8 +36,9 @@ public class AdditionalMainAction extends QuickAction {
 	 * an additional main action
 	 * @return TRUE if the action ends well; FALSE otherwise.
 	 */
+	@Override
 	public boolean executeAction(Game game) {
-		List<Player> interestedPlayers=new ArrayList<Player>();
+		List<Player> interestedPlayers=new ArrayList<>();
 		interestedPlayers.add(game.getCurrentPlayer());
 		
 		if(!this.checkAssistants(game)){

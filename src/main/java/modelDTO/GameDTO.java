@@ -27,7 +27,8 @@ public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Ga
 	
 	public GameDTO() {
 		this.clientGameTable=new GameTableDTO();
-		this.availableActions=new ArrayList<ActionDTO>();
+		this.clientPlayer=new ClientPlayerDTO();
+		this.availableActions=new ArrayList<>();
 		this.market=new MarketDTO();
 		this.parser=new Parser(this);
 	}

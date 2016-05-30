@@ -23,6 +23,7 @@ public class PickPoliticsCardDTO implements ActionDTO {
 		return null;
 	}
 	
+	@Override
 	public String toString() {
 		return "pc: pick a politics card";
 	}
