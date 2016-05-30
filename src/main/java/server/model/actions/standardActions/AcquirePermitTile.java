@@ -1,6 +1,7 @@
 package server.model.actions.standardActions;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import modelDTO.actionsDTO.AcquirePermitTileDTO;
@@ -13,7 +14,9 @@ import server.model.gameTable.CouncilBalcony;
 import server.model.gameTable.Councillor;
 import server.model.gameTable.PoliticsCard;
 import server.model.gameTable.RegionBoard;
-import server.view.notifies.GameNotify;
+import server.view.notifies.AvailableActionsNotify;
+import server.view.notifies.GameTableNotify;
+import server.view.notifies.PlayerNotify;
 
 /**
  * This class is the main action "acquire permit tile", it operates on the 
@@ -62,10 +65,8 @@ public class AcquirePermitTile extends MainAction {
 				this.chosenRegion==null)
 			throw new NullPointerException("Paramters not setted");
 		
-		List<Player> interestedPlayers=new ArrayList<Player>();
-		interestedPlayers.add(game.getCurrentPlayer());
 		if (!(this.CheckEnoughCoins(game) && this.CheckHandSatisfiesBalcony(game))){
-			this.sendErrorNotify(game, interestedPlayers);
+			this.sendErrorNotify(game, new ArrayList<Player>(game.getPlayers()));
 			return false;
 		}
 					
@@ -78,9 +79,12 @@ public class AcquirePermitTile extends MainAction {
 		this.chosenRegion.uncoverPermitTiles();
 		
 		this.nextState(game);
-			
-		game.notifyObserver(new GameNotify(game, interestedPlayers));
-	    return true;
+		
+		game.notifyObserver(new GameTableNotify(game, new ArrayList<Player>(game.getPlayers())));
+		game.notifyObserver(new AvailableActionsNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
+		game.notifyObserver(new PlayerNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
+	    
+		return true;
 	}
 	
 	/**

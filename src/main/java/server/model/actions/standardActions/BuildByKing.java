@@ -1,6 +1,7 @@
 package server.model.actions.standardActions;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import modelDTO.actionsDTO.ActionDTO;
@@ -16,7 +17,9 @@ import server.model.gameTable.Councillor;
 import server.model.gameTable.Emporium;
 import server.model.gameTable.PoliticsCard;
 import server.model.gameTable.RegionBoard;
-import server.view.notifies.GameNotify;
+import server.view.notifies.AvailableActionsNotify;
+import server.view.notifies.GameTableNotify;
+import server.view.notifies.PlayerNotify;
 
 /**
  * This class models the build an emporium with king's help action
@@ -83,7 +86,11 @@ public class BuildByKing extends MainAction {
 			assignColourBonus(game);
 		
 		this.nextState(game);
-		game.notifyObserver(new GameNotify(game, interestedPlayers));
+
+		game.notifyObserver(new GameTableNotify(game, new ArrayList<Player>(game.getPlayers())));
+		game.notifyObserver(new AvailableActionsNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
+		game.notifyObserver(new PlayerNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
+		
 		return true;
 	}
 	

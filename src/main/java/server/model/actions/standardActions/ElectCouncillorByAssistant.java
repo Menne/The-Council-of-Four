@@ -1,6 +1,7 @@
 package server.model.actions.standardActions;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import modelDTO.actionsDTO.ActionDTO;
@@ -10,7 +11,9 @@ import server.model.Game;
 import server.model.actions.QuickAction;
 import server.model.gameTable.CouncilBalcony;
 import server.model.gameTable.Councillor;
-import server.view.notifies.GameNotify;
+import server.view.notifies.AvailableActionsNotify;
+import server.view.notifies.GameTableNotify;
+import server.view.notifies.PlayerNotify;
 
 /**
  * It's the quick action "elect councillor" it operates on the 
@@ -66,7 +69,11 @@ public class ElectCouncillorByAssistant extends QuickAction {
 		game.getCurrentPlayer().decrementAssistants(necessaryAssistants);
 		
 		this.nextState(game);
-		game.notifyObserver(new GameNotify(game,interestedPlayers));
+
+		game.notifyObserver(new GameTableNotify(game, new ArrayList<Player>(game.getPlayers())));
+		game.notifyObserver(new AvailableActionsNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
+		game.notifyObserver(new PlayerNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
+		
 		return true;
 	}
 

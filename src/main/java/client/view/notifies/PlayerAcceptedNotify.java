@@ -2,11 +2,11 @@ package client.view.notifies;
 
 import client.view.CLI;
 
-public class PlayerUpdatedNotify implements ClientViewNotify {
+public class PlayerAcceptedNotify implements ClientViewNotify {
 
 	private String message;
 	
-	public PlayerUpdatedNotify(String message) {
+	public PlayerAcceptedNotify(String message) {
 		this.message=message;
 	}
 	
