@@ -1,4 +1,4 @@
-package BonusTest;
+package bonusTest;
 
 import static org.junit.Assert.*;
 

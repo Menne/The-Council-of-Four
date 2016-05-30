@@ -1,4 +1,4 @@
-package BonusTest;
+package bonusTest;
 
 import static org.junit.Assert.*;
 
@@ -10,31 +10,34 @@ import org.junit.Test;
 
 import players.Player;
 import server.model.Game;
-import server.model.bonus.CoinsBonus;
+import server.model.bonus.NobilityBonus;
 
-public class CoinsBonusTest {
+
+public class NobilityBonusTest {
 
 	@Test
-	public void test() throws IOException {
+	public void testAssignBonus() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<Player>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);
 		game.setCurrentPlayer(game.getPlayers().get(0));
-		int temp= game.getCurrentPlayer().getCoins();
-		CoinsBonus bonus= new CoinsBonus(3);
+		NobilityBonus bonus= new NobilityBonus(2);
+		int temp=game.getCurrentPlayer().getScore();
 		bonus.assignBonus(game);
-		assertEquals(temp+3, game.getCurrentPlayer().getCoins());
-	}
-
-	@Test(expected=IllegalArgumentException.class)
-	public void testException(){
-		new CoinsBonus(0);
+		assertEquals(temp+2, game.getCurrentPlayer().getScore());
+		assertEquals(2, game.getCurrentPlayer().getNobility());
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testNegativeException(){
-		new CoinsBonus(-2);
+		new NobilityBonus(-2);
 	}
+
+	@Test(expected=IllegalArgumentException.class)
+	public void testZeroException(){
+		new NobilityBonus(0);
+	}
+	
 }

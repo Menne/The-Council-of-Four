@@ -1,4 +1,4 @@
-package ActonsTests;
+package actionsTests;
 
 import static org.junit.Assert.*;
 
@@ -30,8 +30,7 @@ public class AddictionalMainActionTerst {
 		AdditionalMainAction action= new AdditionalMainAction();
 		assertTrue(action.executeAction(game));
 		assertEquals(0, game.getCurrentPlayer().getNumberOfAssistants());
-		State10 statofinale= new State10();
-		assertEquals(statofinale.getClass(), game.getState().getClass());
+		assertEquals(State10.class, game.getState().getClass());
 	}
 
 	

@@ -1,4 +1,4 @@
-package ActonsTests;
+package actionsTests;
 
 import static org.junit.Assert.*;
 
@@ -18,6 +18,7 @@ import server.model.bonus.ScoreBonus;
 import server.model.gameTable.CardColour;
 import server.model.gameTable.PermitTile;
 import server.model.gameTable.PoliticsCard;
+import server.model.stateMachine.State01;
 import server.model.stateMachine.State11;
 
 public class AcquirePermitTileTest {
@@ -60,7 +61,9 @@ public class AcquirePermitTileTest {
 		assertEquals(10, game.getCurrentPlayer().getScore());
 		assertTrue(game.getCurrentPlayer().getHand().isEmpty());
 		assertTrue(esito);
+		assertEquals(State01.class, game.getState().getClass());
 	}
+	
 	
 	@Test(expected=NullPointerException.class)
 	public void testExceptionsSetNumberOfTile() throws IOException{
