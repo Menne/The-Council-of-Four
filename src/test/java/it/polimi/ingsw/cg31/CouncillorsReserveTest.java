@@ -17,7 +17,7 @@ public class CouncillorsReserveTest {
 	public void testGetter() {
 		CardColour a=new CardColour("a");
 		Councillor c=new Councillor(a);
-		List<Councillor> lista= new ArrayList<Councillor>();
+		List<Councillor> lista= new ArrayList<>();
 		lista.add(c);
 		CouncillorsReserve reserve= new CouncillorsReserve(lista);
 		assertTrue(reserve.getCouncillors().get(0)==c);
@@ -28,7 +28,7 @@ public class CouncillorsReserveTest {
 		CardColour a=new CardColour("a");
 		Councillor c=new Councillor(a);
 		Councillor d=new Councillor(a);
-		List<Councillor> lista= new ArrayList<Councillor>();
+		List<Councillor> lista= new ArrayList<>();
 		lista.add(c);
 		CouncillorsReserve reserve= new CouncillorsReserve(lista);
 		reserve.addConcullor(d);
@@ -45,7 +45,7 @@ public class CouncillorsReserveTest {
 		Councillor c=new Councillor(a);
 		CardColour b=new CardColour("b");
 		Councillor d=new Councillor(b);
-		List<Councillor> lista= new ArrayList<Councillor>();
+		List<Councillor> lista= new ArrayList<>();
 		lista.add(c);
 		lista.add(d);
 		CouncillorsReserve reserve= new CouncillorsReserve(lista);
@@ -59,7 +59,7 @@ public class CouncillorsReserveTest {
 		Councillor c=new Councillor(a);
 		CardColour b=new CardColour("b");
 		Councillor d=new Councillor(b);
-		List<Councillor> lista= new ArrayList<Councillor>();
+		List<Councillor> lista= new ArrayList<>();
 		lista.add(c);
 		lista.add(d);
 		CouncillorsReserve reserve= new CouncillorsReserve(lista);
@@ -75,7 +75,7 @@ public class CouncillorsReserveTest {
 		Councillor c=new Councillor(a);
 		CardColour b=new CardColour("b");
 		Councillor d=new Councillor(b);
-		List<Councillor> lista= new ArrayList<Councillor>();
+		List<Councillor> lista= new ArrayList<>();
 		lista.add(c);
 		CouncillorsReserve reserve= new CouncillorsReserve(lista);
 		reserve.removeCouncillor(d);

@@ -20,7 +20,7 @@ public class ElectCouncillorTest {
 	@Test
 	public void testExecuteAction() throws IOException {
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		
 		a.setPlayerNumber(1);
@@ -45,7 +45,7 @@ public class ElectCouncillorTest {
 	@Test(expected=NullPointerException.class)
 	public void testExceptionForCouncillorNotSelected() throws IOException {
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		
 		a.setPlayerNumber(1);
@@ -60,7 +60,7 @@ public class ElectCouncillorTest {
 	@Test(expected=NullPointerException.class)
 	public void testExceptionForCouncilBalconyNotSelected() throws IOException {
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		
 		a.setPlayerNumber(1);

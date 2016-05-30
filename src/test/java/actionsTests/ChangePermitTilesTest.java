@@ -22,7 +22,7 @@ public class ChangePermitTilesTest {
 	@Test
 	public void testExecuteAction() throws IOException {
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		a.setPlayerNumber(1);
 		players.add(a);
@@ -45,7 +45,7 @@ public class ChangePermitTilesTest {
 	@Test(expected=NullPointerException.class)
 	public void testException() throws IOException {
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		a.setPlayerNumber(1);
 		players.add(a);
@@ -58,7 +58,7 @@ public class ChangePermitTilesTest {
 	@Test
 	public void testBooleanFalse() throws IOException {
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		a.setPlayerNumber(1);
 		players.add(a);

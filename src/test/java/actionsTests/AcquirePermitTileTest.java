@@ -26,7 +26,7 @@ public class AcquirePermitTileTest {
 
 	@Test
 	public void testPrice4() throws IOException {
-		List<PoliticsCard> discard= new ArrayList<PoliticsCard>();
+		List<PoliticsCard> discard= new ArrayList<>();
 		CardColour rainbow=new CardColour("Rainbow");
 		PoliticsCard rainbow1= new PoliticsCard(rainbow);
 		PoliticsCard rainbow2= new PoliticsCard(rainbow);
@@ -39,7 +39,7 @@ public class AcquirePermitTileTest {
 		AcquirePermitTile action=new AcquirePermitTile();
 		action.setCardsToDescard(discard);
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		a.setPlayerNumber(1);
 		players.add(a);
@@ -47,7 +47,7 @@ public class AcquirePermitTileTest {
 		game.getCurrentPlayer().getHand().removeAll(game.getCurrentPlayer().getHand());
 		game.getCurrentPlayer().getHand().addAll(discard);
 		Bonus bonus=new ScoreBonus(10);
-		Set<Bonus> bonuses=new HashSet<Bonus>();
+		Set<Bonus> bonuses=new HashSet<>();
 		bonuses.add(bonus);
 		PermitTile tile=new PermitTile(null, bonuses, game.getGameTable().getRegionBoards().get(0).getRegionPermitDeck());
 		game.getGameTable().getRegionBoards().get(0).pickUncoveredPermitTile(0);
@@ -67,7 +67,7 @@ public class AcquirePermitTileTest {
 	
 	@Test(expected=NullPointerException.class)
 	public void testExceptionsSetNumberOfTile() throws IOException{
-		List<PoliticsCard> discard= new ArrayList<PoliticsCard>();
+		List<PoliticsCard> discard= new ArrayList<>();
 		CardColour rainbow=new CardColour("Rainbow");
 		PoliticsCard rainbow1= new PoliticsCard(rainbow);
 		PoliticsCard rainbow2= new PoliticsCard(rainbow);
@@ -80,14 +80,14 @@ public class AcquirePermitTileTest {
 		AcquirePermitTile action=new AcquirePermitTile();
 		action.setCardsToDescard(discard);
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		a.setPlayerNumber(1);
 		players.add(a);
 		game.start(players);
 		game.getCurrentPlayer().getHand().removeAll(game.getCurrentPlayer().getHand());
 		Bonus bonus=new ScoreBonus(10);
-		Set<Bonus> bonuses=new HashSet<Bonus>();
+		Set<Bonus> bonuses=new HashSet<>();
 		bonuses.add(bonus);
 		PermitTile tile=new PermitTile(null, bonuses, game.getGameTable().getRegionBoards().get(0).getRegionPermitDeck());
 		game.getGameTable().getRegionBoards().get(0).pickUncoveredPermitTile(0);
@@ -99,7 +99,7 @@ public class AcquirePermitTileTest {
 	
 	@Test(expected=NullPointerException.class)
 	public void testExceptionsSetRegion() throws IOException{
-		List<PoliticsCard> discard= new ArrayList<PoliticsCard>();
+		List<PoliticsCard> discard= new ArrayList<>();
 		CardColour rainbow=new CardColour("Rainbow");
 		PoliticsCard rainbow1= new PoliticsCard(rainbow);
 		PoliticsCard rainbow2= new PoliticsCard(rainbow);
@@ -112,14 +112,14 @@ public class AcquirePermitTileTest {
 		AcquirePermitTile action=new AcquirePermitTile();
 		action.setCardsToDescard(discard);
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		a.setPlayerNumber(1);
 		players.add(a);
 		game.start(players);
 		game.getCurrentPlayer().getHand().removeAll(game.getCurrentPlayer().getHand());
 		Bonus bonus=new ScoreBonus(10);
-		Set<Bonus> bonuses=new HashSet<Bonus>();
+		Set<Bonus> bonuses=new HashSet<>();
 		bonuses.add(bonus);
 		PermitTile tile=new PermitTile(null, bonuses, game.getGameTable().getRegionBoards().get(0).getRegionPermitDeck());
 		game.getGameTable().getRegionBoards().get(0).pickUncoveredPermitTile(0);
@@ -132,7 +132,7 @@ public class AcquirePermitTileTest {
 
 	@Test(expected=NullPointerException.class)
 	public void testExceptionsSetCardsToDiscard() throws IOException{
-		List<PoliticsCard> discard= new ArrayList<PoliticsCard>();
+		List<PoliticsCard> discard= new ArrayList<>();
 		CardColour rainbow=new CardColour("Rainbow");
 		PoliticsCard rainbow1= new PoliticsCard(rainbow);
 		PoliticsCard rainbow2= new PoliticsCard(rainbow);
@@ -144,14 +144,14 @@ public class AcquirePermitTileTest {
 		discard.add(rainbow4);
 		AcquirePermitTile action=new AcquirePermitTile();
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		a.setPlayerNumber(1);
 		players.add(a);
 		game.start(players);
 		game.getCurrentPlayer().getHand().removeAll(game.getCurrentPlayer().getHand());
 		Bonus bonus=new ScoreBonus(10);
-		Set<Bonus> bonuses=new HashSet<Bonus>();
+		Set<Bonus> bonuses=new HashSet<>();
 		bonuses.add(bonus);
 		PermitTile tile=new PermitTile(null, bonuses, game.getGameTable().getRegionBoards().get(0).getRegionPermitDeck());
 		game.getGameTable().getRegionBoards().get(0).pickUncoveredPermitTile(0);
@@ -164,21 +164,21 @@ public class AcquirePermitTileTest {
 	
 	@Test
 	public void testErrorNotify() throws IOException{
-		List<PoliticsCard> discard= new ArrayList<PoliticsCard>();
+		List<PoliticsCard> discard= new ArrayList<>();
 		CardColour rainbow=new CardColour("Rainbow");
 		PoliticsCard rainbow4= new PoliticsCard(rainbow);
 		discard.add(rainbow4);
 		AcquirePermitTile action=new AcquirePermitTile();
 		action.setCardsToDescard(discard);
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		a.setPlayerNumber(1);
 		players.add(a);
 		game.start(players);
 		game.getCurrentPlayer().getHand().removeAll(game.getCurrentPlayer().getHand());
 		Bonus bonus=new ScoreBonus(10);
-		Set<Bonus> bonuses=new HashSet<Bonus>();
+		Set<Bonus> bonuses=new HashSet<>();
 		bonuses.add(bonus);
 		PermitTile tile=new PermitTile(null, bonuses, game.getGameTable().getRegionBoards().get(0).getRegionPermitDeck());
 		game.getGameTable().getRegionBoards().get(0).pickUncoveredPermitTile(0);

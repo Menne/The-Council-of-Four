@@ -17,7 +17,7 @@ public class PoliticsDeckTest {
 	public void testPickCard() {
 		CardColour a=new CardColour("a");
 		
-		Set<CardColour> colors= new HashSet<CardColour>();
+		Set<CardColour> colors= new HashSet<>();
 		colors.add(a);
 		
 		PoliticsDeck deck=new PoliticsDeck(colors);
@@ -31,7 +31,7 @@ public class PoliticsDeckTest {
 		CardColour a=new CardColour("a");
 		CardColour b=new CardColour("b");
 		
-		Set<CardColour> colors= new HashSet<CardColour>();
+		Set<CardColour> colors= new HashSet<>();
 
 		colors.add(b);
 		

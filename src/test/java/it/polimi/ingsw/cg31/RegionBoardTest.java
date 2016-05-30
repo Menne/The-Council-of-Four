@@ -22,7 +22,7 @@ public class RegionBoardTest {
 	@Test
 	public void testGetName() throws IOException {
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);
@@ -32,7 +32,7 @@ public class RegionBoardTest {
 	@Test
 	public void testIsBonusAailable() throws IOException {
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);
@@ -42,7 +42,7 @@ public class RegionBoardTest {
 	@Test
 	public void testNotBonusAvailable() throws IOException {
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);
@@ -63,7 +63,7 @@ public class RegionBoardTest {
 	@Test
 	public void testGetRegionBalcony() throws IOException {
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);
@@ -73,7 +73,7 @@ public class RegionBoardTest {
 	@Test
 	public void testGetRegionBonus() throws IOException {
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);
@@ -83,7 +83,7 @@ public class RegionBoardTest {
 	@Test
 	public void testGetRegionCities() throws IOException {
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);
@@ -98,7 +98,7 @@ public class RegionBoardTest {
 	@Test
 	public void testGetUncoveredPermitTiles() throws IOException{
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);
@@ -108,7 +108,7 @@ public class RegionBoardTest {
 	@Test
 	public void testAddCityOfThisRegion() throws IOException{
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);
@@ -120,7 +120,7 @@ public class RegionBoardTest {
 	@Test(expected=IllegalArgumentException.class)
 	public void testPickUncoveredPermitTileException() throws IOException{
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);
@@ -130,7 +130,7 @@ public class RegionBoardTest {
 	@Test
 	public void testPickUncoveredPermitTile() throws IOException{
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);
@@ -140,7 +140,7 @@ public class RegionBoardTest {
 	@Test
 	public void testPickUncoveredPermitTileReturnNullInThatPosition() throws IOException{
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);
@@ -152,7 +152,7 @@ public class RegionBoardTest {
 	@Test
 	public void testUncoverPermitTile() throws IOException{
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);
@@ -165,7 +165,7 @@ public class RegionBoardTest {
 	@Test
 	public void testSubstitutePermitTilesIfThePermitTileGoesToTheBottomOfTheDeck() throws IOException{
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);

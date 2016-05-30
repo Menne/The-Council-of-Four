@@ -17,7 +17,7 @@ public class ScoreBonusTest {
 	@Test
 	public void testAssignBonus() throws IOException {
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);
@@ -30,7 +30,7 @@ public class ScoreBonusTest {
 	@Test
 	public void testAssignBonusToPlayer() throws IOException {
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);

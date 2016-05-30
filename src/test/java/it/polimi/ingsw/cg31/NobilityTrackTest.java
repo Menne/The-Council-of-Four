@@ -21,7 +21,7 @@ public class NobilityTrackTest {
 	@Test
 	public void testGetNobilityTrack() throws IOException{
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);
@@ -33,7 +33,7 @@ public class NobilityTrackTest {
 	public void test() throws IOException{
 		NobilityTrack nobilityTrack=new NobilityTrack(1);
 		List<Set<Bonus>> track= new ArrayList<Set<Bonus>>();
-		Set<Bonus> casella=new HashSet<Bonus>();
+		Set<Bonus> casella=new HashSet<>();
 		Bonus bonus=new ScoreBonus(2);
 		casella.add(bonus);
 		track.add(casella);

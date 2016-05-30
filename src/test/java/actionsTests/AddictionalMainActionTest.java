@@ -14,12 +14,12 @@ import server.model.actions.standardActions.AdditionalMainAction;
 import server.model.stateMachine.State01;
 import server.model.stateMachine.State10;
 
-public class AddictionalMainActionTerst {
+public class AddictionalMainActionTest {
 
 	@Test
 	public void test() throws IOException {
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		a.setPlayerNumber(1);
 		players.add(a);
@@ -37,7 +37,7 @@ public class AddictionalMainActionTerst {
 	@Test
 	public void testWithTooFewAssistants() throws IOException {
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		a.setPlayerNumber(1);
 		players.add(a);

@@ -20,7 +20,7 @@ public class RewardTokenTest {
 		Bonus bonus1=new ScoreBonus(1);
 		Bonus bonus2=new AssistantsBonus(3);
 		
-		Set<Bonus> rewardTokenBonus=new HashSet<Bonus>();
+		Set<Bonus> rewardTokenBonus=new HashSet<>();
 		rewardTokenBonus.add(bonus1);
 		rewardTokenBonus.add(bonus2);
 		

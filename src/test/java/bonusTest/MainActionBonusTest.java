@@ -17,7 +17,7 @@ public class MainActionBonusTest {
 	@Test
 	public void mainActionBonusTest() throws IOException {
 		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
+		List<Player> players = new ArrayList<>();
 		Player a = new Player();
 		players.add(a);
 		game.start(players);
