@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import modelDTO.ModelDTO;
-import modelDTO.playerDTO.PlayerDTO;
 import server.model.bonus.Bonus;
 import server.model.gameTable.City;
 import server.model.gameTable.Emporium;
@@ -18,7 +17,7 @@ public class CityDTO implements ModelDTO<City>{
 	private String name;
 	private boolean isKingPresent;
 	private CityColourDTO colour;
-	private Set<PlayerDTO> buildedEmporiums;
+	private Set<GenericPlayerDTO> buildedEmporiums;
 	private Set<Bonus> rewardToken;
 	
 	public CityDTO(){		
@@ -35,7 +34,7 @@ public class CityDTO implements ModelDTO<City>{
 		this.colour=cityColour;
 		
 		for(Emporium emporium : realObject.getCityEmporiums()){
-			PlayerDTO playerDTO=new PlayerDTO();
+			GenericPlayerDTO playerDTO=new GenericPlayerDTO();
 			playerDTO.map(emporium.getEmporiumsPlayer());
 			this.buildedEmporiums.add(playerDTO);
 		}
@@ -68,11 +67,11 @@ public class CityDTO implements ModelDTO<City>{
 		this.colour = colour;
 	}
 
-	public Set<PlayerDTO> getBuildedEmporiums() {
+	public Set<GenericPlayerDTO> getBuildedEmporiums() {
 		return buildedEmporiums;
 	}
 
-	public void setBuildedEmporiums(Set<PlayerDTO> buildedEmporiums) {
+	public void setBuildedEmporiums(Set<GenericPlayerDTO> buildedEmporiums) {
 		this.buildedEmporiums = buildedEmporiums;
 	}
 

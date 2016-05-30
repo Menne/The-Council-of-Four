@@ -8,8 +8,9 @@ import java.net.Socket;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.AddPlayerDTO;
 import modelDTO.clientNotifies.ErrorDTONotify;
-import modelDTO.clientNotifies.PlayerDTONotify;
-import modelDTO.playerDTO.PlayerDTO;
+import modelDTO.clientNotifies.PlayerAcceptedDTONotify;
+import modelDTO.gameTableDTO.GenericPlayerDTO;
+import modelDTO.playerDTO.ClientPlayerDTO;
 import players.Player;
 import server.model.Game;
 import server.view.notifies.ViewNotify;
@@ -41,10 +42,12 @@ public class ServerSocketView extends View implements Runnable {
 				if(object instanceof AddPlayerDTO){
 					AddPlayerDTO notify=(AddPlayerDTO) object;
 					this.player.setName(notify.getPlayerName());
-					PlayerDTO playerDTO = new PlayerDTO();
-					playerDTO.map(player);
+					GenericPlayerDTO genericPlayerDTO=new GenericPlayerDTO();
+					ClientPlayerDTO clientPlayerDTO=new ClientPlayerDTO();
+					genericPlayerDTO.map(player);
+					clientPlayerDTO.map(player);
 					System.out.println("scrivendo...");
-					this.socketOut.writeObject(new PlayerDTONotify(playerDTO));
+					this.socketOut.writeObject(new PlayerAcceptedDTONotify(genericPlayerDTO));
 					System.out.println("scritto!");
 				}
 				

@@ -1,15 +1,12 @@
-package modelDTO.playerDTO;
+package modelDTO.gameTableDTO;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import players.Player;
-import server.model.gameTable.PoliticsCard;
 import modelDTO.ModelDTO;
-import modelDTO.gameTableDTO.CardColourDTO;
-import modelDTO.gameTableDTO.PermitTileDTO;
 
-public class PlayerDTO implements ModelDTO<Player>{
+public class GenericPlayerDTO implements ModelDTO<Player>{
 
 	/**
 	 * 
@@ -22,13 +19,11 @@ public class PlayerDTO implements ModelDTO<Player>{
 	private int nobility;
 	private int coins;
 	private int emporiums;
-	private List<CardColourDTO> hand;
+	private int hand;
 	private List<PermitTileDTO> availablePermitTiles;
 	
-	public PlayerDTO(){
-		
-		this.hand=new ArrayList<>();
-		this.availablePermitTiles=new ArrayList<>();
+	public GenericPlayerDTO(){
+		this.availablePermitTiles=new ArrayList<PermitTileDTO>();
 	}
 
 	@Override
@@ -41,12 +36,6 @@ public class PlayerDTO implements ModelDTO<Player>{
 		this.nobility=realObject.getNobility();
 		this.coins=realObject.getCoins();
 		this.emporiums=realObject.getRemainigEmporiums().size();
-		for(PoliticsCard card : realObject.getHand()){
-			CardColourDTO cardColourDTO=new CardColourDTO();
-			cardColourDTO.map(card.getColour());
-			this.hand.add(cardColourDTO);
-		}
-		
 	}
 	
 	public String getName() {
@@ -69,11 +58,11 @@ public class PlayerDTO implements ModelDTO<Player>{
 		return assistants;
 	}
 
-	public List<CardColourDTO> getHand() {
+	public int getHand() {
 		return hand;
 	}
 
-	public void setHand(List<CardColourDTO> hand) {
+	public void setHand(int hand) {
 		this.hand = hand;
 	}
 

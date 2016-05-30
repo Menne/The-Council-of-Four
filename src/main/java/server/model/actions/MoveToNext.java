@@ -7,7 +7,7 @@ import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.MoveToNextDTO;
 import players.Player;
 import server.model.Game;
-import server.view.notifies.GameNotify;
+import server.view.notifies.GameTableNotify;
 
 public class MoveToNext extends QuickAction {
 	
@@ -20,7 +20,7 @@ public class MoveToNext extends QuickAction {
 		game.setState(game.getState().moveToNextTransition(game));
 		List<Player> interestedPlayers=new ArrayList<>();
 		interestedPlayers.add(game.getCurrentPlayer());
-		game.notifyObserver(new GameNotify(game, interestedPlayers));
+		game.notifyObserver(new GameTableNotify(game, interestedPlayers));
 		return true;
 	}
 

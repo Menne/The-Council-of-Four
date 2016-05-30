@@ -2,6 +2,7 @@
 package server.model;
 
 import java.io.IOException;import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import initializer.Initializer;
@@ -13,7 +14,9 @@ import server.model.gameTable.GameTable;
 import server.model.market.Market;
 import server.model.stateMachine.BeginState;
 import server.model.stateMachine.State;
-import server.view.notifies.GameNotify;
+import server.view.notifies.AvailableActionsNotify;
+import server.view.notifies.GameTableNotify;
+import server.view.notifies.PlayerNotify;
 import server.view.notifies.ViewNotify;
  
 public class Game extends Observable<ViewNotify>{
@@ -48,7 +51,10 @@ public class Game extends Observable<ViewNotify>{
 		this.additionalMainActionBonus=false;
 		this.lastLap=false;
 		this.market=new Market(this.players);
-		this.notifyObserver(new GameNotify(this, players));
+		this.notifyObserver(new PlayerNotify(this, new ArrayList<Player>(Arrays.asList(currentPlayer))));
+		this.notifyObserver(new GameTableNotify(this, players));
+		this.notifyObserver(new AvailableActionsNotify(this, new ArrayList<Player>(Arrays.asList(currentPlayer))));
+		
 	}
 
 

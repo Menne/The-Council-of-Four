@@ -1,6 +1,7 @@
 package server.model.actions.standardActions;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import modelDTO.actionsDTO.ActionDTO;
@@ -13,7 +14,9 @@ import server.model.gameTable.City;
 import server.model.gameTable.ConnectedBuiltCityDiscover;
 import server.model.gameTable.Emporium;
 import server.model.gameTable.PermitTile;
-import server.view.notifies.GameNotify;
+import server.view.notifies.AvailableActionsNotify;
+import server.view.notifies.GameTableNotify;
+import server.view.notifies.PlayerNotify;
 
 /**
  * This action allows the current player to build in one city from those which
@@ -77,7 +80,11 @@ public class BuildByPermitTile extends MainAction {
 			assignColourBonus(game);
 		
 		this.nextState(game);
-		game.notifyObserver(new GameNotify(game, interestedPlayers));
+
+		game.notifyObserver(new GameTableNotify(game, new ArrayList<Player>(game.getPlayers())));
+		game.notifyObserver(new AvailableActionsNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
+		game.notifyObserver(new PlayerNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
+		
 		return true;
 	}
 	

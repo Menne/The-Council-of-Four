@@ -2,28 +2,27 @@ package server.view.notifies;
 
 import java.util.List;
 
-import modelDTO.GameDTO;
 import modelDTO.clientNotifies.ClientNotify;
-import modelDTO.clientNotifies.GameDTONotify;
+import modelDTO.clientNotifies.ClientPlayerDTONotify;
+import modelDTO.playerDTO.ClientPlayerDTO;
 import players.Player;
 import server.model.Game;
 
-public class GameNotify implements ViewNotify {
+public class PlayerNotify implements ViewNotify {
 	
 	private final Game game;
 	private final List<Player> interestedPlayers;
 	
-	public GameNotify(Game game, List<Player> interestedPlayers) {
+	public PlayerNotify(Game game, List<Player> interestedPlayers) {
 		this.game=game;
 		this.interestedPlayers=interestedPlayers;
 	}
 
 	@Override
 	public ClientNotify toClientNotify() {
-		GameDTO gameDTO=new GameDTO();
-		gameDTO.map(this.game);
-		return new GameDTONotify(gameDTO);
-		
+		ClientPlayerDTO clientPlayerDTO=new ClientPlayerDTO();
+		clientPlayerDTO.map(this.game.getCurrentPlayer());
+		return new ClientPlayerDTONotify(clientPlayerDTO);
 	}
 
 	@Override

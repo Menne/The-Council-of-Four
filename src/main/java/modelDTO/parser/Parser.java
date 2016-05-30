@@ -10,9 +10,9 @@ import modelDTO.GameDTO;
 import modelDTO.gameTableDTO.PermitTileDTO;
 import modelDTO.gameTableDTO.RegionDTO;
 import modelDTO.marketDTO.OfferDTO;
-import modelDTO.playerDTO.PlayerDTO;
 import modelDTO.gameTableDTO.CardColourDTO;
 import modelDTO.gameTableDTO.CityDTO;
+import modelDTO.gameTableDTO.GenericPlayerDTO;
 
 public class Parser implements Serializable{
 
@@ -87,7 +87,7 @@ public class Parser implements Serializable{
 	 */
 	protected List<String> acceptableRegions() {
 		List<String> acceptableRegionNames=new ArrayList<String>();
-		for (RegionDTO region : this.game.getClientRegions())
+		for (RegionDTO region : this.game.getClientGameTable().getClientRegions())
 			acceptableRegionNames.add(region.getName());
 		return acceptableRegionNames;
 	}
@@ -99,7 +99,7 @@ public class Parser implements Serializable{
 	 */
 	protected List<String> acceptablePoliticsCards() {
 		List<String> acceptableColours=new ArrayList<String>();	
-		for(CardColourDTO card : this.game.getCurrentPlayer().getHand())
+		for(CardColourDTO card : this.game.getClientPlayer().getHand())
 			acceptableColours.add(card.getName());
 		if (acceptableColours.isEmpty())
 			this.game.notifyObserver(new ClientErrorNotify("It seems that your hand is empty..."));
@@ -113,7 +113,7 @@ public class Parser implements Serializable{
 	 */
 	protected List<String> acceptableCouncillors() {
 		List<String> councillorColours=new ArrayList<String>();
-		for (CardColourDTO councillor : this.game.getClientCouncillorReserve())
+		for (CardColourDTO councillor : this.game.getClientGameTable().getClientCouncillorReserve())
 			councillorColours.add(councillor.getName());
 		return councillorColours;
 	}
@@ -125,7 +125,7 @@ public class Parser implements Serializable{
 	 */
 	protected List<String> acceptableCouncilBalcony() {
 		List<String> acceptableRegionNames=new ArrayList<String>();
-		for (RegionDTO region : this.game.getClientRegions())
+		for (RegionDTO region : this.game.getClientGameTable().getClientRegions())
 			acceptableRegionNames.add(region.getName());
 		acceptableRegionNames.add("King council");
 		return acceptableRegionNames;
@@ -138,13 +138,13 @@ public class Parser implements Serializable{
 	 */
 	protected List<String> acceptableCities() {
 		List<String> acceptableCityNames=new ArrayList<String>();
-		for (RegionDTO region : this.game.getClientRegions())
+		for (RegionDTO region : this.game.getClientGameTable().getClientRegions())
 			for (CityDTO city : region.getCities())
 				if(city.getBuildedEmporiums().isEmpty())
 					acceptableCityNames.add(city.getName());
 				else
-					for (PlayerDTO emporium : city.getBuildedEmporiums())
-						if (!emporium.equals(this.game.getCurrentPlayer()))
+					for (GenericPlayerDTO emporium : city.getBuildedEmporiums())
+						if (!emporium.equals(this.game.getClientPlayer()))
 							acceptableCityNames.add(city.getName());
 		return acceptableCityNames;
 	}
@@ -156,7 +156,7 @@ public class Parser implements Serializable{
 	 */
 	protected List<String> acceptablePermitTiles() {
 		List<String> acceptableTiles=new ArrayList<String>();
-		int maxNumberOfCards=this.game.getCurrentPlayer().getAvailablePermitTiles().size();
+		int maxNumberOfCards=this.game.getClientPlayer().getAvailablePermitTiles().size();
 		for(Integer i=0; i<maxNumberOfCards; i++)
 			acceptableTiles.add(i.toString());
 		return acceptableTiles;
@@ -183,7 +183,7 @@ public class Parser implements Serializable{
 	 * @return the region board obtained from the string
 	 */
 	protected RegionDTO regionTranslator(String regionToTranslate) {
-		for(RegionDTO region : this.game.getClientRegions())
+		for(RegionDTO region : this.game.getClientGameTable().getClientRegions())
 			if(regionToTranslate.equals(region.getName()))
 				return region;
 		throw new IllegalArgumentException("regionToTranslate is not a region name");
@@ -206,7 +206,7 @@ public class Parser implements Serializable{
 	 */
 	protected PermitTileDTO permitTileTranslator(String permitTileToTranslate) {
 		int numberOfPermitTile=Integer.parseInt(permitTileToTranslate);
-		PermitTileDTO permitTileTranslated=this.game.getCurrentPlayer().getAvailablePermitTiles().get(numberOfPermitTile);
+		PermitTileDTO permitTileTranslated=this.game.getClientPlayer().getAvailablePermitTiles().get(numberOfPermitTile);
 		return permitTileTranslated;
 	}
 	
@@ -217,7 +217,7 @@ public class Parser implements Serializable{
 	 */
 	protected List<CardColourDTO> politicsCardsTranslator(String currentParameter) {
 		List<CardColourDTO> cardsTranslated=new ArrayList<CardColourDTO>();
-	    for (CardColourDTO cardTranslated : this.game.getCurrentPlayer().getHand())
+	    for (CardColourDTO cardTranslated : this.game.getClientPlayer().getHand())
 	    	if (cardTranslated.getName().equals(currentParameter))
 	    		cardsTranslated.add(cardTranslated);
 		return cardsTranslated;
@@ -229,7 +229,7 @@ public class Parser implements Serializable{
 	 * @return the city obtained from the string
 	 */
 	protected CityDTO cityTranslator(String cityToTranslate) {
-		for (RegionDTO regionBoard : this.game.getClientRegions())
+		for (RegionDTO regionBoard : this.game.getClientGameTable().getClientRegions())
 			for (CityDTO cityTranslated : regionBoard.getCities())
 				if (cityTranslated.getName().equals(cityToTranslate))
 					return cityTranslated;
@@ -242,7 +242,7 @@ public class Parser implements Serializable{
 	 * @return the councillor obtained from the string
 	 */
 	protected CardColourDTO councillorTranslator(String newCouncillorToTranslate) {
-		for (CardColourDTO newCouncillorTranslated : this.game.getClientCouncillorReserve())
+		for (CardColourDTO newCouncillorTranslated : this.game.getClientGameTable().getClientCouncillorReserve())
 			if (newCouncillorTranslated.getName().equals(newCouncillorToTranslate))
 				return newCouncillorTranslated;
 		throw new IllegalArgumentException("newCouncillorToTranslate is not a colour name");
@@ -255,12 +255,12 @@ public class Parser implements Serializable{
 	 * @return the council balcony obtained from the string
 	 */
 	protected CardColourDTO[] councilBalconyTranslator(String councilBalconyToTranslate) {
-		for (RegionDTO region : this.game.getClientRegions())
+		for (RegionDTO region : this.game.getClientGameTable().getClientRegions())
 			if(councilBalconyToTranslate.equals(region.getName()))
 				return region.getBalcony();
 			else
 				if (councilBalconyToTranslate.equals("King council"))
-					return this.game.getClientKingBalcony();
+					return this.game.getClientGameTable().getClientKingBalcony();
 		throw new IllegalArgumentException("councilBalconyToTranslate is not a region name");
 	}
 

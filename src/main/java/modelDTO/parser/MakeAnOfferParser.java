@@ -31,7 +31,7 @@ public class MakeAnOfferParser implements ActionParserVisitor {
 		this.game.notifyObserver(new ActionNotify("Ok, you decided to sell something to the other players"));
 		
 		if (!(parser.acceptablePoliticsCards().isEmpty() || parser.acceptablePermitTiles().isEmpty()
-				|| this.game.getCurrentPlayer().getAssistants()==0)) {
+				|| this.game.getClientPlayer().getAssistants()==0)) {
 			
 			this.game.notifyObserver(new ActionNotify("Which element do you want to offer?"));
 			
@@ -48,7 +48,7 @@ public class MakeAnOfferParser implements ActionParserVisitor {
 				acceptableParameters.add(i + ": " + parser.acceptablePermitTiles().get(i).toString());
 				index2.add(""+i);
 			}
-			for (int i=acceptableParameters.size(); i<this.game.getCurrentPlayer().getAssistants(); i++) {
+			for (int i=acceptableParameters.size(); i<this.game.getClientPlayer().getAssistants(); i++) {
 				acceptableParameters.add(i + ": Assistant");
 				index3.add(""+i);
 			}

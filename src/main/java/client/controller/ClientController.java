@@ -6,24 +6,21 @@ import client.ClientOutHandler;
 import modelDTO.GameDTO;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.clientNotifies.ClientNotify;
-import modelDTO.playerDTO.PlayerDTO;
 import observerPattern.Observer;
 
 public class ClientController implements Observer<ActionDTO> {
 
 	private GameDTO clientGame;
-	private PlayerDTO playerDTO;
 	private final ClientOutHandler clientOutHandler;
 
 	public ClientController(GameDTO clientGame, ClientOutHandler clientOutHandler) {
 		this.clientGame=clientGame;
 		this.clientOutHandler=clientOutHandler;
-		this.playerDTO=new PlayerDTO();
 	}
 	
 	
 	public void updateFromIn(ClientNotify clientNotify){
-		clientNotify.act(this.clientGame, this.playerDTO);
+		clientNotify.act(this.clientGame);
 	}
 	
 	@Override
