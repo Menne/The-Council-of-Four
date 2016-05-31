@@ -67,13 +67,10 @@ public class BuildByPermitTile extends MainAction {
 		for (City city : likedCities.getConnectedBuiltCities(game.getGameTable().getMap().getGameMap(), this.selectedCity, temporaryEmporium))
 			for (Bonus bonusToAssign : city.getRewardToken())
 				bonusToAssign.assignBonus(game);
-		game.getCurrentPlayer().decrementAssistants(assistantsToPay());
-		for (PermitTile permitTileToCover : game.getCurrentPlayer().getPlayersPermitTilesTurnedUp())
-			if (this.selectedPermitTile.equals(permitTileToCover)) {
-				game.getCurrentPlayer().getPlayersPermitTilesTurnedDown().add(permitTileToCover);
-				game.getCurrentPlayer().getPlayersPermitTilesTurnedUp().remove(permitTileToCover);
-			}
-		
+		game.getCurrentPlayer().decrementAssistants(assistantsToPay());	
+		game.getCurrentPlayer().getPlayersPermitTilesTurnedDown().add(this.selectedPermitTile);
+		game.getCurrentPlayer().getPlayersPermitTilesTurnedUp().remove(this.selectedPermitTile);
+
 		if (this.selectedCity.getRegion().isBonusAvailable())
 			assignRegionBonus(game);
 		if (this.selectedCity.getColour().isBonusAvailable())

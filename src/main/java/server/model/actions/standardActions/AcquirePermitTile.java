@@ -60,7 +60,7 @@ public class AcquirePermitTile extends MainAction {
 	 * each rainbow card requires 1 additional coin each to use.
 	 */
 	@Override
-	public boolean executeAction(Game game) throws NullPointerException{
+	public boolean executeAction(Game game) throws NullPointerException, IllegalArgumentException{
 		if(this.numberOfPermitTile==null||
 				this.cardsToDescard==null||
 				this.chosenRegion==null)
@@ -97,7 +97,7 @@ public class AcquirePermitTile extends MainAction {
 	 * @return the amount of coins
 	 * @throws IndexOutOfBoundsException if the list of cards to discard is empty
 	 */
-	private int CoinsToPay(){
+	private int CoinsToPay() throws IndexOutOfBoundsException{
 		int coinsToPay;
 		
 		if(this.cardsToDescard.isEmpty())
