@@ -35,10 +35,10 @@ public class ElectCouncillorTest {
 		assertTrue(action.executeAction(game));
 		Councillor[] newBalcony=game.getGameTable().getRegionBoards().get(0).getRegionBalcony().getCouncillors();
 		assertEquals(14, game.getCurrentPlayer().getCoins());
-		assertEquals(councillor, game.getGameTable().getRegionBoards().get(0).getRegionBalcony().getCouncillors()[0]);
-		assertEquals(oldBalcony[0], newBalcony[1]);
-		assertEquals(oldBalcony[1], newBalcony[2]);
-		assertEquals(oldBalcony[2], newBalcony[3]);
+		assertTrue(councillor==game.getGameTable().getRegionBoards().get(0).getRegionBalcony().getCouncillors()[0]);
+		assertTrue(oldBalcony[0]== newBalcony[1]);
+		assertTrue(oldBalcony[1]== newBalcony[2]);
+		assertTrue(oldBalcony[2]== newBalcony[3]);
 		assertEquals(State01.class, game.getState().getClass());
 	}
 	

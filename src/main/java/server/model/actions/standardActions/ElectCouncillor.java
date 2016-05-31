@@ -2,7 +2,6 @@ package server.model.actions.standardActions;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.ElectCouncillorDTO;
@@ -53,12 +52,9 @@ public class ElectCouncillor extends MainAction {
 		if(this.newCouncillor==null || this.councilBalcony==null)
 			throw new NullPointerException("Parameters not setted");
 		
-		List<Player> interestedPlayers=new ArrayList<>();
-		interestedPlayers.add(game.getCurrentPlayer());
-		
 		Councillor oldCouncillor;
 		if(!this.checkCouncillor(game)){
-			this.sendErrorNotify(game,interestedPlayers);
+			this.sendErrorNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}
 		oldCouncillor=this.councilBalcony.substituteCouncillor(this.newCouncillor);
@@ -68,8 +64,10 @@ public class ElectCouncillor extends MainAction {
 		this.nextState(game);
 
 		game.notifyObserver(new GameTableNotify(game, new ArrayList<Player>(game.getPlayers())));
-		game.notifyObserver(new AvailableActionsNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
-		game.notifyObserver(new PlayerNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
+		game.notifyObserver(new PlayerNotify(game.getCurrentPlayer(), 
+				new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
+		game.notifyObserver(new AvailableActionsNotify(game.getState().getAcceptableActions(game), 
+				new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
 		
 		return true;
 	}

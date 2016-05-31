@@ -60,14 +60,14 @@ public class AcquirePermitTile extends MainAction {
 	 * each rainbow card requires 1 additional coin each to use.
 	 */
 	@Override
-	public boolean executeAction(Game game) throws NullPointerException{
+	public boolean executeAction(Game game) throws NullPointerException, IllegalArgumentException{
 		if(this.numberOfPermitTile==null||
 				this.cardsToDescard==null||
 				this.chosenRegion==null)
 			throw new NullPointerException("Paramters not setted");
 		
-		if (!(this.CheckEnoughCoins(game) && this.CheckHandSatisfiesBalcony(game))){
-			this.sendErrorNotify(game, new ArrayList<Player>(game.getPlayers()));
+		if (!(this.CheckEnoughCoins(game) && this.CheckHandSatisfiesBalcony(game))) {
+			this.sendErrorNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}
 					
@@ -84,10 +84,12 @@ public class AcquirePermitTile extends MainAction {
 		
 		this.nextState(game);
 		
-		game.notifyObserver(new GameTableNotify(game, new ArrayList<Player>(game.getPlayers())));
-		game.notifyObserver(new AvailableActionsNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
-		game.notifyObserver(new PlayerNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
-	    
+		game.notifyObserver(new GameTableNotify(game, game.getPlayers()));
+		game.notifyObserver(new PlayerNotify(game.getCurrentPlayer(), 
+				new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
+		game.notifyObserver(new AvailableActionsNotify(game.getState().getAcceptableActions(game), 
+				new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
+		
 		return true;
 	}
 	
@@ -97,7 +99,7 @@ public class AcquirePermitTile extends MainAction {
 	 * @return the amount of coins
 	 * @throws IndexOutOfBoundsException if the list of cards to discard is empty
 	 */
-	private int CoinsToPay(){
+	private int CoinsToPay() throws IndexOutOfBoundsException{
 		int coinsToPay;
 		
 		if(this.cardsToDescard.isEmpty())
