@@ -18,6 +18,7 @@ import server.model.gameTable.Emporium;
 import server.model.gameTable.PoliticsCard;
 import server.model.gameTable.RegionBoard;
 import server.view.notifies.AvailableActionsNotify;
+import server.view.notifies.ErrorNotify;
 import server.view.notifies.GameTableNotify;
 import server.view.notifies.PlayerNotify;
 
@@ -60,9 +61,24 @@ public class BuildByKing extends MainAction {
 		
 		ConnectedBuiltCityDiscover likedCities=new ConnectedBuiltCityDiscover();
 		
-		if (!(checkCityNotContainsEmporium(game) && checkEnoughAssistants(game) && 
-				CheckHandSatisfiesBalcony(game) && CheckEnoughCoins(game))){
-			this.sendErrorNotify(game, Arrays.asList(game.getCurrentPlayer()));
+		if (!checkCityNotContainsEmporium(game)) {
+			game.notifyObserver(new ErrorNotify("It seems that you haven't enough assistants!",
+					Arrays.asList(game.getCurrentPlayer())));
+			return false;
+		}
+		if (!checkEnoughAssistants(game)) {
+			game.notifyObserver(new ErrorNotify("It seems that you haven't enough assistants!",
+					Arrays.asList(game.getCurrentPlayer())));
+			return false;
+		}
+		if (!CheckHandSatisfiesBalcony(game)) {
+			game.notifyObserver(new ErrorNotify("It seems that you haven't enough assistants!",
+					Arrays.asList(game.getCurrentPlayer())));
+			return false;
+		}	
+		if (!CheckEnoughCoins(game)) {
+			game.notifyObserver(new ErrorNotify("It seems that you haven't enough assistants!",
+					Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}
 		

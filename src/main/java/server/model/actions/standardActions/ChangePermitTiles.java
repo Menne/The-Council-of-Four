@@ -10,6 +10,7 @@ import server.model.Game;
 import server.model.actions.QuickAction;
 import server.model.gameTable.RegionBoard;
 import server.view.notifies.AvailableActionsNotify;
+import server.view.notifies.ErrorNotify;
 import server.view.notifies.GameTableNotify;
 import server.view.notifies.PlayerNotify;
 
@@ -47,9 +48,10 @@ public class ChangePermitTiles extends QuickAction {
 			throw new NullPointerException("Paramters not setted");
 		
 		if(!this.checkAssistant(game)){
-			this.sendErrorNotify(game, Arrays.asList(game.getCurrentPlayer()));
+			game.notifyObserver(new ErrorNotify("It seems that you haven't enough assistants", Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}
+		
 		for(RegionBoard region : game.getGameTable().getRegionBoards())
 			if(region.equals(selectedRegion))
 				region.substitutePermitTiles();

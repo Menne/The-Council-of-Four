@@ -9,6 +9,7 @@ import players.Player;
 import server.model.Game;
 import server.model.actions.QuickAction;
 import server.view.notifies.AvailableActionsNotify;
+import server.view.notifies.ErrorNotify;
 import server.view.notifies.GameTableNotify;
 import server.view.notifies.PlayerNotify;
 
@@ -37,10 +38,12 @@ public class AdditionalMainAction extends QuickAction {
 	@Override
 	public boolean executeAction(Game game) {
 		
-		if(!this.checkAssistants(game)){
-			this.sendErrorNotify(game, Arrays.asList(game.getCurrentPlayer()));
+		if (!this.checkAssistants(game)) {
+			game.notifyObserver(new ErrorNotify("It seems that you haven't enough assistants!", 
+					Arrays.asList(game.getCurrentPlayer())));
 			return false;
-		}	
+		}
+		
 		game.getCurrentPlayer().decrementAssistants(necessaryAssistants);
 		game.setState(game.getState().additionalMainActionTransition());
 		

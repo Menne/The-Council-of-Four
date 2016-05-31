@@ -9,6 +9,7 @@ import players.Player;
 import server.model.Game;
 import server.model.actions.QuickAction;
 import server.view.notifies.AvailableActionsNotify;
+import server.view.notifies.ErrorNotify;
 import server.view.notifies.GameTableNotify;
 import server.view.notifies.PlayerNotify;
 /**
@@ -33,10 +34,11 @@ public class EngageAssistant extends QuickAction {
 	@Override
 	public boolean executeAction(Game game) {
 		
-		if(!this.checkCoins(game)){
-			this.sendErrorNotify(game, Arrays.asList(game.getCurrentPlayer()));
+		if (!this.checkCoins(game)){
+			game.notifyObserver(new ErrorNotify("It seems that you haven't enough coins!", Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}
+		
 		game.getCurrentPlayer().decrementCoins(necessaryCoins);
 		game.getCurrentPlayer().incrementAssistants(1);
 		

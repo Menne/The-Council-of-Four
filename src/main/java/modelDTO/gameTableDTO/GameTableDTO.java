@@ -59,7 +59,7 @@ public class GameTableDTO extends Observable<ClientViewNotify> implements ModelD
 			this.clientCouncillorReserve.add(cardColourDTO);
 		}
 		
-		for(Player player : realObject.getPlayers()){
+		for(Player player : realObject.getPlayers()) {
 			GenericPlayerDTO playerDTO=new GenericPlayerDTO();
 			playerDTO.map(player);
 			this.clientPlayers.add(playerDTO);
