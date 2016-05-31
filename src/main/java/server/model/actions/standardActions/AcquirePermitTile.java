@@ -67,7 +67,7 @@ public class AcquirePermitTile extends MainAction {
 			throw new NullPointerException("Paramters not setted");
 		
 		if (!(this.CheckEnoughCoins(game) && this.CheckHandSatisfiesBalcony(game))) {
-			this.sendErrorNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer())));
+			this.sendErrorNotify(game, Arrays.asList(game.getCurrentPlayer()));
 			return false;
 		}
 					
@@ -86,9 +86,9 @@ public class AcquirePermitTile extends MainAction {
 		
 		game.notifyObserver(new GameTableNotify(game, game.getPlayers()));
 		game.notifyObserver(new PlayerNotify(game.getCurrentPlayer(), 
-				new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
+				Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new AvailableActionsNotify(game.getState().getAcceptableActions(game), 
-				new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
+				Arrays.asList(game.getCurrentPlayer())));
 		
 		return true;
 	}

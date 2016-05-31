@@ -34,7 +34,7 @@ public class EngageAssistant extends QuickAction {
 	public boolean executeAction(Game game) {
 		
 		if(!this.checkCoins(game)){
-			this.sendErrorNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer())));
+			this.sendErrorNotify(game, Arrays.asList(game.getCurrentPlayer()));
 			return false;
 		}
 		game.getCurrentPlayer().decrementCoins(necessaryCoins);
@@ -44,9 +44,9 @@ public class EngageAssistant extends QuickAction {
 
 		game.notifyObserver(new GameTableNotify(game, new ArrayList<Player>(game.getPlayers())));
 		game.notifyObserver(new PlayerNotify(game.getCurrentPlayer(), 
-				new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
+				Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new AvailableActionsNotify(game.getState().getAcceptableActions(game), 
-				new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
+				Arrays.asList(game.getCurrentPlayer())));
 		
 		return true;
 	}

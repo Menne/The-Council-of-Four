@@ -47,7 +47,7 @@ public class ChangePermitTiles extends QuickAction {
 			throw new NullPointerException("Paramters not setted");
 		
 		if(!this.checkAssistant(game)){
-			this.sendErrorNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer())));
+			this.sendErrorNotify(game, Arrays.asList(game.getCurrentPlayer()));
 			return false;
 		}
 		for(RegionBoard region : game.getGameTable().getRegionBoards())
@@ -59,9 +59,9 @@ public class ChangePermitTiles extends QuickAction {
 
 		game.notifyObserver(new GameTableNotify(game, new ArrayList<Player>(game.getPlayers())));
 		game.notifyObserver(new PlayerNotify(game.getCurrentPlayer(), 
-				new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
+				Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new AvailableActionsNotify(game.getState().getAcceptableActions(game), 
-				new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
+				Arrays.asList(game.getCurrentPlayer())));
 		
 		return true;
 	}
