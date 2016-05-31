@@ -1,11 +1,9 @@
 package server.model.actions;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.PickPoliticsCardDTO;
-import players.Player;
 import server.model.Game;
 import server.view.notifies.AvailableActionsNotify;
 import server.view.notifies.GameTableNotify;
@@ -21,9 +19,9 @@ public class PickPoliticsCard implements Action {
 		
 		game.notifyObserver(new GameTableNotify(game, game.getPlayers()));
 		game.notifyObserver(new PlayerNotify(game.getCurrentPlayer(), 
-				new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
+				Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new AvailableActionsNotify(game.getState().getAcceptableActions(game), 
-				new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
+				Arrays.asList(game.getCurrentPlayer())));
 		
 		return true;
 	}

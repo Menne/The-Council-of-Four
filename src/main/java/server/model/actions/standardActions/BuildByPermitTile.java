@@ -55,7 +55,7 @@ public class BuildByPermitTile extends MainAction {
 		ConnectedBuiltCityDiscover likedCities=new ConnectedBuiltCityDiscover();
 		
 		if (!(checkCityNotContainsEmporium(game) && checkPermitTileContainsCity() && checkEnoughAssistants(game))){
-			this.sendErrorNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer())));
+			this.sendErrorNotify(game, Arrays.asList(game.getCurrentPlayer()));
 			return false;
 		}
 		Emporium temporaryEmporium=game.getCurrentPlayer().removeEmporium();
@@ -79,9 +79,9 @@ public class BuildByPermitTile extends MainAction {
 
 		game.notifyObserver(new GameTableNotify(game, new ArrayList<Player>(game.getPlayers())));
 		game.notifyObserver(new PlayerNotify(game.getCurrentPlayer(), 
-				new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
+				Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new AvailableActionsNotify(game.getState().getAcceptableActions(game), 
-				new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
+				Arrays.asList(game.getCurrentPlayer())));
 		
 		return true;
 	}
