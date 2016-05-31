@@ -13,6 +13,7 @@ import modelDTO.clientNotifies.PlayerAcceptedDTONotify;
 import modelDTO.gameTableDTO.GenericPlayerDTO;
 import modelDTO.playerDTO.ClientPlayerDTO;
 import players.Player;
+import server.Server;
 import server.model.Game;
 import server.view.notifies.ViewNotify;
 
@@ -22,14 +23,16 @@ public class ServerSocketView extends View implements Runnable {
 	private final ObjectInputStream socketIn;
 	private final ObjectOutputStream socketOut;
 	private final Game game;
-	private final List<Player> readyPlayerList;
+	private final List<Player> serverPlayerList;
 	private final Player player;
+	private final Server server;
 	
-	public ServerSocketView(Socket socket, Game game, Player player, List<Player> readyPlayerList) throws IOException{
+	public ServerSocketView(Socket socket, Game game, Player player, List<Player> serverPlayerList, Server server) throws IOException{
 		this.socket=socket;
 		this.game=game;
 		this.player=player;
-		this.readyPlayerList=readyPlayerList;
+		this.server=server;
+		this.serverPlayerList=serverPlayerList;
 		this.socketIn=new ObjectInputStream(socket.getInputStream());
 		this.socketOut=new ObjectOutputStream(socket.getOutputStream());
 	}
@@ -45,8 +48,8 @@ public class ServerSocketView extends View implements Runnable {
 				if(object instanceof AddPlayerDTO){
 					AddPlayerDTO notify=(AddPlayerDTO) object;
 					this.player.setName(notify.getPlayerName());					
-					this.readyPlayerList.add(player);
-					this.player.setPlayerNumber(readyPlayerList.size());
+					this.serverPlayerList.add(player);
+					this.player.setPlayerNumber(serverPlayerList.size());
 					this.startGame();
 										
 					GenericPlayerDTO genericPlayerDTO=new GenericPlayerDTO();
@@ -89,8 +92,10 @@ public class ServerSocketView extends View implements Runnable {
 	}
 	
 	private void startGame() throws IOException{
-		if(this.readyPlayerList.size()==2)
-			this.game.start(readyPlayerList);
+		if(this.serverPlayerList.size()==2){
+			this.game.start(serverPlayerList);
+			server.nextGame();
+		}
 	}
 
 }

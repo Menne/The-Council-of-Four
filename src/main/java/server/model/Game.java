@@ -52,10 +52,11 @@ public class Game extends Observable<ViewNotify>{
 		this.lastLap=false;
 		this.market=new Market(this.players);
 		
-		this.notifyObserver(new PlayerNotify(this.currentPlayer, players));
+		for (Player player : this.players)
+			this.notifyObserver(new PlayerNotify(player, Arrays.asList(player)));
 		this.notifyObserver(new GameTableNotify(this, players));
 		this.notifyObserver(new AvailableActionsNotify(this.getState().getAcceptableActions(this), 
-				new ArrayList<Player>(Arrays.asList(currentPlayer))));
+				(Arrays.asList(currentPlayer))));
 		
 	}
 
