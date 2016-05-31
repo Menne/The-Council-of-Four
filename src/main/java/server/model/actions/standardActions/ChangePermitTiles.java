@@ -2,7 +2,6 @@ package server.model.actions.standardActions;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.ChangePermitTilesDTO;
@@ -47,11 +46,8 @@ public class ChangePermitTiles extends QuickAction {
 		if(this.selectedRegion==null)
 			throw new NullPointerException("Paramters not setted");
 		
-		List<Player> interestedPlayers=new ArrayList<>();
-		interestedPlayers.add(game.getCurrentPlayer());
-		
 		if(!this.checkAssistant(game)){
-			this.sendErrorNotify(game, interestedPlayers);
+			this.sendErrorNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}
 		for(RegionBoard region : game.getGameTable().getRegionBoards())
@@ -62,8 +58,10 @@ public class ChangePermitTiles extends QuickAction {
 		this.nextState(game);
 
 		game.notifyObserver(new GameTableNotify(game, new ArrayList<Player>(game.getPlayers())));
-		game.notifyObserver(new AvailableActionsNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
-		game.notifyObserver(new PlayerNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
+		game.notifyObserver(new PlayerNotify(game.getCurrentPlayer(), 
+				new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
+		game.notifyObserver(new AvailableActionsNotify(game.getState().getAcceptableActions(game), 
+				new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
 		
 		return true;
 	}

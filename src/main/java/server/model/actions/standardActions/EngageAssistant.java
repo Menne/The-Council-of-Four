@@ -2,7 +2,6 @@ package server.model.actions.standardActions;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.EngageAssistantDTO;
@@ -33,11 +32,9 @@ public class EngageAssistant extends QuickAction {
 	 */
 	@Override
 	public boolean executeAction(Game game) {
-		List<Player> interestedPlayers=new ArrayList<>();
-		interestedPlayers.add(game.getCurrentPlayer());
 		
 		if(!this.checkCoins(game)){
-			this.sendErrorNotify(game,interestedPlayers);
+			this.sendErrorNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}
 		game.getCurrentPlayer().decrementCoins(necessaryCoins);
@@ -46,8 +43,10 @@ public class EngageAssistant extends QuickAction {
 		this.nextState(game);
 
 		game.notifyObserver(new GameTableNotify(game, new ArrayList<Player>(game.getPlayers())));
-		game.notifyObserver(new AvailableActionsNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
-		game.notifyObserver(new PlayerNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
+		game.notifyObserver(new PlayerNotify(game.getCurrentPlayer(), 
+				new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
+		game.notifyObserver(new AvailableActionsNotify(game.getState().getAcceptableActions(game), 
+				new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
 		
 		return true;
 	}

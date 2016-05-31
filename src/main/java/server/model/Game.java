@@ -21,8 +21,8 @@ import server.view.notifies.ViewNotify;
  
 public class Game extends Observable<ViewNotify>{
 	
-	private  List<Player> players;
-	private  Market market;
+	private List<Player> players;
+	private Market market;
 	private Player currentPlayer;
 	private GameTable gameTable;
 	private State state;
@@ -51,9 +51,11 @@ public class Game extends Observable<ViewNotify>{
 		this.additionalMainActionBonus=false;
 		this.lastLap=false;
 		this.market=new Market(this.players);
-		this.notifyObserver(new PlayerNotify(this, new ArrayList<Player>(Arrays.asList(currentPlayer))));
+		
+		this.notifyObserver(new PlayerNotify(this.currentPlayer, players));
 		this.notifyObserver(new GameTableNotify(this, players));
-		this.notifyObserver(new AvailableActionsNotify(this, new ArrayList<Player>(Arrays.asList(currentPlayer))));
+		this.notifyObserver(new AvailableActionsNotify(this.getState().getAcceptableActions(this), 
+				new ArrayList<Player>(Arrays.asList(currentPlayer))));
 		
 	}
 
@@ -61,7 +63,7 @@ public class Game extends Observable<ViewNotify>{
 	public void nextPlayer(){
 		if(!lastLap){
 			Player temporaryPlayer=this.currentPlayer;
-			this.players.remove(0);
+			this.players.remove(0); //FORSE è QUI L'ERRORE MALEDETTO??
 			this.players.add(this.players.size(), temporaryPlayer);
 			this.currentPlayer=this.players.get(0);
 		}

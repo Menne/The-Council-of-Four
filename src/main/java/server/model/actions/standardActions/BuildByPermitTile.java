@@ -2,7 +2,6 @@ package server.model.actions.standardActions;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.BuildByPermitTileDTO;
@@ -53,13 +52,10 @@ public class BuildByPermitTile extends MainAction {
 		if(this.selectedCity==null || this.selectedPermitTile==null)
 			throw new NullPointerException("Paramters not setted");
 		
-		List<Player> interestedPlayers=new ArrayList<>();
-		interestedPlayers.add(game.getCurrentPlayer());
-		
 		ConnectedBuiltCityDiscover likedCities=new ConnectedBuiltCityDiscover();
 		
 		if (!(checkCityNotContainsEmporium(game) && checkPermitTileContainsCity() && checkEnoughAssistants(game))){
-			this.sendErrorNotify(game, interestedPlayers);
+			this.sendErrorNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}
 		Emporium temporaryEmporium=game.getCurrentPlayer().removeEmporium();
@@ -79,8 +75,10 @@ public class BuildByPermitTile extends MainAction {
 		this.nextState(game);
 
 		game.notifyObserver(new GameTableNotify(game, new ArrayList<Player>(game.getPlayers())));
-		game.notifyObserver(new AvailableActionsNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
-		game.notifyObserver(new PlayerNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
+		game.notifyObserver(new PlayerNotify(game.getCurrentPlayer(), 
+				new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
+		game.notifyObserver(new AvailableActionsNotify(game.getState().getAcceptableActions(game), 
+				new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
 		
 		return true;
 	}

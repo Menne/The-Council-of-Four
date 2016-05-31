@@ -54,8 +54,6 @@ public class BuildByKing extends MainAction {
 	 */
 	@Override
 	public boolean executeAction(Game game) throws NullPointerException{
-		List<Player> interestedPlayers=new ArrayList<>();
-		interestedPlayers.add(game.getCurrentPlayer());
 		
 		if(this.cardsToDescard==null || this.selectedCity==null)
 			throw new NullPointerException("Paramters not setted");
@@ -64,7 +62,7 @@ public class BuildByKing extends MainAction {
 		
 		if (!(checkCityNotContainsEmporium(game) && checkEnoughAssistants(game) && 
 				CheckHandSatisfiesBalcony(game) && CheckEnoughCoins(game))){
-			this.sendErrorNotify(game, interestedPlayers);
+			this.sendErrorNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}
 		
@@ -89,8 +87,10 @@ public class BuildByKing extends MainAction {
 		this.nextState(game);
 
 		game.notifyObserver(new GameTableNotify(game, new ArrayList<Player>(game.getPlayers())));
-		game.notifyObserver(new AvailableActionsNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
-		game.notifyObserver(new PlayerNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
+		game.notifyObserver(new PlayerNotify(game.getCurrentPlayer(), 
+				new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
+		game.notifyObserver(new AvailableActionsNotify(game.getState().getAcceptableActions(game), 
+				new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
 		
 		return true;
 	}
