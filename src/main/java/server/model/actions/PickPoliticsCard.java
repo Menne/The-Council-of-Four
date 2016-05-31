@@ -19,9 +19,11 @@ public class PickPoliticsCard implements Action {
 		
 		game.setState(game.getState().pickPoliticsCardTransition());
 		
-		game.notifyObserver(new GameTableNotify(game, new ArrayList<Player>(game.getPlayers())));
-		game.notifyObserver(new AvailableActionsNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
-		game.notifyObserver(new PlayerNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
+		game.notifyObserver(new GameTableNotify(game, game.getPlayers()));
+		game.notifyObserver(new PlayerNotify(game.getCurrentPlayer(), 
+				new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
+		game.notifyObserver(new AvailableActionsNotify(game.getState().getAcceptableActions(game), 
+				new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
 		
 		return true;
 	}

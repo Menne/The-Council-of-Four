@@ -34,7 +34,5 @@ public class GameTableNotify implements ViewNotify {
 	public String toString() {
 		return "GameTableNotify" + interestedPlayers;
 	}
-	
-	
 
 }

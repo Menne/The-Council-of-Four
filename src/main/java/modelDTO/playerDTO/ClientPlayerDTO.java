@@ -82,4 +82,13 @@ public class ClientPlayerDTO implements ModelDTO<Player>{
 		return assistants;
 	}
 
+
+	@Override
+	public String toString() {
+		return "\nYour current status: [hand=" + hand + ", coveredPermitTiles=" + coveredPermitTiles
+				+ ", availablePermitTiles=" + availablePermitTiles + ", assistants=" + assistants + "]";
+	}
+	
+	
+
 }

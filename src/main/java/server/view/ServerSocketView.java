@@ -70,10 +70,8 @@ public class ServerSocketView extends View implements Runnable {
 	@Override
 	public void update(ViewNotify notify) {
 		try {
-	
 			if(notify.sendTo().contains(this.player)){
 				this.socketOut.writeObject(notify.toClientNotify());
-				System.out.println("ho inviato la notifica "+notify.toString());
 			}
 			
 		} catch (IOException e) {

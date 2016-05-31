@@ -2,7 +2,6 @@ package server.model.actions.standardActions;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.AddictionalMainActionDTO;
@@ -10,7 +9,6 @@ import players.Player;
 import server.model.Game;
 import server.model.actions.QuickAction;
 import server.view.notifies.AvailableActionsNotify;
-import server.view.notifies.ErrorNotify;
 import server.view.notifies.GameTableNotify;
 import server.view.notifies.PlayerNotify;
 
@@ -38,19 +36,19 @@ public class AdditionalMainAction extends QuickAction {
 	 */
 	@Override
 	public boolean executeAction(Game game) {
-		List<Player> interestedPlayers=new ArrayList<>();
-		interestedPlayers.add(game.getCurrentPlayer());
 		
 		if(!this.checkAssistants(game)){
-			game.notifyObserver(new ErrorNotify("You can't do this action",interestedPlayers));
+			this.sendErrorNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}	
 		game.getCurrentPlayer().decrementAssistants(necessaryAssistants);
 		game.setState(game.getState().additionalMainActionTransition());
 		
 		game.notifyObserver(new GameTableNotify(game, new ArrayList<Player>(game.getPlayers())));
-		game.notifyObserver(new AvailableActionsNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
-		game.notifyObserver(new PlayerNotify(game, new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
+		game.notifyObserver(new PlayerNotify(game.getCurrentPlayer(), 
+				new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
+		game.notifyObserver(new AvailableActionsNotify(game.getState().getAcceptableActions(game), 
+				new ArrayList<Player>(Arrays.asList(game.getCurrentPlayer()))));
 		
 		return true;
 	}

@@ -9,7 +9,7 @@ public class GameTableDTONotify implements ClientNotify{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -2738890859980426145L;
+	private static final long serialVersionUID = -912988632170214482L;
 	private GameTableDTO updatedGame;
 	
 	public GameTableDTONotify(GameTableDTO gameTableDTO) {
@@ -24,7 +24,7 @@ public class GameTableDTONotify implements ClientNotify{
 		gameDTOtoupdate.getClientGameTable().setClientPlayers(this.updatedGame.getClientPlayers());
 		gameDTOtoupdate.getClientGameTable().setClientRegions(this.updatedGame.getClientRegions());
 		gameDTOtoupdate.getClientGameTable().setCurrentPlayer(this.updatedGame.getCurrentPlayer());
-		
+
 		gameDTOtoupdate.notifyObserver(new ClientGameTableNotify(gameDTOtoupdate.getClientGameTable()));
 	}
 

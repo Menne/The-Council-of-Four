@@ -10,7 +10,6 @@ public class PlayerAcceptedDTONotify implements ClientNotify {
 	 * 
 	 */
 	private static final long serialVersionUID = 2394921097870988146L;
-	
 	private final GenericPlayerDTO playerDTO;
 	private final String message;
 	
