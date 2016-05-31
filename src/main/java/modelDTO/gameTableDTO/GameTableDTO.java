@@ -121,7 +121,7 @@ public class GameTableDTO extends Observable<ClientViewNotify> implements ModelD
 	
 	@Override
 	public String toString() {
-		return "Updated game table:\n Players:\n" + clientPlayers + "\n\nNow is plaiyng:\n" + currentPlayer + "\n" +
+		return "Updated game table:\n Players:\n" + clientPlayers + "\nNow is plaiyng:\n" + currentPlayer + "\n" +
 				 clientRegions + " \n "+ Arrays.toString(clientKingBalcony) +"\n"+
 				 clientCouncillorReserve + "\n" + clientNobilityTrack ;
 	}

@@ -24,4 +24,11 @@ public class MoveToNextDTO implements ActionDTO {
 		return null;
 	}
 
+	@Override
+	public String toString() {
+		return "sk: finish the turn";
+	}
+	
+	
+
 }

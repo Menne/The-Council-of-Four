@@ -53,9 +53,7 @@ public class ServerSocketView extends View implements Runnable {
 					this.startGame();
 										
 					GenericPlayerDTO genericPlayerDTO=new GenericPlayerDTO();
-					ClientPlayerDTO clientPlayerDTO=new ClientPlayerDTO();
 					genericPlayerDTO.map(player);
-					clientPlayerDTO.map(player);
 					this.socketOut.writeObject(new PlayerAcceptedDTONotify(genericPlayerDTO));
 				}
 				

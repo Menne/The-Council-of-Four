@@ -25,18 +25,12 @@ public class AddPlayerDTO implements ActionDTO {
 		return null;
 	}
 
-	
 	public String getPlayerName() {
 		return playerName;
 	}
 
 	public void setPlayerName(String playerName) {
-		this.playerName = playerName;
-	}
-	
-	@Override
-	public String toString() {
-		return "player added";
+		this.playerName=playerName;
 	}
 
 }
