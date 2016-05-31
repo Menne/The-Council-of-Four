@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.List;
 
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.AddPlayerDTO;
@@ -21,12 +22,14 @@ public class ServerSocketView extends View implements Runnable {
 	private final ObjectInputStream socketIn;
 	private final ObjectOutputStream socketOut;
 	private final Game game;
+	private final List<Player> readyPlayerList;
 	private final Player player;
 	
-	public ServerSocketView(Socket socket, Game game, Player player) throws IOException{
+	public ServerSocketView(Socket socket, Game game, Player player, List<Player> readyPlayerList) throws IOException{
 		this.socket=socket;
 		this.game=game;
 		this.player=player;
+		this.readyPlayerList=readyPlayerList;
 		this.socketIn=new ObjectInputStream(socket.getInputStream());
 		this.socketOut=new ObjectOutputStream(socket.getOutputStream());
 	}
@@ -41,7 +44,11 @@ public class ServerSocketView extends View implements Runnable {
 				
 				if(object instanceof AddPlayerDTO){
 					AddPlayerDTO notify=(AddPlayerDTO) object;
-					this.player.setName(notify.getPlayerName());
+					this.player.setName(notify.getPlayerName());					
+					this.readyPlayerList.add(player);
+					this.player.setPlayerNumber(readyPlayerList.size());
+					this.startGame();
+										
 					GenericPlayerDTO genericPlayerDTO=new GenericPlayerDTO();
 					ClientPlayerDTO clientPlayerDTO=new ClientPlayerDTO();
 					genericPlayerDTO.map(player);
@@ -83,6 +90,11 @@ public class ServerSocketView extends View implements Runnable {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	private void startGame() throws IOException{
+		if(this.readyPlayerList.size()==2)
+			this.game.start(readyPlayerList);
 	}
 
 }
