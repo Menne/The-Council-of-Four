@@ -1,10 +1,12 @@
-   package server;
+     package server;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -12,6 +14,7 @@ import players.Player;
 import server.controller.Controller;
 import server.model.Game;
 import server.view.ServerSocketView;
+import server.view.View;
 
 
 public class Server {
@@ -21,23 +24,38 @@ public class Server {
 	private final String NAME="CoF";
 	private final static int RMI_PORT=52365;
 	
-	private List<Game> serverGames;
-	private List<Controller> serverControllers;
-	private final List<List<Player>> serverPlayerLists;
-	private int indexOfGames;
+	private final Map<Game, List<View>> gamesMap;
+	private Game currentGame;
+	private final List<Player> playerList;
 	
 	
 	public Server(){
-		this.serverGames=new ArrayList<>();
-		this.serverGames.add(new Game());
+		this.gamesMap=new HashMap<>();
+		this.currentGame=new Game();
+		this.gamesMap.put(currentGame, new ArrayList<>());
+		this.playerList=new ArrayList<>();
+	}
+	
+	public void newReadySocketPlayer(ServerSocketView view) throws IOException{
 		
-		this.serverControllers=new ArrayList<>();
-		this.serverControllers.add(new Controller(serverGames.get(0)));
+		this.gamesMap.get(currentGame).add(view);
+		view.setGame(currentGame);
+		System.out.println("settato game della view");
+		this.playerList.add(view.getPlayer());
+		System.out.println("aggiunto player alla playerList");
+		view.getPlayer().setPlayerNumber(playerList.size());
 		
-		this.serverPlayerLists=new ArrayList<>();
-		this.serverPlayerLists.add(new ArrayList<>());
-		
-		this.indexOfGames=0;
+		if(this.gamesMap.get(currentGame).size()==2){
+			Controller controller=new Controller(currentGame);
+			for(View gameView : this.gamesMap.get(currentGame)){
+				currentGame.registerObserver(gameView);
+				gameView.registerObserver(controller);
+			}
+			currentGame.start(new ArrayList<>(playerList));
+			playerList.clear();
+			this.currentGame=new Game();
+			this.gamesMap.put(currentGame, new ArrayList<>());			
+		}
 	}
 	
 	public void startSocket() throws IOException, InterruptedException{
@@ -55,19 +73,11 @@ public class Server {
 			
 			Player player=new Player();
 					
-			ServerSocketView view=new ServerSocketView(socket, serverGames.get(indexOfGames), player, serverPlayerLists.get(indexOfGames),this);
-			this.serverGames.get(indexOfGames).registerObserver(view);
-			view.registerObserver(serverControllers.get(indexOfGames));
-			executor.submit(view);
+			ServerSocketView view=new ServerSocketView(socket, player, this);
 			
+			executor.submit(view);
+			 
 		}
-	}
-	
-	public void nextGame(){
-		this.indexOfGames++;
-		this.serverGames.add(new Game());
-		this.serverControllers.add(new Controller(serverGames.get(indexOfGames)));
-		this.serverPlayerLists.add(new ArrayList<>());
 	}
 	
 	public static void main(String[] args) throws IOException{
