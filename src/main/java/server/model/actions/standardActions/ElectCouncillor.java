@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import modelDTO.actionsDTO.ActionDTO;
-import modelDTO.actionsDTO.ElectCouncillorDTO;
+import modelDTO.actionsDTO.standardActions.ElectCouncillorDTO;
 import players.Player;
 import server.model.Game;
 import server.model.actions.MainAction;

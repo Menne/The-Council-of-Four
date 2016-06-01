@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import modelDTO.actionsDTO.ActionDTO;
-import modelDTO.actionsDTO.ChangePermitTilesDTO;
+import modelDTO.actionsDTO.standardActions.ChangePermitTilesDTO;
 import players.Player;
 import server.model.Game;
 import server.model.actions.QuickAction;

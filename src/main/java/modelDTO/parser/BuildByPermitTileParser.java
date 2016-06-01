@@ -4,7 +4,7 @@ import client.view.notifies.ActionNotify;
 import client.view.notifies.ParametersNotify;
 import modelDTO.GameDTO;
 import modelDTO.actionsDTO.ActionDTO;
-import modelDTO.actionsDTO.BuildByPermitTileDTO;
+import modelDTO.actionsDTO.standardActions.BuildByPermitTileDTO;
 
 public class BuildByPermitTileParser implements ActionParserVisitor {
 
@@ -42,12 +42,14 @@ public class BuildByPermitTileParser implements ActionParserVisitor {
 					("the permit tile you want to use"));
 			this.game.notifyObserver(new ParametersNotify(parser.acceptablePermitTiles(), this));
 			this.selectedAction.setSelectedPermitTile(parser.permitTileTranslator(currentParameter));
+			
+			this.selectedAction.parametersSetted();
 		
 		}
 		else 
 			this.game.notifyObserver(new ActionNotify
 					("but it seems that you haven't any permit tile turned up! Select another action please"));
-
+		
 		return this.selectedAction;
 	}
 

@@ -48,12 +48,13 @@ public class CLI extends ClientView{
 			this.insertParameters(actionWithParameters);
 		}
 		else
-			notifyObserver(selectedAction);
+			this.notifyObserver(selectedAction);
 	}
 	
 	public void insertParameters(ActionWithParameters selectedAction) {
 		this.parser.parametersParser(selectedAction);
-		notifyObserver(selectedAction);
+		if (selectedAction.checkIfParametersSetted())
+			this.notifyObserver(selectedAction);
 	}
 	
 

@@ -66,7 +66,7 @@ public class GameTableDTO extends Observable<ClientViewNotify> implements ModelD
 		}
 		
 		this.clientNobilityTrack=(ArrayList<Set<Bonus>>) realObject.getGameTable().getNobilityTrack().getTrack();
-	
+		this.currentPlayer=realObject.getCurrentPlayer().getName();
 	}
 
 	

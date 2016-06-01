@@ -1,9 +1,11 @@
-package modelDTO.actionsDTO;
+package modelDTO.actionsDTO.standardActions;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import modelDTO.GameDTO;
+import modelDTO.actionsDTO.ActionDTO;
+import modelDTO.actionsDTO.ActionWithParameters;
 import modelDTO.gameTableDTO.CityDTO;
 import modelDTO.gameTableDTO.PermitTileDTO;
 import modelDTO.parser.ActionParserVisitor;
@@ -22,6 +24,7 @@ public class BuildByPermitTileDTO implements ActionDTO, ActionWithParameters {
 	private static final long serialVersionUID = -8061305769975404856L;
 	private  PermitTileDTO selectedPermitTile;
 	private  CityDTO selectedCity;
+	private boolean parametersSetted=false;
 
 	public PermitTileDTO getSelectedPermitTile() {
 		return selectedPermitTile;
@@ -37,6 +40,14 @@ public class BuildByPermitTileDTO implements ActionDTO, ActionWithParameters {
 
 	public void setSelectedCity(CityDTO selectedCity) {
 		this.selectedCity = selectedCity;
+	}
+	
+	public boolean checkIfParametersSetted() {
+		return parametersSetted;
+	}
+
+	public void parametersSetted() {
+		this.parametersSetted=true;
 	}
 	
 	@Override

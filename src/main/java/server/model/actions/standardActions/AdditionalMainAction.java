@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import modelDTO.actionsDTO.ActionDTO;
-import modelDTO.actionsDTO.AddictionalMainActionDTO;
+import modelDTO.actionsDTO.standardActions.AddictionalMainActionDTO;
 import players.Player;
 import server.model.Game;
 import server.model.actions.QuickAction;

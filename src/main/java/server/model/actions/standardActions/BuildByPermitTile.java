@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import modelDTO.actionsDTO.ActionDTO;
-import modelDTO.actionsDTO.BuildByPermitTileDTO;
+import modelDTO.actionsDTO.standardActions.BuildByPermitTileDTO;
 import players.Player;
 import server.model.Game;
 import server.model.actions.MainAction;
@@ -50,8 +50,9 @@ public class BuildByPermitTile extends MainAction {
 	 */
 	@Override
 	public boolean executeAction(Game game) throws NullPointerException {
-		if(this.selectedCity==null || this.selectedPermitTile==null)
+		if(this.selectedCity==null || this.selectedPermitTile==null) {
 			throw new NullPointerException("Paramters not setted");
+		}
 		
 		ConnectedBuiltCityDiscover likedCities=new ConnectedBuiltCityDiscover();
 		

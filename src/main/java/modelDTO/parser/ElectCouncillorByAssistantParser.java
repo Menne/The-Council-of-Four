@@ -4,7 +4,7 @@ import client.view.notifies.ActionNotify;
 import client.view.notifies.ParametersNotify;
 import modelDTO.GameDTO;
 import modelDTO.actionsDTO.ActionDTO;
-import modelDTO.actionsDTO.ElectCouncillorByAssistantDTO;
+import modelDTO.actionsDTO.standardActions.ElectCouncillorByAssistantDTO;
 
 public class ElectCouncillorByAssistantParser implements ActionParserVisitor {
 
@@ -37,6 +37,8 @@ public class ElectCouncillorByAssistantParser implements ActionParserVisitor {
 				("the name of the region in which you want to change the councillor"));
 		this.game.notifyObserver(new ParametersNotify(parser.acceptableCouncilBalcony(), this));
 		this.selectedAction.setCouncilBalcony(parser.councilBalconyTranslator(currentParameter));
+		
+		this.selectedAction.parametersSetted();
 		
 		return this.selectedAction;
 	}
