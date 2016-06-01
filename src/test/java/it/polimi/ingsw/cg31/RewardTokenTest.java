@@ -25,7 +25,7 @@ public class RewardTokenTest {
 		rewardTokenBonus.add(bonus2);
 		
 		RewardToken token= new RewardToken(rewardTokenBonus);
-		assertEquals(rewardTokenBonus, token.getRewardTokenBonus());
+		assertTrue(rewardTokenBonus== token.getRewardTokenBonus());
 	}
 
 }

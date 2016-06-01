@@ -15,7 +15,7 @@ import server.model.gameTable.Assistant;
 public class AssistantsTest {
 
 	@Test
-	public void test() throws IOException {
+	public void testAddToPlayer() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
 		Player p = new Player();

@@ -33,18 +33,18 @@ public class CityColourTest {
 	public void testGetName() {
 		ScoreBonus bonus= new ScoreBonus(1);
 		CityColour colour= new CityColour("blu", bonus);
-		assertEquals("blu", colour.getName());
+		assertTrue("blu"== colour.getName());
 	}
 	
 	@Test
 	public void testGetColourBonus() {
 		ScoreBonus bonus= new ScoreBonus(1);
 		CityColour colour= new CityColour("blu", bonus);
-		assertEquals(bonus, colour.getColorBonus());
+		assertTrue(bonus==colour.getColorBonus());
 	}
 	
 	@Test
-	public void test() {
+	public void testAddCityOfThisColour() {
 		ScoreBonus bonus= new ScoreBonus(1);
 		CityColour colour= new CityColour("KingColour", bonus);
 		RegionBoard r=new RegionBoard(null, null, null, null);

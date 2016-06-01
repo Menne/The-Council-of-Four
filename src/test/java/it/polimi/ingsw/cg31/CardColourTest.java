@@ -11,8 +11,6 @@ public class CardColourTest {
 	@Test
 	public void testCardColourConstructorAndGetter() {
 		CardColour colour= new CardColour("blu");
-		assertEquals("blu", colour.getColour());
+		assertTrue("blu"==colour.getColour());
 	}
-	
-
 }

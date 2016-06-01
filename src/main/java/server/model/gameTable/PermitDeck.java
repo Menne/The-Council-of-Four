@@ -35,8 +35,11 @@ public class PermitDeck {
 	/**
 	 * adds to the bottom of the list the permit tile
 	 * @param permitTilesToAdd is the permit tile to add to the bottom
+	 * @throws IllegalArgumentException if param permit tile is null
 	 */
-	public void addOnBottom (PermitTile permitTilesToAdd) {
+	public void addOnBottom(PermitTile permitTilesToAdd) throws NullPointerException{
+		if(permitTilesToAdd==null)
+			throw new NullPointerException("permit tile can't be null");
 		int size=this.permitTiles.size();
 		this.permitTiles.add(size-1,permitTilesToAdd);
 	}

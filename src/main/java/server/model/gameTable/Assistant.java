@@ -4,7 +4,7 @@ import players.Player;
 import server.model.market.Marketable;
 
 /**
- * modelize assistants and it contains only the methods used for the market (add and remove)
+ * modelize assistants and it contains only the methods used for the market (add to player and remove from player)
  * @author andreapasquali
  *
  */

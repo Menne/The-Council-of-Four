@@ -26,7 +26,7 @@ public class EmporiumTest {
 		game.start(players);
 		Emporium e= new Emporium(game.getPlayers().get(0));
 		
-		assertEquals(game.getPlayers().get(0), e.getEmporiumsPlayer());
+		assertTrue(game.getPlayers().get(0)==e.getEmporiumsPlayer());
 		
 	}
 
