@@ -20,8 +20,8 @@ public abstract class Observable<C> {
 		this.observers.remove(o);
 	}
 
-	public void notifyObserver(C c){		//è cambiato un oggetto e sta a noi dire di che tipo è l'oggetto e quindi castarlo a seconda del tipo
-											//
+	public void notifyObserver(C c){		
+		
 		for(Observer<C> o: this.observers){
 			 o.update(c);
 		}
