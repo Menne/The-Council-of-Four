@@ -36,10 +36,6 @@ public class ElectCouncillor extends MainAction {
 		this.councilBalcony = councilBalcony;
 	}
 
-	private boolean checkCouncillor(Game game) {
-		return game.getGameTable().getCouncilReserve()
-				.getCouncillors().contains(this.newCouncillor);
-	}
 	
 	/**
 	 * Substitutes a given councillor in one of the balconies of the game,
@@ -49,15 +45,10 @@ public class ElectCouncillor extends MainAction {
 	 */
 	@Override
 	public boolean executeAction(Game game) throws NullPointerException{
-		if(this.newCouncillor==null || this.councilBalcony==null)
+		if (this.newCouncillor==null || this.councilBalcony==null)
 			throw new NullPointerException("Parameters not setted");
 		
-		Councillor oldCouncillor;
-		if(!this.checkCouncillor(game)){
-			this.sendErrorNotify(game, Arrays.asList(game.getCurrentPlayer()));
-			return false;
-		}
-		oldCouncillor=this.councilBalcony.substituteCouncillor(this.newCouncillor);
+		Councillor oldCouncillor=this.councilBalcony.substituteCouncillor(this.newCouncillor);
 		game.getGameTable().getCouncilReserve().getCouncillors().add(oldCouncillor);
 		game.getCurrentPlayer().incrementCoins(givenCoins);
 		
@@ -72,15 +63,10 @@ public class ElectCouncillor extends MainAction {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "m1: elect a councillor";
-	}
-
+	
 	@Override
 	public ActionDTO map() {
 		return new ElectCouncillorDTO();
 	}
-
 
 }

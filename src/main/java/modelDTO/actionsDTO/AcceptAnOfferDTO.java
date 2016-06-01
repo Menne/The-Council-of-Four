@@ -47,12 +47,10 @@ public class AcceptAnOfferDTO implements ActionDTO, ActionWithParameters {
 		}
 		if (this.offerDTO.getOfferedObject() instanceof PermitTileDTO) {
 			PermitTileDTO offeringPermitTileDTO=(PermitTileDTO) this.offerDTO.getOfferedObject();
-			for(Offer offer : game.getMarket().getOffersList()) {
-				PermitTile permitTile=(PermitTile) offer.getOfferedObject();
-				if(permitTile.getBonus().equals(offeringPermitTileDTO.getBonuses())&&
-						this.checkBuildableCities(offeringPermitTileDTO, permitTile.getBuildableCities()))
-					action.setOffer(new Offer(game.getCurrentPlayer(), permitTile, this.offerDTO.getPrice()));
-			}
+			for (PermitTile permitTile : game.getCurrentPlayer().getPlayersPermitTilesTurnedUp())
+				if (permitTile.getBonus().equals(offeringPermitTileDTO.getBonuses()) &&
+					this.checkBuildableCities(offeringPermitTileDTO, permitTile.getBuildableCities()))
+				action.setOffer(new Offer(game.getCurrentPlayer(), permitTile, this.offerDTO.getPrice()));
 		}
 		if (this.offerDTO.getOfferedObject() instanceof AssistantDTO) {
 			action.setOffer(new Offer(game.getCurrentPlayer(), new Assistant(), this.offerDTO.getPrice()));
@@ -64,9 +62,9 @@ public class AcceptAnOfferDTO implements ActionDTO, ActionWithParameters {
 	private boolean checkBuildableCities(PermitTileDTO offeringPermitTileDTO, Set<City> realBuildableCities) {
 		Set<String> realBuildableCitiesString =new HashSet<>();
 		Set<String> buildableCitiesDTOString = new HashSet<>();
-		for(City city : realBuildableCities)
+		for (City city : realBuildableCities)
 			realBuildableCitiesString.add(city.getName());
-		for(CityDTO cityDTO : offeringPermitTileDTO.getBuildablecities())
+		for (CityDTO cityDTO : offeringPermitTileDTO.getBuildablecities())
 			buildableCitiesDTOString.add(cityDTO.getName());
 		return realBuildableCitiesString.equals(buildableCitiesDTOString);
 	}
@@ -78,6 +76,12 @@ public class AcceptAnOfferDTO implements ActionDTO, ActionWithParameters {
 
 	public void setOffer(OfferDTO offerDTO) {
 		this.offerDTO=offerDTO;
+	}
+	
+	
+	@Override
+	public String toString() {
+		return "ao: accept the an offer";
 	}
 
 }

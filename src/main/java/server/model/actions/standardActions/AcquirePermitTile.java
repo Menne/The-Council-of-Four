@@ -6,7 +6,6 @@ import java.util.List;
 
 import modelDTO.actionsDTO.AcquirePermitTileDTO;
 import modelDTO.actionsDTO.ActionDTO;
-import players.Player;
 import server.model.Game;
 import server.model.actions.MainAction;
 import server.model.bonus.Bonus;
@@ -15,6 +14,7 @@ import server.model.gameTable.Councillor;
 import server.model.gameTable.PoliticsCard;
 import server.model.gameTable.RegionBoard;
 import server.view.notifies.AvailableActionsNotify;
+import server.view.notifies.ErrorNotify;
 import server.view.notifies.GameTableNotify;
 import server.view.notifies.PlayerNotify;
 
@@ -66,8 +66,14 @@ public class AcquirePermitTile extends MainAction {
 				this.chosenRegion==null)
 			throw new NullPointerException("Paramters not setted");
 		
-		if (!(this.CheckEnoughCoins(game) && this.CheckHandSatisfiesBalcony(game))) {
-			this.sendErrorNotify(game, Arrays.asList(game.getCurrentPlayer()));
+		if (!this.CheckEnoughCoins(game)) {
+			game.notifyObserver(new ErrorNotify("It seems that you haven't enough coins!", 
+					Arrays.asList(game.getCurrentPlayer())));
+			return false;
+		}
+		if (!this.CheckHandSatisfiesBalcony(game)) {
+					game.notifyObserver(new ErrorNotify("It seems that the cards in you hand don't satisfy the councillors!", 
+							Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}
 					
@@ -148,13 +154,7 @@ public class AcquirePermitTile extends MainAction {
 		return satisfyCounter == this.cardsToDescard.size();
 	}
 
-	@Override
-	public String toString() {
-		return "m2: acquire a permit tile";
-	}
-
-
-
+	
 	@Override
 	public ActionDTO map() {
 		return new AcquirePermitTileDTO();

@@ -30,12 +30,14 @@ public class Game extends Observable<ViewNotify>{
 	private boolean lastLap;
 	private static final int initialNumberOfCards=6;
 	private static final int intialNumberOfEmporiums=10;
+	private List<Player> listOfPlayers;
 	
 	
 	public void start(List<Player> playerList) throws IOException{
 		Initializer init= new Initializer();
 		this.gameTable=init.initialize();
 		this.players=playerList;
+		this.listOfPlayers=playerList;
 		for(Player player : players){
 			player.incrementAssistants(player.getPlayerNumber());
 			player.setScore(0);
@@ -52,10 +54,11 @@ public class Game extends Observable<ViewNotify>{
 		this.lastLap=false;
 		this.market=new Market(this.players);
 		
-		this.notifyObserver(new PlayerNotify(this.currentPlayer, players));
-		this.notifyObserver(new GameTableNotify(this, players));
+		for (Player player : this.players)
+			this.notifyObserver(new PlayerNotify(player, Arrays.asList(player)));
+		this.notifyObserver(new GameTableNotify(this, this.players));
 		this.notifyObserver(new AvailableActionsNotify(this.getState().getAcceptableActions(this), 
-				new ArrayList<Player>(Arrays.asList(currentPlayer))));
+				Arrays.asList(this.currentPlayer)));
 		
 	}
 
@@ -63,7 +66,7 @@ public class Game extends Observable<ViewNotify>{
 	public void nextPlayer(){
 		if(!lastLap){
 			Player temporaryPlayer=this.currentPlayer;
-			this.players.remove(0); //FORSE è QUI L'ERRORE MALEDETTO??
+			this.players.remove(0);
 			this.players.add(this.players.size(), temporaryPlayer);
 			this.currentPlayer=this.players.get(0);
 		}
@@ -87,7 +90,7 @@ public class Game extends Observable<ViewNotify>{
 	}
 
 	public List<Player> getPlayers() {
-		return players;
+		return this.players;
 	}
 
 	public GameTable getGameTable() {
@@ -95,16 +98,16 @@ public class Game extends Observable<ViewNotify>{
 	}
 
 	public Player getCurrentPlayer() {
-		return currentPlayer;
+		return this.currentPlayer;
 	}
 
 	public State getState() {
-		return state;
+		return this.state;
 	}
 
 
 	public Market getMarket() {
-		return market;
+		return this.market;
 	}
 
 
@@ -114,7 +117,7 @@ public class Game extends Observable<ViewNotify>{
 
 
 	public boolean isAdditionalMainActionBonus() {
-		return additionalMainActionBonus;
+		return this.additionalMainActionBonus;
 	}
 
 
@@ -124,7 +127,7 @@ public class Game extends Observable<ViewNotify>{
 
 
 	public boolean isLastLap() {
-		return lastLap;
+		return this.lastLap;
 	}
 
 
@@ -136,12 +139,6 @@ public class Game extends Observable<ViewNotify>{
 		this.currentPlayer = currentPlayer;
 	}
 
-
-	@Override
-	public String toString() {
-		return "Game\n\n Players: \n" + players + "\n\n CurrentPlayer: \n" + currentPlayer + "\n\n" + gameTable
-				+"\n\n"+state.toString(this);
-	}	
 	
 	/**
 	 * assigns 5 point to first players and 2 to seconds
@@ -221,6 +218,11 @@ public class Game extends Observable<ViewNotify>{
 			}	
 		}
 		return currentWinnerPlayer;
+	}
+
+
+	public List<Player> getListOfPlayers() {
+		return listOfPlayers;
 	}
 
 }

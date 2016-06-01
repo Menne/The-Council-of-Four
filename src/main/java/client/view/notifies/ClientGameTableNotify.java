@@ -13,8 +13,7 @@ public class ClientGameTableNotify implements ClientViewNotify {
 	
 	@Override
 	public void stamp(CLI view) {
-		System.out.println("Player " + this.gameTableUpdated.getCurrentPlayer() +
-				" has done his move: " + this.gameTableUpdated.toString());
+		System.out.println(this.gameTableUpdated.toString());
 	}
 
 }

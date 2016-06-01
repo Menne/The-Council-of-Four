@@ -57,6 +57,4 @@ public interface State{
 	public List<Action> getAcceptableActions(Game game);
 
 	
-	public String toString(Game game);
-	
 }

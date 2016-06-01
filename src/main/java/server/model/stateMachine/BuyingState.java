@@ -37,9 +37,4 @@ public class BuyingState implements State {
 		return Arrays.asList(new AcceptAnOffer(),new MoveToNext());
 	}
 
-	@Override
-	public String toString(Game game) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

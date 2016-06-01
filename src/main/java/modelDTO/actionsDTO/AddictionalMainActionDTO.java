@@ -1,7 +1,5 @@
 package modelDTO.actionsDTO;
 
-import modelDTO.GameDTO;
-import modelDTO.parser.ActionParserVisitor;
 import server.model.Game;
 import server.model.actions.Action;
 import server.model.actions.standardActions.AdditionalMainAction;
@@ -22,12 +20,5 @@ public class AddictionalMainActionDTO implements ActionDTO{
 	public String toString() {
 		return "q4: get an additionalo main action";
 	}
-
-	@Override
-	public ActionParserVisitor setParser(GameDTO game) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	
 }

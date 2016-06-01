@@ -1,4 +1,4 @@
-package server;
+   package server;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -24,7 +24,6 @@ public class Server {
 	private List<Game> serverGames;
 	private List<Controller> serverControllers;
 	private final List<List<Player>> serverPlayerLists;
-	private final List<List<Player>> readyPlayers;
 	private int indexOfGames;
 	
 	
@@ -37,9 +36,6 @@ public class Server {
 		
 		this.serverPlayerLists=new ArrayList<>();
 		this.serverPlayerLists.add(new ArrayList<>());
-		
-		this.readyPlayers=new ArrayList<>();
-		this.readyPlayers.add(new ArrayList<>());
 		
 		this.indexOfGames=0;
 	}
@@ -58,23 +54,20 @@ public class Server {
 			System.out.println("Client Socket Accepted!");
 			
 			Player player=new Player();
-			this.serverPlayerLists.get(indexOfGames).add(player);
 					
-			ServerSocketView view=new ServerSocketView(socket, serverGames.get(indexOfGames), player, readyPlayers.get(indexOfGames));
+			ServerSocketView view=new ServerSocketView(socket, serverGames.get(indexOfGames), player, serverPlayerLists.get(indexOfGames),this);
 			this.serverGames.get(indexOfGames).registerObserver(view);
 			view.registerObserver(serverControllers.get(indexOfGames));
 			executor.submit(view);
 			
-			if(this.serverPlayerLists.get(indexOfGames).size()==2){
-//				serverGames.start(serverPlayerLists);
-				this.indexOfGames++;
-				this.serverGames.add(new Game());
-				this.serverControllers.add(new Controller(serverGames.get(indexOfGames)));
-				this.serverPlayerLists.add(new ArrayList<>());
-				this.readyPlayers.add(new ArrayList<>());
-			}
-			
 		}
+	}
+	
+	public void nextGame(){
+		this.indexOfGames++;
+		this.serverGames.add(new Game());
+		this.serverControllers.add(new Controller(serverGames.get(indexOfGames)));
+		this.serverPlayerLists.add(new ArrayList<>());
 	}
 	
 	public static void main(String[] args) throws IOException{
