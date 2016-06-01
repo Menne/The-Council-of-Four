@@ -139,12 +139,6 @@ public class Game extends Observable<ViewNotify>{
 		this.currentPlayer = currentPlayer;
 	}
 
-
-	@Override
-	public String toString() {
-		return "Game\n\n Players: \n" + players + "\n\n CurrentPlayer: \n" + currentPlayer + "\n\n" + gameTable
-				+"\n\n"+state.toString(this);
-	}	
 	
 	/**
 	 * assigns 5 point to first players and 2 to seconds

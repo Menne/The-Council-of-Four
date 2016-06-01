@@ -42,13 +42,15 @@ public class CLI extends ClientView{
 	}
 	
 	public void checkIfParametersNeeded(ActionDTO selectedAction) {
-		if (selectedAction instanceof ActionWithParameters)
-			this.insertParameters(selectedAction);
+		if (selectedAction instanceof ActionWithParameters) {
+			ActionWithParameters actionWithParameters=(ActionWithParameters) selectedAction;
+			this.insertParameters(actionWithParameters);
+		}
 		else
 			notifyObserver(selectedAction);
 	}
 	
-	public void insertParameters(ActionDTO selectedAction) {
+	public void insertParameters(ActionWithParameters selectedAction) {
 		this.parser.parametersParser(selectedAction);
 		notifyObserver(selectedAction);
 	}

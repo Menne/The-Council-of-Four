@@ -154,13 +154,7 @@ public class AcquirePermitTile extends MainAction {
 		return satisfyCounter == this.cardsToDescard.size();
 	}
 
-	@Override
-	public String toString() {
-		return "m2: acquire a permit tile";
-	}
-
-
-
+	
 	@Override
 	public ActionDTO map() {
 		return new AcquirePermitTileDTO();

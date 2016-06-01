@@ -63,15 +63,10 @@ public class ElectCouncillor extends MainAction {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "m1: elect a councillor";
-	}
-
+	
 	@Override
 	public ActionDTO map() {
 		return new ElectCouncillorDTO();
 	}
-
 
 }

@@ -68,18 +68,11 @@ public class ChangePermitTiles extends QuickAction {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "q2: change the permit tiles of a region";
-	}
-
-
+	
 	@Override
 	public ActionDTO map() {
 		
 		return new ChangePermitTilesDTO();
 	}		
 
-
-
-	}
+}

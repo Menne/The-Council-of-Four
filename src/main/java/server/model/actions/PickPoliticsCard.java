@@ -6,7 +6,6 @@ import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.PickPoliticsCardDTO;
 import server.model.Game;
 import server.view.notifies.AvailableActionsNotify;
-import server.view.notifies.GameTableNotify;
 import server.view.notifies.PlayerNotify;
 
 public class PickPoliticsCard implements Action {

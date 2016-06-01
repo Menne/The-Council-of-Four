@@ -1,7 +1,5 @@
 package modelDTO.actionsDTO;
 
-import modelDTO.GameDTO;
-import modelDTO.parser.ActionParserVisitor;
 import server.model.Game;
 import server.model.actions.Action;
 import server.model.actions.MoveToNext;
@@ -17,16 +15,10 @@ public class MoveToNextDTO implements ActionDTO {
 	public Action map(Game game) {
 		return new MoveToNext();
 	}
-	
-	@Override
-	public ActionParserVisitor setParser(GameDTO game) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public String toString() {
-		return "sk: finish the turn";
+		return "sk: skip this passage";
 	}
 	
 	

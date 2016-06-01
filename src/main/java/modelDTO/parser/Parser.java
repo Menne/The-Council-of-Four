@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import modelDTO.actionsDTO.ActionDTO;
+import modelDTO.actionsDTO.ActionWithParameters;
 import client.view.notifies.ClientErrorNotify;
 import modelDTO.GameDTO;
 import modelDTO.gameTableDTO.PermitTileDTO;
@@ -61,7 +62,7 @@ public class Parser implements Serializable{
 	 * @param selectedAction is the action without parameters set
 	 * @return the selected action with the parameters set
 	 */
-	public ActionDTO parametersParser(ActionDTO selectedAction) {
+	public ActionDTO parametersParser(ActionWithParameters selectedAction) {
 		return selectedAction.setParser(this.game).setParameters(this);
 	}
 	

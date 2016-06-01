@@ -53,13 +53,10 @@ public class EngageAssistant extends QuickAction {
 		return true;
 	}
 	
-	@Override
-	public String toString() {
-		return "q1: engage an assistant";
-	}
-
+	
 	@Override
 	public ActionDTO map() {
 		return new EngageAssistantDTO();
 	}
+	
 }

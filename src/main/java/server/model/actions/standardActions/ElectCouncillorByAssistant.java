@@ -73,11 +73,7 @@ public class ElectCouncillorByAssistant extends QuickAction {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "q3: elect a councillor by sending an assistant";
-	}
-
+	
 	@Override
 	public ActionDTO map() {
 		return new ElectCouncillorByAssistantDTO();

@@ -27,7 +27,7 @@ public class GameTableDTO extends Observable<ClientViewNotify> implements ModelD
 	private CardColourDTO[] clientKingBalcony;
 	private ArrayList<CardColourDTO> clientCouncillorReserve;
 	private ArrayList<Set<Bonus>> clientNobilityTrack;
-	private ArrayList<GenericPlayerDTO> clientPlayers;
+	private ArrayList<GenericPlayerDTO> Players;
 	private String currentPlayer;
 	
 	public GameTableDTO() {
@@ -35,7 +35,7 @@ public class GameTableDTO extends Observable<ClientViewNotify> implements ModelD
 		this.clientKingBalcony=new CardColourDTO[4];
 		this.clientCouncillorReserve=new ArrayList<CardColourDTO>();
 		this.clientNobilityTrack=new ArrayList<Set<Bonus>>();
-		this.clientPlayers=new ArrayList<GenericPlayerDTO>();
+		this.Players=new ArrayList<GenericPlayerDTO>();
 	}
 
 	@Override
@@ -62,7 +62,7 @@ public class GameTableDTO extends Observable<ClientViewNotify> implements ModelD
 		for(Player player : realObject.getPlayers()) {
 			GenericPlayerDTO playerDTO=new GenericPlayerDTO();
 			playerDTO.map(player);
-			this.clientPlayers.add(playerDTO);
+			this.Players.add(playerDTO);
 		}
 		
 		this.clientNobilityTrack=(ArrayList<Set<Bonus>>) realObject.getGameTable().getNobilityTrack().getTrack();
@@ -103,11 +103,11 @@ public class GameTableDTO extends Observable<ClientViewNotify> implements ModelD
 	}
 
 	public List<GenericPlayerDTO> getClientPlayers() {
-		return clientPlayers;
+		return Players;
 	}
 
 	public void setClientPlayers(List<GenericPlayerDTO> clientPlayers) {
-		this.clientPlayers = (ArrayList<GenericPlayerDTO>) clientPlayers;
+		this.Players = (ArrayList<GenericPlayerDTO>) clientPlayers;
 	}
 
 	public String getCurrentPlayer() {
@@ -121,9 +121,9 @@ public class GameTableDTO extends Observable<ClientViewNotify> implements ModelD
 	
 	@Override
 	public String toString() {
-		return "Updated game table:\n Players:\n" + clientPlayers + "\nNow is plaiyng:\n" + currentPlayer + "\n" +
-				 clientRegions + " \n "+ Arrays.toString(clientKingBalcony) +"\n"+
-				 clientCouncillorReserve + "\n" + clientNobilityTrack ;
+		return "\nUpdated game table:\nPlayers:\n" + Players + "\nNow is plaiyng:\t" + currentPlayer + "\n" +
+				 clientRegions + " \nKing's balcony:" + Arrays.toString(clientKingBalcony) + "\nCouncillors riserve"+
+				 clientCouncillorReserve + "\n" + clientNobilityTrack;
 	}
 	
 	

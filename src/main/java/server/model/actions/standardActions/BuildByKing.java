@@ -250,12 +250,6 @@ public class BuildByKing extends MainAction {
 				game.getGameTable().getKingRewardTiles().remove(0));
 	}
 
-	@Override
-	public String toString() {
-		return "m4: build an emporium with the help of the king";
-	}
-
-
 
 	@Override
 	public ActionDTO map() {

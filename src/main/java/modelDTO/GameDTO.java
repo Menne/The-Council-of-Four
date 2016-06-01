@@ -50,15 +50,15 @@ public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Ga
 	
 	
 	public GameTableDTO getClientGameTable() {
-		return clientGameTable;
+		return this.clientGameTable;
 	}
 
 	public void setClientGameTable(GameTableDTO clientGameTable) {
-		this.clientGameTable = clientGameTable;
+		this.clientGameTable=clientGameTable;
 	}
 	
 	public ClientPlayerDTO getClientPlayer() {
-		return clientPlayer;
+		return this.clientPlayer;
 	}
 
 	public void setClientPlayer(ClientPlayerDTO clientPlayer) {
@@ -66,7 +66,7 @@ public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Ga
 	}
 
 	public List<ActionDTO> getAvailableActions() {
-		return availableActions;
+		return this.availableActions;
 	}
 
 	public void setAvailableActions(List<ActionDTO> availableActions) {
@@ -74,11 +74,11 @@ public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Ga
 	}
 
 	public MarketDTO getMarket() {
-		return market;
+		return this.market;
 	}
 
 	public void setMarket(MarketDTO market) {
-		this.market = market;
+		this.market=market;
 	}
 
 	public Parser getParser() {

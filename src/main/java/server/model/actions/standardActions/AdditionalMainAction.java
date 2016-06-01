@@ -56,15 +56,10 @@ public class AdditionalMainAction extends QuickAction {
 		return true;
 	}
 	
-	@Override
-	public String toString() {
-		return "q4: get an additionalo main action";
-	}
-
+	
 	@Override
 	public ActionDTO map() {
 		return new AddictionalMainActionDTO();
 	}
-
 
 }

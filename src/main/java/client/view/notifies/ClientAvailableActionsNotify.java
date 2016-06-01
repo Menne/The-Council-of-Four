@@ -15,7 +15,7 @@ public class ClientAvailableActionsNotify implements ClientViewNotify {
 
 	@Override
 	public void stamp(CLI view) {
-		System.out.println("You have the following available actions. Choose one of them:\n"+ this.availableActions);
+		System.out.println("\nYou have the following available actions. Choose one of them:\n"+ this.availableActions);
 	}
 
 }
