@@ -14,6 +14,7 @@ import server.model.gameTable.ConnectedBuiltCityDiscover;
 import server.model.gameTable.Emporium;
 import server.model.gameTable.PermitTile;
 import server.view.notifies.AvailableActionsNotify;
+import server.view.notifies.ErrorNotify;
 import server.view.notifies.GameTableNotify;
 import server.view.notifies.PlayerNotify;
 
@@ -54,10 +55,22 @@ public class BuildByPermitTile extends MainAction {
 		
 		ConnectedBuiltCityDiscover likedCities=new ConnectedBuiltCityDiscover();
 		
-		if (!(checkCityNotContainsEmporium(game) && checkPermitTileContainsCity() && checkEnoughAssistants(game))){
-			this.sendErrorNotify(game, Arrays.asList(game.getCurrentPlayer()));
+		if (!checkCityNotContainsEmporium(game)) {
+			game.notifyObserver(new ErrorNotify("It seems that this city arelady contains a your emporium!", 
+					Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}
+		if (!checkPermitTileContainsCity()) {
+			game.notifyObserver(new ErrorNotify("It seems that the permit tile you selected doesn't contain the city in which you want to build!", 
+					Arrays.asList(game.getCurrentPlayer())));
+			return false;
+		}	
+		if (!checkEnoughAssistants(game)) {
+			game.notifyObserver(new ErrorNotify("It seems that you haven't enough assistants!", 
+					Arrays.asList(game.getCurrentPlayer())));
+			return false;
+		}
+		
 		Emporium temporaryEmporium=game.getCurrentPlayer().removeEmporium();
 		this.selectedCity.addEmporium(temporaryEmporium);
 		for (City city : likedCities.getConnectedBuiltCities(game.getGameTable().getMap().getGameMap(), this.selectedCity, temporaryEmporium))
@@ -166,11 +179,6 @@ public class BuildByPermitTile extends MainAction {
 		game.getGameTable().getKingRewardTiles().remove(0));
 	}
 	
-	@Override
-	public String toString() {
-		return "m3: build an emporium using a permit tile";
-	}
-
 
 	@Override
 	public ActionDTO map() {

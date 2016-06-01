@@ -9,6 +9,7 @@ import server.model.market.Marketable;
 
 /**
 	 * this class models a permit tile
+	 * contains methods for the market (add to player and remove from player)
 	 * @author Emanuele
 	 *
 	 */

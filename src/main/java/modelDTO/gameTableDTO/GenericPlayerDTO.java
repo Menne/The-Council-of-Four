@@ -112,9 +112,9 @@ public class GenericPlayerDTO implements ModelDTO<Player>{
 
 	@Override
 	public String toString() {
-		return "Player " + playerNumber + "\tname: "+ name + "\tassistants=" + assistants + "\tscore="
+		return "\nPlayer " + playerNumber + "\tname: "+ name + "\tassistants=" + assistants + "\tscore="
 				+ score + "\tnobility=" + nobility + "\tcoins=" + coins + ", playersPermitTilesTurnedUp=" + availablePermitTiles +
-				 ", emporiums=" + this.emporiums + "]\n\n";
+				 ", emporiums=" + this.emporiums + "]";
 	}
 
 

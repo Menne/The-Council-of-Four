@@ -58,14 +58,6 @@ public class State01 implements State {
 				new AdditionalMainAction(),
 				new MoveToNext());
 	}
-
-	@Override
-	public String toString(Game game) {
-		String availableActions="";
-		for (Action action : this.getAcceptableActions(game))
-			availableActions+= "\n" + action.toString();
-		return availableActions;
-	}
 	
 }
 

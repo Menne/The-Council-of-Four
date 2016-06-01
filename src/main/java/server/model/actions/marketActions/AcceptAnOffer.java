@@ -1,6 +1,7 @@
 package server.model.actions.marketActions;
 
 import modelDTO.actionsDTO.ActionDTO;
+import modelDTO.actionsDTO.MakeAnOfferDTO;
 import server.model.Game;
 import server.model.actions.Action;
 import server.model.market.Offer;
@@ -27,8 +28,7 @@ public class AcceptAnOffer implements Action {
 
 	@Override
 	public ActionDTO map() {
-		// TODO Auto-generated method stub
-		return null;
+		return new MakeAnOfferDTO();
 	}
 
 }

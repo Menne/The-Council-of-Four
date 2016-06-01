@@ -23,18 +23,15 @@ public class ClientSocket {
 		Socket socket=new Socket(IP, PORT);
 		System.out.println("Connection created");
 		
-		
 		GameDTO clientGame=new GameDTO();
-		
 		CLI view=new CLI(clientGame.getParser());
-		
-		
 		clientGame.registerObserver(view);
 		
 		ExecutorService executor=Executors.newFixedThreadPool(2);
 		ClientOutHandler clientOutHandler=new ClientOutHandler(
 				new ObjectOutputStream(socket.getOutputStream()));
 		executor.submit(clientOutHandler);
+
 		ClientController clientController=new ClientController(clientGame, clientOutHandler);
 		view.registerObserver(clientController);
 		executor.submit(new ClientInHandler(

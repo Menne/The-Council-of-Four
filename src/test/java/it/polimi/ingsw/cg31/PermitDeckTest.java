@@ -11,6 +11,7 @@ import org.junit.Test;
 
 import players.Player;
 import server.model.Game;
+import server.model.gameTable.PermitDeck;
 import server.model.gameTable.PermitTile;
 
 public class PermitDeckTest {
@@ -23,7 +24,7 @@ public class PermitDeckTest {
 		players.add(a);
 		game.start(players);
 		PermitTile t= game.getGameTable().getRegionBoards().get(0).getRegionPermitDeck().getPermitTiles().get(0);
-		assertEquals(t, game.getGameTable().getRegionBoards().get(0).getRegionPermitDeck().pickPermitTile());
+		assertTrue(t== game.getGameTable().getRegionBoards().get(0).getRegionPermitDeck().pickPermitTile());
 	}
 	
 	@Test(expected=IndexOutOfBoundsException.class)
@@ -51,4 +52,25 @@ public class PermitDeckTest {
 				get(game.getGameTable().getRegionBoards().get(0).getRegionPermitDeck().getPermitTiles().size()-1));
 	}
 	
+	@Test(expected=NullPointerException.class)
+	public void testIfAddOnBottomThrowsException() throws IOException{
+		Game game=new Game();
+		List<Player> players = new ArrayList<>();
+		Player a = new Player();
+		players.add(a);
+		game.start(players);
+		game.getGameTable().getRegionBoards().get(0).getRegionPermitDeck().addOnBottom(null);
+	}
+
+	
+	@Test
+	public void testGetterOfPermitTiles(){
+		PermitDeck deck=new PermitDeck();
+		PermitTile tile1= new PermitTile(null, null, deck);
+		PermitTile tile2= new PermitTile(null, null, deck);
+		List<PermitTile> list = new ArrayList<>();
+		list.add(tile1);
+		list.add(tile2);
+		assertEquals(list, deck.getPermitTiles());
+	}
 }

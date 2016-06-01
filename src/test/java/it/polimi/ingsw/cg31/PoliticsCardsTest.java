@@ -17,13 +17,9 @@ public class PoliticsCardsTest {
 
 	@Test
 	public void testIfCardsHaveTheAttributeCardColour() throws IOException {
-		Game game=new Game();
-		List<Player> players = new ArrayList<>();
-		Player a = new Player();
-		players.add(a);
-		game.start(players);
-		PoliticsCard card= game.getGameTable().getPoliticsDeck().pickCard();
-		assertEquals(CardColour.class, card.getColour().getClass());
+		CardColour a= new CardColour("blu");
+		PoliticsCard card= new PoliticsCard(a);
+		assertTrue(a==card.getColour());
 	}
 	
 	@Test

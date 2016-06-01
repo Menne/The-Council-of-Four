@@ -7,9 +7,7 @@ import java.net.Socket;
 
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.AddPlayerDTO;
-import modelDTO.clientNotifies.ErrorDTONotify;
 import modelDTO.clientNotifies.PlayerAcceptedDTONotify;
-import modelDTO.gameTableDTO.GenericPlayerDTO;
 import modelDTO.playerDTO.ClientPlayerDTO;
 import players.Player;
 import server.Server;
@@ -56,19 +54,15 @@ public class ServerSocketView extends View implements Runnable {
 					this.player.setName(notify.getPlayerName());					
 					server.newReadySocketPlayer(this);
 										
-					GenericPlayerDTO genericPlayerDTO=new GenericPlayerDTO();
 					ClientPlayerDTO clientPlayerDTO=new ClientPlayerDTO();
-					genericPlayerDTO.map(player);
 					clientPlayerDTO.map(player);
-					this.socketOut.writeObject(new PlayerAcceptedDTONotify(genericPlayerDTO));
+					this.socketOut.writeObject(new PlayerAcceptedDTONotify(clientPlayerDTO));
 				}
 				
-				else if(this.player.equals(game.getCurrentPlayer())){
-						ActionDTO actionDTO=(ActionDTO) object;				
-						this.notifyObserver(actionDTO.map(this.game));
+				else {
+					ActionDTO actionDTO=(ActionDTO) object;				
+					this.notifyObserver(actionDTO.map(this.game));
 				}
-					else
-						this.socketOut.writeObject(new ErrorDTONotify("Sorry, is not your turn!"));
 					
 				
 			} catch (ClassNotFoundException | IOException e) {

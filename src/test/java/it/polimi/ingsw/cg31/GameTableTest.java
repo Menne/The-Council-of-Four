@@ -22,7 +22,7 @@ import server.model.gameTable.RegionBoard;
 public class GameTableTest {
 
 	@Test
-	public void test() throws IOException {
+	public void testAllTheGetters() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
 		Player a = new Player();

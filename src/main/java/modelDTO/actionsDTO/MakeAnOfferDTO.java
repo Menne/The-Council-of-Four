@@ -79,4 +79,9 @@ public class MakeAnOfferDTO implements ActionDTO, ActionWithParameters {
 	}
 
 
+	@Override
+	public String toString() {
+		return "mo: make an offer";
+	}
+
 }

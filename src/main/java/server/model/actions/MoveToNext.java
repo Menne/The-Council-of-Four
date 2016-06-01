@@ -25,13 +25,7 @@ public class MoveToNext extends QuickAction {
 	}
 
 	@Override
-	public String toString() {
-		return "ex: if you want to finish the turn";
-	}
-
-	@Override
 	public ActionDTO map() {
-		// TODO Auto-generated method stub
 		return new MoveToNextDTO();
 	}
 	

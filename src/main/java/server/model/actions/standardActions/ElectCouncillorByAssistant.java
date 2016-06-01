@@ -11,6 +11,7 @@ import server.model.actions.QuickAction;
 import server.model.gameTable.CouncilBalcony;
 import server.model.gameTable.Councillor;
 import server.view.notifies.AvailableActionsNotify;
+import server.view.notifies.ErrorNotify;
 import server.view.notifies.GameTableNotify;
 import server.view.notifies.PlayerNotify;
 
@@ -39,11 +40,6 @@ public class ElectCouncillorByAssistant extends QuickAction {
 	private boolean checkAssistants(Game game){
 		return game.getCurrentPlayer().getNumberOfAssistants()>=necessaryAssistants;
 	}
-	
-	private boolean checkCouncillor(Game game){
-		return game.getGameTable().getCouncilReserve()
-				.getCouncillors().contains(this.newCouncillor);
-	}
 
 	/**
 	  * Substitutes a given councillor in one of the balconies of the game,
@@ -55,13 +51,14 @@ public class ElectCouncillorByAssistant extends QuickAction {
 	public boolean executeAction(Game game) throws NullPointerException{
 		if(this.councilBalcony==null || this.newCouncillor==null)
 			throw new NullPointerException("Parameters not setted");
-		
-		Councillor oldCouncillor;
-		if((!this.checkAssistants(game))||(!this.checkCouncillor(game))){
-			this.sendErrorNotify(game, Arrays.asList(game.getCurrentPlayer()));
+
+		if (!this.checkAssistants(game)) {
+			game.notifyObserver(new ErrorNotify("It seems that you haven't enough assistants!",
+					Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}
-		oldCouncillor=this.councilBalcony.substituteCouncillor(this.newCouncillor);
+		
+		Councillor oldCouncillor=this.councilBalcony.substituteCouncillor(this.newCouncillor);
 		game.getGameTable().getCouncilReserve().getCouncillors().add(oldCouncillor);
 		game.getCurrentPlayer().decrementAssistants(necessaryAssistants);
 		
@@ -76,11 +73,7 @@ public class ElectCouncillorByAssistant extends QuickAction {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "q3: elect a councillor by sending an assistant";
-	}
-
+	
 	@Override
 	public ActionDTO map() {
 		return new ElectCouncillorByAssistantDTO();

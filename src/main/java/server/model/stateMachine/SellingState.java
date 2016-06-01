@@ -32,10 +32,4 @@ public class SellingState implements State {
 		return Arrays.asList(new MakeAnOffer(), new MoveToNext());
 	}
 
-	@Override
-	public String toString(Game game) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

@@ -73,7 +73,7 @@ public class CityTest {
 		set.add(bonus1);
 		list.add(set);
 		City city=new City("città1",game.getGameTable().getRegionBoards().get(0), colour, list);
-		assertEquals(set, city.getRewardToken());
+		assertEquals(set,city.getRewardToken());
 	}
 	
 	@Test
@@ -110,7 +110,7 @@ public class CityTest {
 		set.add(bonus1);
 		list.add(set);
 		City city=new City("città1",game.getGameTable().getRegionBoards().get(0), colour, list);
-		assertEquals(game.getGameTable().getRegionBoards().get(0), city.getRegion());
+		assertTrue(game.getGameTable().getRegionBoards().get(0)==city.getRegion());
 	}
 	
 	@Test
@@ -128,7 +128,7 @@ public class CityTest {
 		set.add(bonus1);
 		list.add(set);
 		City city=new City("città1",game.getGameTable().getRegionBoards().get(0), colour, list);
-		assertEquals("città1", city.getName());
+		assertTrue("città1"== city.getName());
 	}
 	
 	@Test
@@ -146,7 +146,7 @@ public class CityTest {
 		set.add(bonus1);
 		list.add(set);
 		City city=new City("città1",game.getGameTable().getRegionBoards().get(0), colour, list);
-		assertEquals(colour, city.getColour());
+		assertTrue(colour==city.getColour());
 	}
 	
 	@Test
