@@ -34,8 +34,11 @@ public static int getNumberofcouncillors() {
  * Put a new councillor into the balcony following the balcony rules 
  * @param c Is the new councillor
  * @return The removed councillor
+ * @throws NullPointerException if councillor c is null
  */
-	public Councillor substituteCouncillor(Councillor c) {
+	public Councillor substituteCouncillor(Councillor c) throws NullPointerException{
+		if(c==null)
+			throw new NullPointerException("councillor can't be null");
 		Councillor[] temp=new Councillor[numberOfCouncillors];
 		Councillor old=this.councillors[numberOfCouncillors-1];
 		temp[0]=c;
