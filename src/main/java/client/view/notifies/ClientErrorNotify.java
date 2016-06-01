@@ -1,6 +1,6 @@
 package client.view.notifies;
 
-import client.view.CLI;
+import client.view.socket.CLI;
 
 public class ClientErrorNotify implements ClientViewNotify {
 

@@ -2,7 +2,7 @@ package client.view.notifies;
 
 
 
-import client.view.CLI;
+import client.view.socket.CLI;
 import modelDTO.playerDTO.ClientPlayerDTO;
 
 public class ClientPlayerNotify implements ClientViewNotify {

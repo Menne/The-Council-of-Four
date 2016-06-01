@@ -1,7 +1,8 @@
-package client.view;
+package client.view.socket;
 
 import java.util.Scanner;
 
+import client.view.ClientView;
 import client.view.notifies.ClientViewNotify;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.ActionWithParameters;

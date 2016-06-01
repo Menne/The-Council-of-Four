@@ -2,7 +2,7 @@ package client.controller;
 
 import java.io.IOException;
 
-import client.ClientOutHandler;
+import client.socket.ClientOutHandler;
 import modelDTO.GameDTO;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.clientNotifies.ClientNotify;

@@ -1,6 +1,6 @@
 package client.view.notifies;
 
-import client.view.CLI;
+import client.view.socket.CLI;
 import modelDTO.actionsDTO.AddPlayerDTO;
 
 public class WelcomeNotify implements ClientViewNotify {

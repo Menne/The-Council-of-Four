@@ -3,7 +3,7 @@ package client.view.notifies;
 import java.util.List;
 import java.util.StringTokenizer;
 
-import client.view.CLI;
+import client.view.socket.CLI;
 import modelDTO.parser.ActionParserVisitor;
 
 public class PoliticsCardsNotify implements ClientViewNotify {

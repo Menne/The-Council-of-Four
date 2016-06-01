@@ -1,4 +1,4 @@
-package client;
+package client.socket;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -9,8 +9,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import client.controller.ClientController;
-import client.view.CLI;
 import client.view.notifies.WelcomeNotify;
+import client.view.socket.CLI;
 import modelDTO.GameDTO;
 
 public class ClientSocket {

@@ -3,16 +3,22 @@
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import players.Player;
 import server.controller.Controller;
 import server.model.Game;
+import server.view.RMIView;
 import server.view.ServerSocketView;
 import server.view.View;
 
@@ -24,7 +30,7 @@ public class Server {
 	private final String NAME="CoF";
 	private final static int RMI_PORT=52365;
 	
-	private final Map<Game, List<View>> gamesMap;
+	private final Map<Game, Set<View>> gamesMap;
 	private Game currentGame;
 	private final List<Player> playerList;
 	
@@ -32,20 +38,27 @@ public class Server {
 	public Server(){
 		this.gamesMap=new HashMap<>();
 		this.currentGame=new Game();
-		this.gamesMap.put(currentGame, new ArrayList<>());
+		this.gamesMap.put(currentGame, new HashSet<>());
 		this.playerList=new ArrayList<>();
 	}
+	
+	
+	public void startRMI() throws RemoteException{
+		Registry registry = LocateRegistry.createRegistry(RMI_PORT);
+		System.out.println("Constructing the RMI registry");
+		RMIView rmiView=new RMIView();
+	}
+	
+	
 	
 	public void newReadySocketPlayer(ServerSocketView view) throws IOException{
 		
 		this.gamesMap.get(currentGame).add(view);
 		view.setGame(currentGame);
-		System.out.println("settato game della view");
 		this.playerList.add(view.getPlayer());
-		System.out.println("aggiunto player alla playerList");
 		view.getPlayer().setPlayerNumber(playerList.size());
 		
-		if(this.gamesMap.get(currentGame).size()==2){
+		if(this.playerList.size()==2){
 			Controller controller=new Controller(currentGame);
 			for(View gameView : this.gamesMap.get(currentGame)){
 				currentGame.registerObserver(gameView);
@@ -54,7 +67,7 @@ public class Server {
 			currentGame.start(new ArrayList<>(playerList));
 			playerList.clear();
 			this.currentGame=new Game();
-			this.gamesMap.put(currentGame, new ArrayList<>());			
+			this.gamesMap.put(currentGame, new HashSet<>());			
 		}
 	}
 	

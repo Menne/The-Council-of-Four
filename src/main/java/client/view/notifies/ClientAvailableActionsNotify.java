@@ -2,7 +2,7 @@ package client.view.notifies;
 
 import java.util.List;
 
-import client.view.CLI;
+import client.view.socket.CLI;
 import modelDTO.actionsDTO.ActionDTO;
 
 public class ClientAvailableActionsNotify implements ClientViewNotify {
