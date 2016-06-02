@@ -7,7 +7,7 @@ import client.view.notifies.ActionNotify;
 import client.view.notifies.ParametersNotify;
 import modelDTO.GameDTO;
 import modelDTO.actionsDTO.ActionDTO;
-import modelDTO.actionsDTO.MakeAnOfferDTO;
+import modelDTO.actionsDTO.marketActions.MakeAnOfferDTO;
 import modelDTO.marketDTO.MarketableDTO;
 import modelDTO.playerDTO.AssistantDTO;
 
@@ -63,6 +63,8 @@ public class MakeAnOfferParser implements ActionParserVisitor {
 				this.selectedAction.setOfferingObject(new AssistantDTO());
 			
 			this.selectedAction.setPrice(Integer.parseInt(currentParameter));
+			
+			this.selectedAction.parametersSetted();
 			
 			return selectedAction;
 		

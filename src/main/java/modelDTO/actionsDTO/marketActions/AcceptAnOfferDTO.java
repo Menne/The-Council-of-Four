@@ -1,9 +1,11 @@
-package modelDTO.actionsDTO;
+package modelDTO.actionsDTO.marketActions;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import modelDTO.GameDTO;
+import modelDTO.actionsDTO.ActionDTO;
+import modelDTO.actionsDTO.ActionWithParameters;
 import modelDTO.gameTableDTO.CardColourDTO;
 import modelDTO.gameTableDTO.CityDTO;
 import modelDTO.gameTableDTO.PermitTileDTO;
@@ -28,6 +30,7 @@ public class AcceptAnOfferDTO implements ActionDTO, ActionWithParameters {
 	 */
 	private static final long serialVersionUID = 4616730650885295726L;
 	private OfferDTO offerDTO;
+	private boolean parametersSetted=false;
 
 	
 	@Override
@@ -78,10 +81,18 @@ public class AcceptAnOfferDTO implements ActionDTO, ActionWithParameters {
 		this.offerDTO=offerDTO;
 	}
 	
+	public boolean checkIfParametersSetted() {
+		return parametersSetted;
+	}
+
+	public void parametersSetted() {
+		this.parametersSetted=true;
+	}
+	
 	
 	@Override
 	public String toString() {
-		return "ao: accept the an offer";
+		return "ao: accept an offer";
 	}
 
 }

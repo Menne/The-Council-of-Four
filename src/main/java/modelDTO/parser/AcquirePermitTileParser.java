@@ -4,8 +4,8 @@ import client.view.notifies.ActionNotify;
 import client.view.notifies.ParametersNotify;
 import client.view.notifies.PoliticsCardsNotify;
 import modelDTO.GameDTO;
-import modelDTO.actionsDTO.AcquirePermitTileDTO;
 import modelDTO.actionsDTO.ActionDTO;
+import modelDTO.actionsDTO.standardActions.AcquirePermitTileDTO;
 
 public class AcquirePermitTileParser implements ActionParserVisitor {
 	
@@ -46,6 +46,8 @@ public class AcquirePermitTileParser implements ActionParserVisitor {
 					("the colours of the cards in your hand you want to descard"));
 			this.game.notifyObserver(new PoliticsCardsNotify(parser.acceptablePoliticsCards(), this));
 			this.selectedAction.setCardsToDescard(parser.politicsCardsTranslator(currentParameter));
+			
+			this.selectedAction.parametersSetted();
 			
 		}
 		else 

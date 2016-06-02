@@ -3,8 +3,8 @@ package modelDTO.parser;
 import client.view.notifies.ActionNotify;
 import client.view.notifies.ParametersNotify;
 import modelDTO.GameDTO;
-import modelDTO.actionsDTO.AcceptAnOfferDTO;
 import modelDTO.actionsDTO.ActionDTO;
+import modelDTO.actionsDTO.marketActions.AcceptAnOfferDTO;
 
 public class AcceptAnOfferParser implements ActionParserVisitor {
 
@@ -30,6 +30,8 @@ public class AcceptAnOfferParser implements ActionParserVisitor {
 			this.game.notifyObserver(new ActionNotify("Do you want to buy one of these objects?"));
 			this.game.notifyObserver(new ParametersNotify(parser.acceptableOffers(), this));
 			this.selectedAction.setOffer(parser.OfferTranslator(currentParameter));
+			
+			this.selectedAction.parametersSetted();
 			
 		}
 		else 

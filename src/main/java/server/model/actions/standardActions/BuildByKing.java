@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import modelDTO.actionsDTO.ActionDTO;
-import modelDTO.actionsDTO.BuildByKingDTO;
+import modelDTO.actionsDTO.standardActions.BuildByKingDTO;
 import players.Player;
 import server.model.Game;
 import server.model.actions.MainAction;

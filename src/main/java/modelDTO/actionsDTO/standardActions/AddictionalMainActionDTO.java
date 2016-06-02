@@ -1,5 +1,6 @@
-package modelDTO.actionsDTO;
+package modelDTO.actionsDTO.standardActions;
 
+import modelDTO.actionsDTO.ActionDTO;
 import server.model.Game;
 import server.model.actions.Action;
 import server.model.actions.standardActions.AdditionalMainAction;

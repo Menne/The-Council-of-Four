@@ -1,7 +1,7 @@
 package server.model.actions.marketActions;
 
 import modelDTO.actionsDTO.ActionDTO;
-import modelDTO.actionsDTO.MakeAnOfferDTO;
+import modelDTO.actionsDTO.marketActions.AcceptAnOfferDTO;
 import server.model.Game;
 import server.model.actions.Action;
 import server.model.market.Offer;
@@ -28,7 +28,7 @@ public class AcceptAnOffer implements Action {
 
 	@Override
 	public ActionDTO map() {
-		return new MakeAnOfferDTO();
+		return new AcceptAnOfferDTO();
 	}
 
 }

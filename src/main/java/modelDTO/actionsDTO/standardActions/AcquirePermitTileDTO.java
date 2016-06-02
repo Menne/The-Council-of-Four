@@ -1,9 +1,11 @@
-package modelDTO.actionsDTO;
+package modelDTO.actionsDTO.standardActions;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import modelDTO.GameDTO;
+import modelDTO.actionsDTO.ActionDTO;
+import modelDTO.actionsDTO.ActionWithParameters;
 import modelDTO.gameTableDTO.CardColourDTO;
 import modelDTO.gameTableDTO.RegionDTO;
 import modelDTO.parser.AcquirePermitTileParser;
@@ -25,6 +27,7 @@ public class AcquirePermitTileDTO implements ActionDTO, ActionWithParameters {
 	private Integer numberOfPermitTile;
 	private RegionDTO chosenRegion;
 	private List<CardColourDTO> cardsToDescard;
+	private boolean parametersSetted=false;
 
 	public int getNumberOfPermitTiles() {
 		return numberOfPermitTile;
@@ -48,6 +51,14 @@ public class AcquirePermitTileDTO implements ActionDTO, ActionWithParameters {
 
 	public void setChosenRegion(RegionDTO chosenRegion) {
 		this.chosenRegion=chosenRegion;
+	}
+	
+	public boolean checkIfParametersSetted() {
+		return parametersSetted;
+	}
+
+	public void parametersSetted() {
+		this.parametersSetted=true;
 	}
 
 	@Override

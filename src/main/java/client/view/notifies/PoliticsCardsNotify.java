@@ -19,22 +19,34 @@ public class PoliticsCardsNotify implements ClientViewNotify {
 	@Override
 	public void stamp(CLI clientView) {
 		System.out.println(this.acceptablePoliticsCards);
+		this.askCards(clientView);
+	}
+	
+	private void askCards(CLI clientView) {
 		String input=clientView.getScanner().nextLine();
 		StringTokenizer st = new StringTokenizer(input);
-		while (!(st.hasMoreTokens() && st.countTokens()<5)) {
+		this.checkNumberOfCards(st, clientView);
+	}
+
+	
+	private void checkNumberOfCards(StringTokenizer st, CLI clientView) {
+		if (!(st.hasMoreTokens() && st.countTokens()<5)) {
 			System.out.println("Remember: you must descard at least 1 card and a maximum of 4 cards");
-			input=clientView.getScanner().nextLine();
-			st = new StringTokenizer(input);
+			this.askCards(clientView);
 		}
+		else 
+			this.checkCards(st, clientView);
+	}
+		
+	private void checkCards(StringTokenizer st, CLI clientView) {
 		while (st.hasMoreTokens()) {
 			String currentCard=st.nextToken();
 			if (!acceptablePoliticsCards.contains(currentCard)) {
 				System.out.println("Wrong cards. Retry");
-				input=clientView.getScanner().nextLine();
-				st.nextToken();
-				this.currentParser.setCurrentParameter(input);
+				this.askCards(clientView);
 			}
+			this.currentParser.setCurrentParameter(currentCard);
 		}
 	}
-
+		
 }

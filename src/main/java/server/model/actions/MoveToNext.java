@@ -1,13 +1,12 @@
- package server.model.actions;
+package server.model.actions;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.MoveToNextDTO;
-import players.Player;
 import server.model.Game;
-import server.view.notifies.GameTableNotify;
+import server.view.notifies.AvailableActionsNotify;
+import server.view.notifies.MessageNotify;
 
 public class MoveToNext extends QuickAction {
 	
@@ -16,11 +15,11 @@ public class MoveToNext extends QuickAction {
 	 */
 	@Override
 	public boolean executeAction(Game game) {
-		 
+		game.notifyObserver(new MessageNotify("Ok, I will notify you when it will be your turn again", 
+				Arrays.asList(game.getCurrentPlayer())));
 		game.setState(game.getState().moveToNextTransition(game));
-		List<Player> interestedPlayers=new ArrayList<>();
-		interestedPlayers.add(game.getCurrentPlayer());
-		game.notifyObserver(new GameTableNotify(game, interestedPlayers));
+		game.notifyObserver(new AvailableActionsNotify(game.getState().getAcceptableActions(game), 
+				Arrays.asList(game.getCurrentPlayer())));
 		return true;
 	}
 
@@ -28,7 +27,5 @@ public class MoveToNext extends QuickAction {
 	public ActionDTO map() {
 		return new MoveToNextDTO();
 	}
-	
-	
 
 }

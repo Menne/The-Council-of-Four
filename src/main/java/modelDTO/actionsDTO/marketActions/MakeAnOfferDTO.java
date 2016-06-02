@@ -1,9 +1,11 @@
-package modelDTO.actionsDTO;
+package modelDTO.actionsDTO.marketActions;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import modelDTO.GameDTO;
+import modelDTO.actionsDTO.ActionDTO;
+import modelDTO.actionsDTO.ActionWithParameters;
 import modelDTO.gameTableDTO.CardColourDTO;
 import modelDTO.gameTableDTO.CityDTO;
 import modelDTO.gameTableDTO.PermitTileDTO;
@@ -28,6 +30,7 @@ public class MakeAnOfferDTO implements ActionDTO, ActionWithParameters {
 	private static final long serialVersionUID = 7027014433305067100L;
 	private MarketableDTO offeringObjectDTO;
 	private int price;
+	private boolean parametersSetted=false;
 
 	@Override
 	public ActionParserVisitor setParser(GameDTO game) {
@@ -76,6 +79,14 @@ public class MakeAnOfferDTO implements ActionDTO, ActionWithParameters {
 
 	public void setPrice(int price) {
 		this.price=price;
+	}
+	
+	public boolean checkIfParametersSetted() {
+		return parametersSetted;
+	}
+
+	public void parametersSetted() {
+		this.parametersSetted=true;
 	}
 
 

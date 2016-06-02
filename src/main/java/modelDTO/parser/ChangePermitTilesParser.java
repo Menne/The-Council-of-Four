@@ -4,7 +4,7 @@ import client.view.notifies.ActionNotify;
 import client.view.notifies.ParametersNotify;
 import modelDTO.GameDTO;
 import modelDTO.actionsDTO.ActionDTO;
-import modelDTO.actionsDTO.ChangePermitTilesDTO;
+import modelDTO.actionsDTO.standardActions.ChangePermitTilesDTO;
 
 public class ChangePermitTilesParser implements ActionParserVisitor {
 
@@ -31,6 +31,8 @@ public class ChangePermitTilesParser implements ActionParserVisitor {
 				("the name of the region in which you want to pick"));
 		this.game.notifyObserver(new ParametersNotify(parser.acceptableRegions(), this));
 		this.selectedAction.setSelectedRegion(parser.regionTranslator(currentParameter));
+		
+		this.selectedAction.parametersSetted();
 		
 		return this.selectedAction;
 	}
