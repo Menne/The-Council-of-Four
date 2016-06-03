@@ -39,14 +39,16 @@ public class PoliticsCardsNotify implements ClientViewNotify {
 	}
 		
 	private void checkCards(StringTokenizer st, CLI clientView) {
+		String cards="";
 		while (st.hasMoreTokens()) {
 			String currentCard=st.nextToken();
 			if (!acceptablePoliticsCards.contains(currentCard)) {
 				System.out.println("Wrong cards. Retry");
 				this.askCards(clientView);
 			}
-			this.currentParser.setCurrentParameter(currentCard);
+			cards+=" "+currentCard;
 		}
+		this.currentParser.setCurrentParameter(cards);
 	}
 		
 }

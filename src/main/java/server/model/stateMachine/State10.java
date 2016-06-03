@@ -15,11 +15,12 @@ public class State10 implements State{
 	@Override
 	public State mainActionTransition(Game game) {
 		
-		if(game.getCurrentPlayer().getPlayerNumber()!=game.getPlayers().size()){
+		if (game.getCurrentPlayer().getPlayerNumber()!=game.getPlayers().size()){
 			game.nextPlayer();
 			return new BeginState();
 		}
-		else{
+		else {
+			game.nextPlayer();
 			game.startMarket();
 			return new SellingState();
 		}

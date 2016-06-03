@@ -60,6 +60,12 @@ public class ElectCouncillorByAssistant extends QuickAction {
 		
 		Councillor oldCouncillor=this.councilBalcony.substituteCouncillor(this.newCouncillor);
 		game.getGameTable().getCouncilReserve().getCouncillors().add(oldCouncillor);
+		for (Councillor councillor : game.getGameTable().getCouncilReserve().getCouncillors())
+			if (councillor.getColour().getColour().equals(this.newCouncillor.getColour().getColour())) {
+				game.getGameTable().getCouncilReserve().removeCouncillor(councillor);
+				break;
+			}
+		
 		game.getCurrentPlayer().decrementAssistants(necessaryAssistants);
 		
 		this.nextState(game);

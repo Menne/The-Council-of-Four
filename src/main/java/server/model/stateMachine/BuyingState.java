@@ -12,24 +12,27 @@ public class BuyingState implements State {
 
 	@Override
 	public State buyActionTransition(Game game) {
-		game.getMarket().buyingNextPlayer();
-		if(game.getMarket().isBuyingPhaseFinished()){
+		if (!game.getMarket().getBuyingPlayerList().isEmpty()){
+			game.getMarket().buyingNextPlayer(game);
+			return this;
+		}
+		else {
 			game.nextPlayer();
 			return new BeginState();
 		}
-		else
-			return this;
 	}
 
 	@Override
 	public State moveToNextTransition(Game game) {
-		game.getMarket().buyingNextPlayer();
-		if(game.getMarket().isBuyingPhaseFinished()){
+		if (!game.getMarket().getBuyingPlayerList().isEmpty()){
+			game.getMarket().buyingNextPlayer(game);
+			return this;
+		}
+		else {
 			game.nextPlayer();
+			System.out.println(game.getCurrentPlayer().getName());
 			return new BeginState();
 		}
-		else			
-			return this;
 	}
 
 	@Override

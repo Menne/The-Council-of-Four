@@ -37,19 +37,13 @@ public class AcquirePermitTile extends MainAction {
 		this.numberOfPermitTile = numberOfPermitTile;
 	}
 
-
-
 	public void setCardsToDescard(List<PoliticsCard> cardsToDescard) {
 		this.cardsToDescard = cardsToDescard;
 	}
 
-
-
 	public void setChosenRegion(RegionBoard chosenRegion) {
 		this.chosenRegion = chosenRegion;
 	}
-
-
 
 	/**
 	 * Acquire a permit tile from a designated region board by satisfying the councillors:
@@ -61,7 +55,7 @@ public class AcquirePermitTile extends MainAction {
 	 */
 	@Override
 	public boolean executeAction(Game game) throws NullPointerException, IllegalArgumentException{
-		if(this.numberOfPermitTile==null||
+		if (this.numberOfPermitTile==null||
 				this.cardsToDescard==null||
 				this.chosenRegion==null)
 			throw new NullPointerException("Paramters not setted");
@@ -80,11 +74,13 @@ public class AcquirePermitTile extends MainAction {
 		for (Bonus bonusToAssign : this.chosenRegion.getUncoveredPermitTiles()[numberOfPermitTile].getBonus())
 			bonusToAssign.assignBonus(game);
 		game.getCurrentPlayer().decrementCoins(CoinsToPay());
-		for (PoliticsCard card : cardsToDescard){
-			if(!game.getCurrentPlayer().getHand().contains(card))
-				throw new IllegalArgumentException("Current player hasn't theese cards");
+		
+		for (PoliticsCard card : cardsToDescard) {
+			if (!game.getCurrentPlayer().getHand().contains(card))
+				throw new IllegalArgumentException("Current player hasn't these cards");
 			game.getCurrentPlayer().removeCardFromHand(card);
 		}
+		
 		game.getCurrentPlayer().addTile(this.chosenRegion.pickUncoveredPermitTile(this.numberOfPermitTile));
 		this.chosenRegion.uncoverPermitTiles();
 		
@@ -105,11 +101,12 @@ public class AcquirePermitTile extends MainAction {
 	 * @return the amount of coins
 	 * @throws IndexOutOfBoundsException if the list of cards to discard is empty
 	 */
-	private int CoinsToPay() throws IndexOutOfBoundsException{
+	private int CoinsToPay() throws IndexOutOfBoundsException {
+		if (this.cardsToDescard.isEmpty())
+			throw new IndexOutOfBoundsException("you have selected 0 cards to buy a permit tile");
+		
 		int coinsToPay;
 		
-		if(this.cardsToDescard.isEmpty())
-			throw new IndexOutOfBoundsException("you have selected 0 cards to buy a permit tile");
 		if (this.cardsToDescard.size()==CouncilBalcony.getNumberofcouncillors())
 			coinsToPay=0;
 		else {
@@ -118,6 +115,10 @@ public class AcquirePermitTile extends MainAction {
 		for (PoliticsCard card : cardsToDescard)
 			if ("Rainbow".equals(card.getColour().getColour()))
 				coinsToPay++;
+	//	System.out.println("councillors  "+CouncilBalcony.getNumberofcouncillors());
+	//	System.out.println("hand size  "+this.cardsToDescard.size());
+	//	System.out.println("hand  "+this.cardsToDescard);
+	//	System.out.println("coinstopay  "+coinsToPay);
 		return coinsToPay;
 	}
 	
@@ -125,8 +126,9 @@ public class AcquirePermitTile extends MainAction {
 	 * checks if the player has enough coins
 	 */
 	private boolean CheckEnoughCoins(Game game) {
-		return game.getCurrentPlayer().getCoins() >= 
-				CoinsToPay();
+	//	System.out.println("coins of the player "+game.getCurrentPlayer().getCoins());
+	//	System.out.println("coinstopaybb  "+CoinsToPay());
+		return CoinsToPay() < game.getCurrentPlayer().getCoins();
 	}
 	
 	/**
@@ -139,19 +141,30 @@ public class AcquirePermitTile extends MainAction {
 		for (int i=0; i<=CouncilBalcony.getNumberofcouncillors()-1; i++)
 			temporaryBalcony.add(game.getGameTable().getCouncilOfKing().getCouncillors()[i]);
 		
-		for (PoliticsCard politicsCardInHand: cardsToDescard) {
-			if (politicsCardInHand.getColour().getColour() == "Rainbow")
+		for (PoliticsCard politicsCardInHand: this.cardsToDescard) {
+			if (politicsCardInHand.getColour().getColour()=="Rainbow")
 				satisfyCounter++;
-			for (int j=0; j<=temporaryBalcony.size()-1;) {
+			for (Councillor councillorToSatisfy : temporaryBalcony)
+				if (councillorToSatisfy.getColour().getColour().equals(politicsCardInHand.getColour().getColour())) {
+					temporaryBalcony.remove(councillorToSatisfy);
+					satisfyCounter++;
+				}
+			
+			
+		/*	for (int j=0; j<=temporaryBalcony.size()-1;) {
 				if (temporaryBalcony.get(j).getColour().equals(politicsCardInHand.getColour())) {
 					temporaryBalcony.remove(temporaryBalcony.get(j));
 					satisfyCounter++;
 				}
 				else
 					j++;
-			}
+			}*/
 		}
-		return satisfyCounter == this.cardsToDescard.size();
+	//	System.out.println(this.cardsToDescard);
+	//	System.out.println(temporaryBalcony);
+	//	System.out.println(satisfyCounter);
+	//	System.out.println(this.cardsToDescard.size());
+		return satisfyCounter==this.cardsToDescard.size();
 	}
 
 	

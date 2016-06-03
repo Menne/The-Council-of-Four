@@ -31,7 +31,7 @@ public interface State{
 	}
 
 	
-	public default State sellActionTransition() throws IllegalStateException{
+	public default State sellActionTransition(Game game) throws IllegalStateException{
 		
 		throw new IllegalStateException("There are not such transictions for this state");
 	}
@@ -56,5 +56,4 @@ public interface State{
 		
 	public List<Action> getAcceptableActions(Game game);
 
-	
 }

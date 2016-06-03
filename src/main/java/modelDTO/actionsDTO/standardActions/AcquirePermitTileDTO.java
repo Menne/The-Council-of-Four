@@ -86,6 +86,8 @@ public class AcquirePermitTileDTO implements ActionDTO, ActionWithParameters {
 			convertedCards.add(new PoliticsCard(new CardColour(cardColourDTO.getName())));
 		action.setCardsToDescard(convertedCards);
 		
+		System.out.println(convertedCards);
+		
 		return action;
 	}
 }

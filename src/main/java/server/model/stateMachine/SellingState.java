@@ -11,20 +11,27 @@ import server.model.actions.marketActions.MakeAnOffer;
 public class SellingState implements State {
 
 	@Override
-	public State sellActionTransition() {
-		
-		return this;
+	public State sellActionTransition(Game game) {
+		if (!game.getMarket().getSellingPlayerList().isEmpty()){
+			game.getMarket().sellingNextPlayer(game);
+			return this;
+		}			
+		else {
+			game.getMarket().buyingNextPlayer(game);
+			return new BuyingState();
+		}
 	}
 
 	@Override
 	public State moveToNextTransition(Game game) {
-		game.getMarket().sellingNextPlayer();
-		if(game.getMarket().isSellingPhaseFinished()){
-			game.nextPlayer();
-			return new BuyingState();
-		}			
-		else
+		if (!game.getMarket().getSellingPlayerList().isEmpty()){
+			game.getMarket().sellingNextPlayer(game);
 			return this;
+		}			
+		else {
+			game.getMarket().buyingNextPlayer(game);
+			return new BuyingState();
+		}
 	}
 
 	@Override
