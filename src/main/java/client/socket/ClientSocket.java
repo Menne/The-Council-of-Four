@@ -10,7 +10,7 @@ import java.util.concurrent.Executors;
 
 import client.controller.ClientController;
 import client.view.notifies.WelcomeNotify;
-import client.view.socket.CLI;
+import client.view.socket.CLIsocket;
 import modelDTO.GameDTO;
 
 public class ClientSocket {
@@ -23,20 +23,17 @@ public class ClientSocket {
 		Socket socket=new Socket(IP, PORT);
 		System.out.println("Connection created");
 		
-		GameDTO clientGame=new GameDTO();
-		CLI view=new CLI(clientGame.getParser());
-		clientGame.registerObserver(view);
 		
-		ExecutorService executor=Executors.newFixedThreadPool(2);
-		ClientOutHandler clientOutHandler=new ClientOutHandler(
-				new ObjectOutputStream(socket.getOutputStream()));
-		executor.submit(clientOutHandler);
 
-		ClientController clientController=new ClientController(clientGame, clientOutHandler);
+		GameDTO clientGame=new GameDTO();
+		ClientController clientController=new ClientController(clientGame);
+		CLIsocket view=new CLIsocket(clientGame.getParser(), 
+				new ObjectOutputStream(socket.getOutputStream()),
+				new ObjectInputStream(socket.getInputStream()));
+		clientGame.registerObserver(view);				
 		view.registerObserver(clientController);
-		executor.submit(new ClientInHandler(
-				new ObjectInputStream(socket.getInputStream()), clientController));
-		
+		ExecutorService executor=Executors.newSingleThreadExecutor();
+		executor.submit(view);
 		clientGame.notifyObserver(new WelcomeNotify());
 		view.input();
 	}

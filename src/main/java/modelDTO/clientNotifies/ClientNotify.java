@@ -2,11 +2,10 @@ package modelDTO.clientNotifies;
 
 import java.io.Serializable;
 
-import client.controller.ControllerNotify;
 import modelDTO.GameDTO;
 
 @FunctionalInterface
-public interface ClientNotify extends Serializable, ControllerNotify{
+public interface ClientNotify extends Serializable{
 
-	public void act(GameDTO gameDTOtoupdate);
+	public void updateModel(GameDTO gameDTOtoupdate);
 }

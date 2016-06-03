@@ -1,6 +1,6 @@
 package client.view.notifies;
 
-import client.view.socket.CLI;
+import client.view.socket.CLIsocket;
 
 public class ActionNotify implements ClientViewNotify {
 
@@ -11,7 +11,7 @@ public class ActionNotify implements ClientViewNotify {
 	}
 
 	@Override
-	public void stamp(CLI view) {
+	public void stamp(CLIsocket view) {
 		System.out.println(message);
 	}
 

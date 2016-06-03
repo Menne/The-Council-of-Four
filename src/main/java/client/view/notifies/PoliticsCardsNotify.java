@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-import client.view.socket.CLI;
+import client.view.socket.CLIsocket;
 import modelDTO.parser.ActionParserVisitor;
 import server.model.gameTable.CouncilBalcony;
 
@@ -19,7 +19,7 @@ public class PoliticsCardsNotify implements ClientViewNotify {
 	}
 
 	@Override
-	public void stamp(CLI clientView) {
+	public void stamp(CLIsocket clientView) {
 		System.out.println(this.acceptablePoliticsCards);
 		String input=clientView.getScanner().nextLine();
 		StringTokenizer st = new StringTokenizer(input);

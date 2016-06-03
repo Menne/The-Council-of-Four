@@ -1,5 +1,5 @@
 package client.view.rmi;
 
-public class CLI {
+public class CLIrmi {
 
 }

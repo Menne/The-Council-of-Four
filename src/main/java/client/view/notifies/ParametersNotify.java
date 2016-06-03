@@ -2,7 +2,7 @@ package client.view.notifies;
 
 import java.util.List;
 
-import client.view.socket.CLI;
+import client.view.socket.CLIsocket;
 import modelDTO.parser.ActionParserVisitor;
 
 public class ParametersNotify implements ClientViewNotify {
@@ -16,7 +16,7 @@ public class ParametersNotify implements ClientViewNotify {
 	}
 
 	@Override
-	public void stamp(CLI clientView) {
+	public void stamp(CLIsocket clientView) {
 		System.out.println(parameters);
 		String input=clientView.getScanner().nextLine();
 			while (!parameters.contains(input)) {
