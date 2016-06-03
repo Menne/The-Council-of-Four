@@ -8,11 +8,11 @@ import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.clientNotifies.ClientNotify;
 import observerPattern.Observer;
 
-public class ClientController implements Observer<ActionDTO> {
+public class ClientController implements Observer<ControllerNotify> {
 
 	private GameDTO clientGame;
 	private final ClientOutHandler clientOutHandler;
-
+	
 	public ClientController(GameDTO clientGame, ClientOutHandler clientOutHandler) {
 		this.clientGame=clientGame;
 		this.clientOutHandler=clientOutHandler;
@@ -24,16 +24,18 @@ public class ClientController implements Observer<ActionDTO> {
 	}
 	
 	@Override
-	public void update(ActionDTO selectedAction) {
-		try {
+	public void update(ControllerNotify notify) {
+		
+		if(notify instanceof ActionDTO)
+			try {
+				ActionDTO selectedAction=(ActionDTO) notify;
+				this.clientOutHandler.getSocketOut().writeObject(selectedAction);
+				this.clientOutHandler.getSocketOut().flush();
 			
-			this.clientOutHandler.getSocketOut().writeObject(selectedAction);
-			this.clientOutHandler.getSocketOut().flush();
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	}
 
 }

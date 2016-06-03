@@ -1,5 +1,7 @@
 package client.rmi;
 
-public interface ClientRMIViewRemote {
+import java.rmi.Remote;
+
+public interface ClientRMIViewRemote extends Remote{
 
 }
