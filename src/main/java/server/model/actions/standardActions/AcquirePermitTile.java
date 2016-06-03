@@ -115,10 +115,6 @@ public class AcquirePermitTile extends MainAction {
 		for (PoliticsCard card : cardsToDescard)
 			if ("Rainbow".equals(card.getColour().getColour()))
 				coinsToPay++;
-	//	System.out.println("councillors  "+CouncilBalcony.getNumberofcouncillors());
-	//	System.out.println("hand size  "+this.cardsToDescard.size());
-	//	System.out.println("hand  "+this.cardsToDescard);
-	//	System.out.println("coinstopay  "+coinsToPay);
 		return coinsToPay;
 	}
 	
@@ -126,9 +122,7 @@ public class AcquirePermitTile extends MainAction {
 	 * checks if the player has enough coins
 	 */
 	private boolean CheckEnoughCoins(Game game) {
-	//	System.out.println("coins of the player "+game.getCurrentPlayer().getCoins());
-	//	System.out.println("coinstopaybb  "+CoinsToPay());
-		return CoinsToPay() < game.getCurrentPlayer().getCoins();
+		return game.getCurrentPlayer().getCoins() >= CoinsToPay();
 	}
 	
 	/**
@@ -139,31 +133,30 @@ public class AcquirePermitTile extends MainAction {
 		List<Councillor> temporaryBalcony=new ArrayList<Councillor>();
 		int satisfyCounter=0;
 		for (int i=0; i<=CouncilBalcony.getNumberofcouncillors()-1; i++)
-			temporaryBalcony.add(game.getGameTable().getCouncilOfKing().getCouncillors()[i]);
+			temporaryBalcony.add(chosenRegion.getRegionBalcony().getCouncillors()[i]);		
 		
 		for (PoliticsCard politicsCardInHand: this.cardsToDescard) {
-			if (politicsCardInHand.getColour().getColour()=="Rainbow")
+			if (politicsCardInHand.getColour().getColour().equals("Rainbow"))
 				satisfyCounter++;
-			for (Councillor councillorToSatisfy : temporaryBalcony)
+	
+			
+			/*	for (Councillor councillorToSatisfy : temporaryBalcony)
 				if (councillorToSatisfy.getColour().getColour().equals(politicsCardInHand.getColour().getColour())) {
 					temporaryBalcony.remove(councillorToSatisfy);
 					satisfyCounter++;
-				}
+				} */
 			
 			
-		/*	for (int j=0; j<=temporaryBalcony.size()-1;) {
+			for (int j=0; j<=temporaryBalcony.size()-1;) {
 				if (temporaryBalcony.get(j).getColour().equals(politicsCardInHand.getColour())) {
 					temporaryBalcony.remove(temporaryBalcony.get(j));
 					satisfyCounter++;
+					break;
 				}
 				else
 					j++;
-			}*/
+			}
 		}
-	//	System.out.println(this.cardsToDescard);
-	//	System.out.println(temporaryBalcony);
-	//	System.out.println(satisfyCounter);
-	//	System.out.println(this.cardsToDescard.size());
 		return satisfyCounter==this.cardsToDescard.size();
 	}
 

@@ -218,13 +218,15 @@ public class Parser implements Serializable{
 	 * @return the politics card obtained from the string
 	 */
 	protected List<CardColourDTO> politicsCardsTranslator(String cardsToTranslate) {
-		List<CardColourDTO> cardsTranslated=new ArrayList<CardColourDTO>();
+		List<CardColourDTO> cardsTranslated=new ArrayList<>();
 		StringTokenizer st = new StringTokenizer(cardsToTranslate);
 		while (st.hasMoreTokens()) {
 			String currentCard=st.nextToken();
 			for (CardColourDTO cardTranslated : this.game.getClientPlayer().getHand())
-				if (cardTranslated.getName().equals(currentCard))
+				if (cardTranslated.getName().equals(currentCard)) {
 					cardsTranslated.add(cardTranslated);
+					break;
+				}
 		}
 		return cardsTranslated;
 	}
