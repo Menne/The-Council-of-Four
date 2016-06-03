@@ -1,26 +1,42 @@
 package client.view.socket;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 import client.view.ClientView;
 import client.view.notifies.ClientViewNotify;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.ActionWithParameters;
+import modelDTO.clientNotifies.ClientNotify;
 import modelDTO.parser.Parser;
 
 
-public class CLI extends ClientView{
+public class CLI extends ClientView implements Runnable{
 
 	private final Parser parser;
-	private Scanner scanner;
+	private final Scanner scanner;
 	
-	public CLI(Parser parser) {
+	private final ObjectOutputStream socketOut;
+	private final ObjectInputStream socketIn;
+	
+	public CLI(Parser parser, ObjectOutputStream socketOut, ObjectInputStream socketIn) throws IOException {
+		
 		this.parser=parser;
+		this.socketOut=socketOut;
+		this.socketIn=socketIn;
 		this.scanner=new Scanner(System.in);
 	}
 	
 	public Scanner getScanner() {
 		return this.scanner;
+	}
+	
+	
+
+	public ObjectOutputStream getSocketOut() {
+		return socketOut;
 	}
 
 	@Override
@@ -47,15 +63,49 @@ public class CLI extends ClientView{
 			ActionWithParameters actionWithParameters=(ActionWithParameters) selectedAction;
 			this.insertParameters(actionWithParameters);
 		}
-		else
-			this.notifyObserver(selectedAction);
+		else{
+			try {
+				
+				socketOut.writeObject(selectedAction);
+				socketOut.flush();
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	public void insertParameters(ActionWithParameters selectedAction) {
 		this.parser.parametersParser(selectedAction);
-		if (selectedAction.checkIfParametersSetted())
-			this.notifyObserver(selectedAction);
+		if (selectedAction.checkIfParametersSetted()){
+			try {
+				
+				socketOut.writeObject(selectedAction);
+				socketOut.flush();
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
 	}
-	
+
+	@Override
+	public void run() {
+		while (true){
+			try {
+				Object object = socketIn.readObject();
+				ClientNotify clientNotify=(ClientNotify) object;
+				this.notifyObserver(clientNotify);
+				
+			} catch (ClassNotFoundException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+		}
+	}
 
 }

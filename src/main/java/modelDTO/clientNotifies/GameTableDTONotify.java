@@ -17,7 +17,7 @@ public class GameTableDTONotify implements ClientNotify{
 	}
 
 	@Override
-	public void act(GameDTO gameDTOtoupdate) {
+	public void updateModel(GameDTO gameDTOtoupdate) {
 		gameDTOtoupdate.getClientGameTable().setClientCouncillorReserve(this.updatedGame.getClientCouncillorReserve());
 		gameDTOtoupdate.getClientGameTable().setClientKingBalcony(this.updatedGame.getClientKingBalcony());
 		gameDTOtoupdate.getClientGameTable().setClientNobilityTrack(this.updatedGame.getClientNobilityTrack());
