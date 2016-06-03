@@ -1,4 +1,4 @@
-package client.rmi;
+package client;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -8,6 +8,7 @@ import java.rmi.server.UnicastRemoteObject;
 
 import client.controller.ClientController;
 import client.view.rmi.CLIrmi;
+import client.view.rmi.ClientRMIViewRemote;
 import modelDTO.GameDTO;
 import server.view.RMIViewRemote;
 

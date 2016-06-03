@@ -3,7 +3,7 @@ package server.view;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
-import client.rmi.ClientRMIViewRemote;
+import client.view.rmi.ClientRMIViewRemote;
 import modelDTO.actionsDTO.ActionDTO;
 
 

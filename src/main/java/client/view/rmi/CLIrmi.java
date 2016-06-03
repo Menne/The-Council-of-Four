@@ -3,7 +3,6 @@ package client.view.rmi;
 import java.rmi.RemoteException;
 import java.util.Scanner;
 
-import client.rmi.ClientRMIViewRemote;
 import client.view.ClientView;
 import client.view.notifies.ClientViewNotify;
 import modelDTO.actionsDTO.ActionDTO;

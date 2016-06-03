@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.util.HashSet;
 import java.util.Set;
 
-import client.rmi.ClientRMIViewRemote;
+import client.view.rmi.ClientRMIViewRemote;
 import modelDTO.actionsDTO.ActionDTO;
 import server.Server;
 import server.view.notifies.ViewNotify;
