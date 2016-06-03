@@ -10,7 +10,7 @@ import java.util.concurrent.Executors;
 
 import client.controller.ClientController;
 import client.view.notifies.WelcomeNotify;
-import client.view.socket.CLI;
+import client.view.socket.CLIsocket;
 import modelDTO.GameDTO;
 
 public class ClientSocket {
@@ -27,7 +27,7 @@ public class ClientSocket {
 
 		GameDTO clientGame=new GameDTO();
 		ClientController clientController=new ClientController(clientGame);
-		CLI view=new CLI(clientGame.getParser(), 
+		CLIsocket view=new CLIsocket(clientGame.getParser(), 
 				new ObjectOutputStream(socket.getOutputStream()),
 				new ObjectInputStream(socket.getInputStream()));
 		clientGame.registerObserver(view);				

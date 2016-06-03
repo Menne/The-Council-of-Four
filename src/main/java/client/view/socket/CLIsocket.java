@@ -13,7 +13,7 @@ import modelDTO.clientNotifies.ClientNotify;
 import modelDTO.parser.Parser;
 
 
-public class CLI extends ClientView implements Runnable{
+public class CLIsocket extends ClientView implements Runnable{
 
 	private final Parser parser;
 	private final Scanner scanner;
@@ -21,7 +21,7 @@ public class CLI extends ClientView implements Runnable{
 	private final ObjectOutputStream socketOut;
 	private final ObjectInputStream socketIn;
 	
-	public CLI(Parser parser, ObjectOutputStream socketOut, ObjectInputStream socketIn) throws IOException {
+	public CLIsocket(Parser parser, ObjectOutputStream socketOut, ObjectInputStream socketIn) throws IOException {
 		
 		this.parser=parser;
 		this.socketOut=socketOut;

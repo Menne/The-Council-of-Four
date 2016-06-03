@@ -3,7 +3,7 @@ package client.view.notifies;
 import java.util.List;
 import java.util.StringTokenizer;
 
-import client.view.socket.CLI;
+import client.view.socket.CLIsocket;
 import modelDTO.parser.ActionParserVisitor;
 
 public class PoliticsCardsNotify implements ClientViewNotify {
@@ -17,19 +17,19 @@ public class PoliticsCardsNotify implements ClientViewNotify {
 	}
 
 	@Override
-	public void stamp(CLI clientView) {
+	public void stamp(CLIsocket clientView) {
 		System.out.println(this.acceptablePoliticsCards);
 		this.askCards(clientView);
 	}
 	
-	private void askCards(CLI clientView) {
+	private void askCards(CLIsocket clientView) {
 		String input=clientView.getScanner().nextLine();
 		StringTokenizer st = new StringTokenizer(input);
 		this.checkNumberOfCards(st, clientView);
 	}
 
 	
-	private void checkNumberOfCards(StringTokenizer st, CLI clientView) {
+	private void checkNumberOfCards(StringTokenizer st, CLIsocket clientView) {
 		if (!(st.hasMoreTokens() && st.countTokens()<5)) {
 			System.out.println("Remember: you must descard at least 1 card and a maximum of 4 cards");
 			this.askCards(clientView);
@@ -38,7 +38,7 @@ public class PoliticsCardsNotify implements ClientViewNotify {
 			this.checkCards(st, clientView);
 	}
 		
-	private void checkCards(StringTokenizer st, CLI clientView) {
+	private void checkCards(StringTokenizer st, CLIsocket clientView) {
 		String cards="";
 		while (st.hasMoreTokens()) {
 			String currentCard=st.nextToken();

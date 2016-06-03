@@ -46,17 +46,20 @@ public class Server {
 	public void startRMI() throws RemoteException{
 		Registry registry = LocateRegistry.createRegistry(RMI_PORT);
 		System.out.println("Constructing the RMI registry");
-		RMIView rmiView=new RMIView();
+		RMIView rmiView=new RMIView(this);
 	}
 	
 	
 	
-	public void newReadySocketPlayer(ServerSocketView view) throws IOException{
+	public void newReadySocketPlayer(View view, Player player) throws IOException{
 		
 		this.gamesMap.get(currentGame).add(view);
-		view.setGame(currentGame);
-		this.playerList.add(view.getPlayer());
-		view.getPlayer().setPlayerNumber(playerList.size());
+		if(view instanceof ServerSocketView){
+			ServerSocketView serverSocketView= (ServerSocketView) view;
+			serverSocketView.setGame(currentGame);
+		}
+		this.playerList.add(player);
+		player.setPlayerNumber(playerList.size());
 		
 		if(this.playerList.size()==2){
 			Controller controller=new Controller(currentGame);
