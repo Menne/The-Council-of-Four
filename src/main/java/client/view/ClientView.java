@@ -1,5 +1,7 @@
 package client.view;
 
+import java.rmi.RemoteException;
+
 import client.view.notifies.ClientViewNotify;
 import modelDTO.clientNotifies.ClientNotify;
 import observerPattern.Observable;
@@ -9,5 +11,7 @@ public abstract class ClientView extends Observable<ClientNotify> implements Obs
 
 	@Override
 	public abstract void update(ClientViewNotify notify);
+	
+	public abstract void input() throws RemoteException;
 
 }

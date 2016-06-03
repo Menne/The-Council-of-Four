@@ -1,11 +1,11 @@
 package client.view.notifies;
 
 
-import client.view.socket.CLIsocket;
+import java.util.Scanner;
 
 @FunctionalInterface
 public interface ClientViewNotify {
 	
-	public void stamp(CLIsocket view);
+	public void stamp(Scanner scanner);
 
 }

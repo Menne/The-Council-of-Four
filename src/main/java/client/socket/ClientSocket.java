@@ -9,7 +9,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import client.controller.ClientController;
-import client.view.notifies.WelcomeNotify;
 import client.view.socket.CLIsocket;
 import modelDTO.GameDTO;
 
@@ -34,7 +33,7 @@ public class ClientSocket {
 		view.registerObserver(clientController);
 		ExecutorService executor=Executors.newSingleThreadExecutor();
 		executor.submit(view);
-		clientGame.notifyObserver(new WelcomeNotify());
+		view.welcome();
 		view.input();
 	}
 	

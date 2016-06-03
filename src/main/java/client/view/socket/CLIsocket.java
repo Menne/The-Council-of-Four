@@ -9,6 +9,7 @@ import client.view.ClientView;
 import client.view.notifies.ClientViewNotify;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.ActionWithParameters;
+import modelDTO.actionsDTO.AddPlayerDTO;
 import modelDTO.clientNotifies.ClientNotify;
 import modelDTO.parser.Parser;
 
@@ -41,10 +42,10 @@ public class CLIsocket extends ClientView implements Runnable{
 
 	@Override
 	public void update(ClientViewNotify notify) {
-		notify.stamp(this);
+		notify.stamp(scanner);
 	}
 	
-	
+	@Override
 	public void input() {
 		while (true) {
 
@@ -58,7 +59,7 @@ public class CLIsocket extends ClientView implements Runnable{
 		}
 	}
 	
-	public void checkIfParametersNeeded(ActionDTO selectedAction) {
+	private void checkIfParametersNeeded(ActionDTO selectedAction) {
 		if (selectedAction instanceof ActionWithParameters) {
 			ActionWithParameters actionWithParameters=(ActionWithParameters) selectedAction;
 			this.insertParameters(actionWithParameters);
@@ -76,7 +77,7 @@ public class CLIsocket extends ClientView implements Runnable{
 		}
 	}
 	
-	public void insertParameters(ActionWithParameters selectedAction) {
+	private void insertParameters(ActionWithParameters selectedAction) {
 		this.parser.parametersParser(selectedAction);
 		if (selectedAction.checkIfParametersSetted()){
 			try {
@@ -89,6 +90,22 @@ public class CLIsocket extends ClientView implements Runnable{
 				e.printStackTrace();
 			}
 			
+		}
+	}
+	
+	public void welcome(){
+		AddPlayerDTO actionDTO=new AddPlayerDTO();
+		System.out.println("Welcome to a new game of CoF! Please, tell me your name:");
+		String input=scanner.nextLine();
+		actionDTO.setPlayerName(input);
+		try {
+			
+			socketOut.writeObject(actionDTO);
+			socketOut.flush();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 

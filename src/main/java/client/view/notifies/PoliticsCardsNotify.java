@@ -2,9 +2,9 @@ package client.view.notifies;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.StringTokenizer;
 
-import client.view.socket.CLIsocket;
 import modelDTO.parser.ActionParserVisitor;
 import server.model.gameTable.CouncilBalcony;
 
@@ -19,12 +19,12 @@ public class PoliticsCardsNotify implements ClientViewNotify {
 	}
 
 	@Override
-	public void stamp(CLIsocket clientView) {
+	public void stamp(Scanner scanner) {
 		System.out.println(this.acceptablePoliticsCards);
-		String input=clientView.getScanner().nextLine();
+		String input=scanner.nextLine();
 		StringTokenizer st = new StringTokenizer(input);
 		while (!this.checkCards(st)) {
-			input=clientView.getScanner().nextLine();
+			input=scanner.nextLine();
 			st = new StringTokenizer(input);
 		}
 		this.currentParser.setCurrentParameter(input);

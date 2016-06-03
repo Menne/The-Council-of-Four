@@ -1,6 +1,6 @@
 package client.view.notifies;
 
-import client.view.socket.CLIsocket;
+import java.util.Scanner;
 
 public class PlayerAcceptedNotify implements ClientViewNotify {
 
@@ -11,7 +11,7 @@ public class PlayerAcceptedNotify implements ClientViewNotify {
 	}
 	
 	@Override
-	public void stamp(CLIsocket view) {
+	public void stamp(Scanner scanner) {
 		System.out.println(message);
 
 	}

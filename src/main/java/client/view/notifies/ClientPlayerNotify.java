@@ -2,7 +2,8 @@ package client.view.notifies;
 
 
 
-import client.view.socket.CLIsocket;
+import java.util.Scanner;
+
 import modelDTO.playerDTO.ClientPlayerDTO;
 
 public class ClientPlayerNotify implements ClientViewNotify {
@@ -14,7 +15,7 @@ public class ClientPlayerNotify implements ClientViewNotify {
 	}
 
 	@Override
-	public void stamp(CLIsocket view) {
+	public void stamp(Scanner scanner) {
 		System.out.println(clientPlayerUpdated);
 
 	}
