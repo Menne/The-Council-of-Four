@@ -73,6 +73,10 @@ public class MakeAnOfferDTO implements ActionDTO, ActionWithParameters {
 		return realBuildableCitiesString.equals(buildableCitiesDTOString);
 	}
 	
+	public MarketableDTO getOfferingObject() {
+		return this.offeringObjectDTO;
+	}
+	
 	public void setOfferingObject(MarketableDTO offeringObjectDTO) {
 		this.offeringObjectDTO=offeringObjectDTO;
 	}
@@ -94,5 +98,7 @@ public class MakeAnOfferDTO implements ActionDTO, ActionWithParameters {
 	public String toString() {
 		return "mo: make an offer";
 	}
+
+	
 
 }

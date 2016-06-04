@@ -18,7 +18,7 @@ public class MarketDTO implements ModelDTO<Market>{
 	private List<String> sellingPlayerList;
 	private List<String> buyingPlayerList;
 
-	public MarketDTO(){
+	public MarketDTO() {
 		this.offersList=new ArrayList<>();
 		this.sellingPlayerList=new ArrayList<>();
 		this.buyingPlayerList=new ArrayList<>();
