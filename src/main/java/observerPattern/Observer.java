@@ -1,5 +1,7 @@
 package observerPattern;
 
+import java.rmi.RemoteException;
+
 @FunctionalInterface
 public interface Observer<C> {
 

@@ -18,7 +18,7 @@ import server.model.gameTable.PoliticsCard;
 public class Player {
 
 	private int playerNumber;
-	private  String name;
+	private String name;
 	private final List<Assistant> assistants;
 	private int score;
 	private int nobility;
@@ -38,7 +38,18 @@ public class Player {
 	 * @param assistants number of initial assistants
 	 * @param coins number of initial coins
 	 */
-	public Player() {
+	public Player(String name) {
+		this.assistants=new ArrayList<>();
+		this.hand=new ArrayList<>();
+		this.playersPermitTilesTurnedDown=new ArrayList<>();
+		this.playersPermitTilesTurnedUp=new ArrayList<>();
+		this.emporiums=new ArrayList<>();
+		this.playersFinalBonus=new ArrayList<>();
+		this.name=name;
+	}
+	
+	//costruttore momentaneo per non far fallire tutti i test
+	public Player(){
 		this.assistants=new ArrayList<>();
 		this.hand=new ArrayList<>();
 		this.playersPermitTilesTurnedDown=new ArrayList<>();
@@ -95,10 +106,6 @@ public class Player {
 
 	public void setPlayerNumber(int playerNumber) {
 		this.playerNumber = playerNumber;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public void setScore(int score) {

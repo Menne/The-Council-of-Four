@@ -37,6 +37,8 @@ public class Server {
 	private Game currentGame;
 	private final List<Player> playerList;
 	
+	private RMIView currentRMIView;
+	
 	
 	public Server(){
 		this.gamesMap=new HashMap<>();
@@ -49,15 +51,15 @@ public class Server {
 	public void startRMI() throws RemoteException, AlreadyBoundException{
 		Registry registry = LocateRegistry.createRegistry(RMI_PORT);
 		System.out.println("Constructing the RMI registry");
-		RMIView rmiView=new RMIView(this);
+		this.currentRMIView=new RMIView(this, currentGame);
 		
-		RMIViewRemote rmiViewRemote=(RMIViewRemote) UnicastRemoteObject.exportObject(rmiView,0);
-		registry.bind(NAME, rmiView);
+		RMIViewRemote rmiViewRemote=(RMIViewRemote) UnicastRemoteObject.exportObject(currentRMIView,0);
+		registry.bind(NAME, currentRMIView);
 	}
 	
 	
 	
-	public void newReadySocketPlayer(View view, Player player) throws IOException{
+	public void newReadyPlayer(View view, Player player) throws IOException{
 		
 		this.gamesMap.get(currentGame).add(view);
 		if(view instanceof ServerSocketView){
@@ -92,23 +94,25 @@ public class Server {
 			
 			Socket socket=serverSocket.accept();
 			System.out.println("Client Socket Accepted!");
-			
-			Player player=new Player();
 					
-			ServerSocketView view=new ServerSocketView(socket, player, this);
+			ServerSocketView view=new ServerSocketView(socket, this);
 			
 			executor.submit(view);
 			 
 		}
 	}
 	
-	public static void main(String[] args) throws IOException{
+	public static void main(String[] args) throws IOException, AlreadyBoundException{
 		Server server=new Server();
 		try {
+			
 			server.startSocket();
+			
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		server.startRMI();
 	}
 }

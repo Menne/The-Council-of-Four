@@ -72,7 +72,7 @@ public class CLIrmi extends ClientView implements ClientRMIViewRemote{
 		System.out.println("Welcome to a new game of CoF! Please, tell me your name:");
 		String input=scanner.nextLine();
 		actionDTO.setPlayerName(input);
-		this.serverStub.receiveAction(actionDTO);
+		this.serverStub.registerClient(this, input);
 	}
 	
 	
