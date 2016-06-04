@@ -9,8 +9,6 @@ import client.view.notifies.OfferPriceNotify;
 import modelDTO.GameDTO;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.marketActions.MakeAnOfferDTO;
-import modelDTO.gameTableDTO.CardColourDTO;
-import modelDTO.gameTableDTO.PermitTileDTO;
 import modelDTO.playerDTO.AssistantDTO;
 
 public class MakeAnOfferParser implements ActionParserVisitor {

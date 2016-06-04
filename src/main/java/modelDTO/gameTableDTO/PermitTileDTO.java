@@ -35,19 +35,19 @@ public class PermitTileDTO implements ModelDTO<PermitTile>, MarketableDTO {
 	}
 
 	public Set<CityDTO> getBuildablecities() {
-		return buildablecities;
+		return this.buildablecities;
 	}
 
 	public void setBuildablecities(Set<CityDTO> buildablecities) {
-		this.buildablecities = buildablecities;
+		this.buildablecities=buildablecities;
 	}
 
 	public Set<Bonus> getBonuses() {
-		return bonuses;
+		return this.bonuses;
 	}
 
 	public void setBonuses(Set<Bonus> bonuses) {
-		this.bonuses = bonuses;
+		this.bonuses=bonuses;
 	}
 
 	@Override
