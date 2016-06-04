@@ -22,7 +22,7 @@ public class NobilityBonusTest {
 		Player a = new Player();
 		players.add(a);
 		game.start(players);
-		game.setCurrentPlayer(game.getPlayers().get(0));
+		game.setCurrentPlayer(a);
 		NobilityBonus bonus= new NobilityBonus(2);
 		int temp=game.getCurrentPlayer().getScore();
 		bonus.assignBonus(game);
