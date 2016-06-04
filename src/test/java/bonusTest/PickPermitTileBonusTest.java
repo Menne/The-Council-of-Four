@@ -2,6 +2,8 @@ package bonusTest;
 
 
 
+import static org.junit.Assert.*;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +13,7 @@ import org.junit.Test;
 import players.Player;
 import server.model.Game;
 import server.model.bonus.PickPermitTileBonus;
+import server.model.stateMachine.State11;
 
 public class PickPermitTileBonusTest {
 
@@ -34,7 +37,7 @@ public class PickPermitTileBonusTest {
 		new PickPermitTileBonus(game.getGameTable().getRegionBoards().get(0), -1);
 	}
 	
-/*	@Test
+	/*@Test
 	public void testIfBonusGiveThePermitTileToPlayer() throws IOException{
 		Game game=new Game();
 		List<Player> players = new ArrayList<Player>();
