@@ -52,6 +52,7 @@ public class RMIView extends View implements RMIViewRemote {
 			this.clientsMap.put(clientStub, player);
 			server.newReadyPlayer(this, player);
 			System.out.println("client registered");
+			
 			ClientPlayerDTO clientPlayerDTO=new ClientPlayerDTO();
 			clientPlayerDTO.map(player);
 			clientStub.updateClient(new PlayerAcceptedDTONotify(clientPlayerDTO));

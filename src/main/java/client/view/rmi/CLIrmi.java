@@ -27,7 +27,7 @@ public class CLIrmi extends ClientView implements ClientRMIViewRemote{
 
 	@Override
 	public void update(ClientViewNotify notify) {
-//		notify.stamp(scanner);		
+		notify.stamp(scanner);		
 	}
 
 	@Override
