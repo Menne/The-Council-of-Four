@@ -14,6 +14,7 @@ public class Market {
 	private final List<Player> buyingPlayerList;
 	
 	public Market(List<Player> players){
+
 		this.offersList=new ArrayList<>();
 		this.sellingPlayerList=new ArrayList<>(players);
 		this.buyingPlayerList=new ArrayList<>(players);
@@ -24,6 +25,12 @@ public class Market {
 		this.offersList.add(new Offer(offeringPlayer,offeredObject,price));
 	}
 	
+	/**
+	 * it gives to buying player the object and decrements his coins; removes from the selling player 
+	 * the object and increment his coins
+	 * @param offer is the object to buy
+	 * @param buyingPlayer is the player who accept the offer
+	 */
 	public void buyOffer(Offer offer, Player buyingPlayer){
 		buyingPlayer.decrementCoins(offer.getPrice());
 		offer.getOfferingPlayer().incrementCoins(offer.getPrice());
