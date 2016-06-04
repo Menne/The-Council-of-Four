@@ -22,7 +22,6 @@ public class MarketNotify implements ViewNotify {
 	public ClientNotify toClientNotify() {
 		MarketDTO marketDTO=new MarketDTO();
 		marketDTO.map(this.market);
-		System.out.println(marketDTO);
 		return new MarketDTONotify(marketDTO);
 	}
 

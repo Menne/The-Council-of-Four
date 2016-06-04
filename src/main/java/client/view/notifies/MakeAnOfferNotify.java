@@ -28,13 +28,7 @@ public class MakeAnOfferNotify implements ClientViewNotify {
 			System.out.println("Wrong parameter. Retry");
 			input=scanner.nextLine();
 		}
-		this.currentParser.setCurrentParameter(input);
-		System.out.println("What's the price of the element you selected?");
-		input=scanner.nextLine();
-		this.currentParser.setCurrentParameter(input);
-				
-	} 
-		
-	
+		this.currentParser.setCurrentParameter(input);		
+	}
 
 }

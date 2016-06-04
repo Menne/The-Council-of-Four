@@ -5,6 +5,7 @@ import java.util.List;
 
 import client.view.notifies.ActionNotify;
 import client.view.notifies.MakeAnOfferNotify;
+import client.view.notifies.OfferPriceNotify;
 import modelDTO.GameDTO;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.marketActions.MakeAnOfferDTO;
@@ -26,7 +27,7 @@ public class MakeAnOfferParser implements ActionParserVisitor {
 	}
 
 	@Override
-	public ActionDTO setParameters(Parser parser) {
+	public ActionDTO setParameters(Parser parser) throws IllegalArgumentException {
 		this.game.notifyObserver(new ActionNotify("Ok, you decided to sell something to the other players"));
 		
 		if (!(parser.acceptablePoliticsCards().isEmpty() && parser.acceptablePermitTiles().isEmpty()
@@ -56,13 +57,27 @@ public class MakeAnOfferParser implements ActionParserVisitor {
 			
 			this.game.notifyObserver(new MakeAnOfferNotify(acceptableParameters, this));
 			
-			if (index1.contains(currentParameter))
+			if (index1.contains(currentParameter)) {
 				this.selectedAction.setOfferingObject(this.game.getClientPlayer().getHand().get(Integer.parseInt(currentParameter)));
-			if (index2.contains(currentParameter))
+		//		if (!(this.selectedAction.getOfferingObject() instanceof CardColourDTO));
+		//			throw new IllegalArgumentException("The offering object must be a CardColourDTO");
+			}
+			if (index2.contains(currentParameter)) {
 				this.selectedAction.setOfferingObject(parser.permitTileTranslator(acceptableParameters.get(Integer.parseInt(currentParameter))));
-			if (index3.contains(currentParameter))
+		//		if (!(this.selectedAction.getOfferingObject() instanceof PermitTileDTO));
+		//			throw new IllegalArgumentException("The offering object must be a PermitTileDTO");
+			}
+			if (index3.contains(currentParameter)) {
 				this.selectedAction.setOfferingObject(new AssistantDTO());
+		//		if (!(this.selectedAction.getOfferingObject() instanceof AssistantDTO));
+		//			throw new IllegalArgumentException("The offering object must be an AssistantDTO");
+			}
 			
+			
+			List<String> acceptablePrice=new ArrayList<String>();
+			for (int i=0; i<=100; i++)
+				acceptablePrice.add(""+i);
+			this.game.notifyObserver(new OfferPriceNotify(acceptablePrice, this));
 			this.selectedAction.setPrice(Integer.parseInt(currentParameter));
 			
 			this.selectedAction.parametersSetted();
