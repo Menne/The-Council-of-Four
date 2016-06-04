@@ -20,7 +20,7 @@ public class PlayerAcceptedDTONotify implements ClientNotify {
 	}
 	
 	@Override
-	public void act(GameDTO gameDTOtoupdate) {
+	public void updateModel(GameDTO gameDTOtoupdate) {
 		gameDTOtoupdate.getClientPlayer().setPlayerNumber(this.playerDTOtoupdate.getPlayerNumber());
 		gameDTOtoupdate.notifyObserver(new PlayerAcceptedNotify(this.message));
 	}

@@ -19,7 +19,7 @@ public class AvailableActionsDTONotify implements ClientNotify {
 	}
 
 	@Override
-	public void act(GameDTO gameDTOtoupdate) {
+	public void updateModel(GameDTO gameDTOtoupdate) {
 		gameDTOtoupdate.setAvailableActions(this.availableActions);
 		gameDTOtoupdate.notifyObserver(new ClientAvailableActionsNotify(gameDTOtoupdate.getAvailableActions()));
 	}

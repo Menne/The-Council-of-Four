@@ -1,8 +1,8 @@
 package client.view.notifies;
 
 import java.util.List;
+import java.util.Scanner;
 
-import client.view.socket.CLI;
 import modelDTO.actionsDTO.ActionDTO;
 
 public class ClientAvailableActionsNotify implements ClientViewNotify {
@@ -14,7 +14,7 @@ public class ClientAvailableActionsNotify implements ClientViewNotify {
 	}
 
 	@Override
-	public void stamp(CLI view) {
+	public void stamp(Scanner scanner) {
 		System.out.println("\nYou have the following available actions. Choose one of them:\n"+ this.availableActions);
 	}
 

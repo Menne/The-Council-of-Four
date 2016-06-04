@@ -1,10 +1,12 @@
 package client.view.notifies;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.StringTokenizer;
 
-import client.view.socket.CLI;
 import modelDTO.parser.ActionParserVisitor;
+import server.model.gameTable.CouncilBalcony;
 
 public class PoliticsCardsNotify implements ClientViewNotify {
 
@@ -17,36 +19,34 @@ public class PoliticsCardsNotify implements ClientViewNotify {
 	}
 
 	@Override
-	public void stamp(CLI clientView) {
+	public void stamp(Scanner scanner) {
 		System.out.println(this.acceptablePoliticsCards);
-		this.askCards(clientView);
-	}
-	
-	private void askCards(CLI clientView) {
-		String input=clientView.getScanner().nextLine();
+		String input=scanner.nextLine();
 		StringTokenizer st = new StringTokenizer(input);
-		this.checkNumberOfCards(st, clientView);
-	}
-
-	
-	private void checkNumberOfCards(StringTokenizer st, CLI clientView) {
-		if (!(st.hasMoreTokens() && st.countTokens()<5)) {
-			System.out.println("Remember: you must descard at least 1 card and a maximum of 4 cards");
-			this.askCards(clientView);
+		while (!this.checkCards(st)) {
+			input=scanner.nextLine();
+			st = new StringTokenizer(input);
 		}
-		else 
-			this.checkCards(st, clientView);
+		this.currentParser.setCurrentParameter(input);
 	}
 		
-	private void checkCards(StringTokenizer st, CLI clientView) {
+	private boolean checkCards(StringTokenizer st) {
+		List<String> temporaryAcceptablePoliticsCards=new ArrayList<>(this.acceptablePoliticsCards);
+		if (!(st.countTokens()>0 && st.countTokens()<=CouncilBalcony.getNumberofcouncillors())) {
+			System.out.println("Remember: you must descard at least 1 card and a maximum of "+ CouncilBalcony.getNumberofcouncillors() +" cards");
+			return false;
+		}
 		while (st.hasMoreTokens()) {
 			String currentCard=st.nextToken();
-			if (!acceptablePoliticsCards.contains(currentCard)) {
-				System.out.println("Wrong cards. Retry");
-				this.askCards(clientView);
+			if (temporaryAcceptablePoliticsCards.contains(currentCard)) {
+				temporaryAcceptablePoliticsCards.remove(currentCard);
 			}
-			this.currentParser.setCurrentParameter(currentCard);
+			else {
+				System.out.println("Wrong cards. Retry");
+				return false;
+			}
 		}
+		return true;
 	}
-		
+	
 }

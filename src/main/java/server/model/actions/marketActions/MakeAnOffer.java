@@ -25,15 +25,17 @@ public class MakeAnOffer implements Action{
 
 	@Override
 	public boolean executeAction(Game game) throws NullPointerException {
-		if (this.offeringObject==null) throw new NullPointerException("Paramters not setted");
+		if ((this.offeringObject==null) || this.price==0)
+			throw new NullPointerException("Paramters not setted");
 		
 		game.getMarket().addOffer(
-				game.getMarket().getCurrentPlayer(), offeringObject, price);
-		game.setState(game.getState().sellActionTransition());
+				game.getCurrentPlayer(), offeringObject, price);
+		game.setState(game.getState().sellActionTransition(game));
 		game.notifyObserver(new PlayerNotify(game.getCurrentPlayer(), 
 				Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new AvailableActionsNotify(game.getState().getAcceptableActions(game), 
 				Arrays.asList(game.getCurrentPlayer())));
+		
 		return true;
 		
 	}

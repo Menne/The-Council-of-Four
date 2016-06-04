@@ -1,8 +1,8 @@
 package client.view.notifies;
 
 import java.util.List;
+import java.util.Scanner;
 
-import client.view.socket.CLI;
 import modelDTO.parser.ActionParserVisitor;
 
 public class ParametersNotify implements ClientViewNotify {
@@ -16,12 +16,12 @@ public class ParametersNotify implements ClientViewNotify {
 	}
 
 	@Override
-	public void stamp(CLI clientView) {
+	public void stamp(Scanner scanner) {
 		System.out.println(parameters);
-		String input=clientView.getScanner().nextLine();
+		String input=scanner.nextLine();
 			while (!parameters.contains(input)) {
 				System.out.println("Wrong parameter. Retry");
-				input=clientView.getScanner().nextLine();
+				input=scanner.nextLine();
 			}
 		this.currentParser.setCurrentParameter(input);
 	}

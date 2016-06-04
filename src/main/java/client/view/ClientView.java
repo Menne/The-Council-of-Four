@@ -1,13 +1,17 @@
 package client.view;
 
+import java.rmi.RemoteException;
+
 import client.view.notifies.ClientViewNotify;
-import modelDTO.actionsDTO.ActionDTO;
+import modelDTO.clientNotifies.ClientNotify;
 import observerPattern.Observable;
 import observerPattern.Observer;
 
-public abstract class ClientView extends Observable<ActionDTO> implements Observer<ClientViewNotify> {
+public abstract class ClientView extends Observable<ClientNotify> implements Observer<ClientViewNotify> {
 
 	@Override
 	public abstract void update(ClientViewNotify notify);
+	
+	public abstract void input() throws RemoteException;
 
 }

@@ -3,6 +3,7 @@ package modelDTO.parser;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.ActionWithParameters;
@@ -216,11 +217,17 @@ public class Parser implements Serializable{
 	 * @param cardToTranslate is the string corresponding to the colour of the politics card in the hand of the player
 	 * @return the politics card obtained from the string
 	 */
-	protected List<CardColourDTO> politicsCardsTranslator(String currentParameter) {
-		List<CardColourDTO> cardsTranslated=new ArrayList<CardColourDTO>();
-	    for (CardColourDTO cardTranslated : this.game.getClientPlayer().getHand())
-	    	if (cardTranslated.getName().equals(currentParameter))
-	    		cardsTranslated.add(cardTranslated);
+	protected List<CardColourDTO> politicsCardsTranslator(String cardsToTranslate) {
+		List<CardColourDTO> cardsTranslated=new ArrayList<>();
+		StringTokenizer st = new StringTokenizer(cardsToTranslate);
+		while (st.hasMoreTokens()) {
+			String currentCard=st.nextToken();
+			for (CardColourDTO cardTranslated : this.game.getClientPlayer().getHand())
+				if (cardTranslated.getName().equals(currentCard)) {
+					cardsTranslated.add(cardTranslated);
+					break;
+				}
+		}
 		return cardsTranslated;
 	}
 	

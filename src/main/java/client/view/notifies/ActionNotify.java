@@ -1,6 +1,7 @@
 package client.view.notifies;
 
-import client.view.socket.CLI;
+import java.util.Scanner;
+
 
 public class ActionNotify implements ClientViewNotify {
 
@@ -11,7 +12,7 @@ public class ActionNotify implements ClientViewNotify {
 	}
 
 	@Override
-	public void stamp(CLI view) {
+	public void stamp(Scanner scanner) {
 		System.out.println(message);
 	}
 

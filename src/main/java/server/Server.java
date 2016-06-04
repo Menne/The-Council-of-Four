@@ -3,9 +3,11 @@
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -19,6 +21,7 @@ import players.Player;
 import server.controller.Controller;
 import server.model.Game;
 import server.view.RMIView;
+import server.view.RMIViewRemote;
 import server.view.ServerSocketView;
 import server.view.View;
 
@@ -43,20 +46,26 @@ public class Server {
 	}
 	
 	
-	public void startRMI() throws RemoteException{
+	public void startRMI() throws RemoteException, AlreadyBoundException{
 		Registry registry = LocateRegistry.createRegistry(RMI_PORT);
 		System.out.println("Constructing the RMI registry");
-		RMIView rmiView=new RMIView();
+		RMIView rmiView=new RMIView(this);
+		
+		RMIViewRemote rmiViewRemote=(RMIViewRemote) UnicastRemoteObject.exportObject(rmiView,0);
+		registry.bind(NAME, rmiView);
 	}
 	
 	
 	
-	public void newReadySocketPlayer(ServerSocketView view) throws IOException{
+	public void newReadySocketPlayer(View view, Player player) throws IOException{
 		
 		this.gamesMap.get(currentGame).add(view);
-		view.setGame(currentGame);
-		this.playerList.add(view.getPlayer());
-		view.getPlayer().setPlayerNumber(playerList.size());
+		if(view instanceof ServerSocketView){
+			ServerSocketView serverSocketView= (ServerSocketView) view;
+			serverSocketView.setGame(currentGame);
+		}
+		this.playerList.add(player);
+		player.setPlayerNumber(playerList.size());
 		
 		if(this.playerList.size()==2){
 			Controller controller=new Controller(currentGame);

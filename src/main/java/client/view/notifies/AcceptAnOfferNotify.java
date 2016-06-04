@@ -1,11 +1,12 @@
 package client.view.notifies;
 
-import client.view.socket.CLI;
+import java.util.Scanner;
+
 
 public class AcceptAnOfferNotify implements ClientViewNotify {
 
 	@Override
-	public void stamp(CLI view) {
+	public void stamp(Scanner scanner) {
 		// TODO Auto-generated method stub
 		
 	}

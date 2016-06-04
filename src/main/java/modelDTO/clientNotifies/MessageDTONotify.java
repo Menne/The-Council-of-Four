@@ -15,7 +15,7 @@ public class MessageDTONotify implements ClientNotify{
 	}
 
 	@Override
-	public void act(GameDTO gameDTOtoupdate) {
+	public void updateModel(GameDTO gameDTOtoupdate) {
 		System.out.println(this.message);
 		
 	}

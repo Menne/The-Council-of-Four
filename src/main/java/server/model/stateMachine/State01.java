@@ -15,11 +15,13 @@ public class State01 implements State {
 
 	@Override
 	public State quickActionTransition(Game game) {
-		if(game.getCurrentPlayer().getPlayerNumber()!=game.getPlayers().size()){
+		
+		if (game.getCurrentPlayer().getPlayerNumber()!=game.getPlayers().size()){
 			game.nextPlayer();
 			return new BeginState();
 		}
-		else{
+		else {
+			game.nextPlayer();
 			game.startMarket();
 			return new SellingState();
 		}
@@ -35,12 +37,12 @@ public class State01 implements State {
 
 	@Override
 	public State moveToNextTransition(Game game) {
-		
-		if(game.getCurrentPlayer().getPlayerNumber()!=game.getPlayers().size()){
+		if (game.getCurrentPlayer().getPlayerNumber()!=game.getPlayers().size()){
 			game.nextPlayer();
 			return new BeginState();
 		}
-		else{
+		else {
+			game.nextPlayer();
 			game.startMarket();
 			return new SellingState();
 		}
