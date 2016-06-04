@@ -21,6 +21,7 @@ public class Market {
 	}
 
 
+
 	public Player getCurrentPlayer() {
 		return currentPlayer;
 	}
@@ -30,6 +31,12 @@ public class Market {
 		this.offersList.add(new Offer(offeringPlayer,offeredObject,price));
 	}
 	
+	/**
+	 * it gives to buying player the object and decrements his coins; removes from the selling player 
+	 * the object and increment his coins
+	 * @param offer is the object to buy
+	 * @param buyingPlayer is the player who accept the offer
+	 */
 	public void buyOffer(Offer offer, Player buyingPlayer){
 		buyingPlayer.decrementCoins(offer.getPrice());
 		offer.getOfferingPlayer().incrementCoins(offer.getPrice());
