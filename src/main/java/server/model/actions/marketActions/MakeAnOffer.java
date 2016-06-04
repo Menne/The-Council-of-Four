@@ -8,6 +8,7 @@ import server.model.Game;
 import server.model.actions.Action;
 import server.model.market.Marketable;
 import server.view.notifies.AvailableActionsNotify;
+import server.view.notifies.MarketNotify;
 import server.view.notifies.PlayerNotify;
 
 public class MakeAnOffer implements Action{
@@ -32,6 +33,8 @@ public class MakeAnOffer implements Action{
 				game.getCurrentPlayer(), offeringObject, price);
 		game.setState(game.getState().sellActionTransition(game));
 		game.notifyObserver(new PlayerNotify(game.getCurrentPlayer(), 
+				Arrays.asList(game.getCurrentPlayer())));
+		game.notifyObserver(new MarketNotify(game.getMarket(), 
 				Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new AvailableActionsNotify(game.getState().getAcceptableActions(game), 
 				Arrays.asList(game.getCurrentPlayer())));

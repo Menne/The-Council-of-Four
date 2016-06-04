@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import client.view.notifies.ActionNotify;
-import client.view.notifies.ParametersNotify;
+import client.view.notifies.MakeAnOfferNotify;
 import modelDTO.GameDTO;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.marketActions.MakeAnOfferDTO;
-import modelDTO.marketDTO.MarketableDTO;
 import modelDTO.playerDTO.AssistantDTO;
 
 public class MakeAnOfferParser implements ActionParserVisitor {
@@ -30,8 +29,8 @@ public class MakeAnOfferParser implements ActionParserVisitor {
 	public ActionDTO setParameters(Parser parser) {
 		this.game.notifyObserver(new ActionNotify("Ok, you decided to sell something to the other players"));
 		
-		if (!(parser.acceptablePoliticsCards().isEmpty() || parser.acceptablePermitTiles().isEmpty()
-				|| this.game.getClientPlayer().getAssistants()==0)) {
+		if (!(parser.acceptablePoliticsCards().isEmpty() && parser.acceptablePermitTiles().isEmpty()
+				&& this.game.getClientPlayer().getAssistants()==0)) {
 			
 			this.game.notifyObserver(new ActionNotify("Which element do you want to offer?"));
 			
@@ -44,22 +43,24 @@ public class MakeAnOfferParser implements ActionParserVisitor {
 				acceptableParameters.add(i + ": " + parser.acceptablePoliticsCards().get(i).toString());
 				index1.add(""+i);
 			}
-			for (int i=acceptableParameters.size(); i<parser.acceptablePermitTiles().size(); i++) {
+			int sizeCounter=acceptableParameters.size();
+			for (int i=sizeCounter; i<sizeCounter+parser.acceptablePermitTiles().size(); i++) {
 				acceptableParameters.add(i + ": " + parser.acceptablePermitTiles().get(i).toString());
 				index2.add(""+i);
 			}
-			for (int i=acceptableParameters.size(); i<this.game.getClientPlayer().getAssistants(); i++) {
+			sizeCounter=acceptableParameters.size();
+			for (int i=sizeCounter; i<sizeCounter+this.game.getClientPlayer().getAssistants(); i++) {
 				acceptableParameters.add(i + ": Assistant");
 				index3.add(""+i);
 			}
 			
-			this.game.notifyObserver(new ParametersNotify(acceptableParameters, this));
-
+			this.game.notifyObserver(new MakeAnOfferNotify(acceptableParameters, this));
+			
 			if (index1.contains(currentParameter))
-				this.selectedAction.setOfferingObject((MarketableDTO) parser.politicsCardsTranslator(currentParameter));
-			if (index1.contains(currentParameter))
-				this.selectedAction.setOfferingObject(parser.permitTileTranslator(currentParameter));
-			if (index1.contains(currentParameter))
+				this.selectedAction.setOfferingObject(this.game.getClientPlayer().getHand().get(Integer.parseInt(currentParameter)));
+			if (index2.contains(currentParameter))
+				this.selectedAction.setOfferingObject(parser.permitTileTranslator(acceptableParameters.get(Integer.parseInt(currentParameter))));
+			if (index3.contains(currentParameter))
 				this.selectedAction.setOfferingObject(new AssistantDTO());
 			
 			this.selectedAction.setPrice(Integer.parseInt(currentParameter));

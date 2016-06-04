@@ -5,6 +5,7 @@ import java.io.Serializable;
 import modelDTO.gameTableDTO.CardColourDTO;
 import modelDTO.gameTableDTO.PermitTileDTO;
 import modelDTO.playerDTO.AssistantDTO;
+import server.model.gameTable.CardColour;
 import server.model.gameTable.PermitTile;
 import server.model.gameTable.PoliticsCard;
 import server.model.market.Offer;
@@ -22,15 +23,17 @@ public class OfferDTO implements Serializable{
 	
 	public void map(Offer realOffer) {
 		if (realOffer.getOfferedObject() instanceof PoliticsCard) {
-			CardColourDTO cardColourDTO=(CardColourDTO) realOffer.getOfferedObject();
+			CardColourDTO cardColourDTO=new CardColourDTO();
+				cardColourDTO.map((CardColour) realOffer.getOfferedObject());
 			this.offeredObjectDTO=cardColourDTO;
 		}
 		if (realOffer.getOfferedObject() instanceof PermitTile) {
-			PermitTileDTO permitTileDTO=(PermitTileDTO) realOffer.getOfferedObject();
+			PermitTileDTO permitTileDTO=new PermitTileDTO();
+			permitTileDTO.map((PermitTile) realOffer.getOfferedObject());
 			this.offeredObjectDTO=permitTileDTO;
 		}
 		if (realOffer.getOfferedObject() instanceof AssistantDTO) {
-			AssistantDTO assistantDTO=(AssistantDTO) realOffer.getOfferedObject();
+			AssistantDTO assistantDTO=new AssistantDTO();
 			this.offeredObjectDTO=assistantDTO;
 		}
 		this.offeringPlayerDTO=realOffer.getOfferingPlayer().getName();
@@ -52,6 +55,11 @@ public class OfferDTO implements Serializable{
 		return price;
 	}
 
-	
+
+	@Override
+	public String toString() {
+		return "Who is offering: " + offeringPlayerDTO + ", Object: " + offeredObjectDTO
+				+ ", price: " + price;
+	}
 
 }

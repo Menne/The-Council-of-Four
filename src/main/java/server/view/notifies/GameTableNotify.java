@@ -30,9 +30,4 @@ public class GameTableNotify implements ViewNotify {
 		return this.interestedPlayers;
 	}
 
-	@Override
-	public String toString() {
-		return "GameTableNotify" + interestedPlayers;
-	}
-
 }
