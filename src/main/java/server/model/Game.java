@@ -65,7 +65,6 @@ public class Game extends Observable<ViewNotify>{
 
 
 	public void nextPlayer() {
-		System.out.println(players);
 		if (!(lastLap || this.getState() instanceof BuyingState)) {	
 			this.players.remove(0);
 			this.players.add(this.players.size(), this.currentPlayer);

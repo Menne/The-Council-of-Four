@@ -137,25 +137,13 @@ public class AcquirePermitTile extends MainAction {
 		
 		for (PoliticsCard politicsCardInHand: this.cardsToDescard) {
 			if (politicsCardInHand.getColour().getColour().equals("Rainbow"))
-				satisfyCounter++;
-	
-			
-			/*	for (Councillor councillorToSatisfy : temporaryBalcony)
+				satisfyCounter++;		
+				for (Councillor councillorToSatisfy : temporaryBalcony)
 				if (councillorToSatisfy.getColour().getColour().equals(politicsCardInHand.getColour().getColour())) {
 					temporaryBalcony.remove(councillorToSatisfy);
 					satisfyCounter++;
-				} */
-			
-			
-			for (int j=0; j<=temporaryBalcony.size()-1;) {
-				if (temporaryBalcony.get(j).getColour().equals(politicsCardInHand.getColour())) {
-					temporaryBalcony.remove(temporaryBalcony.get(j));
-					satisfyCounter++;
 					break;
-				}
-				else
-					j++;
-			}
+				} 
 		}
 		return satisfyCounter==this.cardsToDescard.size();
 	}

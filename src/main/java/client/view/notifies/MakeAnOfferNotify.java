@@ -1,5 +1,6 @@
 package client.view.notifies;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -19,8 +20,11 @@ public class MakeAnOfferNotify implements ClientViewNotify {
 	@Override
 	public void stamp(Scanner scanner) {
 		System.out.println(parameters);
+		List<String> indexes=new ArrayList<>();
+		for (int i=0; i<parameters.size(); i++)
+			indexes.add(""+i);
 		String input=scanner.nextLine();
-		while (!parameters.contains(input)) {
+		while (!indexes.contains(input)) {
 			System.out.println("Wrong parameter. Retry");
 			input=scanner.nextLine();
 		}

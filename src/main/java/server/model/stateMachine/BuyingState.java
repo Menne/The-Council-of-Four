@@ -30,7 +30,6 @@ public class BuyingState implements State {
 		}
 		else {
 			game.nextPlayer();
-			System.out.println(game.getCurrentPlayer().getName());
 			return new BeginState();
 		}
 	}

@@ -44,7 +44,7 @@ public class MarketDTO implements ModelDTO<Market>{
 		return this.offersList;
 	}
 
-	public void setOffersList(ArrayList<OfferDTO> offersList) {
+	public void setOffersList(List<OfferDTO> offersList) {
 		this.offersList = offersList;
 	}
 
@@ -60,8 +60,14 @@ public class MarketDTO implements ModelDTO<Market>{
 		return this.buyingPlayerList;
 	}
 
-	public void setBuyingPlayerList(ArrayList<String> buyingPlayerList) {
+	public void setBuyingPlayerList(List<String> buyingPlayerList) {
 		this.buyingPlayerList = buyingPlayerList;
+	}
+
+
+	@Override
+	public String toString() {
+		return "What is in the market: " + offersList + "]";
 	}
 
 

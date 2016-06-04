@@ -147,8 +147,7 @@ public class BuildByKing extends MainAction {
 	 * checks if the player has enough coins
 	 */
 	private boolean CheckEnoughCoins(Game game) {
-		return game.getCurrentPlayer().getCoins() >= 
-				CoinsToPay(game);
+		return game.getCurrentPlayer().getCoins() >= CoinsToPay(game);
 	}
 	
 	/**
@@ -187,19 +186,17 @@ public class BuildByKing extends MainAction {
 		for (int i=0; i<=CouncilBalcony.getNumberofcouncillors()-1; i++)
 			temporaryBalcony.add(game.getGameTable().getCouncilOfKing().getCouncillors()[i]);
 		
-		for (PoliticsCard politicsCardInHand: cardsToDescard) {
-			if (politicsCardInHand.getColour().getColour() == "rainbow")
-				satisfyCounter++;
-			for (int j=0; j<=temporaryBalcony.size()-1;) {
-				if (temporaryBalcony.get(j).getColour().equals(politicsCardInHand.getColour())) {
-					temporaryBalcony.remove(temporaryBalcony.get(j));
+		for (PoliticsCard politicsCardInHand: this.cardsToDescard) {
+			if (politicsCardInHand.getColour().getColour().equals("Rainbow"))
+				satisfyCounter++;		
+				for (Councillor councillorToSatisfy : temporaryBalcony)
+				if (councillorToSatisfy.getColour().getColour().equals(politicsCardInHand.getColour().getColour())) {
+					temporaryBalcony.remove(councillorToSatisfy);
 					satisfyCounter++;
-				}
-				else
-					j++;
-			}
+					break;
+				} 
 		}
-		return satisfyCounter == this.cardsToDescard.size();
+		return satisfyCounter==this.cardsToDescard.size();
 	}
 	
 	/**
