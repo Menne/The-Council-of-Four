@@ -16,7 +16,7 @@ public class OfferDTO implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 5468761096841322975L;
-	private String offeringPlayerDTO;
+	private String offeringPlayer;
 	private MarketableDTO offeredObjectDTO;
 	private int price;
 
@@ -36,28 +36,40 @@ public class OfferDTO implements Serializable{
 		if (realOffer.getOfferedObject() instanceof Assistant) {
 			this.offeredObjectDTO=new AssistantDTO();
 		}
-		this.offeringPlayerDTO=realOffer.getOfferingPlayer().getName();
+		this.offeringPlayer=realOffer.getOfferingPlayer().getName();
 		this.price=realOffer.getPrice();
 		
 	}
 	
 	
 	public String getOfferingPlayer() {
-		return this.offeringPlayerDTO;
+		return this.offeringPlayer;
 	}
-
-	public MarketableDTO getOfferedObject() {
+	
+	public void setOfferingPlayer(String offeringPlayer) {
+		this.offeringPlayer=offeringPlayer;
+	}
+	
+	public MarketableDTO getOfferedObjectDTO() {
 		return this.offeredObjectDTO;
 	}
 
+	public void setOfferedObjectDTO(MarketableDTO offeredObjectDTO) {
+		this.offeredObjectDTO = offeredObjectDTO;
+	}
+
 	public int getPrice() {
-		return price;
+		return this.price;
+	}
+	
+	public void setPrice(int price) {
+		this.price = price;
 	}
 
 
 	@Override
 	public String toString() {
-		return "Who is offering: " + offeringPlayerDTO + ", Object: " + offeredObjectDTO
+		return "Who is offering: " + offeringPlayer + ", Object: " + offeredObjectDTO
 				+ ", price: " + price;
 	}
 

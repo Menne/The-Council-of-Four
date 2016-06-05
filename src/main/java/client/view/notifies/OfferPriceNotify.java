@@ -20,7 +20,7 @@ public class OfferPriceNotify implements ClientViewNotify {
 		System.out.println("What's the price of the element you selected?");
 		String input=scanner.nextLine();
 			while (!parameters.contains(input)) {
-				System.out.println("Wrong parameter. Retry");
+				System.out.println("I didn't understand");
 				input=scanner.nextLine();
 			}
 		this.currentParser.setCurrentParameter(input);

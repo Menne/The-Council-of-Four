@@ -43,22 +43,22 @@ public class AcceptAnOfferDTO implements ActionDTO, ActionWithParameters {
 
 		AcceptAnOffer action = new AcceptAnOffer();
 		
-		if (this.offerDTO.getOfferedObject() instanceof CardColourDTO) {
-			CardColourDTO offeringCardDTO=(CardColourDTO) this.offerDTO.getOfferedObject();
+		if (this.offerDTO.getOfferedObjectDTO() instanceof CardColourDTO) {
+			CardColourDTO offeringCardDTO=(CardColourDTO) this.offerDTO.getOfferedObjectDTO();
 			action.setOffer(new Offer(game.getCurrentPlayer(), 
 					new PoliticsCard(new CardColour(offeringCardDTO.getName())), this.offerDTO.getPrice()));
 		}
-		if (this.offerDTO.getOfferedObject() instanceof PermitTileDTO) {
-			PermitTileDTO offeringPermitTileDTO=(PermitTileDTO) this.offerDTO.getOfferedObject();
+		if (this.offerDTO.getOfferedObjectDTO() instanceof PermitTileDTO) {
+			PermitTileDTO offeringPermitTileDTO=(PermitTileDTO) this.offerDTO.getOfferedObjectDTO();
 			for (PermitTile permitTile : game.getCurrentPlayer().getPlayersPermitTilesTurnedUp())
 				if (permitTile.getBonus().equals(offeringPermitTileDTO.getBonuses()) &&
 					this.checkBuildableCities(offeringPermitTileDTO, permitTile.getBuildableCities()))
 				action.setOffer(new Offer(game.getCurrentPlayer(), permitTile, this.offerDTO.getPrice()));
 		}
-		if (this.offerDTO.getOfferedObject() instanceof AssistantDTO) {
+		if (this.offerDTO.getOfferedObjectDTO() instanceof AssistantDTO) {
 			action.setOffer(new Offer(game.getCurrentPlayer(), new Assistant(), this.offerDTO.getPrice()));
 		}
-
+		
 		return action;
 	}
 	

@@ -30,7 +30,7 @@ public class MakeAnOfferTest {
 		game.getCurrentPlayer().incrementAssistants(2);
 		game.setState(new State01());
 		MakeAnOffer action= new MakeAnOffer();
-		action.setPrice(2);
+	//	action.setPrice(2);
 		action.executeAction(game);
 	}
 	
@@ -46,7 +46,7 @@ public class MakeAnOfferTest {
 		game.setState(new State01());
 		MakeAnOffer action= new MakeAnOffer();
 		Assistant assistant= new Assistant();
-		action.setOfferingObject(assistant);
+	//	action.setOfferingObject(assistant);
 		action.executeAction(game);
 	}
 
@@ -62,8 +62,8 @@ public class MakeAnOfferTest {
 		game.setState(new SellingState());
 		MakeAnOffer action= new MakeAnOffer();
 		Assistant assistant= new Assistant();
-		action.setOfferingObject(assistant);
-		action.setPrice(2);
+	//	action.setOfferingObject(assistant);
+	//	action.setPrice(2);
 		action.executeAction(game);
 		assertTrue(action.executeAction(game));
 		assertEquals(game.getMarket().getOffersList().get(0), new Offer(a, assistant, 2));

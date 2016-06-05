@@ -21,8 +21,8 @@ public class Market {
 	}
 
 
-	public void addOffer(Player offeringPlayer, Marketable offeredObject, int price){
-		this.offersList.add(new Offer(offeringPlayer,offeredObject,price));
+	public void addOffer(Offer offer){
+		this.offersList.add(offer);
 	}
 	
 	/**
