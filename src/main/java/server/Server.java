@@ -32,32 +32,30 @@ public class Server {
 	
 	private final String NAME="CoF";
 	private final static int RMI_PORT=52365;
+	private Registry registry;
+	private RMIView currentRMIView;
 	
 	private final Map<Game, Set<View>> gamesMap;
 	private Game currentGame;
 	private final List<Player> playerList;
+
 	
 	
-	public Server(){
+	public Server() throws RemoteException, AlreadyBoundException{
 		this.gamesMap=new HashMap<>();
 		this.currentGame=new Game();
 		this.gamesMap.put(currentGame, new HashSet<>());
 		this.playerList=new ArrayList<>();
-	}
-	
-	
-	public void startRMI() throws RemoteException, AlreadyBoundException{
+		
 		Registry registry = LocateRegistry.createRegistry(RMI_PORT);
 		System.out.println("Constructing the RMI registry");
-		RMIView rmiView=new RMIView(this);
-		
-		RMIViewRemote rmiViewRemote=(RMIViewRemote) UnicastRemoteObject.exportObject(rmiView,0);
-		registry.bind(NAME, rmiView);
+		this.currentRMIView=new RMIView(this, currentGame);
+		RMIViewRemote rmiViewRemote=(RMIViewRemote) UnicastRemoteObject.exportObject(currentRMIView,0);
+		registry.bind(NAME, currentRMIView);
 	}
 	
 	
-	
-	public void newReadySocketPlayer(View view, Player player) throws IOException{
+	public void newReadyPlayer(View view, Player player) throws IOException{
 		
 		this.gamesMap.get(currentGame).add(view);
 		if(view instanceof ServerSocketView){
@@ -76,7 +74,10 @@ public class Server {
 			currentGame.start(new ArrayList<>(playerList));
 			playerList.clear();
 			this.currentGame=new Game();
-			this.gamesMap.put(currentGame, new HashSet<>());			
+			this.gamesMap.put(currentGame, new HashSet<>());
+			this.currentRMIView=new RMIView(this, currentGame);
+			RMIViewRemote rmiViewRemote=(RMIViewRemote) UnicastRemoteObject.exportObject(currentRMIView,0);
+			registry.rebind(NAME, currentRMIView);
 		}
 	}
 	
@@ -92,20 +93,20 @@ public class Server {
 			
 			Socket socket=serverSocket.accept();
 			System.out.println("Client Socket Accepted!");
-			
-			Player player=new Player();
 					
-			ServerSocketView view=new ServerSocketView(socket, player, this);
+			ServerSocketView view=new ServerSocketView(socket, this);
 			
 			executor.submit(view);
 			 
 		}
 	}
 	
-	public static void main(String[] args) throws IOException{
+	public static void main(String[] args) throws IOException, AlreadyBoundException{
 		Server server=new Server();
 		try {
+			
 			server.startSocket();
+			
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

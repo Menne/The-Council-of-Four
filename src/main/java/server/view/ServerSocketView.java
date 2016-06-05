@@ -20,12 +20,11 @@ public class ServerSocketView extends View implements Runnable {
 	private final ObjectInputStream socketIn;
 	private final ObjectOutputStream socketOut;
 	private Game game;
-	private final Player player;
+	private Player player;
 	
-	public ServerSocketView(Socket socket, Player player, Server server) throws IOException{
+	public ServerSocketView(Socket socket, Server server) throws IOException{
 		super(server);
 		this.socket=socket;
-		this.player=player;
 		this.socketIn=new ObjectInputStream(socket.getInputStream());
 		this.socketOut=new ObjectOutputStream(socket.getOutputStream());
 	}
@@ -45,8 +44,8 @@ public class ServerSocketView extends View implements Runnable {
 				
 				if(object instanceof AddPlayerDTO){
 					AddPlayerDTO notify=(AddPlayerDTO) object;
-					this.player.setName(notify.getPlayerName());					
-					server.newReadySocketPlayer(this, player);
+					this.player=new Player(notify.getPlayerName());					
+					server.newReadyPlayer(this, player);
 										
 					ClientPlayerDTO clientPlayerDTO=new ClientPlayerDTO();
 					clientPlayerDTO.map(player);
