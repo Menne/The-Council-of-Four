@@ -27,7 +27,7 @@ public class BuildByPermitTileTest {
 	public void testExecuteAction() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		a.setPlayerNumber(1);
 		players.add(a);
 		game.start(players);
@@ -78,7 +78,7 @@ public class BuildByPermitTileTest {
 	public void testExceptionIfSelectedPermitTileIsNull() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		a.setPlayerNumber(1);
 		players.add(a);
 		game.start(players);
@@ -120,7 +120,7 @@ public class BuildByPermitTileTest {
 	public void testexceptionIfSelectedCityIsNull() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		a.setPlayerNumber(1);
 		players.add(a);
 		game.start(players);
@@ -160,8 +160,8 @@ public class BuildByPermitTileTest {
 	public void testIfExecuteActionReturnsFalseIfPlayerHasTooFewAssistants() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
-		Player b= new Player();
+		Player a = new Player("Andre");
+		Player b= new Player("Luca");
 		a.setPlayerNumber(1);
 		b.setPlayerNumber(2);
 		players.add(a);
@@ -209,7 +209,7 @@ public class BuildByPermitTileTest {
 	public void testIfExecuteActionReturnsFalseIfTileDoesntContainsSelectedCity() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		a.setPlayerNumber(1);
 		players.add(a);
 		game.setCurrentPlayer(a);
@@ -251,7 +251,7 @@ public class BuildByPermitTileTest {
 	public void testIfExecuteActionReturnsFalseIfPlayerHasAlreadyAnEmporiumInTheSelectedCity() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		a.setPlayerNumber(1);
 		players.add(a);
 		game.setCurrentPlayer(a);

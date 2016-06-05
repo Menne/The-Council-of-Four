@@ -35,7 +35,7 @@ public class CouncilBalconyAndCouncillorTest {
 	public void testSubstituteCouncillor() throws IOException{
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		Councillor[] oldBalcony=game.getGameTable().getRegionBoards().get(0).getRegionBalcony().getCouncillors();
@@ -53,7 +53,7 @@ public class CouncilBalconyAndCouncillorTest {
 	public void testIfSubstituteCouncillorThrowsException() throws IOException{
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		game.getGameTable().getRegionBoards().get(0).getRegionBalcony().substituteCouncillor(null);

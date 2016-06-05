@@ -2,6 +2,7 @@ package server.model.bonus;
 
 
 import server.model.Game;
+import server.model.gameTable.PermitTile;
 import server.model.gameTable.RegionBoard;
 
 /**
@@ -38,8 +39,9 @@ public class PickPermitTileBonus implements Bonus {
 	 */
 	@Override
 	public void assignBonus(Game game) {
-		game.getCurrentPlayer().addTile(this.chosenRegion.pickUncoveredPermitTile(this.numberOfPermitTile));
-		for (Bonus bonusToAssign : this.chosenRegion.getUncoveredPermitTiles()[numberOfPermitTile].getBonus())
+		PermitTile tile= this.chosenRegion.pickUncoveredPermitTile(this.numberOfPermitTile);
+		game.getCurrentPlayer().addTile(tile);
+		for (Bonus bonusToAssign : tile.getBonus())
 			bonusToAssign.assignBonus(game);
 		this.chosenRegion.uncoverPermitTiles();
 	}

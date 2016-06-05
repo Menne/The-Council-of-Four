@@ -26,9 +26,9 @@ public class ClientRMI{
 		GameDTO clientGame=new GameDTO();
 		ClientController clientController=new ClientController(clientGame);
 		CLIrmi view=new CLIrmi(clientGame.getParser(), serverStub);
-		serverStub.registerClient(view);
 		ClientRMIViewRemote clientRMIViewRemote=(ClientRMIViewRemote) 
-				UnicastRemoteObject.exportObject(view,0); 
+				UnicastRemoteObject.exportObject(view,0);
+		clientGame.registerObserver(view);
 		view.registerObserver(clientController);
 		view.welcome();
 		view.input();

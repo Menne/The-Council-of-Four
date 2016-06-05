@@ -21,7 +21,7 @@ public class KingTest {
 	public void testIfJuvelarHasTheKing() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		City c=null;
@@ -36,7 +36,7 @@ public class KingTest {
 	public void testIfKingChangesCity() throws IOException{
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		City c=null;

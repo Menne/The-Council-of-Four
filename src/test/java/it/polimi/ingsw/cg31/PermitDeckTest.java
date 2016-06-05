@@ -20,7 +20,7 @@ public class PermitDeckTest {
 	public void testIfPickPermitTileReturnsTheFisrstTileFromTheDeck() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		PermitTile t= game.getGameTable().getRegionBoards().get(0).getRegionPermitDeck().getPermitTiles().get(0);
@@ -31,7 +31,7 @@ public class PermitDeckTest {
 	public void testIfPickPermitTileThrowsException() throws IOException{
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		while(!game.getGameTable().getRegionBoards().get(0).getRegionPermitDeck().getPermitTiles().isEmpty())
@@ -43,7 +43,7 @@ public class PermitDeckTest {
 	public void testIfAddOnBottomAddsThePermitTileOnTheBottomOfTheDeck() throws IOException{
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		PermitTile t=new PermitTile(null, null, game.getGameTable().getRegionBoards().get(0).getRegionPermitDeck());
@@ -56,7 +56,7 @@ public class PermitDeckTest {
 	public void testIfAddOnBottomThrowsException() throws IOException{
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		game.getGameTable().getRegionBoards().get(0).getRegionPermitDeck().addOnBottom(null);

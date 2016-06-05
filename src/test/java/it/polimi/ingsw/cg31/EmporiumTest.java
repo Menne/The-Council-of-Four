@@ -21,7 +21,7 @@ public class EmporiumTest {
 	public void testIfEmporiumsGetterReturnsTheRightPlayer() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		Emporium e= new Emporium(game.getPlayers().get(0));

@@ -26,7 +26,7 @@ public class PoliticsCardsTest {
 	public void testIfAddObjectToPlayerWorks() throws IOException{
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		PoliticsCard card= game.getGameTable().getPoliticsDeck().pickCard();
@@ -39,7 +39,7 @@ public class PoliticsCardsTest {
 	public void testRemoveCard() throws IOException{
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		PoliticsCard card= game.getGameTable().getPoliticsDeck().pickCard();
@@ -55,7 +55,7 @@ public class PoliticsCardsTest {
 	public void testToString() throws IOException{
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		PoliticsCard card= game.getGameTable().getPoliticsDeck().pickCard();

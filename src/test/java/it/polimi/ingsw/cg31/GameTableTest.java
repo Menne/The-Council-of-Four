@@ -25,7 +25,7 @@ public class GameTableTest {
 	public void testAllTheGetters() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		assertEquals(Map.class, game.getGameTable().getMap().getClass());
