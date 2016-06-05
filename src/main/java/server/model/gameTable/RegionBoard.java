@@ -107,7 +107,7 @@ public class RegionBoard {
 	 * @throws IllegalArgumentException if index > 2 or < 0 
 	 */
 	public PermitTile pickUncoveredPermitTile(int index) {
-		if(index>=numberOfUncoveredPermitTiles-1)
+		if(index>numberOfUncoveredPermitTiles-1)
 			throw new IllegalArgumentException("Index doesn't exist");
 		PermitTile temp=this.uncoveredPermitTiles[index];
 		this.uncoveredPermitTiles[index]=null;

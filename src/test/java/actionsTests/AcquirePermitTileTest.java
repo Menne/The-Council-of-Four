@@ -16,6 +16,7 @@ import server.model.actions.standardActions.AcquirePermitTile;
 import server.model.bonus.Bonus;
 import server.model.bonus.ScoreBonus;
 import server.model.gameTable.CardColour;
+import server.model.gameTable.Councillor;
 import server.model.gameTable.PermitTile;
 import server.model.gameTable.PoliticsCard;
 import server.model.stateMachine.State01;
@@ -187,5 +188,181 @@ public class AcquirePermitTileTest {
 		action.setChosenRegion(game.getGameTable().getRegionBoards().get(0));
 		game.setState(new State11());
 		assertFalse(action.executeAction(game));
+	}
+	
+	@Test
+	public void testPrice0() throws IOException {
+		Game game=new Game();
+		List<Player> players = new ArrayList<>();
+		Player a = new Player("Andre");
+		a.setPlayerNumber(1);
+		players.add(a);
+		game.start(players);
+		game.getCurrentPlayer().getHand().removeAll(game.getCurrentPlayer().getHand());
+		CardColour colour= new CardColour("Blue");
+		Councillor x= new Councillor(colour);
+		Councillor y= new Councillor(colour);
+		Councillor w= new Councillor(colour);
+		Councillor z= new Councillor(colour);
+		game.getGameTable().getRegionBoards().get(0).getRegionBalcony().substituteCouncillor(x);
+		game.getGameTable().getRegionBoards().get(0).getRegionBalcony().substituteCouncillor(y);
+		game.getGameTable().getRegionBoards().get(0).getRegionBalcony().substituteCouncillor(z);
+		game.getGameTable().getRegionBoards().get(0).getRegionBalcony().substituteCouncillor(w);
+		PoliticsCard card1= new PoliticsCard(colour);
+		PoliticsCard card2= new PoliticsCard(colour);
+		PoliticsCard card3= new PoliticsCard(colour);
+		PoliticsCard card4= new PoliticsCard(colour);
+		List<PoliticsCard> discard= new ArrayList<>();
+		discard.add(card1);
+		discard.add(card2);
+		discard.add(card3);
+		discard.add(card4);
+		AcquirePermitTile action=new AcquirePermitTile();
+		Bonus bonus=new ScoreBonus(10);
+		Set<Bonus> bonuses=new HashSet<>();
+		bonuses.add(bonus);
+		PermitTile tile=new PermitTile(null, bonuses, game.getGameTable().getRegionBoards().get(0).getRegionPermitDeck());
+		game.getGameTable().getRegionBoards().get(0).pickUncoveredPermitTile(0);
+		game.getGameTable().getRegionBoards().get(0).getUncoveredPermitTiles()[0]=tile;
+		action.setChosenRegion(game.getGameTable().getRegionBoards().get(0));
+		action.setNumberOfPermitTile(0);
+		action.setCardsToDescard(discard);
+		game.setState(new State11());
+		game.getCurrentPlayer().getHand().addAll(discard);
+		assertTrue(game.getCurrentPlayer().getCoins()==10);
+		assertTrue(game.getCurrentPlayer().getScore()==0);
+		assertTrue(action.executeAction(game));
+		assertTrue(game.getCurrentPlayer().getCoins()==10);
+		assertTrue(game.getCurrentPlayer().getScore()==10);
+		assertTrue(game.getCurrentPlayer().getPlayersPermitTilesTurnedUp().contains(tile));
+	}
+	
+	@Test
+	public void testPriceOf4() throws IOException {
+		Game game=new Game();
+		List<Player> players = new ArrayList<>();
+		Player a = new Player("Andre");
+		a.setPlayerNumber(1);
+		players.add(a);
+		game.start(players);
+		game.getCurrentPlayer().getHand().removeAll(game.getCurrentPlayer().getHand());
+		CardColour colour= new CardColour("Blue");
+		Councillor x= new Councillor(colour);
+		Councillor y= new Councillor(colour);
+		Councillor w= new Councillor(colour);
+		Councillor z= new Councillor(colour);
+		game.getGameTable().getRegionBoards().get(0).getRegionBalcony().substituteCouncillor(x);
+		game.getGameTable().getRegionBoards().get(0).getRegionBalcony().substituteCouncillor(y);
+		game.getGameTable().getRegionBoards().get(0).getRegionBalcony().substituteCouncillor(z);
+		game.getGameTable().getRegionBoards().get(0).getRegionBalcony().substituteCouncillor(w);
+		PoliticsCard card1= new PoliticsCard(colour);
+		PoliticsCard card2= new PoliticsCard(colour);
+		PoliticsCard card3= new PoliticsCard(colour);
+		List<PoliticsCard> discard= new ArrayList<>();
+		discard.add(card1);
+		discard.add(card2);
+		discard.add(card3);
+		AcquirePermitTile action=new AcquirePermitTile();
+		Bonus bonus=new ScoreBonus(10);
+		Set<Bonus> bonuses=new HashSet<>();
+		bonuses.add(bonus);
+		PermitTile tile=new PermitTile(null, bonuses, game.getGameTable().getRegionBoards().get(0).getRegionPermitDeck());
+		game.getGameTable().getRegionBoards().get(0).pickUncoveredPermitTile(0);
+		game.getGameTable().getRegionBoards().get(0).getUncoveredPermitTiles()[0]=tile;
+		action.setChosenRegion(game.getGameTable().getRegionBoards().get(0));
+		action.setNumberOfPermitTile(0);
+		action.setCardsToDescard(discard);
+		game.setState(new State11());
+		game.getCurrentPlayer().getHand().addAll(discard);
+		assertTrue(game.getCurrentPlayer().getCoins()==10);
+		assertTrue(game.getCurrentPlayer().getScore()==0);
+		assertTrue(action.executeAction(game));
+		assertTrue(game.getCurrentPlayer().getCoins()==6);
+		assertTrue(game.getCurrentPlayer().getScore()==10);
+		assertTrue(game.getCurrentPlayer().getPlayersPermitTilesTurnedUp().contains(tile));
+	}
+	
+	@Test
+	public void testPriceOfSevenCoins() throws IOException {
+		Game game=new Game();
+		List<Player> players = new ArrayList<>();
+		Player a = new Player("Andre");
+		a.setPlayerNumber(1);
+		players.add(a);
+		game.start(players);
+		game.getCurrentPlayer().getHand().removeAll(game.getCurrentPlayer().getHand());
+		CardColour colour= new CardColour("Blue");
+		Councillor x= new Councillor(colour);
+		Councillor y= new Councillor(colour);
+		Councillor w= new Councillor(colour);
+		Councillor z= new Councillor(colour);
+		game.getGameTable().getRegionBoards().get(0).getRegionBalcony().substituteCouncillor(x);
+		game.getGameTable().getRegionBoards().get(0).getRegionBalcony().substituteCouncillor(y);
+		game.getGameTable().getRegionBoards().get(0).getRegionBalcony().substituteCouncillor(z);
+		game.getGameTable().getRegionBoards().get(0).getRegionBalcony().substituteCouncillor(w);
+		PoliticsCard card1= new PoliticsCard(colour);
+		PoliticsCard card2= new PoliticsCard(colour);
+		List<PoliticsCard> discard= new ArrayList<>();
+		discard.add(card1);
+		discard.add(card2);
+		AcquirePermitTile action=new AcquirePermitTile();
+		Bonus bonus=new ScoreBonus(10);
+		Set<Bonus> bonuses=new HashSet<>();
+		bonuses.add(bonus);
+		PermitTile tile=new PermitTile(null, bonuses, game.getGameTable().getRegionBoards().get(0).getRegionPermitDeck());
+		game.getGameTable().getRegionBoards().get(0).pickUncoveredPermitTile(0);
+		game.getGameTable().getRegionBoards().get(0).getUncoveredPermitTiles()[0]=tile;
+		action.setChosenRegion(game.getGameTable().getRegionBoards().get(0));
+		action.setNumberOfPermitTile(0);
+		action.setCardsToDescard(discard);
+		game.setState(new State11());
+		game.getCurrentPlayer().getHand().addAll(discard);
+		assertTrue(game.getCurrentPlayer().getCoins()==10);
+		assertTrue(game.getCurrentPlayer().getScore()==0);
+		assertTrue(action.executeAction(game));
+		assertTrue(game.getCurrentPlayer().getCoins()==3);
+		assertTrue(game.getCurrentPlayer().getScore()==10);
+		assertTrue(game.getCurrentPlayer().getPlayersPermitTilesTurnedUp().contains(tile));
+	}
+	
+	@Test
+	public void testPriceOfTenCoins() throws IOException {
+		Game game=new Game();
+		List<Player> players = new ArrayList<>();
+		Player a = new Player("Andre");
+		a.setPlayerNumber(1);
+		players.add(a);
+		game.start(players);
+		game.getCurrentPlayer().getHand().removeAll(game.getCurrentPlayer().getHand());
+		CardColour colour= new CardColour("Blue");
+		Councillor x= new Councillor(colour);
+		Councillor y= new Councillor(colour);
+		Councillor w= new Councillor(colour);
+		Councillor z= new Councillor(colour);
+		game.getGameTable().getRegionBoards().get(0).getRegionBalcony().substituteCouncillor(x);
+		game.getGameTable().getRegionBoards().get(0).getRegionBalcony().substituteCouncillor(y);
+		game.getGameTable().getRegionBoards().get(0).getRegionBalcony().substituteCouncillor(z);
+		game.getGameTable().getRegionBoards().get(0).getRegionBalcony().substituteCouncillor(w);
+		PoliticsCard card1= new PoliticsCard(colour);
+		List<PoliticsCard> discard= new ArrayList<>();
+		discard.add(card1);
+		AcquirePermitTile action=new AcquirePermitTile();
+		Bonus bonus=new ScoreBonus(10);
+		Set<Bonus> bonuses=new HashSet<>();
+		bonuses.add(bonus);
+		PermitTile tile=new PermitTile(null, bonuses, game.getGameTable().getRegionBoards().get(0).getRegionPermitDeck());
+		game.getGameTable().getRegionBoards().get(0).pickUncoveredPermitTile(0);
+		game.getGameTable().getRegionBoards().get(0).getUncoveredPermitTiles()[0]=tile;
+		action.setChosenRegion(game.getGameTable().getRegionBoards().get(0));
+		action.setNumberOfPermitTile(0);
+		action.setCardsToDescard(discard);
+		game.setState(new State11());
+		game.getCurrentPlayer().getHand().addAll(discard);
+		assertTrue(game.getCurrentPlayer().getCoins()==10);
+		assertTrue(game.getCurrentPlayer().getScore()==0);
+		assertTrue(action.executeAction(game));
+		assertTrue(game.getCurrentPlayer().getCoins()==0);
+		assertTrue(game.getCurrentPlayer().getScore()==10);
+		assertTrue(game.getCurrentPlayer().getPlayersPermitTilesTurnedUp().contains(tile));
 	}
 }
