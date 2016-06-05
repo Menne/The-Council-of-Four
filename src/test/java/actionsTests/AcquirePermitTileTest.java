@@ -40,7 +40,7 @@ public class AcquirePermitTileTest {
 		action.setCardsToDescard(discard);
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		a.setPlayerNumber(1);
 		players.add(a);
 		game.start(players);
@@ -81,7 +81,7 @@ public class AcquirePermitTileTest {
 		action.setCardsToDescard(discard);
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		a.setPlayerNumber(1);
 		players.add(a);
 		game.start(players);
@@ -113,7 +113,7 @@ public class AcquirePermitTileTest {
 		action.setCardsToDescard(discard);
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		a.setPlayerNumber(1);
 		players.add(a);
 		game.start(players);
@@ -145,7 +145,7 @@ public class AcquirePermitTileTest {
 		AcquirePermitTile action=new AcquirePermitTile();
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		a.setPlayerNumber(1);
 		players.add(a);
 		game.start(players);
@@ -172,7 +172,7 @@ public class AcquirePermitTileTest {
 		action.setCardsToDescard(discard);
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		a.setPlayerNumber(1);
 		players.add(a);
 		game.start(players);

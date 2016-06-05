@@ -21,7 +21,7 @@ public class ElectCouncillorByAssistantTest {
 	public void testExecuteAction() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		a.setPlayerNumber(1);
 		players.add(a);
 		game.start(players);
@@ -47,7 +47,7 @@ public class ElectCouncillorByAssistantTest {
 	public void testExceptionIfBalconyIsNull() throws IOException{
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		a.setPlayerNumber(1);
 		players.add(a);
 		game.start(players);
@@ -62,7 +62,7 @@ public class ElectCouncillorByAssistantTest {
 	public void testExceptionIfCouncillorIsNull() throws IOException{
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		a.setPlayerNumber(1);
 		players.add(a);
 		game.start(players);
@@ -76,7 +76,7 @@ public class ElectCouncillorByAssistantTest {
 	public void testIfReturnsFalseInCasePlayerHasTooFewAssistants() throws IOException{
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		a.setPlayerNumber(1);
 		players.add(a);
 		game.start(players);

@@ -12,7 +12,7 @@ public class OfferTest {
 
 	@Test
 	public void test() {
-		Player a=new Player();
+		Player a=new Player("Andre");
 		Assistant assistant=new Assistant();
 		Offer offer=new Offer(a, assistant, 5);
 		assertTrue(a== offer.getOfferingPlayer());

@@ -24,7 +24,7 @@ public class RegionBoardTest {
 	public void testGetName() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		assertEquals("Sea", game.getGameTable().getRegionBoards().get(0).getName());
@@ -34,7 +34,7 @@ public class RegionBoardTest {
 	public void testIsBonusAailable() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		assertEquals(true, game.getGameTable().getRegionBoards().get(0).isBonusAvailable());
@@ -44,7 +44,7 @@ public class RegionBoardTest {
 	public void testNotBonusAvailable() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		game.getGameTable().getRegionBoards().get(0).notBonusAvailable();
@@ -55,7 +55,7 @@ public class RegionBoardTest {
 	public void testGetRegionPermitDeck() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<Player>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		assertEquals(PermitDeck.class, game.getGameTable().getRegionBoards().get(0).getRegionPermitDeck().getClass());
@@ -65,7 +65,7 @@ public class RegionBoardTest {
 	public void testGetRegionBalcony() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		assertEquals(CouncilBalcony.class, game.getGameTable().getRegionBoards().get(0).getRegionBalcony().getClass());
@@ -75,7 +75,7 @@ public class RegionBoardTest {
 	public void testGetRegionBonus() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		assertEquals(ScoreBonus.class, game.getGameTable().getRegionBoards().get(0).getRegionBonus().getClass());
@@ -85,7 +85,7 @@ public class RegionBoardTest {
 	public void testGetRegionCities() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		int i=0;
@@ -98,7 +98,7 @@ public class RegionBoardTest {
 	public void testGetUncoveredPermitTiles() throws IOException{
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		assertEquals(PermitTile.class, game.getGameTable().getRegionBoards().get(0).getUncoveredPermitTiles()[0].getClass());
@@ -108,7 +108,7 @@ public class RegionBoardTest {
 	public void testAddCityOfThisRegion() throws IOException{
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		City c= null;
@@ -120,7 +120,7 @@ public class RegionBoardTest {
 	public void testPickUncoveredPermitTileException() throws IOException{
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		game.getGameTable().getRegionBoards().get(0).pickUncoveredPermitTile(4);
@@ -130,7 +130,7 @@ public class RegionBoardTest {
 	public void testPickUncoveredPermitTile() throws IOException{
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		assertEquals(PermitTile.class, game.getGameTable().getRegionBoards().get(0).pickUncoveredPermitTile(0).getClass());
@@ -140,7 +140,7 @@ public class RegionBoardTest {
 	public void testPickUncoveredPermitTileReturnNullInThatPosition() throws IOException{
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		game.getGameTable().getRegionBoards().get(0).pickUncoveredPermitTile(0).getClass();
@@ -152,7 +152,7 @@ public class RegionBoardTest {
 	public void testUncoverPermitTile() throws IOException{
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		PermitTile t= game.getGameTable().getRegionBoards().get(0).getRegionPermitDeck().getPermitTiles().get(0);
@@ -166,7 +166,7 @@ public class RegionBoardTest {
 	public void testIfSubstitutePermitTilesThrowException() throws IOException{
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		game.getGameTable().getRegionBoards().get(0).getRegionPermitDeck().getPermitTiles().removeAll(
@@ -178,7 +178,7 @@ public class RegionBoardTest {
 	public void testSubstitutePermitTilesIfThePermitTileGoesToTheBottomOfTheDeck() throws IOException{
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		int i=0;

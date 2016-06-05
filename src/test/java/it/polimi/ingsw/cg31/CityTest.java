@@ -25,7 +25,7 @@ public class CityTest {
 		
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		ScoreBonus bonus= new ScoreBonus(1);
@@ -43,7 +43,7 @@ public class CityTest {
 	public void testIfIsKingPresentReturnTrueAfterTheMethodSetIsKingPresent() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		ScoreBonus bonus= new ScoreBonus(1);
@@ -62,7 +62,7 @@ public class CityTest {
 	public void testGetRewardToken() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		ScoreBonus bonus= new ScoreBonus(1);
@@ -80,7 +80,7 @@ public class CityTest {
 	public void testConstructorDoesnTGiveBonusToKingCity() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		ScoreBonus bonus= new ScoreBonus(1);
@@ -99,7 +99,7 @@ public class CityTest {
 	public void testGetRegion() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		ScoreBonus bonus= new ScoreBonus(1);
@@ -117,7 +117,7 @@ public class CityTest {
 	public void testGetName() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		ScoreBonus bonus= new ScoreBonus(1);
@@ -135,7 +135,7 @@ public class CityTest {
 	public void testGetColour() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		ScoreBonus bonus= new ScoreBonus(1);
@@ -153,7 +153,7 @@ public class CityTest {
 	public void testAddEmporiumsAndGetEmporiums() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		ScoreBonus bonus= new ScoreBonus(1);
@@ -175,7 +175,7 @@ public class CityTest {
 	public void testAddAndGetNearCity() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		ScoreBonus bonus= new ScoreBonus(1);

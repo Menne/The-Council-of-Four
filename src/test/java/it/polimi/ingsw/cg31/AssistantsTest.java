@@ -18,7 +18,7 @@ public class AssistantsTest {
 	public void testAddToPlayer() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player p = new Player();
+		Player p = new Player("Andre");
 		players.add(p);
 		game.start(players);
 		Assistant a=new Assistant();
@@ -31,7 +31,7 @@ public class AssistantsTest {
 	public void testRemoveFromPlayer() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player p = new Player();
+		Player p = new Player("Andre");
 		players.add(p);
 		game.start(players);
 		Assistant a=new Assistant();
@@ -45,7 +45,7 @@ public class AssistantsTest {
 	public void testExceptionOfRemove() throws IOException{
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player p= new Player();
+		Player p= new Player("Andre");
 		players.add(p);
 		game.start(players);
 			while(game.getPlayers().get(0).getNumberOfAssistants()!=0)

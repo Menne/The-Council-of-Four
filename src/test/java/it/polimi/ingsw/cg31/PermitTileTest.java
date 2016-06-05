@@ -25,7 +25,7 @@ public class PermitTileTest {
 	public void testGetterOfBuildableCities() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		Set<City> cities= new HashSet<>();
@@ -44,7 +44,7 @@ public class PermitTileTest {
 	public void testGetterOfBonuses() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		Set<City> cities= new HashSet<>();
@@ -63,7 +63,7 @@ public class PermitTileTest {
 	public void testAddObjectToPlayer() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		Set<City> cities= new HashSet<>();
@@ -83,7 +83,7 @@ public class PermitTileTest {
 	public void testRemoveObjectFromPlayer() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		Set<City> cities= new HashSet<>();
@@ -104,7 +104,7 @@ public class PermitTileTest {
 	public void testIfRemoveObjectFromPlayerThrowsException() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		Set<City> cities= new HashSet<>();

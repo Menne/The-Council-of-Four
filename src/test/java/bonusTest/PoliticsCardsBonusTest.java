@@ -28,7 +28,7 @@ public class PoliticsCardsBonusTest {
 	public void testAssignBonus() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		game.setCurrentPlayer(game.getPlayers().get(0));

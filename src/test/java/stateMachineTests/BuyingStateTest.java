@@ -19,7 +19,7 @@ public class BuyingStateTest {
 	public void testBuyActionTransition() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		game.setCurrentPlayer(a);
@@ -33,7 +33,7 @@ public class BuyingStateTest {
 	public void testMoveToNextTransition() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		game.setCurrentPlayer(a);

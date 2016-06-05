@@ -48,15 +48,6 @@ public class Player {
 		this.name=name;
 	}
 	
-	//costruttore momentaneo per non far fallire tutti i test
-	public Player(){
-		this.assistants=new ArrayList<>();
-		this.hand=new ArrayList<>();
-		this.playersPermitTilesTurnedDown=new ArrayList<>();
-		this.playersPermitTilesTurnedUp=new ArrayList<>();
-		this.emporiums=new ArrayList<>();
-		this.playersFinalBonus=new ArrayList<>();
-	}
 	
 	public int getPlayerNumber() {
 		return playerNumber;

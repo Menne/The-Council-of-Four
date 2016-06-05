@@ -16,7 +16,7 @@ public class PickPermitTileBonusTest {
 	public void testExceptionNumberTooBig() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<Player>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		new PickPermitTileBonus(game.getGameTable().getRegionBoards().get(0), 3);
@@ -26,7 +26,7 @@ public class PickPermitTileBonusTest {
 	public void testExceptionNumberTooLow() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<Player>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		new PickPermitTileBonus(game.getGameTable().getRegionBoards().get(0), -1);
@@ -36,7 +36,7 @@ public class PickPermitTileBonusTest {
 	public void testIfBonusGiveThePermitTileToPlayer() throws IOException{
 		Game game=new Game();
 		List<Player> players = new ArrayList<Player>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		game.setCurrentPlayer(game.getPlayers().get(0));
@@ -51,7 +51,7 @@ public class PickPermitTileBonusTest {
 	public void testIfBonusGiveePermitTileToPlayer() throws IOException{
 		Game game=new Game();
 		List<Player> players = new ArrayList<Player>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		game.setCurrentPlayer(game.getPlayers().get(0));
@@ -61,7 +61,7 @@ public class PickPermitTileBonusTest {
 	public void testIfBeThePermitTileToPlayer() throws IOException{
 		Game game=new Game();
 		List<Player> players = new ArrayList<Player>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		game.setCurrentPlayer(game.getPlayers().get(0));

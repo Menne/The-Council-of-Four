@@ -21,7 +21,7 @@ public class AcceptAnOfferTest {
 	public void testIfExecuteActionThrowsNullPointerException() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
+		Player a = new Player("Andre");
 		a.setPlayerNumber(1);
 		players.add(a);
 		game.start(players);
@@ -34,8 +34,8 @@ public class AcceptAnOfferTest {
 	public void testOfferGetterAndSetter() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
-		Player a = new Player();
-		Player b = new Player();
+		Player a = new Player("Andre");
+		Player b = new Player("Luca");
 		a.setPlayerNumber(1);
 		b.setPlayerNumber(2);
 		players.add(a);
