@@ -20,7 +20,7 @@ public class PickPoliticsCard implements Action {
 				Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new AvailableActionsNotify(game.getState().getAcceptableActions(game), 
 				Arrays.asList(game.getCurrentPlayer())));
-		
+		System.out.println("game has notified the server view");
 		return true;
 	}
 

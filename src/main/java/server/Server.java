@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.rmi.AlreadyBoundException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -47,7 +48,7 @@ public class Server {
 		this.gamesMap.put(currentGame, new HashSet<>());
 		this.playerList=new ArrayList<>();
 		
-		Registry registry = LocateRegistry.createRegistry(RMI_PORT);
+		this.registry = LocateRegistry.createRegistry(RMI_PORT);
 		System.out.println("Constructing the RMI registry");
 		this.currentRMIView=new RMIView(this, currentGame);
 		RMIViewRemote rmiViewRemote=(RMIViewRemote) UnicastRemoteObject.exportObject(currentRMIView,0);
@@ -72,6 +73,7 @@ public class Server {
 				gameView.registerObserver(controller);
 			}
 			currentGame.start(new ArrayList<>(playerList));
+			
 			playerList.clear();
 			this.currentGame=new Game();
 			this.gamesMap.put(currentGame, new HashSet<>());
