@@ -14,9 +14,13 @@ import server.view.RMIViewRemote;
 
 public class ClientRMI{
 	
-	private final static String HOST = "127.0.0.1";
+	private final String HOST;
 	private final static int PORT = 52365;
 	private static final String NAME = "CoF";
+	
+	public ClientRMI(String HOST) {
+		this.HOST=HOST;
+	}
 	
 	public void startClient() throws RemoteException, NotBoundException{
 		
@@ -32,12 +36,6 @@ public class ClientRMI{
 		view.registerObserver(clientController);
 		view.welcome();
 		view.input();
-	}
-
-	public static void main(String[] args) throws RemoteException, NotBoundException {
-		ClientRMI clientRMI=new ClientRMI();
-		clientRMI.startClient();
-
 	}
 
 }

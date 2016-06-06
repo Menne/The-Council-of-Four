@@ -15,7 +15,11 @@ import modelDTO.GameDTO;
 public class ClientSocket {
 
 	private final static int PORT = 29999;
-	private final static String IP = "127.0.0.1";
+	private final String IP;
+	
+	public ClientSocket(String IP) {
+		this.IP=IP;
+	}
 	
 	public void startClient()
 				throws UnknownHostException, IOException {
@@ -35,12 +39,5 @@ public class ClientSocket {
 		executor.submit(view);
 		view.welcome();
 		view.input();
-	}
-	
-	public static void main(String[] args) throws UnknownHostException, IOException {
-
-		ClientSocket client=new ClientSocket();
-		client.startClient();
-				
 	}
 }
