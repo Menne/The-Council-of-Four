@@ -12,6 +12,7 @@ import modelDTO.playerDTO.ClientPlayerDTO;
 import players.Player;
 import server.Server;
 import server.model.Game;
+import server.model.actions.Quit;
 import server.view.notifies.ViewNotify;
 
 public class RMIView extends View implements RMIViewRemote {
@@ -60,15 +61,21 @@ public class RMIView extends View implements RMIViewRemote {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
-				
+		}				
 	}
 
 	@Override
 	public void receiveAction(ActionDTO actionDTO) throws RemoteException {
 		
 		this.notifyObserver(actionDTO.map(this.game));
+		
+	}
+
+
+	@Override
+	public void quitPlayer(ClientRMIViewRemote quittingView) throws RemoteException {
+		
+		this.notifyObserver(new Quit(clientsMap.get(quittingView)));
 		
 	}
 

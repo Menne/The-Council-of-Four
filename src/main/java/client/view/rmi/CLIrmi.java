@@ -37,12 +37,16 @@ public class CLIrmi extends ClientView implements ClientRMIViewRemote{
 
 	@Override
 	public void input() throws RemoteException {
-		while (true) {
+		String input="";
+		while (!"quit".equals(input)) {
 
-			String input=this.scanner.nextLine();
+			input=this.scanner.nextLine();
 			if (this.parser.availableActions().contains(input)) {
 				ActionDTO selectedAction=this.parser.actionParser(input);
 				this.checkIfParametersNeeded(selectedAction);
+			}
+			else if("quit".equals(input)){
+				serverStub.quitPlayer(this);
 			}
 			else
 				System.out.println("Sorry, action not available!");	

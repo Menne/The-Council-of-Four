@@ -15,6 +15,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -67,20 +69,40 @@ public class Server {
 		player.setPlayerNumber(playerList.size());
 		
 		if(this.playerList.size()==2){
-			Controller controller=new Controller(currentGame);
-			for(View gameView : this.gamesMap.get(currentGame)){
-				currentGame.registerObserver(gameView);
-				gameView.registerObserver(controller);
-			}
-			currentGame.start(new ArrayList<>(playerList));
+			Timer timer=new Timer();
+			timer.schedule(new TimerTask() {
+				
+				@Override
+				public void run() {
+					try {
+						
+						startGame();
+						
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+				}
+			}, 20*1000);
 			
-			playerList.clear();
-			this.currentGame=new Game();
-			this.gamesMap.put(currentGame, new HashSet<>());
-			this.currentRMIView=new RMIView(this, currentGame);
-			RMIViewRemote rmiViewRemote=(RMIViewRemote) UnicastRemoteObject.exportObject(currentRMIView,0);
-			registry.rebind(NAME, currentRMIView);
 		}
+	}
+	
+	public void startGame() throws IOException{
+		Controller controller=new Controller(currentGame);
+		for(View gameView : this.gamesMap.get(currentGame)){
+			currentGame.registerObserver(gameView);
+			gameView.registerObserver(controller);
+		}
+		currentGame.start(new ArrayList<>(playerList));
+		
+		playerList.clear();
+		this.currentGame=new Game();
+		this.gamesMap.put(currentGame, new HashSet<>());
+		this.currentRMIView=new RMIView(this, currentGame);
+		RMIViewRemote rmiViewRemote=(RMIViewRemote) UnicastRemoteObject.exportObject(currentRMIView,0);
+		registry.rebind(NAME, currentRMIView);
 	}
 	
 	public void startSocket() throws IOException, InterruptedException{

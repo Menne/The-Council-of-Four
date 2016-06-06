@@ -57,7 +57,6 @@ public class BuildByPermitTileTest {
 		assertTrue(tile==game.getCurrentPlayer().getPlayersPermitTilesTurnedUp().get(0));
 		Iterator<City> it= tile.getBuildableCities().iterator();
 		City selectedCity= it.next();
-	//	Set<Bonus> bonuses= selectedCity.getRewardToken();
 		game.setState(new State11());
 		BuildByPermitTile action= new BuildByPermitTile();
 		action.setSelectedPermitTile(game.getCurrentPlayer().getPlayersPermitTilesTurnedUp().get(0));;
@@ -70,7 +69,11 @@ public class BuildByPermitTileTest {
 		Iterator<Emporium> itEmp= selectedCity.getCityEmporiums().iterator();
 		Emporium e=itEmp.next();
 		assertEquals(game.getCurrentPlayer(), e.getEmporiumsPlayer());
-			
+	/*	for(Bonus bonus: bonuses){
+			if(bonus.getClass()==CoinsBonus.class)
+				assertEquals(,game.getCurrentPlayer().getCoins());
+		}
+		*/	
 	}
 
 	

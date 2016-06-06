@@ -14,9 +14,13 @@ import server.view.RMIViewRemote;
 
 public class ClientRMI{
 	
-	private final static String HOST = "127.0.0.1";
+	private final String HOST;
 	private final static int PORT = 52365;
 	private static final String NAME = "CoF";
+	
+	public ClientRMI(String HOST) {
+		this.HOST=HOST;
+	}
 	
 	public void startClient() throws RemoteException, NotBoundException{
 		
@@ -26,18 +30,11 @@ public class ClientRMI{
 		GameDTO clientGame=new GameDTO();
 		ClientController clientController=new ClientController(clientGame);
 		CLIrmi view=new CLIrmi(clientGame.getParser(), serverStub);
-		ClientRMIViewRemote clientRMIViewRemote=(ClientRMIViewRemote) 
-				UnicastRemoteObject.exportObject(view,0);
+		ClientRMIViewRemote clientRMIViewRemote=(ClientRMIViewRemote) UnicastRemoteObject.exportObject(view,0);
 		clientGame.registerObserver(view);
 		view.registerObserver(clientController);
 		view.welcome();
 		view.input();
-	}
-
-	public static void main(String[] args) throws RemoteException, NotBoundException {
-		ClientRMI clientRMI=new ClientRMI();
-		clientRMI.startClient();
-
 	}
 
 }
