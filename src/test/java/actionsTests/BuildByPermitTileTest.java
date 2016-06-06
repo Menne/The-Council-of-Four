@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.junit.Test;
 
@@ -13,6 +14,8 @@ import players.Player;
 import server.model.Game;
 import server.model.actions.standardActions.AcquirePermitTile;
 import server.model.actions.standardActions.BuildByPermitTile;
+import server.model.bonus.Bonus;
+import server.model.bonus.CoinsBonus;
 import server.model.gameTable.CardColour;
 import server.model.gameTable.City;
 import server.model.gameTable.Emporium;
@@ -57,7 +60,7 @@ public class BuildByPermitTileTest {
 		assertTrue(tile==game.getCurrentPlayer().getPlayersPermitTilesTurnedUp().get(0));
 		Iterator<City> it= tile.getBuildableCities().iterator();
 		City selectedCity= it.next();
-	//	Set<Bonus> bonuses= selectedCity.getRewardToken();
+		Set<Bonus> bonuses= selectedCity.getRewardToken();
 		game.setState(new State11());
 		BuildByPermitTile action= new BuildByPermitTile();
 		action.setSelectedPermitTile(game.getCurrentPlayer().getPlayersPermitTilesTurnedUp().get(0));;
@@ -70,7 +73,11 @@ public class BuildByPermitTileTest {
 		Iterator<Emporium> itEmp= selectedCity.getCityEmporiums().iterator();
 		Emporium e=itEmp.next();
 		assertEquals(game.getCurrentPlayer(), e.getEmporiumsPlayer());
-			
+	/*	for(Bonus bonus: bonuses){
+			if(bonus.getClass()==CoinsBonus.class)
+				assertEquals(,game.getCurrentPlayer().getCoins());
+		}
+		*/	
 	}
 
 	
