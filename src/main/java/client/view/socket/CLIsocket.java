@@ -47,9 +47,10 @@ public class CLIsocket extends ClientView implements Runnable{
 	
 	@Override
 	public void input() {
-		while (true) {
+		String input="";
+		while (!"quit".equals(input)) {
 
-			String input=this.scanner.nextLine();
+			input=this.scanner.nextLine();
 			if (this.parser.availableActions().contains(input)) {
 				ActionDTO selectedAction=this.parser.actionParser(input);
 				this.checkIfParametersNeeded(selectedAction);
