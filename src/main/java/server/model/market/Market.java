@@ -36,7 +36,11 @@ public class Market {
 		offer.getOfferingPlayer().incrementCoins(offer.getPrice());
 		offer.getOfferedObject().addObjectToPlayer(buyingPlayer);
 		offer.getOfferedObject().removeObjectFromPlayer(offer.getOfferingPlayer());
-		this.offersList.remove(offer);
+		for (Offer offerInList : this.offersList)
+			if (offer.equals(offerInList)) {
+				this.offersList.remove(offer);
+				break;
+			}
 	}
 	
 	public void addPlayer(Player player){

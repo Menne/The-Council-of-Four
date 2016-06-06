@@ -1,5 +1,6 @@
 package modelDTO.parser;
 
+import client.view.notifies.AcceptAnOfferNotify;
 import client.view.notifies.ActionNotify;
 import client.view.notifies.ParametersNotify;
 import modelDTO.GameDTO;
@@ -28,8 +29,8 @@ public class AcceptAnOfferParser implements ActionParserVisitor {
 		if (!this.game.getMarket().getOffersList().isEmpty()) {
 		
 			this.game.notifyObserver(new ActionNotify("Do you want to buy one of these objects?"));
-			this.game.notifyObserver(new ParametersNotify(parser.acceptableOffers(), this));
-			this.selectedAction.setOffer(parser.OfferTranslator(currentParameter));
+			this.game.notifyObserver(new AcceptAnOfferNotify(parser.acceptableOffers(), this));
+			this.selectedAction.setOffer(parser.OfferTranslator(parser.acceptableOffers().get(Integer.parseInt(currentParameter)-1)));
 			
 			this.selectedAction.parametersSetted();
 			

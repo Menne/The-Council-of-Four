@@ -13,6 +13,7 @@ import modelDTO.marketDTO.OfferDTO;
 import modelDTO.parser.AcceptAnOfferParser;
 import modelDTO.parser.ActionParserVisitor;
 import modelDTO.playerDTO.AssistantDTO;
+import players.Player;
 import server.model.Game;
 import server.model.actions.Action;
 import server.model.actions.marketActions.AcceptAnOffer;
@@ -45,7 +46,7 @@ public class AcceptAnOfferDTO implements ActionDTO, ActionWithParameters {
 		
 		if (this.offerDTO.getOfferedObjectDTO() instanceof CardColourDTO) {
 			CardColourDTO offeringCardDTO=(CardColourDTO) this.offerDTO.getOfferedObjectDTO();
-			action.setOffer(new Offer(game.getCurrentPlayer(), 
+			action.setOffer(new Offer(this.setOfferingPlayer(game), 
 					new PoliticsCard(new CardColour(offeringCardDTO.getName())), this.offerDTO.getPrice()));
 		}
 		if (this.offerDTO.getOfferedObjectDTO() instanceof PermitTileDTO) {
@@ -53,15 +54,22 @@ public class AcceptAnOfferDTO implements ActionDTO, ActionWithParameters {
 			for (PermitTile permitTile : game.getCurrentPlayer().getPlayersPermitTilesTurnedUp())
 				if (permitTile.getBonus().equals(offeringPermitTileDTO.getBonuses()) &&
 					this.checkBuildableCities(offeringPermitTileDTO, permitTile.getBuildableCities()))
-				action.setOffer(new Offer(game.getCurrentPlayer(), permitTile, this.offerDTO.getPrice()));
+				action.setOffer(new Offer(this.setOfferingPlayer(game), permitTile, this.offerDTO.getPrice()));
 		}
 		if (this.offerDTO.getOfferedObjectDTO() instanceof AssistantDTO) {
-			action.setOffer(new Offer(game.getCurrentPlayer(), new Assistant(), this.offerDTO.getPrice()));
+			action.setOffer(new Offer(this.setOfferingPlayer(game), new Assistant(), this.offerDTO.getPrice()));
 		}
 		
 		return action;
 	}
 	
+	private Player setOfferingPlayer(Game game) {
+		for (Player player : game.getPlayers())
+			if (this.offerDTO.getOfferingPlayer().equals(player.getName()))
+				return player;
+		throw new IllegalArgumentException("the offering player is not valid");
+	}
+
 	private boolean checkBuildableCities(PermitTileDTO offeringPermitTileDTO, Set<City> realBuildableCities) {
 		Set<String> realBuildableCitiesString =new HashSet<>();
 		Set<String> buildableCitiesDTOString = new HashSet<>();

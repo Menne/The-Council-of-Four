@@ -172,7 +172,7 @@ public class Parser implements Serializable{
 	protected List<String> acceptableOffers() {
 		List<String> acceptableOffers=new ArrayList<String>();
 		for (OfferDTO acceptableOffer : this.game.getMarket().getOffersList())
-			acceptableOffers.add(acceptableOffer.getOfferedObjectDTO().toString());
+			acceptableOffers.add(acceptableOffer.toString());
 		return acceptableOffers;
 	}
 	
@@ -280,7 +280,7 @@ public class Parser implements Serializable{
 	 */
 	public OfferDTO OfferTranslator(String currentParameter) {
 		for (OfferDTO offer : this.game.getMarket().getOffersList())
-			if (offer.getOfferedObjectDTO().toString().equals(currentParameter))
+			if (offer.toString().equals(currentParameter))
 				return offer;
 		throw new IllegalArgumentException("this offer is not valid");
 	}

@@ -42,7 +42,7 @@ public class PoliticsCardsNotify implements ClientViewNotify {
 				temporaryAcceptablePoliticsCards.remove(currentCard);
 			}
 			else {
-				System.out.println("Wrong cards. Retry");
+				System.out.println("Wrong cards. Try again");
 				return false;
 			}
 		}

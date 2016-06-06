@@ -58,12 +58,12 @@ public class AcquirePermitTile extends MainAction {
 			throw new NullPointerException("Paramters not setted");
 		
 		if (!this.CheckEnoughCoins(game)) {
-			game.notifyObserver(new ErrorNotify("It seems that you haven't enough coins!", 
+			game.notifyObserver(new ErrorNotify("It seems that you haven't enough coins!. Try again or choose another action", 
 					Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}
 		if (!this.CheckHandSatisfiesBalcony(game)) {
-					game.notifyObserver(new ErrorNotify("It seems that the cards in you hand don't satisfy the councillors!", 
+					game.notifyObserver(new ErrorNotify("It seems that the cards in you hand don't satisfy the councillors!. Try again or choose another action", 
 							Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}

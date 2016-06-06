@@ -58,22 +58,22 @@ public class BuildByKing extends MainAction {
 		ConnectedBuiltCityDiscover likedCities=new ConnectedBuiltCityDiscover();
 		
 		if (!checkCityNotContainsEmporium(game)) {
-			game.notifyObserver(new ErrorNotify("It seems that you haven't enough assistants!",
+			game.notifyObserver(new ErrorNotify("It seems that this city arelady contains your emporium!. Try again or choose another action",
 					Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}
 		if (!checkEnoughAssistants(game)) {
-			game.notifyObserver(new ErrorNotify("It seems that you haven't enough assistants!",
+			game.notifyObserver(new ErrorNotify("It seems that you haven't enough assistants!. Try again or choose another action",
 					Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}
 		if (!CheckHandSatisfiesBalcony(game)) {
-			game.notifyObserver(new ErrorNotify("It seems that you haven't enough assistants!",
+			game.notifyObserver(new ErrorNotify("It seems that these cards don't satisfy the councillors!. Try again or choose another action",
 					Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}	
 		if (!CheckEnoughCoins(game)) {
-			game.notifyObserver(new ErrorNotify("It seems that you haven't enough assistants!",
+			game.notifyObserver(new ErrorNotify("It seems that you haven't enough coins!. Try again or choose another action",
 					Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}

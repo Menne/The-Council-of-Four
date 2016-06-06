@@ -34,7 +34,7 @@ public class AdditionalMainAction extends QuickAction {
 	public boolean executeAction(Game game) {
 		
 		if (!this.checkAssistants(game)) {
-			game.notifyObserver(new ErrorNotify("It seems that you haven't enough assistants!", 
+			game.notifyObserver(new ErrorNotify("It seems that you haven't enough assistants!. Try again or choose another action", 
 					Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}

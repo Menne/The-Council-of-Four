@@ -30,7 +30,8 @@ public class EngageAssistant extends QuickAction {
 	public boolean executeAction(Game game) {
 		
 		if (!this.checkCoins(game)){
-			game.notifyObserver(new ErrorNotify("It seems that you haven't enough coins!", Arrays.asList(game.getCurrentPlayer())));
+			game.notifyObserver(new ErrorNotify("It seems that you haven't enough coins!. Try again or choose another action", 
+					Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}
 		

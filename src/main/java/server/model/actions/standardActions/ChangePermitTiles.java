@@ -43,7 +43,8 @@ public class ChangePermitTiles extends QuickAction {
 			throw new NullPointerException("Paramters not setted");
 		
 		if(!this.checkAssistant(game)){
-			game.notifyObserver(new ErrorNotify("It seems that you haven't enough assistants", Arrays.asList(game.getCurrentPlayer())));
+			game.notifyObserver(new ErrorNotify("It seems that you haven't enough assistants. Please choose another action", 
+					Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}
 		

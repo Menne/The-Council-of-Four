@@ -52,17 +52,17 @@ public class BuildByPermitTile extends MainAction {
 		ConnectedBuiltCityDiscover likedCities=new ConnectedBuiltCityDiscover();
 		
 		if (!checkCityNotContainsEmporium(game)) {
-			game.notifyObserver(new ErrorNotify("It seems that this city arelady contains a your emporium!", 
+			game.notifyObserver(new ErrorNotify("It seems that this city arelady contains your emporium!. Try again or choose another action", 
 					Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}
 		if (!checkPermitTileContainsCity()) {
-			game.notifyObserver(new ErrorNotify("It seems that the permit tile you selected doesn't contain the city in which you want to build!", 
+			game.notifyObserver(new ErrorNotify("It seems that the permit tile you selected doesn't contain the city in which you want to build!. Try again or choose another action", 
 					Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}	
 		if (!checkEnoughAssistants(game)) {
-			game.notifyObserver(new ErrorNotify("It seems that you haven't enough assistants!", 
+			game.notifyObserver(new ErrorNotify("It seems that you haven't enough assistants!. Try again or choose another action", 
 					Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}

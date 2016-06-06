@@ -20,7 +20,7 @@ public class ParametersNotify implements ClientViewNotify {
 		System.out.println(parameters);
 		String input=scanner.nextLine();
 			while (!parameters.contains(input)) {
-				System.out.println("Wrong parameter. Retry");
+				System.out.println("Wrong parameter. Try again");
 				input=scanner.nextLine();
 			}
 		this.currentParser.setCurrentParameter(input);

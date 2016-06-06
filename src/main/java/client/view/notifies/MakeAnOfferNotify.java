@@ -25,7 +25,7 @@ public class MakeAnOfferNotify implements ClientViewNotify {
 			indexes.add(""+i);
 		String input=scanner.nextLine();
 		while (!indexes.contains(input)) {
-			System.out.println("Wrong parameter. Retry");
+			System.out.println("Wrong parameter. Try again");
 			input=scanner.nextLine();
 		}
 		this.currentParser.setCurrentParameter(input);		
