@@ -2,7 +2,6 @@ package modelDTO.parser;
 
 import client.view.notifies.AcceptAnOfferNotify;
 import client.view.notifies.ActionNotify;
-import client.view.notifies.ParametersNotify;
 import modelDTO.GameDTO;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.marketActions.AcceptAnOfferDTO;

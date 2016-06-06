@@ -19,10 +19,15 @@ public class MakeAnOfferNotify implements ClientViewNotify {
 	
 	@Override
 	public void stamp(Scanner scanner) {
-		System.out.println(parameters);
 		List<String> indexes=new ArrayList<>();
-		for (int i=0; i<parameters.size(); i++)
+		List<String> parametersWithIndex=new ArrayList<>();
+		int i=1;
+		for (String parameter : this.parameters) {
 			indexes.add(""+i);
+			parametersWithIndex.add(i+": "+parameter);
+			i++;
+		}
+		System.out.println(parametersWithIndex);
 		String input=scanner.nextLine();
 		while (!indexes.contains(input)) {
 			System.out.println("Wrong parameter. Try again");

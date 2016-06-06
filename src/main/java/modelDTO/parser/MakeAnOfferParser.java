@@ -41,52 +41,54 @@ public class MakeAnOfferParser implements ActionParserVisitor {
 	public ActionDTO setParameters(Parser parser) throws IllegalArgumentException {
 		this.game.notifyObserver(new ActionNotify("Ok, you decided to sell something to the other players"));
 			
-			while (this.otherSelling && !(parser.acceptablePoliticsCards().isEmpty() && parser.acceptablePermitTiles().isEmpty()
-					&& this.game.getClientPlayer().getAssistants()==0 )) {
+		List<String> acceptableParameters=new ArrayList<String>();
+		List<String> index1=new ArrayList<String>();
+		List<String> index2=new ArrayList<String>();
+		List<String> index3=new ArrayList<String>();
+		
+		for (int i=0; i<parser.acceptablePoliticsCards().size(); i++) {
+			acceptableParameters.add(parser.acceptablePoliticsCards().get(i).toString());
+			index1.add(""+i);
+		}
+		int sizeCounter=acceptableParameters.size();
+		for (int i=sizeCounter; i<sizeCounter+parser.acceptablePermitTiles().size(); i++) {
+			acceptableParameters.add(parser.acceptablePermitTiles().get(i).toString());
+			index2.add(""+i);
+		}
+		sizeCounter=acceptableParameters.size();
+		for (int i=sizeCounter; i<sizeCounter+this.game.getClientPlayer().getAssistants(); i++) {
+			acceptableParameters.add("Assistant");
+			index3.add(""+i);
+		}
+		
+		while (this.otherSelling && !acceptableParameters.isEmpty()) {
 				
 				OfferDTO offerDTO=new OfferDTO();
 				offerDTO.setOfferingPlayer(this.game.getClientPlayer().getName());
 					
 				this.game.notifyObserver(new ActionNotify("Which element do you want to offer?"));
-				
-				List<String> acceptableParameters=new ArrayList<String>();
-				List<String> index1=new ArrayList<String>();
-				List<String> index2=new ArrayList<String>();
-				List<String> index3=new ArrayList<String>();
-				
-				for (int i=0; i<parser.acceptablePoliticsCards().size(); i++) {
-					acceptableParameters.add(i + ": " + parser.acceptablePoliticsCards().get(i).toString());
-					index1.add(""+i);
-				}
-				int sizeCounter=acceptableParameters.size();
-				for (int i=sizeCounter; i<sizeCounter+parser.acceptablePermitTiles().size(); i++) {
-					acceptableParameters.add(i + ": " + parser.acceptablePermitTiles().get(i).toString());
-					index2.add(""+i);
-				}
-				sizeCounter=acceptableParameters.size();
-				for (int i=sizeCounter; i<sizeCounter+this.game.getClientPlayer().getAssistants(); i++) {
-					acceptableParameters.add(i + ": Assistant");
-					index3.add(""+i);
-				}
-				
 				this.game.notifyObserver(new MakeAnOfferNotify(acceptableParameters, this));
 				
+				
 				if (index1.contains(currentParameter)) {
-					offerDTO.setOfferedObjectDTO(this.game.getClientPlayer().getHand().get(Integer.parseInt(currentParameter)));
+					index1.remove(Integer.parseInt(currentParameter)-1);
+					offerDTO.setOfferedObjectDTO(this.game.getClientPlayer().getHand().get(Integer.parseInt(currentParameter)-1));
 					if (!(offerDTO.getOfferedObjectDTO() instanceof CardColourDTO))
 						throw new IllegalArgumentException("The offering object must be a CardColourDTO");
 				}
 				if (index2.contains(currentParameter)) {
-					offerDTO.setOfferedObjectDTO(parser.permitTileTranslator(acceptableParameters.get(Integer.parseInt(currentParameter))));
+					index2.remove(Integer.parseInt(currentParameter)-1);
+					offerDTO.setOfferedObjectDTO(parser.permitTileTranslator(acceptableParameters.get(Integer.parseInt(currentParameter)-1)));
 					if (!(offerDTO.getOfferedObjectDTO() instanceof PermitTileDTO))
 						throw new IllegalArgumentException("The offering object must be a PermitTileDTO");
 				}
 				if (index3.contains(currentParameter)) {
+					index3.remove(Integer.parseInt(currentParameter)-1);
 					offerDTO.setOfferedObjectDTO(new AssistantDTO());
 					if (!(offerDTO.getOfferedObjectDTO() instanceof AssistantDTO))
 						throw new IllegalArgumentException("The offering object must be an AssistantDTO");
 				}
-				
+				acceptableParameters.remove(Integer.parseInt(currentParameter)-1);
 				
 				List<String> acceptablePrice=new ArrayList<String>();
 				for (int i=0; i<=100; i++)
