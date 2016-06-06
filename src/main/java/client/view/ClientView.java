@@ -1,5 +1,6 @@
 package client.view;
 
+import java.io.IOException;
 import java.rmi.RemoteException;
 
 import client.view.notifies.ClientViewNotify;
@@ -12,6 +13,6 @@ public abstract class ClientView extends Observable<ClientNotify> implements Obs
 	@Override
 	public abstract void update(ClientViewNotify notify);
 	
-	public abstract void input() throws RemoteException;
+	public abstract void input() throws RemoteException, IOException;
 
 }

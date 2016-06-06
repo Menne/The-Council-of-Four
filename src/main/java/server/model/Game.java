@@ -29,14 +29,18 @@ public class Game extends Observable<ViewNotify>{
 	private boolean lastLap;
 	private static final int initialNumberOfCards=6;
 	private static final int intialNumberOfEmporiums=10;
-	private List<Player> listOfPlayers;
+//	private List<Player> listOfPlayers;
+	private final List<Player> quittedPlayers;
 	
+	public Game() {
+		this.quittedPlayers=new ArrayList<>();
+	}
 	
 	public void start(List<Player> playerList) throws IOException{
 		Initializer init= new Initializer();
 		this.gameTable=init.initialize();
 		this.players=playerList;
-		this.listOfPlayers=playerList;
+//		this.listOfPlayers=playerList;
 		for(Player player : players){
 			player.incrementAssistants(player.getPlayerNumber());
 			player.setScore(0);
@@ -108,6 +112,10 @@ public class Game extends Observable<ViewNotify>{
 		return this.state;
 	}
 
+
+	public List<Player> getQuittedPlayers() {
+		return quittedPlayers;
+	}
 
 	public Market getMarket() {
 		return this.market;
@@ -224,8 +232,8 @@ public class Game extends Observable<ViewNotify>{
 	}
 
 
-	public List<Player> getListOfPlayers() {
+/*	public List<Player> getListOfPlayers() {
 		return listOfPlayers;
-	}
+	}*/
 
 }

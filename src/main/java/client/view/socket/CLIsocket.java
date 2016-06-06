@@ -10,6 +10,7 @@ import client.view.notifies.ClientViewNotify;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.ActionWithParameters;
 import modelDTO.actionsDTO.AddPlayerDTO;
+import modelDTO.actionsDTO.QuitDTO;
 import modelDTO.clientNotifies.ClientNotify;
 import modelDTO.parser.Parser;
 
@@ -46,7 +47,7 @@ public class CLIsocket extends ClientView implements Runnable{
 	}
 	
 	@Override
-	public void input() {
+	public void input() throws IOException {
 		String input="";
 		while (!"quit".equals(input)) {
 
@@ -55,8 +56,12 @@ public class CLIsocket extends ClientView implements Runnable{
 				ActionDTO selectedAction=this.parser.actionParser(input);
 				this.checkIfParametersNeeded(selectedAction);
 			}
-			else
-				System.out.println("Sorry, action not available!");	
+			else if("quit".equals(input)){
+				socketOut.writeObject(new QuitDTO(this));
+				socketOut.flush();
+			}
+				else
+					System.out.println("Sorry, action not available!");	
 		}
 	}
 	

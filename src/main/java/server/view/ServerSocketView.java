@@ -7,11 +7,13 @@ import java.net.Socket;
 
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.AddPlayerDTO;
+import modelDTO.actionsDTO.QuitDTO;
 import modelDTO.clientNotifies.PlayerAcceptedDTONotify;
 import modelDTO.playerDTO.ClientPlayerDTO;
 import players.Player;
 import server.Server;
 import server.model.Game;
+import server.model.actions.Quit;
 import server.view.notifies.ViewNotify;
 
 public class ServerSocketView extends View implements Runnable {
@@ -52,9 +54,10 @@ public class ServerSocketView extends View implements Runnable {
 					this.socketOut.writeObject(new PlayerAcceptedDTONotify(clientPlayerDTO));
 				}
 				
-				else {
+				else if(object instanceof QuitDTO)
+					this.notifyObserver(new Quit(this.player));
+				else{
 					ActionDTO actionDTO=(ActionDTO) object;
-					System.out.println("view is mapping the actionDTO");
 					this.notifyObserver(actionDTO.map(this.game));
 				}
 					

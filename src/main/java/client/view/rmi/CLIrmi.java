@@ -45,6 +45,9 @@ public class CLIrmi extends ClientView implements ClientRMIViewRemote{
 				ActionDTO selectedAction=this.parser.actionParser(input);
 				this.checkIfParametersNeeded(selectedAction);
 			}
+			else if("quit".equals(input)){
+				serverStub.quitPlayer(this);
+			}
 			else
 				System.out.println("Sorry, action not available!");	
 		}		
