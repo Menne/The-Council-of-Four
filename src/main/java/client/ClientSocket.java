@@ -39,5 +39,6 @@ public class ClientSocket {
 		executor.submit(view);
 		view.welcome();
 		view.input();
+		socket.close();
 	}
 }
