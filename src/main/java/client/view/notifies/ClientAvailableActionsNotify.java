@@ -8,14 +8,16 @@ import modelDTO.actionsDTO.ActionDTO;
 public class ClientAvailableActionsNotify implements ClientViewNotify {
 
 	private List<ActionDTO> availableActions;
+	private String message;
 
-	public ClientAvailableActionsNotify(List<ActionDTO> availableActions) {
+	public ClientAvailableActionsNotify(List<ActionDTO> availableActions, String message) {
 		this.availableActions=availableActions;
+		this.message=message;
 	}
 
 	@Override
 	public void stamp(Scanner scanner) {
-		System.out.println("\nYou have the following available actions. Choose one of them:\n"+ this.availableActions);
+		System.out.println(this.message + "\n"+ this.availableActions);
 	}
 
 }

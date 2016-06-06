@@ -13,10 +13,7 @@ import server.model.gameTable.CouncilBalcony;
 import server.model.gameTable.Councillor;
 import server.model.gameTable.PoliticsCard;
 import server.model.gameTable.RegionBoard;
-import server.view.notifies.AvailableActionsNotify;
 import server.view.notifies.ErrorNotify;
-import server.view.notifies.GameTableNotify;
-import server.view.notifies.PlayerNotify;
 
 /**
  * This class is the main action "acquire permit tile", it operates on the 
@@ -85,12 +82,6 @@ public class AcquirePermitTile extends MainAction {
 		this.chosenRegion.uncoverPermitTiles();
 		
 		this.nextState(game);
-		
-		game.notifyObserver(new GameTableNotify(game, game.getPlayers()));
-		game.notifyObserver(new PlayerNotify(game.getCurrentPlayer(), 
-				Arrays.asList(game.getCurrentPlayer())));
-		game.notifyObserver(new AvailableActionsNotify(game.getState().getAcceptableActions(game), 
-				Arrays.asList(game.getCurrentPlayer())));
 		
 		return true;
 	}

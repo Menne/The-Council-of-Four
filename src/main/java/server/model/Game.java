@@ -15,8 +15,6 @@ import server.model.market.Market;
 import server.model.stateMachine.BeginState;
 import server.model.stateMachine.BuyingState;
 import server.model.stateMachine.State;
-import server.view.notifies.AvailableActionsNotify;
-import server.view.notifies.GameTableNotify;
 import server.view.notifies.PlayerNotify;
 import server.view.notifies.ViewNotify;
  
@@ -57,9 +55,8 @@ public class Game extends Observable<ViewNotify>{
 		
 		for (Player player : this.players)
 			this.notifyObserver(new PlayerNotify(player, Arrays.asList(player)));
-		this.notifyObserver(new GameTableNotify(this, this.players));
-		this.notifyObserver(new AvailableActionsNotify(this.getState().getAcceptableActions(this), 
-				Arrays.asList(this.currentPlayer)));
+		
+		this.state.updateClients(this);
 		
 	}
 

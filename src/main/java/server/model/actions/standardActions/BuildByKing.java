@@ -6,7 +6,6 @@ import java.util.List;
 
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.standardActions.BuildByKingDTO;
-import players.Player;
 import server.model.Game;
 import server.model.actions.MainAction;
 import server.model.bonus.Bonus;
@@ -17,10 +16,7 @@ import server.model.gameTable.Councillor;
 import server.model.gameTable.Emporium;
 import server.model.gameTable.PoliticsCard;
 import server.model.gameTable.RegionBoard;
-import server.view.notifies.AvailableActionsNotify;
 import server.view.notifies.ErrorNotify;
-import server.view.notifies.GameTableNotify;
-import server.view.notifies.PlayerNotify;
 
 /**
  * This class models the build an emporium with king's help action
@@ -101,12 +97,6 @@ public class BuildByKing extends MainAction {
 			assignColourBonus(game);
 		
 		this.nextState(game);
-
-		game.notifyObserver(new GameTableNotify(game, new ArrayList<Player>(game.getPlayers())));
-		game.notifyObserver(new PlayerNotify(game.getCurrentPlayer(), 
-				Arrays.asList(game.getCurrentPlayer())));
-		game.notifyObserver(new AvailableActionsNotify(game.getState().getAcceptableActions(game), 
-				Arrays.asList(game.getCurrentPlayer())));
 		
 		return true;
 	}

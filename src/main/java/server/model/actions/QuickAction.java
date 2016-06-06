@@ -19,5 +19,6 @@ public abstract class QuickAction implements Action {
 	
 	public void nextState(Game game){
 		game.setState(game.getState().quickActionTransition(game));
+		game.getState().updateClients(game);
 	}
 }
