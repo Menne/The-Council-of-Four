@@ -1,17 +1,12 @@
 package server.model.actions.standardActions;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.standardActions.AddictionalMainActionDTO;
-import players.Player;
 import server.model.Game;
 import server.model.actions.QuickAction;
-import server.view.notifies.AvailableActionsNotify;
 import server.view.notifies.ErrorNotify;
-import server.view.notifies.GameTableNotify;
-import server.view.notifies.PlayerNotify;
 
 /**
  * It's the quick action "additional main action" it operates
@@ -45,13 +40,8 @@ public class AdditionalMainAction extends QuickAction {
 		}
 		
 		game.getCurrentPlayer().decrementAssistants(necessaryAssistants);
-		game.setState(game.getState().additionalMainActionTransition());
 		
-		game.notifyObserver(new GameTableNotify(game, new ArrayList<Player>(game.getPlayers())));
-		game.notifyObserver(new PlayerNotify(game.getCurrentPlayer(), 
-				Arrays.asList(game.getCurrentPlayer())));
-		game.notifyObserver(new AvailableActionsNotify(game.getState().getAcceptableActions(game), 
-				Arrays.asList(game.getCurrentPlayer())));
+		game.setState(game.getState().additionalMainActionTransition());
 		
 		return true;
 	}

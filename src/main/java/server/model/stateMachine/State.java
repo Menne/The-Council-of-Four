@@ -55,5 +55,7 @@ public interface State{
 
 		
 	public List<Action> getAcceptableActions(Game game);
+	
+	public void updateClients(Game game);
 
 }
