@@ -41,7 +41,7 @@ public class ServerSocketView extends View implements Runnable {
 			try {
 
 				Object object = this.socketIn.readObject();
-				
+				System.out.println("scritta azione");
 				if(object instanceof AddPlayerDTO){
 					AddPlayerDTO notify=(AddPlayerDTO) object;
 					this.player=new Player(notify.getPlayerName());					
@@ -53,7 +53,8 @@ public class ServerSocketView extends View implements Runnable {
 				}
 				
 				else {
-					ActionDTO actionDTO=(ActionDTO) object;				
+					ActionDTO actionDTO=(ActionDTO) object;
+					System.out.println("view is mapping the actionDTO");
 					this.notifyObserver(actionDTO.map(this.game));
 				}
 					

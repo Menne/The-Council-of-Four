@@ -66,10 +66,8 @@ public class CLIsocket extends ClientView implements Runnable{
 		}
 		else{
 			try {
-				
 				socketOut.writeObject(selectedAction);
 				socketOut.flush();
-				
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

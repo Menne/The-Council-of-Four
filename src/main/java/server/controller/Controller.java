@@ -23,6 +23,7 @@ public class Controller implements Observer<Action>{
 	public void update(Action action){
 		
 		action.executeAction(this.game);
+		System.out.println("action executed by controller");
 	}
 
 }
