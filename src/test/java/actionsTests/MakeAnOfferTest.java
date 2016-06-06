@@ -1,4 +1,4 @@
-package actionsTests;
+/*package actionsTests;
 
 import static org.junit.Assert.*;
 
@@ -30,7 +30,7 @@ public class MakeAnOfferTest {
 		game.getCurrentPlayer().incrementAssistants(2);
 		game.setState(new State01());
 		MakeAnOffer action= new MakeAnOffer();
-	//	action.setPrice(2);
+
 		action.executeAction(game);
 	}
 	
@@ -72,4 +72,4 @@ public class MakeAnOfferTest {
 	}
 
 	
-}
+}*/
