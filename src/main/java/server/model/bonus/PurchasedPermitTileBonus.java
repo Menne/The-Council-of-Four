@@ -1,6 +1,9 @@
 package server.model.bonus;
 
+import java.util.Arrays;
+
 import server.model.Game;
+import server.view.notifies.PermitTileBonusNotify;
 
 /**
  * This bonus allows the current player to choose from a permit tile he has already picked
@@ -25,7 +28,7 @@ public class PurchasedPermitTileBonus implements Bonus {
 	 */
 	@Override
 	public void assignBonus(Game game) {
-		//TODO
+		game.notifyObserver(new PermitTileBonusNotify(Arrays.asList(game.getCurrentPlayer())));
 	}
 
 }
