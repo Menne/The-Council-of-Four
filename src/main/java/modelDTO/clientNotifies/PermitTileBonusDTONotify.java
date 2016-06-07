@@ -12,8 +12,8 @@ public class PermitTileBonusDTONotify implements ClientNotify {
 
 	@Override
 	public void updateModel(GameDTO gameDTOtoupdate) {
-		PurchasedPermitTileActionDTO PurchasedPermitTileActionDTO=new PurchasedPermitTileActionDTO();
-		PurchasedPermitTileActionDTO.setParser(gameDTOtoupdate);
+		PurchasedPermitTileActionDTO purchasedPermitTileActionDTO=new PurchasedPermitTileActionDTO();
+		purchasedPermitTileActionDTO.setParser(gameDTOtoupdate).setParameters(gameDTOtoupdate.getParser());
 	}
 
 }

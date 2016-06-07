@@ -1,6 +1,9 @@
 package server.model.bonus;
 
+import java.util.Arrays;
+
 import server.model.Game;
+import server.view.notifies.CityBonusNotify;
 
 /**
  * This bonus allows the current player to choose from a city in which he has already built,
@@ -25,7 +28,7 @@ public class ChooseCityBonus implements Bonus{
 	 */
 	@Override
 	public void assignBonus(Game game) {
-		//TODO
+		game.notifyObserver(new CityBonusNotify(Arrays.asList(game.getCurrentPlayer())));
 	}
 
 }
