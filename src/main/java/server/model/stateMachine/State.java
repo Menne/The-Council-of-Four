@@ -43,10 +43,7 @@ public interface State{
 	}
 
 	
-	public default State moveToNextTransition(Game game) throws IllegalStateException{
-		
-		throw new IllegalStateException("There are not such transictions for this state");
-	}
+	public State moveToNextTransition(Game game);
 	
 	public default void addPlayerTransition(Game game) throws IllegalStateException{
 		

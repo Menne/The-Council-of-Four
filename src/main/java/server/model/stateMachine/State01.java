@@ -23,7 +23,7 @@ public class State01 implements State {
 		game.notifyObserver(new AvailableActionsNotify(Arrays.asList(), 
 				Arrays.asList(game.getCurrentPlayer()), 
 				"Ok, your turn is over now. I will notify you when it will be your turn again"));
-		if (game.getCurrentPlayer().getPlayerNumber()!=game.getPlayers().size()+game.getQuittedPlayers().size()){
+		if (!game.getCurrentPlayer().equals(game.lastPlayer())){
 			game.nextPlayer();
 			return new BeginState();
 		}
@@ -46,7 +46,7 @@ public class State01 implements State {
 		game.notifyObserver(new AvailableActionsNotify(Arrays.asList(), 
 				Arrays.asList(game.getCurrentPlayer()), 
 				"Ok, I will notify you when it will be your turn again"));
-		if (game.getCurrentPlayer().getPlayerNumber()!=game.getPlayers().size()+game.getQuittedPlayers().size()){
+		if (!game.getCurrentPlayer().equals(game.lastPlayer())){
 			game.nextPlayer();
 			return new BeginState();
 		}

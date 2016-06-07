@@ -83,6 +83,14 @@ public class Game extends Observable<ViewNotify>{
 		}
 	}
 	
+	public Player lastPlayer(){
+		Player lastPlayer=players.get(0);
+		for(Player player : players)
+			if(player.getPlayerNumber()>=lastPlayer.getPlayerNumber())
+				lastPlayer=player;
+		return lastPlayer;
+	}
+	
 	public void startMarket(){
 		this.market.clearMarket();
 		this.market.getSellingPlayerList().addAll(players);

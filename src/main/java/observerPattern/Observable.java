@@ -1,6 +1,5 @@
 package observerPattern;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,13 +24,6 @@ public abstract class Observable<C> {
 		
 		for(Observer<C> o: this.observers){
 			 o.update(c);
-		}
-	}
-	
-	public void notifyObserverver(C c, Observable<C> observable){
-		
-		for(Observer<C> o: this.observers){
-			o.update(c,observable);
 		}
 	}
 	
