@@ -49,4 +49,17 @@ public class State11 implements State {
 				", you have the following available actions. Choose one of them"));
 	}
 
+	@Override
+	public State moveToNextTransition(Game game) {
+		if (!game.getCurrentPlayer().equals(game.lastPlayer())){
+			game.nextPlayer();
+			return new BeginState();
+		}
+		else {
+			game.nextPlayer();
+			game.startMarket();
+			return new SellingState();
+		}
+	}
+
 }

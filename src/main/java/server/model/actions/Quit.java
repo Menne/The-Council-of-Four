@@ -15,9 +15,21 @@ public class Quit implements Action {
 
 	@Override
 	public boolean executeAction(Game game) {
-		game.getPlayers().remove(quittingPlayer);
-		game.getQuittedPlayers().add(quittingPlayer);
-		game.notifyObserver(new GameTableNotify(game, game.getPlayers()));
+		if(quittingPlayer.equals(game.getCurrentPlayer())){
+			game.setState(game.getState().moveToNextTransition(game));
+			game.getPlayers().remove(quittingPlayer);
+			game.getMarket().getBuyingPlayerList().remove(quittingPlayer);
+			game.getMarket().getSellingPlayerList().remove(quittingPlayer);
+			game.getQuittedPlayers().add(quittingPlayer);
+			game.getState().updateClients(game);
+		}
+		else{
+			game.getPlayers().remove(quittingPlayer);
+			game.getMarket().getBuyingPlayerList().remove(quittingPlayer);
+			game.getMarket().getSellingPlayerList().remove(quittingPlayer);
+			game.getQuittedPlayers().add(quittingPlayer);
+			game.notifyObserver(new GameTableNotify(game, game.getPlayers()));
+		}
 		return true;
 	}
 

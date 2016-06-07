@@ -20,7 +20,7 @@ public class State10 implements State{
 	@Override
 	public State mainActionTransition(Game game) {
 		
-		if (game.getCurrentPlayer().getPlayerNumber()!=game.getPlayers().size()+game.getQuittedPlayers().size()){
+		if (!game.getCurrentPlayer().equals(game.lastPlayer())){
 			game.nextPlayer();
 			return new BeginState();
 		}
@@ -30,7 +30,20 @@ public class State10 implements State{
 			return new SellingState();
 		}
 	}
-		
+	
+	@Override
+	public State moveToNextTransition(Game game){
+		if (!game.getCurrentPlayer().equals(game.lastPlayer())){
+			game.nextPlayer();
+			return new BeginState();
+		}
+		else {
+			game.nextPlayer();
+			game.startMarket();
+			return new SellingState();
+		}
+	}
+	
 	@Override
 	public List<Action> getAcceptableActions(Game game) {
 		return Arrays.asList(
