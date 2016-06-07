@@ -31,11 +31,7 @@ public class Market {
 	 * @param offer is the object to buy
 	 * @param buyingPlayer is the player who accept the offer
 	 */
-	public void buyOffer(Offer offer, Player buyingPlayer){
-		buyingPlayer.decrementCoins(offer.getPrice());
-		offer.getOfferingPlayer().incrementCoins(offer.getPrice());
-		offer.getOfferedObject().addObjectToPlayer(buyingPlayer);
-		offer.getOfferedObject().removeObjectFromPlayer(offer.getOfferingPlayer());
+	public void removeOffer(Offer offer){
 		for (Offer offerInList : this.offersList)
 			if (offer.equals(offerInList)) {
 				this.offersList.remove(offer);

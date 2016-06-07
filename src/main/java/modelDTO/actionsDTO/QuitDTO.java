@@ -1,8 +1,8 @@
 package modelDTO.actionsDTO;
 
 import client.view.ClientView;
-import server.model.Game;
 import server.model.actions.Action;
+import server.view.mapperVisitor.ActionDTOMapper;
 
 public class QuitDTO implements ActionDTO {
 
@@ -13,10 +13,10 @@ public class QuitDTO implements ActionDTO {
 	
 	private final ClientView quittingView;
 	
+	
 	public QuitDTO(ClientView quittingView) {
 		this.quittingView=quittingView;
 	}
-
 
 	public ClientView getQuittingView() {
 		return quittingView;
@@ -24,8 +24,8 @@ public class QuitDTO implements ActionDTO {
 
 
 	@Override
-	public Action map(Game game) throws IllegalStateException{
-		throw new IllegalStateException("no mapping for action quit");
+	public Action startVisitor(ActionDTOMapper mapper) {
+		return null;
 	}
 
 }

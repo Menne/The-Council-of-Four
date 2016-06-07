@@ -6,10 +6,8 @@ import modelDTO.actionsDTO.ActionWithParameters;
 import modelDTO.gameTableDTO.CityDTO;
 import modelDTO.parser.ActionParserVisitor;
 import modelDTO.parser.ChooseCityBonusParser;
-import server.model.Game;
 import server.model.actions.Action;
-import server.model.actions.bonusActions.ChooseCityBonusAction;
-import server.model.gameTable.City;
+import server.view.mapperVisitor.ActionDTOMapper;
 
 public class ChooseCityActionDTO implements ActionDTO, ActionWithParameters{
 
@@ -29,6 +27,14 @@ public class ChooseCityActionDTO implements ActionDTO, ActionWithParameters{
 		this.selectedCity=selectedCity;
 	}
 
+	public CityDTO getSelectedCity() {
+		return this.selectedCity;
+	}
+
+	public void setSelectedCity(CityDTO selectedCity) {
+		this.selectedCity = selectedCity;
+	}
+
 	@Override
 	public boolean checkIfParametersSetted() {
 		return this.parametersSetted;
@@ -40,15 +46,8 @@ public class ChooseCityActionDTO implements ActionDTO, ActionWithParameters{
 	}
 
 	@Override
-	public Action map(Game game) {
-
-		ChooseCityBonusAction action=new ChooseCityBonusAction();
-		
-		for(City city : game.getGameTable().getMap().getGameMap().vertexSet())
-			if(city.getName().equals(this.selectedCity.getName()))
-				action.setSelectedCity(city);
-		
-		return action;
+	public Action startVisitor(ActionDTOMapper mapper) {
+		return mapper.map(this);
 	}
 
 }

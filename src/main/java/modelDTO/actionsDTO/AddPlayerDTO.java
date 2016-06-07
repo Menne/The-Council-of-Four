@@ -1,7 +1,7 @@
 package modelDTO.actionsDTO;
 
-import server.model.Game;
 import server.model.actions.Action;
+import server.view.mapperVisitor.ActionDTOMapper;
 
 public class AddPlayerDTO implements ActionDTO {
 
@@ -12,17 +12,17 @@ public class AddPlayerDTO implements ActionDTO {
 	private String playerName;
 	
 
-	@Override
-	public Action map(Game game) {
-		return null;
-	}
-
 	public String getPlayerName() {
 		return playerName;
 	}
 
 	public void setPlayerName(String playerName) {
 		this.playerName=playerName;
+	}
+
+	@Override
+	public Action startVisitor(ActionDTOMapper mapper) {
+		return null;
 	}
 
 }
