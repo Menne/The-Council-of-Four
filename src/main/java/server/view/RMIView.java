@@ -74,8 +74,10 @@ public class RMIView extends View implements RMIViewRemote {
 
 	@Override
 	public void quitPlayer(ClientRMIViewRemote quittingView) throws RemoteException {
-		
 		this.notifyObserver(new Quit(clientsMap.get(quittingView)));
+		this.clientsMap.remove(quittingView);
+		if(clientsMap.isEmpty())
+			game.unregisterObserver(this);
 		
 	}
 

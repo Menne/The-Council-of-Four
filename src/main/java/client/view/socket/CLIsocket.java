@@ -3,6 +3,7 @@ package client.view.socket;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.Socket;
 import java.util.Scanner;
 
 import client.view.ClientView;
@@ -17,17 +18,22 @@ import modelDTO.parser.Parser;
 
 public class CLIsocket extends ClientView implements Runnable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8153931800059106395L;
 	private final Parser parser;
-	private final Scanner scanner;
+	private transient final Scanner scanner;
+	private transient final Socket socket;
+	private transient final ObjectOutputStream socketOut;
+	private transient final ObjectInputStream socketIn;
 	
-	private final ObjectOutputStream socketOut;
-	private final ObjectInputStream socketIn;
-	
-	public CLIsocket(Parser parser, ObjectOutputStream socketOut, ObjectInputStream socketIn) throws IOException {
+	public CLIsocket(Parser parser, Socket socket) throws IOException {
 		
 		this.parser=parser;
-		this.socketOut=socketOut;
-		this.socketIn=socketIn;
+		this.socket=socket;
+		this.socketOut=new ObjectOutputStream(socket.getOutputStream());
+		this.socketIn=new ObjectInputStream(socket.getInputStream());
 		this.scanner=new Scanner(System.in);
 	}
 	
@@ -122,10 +128,14 @@ public class CLIsocket extends ClientView implements Runnable{
 				this.notifyObserver(clientNotify);
 				
 			} catch (ClassNotFoundException | IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		
+				try {
+					socket.close();
+					break;
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}	
 		}
 	}
 

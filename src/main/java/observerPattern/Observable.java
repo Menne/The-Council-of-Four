@@ -28,5 +28,12 @@ public abstract class Observable<C> {
 		}
 	}
 	
+	public void notifyObserverver(C c, Observable<C> observable){
+		
+		for(Observer<C> o: this.observers){
+			o.update(c,observable);
+		}
+	}
+	
 }
 

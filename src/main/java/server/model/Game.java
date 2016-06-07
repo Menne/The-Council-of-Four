@@ -29,7 +29,6 @@ public class Game extends Observable<ViewNotify>{
 	private boolean lastLap;
 	private static final int initialNumberOfCards=6;
 	private static final int intialNumberOfEmporiums=10;
-//	private List<Player> listOfPlayers;
 	private final List<Player> quittedPlayers;
 	
 	public Game() {
@@ -40,7 +39,6 @@ public class Game extends Observable<ViewNotify>{
 		Initializer init= new Initializer();
 		this.gameTable=init.initialize();
 		this.players=playerList;
-//		this.listOfPlayers=playerList;
 		for(Player player : players){
 			player.incrementAssistants(player.getPlayerNumber());
 			player.setScore(0);
@@ -55,7 +53,7 @@ public class Game extends Observable<ViewNotify>{
 		this.state=new BeginState();
 		this.additionalMainActionBonus=false;
 		this.lastLap=false;
-		this.market=new Market(this.players);
+		this.market=new Market();
 		
 		for (Player player : this.players)
 			this.notifyObserver(new PlayerNotify(player, Arrays.asList(player)));
@@ -87,6 +85,8 @@ public class Game extends Observable<ViewNotify>{
 	
 	public void startMarket(){
 		this.market.clearMarket();
+		this.market.getSellingPlayerList().addAll(players);
+		this.market.getBuyingPlayerList().addAll(players);
 		this.market.shuffleBuyingPlayerList();
 		this.market.sellingNextPlayer(this);
 
@@ -231,9 +231,5 @@ public class Game extends Observable<ViewNotify>{
 		return currentWinnerPlayer;
 	}
 
-
-/*	public List<Player> getListOfPlayers() {
-		return listOfPlayers;
-	}*/
 
 }

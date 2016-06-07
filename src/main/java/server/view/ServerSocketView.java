@@ -9,6 +9,7 @@ import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.AddPlayerDTO;
 import modelDTO.actionsDTO.QuitDTO;
 import modelDTO.clientNotifies.PlayerAcceptedDTONotify;
+import modelDTO.clientNotifies.QuitNotify;
 import modelDTO.playerDTO.ClientPlayerDTO;
 import players.Player;
 import server.Server;
@@ -38,7 +39,7 @@ public class ServerSocketView extends View implements Runnable {
 
 	@Override
 	public void run() {
-		while(true){
+		while(!socket.isClosed()){
 			
 			try {
 
@@ -46,7 +47,7 @@ public class ServerSocketView extends View implements Runnable {
 				System.out.println("scritta azione");
 				if(object instanceof AddPlayerDTO){
 					AddPlayerDTO notify=(AddPlayerDTO) object;
-					this.player=new Player(notify.getPlayerName());					
+			  		this.player=new Player(notify.getPlayerName());					
 					server.newReadyPlayer(this, player);
 										
 					ClientPlayerDTO clientPlayerDTO=new ClientPlayerDTO();
@@ -54,8 +55,13 @@ public class ServerSocketView extends View implements Runnable {
 					this.socketOut.writeObject(new PlayerAcceptedDTONotify(clientPlayerDTO));
 				}
 				
-				else if(object instanceof QuitDTO)
+				else if(object instanceof QuitDTO){
+					this.game.unregisterObserver(this);
+					this.socketOut.writeObject(new QuitNotify());
+					socket.close();
 					this.notifyObserver(new Quit(this.player));
+				}
+				
 				else{
 					ActionDTO actionDTO=(ActionDTO) object;
 					this.notifyObserver(actionDTO.map(this.game));

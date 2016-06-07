@@ -13,11 +13,11 @@ public class Market {
 	private final List<Player> sellingPlayerList;
 	private final List<Player> buyingPlayerList;
 	
-	public Market(List<Player> players){
+	public Market(){
 
 		this.offersList=new ArrayList<>();
-		this.sellingPlayerList=new ArrayList<>(players);
-		this.buyingPlayerList=new ArrayList<>(players);
+		this.sellingPlayerList=new ArrayList<>();
+		this.buyingPlayerList=new ArrayList<>();
 	}
 
 
@@ -53,6 +53,8 @@ public class Market {
 	
 	public void clearMarket(){
 		this.offersList.clear();
+		this.buyingPlayerList.clear();
+		this.sellingPlayerList.clear();
 	}
 	
 	public void sellingNextPlayer(Game game){

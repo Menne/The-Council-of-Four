@@ -14,6 +14,10 @@ import server.view.RMIViewRemote;
 
 public class CLIrmi extends ClientView implements ClientRMIViewRemote{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1023456563506023542L;
 	private final Parser parser;
 	private final Scanner scanner;
 	private final RMIViewRemote serverStub;

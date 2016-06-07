@@ -20,7 +20,7 @@ public class State10 implements State{
 	@Override
 	public State mainActionTransition(Game game) {
 		
-		if (game.getCurrentPlayer().getPlayerNumber()!=game.getPlayers().size()){
+		if (game.getCurrentPlayer().getPlayerNumber()!=game.getPlayers().size()+game.getQuittedPlayers().size()){
 			game.nextPlayer();
 			return new BeginState();
 		}
