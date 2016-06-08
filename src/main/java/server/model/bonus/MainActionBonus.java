@@ -21,7 +21,8 @@ public class MainActionBonus implements Bonus {
 	 */
 	@Override
 	public void assignBonus(Game game) {
-		game.setAdditionalMainActionBonus(true);
+		game.setState(game.getState().mainActionBonusTransition());
+		game.getState().updateClients(game);
 	}
 
 	@Override

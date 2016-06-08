@@ -24,7 +24,6 @@ public class Game extends Observable<ViewNotify>{
 	private Player currentPlayer;
 	private GameTable gameTable;
 	private State state;
-	private boolean additionalMainActionBonus;
 	private boolean lastLap;
 	private static final int initialNumberOfCards=6;
 	private static final int intialNumberOfEmporiums=10;
@@ -50,7 +49,6 @@ public class Game extends Observable<ViewNotify>{
 		}
 		this.currentPlayer=this.players.get(0);
 		this.state=new BeginState();
-		this.additionalMainActionBonus=false;
 		this.lastLap=false;
 		this.market=new Market();
 		
@@ -126,16 +124,6 @@ public class Game extends Observable<ViewNotify>{
 
 	public void setState(State state) {
 		this.state = state;
-	}
-
-
-	public boolean isAdditionalMainActionBonus() {
-		return this.additionalMainActionBonus;
-	}
-
-
-	public void setAdditionalMainActionBonus(boolean additionalMainActionBonus) {
-		this.additionalMainActionBonus = additionalMainActionBonus;
 	}
 
 

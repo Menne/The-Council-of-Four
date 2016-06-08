@@ -26,7 +26,11 @@ public class State11 implements State {
 	public State quickActionTransition(Game game) {
 		return new State10();
 	}
-
+	
+	@Override
+	public State mainActionBonusTransition() {
+		return new BonusMainActionFrom11();
+	}
 	
 	@Override
 	public List<Action> getAcceptableActions(Game game) {

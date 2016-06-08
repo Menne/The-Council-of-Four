@@ -43,6 +43,11 @@ public class State10 implements State{
 	}
 	
 	@Override
+	public State mainActionBonusTransition() {
+		return new BonusMainActionFrom10();
+	}
+	
+	@Override
 	public List<Action> getAcceptableActions(Game game) {
 		return Arrays.asList(
 				new ElectCouncillor(),

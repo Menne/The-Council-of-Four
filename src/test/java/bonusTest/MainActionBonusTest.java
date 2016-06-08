@@ -11,7 +11,7 @@ import org.junit.Test;
 import players.Player;
 import server.model.Game;
 import server.model.bonus.MainActionBonus;
-
+/*
 public class MainActionBonusTest {
 
 	@Test
@@ -26,4 +26,4 @@ public class MainActionBonusTest {
 		assertTrue(game.isAdditionalMainActionBonus());
 	}
 
-}
+}*/
