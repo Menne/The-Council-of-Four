@@ -29,6 +29,7 @@ public class GameTableDTO extends Observable<ClientViewNotify> implements ModelD
 	private ArrayList<Set<Bonus>> clientNobilityTrack;
 	private ArrayList<GenericPlayerDTO> Players;
 	private String currentPlayer;
+	private CityDTO king;
 	
 	public GameTableDTO() {
 		this.clientRegions=new ArrayList<RegionDTO>();
@@ -67,6 +68,8 @@ public class GameTableDTO extends Observable<ClientViewNotify> implements ModelD
 		
 		this.clientNobilityTrack=(ArrayList<Set<Bonus>>) realObject.getGameTable().getNobilityTrack().getTrack();
 		this.currentPlayer=realObject.getCurrentPlayer().getName();
+		this.king=new CityDTO();
+		king.map(realObject.getGameTable().getKing().getCity());
 	}
 
 	

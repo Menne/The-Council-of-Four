@@ -15,7 +15,6 @@ public class CityDTO implements ModelDTO<City>{
 	 */
 	private static final long serialVersionUID = 3576160634819872933L;
 	private String name;
-	private boolean isKingPresent;
 	private CityColourDTO colour;
 	private Set<GenericPlayerDTO> buildedEmporiums;
 	private Set<Bonus> rewardToken;
@@ -27,7 +26,6 @@ public class CityDTO implements ModelDTO<City>{
 	@Override
 	public void map(City realObject) {
 		this.name=realObject.getName();
-		this.isKingPresent=realObject.getIsKingPresent();
 		
 		CityColourDTO cityColour=new CityColourDTO(); 
 		cityColour.map(realObject.getColour());
@@ -51,13 +49,6 @@ public class CityDTO implements ModelDTO<City>{
 		this.name = name;
 	}
 
-	public boolean isKingPresent() {
-		return isKingPresent;
-	}
-
-	public void setKingPresent(boolean isKingPresent) {
-		this.isKingPresent = isKingPresent;
-	}
 
 	public CityColourDTO getColour() {
 		return colour;

@@ -13,6 +13,7 @@ public class GameTable {
 	private final PoliticsDeck politicsDeck;
 	private final NobilityTrack nobilityTrack;
 	private final List<ScoreBonus> kingRewardTiles;
+	private final King king;
                
 	
 	public GameTable(Map map, List<RegionBoard> regionBoards, CouncilBalcony councilOfKing,
@@ -27,6 +28,17 @@ public class GameTable {
 		this.nobilityTrack=nobilityTrack;
 		for(RegionBoard region : this.regionBoards)
 			region.uncoverPermitTiles();
+		City kingCity=null;
+		int i=0;
+		for(RegionBoard region : this.regionBoards)
+			for(City city : region.getRegionCities())
+				if("KingColour".equals(city.getColour().getName())){
+					i++;
+					kingCity=city;
+				}
+		if(i!=1)
+			throw new IllegalArgumentException("king not present or too many kings present");
+		this.king=new King(kingCity);
 	}
 
 	public Map getMap() {
@@ -47,6 +59,10 @@ public class GameTable {
 
 	public PoliticsDeck getPoliticsDeck() {
 		return politicsDeck;
+	}
+
+	public King getKing() {
+		return king;
 	}
 
 	public List<ScoreBonus> getKingRewardTiles() {

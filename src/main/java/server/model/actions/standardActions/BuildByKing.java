@@ -15,7 +15,6 @@ import server.model.gameTable.CouncilBalcony;
 import server.model.gameTable.Councillor;
 import server.model.gameTable.Emporium;
 import server.model.gameTable.PoliticsCard;
-import server.model.gameTable.RegionBoard;
 import server.view.notifies.ErrorNotify;
 
 /**
@@ -88,8 +87,7 @@ public class BuildByKing extends MainAction {
 			for (Bonus bonusToAssign : city.getRewardToken())
 				bonusToAssign.assignBonus(game);
 		game.getCurrentPlayer().decrementAssistants(assistantsToPay(game));
-		findKing(game).setIsKingPresent(false);
-		this.selectedCity.setIsKingPresent(true);
+		game.getGameTable().getKing().moveKing(selectedCity);
 
 		if (this.selectedCity.getRegion().isBonusAvailable())
 			assignRegionBonus(game);
@@ -99,18 +97,6 @@ public class BuildByKing extends MainAction {
 		this.nextState(game);
 		
 		return true;
-	}
-	
-	/**
-	 * Finds the city where the king is located
-	 * @return the city with the king
-	 */
-	private City findKing(Game game) {
-		for (RegionBoard region : game.getGameTable().getRegionBoards())
-			for (City city : region.getRegionCities())
-				if (city.getIsKingPresent()==true)
-					return city;
-		return selectedCity;
 	}
 	
 	/**
@@ -144,8 +130,7 @@ public class BuildByKing extends MainAction {
 	 * @return the amount of assistants to pay
 	 */
 	private int assistantsToPay(Game game) {
-		return this.selectedCity.getCityEmporiums().size()+
-				2*game.getGameTable().getMap().getShortestPathLenght(this.selectedCity, findKing(game));
+		return this.selectedCity.getCityEmporiums().size();
 	}
 	
 	/**
@@ -163,7 +148,7 @@ public class BuildByKing extends MainAction {
 		for (PoliticsCard card : cardsToDescard)
 			if (card.getColour().getColour() == "rainbow")
 				coinsToPay++;
-		return coinsToPay;
+		return coinsToPay + 2*game.getGameTable().getMap().getShortestPathLenght(this.selectedCity, game.getGameTable().getKing().getCity());
 	}
 	
 	/**

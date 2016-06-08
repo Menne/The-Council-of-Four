@@ -13,10 +13,9 @@ public class King {
 
 	public King(City kingCity){
 		this.kingCity=kingCity;
-		kingCity.setIsKingPresent(true);
 	}
 	
-	public City getKingPresence() {
+	public City getCity() {
 		return kingCity;
 	}
 
@@ -25,10 +24,10 @@ public class King {
 	 * Moves king presence from the kingPresence's city to c.
 	 * @param c new king's city
 	 */
-	public void moveKing(City c) {
-		this.kingCity.setIsKingPresent(false);
+	public void moveKing(City c) throws IllegalArgumentException{
+		if(c==null)
+			throw new IllegalArgumentException();
 		this.kingCity=c;
-		this.kingCity.setIsKingPresent(true);
 	}
 
 }

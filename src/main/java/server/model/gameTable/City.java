@@ -16,7 +16,6 @@ public class City {
 
 	private final String name;
 	private final Set<Bonus> rewardToken;
-	private Boolean isKingPresent;
 	private final RegionBoard region;
 	private final CityColour colour;
 	private final Set<Emporium> cityEmporiums;
@@ -36,7 +35,6 @@ public class City {
 	 */
 	public City(String name, RegionBoard region, CityColour colour, List<Set< Bonus>> rewardTokenList){
 		this.name=name;
-		this.isKingPresent=false;
 		this.region=region;
 		this.colour=colour;
 		this.cityEmporiums=new HashSet<>();
@@ -53,19 +51,6 @@ public class City {
 	public Set<Bonus> getRewardToken() {
 		return rewardToken;
 	}
-	
-
-	public Boolean getIsKingPresent() {
-		return isKingPresent;
-	}
-
-
-
-	public void setIsKingPresent(Boolean isKingPresent) {
-		this.isKingPresent = isKingPresent;
-	}
-
-
 
 	public RegionBoard getRegion() {
 		return region;
