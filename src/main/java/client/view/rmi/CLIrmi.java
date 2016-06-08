@@ -9,6 +9,7 @@ import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.ActionWithParameters;
 import modelDTO.actionsDTO.AddPlayerDTO;
 import modelDTO.clientNotifies.ClientNotify;
+import modelDTO.clientNotifies.EndGameDTONotifies;
 import modelDTO.parser.Parser;
 import server.view.RMIViewRemote;
 
@@ -36,15 +37,23 @@ public class CLIrmi extends ClientView implements ClientRMIViewRemote{
 
 	@Override
 	public void updateClient(ClientNotify clientNotify) throws RemoteException {
-		this.notifyObserver(clientNotify);		
+		if(clientNotify instanceof EndGameDTONotifies){
+			System.out.println("GAME OVER\n FINAL RANKING TABLE: \n"+((EndGameDTONotifies)clientNotify).getPlayers());
+			scanner.close();
+		}
+		else
+			this.notifyObserver(clientNotify);		
 	}
 
 	@Override
 	public void input() throws RemoteException {
 		String input="";
 		while (!"quit".equals(input)) {
-
-			input=this.scanner.nextLine();
+			try{
+				input=this.scanner.nextLine();
+			}catch(IllegalStateException e){
+				break;
+			}
 			if (this.parser.availableActions().contains(input)) {
 				ActionDTO selectedAction=this.parser.actionParser(input);
 				this.checkIfParametersNeeded(selectedAction);

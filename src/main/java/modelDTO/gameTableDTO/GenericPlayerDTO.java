@@ -37,6 +37,7 @@ public class GenericPlayerDTO implements ModelDTO<Player>{
 		this.nobility=realObject.getNobility();
 		this.coins=realObject.getCoins();
 		this.emporiums=realObject.getRemainigEmporiums().size();
+		this.hand=realObject.getHand().size();
 		
 		for (PermitTile permitTile : realObject.getPlayersPermitTilesTurnedUp()) {
 			PermitTileDTO permitTileDTO=new PermitTileDTO();
@@ -120,8 +121,8 @@ public class GenericPlayerDTO implements ModelDTO<Player>{
 	@Override
 	public String toString() {
 		return "\nPlayer " + playerNumber + "\tname: "+ name + "\tassistants=" + assistants + "\tscore="
-				+ score + "\tnobility=" + nobility + "\tcoins=" + coins + ", playersPermitTilesTurnedUp=" + availablePermitTiles +
-				 ", emporiums=" + this.emporiums + "]";
+				+ score + "\tnobility=" + nobility + "\tcoins=" + coins + "\thand="+hand+"\tplayersPermitTilesTurnedUp=" + availablePermitTiles +
+				 "\temporiums=" + this.emporiums + "]";
 	}
 
 

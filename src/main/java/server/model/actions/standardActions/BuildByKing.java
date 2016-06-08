@@ -94,6 +94,9 @@ public class BuildByKing extends MainAction {
 		if (this.selectedCity.getColour().isBonusAvailable())
 			assignColourBonus(game);
 		
+		if(game.getCurrentPlayer().getRemainigEmporiums().size()==0)
+			game.setLastLap(true);
+		
 		this.nextState(game);
 		
 		return true;

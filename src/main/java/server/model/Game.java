@@ -3,6 +3,8 @@ package server.model;
 
 import java.io.IOException;import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import initializer.Initializer;
@@ -14,6 +16,7 @@ import server.model.gameTable.GameTable;
 import server.model.market.Market;
 import server.model.stateMachine.BeginState;
 import server.model.stateMachine.State;
+import server.view.notifies.EndGameNotify;
 import server.view.notifies.PlayerNotify;
 import server.view.notifies.ViewNotify;
  
@@ -67,11 +70,21 @@ public class Game extends Observable<ViewNotify>{
 			this.currentPlayer=this.players.get(0);
 		}
 		else{
-			this.players.remove(0);
+			this.quittedPlayers.add(players.remove(0));
 			if (players.isEmpty())
-				throw new IndexOutOfBoundsException("List of players is empty");
-			this.currentPlayer=this.players.get(0);
+				this.endGame();
+			else
+				this.currentPlayer=this.players.get(0);
 			}
+	}
+	
+	public void endGame(){
+		this.assignFinalBonus();
+		this.assignBonusPermitTilesEndGame();
+		this.assignBonusNobilityEndGame();
+		this.sortFinalRankingTable();
+		System.out.println(quittedPlayers.get(0));
+		notifyObserver(new EndGameNotify(quittedPlayers));
 	}
 	
 	public Player lastPlayer(){
@@ -148,7 +161,7 @@ public class Game extends Observable<ViewNotify>{
 		int first=0;
 		int second=0;
 		int count=0;
-		for(Player player: this.players){
+		for(Player player: this.quittedPlayers){
 			if(player.getNobility()>first){
 				second=first;
 				first=player.getNobility();
@@ -157,14 +170,14 @@ public class Game extends Observable<ViewNotify>{
 					second=player.getNobility();
 			}
 		}
-		for(Player player: this.players){
+		for(Player player: this.quittedPlayers){
 			if(player.getNobility()==first){
 				player.incrementScore(5);
 				count++;
 			}
 		}
 		if(count==1){
-			for(Player player: this.players)
+			for(Player player: this.quittedPlayers)
 				if(player.getNobility()==second)
 					player.incrementScore(2);
 		}
@@ -174,7 +187,7 @@ public class Game extends Observable<ViewNotify>{
 	 * assigns to every player his list of score bonus
 	 */
 	public void assignFinalBonus(){
-		for(Player player : this.players){
+		for(Player player : this.quittedPlayers){
 			for(ScoreBonus scoreBonus: player.getPlayersFinalBonus())
 				scoreBonus.assignBonusToPlayer(player);
 		}
@@ -185,41 +198,32 @@ public class Game extends Observable<ViewNotify>{
 	 */
 	public void assignBonusPermitTilesEndGame(){
 		int numberOfPermitTiles=0;
-		for(Player player : this.players){
+		for(Player player : this.quittedPlayers){
 			if(player.getPlayersPermitTilesTurnedDown().size()+player.getPlayersPermitTilesTurnedUp().size()>numberOfPermitTiles)
 				numberOfPermitTiles=player.getPlayersPermitTilesTurnedDown().size()+player.getPlayersPermitTilesTurnedUp().size();
 		}
-		for(Player player : this.players)
+		for(Player player : this.quittedPlayers)
 			if(player.getPlayersPermitTilesTurnedDown().size()+player.getPlayersPermitTilesTurnedUp().size()==numberOfPermitTiles)
 				player.incrementScore(3);
 	}
 	
-	/**
-	 * recognises which player has won the game
-	 */
-	public Player selectWinner(){
-		int winnerScore=0;
-		Player currentWinnerPlayer = null;
-		for(Player player : this.players){
-			if(player.getScore()>winnerScore)
-				winnerScore=player.getScore();
-		}
-		List<Player> winnerPlayers= new ArrayList<Player>(); //list of players with the winnerScore (per gestire il caso di pareggio)  
-		for(Player player : this.players){
-			if(player.getScore()==winnerScore)
-				winnerPlayers.add(player);
-		}
-		if(winnerPlayers.size()==1)
-			return winnerPlayers.get(0);
-		int drawScore=0;
-		for(Player player: winnerPlayers){
-			if(player.getPlayersPermitTilesTurnedDown().size()+player.getPlayersPermitTilesTurnedUp().size()+player.getNumberOfAssistants()>drawScore){
-				drawScore=player.getPlayersPermitTilesTurnedDown().size()+player.getPlayersPermitTilesTurnedUp().size()+player.getNumberOfAssistants();
-				currentWinnerPlayer=player;
-			}	
-		}
-		return currentWinnerPlayer;
-	}
+	public void sortFinalRankingTable(){
+		Collections.sort(quittedPlayers, new Comparator<Player>() {
 
+			@Override
+			public int compare(Player o1, Player o2) {
+				if(o1.getScore()<o2.getScore())
+					return -1;				
+				if(o1.getScore()>o2.getScore())
+					return 1;
+				if(o1.getNumberOfAssistants()+o1.getHand().size()<o2.getNumberOfAssistants()+o2.getHand().size())
+					return -1;
+				if(o1.getNumberOfAssistants()+o1.getHand().size()>o2.getNumberOfAssistants()+o2.getHand().size())
+					return 1;
+				return 0;
+			}
+			
+		});
+	}
 
 }

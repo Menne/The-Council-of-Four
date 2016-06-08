@@ -16,6 +16,7 @@ import server.Server;
 import server.model.Game;
 import server.model.actions.Quit;
 import server.view.mapperVisitor.ActionDTOMapper;
+import server.view.notifies.EndGameNotify;
 import server.view.notifies.ViewNotify;
 
 public class ServerSocketView extends View implements Runnable {
@@ -73,8 +74,7 @@ public class ServerSocketView extends View implements Runnable {
 					
 				
 			} catch (ClassNotFoundException | IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				break;
 			}
 		}
 		
@@ -88,6 +88,8 @@ public class ServerSocketView extends View implements Runnable {
 			if(notify.sendTo().contains(this.player)){
 				this.socketOut.writeObject(notify.toClientNotify());
 			}
+			if(notify instanceof EndGameNotify)
+				socket.close();
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

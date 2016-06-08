@@ -26,14 +26,24 @@ public class Quit implements Action {
 			game.getMarket().getBuyingPlayerList().remove(quittingPlayer);
 			game.getMarket().getSellingPlayerList().remove(quittingPlayer);
 			game.getQuittedPlayers().add(quittingPlayer);
-			game.getState().updateClients(game);
+			if(game.getPlayers().size()==1){
+				game.getQuittedPlayers().add(game.getPlayers().remove(0));
+				game.endGame();
+			}
+			else
+				game.getState().updateClients(game);
 		}
 		else{
 			game.getPlayers().remove(quittingPlayer);
 			game.getMarket().getBuyingPlayerList().remove(quittingPlayer);
 			game.getMarket().getSellingPlayerList().remove(quittingPlayer);
 			game.getQuittedPlayers().add(quittingPlayer);
-			game.notifyObserver(new GameTableNotify(game, game.getPlayers()));
+			if(game.getPlayers().size()==1){
+				game.getQuittedPlayers().add(game.getPlayers().remove(0));
+				game.endGame();
+			}
+			else
+				game.notifyObserver(new GameTableNotify(game, game.getPlayers()));
 		}
 		return true;
 	}

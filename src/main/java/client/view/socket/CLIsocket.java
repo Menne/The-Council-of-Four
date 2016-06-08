@@ -13,6 +13,7 @@ import modelDTO.actionsDTO.ActionWithParameters;
 import modelDTO.actionsDTO.AddPlayerDTO;
 import modelDTO.actionsDTO.QuitDTO;
 import modelDTO.clientNotifies.ClientNotify;
+import modelDTO.clientNotifies.EndGameDTONotifies;
 import modelDTO.parser.Parser;
 
 
@@ -56,8 +57,11 @@ public class CLIsocket extends ClientView implements Runnable{
 	public void input() throws IOException {
 		String input="";
 		while (!"quit".equals(input)) {
-
-			input=this.scanner.nextLine();
+			try{
+				input=this.scanner.nextLine();
+			}catch(IllegalStateException e){
+				break;
+			}
 			if (this.parser.availableActions().contains(input)) {
 				ActionDTO selectedAction=this.parser.actionParser(input);
 				this.checkIfParametersNeeded(selectedAction);
@@ -121,21 +125,28 @@ public class CLIsocket extends ClientView implements Runnable{
 
 	@Override
 	public void run() {
+		Object object=null;
 		while (true){
 			try {
-				Object object = socketIn.readObject();
-				ClientNotify clientNotify=(ClientNotify) object;
-				this.notifyObserver(clientNotify);
+				
+				object = socketIn.readObject();
 				
 			} catch (ClassNotFoundException | IOException e) {
 				try {
 					socket.close();
+					scanner.close();
 					break;
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-			}	
+			}
+			if(object instanceof EndGameDTONotifies)
+				System.out.println("GAME OVER\n FINAL RANKING TABLE: \n"+((EndGameDTONotifies)object).getPlayers());
+			else{
+				ClientNotify clientNotify=(ClientNotify) object;
+				this.notifyObserver(clientNotify);
+			}
 		}
 	}
 

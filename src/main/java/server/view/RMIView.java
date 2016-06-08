@@ -14,6 +14,7 @@ import server.Server;
 import server.model.Game;
 import server.model.actions.Quit;
 import server.view.mapperVisitor.ActionDTOMapper;
+import server.view.notifies.EndGameNotify;
 import server.view.notifies.ViewNotify;
 
 public class RMIView extends View implements RMIViewRemote {
@@ -44,7 +45,6 @@ public class RMIView extends View implements RMIViewRemote {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-
 	}
 
 	@Override
