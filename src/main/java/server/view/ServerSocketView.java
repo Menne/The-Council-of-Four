@@ -32,12 +32,12 @@ public class ServerSocketView extends View implements Runnable {
 		this.socket=socket;
 		this.socketIn=new ObjectInputStream(socket.getInputStream());
 		this.socketOut=new ObjectOutputStream(socket.getOutputStream());
-		this.mapper=new ActionDTOMapper(game);
 	}
 
 
 	public void setGame(Game game) {
-		this.game = game;
+		this.game=game;
+		this.mapper=new ActionDTOMapper(this.game);
 	}
 
 	@Override
@@ -51,7 +51,7 @@ public class ServerSocketView extends View implements Runnable {
 					AddPlayerDTO notify=(AddPlayerDTO) object;
 			  		this.player=new Player(notify.getPlayerName());					
 					server.newReadyPlayer(this, player);
-										
+					
 					ClientPlayerDTO clientPlayerDTO=new ClientPlayerDTO();
 					clientPlayerDTO.map(player);
 					this.socketOut.writeObject(new PlayerAcceptedDTONotify(clientPlayerDTO));
@@ -66,7 +66,9 @@ public class ServerSocketView extends View implements Runnable {
 				
 				else{
 					ActionDTO actionDTO=(ActionDTO) object;
+					System.out.println("mi è arrivata l'azione");
 					this.notifyObserver(actionDTO.startVisitor(this.mapper));
+					System.out.println("ho mappato l'azione");
 				}
 					
 				

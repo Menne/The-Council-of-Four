@@ -27,7 +27,7 @@ public class RMIView extends View implements RMIViewRemote {
 		super(server);
 		this.game=game;
 		this.clientsMap=new HashMap<>();
-		this.mapper=new ActionDTOMapper(game);
+		this.mapper=new ActionDTOMapper(this.game);
 	}
 	
 	

@@ -25,7 +25,7 @@ public class QuitDTO implements ActionDTO {
 
 	@Override
 	public Action startVisitor(ActionDTOMapper mapper) {
-		return null;
+		throw new IllegalArgumentException("QuitDTO doesn't require mapping");
 	}
 
 }

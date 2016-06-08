@@ -22,7 +22,7 @@ public class AddPlayerDTO implements ActionDTO {
 
 	@Override
 	public Action startVisitor(ActionDTOMapper mapper) {
-		return null;
+		throw new IllegalArgumentException("AddPlayerDTO doesn't require mapping");
 	}
 
 }
