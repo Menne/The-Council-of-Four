@@ -28,7 +28,7 @@ public class State01 implements State {
 			return new BeginState();
 		}
 		else {
-			game.nextPlayer();
+//			game.nextPlayer();
 			game.startMarket();
 			return new SellingState();
 		}
@@ -51,7 +51,6 @@ public class State01 implements State {
 			return new BeginState();
 		}
 		else {
-			game.nextPlayer();
 			game.startMarket();
 			return new SellingState();
 		}

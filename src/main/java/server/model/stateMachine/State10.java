@@ -25,7 +25,6 @@ public class State10 implements State{
 			return new BeginState();
 		}
 		else {
-			game.nextPlayer();
 			game.startMarket();
 			return new SellingState();
 		}
@@ -38,7 +37,6 @@ public class State10 implements State{
 			return new BeginState();
 		}
 		else {
-			game.nextPlayer();
 			game.startMarket();
 			return new SellingState();
 		}

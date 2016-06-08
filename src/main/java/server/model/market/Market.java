@@ -2,6 +2,7 @@ package server.model.market;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import players.Player;
@@ -45,6 +46,19 @@ public class Market {
 	
 	public void addPlayer(Player player){
 		this.buyingPlayerList.add(player);
+	}
+	
+	public void sortSellingPlayerList(){
+		Collections.sort(this.sellingPlayerList, new Comparator<Player>(){
+
+			@Override
+			public int compare(Player arg0, Player arg1) {
+				if(arg0.getPlayerNumber()==arg1.getPlayerNumber())
+					return 0;
+				return arg0.getPlayerNumber()<arg1.getPlayerNumber() ? -1 : 1;
+			}
+		     
+		});
 	}
 	
 	public void shuffleBuyingPlayerList(){

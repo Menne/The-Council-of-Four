@@ -13,7 +13,6 @@ import server.model.gameTable.Emporium;
 import server.model.gameTable.GameTable;
 import server.model.market.Market;
 import server.model.stateMachine.BeginState;
-import server.model.stateMachine.BuyingState;
 import server.model.stateMachine.State;
 import server.view.notifies.PlayerNotify;
 import server.view.notifies.ViewNotify;
@@ -64,23 +63,17 @@ public class Game extends Observable<ViewNotify>{
 
 
 	public void nextPlayer() {
-		if (!(lastLap || this.getState() instanceof BuyingState)) {	
-			this.players.remove(0);
-			this.players.add(this.players.size(), this.currentPlayer);
+		if (!lastLap) {	
+			Player player=this.players.remove(0);
+			this.players.add(this.players.size(), player);
 			this.currentPlayer=this.players.get(0);
 		}
-		else {
-			if (lastLap) {
-				this.players.remove(0);
-				if (players.isEmpty())
-					throw new IndexOutOfBoundsException("List of players is empty");
-				this.currentPlayer=this.players.get(0);
+		else{
+			this.players.remove(0);
+			if (players.isEmpty())
+				throw new IndexOutOfBoundsException("List of players is empty");
+			this.currentPlayer=this.players.get(0);
 			}
-			if (this.getState() instanceof BuyingState) {
-				this.currentPlayer=this.players.remove(0);
-				this.players.add(this.players.size(), this.currentPlayer);
-			}
-		}
 	}
 	
 	public Player lastPlayer(){
@@ -94,6 +87,7 @@ public class Game extends Observable<ViewNotify>{
 	public void startMarket(){
 		this.market.clearMarket();
 		this.market.getSellingPlayerList().addAll(players);
+		this.market.sortSellingPlayerList();
 		this.market.getBuyingPlayerList().addAll(players);
 		this.market.shuffleBuyingPlayerList();
 		this.market.sellingNextPlayer(this);

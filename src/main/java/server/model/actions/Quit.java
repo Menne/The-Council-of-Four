@@ -17,7 +17,12 @@ public class Quit implements Action {
 	public boolean executeAction(Game game) {
 		if(quittingPlayer.equals(game.getCurrentPlayer())){
 			game.setState(game.getState().moveToNextTransition(game));
-			game.getPlayers().remove(quittingPlayer);
+			if(quittingPlayer.equals(game.lastPlayer())){
+				game.getPlayers().remove(quittingPlayer);
+				game.getPlayers().add(0, game.getPlayers().remove(game.getPlayers().size()-1));
+			}
+			else
+				game.getPlayers().remove(quittingPlayer);
 			game.getMarket().getBuyingPlayerList().remove(quittingPlayer);
 			game.getMarket().getSellingPlayerList().remove(quittingPlayer);
 			game.getQuittedPlayers().add(quittingPlayer);
