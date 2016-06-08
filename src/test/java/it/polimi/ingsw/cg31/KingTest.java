@@ -14,7 +14,7 @@ import server.model.gameTable.City;
 import server.model.gameTable.CityColour;
 import server.model.gameTable.King;
 
-
+/*
 public class KingTest {
 
 	@Test
@@ -49,4 +49,4 @@ public class KingTest {
 		king.moveKing(d);
 		assertTrue(d.getIsKingPresent());
 	}
-}
+}*/
