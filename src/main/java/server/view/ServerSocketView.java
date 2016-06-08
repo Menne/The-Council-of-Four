@@ -15,6 +15,7 @@ import players.Player;
 import server.Server;
 import server.model.Game;
 import server.model.actions.Quit;
+import server.view.mapperVisitor.ActionDTOMapper;
 import server.view.notifies.ViewNotify;
 
 public class ServerSocketView extends View implements Runnable {
@@ -24,6 +25,7 @@ public class ServerSocketView extends View implements Runnable {
 	private final ObjectOutputStream socketOut;
 	private Game game;
 	private Player player;
+	private ActionDTOMapper mapper;
 	
 	public ServerSocketView(Socket socket, Server server) throws IOException{
 		super(server);
@@ -34,7 +36,8 @@ public class ServerSocketView extends View implements Runnable {
 
 
 	public void setGame(Game game) {
-		this.game = game;
+		this.game=game;
+		this.mapper=new ActionDTOMapper(this.game);
 	}
 
 	@Override
@@ -44,12 +47,11 @@ public class ServerSocketView extends View implements Runnable {
 			try {
 
 				Object object = this.socketIn.readObject();
-				System.out.println("scritta azione");
 				if(object instanceof AddPlayerDTO){
 					AddPlayerDTO notify=(AddPlayerDTO) object;
 			  		this.player=new Player(notify.getPlayerName());					
 					server.newReadyPlayer(this, player);
-										
+					
 					ClientPlayerDTO clientPlayerDTO=new ClientPlayerDTO();
 					clientPlayerDTO.map(player);
 					this.socketOut.writeObject(new PlayerAcceptedDTONotify(clientPlayerDTO));
@@ -64,7 +66,9 @@ public class ServerSocketView extends View implements Runnable {
 				
 				else{
 					ActionDTO actionDTO=(ActionDTO) object;
-					this.notifyObserver(actionDTO.map(this.game));
+					System.out.println("mi è arrivata l'azione");
+					this.notifyObserver(actionDTO.startVisitor(this.mapper));
+					System.out.println("ho mappato l'azione");
 				}
 					
 				

@@ -6,12 +6,8 @@ import modelDTO.actionsDTO.ActionWithParameters;
 import modelDTO.gameTableDTO.CardColourDTO;
 import modelDTO.parser.ActionParserVisitor;
 import modelDTO.parser.ElectCouncillorByAssistantParser;
-import server.model.Game;
 import server.model.actions.Action;
-import server.model.actions.standardActions.ElectCouncillorByAssistant;
-import server.model.gameTable.CouncilBalcony;
-import server.model.gameTable.Councillor;
-import server.model.gameTable.RegionBoard;
+import server.view.mapperVisitor.ActionDTOMapper;
 
 public class ElectCouncillorByAssistantDTO implements ActionDTO, ActionWithParameters {
 		
@@ -59,27 +55,8 @@ public class ElectCouncillorByAssistantDTO implements ActionDTO, ActionWithParam
 	}
 
 	@Override
-	public Action map(Game game) {
-		ElectCouncillorByAssistant action =new ElectCouncillorByAssistant();
-		
-		for(RegionBoard region : game.getGameTable().getRegionBoards())
-			if(checkCouncilBalcony(region.getRegionBalcony()))
-				action.setCouncilBalcony(region.getRegionBalcony());
-		if(checkCouncilBalcony(game.getGameTable().getCouncilOfKing()))
-			action.setCouncilBalcony(game.getGameTable().getCouncilOfKing());
-		
-		for(Councillor councillor : game.getGameTable().getCouncilReserve().getCouncillors())
-			if(councillor.getColour().getColour().equals(this.newCouncillor.getName()))
-				action.setNewCouncillor(councillor);
-			
-		return action;
-	}
-	
-	private boolean checkCouncilBalcony(CouncilBalcony realBalcony){
-		for(int i=0; i<CouncilBalcony.getNumberofcouncillors(); i++)
-			if(!realBalcony.getCouncillors()[i].getColour().getColour().equals(this.councilBalcony[i].getName()))
-				return false;
-		return true;
+	public Action startVisitor(ActionDTOMapper mapper) {
+		return mapper.map(this);
 	}
 }
 	

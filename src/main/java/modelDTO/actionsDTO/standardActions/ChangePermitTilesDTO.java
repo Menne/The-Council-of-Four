@@ -6,10 +6,8 @@ import modelDTO.actionsDTO.ActionWithParameters;
 import modelDTO.gameTableDTO.RegionDTO;
 import modelDTO.parser.ActionParserVisitor;
 import modelDTO.parser.ChangePermitTilesParser;
-import server.model.Game;
 import server.model.actions.Action;
-import server.model.actions.standardActions.ChangePermitTiles;
-import server.model.gameTable.RegionBoard;
+import server.view.mapperVisitor.ActionDTOMapper;
 
 public class ChangePermitTilesDTO implements ActionDTO, ActionWithParameters {
 
@@ -48,13 +46,8 @@ public class ChangePermitTilesDTO implements ActionDTO, ActionWithParameters {
 	}
 
 	@Override
-	public Action map(Game game) {
-		ChangePermitTiles action=new ChangePermitTiles();
-		
-		for(RegionBoard region : game.getGameTable().getRegionBoards())
-			if(region.getName().equals(this.selectedRegion.getName()))
-				action.setSelectedRegion(region);
-		return action;
+	public Action startVisitor(ActionDTOMapper mapper) {
+		return mapper.map(this);
 	}
 	
 	

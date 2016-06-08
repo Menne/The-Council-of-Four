@@ -1,6 +1,5 @@
 package modelDTO.actionsDTO.standardActions;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import modelDTO.GameDTO;
@@ -10,12 +9,8 @@ import modelDTO.gameTableDTO.CardColourDTO;
 import modelDTO.gameTableDTO.RegionDTO;
 import modelDTO.parser.AcquirePermitTileParser;
 import modelDTO.parser.ActionParserVisitor;
-import server.model.Game;
 import server.model.actions.Action;
-import server.model.actions.standardActions.AcquirePermitTile;
-import server.model.gameTable.CardColour;
-import server.model.gameTable.PoliticsCard;
-import server.model.gameTable.RegionBoard;
+import server.view.mapperVisitor.ActionDTOMapper;
 
 public class AcquirePermitTileDTO implements ActionDTO, ActionWithParameters {
 
@@ -72,20 +67,7 @@ public class AcquirePermitTileDTO implements ActionDTO, ActionWithParameters {
 	}
 
 	@Override
-	public Action map(Game game) {
-		AcquirePermitTile action = new AcquirePermitTile();
-		
-		action.setNumberOfPermitTile(this.numberOfPermitTile);
-		
-		for(RegionBoard region : game.getGameTable().getRegionBoards())
-			if(region.getName().equals(this.chosenRegion.getName()))
-				action.setChosenRegion(region);
-		
-		List<PoliticsCard> convertedCards =new ArrayList<>();
-		for(CardColourDTO cardColourDTO : this.cardsToDescard)
-			convertedCards.add(new PoliticsCard(new CardColour(cardColourDTO.getName())));
-		action.setCardsToDescard(convertedCards);
-		
-		return action;
+	public Action startVisitor(ActionDTOMapper mapper) {
+		return mapper.map(this);
 	}
 }

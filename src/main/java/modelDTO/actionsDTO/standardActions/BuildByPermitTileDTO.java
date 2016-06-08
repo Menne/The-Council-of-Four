@@ -1,8 +1,5 @@
 package modelDTO.actionsDTO.standardActions;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import modelDTO.GameDTO;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.ActionWithParameters;
@@ -10,11 +7,8 @@ import modelDTO.gameTableDTO.CityDTO;
 import modelDTO.gameTableDTO.PermitTileDTO;
 import modelDTO.parser.ActionParserVisitor;
 import modelDTO.parser.BuildByPermitTileParser;
-import server.model.Game;
 import server.model.actions.Action;
-import server.model.actions.standardActions.BuildByPermitTile;
-import server.model.gameTable.City;
-import server.model.gameTable.PermitTile;
+import server.view.mapperVisitor.ActionDTOMapper;
 
 public class BuildByPermitTileDTO implements ActionDTO, ActionWithParameters {
 	
@@ -49,31 +43,6 @@ public class BuildByPermitTileDTO implements ActionDTO, ActionWithParameters {
 	public void parametersSetted() {
 		this.parametersSetted=true;
 	}
-	
-	@Override
-	public Action map(Game game) {
-		BuildByPermitTile action =new BuildByPermitTile();
-		
-		for(City city : game.getGameTable().getMap().getGameMap().vertexSet())
-			if(city.getName().equals(this.selectedCity.getName()))
-				action.setSelectedCity(city);
-		
-		for(PermitTile permitTile : game.getCurrentPlayer().getPlayersPermitTilesTurnedUp())
-			if(permitTile.getBonus().equals(this.selectedPermitTile.getBonuses())&&
-					checkBuildableCities(permitTile.getBuildableCities()))
-				action.setSelectedPermitTile(permitTile);
-		return action;
-	}
-	
-	private boolean checkBuildableCities(Set<City> realBuildableCities){
-		Set<String> realBuildableCitiesString =new HashSet<>();
-		Set<String> buildableCitiesDTOString = new HashSet<>();
-		for(City city : realBuildableCities)
-			realBuildableCitiesString.add(city.getName());
-		for(CityDTO cityDTO : this.selectedPermitTile.getBuildablecities())
-			buildableCitiesDTOString.add(cityDTO.getName());
-		return realBuildableCitiesString.equals(buildableCitiesDTOString);
-	}
 
 	@Override
 	public String toString() {
@@ -83,6 +52,11 @@ public class BuildByPermitTileDTO implements ActionDTO, ActionWithParameters {
 	@Override
 	public ActionParserVisitor setParser(GameDTO game) {
 		return new BuildByPermitTileParser(this, game);
+	}
+
+	@Override
+	public Action startVisitor(ActionDTOMapper mapper) {
+		return mapper.map(this);
 	}
 	
 	

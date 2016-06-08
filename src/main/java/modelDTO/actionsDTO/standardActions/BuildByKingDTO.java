@@ -1,6 +1,5 @@
 package modelDTO.actionsDTO.standardActions;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import modelDTO.GameDTO;
@@ -10,12 +9,8 @@ import modelDTO.gameTableDTO.CardColourDTO;
 import modelDTO.gameTableDTO.CityDTO;
 import modelDTO.parser.ActionParserVisitor;
 import modelDTO.parser.BuildByKingParser;
-import server.model.Game;
 import server.model.actions.Action;
-import server.model.actions.standardActions.BuildByKing;
-import server.model.gameTable.CardColour;
-import server.model.gameTable.City;
-import server.model.gameTable.PoliticsCard;
+import server.view.mapperVisitor.ActionDTOMapper;
 
 public class BuildByKingDTO implements ActionDTO, ActionWithParameters {
 
@@ -52,23 +47,6 @@ public class BuildByKingDTO implements ActionDTO, ActionWithParameters {
 	}
 
 	@Override
-	public Action map(Game game) {
-		BuildByKing action=new BuildByKing();
-		
-		for(City city : game.getGameTable().getMap().getGameMap().vertexSet())
-			if(city.getName().equals(this.selectedCity.getName()))
-				action.setSelectedCity(city);
-		
-		List<PoliticsCard> convertedCards =new ArrayList<>();
-		for(CardColourDTO cardColourDTO : this.cardsToDescard)
-			convertedCards.add(new PoliticsCard(new CardColour(cardColourDTO.getName())));
-		action.setCardsToDescard(convertedCards);
-		
-		return action;
-	}
-	
-	
-	@Override
 	public String toString() {
 		return "m4: build an emporium with the help of the king";
 	}
@@ -76,6 +54,11 @@ public class BuildByKingDTO implements ActionDTO, ActionWithParameters {
 	@Override
 	public ActionParserVisitor setParser(GameDTO game) {
 		return new BuildByKingParser(this, game);
+	}
+
+	@Override
+	public Action startVisitor(ActionDTOMapper mapper) {
+		return mapper.map(this);
 	}
 	
 }
