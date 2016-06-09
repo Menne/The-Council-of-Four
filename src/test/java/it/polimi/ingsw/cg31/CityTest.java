@@ -17,7 +17,7 @@ import server.model.bonus.ScoreBonus;
 import server.model.gameTable.City;
 import server.model.gameTable.CityColour;
 import server.model.gameTable.Emporium;
-/*
+
 public class CityTest {
 
 	@Test
@@ -36,27 +36,9 @@ public class CityTest {
 		set.add(bonus1);
 		list.add(set);
 		City city=new City("città1",game.getGameTable().getRegionBoards().get(0), colour, list);
-		assertEquals(false, city.getIsKingPresent());
+		assertNotEquals(game.getGameTable().getKing().getCity(), city);
 	}
 
-	@Test
-	public void testIfIsKingPresentReturnTrueAfterTheMethodSetIsKingPresent() throws IOException {
-		Game game=new Game();
-		List<Player> players = new ArrayList<>();
-		Player a = new Player("Andre");
-		players.add(a);
-		game.start(players);
-		ScoreBonus bonus= new ScoreBonus(1);
-		CityColour colour= new CityColour("KingColour", bonus);
-		List<Set<Bonus>> list= new ArrayList<Set<Bonus>>();
-		Set<Bonus> set= new HashSet<>();
-		Bonus bonus1= new ScoreBonus(1);
-		set.add(bonus1);
-		list.add(set);
-		City city=new City("città1",game.getGameTable().getRegionBoards().get(0), colour, list);
-		city.setIsKingPresent(true);
-		assertEquals(true, city.getIsKingPresent());
-	}
 	
 	@Test
 	public void testGetRewardToken() throws IOException {
@@ -188,5 +170,5 @@ public class CityTest {
 		cities.add(nearCity);
 		assertEquals(cities, city.getNearCities());
 	}
-}*/
+}
 

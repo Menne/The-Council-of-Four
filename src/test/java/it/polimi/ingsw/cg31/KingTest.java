@@ -11,10 +11,9 @@ import org.junit.Test;
 import players.Player;
 import server.model.Game;
 import server.model.gameTable.City;
-import server.model.gameTable.CityColour;
 import server.model.gameTable.King;
 
-/*
+
 public class KingTest {
 
 	@Test
@@ -25,28 +24,20 @@ public class KingTest {
 		players.add(a);
 		game.start(players);
 		City c=null;
-		for(City city: game.getGameTable().getRegionBoards().get(1).getRegionCities()){
-			if(city.getIsKingPresent())
-				c=city;}
+		c=game.getGameTable().getKing().getCity();
 		assertEquals("Juvelar", c.getName());
 	}
 	
 	
 	@Test
-	public void testIfKingChangesCity() throws IOException{
+	public void testKingGetter() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
 		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		City c=null;
-		for(City city: game.getGameTable().getRegionBoards().get(1).getRegionCities()){
-			if(city.getIsKingPresent())
-				c=city;}
-		King king=new King(c);
-		CityColour colore=new CityColour("KingColour", null);
-		City d=new City(null, game.getGameTable().getRegionBoards().get(1), colore, null);
-		king.moveKing(d);
-		assertTrue(d.getIsKingPresent());
+		King king= new King(c);
+		assertEquals(c, king.getCity());
 	}
-}*/
+}
