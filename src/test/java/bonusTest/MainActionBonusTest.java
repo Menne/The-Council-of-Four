@@ -11,10 +11,9 @@ import org.junit.Test;
 import players.Player;
 import server.model.Game;
 import server.model.bonus.MainActionBonus;
-import server.model.stateMachine.BonusMainActionFrom10;
-import server.model.stateMachine.BonusMainActionFrom11;
 import server.model.stateMachine.State10;
 import server.model.stateMachine.State11;
+import server.model.stateMachine.bonusStates.AdditionalMainActionBonusState;
 public class MainActionBonusTest {
 
 	@Test
@@ -28,7 +27,7 @@ public class MainActionBonusTest {
 		game.setState(new State10());
 		MainActionBonus bonus= new MainActionBonus();
 		bonus.assignBonus(game);
-		assertEquals(BonusMainActionFrom10.class, game.getState().getClass());
+		assertEquals(AdditionalMainActionBonusState.class, game.getState().getClass());
 	}
 
 	@Test
@@ -42,6 +41,6 @@ public class MainActionBonusTest {
 		game.setState(new State11());
 		MainActionBonus bonus= new MainActionBonus();
 		bonus.assignBonus(game);
-		assertEquals(BonusMainActionFrom11.class, game.getState().getClass());
+		assertEquals(AdditionalMainActionBonusState.class, game.getState().getClass());
 	}
 }

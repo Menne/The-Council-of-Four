@@ -11,6 +11,8 @@ import server.model.actions.standardActions.AcquirePermitTile;
 import server.model.actions.standardActions.BuildByKing;
 import server.model.actions.standardActions.BuildByPermitTile;
 import server.model.actions.standardActions.ElectCouncillor;
+import server.model.stateMachine.bonusStates.AdditionalMainActionBonusState;
+import server.model.stateMachine.bonusStates.InteractiveBonusState;
 import server.view.notifies.AvailableActionsNotify;
 import server.view.notifies.GameTableNotify;
 import server.view.notifies.PlayerNotify;
@@ -43,9 +45,15 @@ public class State10 implements State{
 	}
 	
 	@Override
-	public State mainActionBonusTransition() {
-		return new BonusMainActionFrom10();
+	public State additionalMainActionTransition() {
+		return new AdditionalMainActionBonusState(this);
 	}
+	
+	@Override
+	public State interactiveBonusTransition() {
+		return new InteractiveBonusState(this);
+	}
+	
 	
 	@Override
 	public List<Action> getAcceptableActions(Game game) {

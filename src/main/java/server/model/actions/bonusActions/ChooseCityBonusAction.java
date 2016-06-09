@@ -28,13 +28,14 @@ public class ChooseCityBonusAction implements Action {
 			
 		for (Bonus bonusToAssign : this.selectedCity.getRewardToken())
 			bonusToAssign.assignBonus(game);
+		
+		game.setState(game.getState().moveToNextTransition(game));
 		return true;
 	}
 
 	@Override
 	public ActionDTO map() {
-		// TODO Auto-generated method stub
-		return null;
+		throw new IllegalStateException("ChooseCityBonusAction doesn't require mapping");
 	}
 	
 }
