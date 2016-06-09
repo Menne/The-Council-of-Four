@@ -78,7 +78,7 @@ public class GameTable {
 	public String toString() {
 		return  regionBoards + "\n" + councilOfKing
 				+ "\n" + councilReserve +  "\n"
-				+ nobilityTrack + "\n" + kingRewardTiles;
+				+ nobilityTrack + "\n" + kingRewardTiles + "\n" + king.getCity();
 	}
                
 }
