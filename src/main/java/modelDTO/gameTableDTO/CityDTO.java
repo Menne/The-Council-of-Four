@@ -1,6 +1,8 @@
 package modelDTO.gameTableDTO;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import modelDTO.ModelDTO;
@@ -76,7 +78,10 @@ public class CityDTO implements ModelDTO<City>{
 
 	@Override
 	public String toString() {
-		return name+"\t"+buildedEmporiums+"\t"+rewardToken+"\n";
+		List<String> emporiums=new ArrayList<>();
+		for(GenericPlayerDTO player : buildedEmporiums)
+			emporiums.add(player.getName());
+		return name+"\t"+emporiums+"\t"+rewardToken+"\n";
 	}
 
 
