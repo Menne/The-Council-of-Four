@@ -225,8 +225,6 @@ public class Player {
 		return this.emporiums.remove(0);
 	}
 
-
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -234,6 +232,7 @@ public class Player {
 		result = prime * result + playerNumber;
 		return result;
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -248,6 +247,7 @@ public class Player {
 			return false;
 		return true;
 	}
+
 
 	@Override
 	public String toString() {

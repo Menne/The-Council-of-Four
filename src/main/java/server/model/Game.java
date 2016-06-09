@@ -1,7 +1,8 @@
  
 package server.model;
 
-import java.io.IOException;import java.util.ArrayList;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
@@ -226,21 +227,22 @@ public class Game extends Observable<ViewNotify>{
 	}
 	
 	public void sortFinalRankingTable(){
-		Collections.sort(quittedPlayers, new Comparator<Player>() {
+		Collections.sort(this.quittedPlayers, new Comparator<Player>() {
 
 			@Override
 			public int compare(Player o1, Player o2) {
+				if(o1.getPlayerNumber()==o2.getPlayerNumber())
+					return 0;
 				if(o1.getScore()<o2.getScore())
-					return -1;				
+					return 1;
 				if(o1.getScore()>o2.getScore())
+					return -1;
+				if(o1.getNumberOfAssistants()+o1.getHand().size()<o2.getNumberOfAssistants()+o2.getHand().size())
 					return 1;
 				if(o1.getNumberOfAssistants()+o1.getHand().size()<o2.getNumberOfAssistants()+o2.getHand().size())
 					return -1;
-				if(o1.getNumberOfAssistants()+o1.getHand().size()>o2.getNumberOfAssistants()+o2.getHand().size())
-					return 1;
-				return 0;
+				return o1.getPlayerNumber()<o2.getPlayerNumber() ? -1 : 1;
 			}
-			
 		});
 	}
 
