@@ -17,8 +17,10 @@ public class ClientRMI{
 	private final String HOST;
 	private final static int PORT = 52365;
 	private static final String NAME = "CoF";
+	private final String clientName;
 	
-	public ClientRMI(String HOST) {
+	public ClientRMI(String HOST, String clientName) {
+		this.clientName=clientName;
 		this.HOST=HOST;
 	}
 	
@@ -33,7 +35,7 @@ public class ClientRMI{
 		ClientRMIViewRemote clientRMIViewRemote=(ClientRMIViewRemote) UnicastRemoteObject.exportObject(view,0);
 		clientGame.registerObserver(view);
 		view.registerObserver(clientController);
-		view.welcome();
+		view.welcome(clientName);
 		view.input();
 	}
 

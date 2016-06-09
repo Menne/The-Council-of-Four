@@ -107,11 +107,9 @@ public class CLIsocket extends ClientView implements Runnable{
 		}
 	}
 	
-	public void welcome(){
+	public void welcome(String name){
 		AddPlayerDTO actionDTO=new AddPlayerDTO();
-		System.out.println("Welcome to a new game of CoF! Please, tell me your name:");
-		String input=scanner.nextLine();
-		actionDTO.setPlayerName(input);
+		actionDTO.setPlayerName(name);
 		try {
 			
 			socketOut.writeObject(actionDTO);

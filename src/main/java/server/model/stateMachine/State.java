@@ -17,13 +17,6 @@ public interface State{
 		
 		throw new IllegalStateException("There are not such transictions for this state");
 	}
-
-	
-	public default State additionalMainActionTransition() throws IllegalStateException{
-		
-		throw new IllegalStateException("There are not such transictions for this state");
-	}
-
 	
 	public default State pickPoliticsCardTransition() throws IllegalStateException{
 		
@@ -46,14 +39,22 @@ public interface State{
 	public State moveToNextTransition(Game game);
 	
 	
-	public default State mainActionBonusTransition() throws IllegalStateException{
+	public default State additionalMainActionTransition() throws IllegalStateException{
 		
 		throw new IllegalStateException("There are not such transictions for this state");
 	}
 
+	public default State interactiveBonusTransition(){
 		
+		throw new IllegalStateException("There are not such transictions for this state");
+	}
+	
+	
 	public List<Action> getAcceptableActions(Game game);
 	
 	public void updateClients(Game game);
+
+
+	
 
 }

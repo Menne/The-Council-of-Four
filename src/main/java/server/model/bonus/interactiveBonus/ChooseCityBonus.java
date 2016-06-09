@@ -1,8 +1,9 @@
-package server.model.bonus;
+package server.model.bonus.interactiveBonus;
 
 import java.util.Arrays;
 
 import server.model.Game;
+import server.model.bonus.Bonus;
 import server.view.notifies.CityBonusNotify;
 
 /**
@@ -15,7 +16,7 @@ import server.view.notifies.CityBonusNotify;
  *
  */
 
-public class ChooseCityBonus implements Bonus{
+public class ChooseCityBonus implements Bonus {
 	
 	/**
 	 * 
@@ -28,6 +29,7 @@ public class ChooseCityBonus implements Bonus{
 	 */
 	@Override
 	public void assignBonus(Game game) {
+		game.setState(game.getState().interactiveBonusTransition());
 		game.notifyObserver(new CityBonusNotify(Arrays.asList(game.getCurrentPlayer())));
 	}
 
