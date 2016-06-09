@@ -37,6 +37,10 @@ public class Game extends Observable<ViewNotify>{
 		this.quittedPlayers=new ArrayList<>();
 	}
 	
+	/*
+	 * initialies the gametable and the player, setting all the parameters of the players and the state
+	 * of the game.
+	 */
 	public void start(List<Player> playerList) throws IOException{
 		Initializer init= new Initializer();
 		this.gameTable=init.initialize();
@@ -63,7 +67,9 @@ public class Game extends Observable<ViewNotify>{
 		
 	}
 
-
+	/*
+	 * cchange the current player to the next, in a different method if it is the last lap
+	 */
 	public void nextPlayer() {
 		if (!lastLap) {	
 			Player player=this.players.remove(0);
@@ -79,6 +85,9 @@ public class Game extends Observable<ViewNotify>{
 			}
 	}
 	
+	/*
+	 * assigns all the end Game bonuses, sending an EndGameNotify with the quitted  players
+	 */
 	public void endGame(){
 		this.assignFinalBonus();
 		this.assignBonusPermitTilesEndGame();
@@ -88,6 +97,9 @@ public class Game extends Observable<ViewNotify>{
 		notifyObserver(new EndGameNotify(quittedPlayers));
 	}
 	
+	/*
+	 * returns the last Player of the game
+	 */
 	public Player lastPlayer(){
 		Player lastPlayer=players.get(0);
 		for(Player player : players)
@@ -96,6 +108,9 @@ public class Game extends Observable<ViewNotify>{
 		return lastPlayer;
 	}
 	
+	/*
+	 * contains all the methods for starting the market
+	 */
 	public void startMarket(){
 		this.market.clearMarket();
 		this.market.getSellingPlayerList().addAll(players);
@@ -106,6 +121,9 @@ public class Game extends Observable<ViewNotify>{
 
 	}
 	
+	/*
+	 * assigns a politic card to the current player of the game
+	 */
 	public void pickPoliticsCard(){
 		this.currentPlayer.getHand().add(this.gameTable.getPoliticsDeck().pickCard());
 	}
@@ -195,7 +213,7 @@ public class Game extends Observable<ViewNotify>{
 	}
 	
 	/**
-	 * assigns 5 points to the player who has more permit tiles
+	 * assigns 3 points to the player who has more permit tiles
 	 */
 	public void assignBonusPermitTilesEndGame(){
 		int numberOfPermitTiles=0;
