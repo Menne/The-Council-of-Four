@@ -7,7 +7,6 @@ import client.view.ClientView;
 import client.view.notifies.ClientViewNotify;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.ActionWithParameters;
-import modelDTO.actionsDTO.AddPlayerDTO;
 import modelDTO.clientNotifies.ClientNotify;
 import modelDTO.clientNotifies.EndGameDTONotifies;
 import modelDTO.parser.Parser;
@@ -84,12 +83,8 @@ public class CLIrmi extends ClientView implements ClientRMIViewRemote{
 		
 	}
 	
-	public void welcome() throws RemoteException{
-		AddPlayerDTO actionDTO=new AddPlayerDTO();
-		System.out.println("Welcome to a new game of CoF! Please, tell me your name:");
-		String input=scanner.nextLine();
-		actionDTO.setPlayerName(input);
-		this.serverStub.registerClient(this, input);
+	public void welcome(String name) throws RemoteException{
+		this.serverStub.registerClient(this, name);
 	}
 	
 	
