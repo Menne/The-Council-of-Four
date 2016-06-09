@@ -67,18 +67,13 @@ public class ServerSocketView extends View implements Runnable {
 				
 				else{
 					ActionDTO actionDTO=(ActionDTO) object;
-					System.out.println("mi è arrivata l'azione");
-					this.notifyObserver(actionDTO.startVisitor(this.mapper));
-					System.out.println("ho mappato l'azione");
+					this.notifyObserver(actionDTO.startVisitor(this.mapper));					
 				}
-					
 				
 			} catch (ClassNotFoundException | IOException e) {
 				break;
 			}
 		}
-		
-
 	}
 
 

@@ -11,8 +11,7 @@ public class QuitNotify implements ClientNotify {
 
 	@Override
 	public void updateModel(GameDTO gameDTOtoupdate) {
-		// TODO Auto-generated method stub
-
+		return;
 	}
 
 }

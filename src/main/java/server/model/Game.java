@@ -229,6 +229,7 @@ public class Game extends Observable<ViewNotify>{
 				player.incrementScore(3);
 	}
 	
+	
 	public void sortFinalRankingTable(){
 		Collections.sort(this.quittedPlayers, new Comparator<Player>() {
 

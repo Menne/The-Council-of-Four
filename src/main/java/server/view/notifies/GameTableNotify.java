@@ -17,7 +17,7 @@ public class GameTableNotify implements ViewNotify {
 		this.game=game;
 		this.interestedPlayers=interestedPlayers;
 	}
-
+	
 	@Override
 	public ClientNotify toClientNotify() {
 		GameTableDTO gameTableDTO=new GameTableDTO();
@@ -28,6 +28,10 @@ public class GameTableNotify implements ViewNotify {
 	@Override
 	public List<Player> sendTo() {
 		return this.interestedPlayers;
+	}
+	
+	public Player getCurrentPlayer(){
+		return game.getCurrentPlayer();
 	}
 
 }
