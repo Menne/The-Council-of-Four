@@ -61,6 +61,7 @@ public class Game extends Observable<ViewNotify>{
 		this.state=new BeginState();
 		this.lastLap=false;
 		this.market=new Market();
+		System.out.println(this.gameTable);
 		
 		for (Player player : this.players)
 			this.notifyObserver(new PlayerNotify(player, Arrays.asList(player)));
