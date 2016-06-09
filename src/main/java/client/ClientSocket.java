@@ -14,9 +14,11 @@ public class ClientSocket {
 
 	private final static int PORT = 29999;
 	private final String IP;
+	private final String clientName;
 	
-	public ClientSocket(String IP) {
+	public ClientSocket(String IP, String clientname) {
 		this.IP=IP;
+		this.clientName=clientname;
 	}
 	
 	public void startClient()
@@ -32,7 +34,7 @@ public class ClientSocket {
 		view.registerObserver(clientController);
 		ExecutorService executor=Executors.newSingleThreadExecutor();
 		executor.submit(view);
-		view.welcome();
+		view.welcome(clientName);
 		view.input();
 	}
 }
