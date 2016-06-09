@@ -4,7 +4,8 @@ import java.util.Arrays;
 
 import server.model.Game;
 import server.model.bonus.Bonus;
-import server.view.notifies.PermitTileBonusNotify;
+import server.view.notifies.CityBonusNotify;
+import server.view.notifies.MessageNotify;
 
 /**
  * This bonus allows the current player to choose from a permit tile he has already picked
@@ -29,8 +30,13 @@ public class PurchasedPermitTileBonus implements Bonus {
 	 */
 	@Override
 	public void assignBonus(Game game) {
-		game.setState(game.getState().interactiveBonusTransition());
-		game.notifyObserver(new PermitTileBonusNotify(Arrays.asList(game.getCurrentPlayer())));
+		if (!game.getCurrentPlayer().getPlayersPermitTilesTurnedUp().isEmpty()) {
+			game.setState(game.getState().interactiveBonusTransition());
+			game.notifyObserver(new CityBonusNotify(Arrays.asList(game.getCurrentPlayer())));
+		}
+		else
+			game.notifyObserver(new MessageNotify("Unable to get bonus because you don't have any permit tile!", 
+					Arrays.asList(game.getCurrentPlayer())));
 	}
 
 }
