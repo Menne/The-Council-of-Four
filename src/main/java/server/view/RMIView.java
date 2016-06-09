@@ -20,14 +20,14 @@ public class RMIView extends View implements RMIViewRemote {
 	
 	private final Map<ClientRMIViewRemote, Player> clientsMap;
 	private final Game game;
-	private ActionDTOMapper mapper;
+	private ActionDTOMapper actionMapper;
 	
 	
 	public RMIView(Server server, Game game){
 		super(server);
 		this.game=game;
 		this.clientsMap=new HashMap<>();
-		this.mapper=new ActionDTOMapper(this.game);
+		this.actionMapper=new ActionDTOMapper(this.game);
 	}
 	
 	
@@ -68,7 +68,7 @@ public class RMIView extends View implements RMIViewRemote {
 
 	@Override
 	public void receiveAction(ActionDTO actionDTO) throws RemoteException {
-		this.notifyObserver(actionDTO.startVisitor(this.mapper));		
+		this.notifyObserver(actionDTO.startVisitor(this.actionMapper));		
 	}
 
 

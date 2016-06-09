@@ -12,6 +12,7 @@ import initializer.Initializer;
 import observerPattern.Observable;
 import players.Player;
 import server.model.bonus.ScoreBonus;
+import server.model.gameMapper.GameDTOMapper;
 import server.model.gameTable.Emporium;
 import server.model.gameTable.GameTable;
 import server.model.market.Market;
@@ -32,9 +33,11 @@ public class Game extends Observable<ViewNotify>{
 	private static final int initialNumberOfCards=6;
 	private static final int intialNumberOfEmporiums=10;
 	private final List<Player> quittedPlayers;
+	private final GameDTOMapper gameMapper;
 	
 	public Game() {
 		this.quittedPlayers=new ArrayList<>();
+		this.gameMapper=new GameDTOMapper();
 	}
 	
 	/**
@@ -54,7 +57,7 @@ public class Game extends Observable<ViewNotify>{
 			player.setCoins(player.getPlayerNumber()+9);
 			for(int i=0;i<initialNumberOfCards;i++)
 				player.addCardToHand(this.gameTable.getPoliticsDeck().pickCard());
-			for(int i=0;i<intialNumberOfEmporiums;i++)
+			for(int i=0;i<getIntialnumberofemporiums();i++)
 				player.getRemainigEmporiums().add(new Emporium(player));
 		}
 		this.currentPlayer=this.players.get(0);
@@ -138,6 +141,10 @@ public class Game extends Observable<ViewNotify>{
 	public GameTable getGameTable() {
 		return gameTable;
 	}
+	
+	public static int getIntialnumberofemporiums() {
+		return intialNumberOfEmporiums;
+	}
 
 	public Player getCurrentPlayer() {
 		return this.currentPlayer;
@@ -173,6 +180,10 @@ public class Game extends Observable<ViewNotify>{
 	
 	public void setCurrentPlayer(Player currentPlayer) {
 		this.currentPlayer = currentPlayer;
+	}
+	
+	public GameDTOMapper getGameMapper() {
+		return this.gameMapper;
 	}
 
 	
