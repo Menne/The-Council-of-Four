@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Set;
 
 import server.model.bonus.*;
+import server.model.bonus.interactiveBonus.ChooseCityBonus;
+import server.model.bonus.interactiveBonus.PurchasedPermitTileBonus;
 import server.model.gameTable.*;
 
 public class Initializer {

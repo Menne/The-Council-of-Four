@@ -1,4 +1,4 @@
-package server.model.stateMachine;
+package server.model.stateMachine.bonusStates;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,13 +6,20 @@ import java.util.List;
 
 import server.model.Game;
 import server.model.actions.Action;
+import server.model.stateMachine.State;
 import server.view.notifies.MessageNotify;
 
-public class BonusMainActionFrom11 implements State {
+public class AdditionalMainActionBonusState implements State {
+	
+	private State previousState;
+
+	public AdditionalMainActionBonusState(State previousState) {
+		this.previousState=previousState;
+	}
 	
 	@Override
 	public State mainActionTransition(Game game) {
-		return new State11();
+		return this.previousState;
 	}
 
 	@Override

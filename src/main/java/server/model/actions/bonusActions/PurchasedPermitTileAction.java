@@ -25,14 +25,15 @@ public class PurchasedPermitTileAction implements Action {
 	public boolean executeAction(Game game) {
 		for (Bonus bonusToAssign : this.selectedPermitTile.getBonus())
 			bonusToAssign.assignBonus(game);
+		
+		game.setState(game.getState().moveToNextTransition(game));
 		return true;
 	}
 
 
 	@Override
 	public ActionDTO map() {
-		// TODO Auto-generated method stub
-		return null;
+		throw new IllegalStateException("PurchasePermitTileActions doesn't require mapping");
 	}
 	
 }

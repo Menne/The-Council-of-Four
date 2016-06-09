@@ -1,8 +1,9 @@
-package server.model.bonus;
+package server.model.bonus.interactiveBonus;
 
 import java.util.Arrays;
 
 import server.model.Game;
+import server.model.bonus.Bonus;
 import server.view.notifies.PermitTileBonusNotify;
 
 /**
@@ -28,6 +29,7 @@ public class PurchasedPermitTileBonus implements Bonus {
 	 */
 	@Override
 	public void assignBonus(Game game) {
+		game.setState(game.getState().interactiveBonusTransition());
 		game.notifyObserver(new PermitTileBonusNotify(Arrays.asList(game.getCurrentPlayer())));
 	}
 

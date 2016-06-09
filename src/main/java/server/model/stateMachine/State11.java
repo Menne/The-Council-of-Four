@@ -12,6 +12,8 @@ import server.model.actions.standardActions.ChangePermitTiles;
 import server.model.actions.standardActions.ElectCouncillor;
 import server.model.actions.standardActions.ElectCouncillorByAssistant;
 import server.model.actions.standardActions.EngageAssistant;
+import server.model.stateMachine.bonusStates.AdditionalMainActionBonusState;
+import server.model.stateMachine.bonusStates.InteractiveBonusState;
 import server.view.notifies.AvailableActionsNotify;
 import server.view.notifies.PlayerNotify;
 
@@ -28,9 +30,15 @@ public class State11 implements State {
 	}
 	
 	@Override
-	public State mainActionBonusTransition() {
-		return new BonusMainActionFrom11();
+	public State additionalMainActionTransition() {
+		return new AdditionalMainActionBonusState(this);
 	}
+	
+	@Override
+	public State interactiveBonusTransition() {
+		return new InteractiveBonusState(this);
+	}
+	
 	
 	@Override
 	public List<Action> getAcceptableActions(Game game) {
