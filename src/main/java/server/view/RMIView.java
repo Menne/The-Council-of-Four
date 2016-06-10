@@ -8,7 +8,6 @@ import java.util.Map;
 import client.view.rmi.ClientRMIViewRemote;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.clientNotifies.PlayerAcceptedDTONotify;
-import modelDTO.playerDTO.ClientPlayerDTO;
 import players.Player;
 import server.Server;
 import server.model.Game;
@@ -56,9 +55,8 @@ public class RMIView extends View implements RMIViewRemote {
 			server.newReadyPlayer(this, player);
 			System.out.println("client registered");
 			
-			ClientPlayerDTO clientPlayerDTO=new ClientPlayerDTO();
-			clientPlayerDTO.map(player);
-			clientStub.updateClient(new PlayerAcceptedDTONotify(clientPlayerDTO));
+			clientStub.updateClient(new PlayerAcceptedDTONotify
+					(this.game.getGameMapper().clientPlayerMap(player)));
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

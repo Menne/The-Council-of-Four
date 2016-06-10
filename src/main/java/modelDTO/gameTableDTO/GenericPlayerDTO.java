@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import players.Player;
-import server.model.gameTable.PermitTile;
 import modelDTO.ModelDTO;
 
 public class GenericPlayerDTO implements ModelDTO<Player>{
@@ -27,24 +26,6 @@ public class GenericPlayerDTO implements ModelDTO<Player>{
 		this.availablePermitTiles=new ArrayList<PermitTileDTO>();
 	}
 
-	@Override
-	public void map(Player realObject) {
-		
-		this.name=realObject.getName();
-		this.playerNumber=realObject.getPlayerNumber();
-		this.assistants=realObject.getNumberOfAssistants();
-		this.score=realObject.getScore();
-		this.nobility=realObject.getNobility();
-		this.coins=realObject.getCoins();
-		this.emporiums=realObject.getRemainigEmporiums().size();
-		this.hand=realObject.getHand().size();
-		
-		for (PermitTile permitTile : realObject.getPlayersPermitTilesTurnedUp()) {
-			PermitTileDTO permitTileDTO=new PermitTileDTO();
-			permitTileDTO.map(permitTile);
-			this.availablePermitTiles.add(permitTileDTO);
-		}
-	}
 	
 	public String getName() {
 		return name;

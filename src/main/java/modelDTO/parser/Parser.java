@@ -197,8 +197,7 @@ public class Parser implements Serializable{
 	 * @return the number of permit tile obtained from the string
 	 */
 	protected int numberOfPermitTileTranslator(String numberOfPermitTileToTranslate) {
-		int numberOfPermitTileTranslated=Integer.parseInt(numberOfPermitTileToTranslate);
-		return numberOfPermitTileTranslated;
+		return Integer.parseInt(numberOfPermitTileToTranslate);
 	}
 	
 	/**
@@ -207,9 +206,8 @@ public class Parser implements Serializable{
 	 * @return the permit tile obtained from the string
 	 */
 	protected PermitTileDTO permitTileTranslator(String permitTileToTranslate) {
-		int numberOfPermitTile=Integer.parseInt(permitTileToTranslate);
-		PermitTileDTO permitTileTranslated=this.game.getClientPlayer().getAvailablePermitTiles().get(numberOfPermitTile);
-		return permitTileTranslated;
+		return this.game.getClientPlayer().getAvailablePermitTiles()
+				.get(Integer.parseInt(permitTileToTranslate));
 	}
 	
 	/**

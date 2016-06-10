@@ -38,6 +38,7 @@ public class Game extends Observable<ViewNotify>{
 	
 	public Game() {
 		this.quittedPlayers=new ArrayList<>();
+		this.gameMapper=new GameDTOMapper();
 	}
 	
 	/**
@@ -64,9 +65,6 @@ public class Game extends Observable<ViewNotify>{
 		this.state=new BeginState();
 		this.lastLap=false;
 		this.market=new Market();
-		System.out.println(this.gameTable);
-		
-		this.gameMapper=new GameDTOMapper();
 		
 		for (Player player : this.players)
 			this.notifyObserver(new PlayerNotify(this, Arrays.asList(player)));
@@ -102,7 +100,7 @@ public class Game extends Observable<ViewNotify>{
 		this.assignBonusNobilityEndGame();
 		this.sortFinalRankingTable();
 		System.out.println(quittedPlayers.get(0));
-		notifyObserver(new EndGameNotify(quittedPlayers));
+		notifyObserver(new EndGameNotify(this, quittedPlayers));
 	}
 	
 	/**

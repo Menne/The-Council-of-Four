@@ -7,8 +7,6 @@ import modelDTO.ModelDTO;
 import modelDTO.gameTableDTO.CardColourDTO;
 import modelDTO.gameTableDTO.PermitTileDTO;
 import players.Player;
-import server.model.gameTable.PermitTile;
-import server.model.gameTable.PoliticsCard;
 
 public class ClientPlayerDTO implements ModelDTO<Player>{
 	
@@ -27,33 +25,6 @@ public class ClientPlayerDTO implements ModelDTO<Player>{
 		this.hand=new ArrayList<CardColourDTO>();
 		this.coveredPermitTiles=new ArrayList<PermitTileDTO>();
 		this.availablePermitTiles=new ArrayList<PermitTileDTO>();
-	}
-
-
-	@Override
-	public void map(Player realObject) {
-		
-		this.setName(realObject.getName());
-		this.setPlayerNumber(realObject.getPlayerNumber());
-		
-		for (PoliticsCard card : realObject.getHand()) {
-			CardColourDTO cardColourDTO=new CardColourDTO();
-			cardColourDTO.map(card.getColour());
-			this.hand.add(cardColourDTO);
-		}
-		for (PermitTile permitTile : realObject.getPlayersPermitTilesTurnedDown()) {
-			PermitTileDTO permitTileDTO=new PermitTileDTO();
-			permitTileDTO.map(permitTile);
-			this.coveredPermitTiles.add(permitTileDTO);
-		}
-		for (PermitTile permitTile : realObject.getPlayersPermitTilesTurnedUp()) {
-			PermitTileDTO permitTileDTO=new PermitTileDTO();
-			permitTileDTO.map(permitTile);
-			this.availablePermitTiles.add(permitTileDTO);
-		}
-		
-		this.setAssistants(realObject.getNumberOfAssistants());
-			
 	}
 	
 

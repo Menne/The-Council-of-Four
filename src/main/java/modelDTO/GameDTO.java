@@ -10,7 +10,6 @@ import modelDTO.parser.Parser;
 import modelDTO.playerDTO.ClientPlayerDTO;
 import observerPattern.Observable;
 import server.model.Game;
-import server.model.actions.Action;
 import modelDTO.gameTableDTO.GameTableDTO;
 
 public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Game> {
@@ -33,21 +32,6 @@ public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Ga
 		this.parser=new Parser(this);
 	}
 
-	@Override
-	public void map(Game realObject) {
-			
-		if (realObject.getCurrentPlayer()!=null){
-			ClientPlayerDTO playerDTO=new ClientPlayerDTO();
-			playerDTO.map(realObject.getCurrentPlayer());
-			this.clientPlayer=playerDTO;
-		}
-		
-		for (Action action : realObject.getState().getAcceptableActions(realObject))
-			this.availableActions.add(action.map());
-		
-		this.market.map(realObject.getMarket());
-	}
-	
 	
 	public GameTableDTO getClientGameTable() {
 		return this.clientGameTable;
