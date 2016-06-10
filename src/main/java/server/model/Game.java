@@ -13,6 +13,7 @@ import observerPattern.Observable;
 import players.Player;
 import server.model.bonus.ScoreBonus;
 import server.model.gameMapper.GameDTOMapper;
+import server.model.gameMapper.GameMapperInterface;
 import server.model.gameTable.Emporium;
 import server.model.gameTable.GameTable;
 import server.model.market.Market;
@@ -33,11 +34,10 @@ public class Game extends Observable<ViewNotify>{
 	private static final int initialNumberOfCards=6;
 	private static final int intialNumberOfEmporiums=10;
 	private final List<Player> quittedPlayers;
-	private final GameDTOMapper gameMapper;
+	private GameDTOMapper gameMapper;
 	
 	public Game() {
 		this.quittedPlayers=new ArrayList<>();
-		this.gameMapper=new GameDTOMapper();
 	}
 	
 	/**
@@ -66,8 +66,10 @@ public class Game extends Observable<ViewNotify>{
 		this.market=new Market();
 		System.out.println(this.gameTable);
 		
+		this.gameMapper=new GameDTOMapper();
+		
 		for (Player player : this.players)
-			this.notifyObserver(new PlayerNotify(player, Arrays.asList(player)));
+			this.notifyObserver(new PlayerNotify(this, Arrays.asList(player)));
 		
 		this.state.updateClients(this);
 		
@@ -182,7 +184,7 @@ public class Game extends Observable<ViewNotify>{
 		this.currentPlayer = currentPlayer;
 	}
 	
-	public GameDTOMapper getGameMapper() {
+	public GameMapperInterface getGameMapper() {
 		return this.gameMapper;
 	}
 

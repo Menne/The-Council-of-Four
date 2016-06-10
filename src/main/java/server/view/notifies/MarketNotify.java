@@ -4,25 +4,23 @@ import java.util.List;
 
 import modelDTO.clientNotifies.ClientNotify;
 import modelDTO.clientNotifies.MarketDTONotify;
-import modelDTO.marketDTO.MarketDTO;
 import players.Player;
-import server.model.market.Market;
+import server.model.Game;
 
 public class MarketNotify implements ViewNotify {
 	
-	private Market market;
+	private Game game;
 	private List<Player> interestedPlayers;
 
-	public MarketNotify(Market market, List<Player> interestedPlayers) {
-		this.market=market;
+	public MarketNotify(Game game, List<Player> interestedPlayers) {
+		this.game=game;
 		this.interestedPlayers=interestedPlayers;
 	}
 
 	@Override
 	public ClientNotify toClientNotify() {
-		MarketDTO marketDTO=new MarketDTO();
-		marketDTO.map(this.market);
-		return new MarketDTONotify(marketDTO);
+		return new MarketDTONotify(this.game.getGameMapper().marketMap
+				(this.game.getMarket()));
 	}
 
 	@Override

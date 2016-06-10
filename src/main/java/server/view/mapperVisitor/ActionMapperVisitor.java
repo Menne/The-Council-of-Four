@@ -21,7 +21,7 @@ import server.model.actions.standardActions.ChangePermitTiles;
 import server.model.actions.standardActions.ElectCouncillor;
 import server.model.actions.standardActions.ElectCouncillorByAssistant;
 
-public interface MapperVisitor {
+public interface ActionMapperVisitor {
 
 	public AcquirePermitTile map(AcquirePermitTileDTO selectedActionDTO);
 	public BuildByKing map(BuildByKingDTO selectedActionDTO);

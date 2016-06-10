@@ -13,12 +13,12 @@ import server.model.gameTable.RegionBoard;
 
 public class GameTableDTOMapper {
 	
-	private CardColourDTOMapper cardColopurMapper;
+	private CardColourDTOMapper cardColourMapper;
 	private GenericPlayerDTOMapper genericPlayerMapper;
 	private RegionDTOMapper regionMapper;
 
 	public GameTableDTOMapper() {
-		this.cardColopurMapper=new CardColourDTOMapper();
+		this.cardColourMapper=new CardColourDTOMapper();
 		this.genericPlayerMapper=new GenericPlayerDTOMapper();
 		this.regionMapper=new RegionDTOMapper();
 	}
@@ -29,11 +29,11 @@ public class GameTableDTOMapper {
 		for (RegionBoard region : realGame.getGameTable().getRegionBoards())
 			gameTableDTO.getClientRegions().add(this.regionMapper.map(region));
 		for (int i=0; i<CouncilBalcony.getNumberofcouncillors(); i++)
-			gameTableDTO.getClientKingBalcony()[i]=this.cardColopurMapper.map
+			gameTableDTO.getClientKingBalcony()[i]=this.cardColourMapper.map
 					(realGame.getGameTable().getCouncilOfKing().getCouncillors()[i].getColour());
 		for (Councillor councillor : realGame.getGameTable().getCouncilReserve().getCouncillors())
 			gameTableDTO.getClientCouncillorReserve().add
-					(this.cardColopurMapper.map(councillor.getColour()));
+					(this.cardColourMapper.map(councillor.getColour()));
 		for (Player player : realGame.getPlayers())
 			gameTableDTO.getClientPlayers().add(this.genericPlayerMapper.map(player));
 		gameTableDTO.setClientNobilityTrack((ArrayList<Set<Bonus>>) realGame.getGameTable().getNobilityTrack().getTrack());

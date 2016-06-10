@@ -42,7 +42,7 @@ import server.model.gameTable.PoliticsCard;
 import server.model.gameTable.RegionBoard;
 import server.model.market.Offer;
 
-public class ActionDTOMapper implements MapperVisitor{
+public class ActionDTOMapper implements ActionMapperVisitor{
 
 	private Game game;
 

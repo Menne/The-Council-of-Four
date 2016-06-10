@@ -73,7 +73,7 @@ public class State01 implements State {
 	@Override
 	public void updateClients(Game game) {
 		game.notifyObserver(new GameTableNotify(game, new ArrayList<Player>(game.getPlayers())));
-		game.notifyObserver(new PlayerNotify(game.getCurrentPlayer(), 
+		game.notifyObserver(new PlayerNotify(game, 
 				Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new AvailableActionsNotify(game.getState().getAcceptableActions(game), 
 				Arrays.asList(game.getCurrentPlayer()), game.getCurrentPlayer().getName() +
