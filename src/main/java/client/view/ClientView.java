@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.rmi.RemoteException;
 
 import client.view.notifies.ClientViewNotify;
+import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.clientNotifies.ClientNotify;
 import observerPattern.Observable;
 import observerPattern.Observer;
@@ -20,5 +21,7 @@ public abstract class ClientView extends Observable<ClientNotify> implements Obs
 	public abstract void update(ClientViewNotify notify);
 	
 	public abstract void input() throws RemoteException, IOException;
+	
+	protected abstract void sendAction(ActionDTO action) throws RemoteException;
 
 }

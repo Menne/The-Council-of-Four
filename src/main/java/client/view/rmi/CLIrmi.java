@@ -55,7 +55,12 @@ public class CLIrmi extends ClientView implements ClientRMIViewRemote{
 			}
 			if (this.parser.availableActions().contains(input)) {
 				ActionDTO selectedAction=this.parser.actionParser(input);
-				this.checkIfParametersNeeded(selectedAction);
+				if (parametersNeeded(selectedAction)) {
+					ActionWithParameters actionWithParameters=(ActionWithParameters) selectedAction;
+					this.insertParametersAndSend(actionWithParameters);
+				}
+				else
+					sendAction(selectedAction);
 			}
 			else if("quit".equals(input)){
 				serverStub.quitPlayer(this);
@@ -64,22 +69,22 @@ public class CLIrmi extends ClientView implements ClientRMIViewRemote{
 				System.out.println("Sorry, action not available!");	
 		}		
 	}
-
-
-	private void checkIfParametersNeeded(ActionDTO selectedAction) throws RemoteException {
-		if (selectedAction instanceof ActionWithParameters) {
-			ActionWithParameters actionWithParameters=(ActionWithParameters) selectedAction;
-			this.insertParameters(actionWithParameters);
-		}
-		else
-			this.serverStub.receiveAction(selectedAction);
+	
+	@Override
+	protected void sendAction(ActionDTO action) throws RemoteException{
+		this.serverStub.receiveAction(action);
 	}
 
 
-	private void insertParameters(ActionWithParameters actionWithParameters) throws RemoteException {
+	private boolean parametersNeeded(ActionDTO selectedAction) throws RemoteException {
+		return (selectedAction instanceof ActionWithParameters);			
+	}
+
+
+	private void insertParametersAndSend(ActionWithParameters actionWithParameters) throws RemoteException {
 		this.parser.parametersParser(actionWithParameters);
 		if (actionWithParameters.checkIfParametersSetted())
-			this.serverStub.receiveAction(actionWithParameters);
+			sendAction(actionWithParameters);
 		
 	}
 	

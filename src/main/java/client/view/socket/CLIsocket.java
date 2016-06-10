@@ -92,7 +92,8 @@ public class CLIsocket extends ClientView implements Runnable{
 		}
 	}
 	
-	private void sendAction(ActionDTO action){
+	@Override
+	protected void sendAction(ActionDTO action){
 		try {
 			
 			socketOut.writeObject(action);
