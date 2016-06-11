@@ -13,8 +13,9 @@ public class CityColourDTO implements ModelDTO<CityColour>{
 
 	@Override
 	public void map(CityColour realObject) {
-		this.name=realObject.getName();
-		
+		if(realObject==null)
+			throw new NullPointerException("the real object can't be null");
+		this.name=realObject.getName();	
 	}
 	
 	public String getName() {

@@ -14,6 +14,8 @@ public class CardColourDTO implements ModelDTO<CardColour>, MarketableDTO{
 	
 	@Override
 	public void map(CardColour realObject) {
+		if(realObject==null)
+			throw new NullPointerException("the real object can't be null");
 		this.name=realObject.getColour();
 		
 	}
