@@ -301,10 +301,10 @@ public class ActionDTOMapper implements ActionMapperVisitor{
 	}
 	
 	/**
-	 * This method creates a new AcquirePermitTile action according to the AcquirePermitTileDTO received,
-	 * then maps all the parameters DTO into their corrisponding real objects, setting them to the real action created
-	 * @param selectedActionDTO is the action selected by the client whose parameters need to be translated
-	 * @return an AcquirePermitTile action with all the parameters set
+	 * This method checks if the colour of the selected councillor matchers with the one in the real balcony
+	 * @param realBalcony is the real balcony of the game
+	 * @param selectedAction is the action DTO from which get the councillor
+	 * @return true if the checking went fine, false otherwise
 	 */
 	private boolean checkCouncilBalcony(CouncilBalcony realBalcony, ElectCouncillorDTO selectedActionDTO){
 		for (int i=0; i<CouncilBalcony.getNumberofcouncillors(); i++)
@@ -314,10 +314,10 @@ public class ActionDTOMapper implements ActionMapperVisitor{
 	}
 	
 	/**
-	 * This method creates a new AcquirePermitTile action according to the AcquirePermitTileDTO received,
-	 * then maps all the parameters DTO into their corrisponding real objects, setting them to the real action created
-	 * @param selectedActionDTO is the action selected by the client whose parameters need to be translated
-	 * @return an AcquirePermitTile action with all the parameters set
+	 * This method checks if the colour of the selected councillor matchers with the one in the real balcony
+	 * @param realBalcony is the real balcony of the game
+	 * @param selectedAction is the action DTO from which get the councillor
+	 * @return true if the checking went fine, false otherwise
 	 */
 	private boolean checkCouncilBalcony(CouncilBalcony realBalcony, ElectCouncillorByAssistantDTO selectedActionDTO) {
 		for (int i=0; i<CouncilBalcony.getNumberofcouncillors(); i++)

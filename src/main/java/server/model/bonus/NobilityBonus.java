@@ -46,4 +46,11 @@ public class NobilityBonus implements Bonus{
 		return "Nobility+" + nobilityAdvancement;
 	}
 
+	public int getNobilityAdvancement() {
+		return nobilityAdvancement;
+	}
+	
+	
+	
+
 }
