@@ -7,7 +7,7 @@ import modelDTO.gameTableDTO.CityDTO;
 import modelDTO.parser.ActionParserVisitor;
 import modelDTO.parser.ChooseCityBonusParser;
 import server.model.actions.Action;
-import server.view.mapperVisitor.ActionDTOMapper;
+import server.view.actionMapperVisitor.ActionMapperVisitor;
 
 public class ChooseCityActionDTO implements ActionDTO, ActionWithParameters{
 
@@ -46,7 +46,7 @@ public class ChooseCityActionDTO implements ActionDTO, ActionWithParameters{
 	}
 
 	@Override
-	public Action startVisitor(ActionDTOMapper mapper) {
+	public Action startMapper(ActionMapperVisitor mapper) {
 		return mapper.map(this);
 	}
 

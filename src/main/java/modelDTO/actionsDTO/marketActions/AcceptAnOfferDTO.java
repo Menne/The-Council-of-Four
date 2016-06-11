@@ -7,7 +7,7 @@ import modelDTO.marketDTO.OfferDTO;
 import modelDTO.parser.AcceptAnOfferParser;
 import modelDTO.parser.ActionParserVisitor;
 import server.model.actions.Action;
-import server.view.mapperVisitor.ActionDTOMapper;
+import server.view.actionMapperVisitor.ActionMapperVisitor;
 
 public class AcceptAnOfferDTO implements ActionDTO, ActionWithParameters {
 
@@ -48,7 +48,7 @@ public class AcceptAnOfferDTO implements ActionDTO, ActionWithParameters {
 	}
 
 	@Override
-	public Action startVisitor(ActionDTOMapper mapper) {
+	public Action startMapper(ActionMapperVisitor mapper) {
 		return mapper.map(this);
 	}
 

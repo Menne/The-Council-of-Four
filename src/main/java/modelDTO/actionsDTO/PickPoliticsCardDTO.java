@@ -2,7 +2,7 @@ package modelDTO.actionsDTO;
 
 import server.model.actions.Action;
 import server.model.actions.PickPoliticsCard;
-import server.view.mapperVisitor.ActionDTOMapper;
+import server.view.actionMapperVisitor.ActionMapperVisitor;
 
 public class PickPoliticsCardDTO implements ActionDTO {
 
@@ -18,7 +18,7 @@ public class PickPoliticsCardDTO implements ActionDTO {
 	}
 
 	@Override
-	public Action startVisitor(ActionDTOMapper mapper) {
+	public Action startMapper(ActionMapperVisitor mapper) {
 		return new PickPoliticsCard();
 	}
 

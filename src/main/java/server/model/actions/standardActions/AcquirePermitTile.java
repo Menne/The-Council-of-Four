@@ -68,7 +68,7 @@ public class AcquirePermitTile extends MainAction {
 			return false;
 		}
 					
-		for (Bonus bonusToAssign : this.chosenRegion.getUncoveredPermitTiles()[numberOfPermitTile].getBonus())
+		for (Bonus bonusToAssign : this.chosenRegion.getUncoveredPermitTiles()[numberOfPermitTile].getBonuses())
 			bonusToAssign.assignBonus(game);
 		game.getCurrentPlayer().decrementCoins(CoinsToPay());
 		
