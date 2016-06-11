@@ -17,18 +17,5 @@ public class CardColourDTOTest {
 		assertTrue(colour.getName()==name);
 	}
 	
-	@Test
-	public void testMapping(){
-		CardColour realColour= new CardColour("blu");
-		CardColourDTO colour= new CardColourDTO();
-		colour.map(realColour);
-		assertTrue(colour.getName()==realColour.getColour());
-	}
-
-	@Test(expected=NullPointerException.class)
-	public void testException(){
-		CardColourDTO colour= new CardColourDTO();
-		colour.map(null);
-	}
 
 }

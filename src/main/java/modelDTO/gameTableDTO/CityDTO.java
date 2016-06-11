@@ -8,7 +8,6 @@ import java.util.Set;
 import modelDTO.ModelDTO;
 import server.model.bonus.Bonus;
 import server.model.gameTable.City;
-import server.model.gameTable.Emporium;
 
 public class CityDTO implements ModelDTO<City>{
 
@@ -23,23 +22,6 @@ public class CityDTO implements ModelDTO<City>{
 	
 	public CityDTO(){		
 		this.buildedEmporiums=new HashSet<>();
-	}
-
-	@Override
-	public void map(City realObject) {
-		this.name=realObject.getName();
-		
-		CityColourDTO cityColour=new CityColourDTO(); 
-		cityColour.map(realObject.getColour());
-		this.colour=cityColour;
-		
-		for(Emporium emporium : realObject.getCityEmporiums()){
-			GenericPlayerDTO playerDTO=new GenericPlayerDTO();
-			playerDTO.map(emporium.getEmporiumsPlayer());
-			this.buildedEmporiums.add(playerDTO);
-		}
-		
-		this.rewardToken=realObject.getRewardToken();
 	}
 	
 	

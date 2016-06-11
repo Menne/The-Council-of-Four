@@ -13,6 +13,7 @@ import observerPattern.Observable;
 import players.Player;
 import server.model.bonus.ScoreBonus;
 import server.model.gameMapper.GameDTOMapper;
+import server.model.gameMapper.GameMapperInterface;
 import server.model.gameTable.Emporium;
 import server.model.gameTable.GameTable;
 import server.model.market.Market;
@@ -33,7 +34,7 @@ public class Game extends Observable<ViewNotify>{
 	private static final int initialNumberOfCards=6;
 	private static final int intialNumberOfEmporiums=10;
 	private final List<Player> quittedPlayers;
-	private final GameDTOMapper gameMapper;
+	private GameDTOMapper gameMapper;
 	
 	public Game() {
 		this.quittedPlayers=new ArrayList<>();
@@ -64,10 +65,9 @@ public class Game extends Observable<ViewNotify>{
 		this.state=new BeginState();
 		this.lastLap=false;
 		this.market=new Market();
-		System.out.println(this.gameTable);
 		
 		for (Player player : this.players)
-			this.notifyObserver(new PlayerNotify(player, Arrays.asList(player)));
+			this.notifyObserver(new PlayerNotify(this, Arrays.asList(player)));
 		
 		this.state.updateClients(this);
 		
@@ -100,7 +100,7 @@ public class Game extends Observable<ViewNotify>{
 		this.assignBonusNobilityEndGame();
 		this.sortFinalRankingTable();
 		System.out.println(quittedPlayers.get(0));
-		notifyObserver(new EndGameNotify(quittedPlayers));
+		notifyObserver(new EndGameNotify(this, quittedPlayers));
 	}
 	
 	/**
@@ -182,7 +182,7 @@ public class Game extends Observable<ViewNotify>{
 		this.currentPlayer = currentPlayer;
 	}
 	
-	public GameDTOMapper getGameMapper() {
+	public GameMapperInterface getGameMapper() {
 		return this.gameMapper;
 	}
 

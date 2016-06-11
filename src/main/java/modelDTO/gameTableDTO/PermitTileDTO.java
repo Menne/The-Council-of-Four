@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import server.model.bonus.Bonus;
-import server.model.gameTable.City;
 import server.model.gameTable.PermitTile;
 import modelDTO.ModelDTO;
 import modelDTO.gameTableDTO.CityDTO;
@@ -24,15 +23,6 @@ public class PermitTileDTO implements ModelDTO<PermitTile>, MarketableDTO {
 		this.bonuses=new HashSet<>();
 	}
 
-	@Override
-	public void map(PermitTile realObject) {
-		for(City city : realObject.getBuildableCities()){
-			CityDTO cityDTO=new CityDTO();
-			cityDTO.map(city);
-			this.buildablecities.add(cityDTO);
-		}
-		this.bonuses=realObject.getBonus();		
-	}
 
 	public Set<CityDTO> getBuildablecities() {
 		return this.buildablecities;

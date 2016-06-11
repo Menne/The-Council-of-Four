@@ -11,12 +11,6 @@ public class CityColourDTO implements ModelDTO<CityColour>{
 	private static final long serialVersionUID = -2914098238189404754L;
 	private String name;
 
-	@Override
-	public void map(CityColour realObject) {
-		if(realObject==null)
-			throw new NullPointerException("the real object can't be null");
-		this.name=realObject.getName();	
-	}
 	
 	public String getName() {
 		return name;

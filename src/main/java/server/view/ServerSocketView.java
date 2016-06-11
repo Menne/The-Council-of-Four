@@ -10,7 +10,6 @@ import modelDTO.actionsDTO.AddPlayerDTO;
 import modelDTO.actionsDTO.QuitDTO;
 import modelDTO.clientNotifies.PlayerAcceptedDTONotify;
 import modelDTO.clientNotifies.QuitNotify;
-import modelDTO.playerDTO.ClientPlayerDTO;
 import players.Player;
 import server.Server;
 import server.model.Game;
@@ -53,9 +52,8 @@ public class ServerSocketView extends View implements Runnable {
 			  		this.player=new Player(notify.getPlayerName());					
 					server.newReadyPlayer(this, player);
 					
-					ClientPlayerDTO clientPlayerDTO=new ClientPlayerDTO();
-					clientPlayerDTO.map(player);
-					this.socketOut.writeObject(new PlayerAcceptedDTONotify(clientPlayerDTO));
+					this.socketOut.writeObject(new PlayerAcceptedDTONotify
+							(this.game.getGameMapper().clientPlayerMap(player)));
 				}
 				
 				else if(object instanceof QuitDTO){

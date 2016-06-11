@@ -64,61 +64,51 @@ public class CLIsocket extends ClientView implements Runnable{
 			}
 			if (this.parser.availableActions().contains(input)) {
 				ActionDTO selectedAction=this.parser.actionParser(input);
-				this.checkIfParametersNeeded(selectedAction);
+				if (this.parametersNeeded(selectedAction)) {
+					ActionWithParameters actionWithParameters=(ActionWithParameters) selectedAction;
+					this.insertParametersAndSend(actionWithParameters);
+				}
+				else
+					sendAction(selectedAction);
 			}
-			else if("quit".equals(input)){
-				socketOut.writeObject(new QuitDTO(this));
-				socketOut.flush();
-			}
+			
+			else if("quit".equals(input))
+				
+				sendAction(new QuitDTO(this));
+			
 				else
 					System.out.println("Sorry, action not available!");	
 		}
 	}
 	
-	private void checkIfParametersNeeded(ActionDTO selectedAction) {
-		if (selectedAction instanceof ActionWithParameters) {
-			ActionWithParameters actionWithParameters=(ActionWithParameters) selectedAction;
-			this.insertParameters(actionWithParameters);
-		}
-		else{
-			try {
-				socketOut.writeObject(selectedAction);
-				socketOut.flush();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+	private boolean parametersNeeded(ActionDTO selectedAction) {
+		return (selectedAction instanceof ActionWithParameters);		
 	}
 	
-	private void insertParameters(ActionWithParameters selectedAction) {
+	private void insertParametersAndSend(ActionWithParameters selectedAction) {
 		this.parser.parametersParser(selectedAction);
 		if (selectedAction.checkIfParametersSetted()){
-			try {
-				
-				socketOut.writeObject(selectedAction);
-				socketOut.flush();
-				
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
+			sendAction(selectedAction);
 		}
 	}
 	
-	public void welcome(String name){
-		AddPlayerDTO actionDTO=new AddPlayerDTO();
-		actionDTO.setPlayerName(name);
+	@Override
+	protected void sendAction(ActionDTO action){
 		try {
 			
-			socketOut.writeObject(actionDTO);
+			socketOut.writeObject(action);
 			socketOut.flush();
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public void welcome(String name){
+		AddPlayerDTO actionDTO=new AddPlayerDTO();
+		actionDTO.setPlayerName(name);
+		sendAction(actionDTO);
 	}
 
 	@Override

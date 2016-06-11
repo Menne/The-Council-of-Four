@@ -34,14 +34,14 @@ public class BuildByPermitTileParser implements ActionParserVisitor {
 			this.game.notifyObserver(new ActionNotify("Now I need some other infos, like:"));
 		
 			this.game.notifyObserver(new ActionNotify
-					("the name of the city in which you want to build"));
-			this.game.notifyObserver(new ParametersNotify(parser.acceptableCities(), this));
-			this.selectedAction.setSelectedCity(parser.cityTranslator(currentParameter));
-		
-			this.game.notifyObserver(new ActionNotify
 					("the permit tile you want to use"));
 			this.game.notifyObserver(new ParametersNotify(parser.acceptablePermitTiles(), this));
 			this.selectedAction.setSelectedPermitTile(parser.permitTileTranslator(currentParameter));
+			
+			this.game.notifyObserver(new ActionNotify
+					("the name of the city in which you want to build"));
+			this.game.notifyObserver(new ParametersNotify(parser.acceptableCities(), this));
+			this.selectedAction.setSelectedCity(parser.cityTranslator(currentParameter));
 			
 			this.selectedAction.parametersSetted();
 		

@@ -9,12 +9,8 @@ import modelDTO.ModelDTO;
 import client.view.notifies.ClientViewNotify;
 import modelDTO.gameTableDTO.RegionDTO;
 import observerPattern.Observable;
-import players.Player;
 import server.model.Game;
 import server.model.bonus.Bonus;
-import server.model.gameTable.CouncilBalcony;
-import server.model.gameTable.Councillor;
-import server.model.gameTable.RegionBoard;
 import modelDTO.gameTableDTO.CardColourDTO;
 
 public class GameTableDTO extends Observable<ClientViewNotify> implements ModelDTO<Game> {
@@ -37,38 +33,6 @@ public class GameTableDTO extends Observable<ClientViewNotify> implements ModelD
 		this.clientCouncillorReserve=new ArrayList<CardColourDTO>();
 		this.clientNobilityTrack=new ArrayList<Set<Bonus>>();
 		this.players=new ArrayList<GenericPlayerDTO>();
-	}
-
-	@Override
-	public void map(Game realObject) {
-		
-		for(RegionBoard region : realObject.getGameTable().getRegionBoards()){
-			RegionDTO regionDTO=new RegionDTO();
-			regionDTO.map(region);
-			this.clientRegions.add(regionDTO);
-		}
-		
-		for(int i=0; i<CouncilBalcony.getNumberofcouncillors(); i++){
-			CardColourDTO cardColourDTO=new CardColourDTO();
-			cardColourDTO.map(realObject.getGameTable().getCouncilOfKing().getCouncillors()[i].getColour());
-			this.clientKingBalcony[i]=cardColourDTO;
-		}
-		
-		for(Councillor councillor : realObject.getGameTable().getCouncilReserve().getCouncillors()){
-			CardColourDTO cardColourDTO=new CardColourDTO();
-			cardColourDTO.map(councillor.getColour());
-			this.clientCouncillorReserve.add(cardColourDTO);
-		}
-		
-		for(Player player : realObject.getPlayers()) {
-			GenericPlayerDTO playerDTO=new GenericPlayerDTO();
-			playerDTO.map(player);
-			this.players.add(playerDTO);
-		}
-		
-		this.clientNobilityTrack=(ArrayList<Set<Bonus>>) realObject.getGameTable().getNobilityTrack().getTrack();
-		this.currentPlayer=realObject.getCurrentPlayer().getName();
-		this.king=realObject.getGameTable().getKing().getCity().getName();
 	}
 
 	

@@ -4,7 +4,6 @@ import java.util.List;
 
 import modelDTO.clientNotifies.ClientNotify;
 import modelDTO.clientNotifies.GameTableDTONotify;
-import modelDTO.gameTableDTO.GameTableDTO;
 import players.Player;
 import server.model.Game;
 
@@ -20,9 +19,7 @@ public class GameTableNotify implements ViewNotify {
 	
 	@Override
 	public ClientNotify toClientNotify() {
-		GameTableDTO gameTableDTO=new GameTableDTO();
-		gameTableDTO.map(this.game);
-		return new GameTableDTONotify(gameTableDTO);
+		return new GameTableDTONotify(this.game.getGameMapper().gameTableMap(this.game));
 	}
 
 	@Override

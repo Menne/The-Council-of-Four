@@ -17,17 +17,4 @@ public class CityColourDTOtest {
 		assertTrue(colour.getName()==name);
 	}
 	
-	@Test
-	public void testMapping(){
-		CityColour realColour= new CityColour("blu", null);
-		CityColourDTO colour= new CityColourDTO();
-		colour.map(realColour);
-		assertTrue(colour.getName()==realColour.getName());
-	}
-
-	@Test(expected=NullPointerException.class)
-	public void testException(){
-		CityColourDTO colour= new CityColourDTO();
-		colour.map(null);
-	}
 }
