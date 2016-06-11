@@ -41,7 +41,7 @@ public class PickPermitTileBonus implements Bonus {
 	public void assignBonus(Game game) {
 		PermitTile tile= this.chosenRegion.pickUncoveredPermitTile(this.numberOfPermitTile);
 		game.getCurrentPlayer().addTile(tile);
-		for (Bonus bonusToAssign : tile.getBonus())
+		for (Bonus bonusToAssign : tile.getBonuses())
 			bonusToAssign.assignBonus(game);
 		this.chosenRegion.uncoverPermitTiles();
 	}

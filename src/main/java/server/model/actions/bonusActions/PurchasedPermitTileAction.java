@@ -23,7 +23,7 @@ public class PurchasedPermitTileAction implements Action {
 	
 	@Override
 	public boolean executeAction(Game game) {
-		for (Bonus bonusToAssign : this.selectedPermitTile.getBonus())
+		for (Bonus bonusToAssign : this.selectedPermitTile.getBonuses())
 			bonusToAssign.assignBonus(game);
 		
 		game.setState(game.getState().moveToNextTransition(game));

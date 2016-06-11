@@ -8,7 +8,7 @@ import modelDTO.gameTableDTO.PermitTileDTO;
 import modelDTO.parser.ActionParserVisitor;
 import modelDTO.parser.BuildByPermitTileParser;
 import server.model.actions.Action;
-import server.view.mapperVisitor.ActionDTOMapper;
+import server.view.actionMapperVisitor.ActionMapperVisitor;
 
 public class BuildByPermitTileDTO implements ActionDTO, ActionWithParameters {
 	
@@ -55,7 +55,7 @@ public class BuildByPermitTileDTO implements ActionDTO, ActionWithParameters {
 	}
 
 	@Override
-	public Action startVisitor(ActionDTOMapper mapper) {
+	public Action startMapper(ActionMapperVisitor mapper) {
 		return mapper.map(this);
 	}
 	

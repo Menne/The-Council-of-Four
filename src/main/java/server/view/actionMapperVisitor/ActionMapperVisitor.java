@@ -1,4 +1,4 @@
-package server.view.mapperVisitor;
+package server.view.actionMapperVisitor;
 
 import modelDTO.actionsDTO.bonusActions.ChooseCityActionDTO;
 import modelDTO.actionsDTO.bonusActions.PurchasedPermitTileActionDTO;

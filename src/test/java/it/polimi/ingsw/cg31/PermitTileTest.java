@@ -56,7 +56,7 @@ public class PermitTileTest {
 		bonuses.add(bonus1);
 		PermitDeck deck= new PermitDeck();
 		PermitTile t=new PermitTile(cities, bonuses, deck);
-		assertTrue(bonuses== t.getBonus());
+		assertTrue(bonuses== t.getBonuses());
 	}
 	
 	@Test

@@ -3,7 +3,7 @@ package modelDTO.actionsDTO.standardActions;
 import modelDTO.actionsDTO.ActionDTO;
 import server.model.actions.Action;
 import server.model.actions.standardActions.EngageAssistant;
-import server.view.mapperVisitor.ActionDTOMapper;
+import server.view.actionMapperVisitor.ActionMapperVisitor;
 
 public class EngageAssistantDTO implements ActionDTO{
 
@@ -19,7 +19,7 @@ public class EngageAssistantDTO implements ActionDTO{
 	}
 
 	@Override
-	public Action startVisitor(ActionDTOMapper mapper) {
+	public Action startMapper(ActionMapperVisitor mapper) {
 		return new EngageAssistant();
 	}
 

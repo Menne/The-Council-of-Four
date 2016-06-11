@@ -17,32 +17,32 @@ import server.model.market.Marketable;
 public class PermitTile implements Marketable{
 
 	private final Set<City> buildableCities;
-	private final Set<Bonus> bonus;
+	private final Set<Bonus> bonuses;
 	
 	/**
 	 * constructor of a permit tile
 	 * @param buildableCities is the set of cities where you can build in
 	 * @param bonus is the bonus associated to the permit tile 
 	 */
-	public PermitTile(Set<City> buildableCities, Set<Bonus> bonus, PermitDeck deck) {
+	public PermitTile(Set<City> buildableCities, Set<Bonus> bonuses, PermitDeck deck) {
 		this.buildableCities=buildableCities;
-		this.bonus=bonus;
+		this.bonuses=bonuses;
 		deck.getPermitTiles().add(this);
 	}
 	
 	public Set<City> getBuildableCities() {
-		return buildableCities;
+		return this.buildableCities;
 	}
 	
-	public Set<Bonus> getBonus() {
-		return bonus;
+	public Set<Bonus> getBonuses() {
+		return this.bonuses;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((bonus == null) ? 0 : bonus.hashCode());
+		result = prime * result + ((bonuses == null) ? 0 : bonuses.hashCode());
 		result = prime * result + ((buildableCities == null) ? 0 : buildableCities.hashCode());
 		return result;
 	}
@@ -56,10 +56,10 @@ public class PermitTile implements Marketable{
 		if (getClass() != obj.getClass())
 			return false;
 		PermitTile other = (PermitTile) obj;
-		if (bonus == null) {
-			if (other.bonus != null)
+		if (bonuses == null) {
+			if (other.bonuses != null)
 				return false;
-		} else if (!bonus.equals(other.bonus))
+		} else if (!bonuses.equals(other.bonuses))
 			return false;
 		if (buildableCities == null) {
 			if (other.buildableCities != null)
@@ -87,7 +87,7 @@ public class PermitTile implements Marketable{
 		Set<String> cities=new HashSet<String>();
 		for(City city : buildableCities)
 			cities.add(city.getName());
-		return cities + "\t" + bonus;
+		return cities + "\t" + bonuses;
 	}
 	
 	

@@ -10,7 +10,7 @@ import modelDTO.gameTableDTO.CityDTO;
 import modelDTO.parser.ActionParserVisitor;
 import modelDTO.parser.BuildByKingParser;
 import server.model.actions.Action;
-import server.view.mapperVisitor.ActionDTOMapper;
+import server.view.actionMapperVisitor.ActionMapperVisitor;
 
 public class BuildByKingDTO implements ActionDTO, ActionWithParameters {
 
@@ -57,7 +57,7 @@ public class BuildByKingDTO implements ActionDTO, ActionWithParameters {
 	}
 
 	@Override
-	public Action startVisitor(ActionDTOMapper mapper) {
+	public Action startMapper(ActionMapperVisitor mapper) {
 		return mapper.map(this);
 	}
 	

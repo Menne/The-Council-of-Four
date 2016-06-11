@@ -3,10 +3,10 @@ package modelDTO.actionsDTO;
 import java.io.Serializable;
 
 import server.model.actions.Action;
-import server.view.mapperVisitor.ActionDTOMapper;
+import server.view.actionMapperVisitor.ActionMapperVisitor;
 
 public interface ActionDTO extends Serializable{
 	
-	public Action startVisitor(ActionDTOMapper mapper);
+	public Action startMapper(ActionMapperVisitor mapper);
 
 }

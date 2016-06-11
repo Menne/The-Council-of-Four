@@ -12,7 +12,7 @@ import players.Player;
 import server.Server;
 import server.model.Game;
 import server.model.actions.Quit;
-import server.view.mapperVisitor.ActionDTOMapper;
+import server.view.actionMapperVisitor.ActionDTOMapper;
 import server.view.notifies.ViewNotify;
 
 public class RMIView extends View implements RMIViewRemote {
@@ -66,7 +66,7 @@ public class RMIView extends View implements RMIViewRemote {
 
 	@Override
 	public void receiveAction(ActionDTO actionDTO) throws RemoteException {
-		this.notifyObserver(actionDTO.startVisitor(this.actionMapper));		
+		this.notifyObserver(actionDTO.startMapper(this.actionMapper));		
 	}
 
 
