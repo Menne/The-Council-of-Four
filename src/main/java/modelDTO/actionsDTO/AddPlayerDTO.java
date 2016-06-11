@@ -9,15 +9,15 @@ public class AddPlayerDTO implements ActionDTO {
 	 * 
 	 */
 	private static final long serialVersionUID = -3589948126875889377L;
-	private String playerName;
+	private final String playerName;
+	
+	public AddPlayerDTO(String playerName) {
+		this.playerName=playerName;
+	}
 	
 
 	public String getPlayerName() {
 		return playerName;
-	}
-
-	public void setPlayerName(String playerName) {
-		this.playerName=playerName;
 	}
 
 	@Override

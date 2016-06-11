@@ -22,7 +22,7 @@ import java.util.concurrent.Executors;
 import players.Player;
 import server.controller.Controller;
 import server.model.Game;
-import server.view.RMIView;
+import server.view.ServerRMIView;
 import server.view.RMIViewRemote;
 import server.view.ServerSocketView;
 import server.view.View;
@@ -35,7 +35,7 @@ public class Server {
 	private final String NAME="CoF";
 	private final static int RMI_PORT=52365;
 	private Registry registry;
-	private RMIView currentRMIView;
+	private ServerRMIView currentRMIView;
 	
 	private final Map<Game, Set<View>> gamesMap;
 	private Game currentGame;
@@ -51,7 +51,7 @@ public class Server {
 		
 		this.registry = LocateRegistry.createRegistry(RMI_PORT);
 		System.out.println("Constructing the RMI registry");
-		this.currentRMIView=new RMIView(this, currentGame);
+		this.currentRMIView=new ServerRMIView(this, currentGame);
 		RMIViewRemote rmiViewRemote=(RMIViewRemote) UnicastRemoteObject.exportObject(currentRMIView,0);
 		registry.bind(NAME, currentRMIView);
 	}
@@ -99,7 +99,7 @@ public class Server {
 		playerList.clear();
 		this.currentGame=new Game();
 		this.gamesMap.put(currentGame, new HashSet<>());
-		this.currentRMIView=new RMIView(this, currentGame);
+		this.currentRMIView=new ServerRMIView(this, currentGame);
 		RMIViewRemote rmiViewRemote=(RMIViewRemote) UnicastRemoteObject.exportObject(currentRMIView,0);
 		registry.rebind(NAME, currentRMIView);
 	}

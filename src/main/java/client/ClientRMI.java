@@ -7,7 +7,8 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
 import client.controller.ClientController;
-import client.view.rmi.CLIrmi;
+import client.view.rmi.RMIConnection;
+import client.view.ClientView;
 import client.view.rmi.ClientRMIViewRemote;
 import modelDTO.GameDTO;
 import server.view.RMIViewRemote;
@@ -24,17 +25,22 @@ public class ClientRMI{
 		this.HOST=HOST;
 	}
 	
-	public void startClient() throws RemoteException, NotBoundException{
+	public void startClient(String graphic) throws RemoteException, NotBoundException{
 		
 		Registry registry = LocateRegistry.getRegistry(HOST, PORT);
 		RMIViewRemote serverStub= (RMIViewRemote) registry.lookup(NAME);
 		
 		GameDTO clientGame=new GameDTO();
 		ClientController clientController=new ClientController(clientGame);
-		CLIrmi view=new CLIrmi(clientGame.getParser(), serverStub);
-		ClientRMIViewRemote clientRMIViewRemote=(ClientRMIViewRemote) UnicastRemoteObject.exportObject(view,0);
+		RMIConnection connection=new RMIConnection(serverStub);
+		ClientRMIViewRemote clientRMIViewRemote=(ClientRMIViewRemote) UnicastRemoteObject.exportObject(connection,0);	
+		ClientView view;
+		if("CLI".equals(graphic))
+			view=new CLI(clientGame.getParser(), connection);
+		else
+			view=new GUI(connection);
 		clientGame.registerObserver(view);
-		view.registerObserver(clientController);
+		connection.registerObserver(clientController);
 		view.welcome(clientName);
 		view.input();
 	}

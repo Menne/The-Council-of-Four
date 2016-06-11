@@ -6,7 +6,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import client.view.rmi.ClientRMIViewRemote;
+import client.view.rmi.RMIConnection;
 import modelDTO.actionsDTO.ActionDTO;
+import modelDTO.actionsDTO.QuitDTO;
 import modelDTO.clientNotifies.PlayerAcceptedDTONotify;
 import players.Player;
 import server.Server;
@@ -15,14 +17,14 @@ import server.model.actions.Quit;
 import server.view.mapperVisitor.ActionDTOMapper;
 import server.view.notifies.ViewNotify;
 
-public class RMIView extends View implements RMIViewRemote {
+public class ServerRMIView extends View implements RMIViewRemote {
 	
 	private final Map<ClientRMIViewRemote, Player> clientsMap;
 	private final Game game;
 	private ActionDTOMapper actionMapper;
 	
 	
-	public RMIView(Server server, Game game){
+	public ServerRMIView(Server server, Game game){
 		super(server);
 		this.game=game;
 		this.clientsMap=new HashMap<>();
@@ -66,18 +68,16 @@ public class RMIView extends View implements RMIViewRemote {
 
 	@Override
 	public void receiveAction(ActionDTO actionDTO) throws RemoteException {
-		this.notifyObserver(actionDTO.startVisitor(this.actionMapper));		
+		if(actionDTO instanceof QuitDTO){
+			ClientRMIViewRemote quittingConnection=
+					(RMIConnection) ((QuitDTO) actionDTO).getQuittingConnection();
+			this.notifyObserver(new Quit(clientsMap.get(quittingConnection)));
+			this.clientsMap.remove(quittingConnection);
+			if(clientsMap.isEmpty())
+				game.unregisterObserver(this);
+		}
+		else
+			this.notifyObserver(actionDTO.startVisitor(this.actionMapper));
 	}
-
-
-	@Override
-	public void quitPlayer(ClientRMIViewRemote quittingView) throws RemoteException {
-		this.notifyObserver(new Quit(clientsMap.get(quittingView)));
-		this.clientsMap.remove(quittingView);
-		if(clientsMap.isEmpty())
-			game.unregisterObserver(this);
-		
-	}
-
 
 }

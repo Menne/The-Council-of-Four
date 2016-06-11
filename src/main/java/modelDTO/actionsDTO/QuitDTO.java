@@ -1,6 +1,6 @@
 package modelDTO.actionsDTO;
 
-import client.view.ClientView;
+import client.view.Connection;
 import server.model.actions.Action;
 import server.view.mapperVisitor.ActionDTOMapper;
 
@@ -11,16 +11,19 @@ public class QuitDTO implements ActionDTO {
 	 */
 	private static final long serialVersionUID = -4211998116455080382L;
 	
-	private final ClientView quittingView;
+	private final Connection quittingConnection;
 	
 	
-	public QuitDTO(ClientView quittingView) {
-		this.quittingView=quittingView;
+	public QuitDTO(Connection connection) {
+		this.quittingConnection=connection;
 	}
 
-	public ClientView getQuittingView() {
-		return quittingView;
+
+
+	public Connection getQuittingConnection() {
+		return quittingConnection;
 	}
+
 
 
 	@Override

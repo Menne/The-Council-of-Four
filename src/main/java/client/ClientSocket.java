@@ -7,7 +7,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import client.controller.ClientController;
-import client.view.socket.CLIsocket;
+import client.view.ClientView;
+import client.view.socket.SocketConnection;
 import modelDTO.GameDTO;
 
 public class ClientSocket {
@@ -21,7 +22,7 @@ public class ClientSocket {
 		this.clientName=clientname;
 	}
 	
-	public void startClient()
+	public void startClient(String graphic)
 				throws UnknownHostException, IOException {
 		Socket socket=new Socket(IP, PORT);
 		System.out.println("Connection created");
@@ -29,11 +30,17 @@ public class ClientSocket {
 		
 		GameDTO clientGame=new GameDTO();
 		ClientController clientController=new ClientController(clientGame);
-		CLIsocket view=new CLIsocket(clientGame.getParser(), socket);
+		SocketConnection connection=new SocketConnection(socket);
+		ClientView view;
+		if("CLI".equals(graphic))
+			view=new CLI(clientGame.getParser(), connection);
+		else
+			view=new GUI(connection);
+		
 		clientGame.registerObserver(view);				
-		view.registerObserver(clientController);
+		connection.registerObserver(clientController);
 		ExecutorService executor=Executors.newSingleThreadExecutor();
-		executor.submit(view);
+		executor.submit(connection);
 		view.welcome(clientName);
 		view.input();
 	}
