@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import modelDTO.gameTableDTO.CardColourDTO;
-import server.model.gameTable.CardColour;
 
 public class CardColourDTOTest {
 
