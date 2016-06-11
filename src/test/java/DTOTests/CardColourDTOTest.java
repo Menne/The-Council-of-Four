@@ -15,5 +15,6 @@ public class CardColourDTOTest {
 		colour.setName(name);
 		assertTrue(colour.getName()==name);
 	}
+	
 
 }

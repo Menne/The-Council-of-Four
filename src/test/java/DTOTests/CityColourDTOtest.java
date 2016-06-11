@@ -15,5 +15,5 @@ public class CityColourDTOtest {
 		colour.setName(name);
 		assertTrue(colour.getName()==name);
 	}
-
+	
 }
