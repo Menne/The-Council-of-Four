@@ -6,9 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import client.view.rmi.ClientRMIViewRemote;
-import client.view.rmi.RMIConnection;
 import modelDTO.actionsDTO.ActionDTO;
-import modelDTO.actionsDTO.QuitDTO;
+import modelDTO.actionsDTO.QuitDTORMI;
 import modelDTO.clientNotifies.PlayerAcceptedDTONotify;
 import players.Player;
 import server.Server;
@@ -68,9 +67,9 @@ public class ServerRMIView extends View implements RMIViewRemote {
 
 	@Override
 	public void receiveAction(ActionDTO actionDTO) throws RemoteException {
-		if(actionDTO instanceof QuitDTO){
+		if(actionDTO instanceof QuitDTORMI){
 			ClientRMIViewRemote quittingConnection=
-					(ClientRMIViewRemote) ((QuitDTO) actionDTO).getQuittingConnection();
+					 ((QuitDTORMI) actionDTO).getQuittingView();
 			this.notifyObserver(new Quit(clientsMap.get(quittingConnection)));
 			this.clientsMap.remove(quittingConnection);
 			if(clientsMap.isEmpty())

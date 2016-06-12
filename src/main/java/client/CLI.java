@@ -59,7 +59,7 @@ public class CLI extends ClientView {
 					connection.sendAction(selectedAction);
 			}
 			else if("quit".equals(input)){
-				connection.sendAction(new QuitDTO(connection));
+				connection.sendAction(new QuitDTO());
 			}
 			else
 				System.out.println("Sorry, action not available!");	

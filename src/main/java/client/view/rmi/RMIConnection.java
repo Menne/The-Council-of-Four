@@ -5,6 +5,8 @@ import java.rmi.RemoteException;
 import client.view.Connection;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.AddPlayerDTO;
+import modelDTO.actionsDTO.QuitDTORMI;
+import modelDTO.actionsDTO.QuitDTO;
 import modelDTO.clientNotifies.ClientNotify;
 import server.view.RMIViewRemote;
 
@@ -28,7 +30,9 @@ public class RMIConnection extends Connection implements ClientRMIViewRemote{
 	
 	@Override
 	public void sendAction(ActionDTO action) throws RemoteException{
-		if(action instanceof AddPlayerDTO)
+		if(action instanceof QuitDTO)
+			this.serverStub.receiveAction(new QuitDTORMI(this));
+		else if(action instanceof AddPlayerDTO)
 			this.serverStub.registerClient(this, ((AddPlayerDTO)action).getPlayerName());
 		else
 			this.serverStub.receiveAction(action);
