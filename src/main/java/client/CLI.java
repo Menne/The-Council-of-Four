@@ -79,4 +79,16 @@ public class CLI extends ClientView {
 		this.connection.sendAction(actionDTO);	
 	}
 
+	@Override
+	public Object askForInput() {
+		
+		return scanner.nextLine();
+	}
+
+	@Override
+	public void output(Object object) {
+		
+		System.out.println(object.toString());	
+	}
+
 }

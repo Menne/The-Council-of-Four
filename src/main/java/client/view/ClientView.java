@@ -25,5 +25,9 @@ public abstract class ClientView implements Observer<ClientViewNotify>, Serializ
 	public abstract void input() throws RemoteException;
 	
 	public abstract void welcome(String name) throws RemoteException;
+	
+	public abstract Object askForInput();
+	
+	public abstract void output(Object object);
 
 }
