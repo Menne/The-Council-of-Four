@@ -65,8 +65,8 @@ public class GameTest {
 		Player c = new Player("Menne");
 		players.add(c);
 		game.start(players);
-		a.setNobility(10);
-		b.setScore(20);
+		c.setNobility(1);
+		b.setScore(0);
 		game.setLastLap(true);
 		assertTrue(game.getCurrentPlayer()==a);
 		game.nextPlayer();
@@ -76,10 +76,29 @@ public class GameTest {
 		c.getPlayersFinalBonus().add(bonus);
 		game.nextPlayer();
 		game.nextPlayer();
-		assertEquals(8,c.getScore());
-		assertEquals(25,b.getScore());
-		assertEquals(8,a.getScore());
+		assertEquals(11,c.getScore());
+		assertEquals(5,b.getScore());
+		assertEquals(5,a.getScore());
 	}
 	
-
+	
+	@Test
+	public void testFinalNobilityScoreBonus() throws IOException {
+		Game game=new Game();
+		List<Player> players = new ArrayList<>();
+		Player a = new Player("Andre");
+		players.add(a);
+		Player b = new Player("Luca");
+		players.add(b);
+		Player c = new Player("Menne");
+		players.add(c);
+		game.start(players);
+		game.getQuittedPlayers().addAll(players);
+		c.setNobility(6);
+		b.setNobility(6);
+		game.assignBonusNobilityEndGame();
+		assertEquals(5,c.getScore());
+		assertEquals(5,b.getScore());
+		assertEquals(0,a.getScore());
+	}
 }
