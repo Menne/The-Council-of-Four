@@ -41,9 +41,38 @@ public class PickPermitTileBonus implements Bonus {
 	public void assignBonus(Game game) {
 		PermitTile tile= this.chosenRegion.pickUncoveredPermitTile(this.numberOfPermitTile);
 		game.getCurrentPlayer().addTile(tile);
-		for (Bonus bonusToAssign : tile.getBonus())
+		for (Bonus bonusToAssign : tile.getBonuses())
 			bonusToAssign.assignBonus(game);
 		this.chosenRegion.uncoverPermitTiles();
+	}
+
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((chosenRegion == null) ? 0 : chosenRegion.hashCode());
+		result = prime * result + numberOfPermitTile;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PickPermitTileBonus other = (PickPermitTileBonus) obj;
+		if (chosenRegion == null) {
+			if (other.chosenRegion != null)
+				return false;
+		} else if (!chosenRegion.equals(other.chosenRegion))
+			return false;
+		if (numberOfPermitTile != other.numberOfPermitTile)
+			return false;
+		return true;
 	}
 
 }

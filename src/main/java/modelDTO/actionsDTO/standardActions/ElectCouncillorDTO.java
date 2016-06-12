@@ -7,7 +7,7 @@ import modelDTO.gameTableDTO.CardColourDTO;
 import modelDTO.parser.ActionParserVisitor;
 import modelDTO.parser.ElectCouncillorParser;
 import server.model.actions.Action;
-import server.view.mapperVisitor.ActionDTOMapper;
+import server.view.actionMapperVisitor.ActionMapperVisitor;
 
 public class ElectCouncillorDTO implements ActionDTO, ActionWithParameters {
 	
@@ -56,7 +56,7 @@ public class ElectCouncillorDTO implements ActionDTO, ActionWithParameters {
 	}
 
 	@Override
-	public Action startVisitor(ActionDTOMapper mapper) {
+	public Action startMapper(ActionMapperVisitor mapper) {
 		return mapper.map(this);
 	}
 	

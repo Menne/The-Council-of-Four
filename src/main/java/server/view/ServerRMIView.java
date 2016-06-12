@@ -14,7 +14,7 @@ import players.Player;
 import server.Server;
 import server.model.Game;
 import server.model.actions.Quit;
-import server.view.mapperVisitor.ActionDTOMapper;
+import server.view.actionMapperVisitor.ActionDTOMapper;
 import server.view.notifies.ViewNotify;
 
 public class ServerRMIView extends View implements RMIViewRemote {
@@ -70,14 +70,14 @@ public class ServerRMIView extends View implements RMIViewRemote {
 	public void receiveAction(ActionDTO actionDTO) throws RemoteException {
 		if(actionDTO instanceof QuitDTO){
 			ClientRMIViewRemote quittingConnection=
-					(RMIConnection) ((QuitDTO) actionDTO).getQuittingConnection();
+					(ClientRMIViewRemote) ((QuitDTO) actionDTO).getQuittingConnection();
 			this.notifyObserver(new Quit(clientsMap.get(quittingConnection)));
 			this.clientsMap.remove(quittingConnection);
 			if(clientsMap.isEmpty())
 				game.unregisterObserver(this);
 		}
 		else
-			this.notifyObserver(actionDTO.startVisitor(this.actionMapper));
+			this.notifyObserver(actionDTO.startMapper(this.actionMapper));
 	}
 
 }

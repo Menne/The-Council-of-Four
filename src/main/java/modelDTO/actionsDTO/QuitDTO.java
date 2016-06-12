@@ -2,7 +2,7 @@ package modelDTO.actionsDTO;
 
 import client.view.Connection;
 import server.model.actions.Action;
-import server.view.mapperVisitor.ActionDTOMapper;
+import server.view.actionMapperVisitor.ActionMapperVisitor;
 
 public class QuitDTO implements ActionDTO {
 
@@ -27,7 +27,7 @@ public class QuitDTO implements ActionDTO {
 
 
 	@Override
-	public Action startVisitor(ActionDTOMapper mapper) {
+	public Action startMapper(ActionMapperVisitor mapper) {
 		throw new IllegalArgumentException("QuitDTO doesn't require mapping");
 	}
 

@@ -15,7 +15,7 @@ import server.model.stateMachine.SellingState;
 
 public class SellingStateTest {
 
-	@Test
+	/*@Test
 	public void testSellActionTransition() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
@@ -44,5 +44,5 @@ public class SellingStateTest {
 		assertEquals(SellingState.class, state.moveToNextTransition(game).getClass());
 		SellingState state1= new SellingState();
 		assertEquals(BuyingState.class, state1.moveToNextTransition(game).getClass());
-	}
+	}*/
 }

@@ -41,4 +41,27 @@ public class AssistantsBonus implements Bonus{
 		return "assistants+" + assistantsIcreasement;
 	}
 
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + assistantsIcreasement;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		AssistantsBonus other = (AssistantsBonus) obj;
+		if (assistantsIcreasement != other.assistantsIcreasement)
+			return false;
+		return true;
+	}
+
 }

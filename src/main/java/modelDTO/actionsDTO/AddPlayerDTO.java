@@ -1,7 +1,7 @@
 package modelDTO.actionsDTO;
 
 import server.model.actions.Action;
-import server.view.mapperVisitor.ActionDTOMapper;
+import server.view.actionMapperVisitor.ActionMapperVisitor;
 
 public class AddPlayerDTO implements ActionDTO {
 
@@ -21,7 +21,7 @@ public class AddPlayerDTO implements ActionDTO {
 	}
 
 	@Override
-	public Action startVisitor(ActionDTOMapper mapper) {
+	public Action startMapper(ActionMapperVisitor mapper) {
 		throw new IllegalArgumentException("AddPlayerDTO doesn't require mapping");
 	}
 
