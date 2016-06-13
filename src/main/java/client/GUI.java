@@ -36,5 +36,17 @@ public class GUI extends ClientView {
 		
 	}
 
+	@Override
+	public Object askForInput() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void output(Object object) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }
