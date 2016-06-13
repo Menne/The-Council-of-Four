@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
@@ -21,13 +21,13 @@
          <center>
             <HBox prefHeight="393.0" prefWidth="1260.0" BorderPane.alignment="CENTER">
                <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
+                  <VBox prefHeight="529.0" prefWidth="810.0">
                      <children>
-                        <HBox prefHeight="493.0" prefWidth="811.0">
+                        <HBox prefHeight="441.0" prefWidth="810.0">
                            <children>
-                              <VBox prefHeight="200.0" prefWidth="100.0">
+                              <VBox prefHeight="453.0" prefWidth="260.0">
                                  <children>
-                                    <ImageView fitHeight="361.0" fitWidth="260.0">
+                                    <ImageView fitHeight="361.0" fitWidth="265.0">
                                        <image>
                                           <Image url="@../../Images/mappa%20costa%20b.png" />
                                        </image>
@@ -39,29 +39,29 @@
                                     </TitledPane>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                        <children>
-                                          <ImageView fitHeight="80.0" fitWidth="40.0" layoutX="40.0" layoutY="25.0">
-                                             <image>
-                                                <Image url="@../../../../../../Desktop/consiglieri/viola.jpg" />
-                                             </image>
-                                          </ImageView>
-                                          <ImageView fitHeight="80.0" fitWidth="40.0" layoutX="80.0" layoutY="25.0">
-                                             <image>
-                                                <Image url="@../../../../../../Desktop/consiglieri/bianco.jpg" />
-                                             </image>
-                                          </ImageView>
-                                          <ImageView fitHeight="80.0" fitWidth="40.0" layoutX="121.0" layoutY="25.0">
-                                             <image>
-                                                <Image url="@../../../../../../Desktop/consiglieri/blu.jpg" />
-                                             </image>
-                                          </ImageView>
-                                          <ImageView fitHeight="80.0" fitWidth="40.0" layoutY="24.0">
+                                          <ImageView fitHeight="80.0" fitWidth="40.0">
                                              <image>
                                                 <Image url="@../../consiglieri/nero.jpg" />
                                              </image>
                                           </ImageView>
-                                          <ImageView fitHeight="40.0" fitWidth="160.0" layoutY="64.0">
+                                          <ImageView fitHeight="80.0" fitWidth="40.0" layoutX="40.0" layoutY="1.0">
                                              <image>
-                                                <Image url="@../../../../../../Desktop/Balcone.jpg" />
+                                                <Image url="@../../consiglieri/viola.jpg" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fitHeight="80.0" fitWidth="40.0" layoutX="80.0" layoutY="1.0">
+                                             <image>
+                                                <Image url="@../../consiglieri/bianco.jpg" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fitHeight="80.0" fitWidth="40.0" layoutX="120.0">
+                                             <image>
+                                                <Image url="@../../consiglieri/blu.jpg" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fitHeight="40.0" fitWidth="160.0" layoutY="40.0">
+                                             <image>
+                                                <Image url="@../../Images/Balcone.jpg" />
                                              </image>
                                           </ImageView>
                                        </children>
@@ -70,9 +70,9 @@
                               </VBox>
                               <VBox prefHeight="473.0" prefWidth="299.0">
                                  <children>
-                                    <ImageView fitHeight="361.0" fitWidth="299.0">
+                                    <ImageView fitHeight="361.0" fitWidth="294.0">
                                        <image>
-                                          <Image url="@../../../../../../Desktop/mappa%20colline%20a.png" />
+                                          <Image url="@../../Images/mappa%20colline%20a.png" />
                                        </image>
                                     </ImageView>
                                     <TitledPane animated="false" collapsible="false" expanded="false" text="Hill Balcony">
@@ -80,42 +80,42 @@
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                                       </content>
                                     </TitledPane>
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                    <AnchorPane prefHeight="69.0" prefWidth="290.0">
                                        <children>
-                                          <ImageView fitHeight="80.0" fitWidth="40.0" layoutY="25.0">
-                                             <image>
-                                                <Image url="@../../../../../../Desktop/consiglieri/arancione.jpg" />
-                                             </image>
-                                          </ImageView>
-                                          <ImageView fitHeight="80.0" fitWidth="40.0" layoutX="120.0" layoutY="25.0">
+                                          <ImageView fitHeight="80.0" fitWidth="40.0" layoutX="120.0">
                                              <image>
                                                 <Image url="@../../consiglieri/nero.jpg" />
                                              </image>
                                           </ImageView>
-                                          <ImageView fitHeight="80.0" fitWidth="40.0" layoutX="80.0" layoutY="25.0">
-                                             <image>
-                                                <Image url="@../../../../../../Desktop/consiglieri/bianco.jpg" />
-                                             </image>
-                                          </ImageView>
-                                          <ImageView fitHeight="80.0" fitWidth="40.0" layoutX="40.0" layoutY="25.0">
+                                          <ImageView fitHeight="80.0" fitWidth="40.0" layoutX="40.0">
                                              <image>
                                                 <Image url="@../../consiglieri/nero.jpg" />
                                              </image>
                                           </ImageView>
-                                          <ImageView fitHeight="40.0" fitWidth="160.0" layoutY="65.0">
+                                          <ImageView fitHeight="80.0" fitWidth="40.0" layoutX="80.0">
                                              <image>
-                                                <Image url="@../../../../../../Desktop/Balcone.jpg" />
+                                                <Image url="@../../consiglieri/bianco.jpg" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fitHeight="80.0" fitWidth="40.0">
+                                             <image>
+                                                <Image url="@../../consiglieri/arancione.jpg" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fitHeight="40.0" fitWidth="160.0" layoutY="40.0">
+                                             <image>
+                                                <Image url="@../../Images/Balcone.jpg" />
                                              </image>
                                           </ImageView>
                                        </children>
                                     </AnchorPane>
                                  </children>
                               </VBox>
-                              <VBox prefHeight="450.0" prefWidth="427.0">
+                              <VBox prefHeight="457.0" prefWidth="260.0">
                                  <children>
-                                    <ImageView fitHeight="361.0" fitWidth="260.0">
+                                    <ImageView fitHeight="361.0" fitWidth="251.0">
                                        <image>
-                                          <Image url="@../../../../../../Desktop/mappa%20montagne%20a.png" />
+                                          <Image url="@../../Images/mappa%20montagne%20a.png" />
                                        </image>
                                     </ImageView>
                                     <TitledPane animated="false" collapsible="false" expanded="false" text="Mountain Balcony">
@@ -123,31 +123,31 @@
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                                       </content>
                                     </TitledPane>
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                    <AnchorPane prefHeight="81.0" prefWidth="260.0">
                                        <children>
-                                          <ImageView fitHeight="80.0" fitWidth="40.0" layoutY="25.0">
+                                          <ImageView fitHeight="80.0" fitWidth="40.0" layoutX="120.0">
                                              <image>
-                                                <Image url="@../../../../../../Desktop/consiglieri/arancione.jpg" />
+                                                <Image url="@../../consiglieri/viola.jpg" />
                                              </image>
                                           </ImageView>
-                                          <ImageView fitHeight="80.0" fitWidth="40.0" layoutX="40.0" layoutY="25.0">
+                                          <ImageView fitHeight="80.0" fitWidth="40.0">
                                              <image>
-                                                <Image url="@../../../../../../Desktop/consiglieri/rosa.jpg" />
+                                                <Image url="@../../consiglieri/arancione.jpg" />
                                              </image>
                                           </ImageView>
-                                          <ImageView fitHeight="80.0" fitWidth="40.0" layoutX="80.0" layoutY="25.0">
+                                          <ImageView fitHeight="80.0" fitWidth="40.0" layoutX="40.0">
                                              <image>
-                                                <Image url="@../../../../../../Desktop/consiglieri/rosa.jpg" />
+                                                <Image url="@../../consiglieri/rosa.jpg" />
                                              </image>
                                           </ImageView>
-                                          <ImageView fitHeight="80.0" fitWidth="40.0" layoutX="120.0" layoutY="25.0">
+                                          <ImageView fitHeight="80.0" fitWidth="40.0" layoutX="80.0">
                                              <image>
-                                                <Image url="@../../../../../../Desktop/consiglieri/viola.jpg" />
+                                                <Image url="@../../consiglieri/rosa.jpg" />
                                              </image>
                                           </ImageView>
-                                          <ImageView fitHeight="40.0" fitWidth="160.0" layoutY="65.0">
+                                          <ImageView fitHeight="40.0" fitWidth="160.0" layoutY="40.0">
                                              <image>
-                                                <Image url="@../../../../../../Desktop/Balcone.jpg" />
+                                                <Image url="@../../Images/Balcone.jpg" />
                                              </image>
                                           </ImageView>
                                        </children>
@@ -156,110 +156,128 @@
                               </VBox>
                            </children>
                         </HBox>
-                        <ImageView fitHeight="64.0" fitWidth="819.0">
+                        <ImageView fitHeight="64.0" fitWidth="810.0">
                            <image>
-                              <Image url="@../../../../../../Desktop/percorso%20nobiltà.jpg" />
+                              <Image url="@../../Images/percorso%20nobiltà.jpg" />
                            </image>
                         </ImageView>
                      </children>
                   </VBox>
-                  <VBox prefHeight="557.0" prefWidth="163.0">
+                  <VBox prefHeight="552.0" prefWidth="163.0">
                      <children>
-                        <GridPane prefHeight="450.0" prefWidth="205.0">
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="84.0" minWidth="10.0" prefWidth="79.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.0" minWidth="10.0" prefWidth="81.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                           <children>
-                              <ImageView fitHeight="80.0" fitWidth="40.0" GridPane.rowIndex="1">
-                                 <image>
-                                    <Image url="@../../../../../../Desktop/consiglieri/arancione.jpg" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="80.0" fitWidth="40.0" GridPane.columnIndex="1">
-                                 <image>
-                                    <Image url="@../../../../../../Desktop/consiglieri/arancione.jpg" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="80.0" fitWidth="40.0">
-                                 <image>
-                                    <Image url="@../../../../../../Desktop/consiglieri/rosa.jpg" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="80.0" fitWidth="40.0" GridPane.rowIndex="3">
-                                 <image>
-                                    <Image url="@../../../../../../Desktop/consiglieri/rosa.jpg" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="80.0" fitWidth="40.0">
-                                 <image>
-                                    <Image url="@../../consiglieri/nero.jpg" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="80.0" fitWidth="40.0" GridPane.rowIndex="2">
-                                 <image>
-                                    <Image url="@../../../../../../Desktop/consiglieri/viola.jpg" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="80.0" fitWidth="40.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                                 <image>
-                                    <Image url="@../../../../../../Desktop/consiglieri/viola.jpg" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="80.0" fitWidth="40.0">
-                                 <image>
-                                    <Image url="@../../../../../../Desktop/consiglieri/bianco.jpg" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="80.0" fitWidth="40.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                 <image>
-                                    <Image url="@../../../../../../Desktop/consiglieri/bianco.jpg" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="80.0" fitWidth="40.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                 <image>
-                                    <Image url="@../../../../../../Desktop/consiglieri/blu.jpg" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </GridPane>
-                        <TitledPane animated="false" collapsible="false" prefWidth="219.0" text="King's Balcony">
+                        <TitledPane animated="false" collapsible="false" prefHeight="361.0" prefWidth="163.0" text="Councillors reserve">
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="257.0" prefWidth="216.0">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="346.0" prefWidth="161.0" style="-fx-background-color: blu;">
                                  <children>
-                                    <ImageView fitHeight="80.0" fitWidth="40.0" layoutX="-1.0" layoutY="25.0">
+                                    <ImageView fitHeight="80.0" fitWidth="40.0" layoutX="81.0" layoutY="250.0">
                                        <image>
-                                          <Image url="@../../consiglieri/nero.jpg" />
+                                          <Image url="@../../consiglieri/viola.jpg" />
                                        </image>
                                     </ImageView>
-                                    <ImageView fitHeight="80.0" fitWidth="40.0" layoutX="39.0" layoutY="25.0">
+                                    <ImageView fitHeight="80.0" fitWidth="40.0" layoutX="39.0" layoutY="167.0">
                                        <image>
-                                          <Image url="@../../../../../../Desktop/consiglieri/blu.jpg" />
+                                          <Image url="@../../consiglieri/viola.jpg" />
                                        </image>
                                     </ImageView>
-                                    <ImageView fitHeight="80.0" fitWidth="40.0" layoutX="79.0" layoutY="25.0">
+                                    <ImageView fitHeight="80.0" fitWidth="40.0" layoutX="39.0" layoutY="4.0">
                                        <image>
-                                          <Image url="@../../../../../../Desktop/consiglieri/blu.jpg" />
+                                          <Image url="@../../consiglieri/bianco.jpg" />
                                        </image>
                                     </ImageView>
-                                    <ImageView fitHeight="80.0" fitWidth="40.0" layoutX="119.0" layoutY="25.0">
+                                    <ImageView fitHeight="80.0" fitWidth="40.0" layoutX="81.0" layoutY="85.0">
                                        <image>
-                                          <Image url="@../../../../../../Desktop/consiglieri/rosa.jpg" />
+                                          <Image url="@../../consiglieri/bianco.jpg" />
                                        </image>
                                     </ImageView>
-                                    <ImageView fitHeight="40.0" fitWidth="160.0" layoutX="-3.0" layoutY="64.0">
+                                    <ImageView fitHeight="80.0" fitWidth="40.0" layoutX="81.0" layoutY="167.0">
                                        <image>
-                                          <Image url="@../../../../../../Desktop/Balcone.jpg" />
+                                          <Image url="@../../consiglieri/blu.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="80.0" fitWidth="40.0" layoutX="39.0" layoutY="85.0">
+                                       <image>
+                                          <Image url="@../../consiglieri/arancione.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="80.0" fitWidth="40.0" layoutX="81.0" layoutY="4.0">
+                                       <image>
+                                          <Image url="@../../consiglieri/arancione.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="80.0" fitWidth="40.0" layoutX="39.0" layoutY="250.0">
+                                       <image>
+                                          <Image url="@../../consiglieri/rosa.jpg" />
                                        </image>
                                     </ImageView>
                                  </children>
                               </AnchorPane>
+                          </content>
+                        </TitledPane>
+                        <TitledPane animated="false" collapsible="false" prefHeight="107.0" prefWidth="96.0" text="King's Balcony">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="30.0" prefWidth="108.0">
+                                 <children>
+                                    <ImageView fitHeight="80.0" fitWidth="40.0" layoutX="1.0">
+                                       <image>
+                                          <Image url="@../../consiglieri/nero.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="80.0" fitWidth="40.0" layoutX="41.0" layoutY="-1.0">
+                                       <image>
+                                          <Image url="@../../consiglieri/blu.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="80.0" fitWidth="40.0" layoutX="81.0">
+                                       <image>
+                                          <Image url="@../../consiglieri/blu.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="80.0" fitWidth="40.0" layoutX="121.0">
+                                       <image>
+                                          <Image url="@../../consiglieri/rosa.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="40.0" fitWidth="160.0" layoutX="1.0" layoutY="39.0">
+                                       <image>
+                                          <Image url="@../../Images/Balcone.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </TitledPane>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="181.0" prefWidth="288.0">
+                     <children>
+                        <TableView prefHeight="321.0" prefWidth="226.0">
+                          <columns>
+                            <TableColumn prefWidth="102.0" text="player1" />
+                            <TableColumn prefWidth="93.0" text="player2" />
+                              <TableColumn prefWidth="92.0" text="player3" />
+                          </columns>
+                        </TableView>
+                        <TitledPane animated="false" collapsible="false" text="Main Actions">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="286.0">
+                                 <children>
+                                    <Button layoutX="24.0" layoutY="22.0" mnemonicParsing="false" text="elect councillor" />
+                                    <Button layoutX="153.0" layoutY="22.0" mnemonicParsing="false" text="build by king" />
+                                    <Button layoutX="24.0" layoutY="64.0" mnemonicParsing="false" text="buy permit tile" />
+                                    <Button layoutX="143.0" layoutY="64.0" mnemonicParsing="false" text="build by permit tile" />
+                                 </children></AnchorPane>
+                          </content>
+                        </TitledPane>
+                        <TitledPane animated="false" collapsible="false" text="Quick Actions">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Button layoutX="6.0" layoutY="47.0" mnemonicParsing="false" text="buy assistant" />
+                                    <Button layoutX="138.0" layoutY="11.0" mnemonicParsing="false" text="change permit tiles" />
+                                    <Button layoutX="6.0" layoutY="9.0" mnemonicParsing="false" text="elect councillor" />
+                                    <Button layoutX="121.0" layoutY="46.0" mnemonicParsing="false" text="do another main action" />
+                                    <Button layoutX="73.0" layoutY="79.0" mnemonicParsing="false" text="skip quick action" />
+                                 </children></AnchorPane>
                           </content>
                         </TitledPane>
                      </children>
@@ -271,7 +289,7 @@
             </HBox>
          </center>
          <bottom>
-            <SplitPane dividerPositions="0.3051643192488263" prefHeight="221.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
+            <SplitPane dividerPositions="0.3051643192488263" prefHeight="246.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="129.0" prefWidth="357.0">
                      <children>
@@ -288,7 +306,7 @@
                               </AnchorPane>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="212.0" prefWidth="384.0">
                                  <children>
-                                    <TitledPane animated="false" collapsible="false" expanded="false" layoutX="-2.0" layoutY="-1.0" prefHeight="144.0" prefWidth="391.0" text="Covered Permit Tiles">
+                                    <TitledPane animated="false" collapsible="false" expanded="false" layoutX="-2.0" layoutY="-5.0" prefHeight="148.0" prefWidth="391.0" text="Covered Permit Tiles">
                                       <content>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="65.0" prefWidth="397.0" />
                                       </content>
@@ -325,8 +343,7 @@
                               </TitledPane>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <TextArea prefHeight="101.0" prefWidth="240.0" text="Your Datas:&#10;&#10;Coins: XX&#10;Assistants: XX" />
-                                    <TextArea prefHeight="99.0" prefWidth="647.0" text="Other Player's Datas:" />
+                                    <TextArea prefHeight="101.0" prefWidth="240.0" text="Your Data:&#10;&#10;Coins: XX&#10;Assistants: XX" />
                                  </children>
                               </HBox>
                            </children>
