@@ -9,9 +9,9 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import modelDTO.gameTableDTO.CityColourDTO;
-import modelDTO.gameTableDTO.CityDTO;
-import modelDTO.gameTableDTO.GenericPlayerDTO;
+import client.modelDTO.gameTableDTO.CityColourDTO;
+import client.modelDTO.gameTableDTO.CityDTO;
+import client.modelDTO.gameTableDTO.GenericPlayerDTO;
 import server.model.bonus.Bonus;
 
 public class CityDTOTest {

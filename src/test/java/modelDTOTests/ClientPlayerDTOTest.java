@@ -7,10 +7,10 @@ import java.util.List;
 
 import org.junit.Test;
 
-import modelDTO.gameTableDTO.CardColourDTO;
-import modelDTO.gameTableDTO.PermitTileDTO;
-import modelDTO.playerDTO.AssistantDTO;
-import modelDTO.playerDTO.ClientPlayerDTO;
+import client.modelDTO.gameTableDTO.CardColourDTO;
+import client.modelDTO.gameTableDTO.PermitTileDTO;
+import client.modelDTO.playerDTO.AssistantDTO;
+import client.modelDTO.playerDTO.ClientPlayerDTO;
 
 public class ClientPlayerDTOTest {
 

@@ -1,8 +1,9 @@
 package client.view.notifies;
 
 import java.util.List;
+
+import client.modelDTO.actionsDTO.ActionDTO;
 import client.view.ClientView;
-import modelDTO.actionsDTO.ActionDTO;
 
 public class ClientAvailableActionsNotify implements ClientViewNotify {
 

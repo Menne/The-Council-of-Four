@@ -1,6 +1,6 @@
 package server.model.actions.bonusActions;
 
-import modelDTO.actionsDTO.ActionDTO;
+import client.modelDTO.actionsDTO.ActionDTO;
 import server.model.Game;
 import server.model.actions.Action;
 import server.model.bonus.Bonus;

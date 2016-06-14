@@ -10,7 +10,6 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import players.Player;
 import server.model.Game;
 import server.model.actions.standardActions.AcquirePermitTile;
 import server.model.bonus.Bonus;
@@ -19,6 +18,7 @@ import server.model.gameTable.CardColour;
 import server.model.gameTable.Councillor;
 import server.model.gameTable.PermitTile;
 import server.model.gameTable.PoliticsCard;
+import server.model.player.Player;
 import server.model.stateMachine.State01;
 import server.model.stateMachine.State11;
 

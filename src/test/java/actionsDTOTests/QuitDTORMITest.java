@@ -3,8 +3,9 @@ package actionsDTOTests;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import client.modelDTO.actionsDTO.QuitDTORMI;
 import client.view.rmi.ClientRMIViewRemote;
-import modelDTO.actionsDTO.QuitDTORMI;
 
 public class QuitDTORMITest {
 

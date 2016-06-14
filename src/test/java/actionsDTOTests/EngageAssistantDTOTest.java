@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import modelDTO.actionsDTO.standardActions.EngageAssistantDTO;
+import client.modelDTO.actionsDTO.standardActions.EngageAssistantDTO;
 import server.model.actions.standardActions.EngageAssistant;
 
 public class EngageAssistantDTOTest {

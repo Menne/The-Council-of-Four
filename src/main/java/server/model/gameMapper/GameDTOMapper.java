@@ -3,18 +3,17 @@ package server.model.gameMapper;
 import java.util.ArrayList;
 import java.util.Set;
 
-import modelDTO.gameTableDTO.CardColourDTO;
-import modelDTO.gameTableDTO.CityColourDTO;
-import modelDTO.gameTableDTO.CityDTO;
-import modelDTO.gameTableDTO.GameTableDTO;
-import modelDTO.gameTableDTO.GenericPlayerDTO;
-import modelDTO.gameTableDTO.PermitTileDTO;
-import modelDTO.gameTableDTO.RegionDTO;
-import modelDTO.marketDTO.MarketDTO;
-import modelDTO.marketDTO.OfferDTO;
-import modelDTO.playerDTO.AssistantDTO;
-import modelDTO.playerDTO.ClientPlayerDTO;
-import players.Player;
+import client.modelDTO.gameTableDTO.CardColourDTO;
+import client.modelDTO.gameTableDTO.CityColourDTO;
+import client.modelDTO.gameTableDTO.CityDTO;
+import client.modelDTO.gameTableDTO.GameTableDTO;
+import client.modelDTO.gameTableDTO.GenericPlayerDTO;
+import client.modelDTO.gameTableDTO.PermitTileDTO;
+import client.modelDTO.gameTableDTO.RegionDTO;
+import client.modelDTO.marketDTO.MarketDTO;
+import client.modelDTO.marketDTO.OfferDTO;
+import client.modelDTO.playerDTO.AssistantDTO;
+import client.modelDTO.playerDTO.ClientPlayerDTO;
 import server.model.Game;
 import server.model.bonus.Bonus;
 import server.model.gameTable.Assistant;
@@ -29,6 +28,7 @@ import server.model.gameTable.PoliticsCard;
 import server.model.gameTable.RegionBoard;
 import server.model.market.Market;
 import server.model.market.Offer;
+import server.model.player.Player;
 
 /**
  * This class implements the interface GameMapperInterface, and provides all the methods required 

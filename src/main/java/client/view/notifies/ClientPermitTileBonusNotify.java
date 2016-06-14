@@ -1,8 +1,9 @@
 package client.view.notifies;
 
 import java.util.List;
+
+import client.modelDTO.gameTableDTO.PermitTileDTO;
 import client.view.ClientView;
-import modelDTO.gameTableDTO.PermitTileDTO;
 
 public class ClientPermitTileBonusNotify implements ClientViewNotify {
 

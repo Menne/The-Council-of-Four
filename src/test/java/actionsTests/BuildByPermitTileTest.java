@@ -9,7 +9,6 @@ import java.util.List;
 
 import org.junit.Test;
 
-import players.Player;
 import server.model.Game;
 import server.model.actions.standardActions.AcquirePermitTile;
 import server.model.actions.standardActions.BuildByPermitTile;
@@ -18,6 +17,7 @@ import server.model.gameTable.City;
 import server.model.gameTable.Emporium;
 import server.model.gameTable.PermitTile;
 import server.model.gameTable.PoliticsCard;
+import server.model.player.Player;
 import server.model.stateMachine.State01;
 import server.model.stateMachine.State11;
 

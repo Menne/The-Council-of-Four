@@ -1,7 +1,7 @@
 package server.model.bonus;
 
-import players.Player;
 import server.model.Game;
+import server.model.player.Player;
 
 /**
  * ScoreBonus implements assignBonus method

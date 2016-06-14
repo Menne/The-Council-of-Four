@@ -4,22 +4,22 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
+import client.modelDTO.GameDTO;
+import client.modelDTO.actionsDTO.ActionDTO;
+import client.modelDTO.gameTableDTO.CardColourDTO;
+import client.modelDTO.gameTableDTO.CityDTO;
+import client.modelDTO.gameTableDTO.GameTableDTO;
+import client.modelDTO.gameTableDTO.GenericPlayerDTO;
+import client.modelDTO.gameTableDTO.PermitTileDTO;
+import client.modelDTO.gameTableDTO.RegionDTO;
+import client.modelDTO.marketDTO.MarketDTO;
+import client.modelDTO.marketDTO.MarketableDTO;
+import client.modelDTO.marketDTO.OfferDTO;
+import client.modelDTO.playerDTO.ClientPlayerDTO;
 import client.view.ClientView;
 import client.view.Connection;
 import client.view.notifies.ClientViewNotify;
 import javafx.application.Application;
-import modelDTO.GameDTO;
-import modelDTO.actionsDTO.ActionDTO;
-import modelDTO.gameTableDTO.CardColourDTO;
-import modelDTO.gameTableDTO.CityDTO;
-import modelDTO.gameTableDTO.GameTableDTO;
-import modelDTO.gameTableDTO.GenericPlayerDTO;
-import modelDTO.gameTableDTO.PermitTileDTO;
-import modelDTO.gameTableDTO.RegionDTO;
-import modelDTO.marketDTO.MarketDTO;
-import modelDTO.marketDTO.MarketableDTO;
-import modelDTO.marketDTO.OfferDTO;
-import modelDTO.playerDTO.ClientPlayerDTO;
 
 
 

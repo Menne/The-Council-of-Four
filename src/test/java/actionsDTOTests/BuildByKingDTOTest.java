@@ -7,11 +7,11 @@ import java.util.List;
 
 import org.junit.Test;
 
-import modelDTO.GameDTO;
-import modelDTO.actionsDTO.standardActions.BuildByKingDTO;
-import modelDTO.gameTableDTO.CardColourDTO;
-import modelDTO.gameTableDTO.CityDTO;
-import modelDTO.parser.BuildByKingParser;
+import client.modelDTO.GameDTO;
+import client.modelDTO.actionsDTO.actionsParametersSetters.BuildByKingParser;
+import client.modelDTO.actionsDTO.standardActions.BuildByKingDTO;
+import client.modelDTO.gameTableDTO.CardColourDTO;
+import client.modelDTO.gameTableDTO.CityDTO;
 
 public class BuildByKingDTOTest {
 

@@ -10,13 +10,13 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import players.Player;
 import server.model.Game;
 import server.model.bonus.Bonus;
 import server.model.bonus.ScoreBonus;
 import server.model.gameTable.City;
 import server.model.gameTable.CityColour;
 import server.model.gameTable.Emporium;
+import server.model.player.Player;
 
 public class CityTest {
 

@@ -3,11 +3,11 @@ package server.view.notifies;
 import java.util.ArrayList;
 import java.util.List;
 
-import modelDTO.clientNotifies.ClientNotify;
-import modelDTO.clientNotifies.EndGameDTONotifies;
-import modelDTO.gameTableDTO.GenericPlayerDTO;
-import players.Player;
+import client.modelDTO.clientNotifies.ClientNotify;
+import client.modelDTO.clientNotifies.EndGameDTONotifies;
+import client.modelDTO.gameTableDTO.GenericPlayerDTO;
 import server.model.Game;
+import server.model.player.Player;
 
 public class EndGameNotify implements ViewNotify {
 

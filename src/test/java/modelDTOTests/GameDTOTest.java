@@ -7,11 +7,11 @@ import java.util.List;
 
 import org.junit.Test;
 
-import modelDTO.GameDTO;
-import modelDTO.actionsDTO.ActionDTO;
-import modelDTO.gameTableDTO.GameTableDTO;
-import modelDTO.marketDTO.MarketDTO;
-import modelDTO.playerDTO.ClientPlayerDTO;
+import client.modelDTO.GameDTO;
+import client.modelDTO.actionsDTO.ActionDTO;
+import client.modelDTO.gameTableDTO.GameTableDTO;
+import client.modelDTO.marketDTO.MarketDTO;
+import client.modelDTO.playerDTO.ClientPlayerDTO;
 
 public class GameDTOTest {
 

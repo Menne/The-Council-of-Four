@@ -8,10 +8,10 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import modelDTO.gameTableDTO.CardColourDTO;
-import modelDTO.gameTableDTO.CityDTO;
-import modelDTO.gameTableDTO.PermitTileDTO;
-import modelDTO.gameTableDTO.RegionDTO;
+import client.modelDTO.gameTableDTO.CardColourDTO;
+import client.modelDTO.gameTableDTO.CityDTO;
+import client.modelDTO.gameTableDTO.PermitTileDTO;
+import client.modelDTO.gameTableDTO.RegionDTO;
 
 public class RegionDTOTest {
 

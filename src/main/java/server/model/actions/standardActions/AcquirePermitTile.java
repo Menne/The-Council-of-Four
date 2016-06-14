@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import modelDTO.actionsDTO.ActionDTO;
-import modelDTO.actionsDTO.standardActions.AcquirePermitTileDTO;
+import client.modelDTO.actionsDTO.ActionDTO;
+import client.modelDTO.actionsDTO.standardActions.AcquirePermitTileDTO;
 import server.model.Game;
 import server.model.actions.MainAction;
 import server.model.bonus.Bonus;

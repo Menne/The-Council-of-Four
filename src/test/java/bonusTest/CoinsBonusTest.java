@@ -8,9 +8,9 @@ import java.util.List;
 
 import org.junit.Test;
 
-import players.Player;
 import server.model.Game;
 import server.model.bonus.CoinsBonus;
+import server.model.player.Player;
 
 public class CoinsBonusTest {
 

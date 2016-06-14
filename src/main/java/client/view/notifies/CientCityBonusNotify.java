@@ -1,8 +1,9 @@
 package client.view.notifies;
 
 import java.util.List;
+
+import client.modelDTO.gameTableDTO.CityDTO;
 import client.view.ClientView;
-import modelDTO.gameTableDTO.CityDTO;
 
 public class CientCityBonusNotify implements ClientViewNotify {
 

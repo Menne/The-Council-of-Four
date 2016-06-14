@@ -5,8 +5,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import players.Player;
 import server.model.Game;
+import server.model.player.Player;
 
 public class Market {
 	

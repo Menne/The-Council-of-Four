@@ -3,8 +3,8 @@ package server.model.actions.marketActions;
 import java.util.ArrayList;
 import java.util.List;
 
-import modelDTO.actionsDTO.ActionDTO;
-import modelDTO.actionsDTO.marketActions.MakeAnOfferDTO;
+import client.modelDTO.actionsDTO.ActionDTO;
+import client.modelDTO.actionsDTO.marketActions.MakeAnOfferDTO;
 import server.model.Game;
 import server.model.actions.Action;
 import server.model.market.Offer;

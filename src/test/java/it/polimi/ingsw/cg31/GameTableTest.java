@@ -8,7 +8,6 @@ import java.util.List;
 
 import org.junit.Test;
 
-import players.Player;
 import server.model.Game;
 import server.model.bonus.ScoreBonus;
 import server.model.gameTable.CouncilBalcony;
@@ -17,6 +16,7 @@ import server.model.gameTable.Map;
 import server.model.gameTable.NobilityTrack;
 import server.model.gameTable.PoliticsDeck;
 import server.model.gameTable.RegionBoard;
+import server.model.player.Player;
 
 
 public class GameTableTest {

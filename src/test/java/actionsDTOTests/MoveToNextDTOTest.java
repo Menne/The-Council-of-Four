@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import modelDTO.actionsDTO.MoveToNextDTO;
+import client.modelDTO.actionsDTO.MoveToNextDTO;
 import server.model.actions.MoveToNext;
 
 public class MoveToNextDTOTest {

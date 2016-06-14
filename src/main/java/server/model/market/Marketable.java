@@ -1,6 +1,6 @@
 package server.model.market;
 
-import players.Player;
+import server.model.player.Player;
 
 public interface Marketable {
 

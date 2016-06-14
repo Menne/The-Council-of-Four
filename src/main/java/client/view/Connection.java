@@ -3,8 +3,8 @@ package client.view;
 
 import java.rmi.RemoteException;
 
-import modelDTO.actionsDTO.ActionDTO;
-import modelDTO.clientNotifies.ClientNotify;
+import client.modelDTO.actionsDTO.ActionDTO;
+import client.modelDTO.clientNotifies.ClientNotify;
 import observerPattern.Observable;
 
 public abstract class Connection extends Observable<ClientNotify> {

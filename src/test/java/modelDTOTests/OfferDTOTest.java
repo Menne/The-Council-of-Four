@@ -4,8 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import modelDTO.marketDTO.MarketableDTO;
-import modelDTO.marketDTO.OfferDTO;
+import client.modelDTO.marketDTO.MarketableDTO;
+import client.modelDTO.marketDTO.OfferDTO;
 
 public class OfferDTOTest {
 

@@ -1,7 +1,7 @@
 package server.model.actions;
 
-import modelDTO.actionsDTO.ActionDTO;
-import modelDTO.actionsDTO.MoveToNextDTO;
+import client.modelDTO.actionsDTO.ActionDTO;
+import client.modelDTO.actionsDTO.MoveToNextDTO;
 import server.model.Game;
 
 public class MoveToNext extends QuickAction {

@@ -4,10 +4,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import modelDTO.GameDTO;
-import modelDTO.actionsDTO.standardActions.ChangePermitTilesDTO;
-import modelDTO.gameTableDTO.RegionDTO;
-import modelDTO.parser.ChangePermitTilesParser;
+import client.modelDTO.GameDTO;
+import client.modelDTO.actionsDTO.actionsParametersSetters.ChangePermitTilesParser;
+import client.modelDTO.actionsDTO.standardActions.ChangePermitTilesDTO;
+import client.modelDTO.gameTableDTO.RegionDTO;
 
 public class ChangePermitTileDTOTest {
 

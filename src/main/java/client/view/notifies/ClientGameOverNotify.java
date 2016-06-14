@@ -1,8 +1,9 @@
 package client.view.notifies;
 
 import java.util.ArrayList;
+
+import client.modelDTO.gameTableDTO.GenericPlayerDTO;
 import client.view.ClientView;
-import modelDTO.gameTableDTO.GenericPlayerDTO;
 
 public class ClientGameOverNotify implements ClientViewNotify {
 

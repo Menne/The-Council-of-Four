@@ -2,8 +2,8 @@ package client.view.notifies;
 
 
 
+import client.modelDTO.playerDTO.ClientPlayerDTO;
 import client.view.ClientView;
-import modelDTO.playerDTO.ClientPlayerDTO;
 
 public class ClientPlayerNotify implements ClientViewNotify {
 

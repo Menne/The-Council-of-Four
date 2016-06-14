@@ -3,9 +3,9 @@ package server.model.gameTable;
 import java.util.HashSet;
 import java.util.Set;
 
-import players.Player;
 import server.model.bonus.Bonus;
 import server.model.market.Marketable;
+import server.model.player.Player;
 
 /**
 	 * this class models a permit tile

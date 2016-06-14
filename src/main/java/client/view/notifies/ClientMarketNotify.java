@@ -1,7 +1,7 @@
 package client.view.notifies;
 
+import client.modelDTO.marketDTO.MarketDTO;
 import client.view.ClientView;
-import modelDTO.marketDTO.MarketDTO;
 
 public class ClientMarketNotify implements ClientViewNotify {
 

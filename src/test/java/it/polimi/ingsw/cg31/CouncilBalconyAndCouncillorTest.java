@@ -8,12 +8,12 @@ import java.util.List;
 
 import org.junit.Test;
 
-import players.Player;
 import server.model.Game;
 import server.model.gameTable.CardColour;
 import server.model.gameTable.CouncilBalcony;
 import server.model.gameTable.Councillor;
 import server.model.gameTable.CouncillorsReserve;
+import server.model.player.Player;
 
 
 public class CouncilBalconyAndCouncillorTest {

@@ -7,8 +7,8 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import modelDTO.gameTableDTO.CityDTO;
-import modelDTO.gameTableDTO.PermitTileDTO;
+import client.modelDTO.gameTableDTO.CityDTO;
+import client.modelDTO.gameTableDTO.PermitTileDTO;
 import server.model.bonus.Bonus;
 
 public class PermitTileDTOTest {

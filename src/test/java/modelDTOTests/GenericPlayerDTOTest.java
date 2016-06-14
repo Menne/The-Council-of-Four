@@ -7,8 +7,8 @@ import java.util.List;
 
 import org.junit.Test;
 
-import modelDTO.gameTableDTO.GenericPlayerDTO;
-import modelDTO.gameTableDTO.PermitTileDTO;
+import client.modelDTO.gameTableDTO.GenericPlayerDTO;
+import client.modelDTO.gameTableDTO.PermitTileDTO;
 
 public class GenericPlayerDTOTest {
 

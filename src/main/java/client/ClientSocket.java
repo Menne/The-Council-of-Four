@@ -7,9 +7,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import client.controller.ClientController;
+import client.modelDTO.GameDTO;
 import client.view.ClientView;
 import client.view.socket.SocketConnection;
-import modelDTO.GameDTO;
 
 public class ClientSocket {
 

@@ -7,8 +7,8 @@ import java.util.List;
 
 import org.junit.Test;
 
-import modelDTO.marketDTO.MarketDTO;
-import modelDTO.marketDTO.OfferDTO;
+import client.modelDTO.marketDTO.MarketDTO;
+import client.modelDTO.marketDTO.OfferDTO;
 
 public class MarketDTOTest {
 

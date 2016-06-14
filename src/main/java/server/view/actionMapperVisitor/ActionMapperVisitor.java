@@ -1,15 +1,15 @@
 package server.view.actionMapperVisitor;
 
-import modelDTO.actionsDTO.bonusActions.ChooseCityActionDTO;
-import modelDTO.actionsDTO.bonusActions.PurchasedPermitTileActionDTO;
-import modelDTO.actionsDTO.marketActions.AcceptAnOfferDTO;
-import modelDTO.actionsDTO.marketActions.MakeAnOfferDTO;
-import modelDTO.actionsDTO.standardActions.AcquirePermitTileDTO;
-import modelDTO.actionsDTO.standardActions.BuildByKingDTO;
-import modelDTO.actionsDTO.standardActions.BuildByPermitTileDTO;
-import modelDTO.actionsDTO.standardActions.ChangePermitTilesDTO;
-import modelDTO.actionsDTO.standardActions.ElectCouncillorByAssistantDTO;
-import modelDTO.actionsDTO.standardActions.ElectCouncillorDTO;
+import client.modelDTO.actionsDTO.bonusActions.ChooseCityActionDTO;
+import client.modelDTO.actionsDTO.bonusActions.PurchasedPermitTileActionDTO;
+import client.modelDTO.actionsDTO.marketActions.AcceptAnOfferDTO;
+import client.modelDTO.actionsDTO.marketActions.MakeAnOfferDTO;
+import client.modelDTO.actionsDTO.standardActions.AcquirePermitTileDTO;
+import client.modelDTO.actionsDTO.standardActions.BuildByKingDTO;
+import client.modelDTO.actionsDTO.standardActions.BuildByPermitTileDTO;
+import client.modelDTO.actionsDTO.standardActions.ChangePermitTilesDTO;
+import client.modelDTO.actionsDTO.standardActions.ElectCouncillorByAssistantDTO;
+import client.modelDTO.actionsDTO.standardActions.ElectCouncillorDTO;
 import server.model.actions.bonusActions.ChooseCityBonusAction;
 import server.model.actions.bonusActions.PurchasedPermitTileAction;
 import server.model.actions.marketActions.AcceptAnOffer;
