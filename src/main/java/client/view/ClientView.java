@@ -2,8 +2,19 @@ package client.view;
 
 import java.io.Serializable;
 import java.rmi.RemoteException;
+import java.util.List;
 
 import client.view.notifies.ClientViewNotify;
+import modelDTO.actionsDTO.ActionDTO;
+import modelDTO.gameTableDTO.CardColourDTO;
+import modelDTO.gameTableDTO.CityDTO;
+import modelDTO.gameTableDTO.GameTableDTO;
+import modelDTO.gameTableDTO.PermitTileDTO;
+import modelDTO.gameTableDTO.RegionDTO;
+import modelDTO.marketDTO.MarketDTO;
+import modelDTO.marketDTO.MarketableDTO;
+import modelDTO.marketDTO.OfferDTO;
+import modelDTO.playerDTO.ClientPlayerDTO;
 import observerPattern.Observer;
 
 public abstract class ClientView implements Observer<ClientViewNotify>, Serializable {
@@ -26,8 +37,41 @@ public abstract class ClientView implements Observer<ClientViewNotify>, Serializ
 	
 	public abstract void welcome(String name) throws RemoteException;
 	
-	public abstract Object askForInput();
 	
-	public abstract void output(Object object);
+	
+	public abstract void displayMessage(String string);
+	
+	public abstract void displayAvailableActions(List<ActionDTO> availableActions);
+	
+	public abstract void displayGameTable(GameTableDTO clientGame);
+	
+	public abstract void displayPlayer(ClientPlayerDTO player);
+	
+	public abstract void displayMarket(MarketDTO market);
+	
+	
+	
+	public abstract RegionDTO askForRegionBoard(List<RegionDTO> acceptableRegions);
+	
+	public abstract PermitTileDTO askForPermitTile(List<PermitTileDTO> acceptablePermitTiles);
+	
+	public abstract CardColourDTO askForCouncillor(List<CardColourDTO> acceptableCouncillors);
+	
+	public abstract CardColourDTO[] askForCouncilBalcony(List<CardColourDTO[]> acceptableCouncillors);
+	
+	public abstract CityDTO askForCity(List<CityDTO> acceptableCities);
+	
+	public abstract List<CardColourDTO> askForPoliticsCards(List<CardColourDTO> acceptablePoliticsCards);
+	
+	public abstract int askForNumberOfPermitTile(List<Integer> acceptableNumberOfPermitTile);
+	
+	public abstract MarketableDTO askForMakingAnOffer(List<MarketableDTO> acceptableObjectsToOffer);
+	
+	public abstract int askForPrice();
+	
+	public abstract boolean askForOtherSelling();
+	
+	public abstract OfferDTO askForAcceptingAnOffer(List<OfferDTO> acceptableOffers);
 
+	
 }

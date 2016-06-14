@@ -1,54 +1,61 @@
 package modelDTO.parser;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
+
+import client.view.ClientView;
 import client.view.notifies.ActionNotify;
 import client.view.notifies.ParametersNotify;
 import modelDTO.GameDTO;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.standardActions.BuildByPermitTileDTO;
+import modelDTO.gameTableDTO.CityDTO;
+import modelDTO.gameTableDTO.PermitTileDTO;
 
 public class BuildByPermitTileParser implements ActionParserVisitor {
 
 	private BuildByPermitTileDTO selectedAction;
-	private String currentParameter;
+	private Object currentParameter;
+	private ClientView view;
 	private GameDTO game;
-	
-	public void setCurrentParameter(String currentParameter) {
-		this.currentParameter=currentParameter;
-	}
 
-	
-	public BuildByPermitTileParser(BuildByPermitTileDTO selectedAction, GameDTO game) {
+	public BuildByPermitTileParser(BuildByPermitTileDTO selectedAction, ClientView view, GameDTO game) {
 		this.selectedAction=selectedAction;
-		this.currentParameter=null;
+		this.view=view;
 		this.game=game;
 	}
 
 	
+	public void setCurrentParameter(String currentParameter) {
+		this.currentParameter=currentParameter;
+	}
+	
 	@Override
-	public ActionDTO setParameters(Parser parser) {
-		this.game.notifyObserver(new ActionNotify
-				("Ok! you have chosen to build an emporium with a permit tile."));
+	public ActionDTO setParameters() {
+		this.view.displayMessage("Ok! you have chosen to build an emporium with a permit tile.");
 			
-		if (!parser.acceptablePermitTiles().isEmpty()) {
+		if (!this.game.getClientPlayer().getAvailablePermitTiles().isEmpty()) {
 			
-			this.game.notifyObserver(new ActionNotify("Now I need some other infos, like:"));
+			this.view.displayMessage("Now I need some other infos, like:");
 		
-			this.game.notifyObserver(new ActionNotify
-					("the permit tile you want to use"));
-			this.game.notifyObserver(new ParametersNotify(parser.acceptablePermitTiles(), this));
-			this.selectedAction.setSelectedPermitTile(parser.permitTileTranslator(currentParameter));
+			this.view.displayMessage("the permit tile you want to use");
+			PermitTileDTO permitTileTranslated=this.view.askForPermitTile
+					(this.game.getClientPlayer().getAvailablePermitTiles());
+			this.selectedAction.setSelectedPermitTile(permitTileTranslated);
 			
-			this.game.notifyObserver(new ActionNotify
-					("the name of the city in which you want to build"));
-			this.game.notifyObserver(new ParametersNotify(parser.acceptableCities(), this));
-			this.selectedAction.setSelectedCity(parser.cityTranslator(currentParameter));
+			this.view.displayMessage("the name of the city in which you want to build");
+			List<CityDTO> acceptableCities=new ArrayList<>();
+			for (CityDTO acceptableCity : permitTileTranslated.getBuildablecities())
+				acceptableCities.add(acceptableCity);
+			this.selectedAction.setSelectedCity(this.view.askForCity(acceptableCities));
 			
 			this.selectedAction.parametersSetted();
 		
 		}
 		else 
-			this.game.notifyObserver(new ActionNotify
-					("but it seems that you haven't any permit tile turned up! Select another action please"));
+			this.view.displayMessage("but it seems that you haven't any permit tile turned up! Select another action please");
 		
 		return this.selectedAction;
 	}

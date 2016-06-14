@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
+import client.view.ClientView;
 import modelDTO.parser.ActionParserVisitor;
 import server.model.gameTable.CouncilBalcony;
 
@@ -47,6 +48,12 @@ public class PoliticsCardsNotify implements ClientViewNotify {
 			}
 		}
 		return true;
+	}
+
+	@Override
+	public void updateView(ClientView view) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

@@ -2,6 +2,7 @@ package modelDTO.actionsDTO.standardActions;
 
 import java.util.List;
 
+import client.view.ClientView;
 import modelDTO.GameDTO;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.ActionWithParameters;
@@ -62,8 +63,8 @@ public class AcquirePermitTileDTO implements ActionDTO, ActionWithParameters {
 	}
 
 	@Override
-	public ActionParserVisitor setParser(GameDTO game) {
-		return new AcquirePermitTileParser(this, game);
+	public ActionParserVisitor setParser(ClientView view, GameDTO game) {
+		return new AcquirePermitTileParser(this, view, game);
 	}
 
 	@Override

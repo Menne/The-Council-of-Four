@@ -36,9 +36,9 @@ public class ClientRMI{
 		ClientRMIViewRemote clientRMIViewRemote=(ClientRMIViewRemote) UnicastRemoteObject.exportObject(connection,0);	
 		ClientView view;
 		if("CLI".equals(graphic))
-			view=new CLI(clientGame.getParser(), connection);
+			view=new CLI(connection, clientGame);
 		else
-			view=new GUI(connection);
+			view=new GUI(connection, clientGame);
 		clientGame.registerObserver(view);
 		connection.registerObserver(clientController);
 		view.welcome(clientName);

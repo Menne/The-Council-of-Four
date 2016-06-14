@@ -13,7 +13,7 @@ import modelDTO.playerDTO.ClientPlayerDTO;
 
 public class ClientPlayerDTOTest {
 
-	@Test
+/*	@Test
 	public void test() {
 		List<CardColourDTO> colour= new ArrayList<>();
 		List<PermitTileDTO> coveredTiles= new ArrayList<>();
@@ -34,6 +34,6 @@ public class ClientPlayerDTOTest {
 		assertTrue(player.getHand()==colour);
 		assertTrue(player.getName()==name);
 		assertTrue(player.getPlayerNumber()==playerNumber);
-	}
+	} */
 
 }

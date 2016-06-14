@@ -1,5 +1,6 @@
 package modelDTO.actionsDTO.standardActions;
 
+import client.view.ClientView;
 import modelDTO.GameDTO;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.ActionWithParameters;
@@ -41,8 +42,8 @@ public class ChangePermitTilesDTO implements ActionDTO, ActionWithParameters {
 	}
 
 	@Override
-	public ActionParserVisitor setParser(GameDTO game) {
-		return new ChangePermitTilesParser(this, game);
+	public ActionParserVisitor setParser(ClientView view, GameDTO game) {
+		return new ChangePermitTilesParser(this, view, game);
 	}
 
 	@Override

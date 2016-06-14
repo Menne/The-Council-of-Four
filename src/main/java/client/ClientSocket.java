@@ -33,10 +33,9 @@ public class ClientSocket {
 		SocketConnection connection=new SocketConnection(socket);
 		ClientView view;
 		if("CLI".equals(graphic))
-			view=new CLI(clientGame.getParser(), connection);
+			view=new CLI(connection, clientGame);
 		else
-			view=new GUI(connection);
-		
+			view=new GUI(connection, clientGame);
 		clientGame.registerObserver(view);				
 		connection.registerObserver(clientController);
 		ExecutorService executor=Executors.newSingleThreadExecutor();

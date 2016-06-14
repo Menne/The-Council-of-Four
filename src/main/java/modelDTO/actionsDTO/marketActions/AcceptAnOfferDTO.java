@@ -1,5 +1,6 @@
 package modelDTO.actionsDTO.marketActions;
 
+import client.view.ClientView;
 import modelDTO.GameDTO;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.ActionWithParameters;
@@ -20,8 +21,8 @@ public class AcceptAnOfferDTO implements ActionDTO, ActionWithParameters {
 
 	
 	@Override
-	public ActionParserVisitor setParser(GameDTO game) {
-		return new AcceptAnOfferParser(this, game);
+	public ActionParserVisitor setParser(ClientView view, GameDTO game) {
+		return new AcceptAnOfferParser(this, view, game);
 	}
 
 	

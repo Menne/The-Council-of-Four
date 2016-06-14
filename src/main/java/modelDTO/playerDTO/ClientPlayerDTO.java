@@ -19,7 +19,7 @@ public class ClientPlayerDTO implements ModelDTO<Player>{
 	private List<CardColourDTO> hand;
 	private List<PermitTileDTO> coveredPermitTiles;
 	private List<PermitTileDTO> availablePermitTiles;
-	private int assistants;
+	private List<AssistantDTO> assistants;
 	
 	public ClientPlayerDTO() {
 		this.hand=new ArrayList<CardColourDTO>();
@@ -68,11 +68,11 @@ public class ClientPlayerDTO implements ModelDTO<Player>{
 		this.availablePermitTiles = availablePermitTiles;
 	}
 	
-	public void setAssistants(int assistants) {
+	public void setAssistants(List<AssistantDTO> assistants) {
 		this.assistants = assistants;
 	}
 	
-	public int getAssistants() {
+	public List<AssistantDTO> getAssistants() {
 		return this.assistants;
 	}
 

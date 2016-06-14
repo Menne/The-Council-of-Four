@@ -1,5 +1,6 @@
 package modelDTO.actionsDTO.standardActions;
 
+import client.view.ClientView;
 import modelDTO.GameDTO;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.ActionWithParameters;
@@ -50,8 +51,8 @@ public class BuildByPermitTileDTO implements ActionDTO, ActionWithParameters {
 	}
 
 	@Override
-	public ActionParserVisitor setParser(GameDTO game) {
-		return new BuildByPermitTileParser(this, game);
+	public ActionParserVisitor setParser(ClientView view, GameDTO game) {
+		return new BuildByPermitTileParser(this, view, game);
 	}
 
 	@Override
