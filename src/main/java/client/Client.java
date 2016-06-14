@@ -18,21 +18,21 @@ public class Client {
 		System.out.println("Welcome to CoF, please enter your name!");
 		name=scanner.nextLine();
 		
-		System.out.println("do you wanna play with CLI or Gui inteface?");
+		System.out.println("Hi, "+name+" do you want to play with CLI or GUI inteface?");
 		while(!"CLI".equals(graphic) && !"GUI".equals(graphic)){
 			graphic=scanner.nextLine();
 			if(!"CLI".equals(graphic) && !"GUI".equals(graphic))
 				System.out.println("Wrong input. Try again.");
 		}	
 		
-		System.out.println("Hi, "+name+" do you want to use Socket or RMI?");
+		System.out.println("Do you want to use Socket or RMI?");
 		while(!"Socket".equals(connection) && !"RMI".equals(connection)){
 			connection=scanner.nextLine();
 			if(!"Socket".equals(connection) && !"RMI".equals(connection))
 				System.out.println("Wrong input. Try again.");
 		}
 		
-		System.out.println("Please insert the server address");
+		System.out.println("Please insert the server address (0 for localhost)");
 		while(true){
 			String ip=scanner.nextLine();
 			try{
