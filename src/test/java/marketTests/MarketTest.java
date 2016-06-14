@@ -6,9 +6,9 @@ import org.junit.Test;
 
 public class MarketTest {
 
-	@Test
+/*	@Test
 	public void test() {
 		fail("Not yet implemented");
 	}
-
+*/
 }

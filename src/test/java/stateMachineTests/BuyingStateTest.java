@@ -25,7 +25,7 @@ public class BuyingStateTest {
 		game.setCurrentPlayer(a);
 		game.setState(new BuyingState());
 		BuyingState state= new BuyingState();
-		assertEquals(state.buyActionTransition(game).getClass(), BuyingState.class);
+		assertEquals(state.buyActionTransition(game).getClass(), BeginState.class);
 		assertEquals(state.buyActionTransition(game).getClass(), BeginState.class);
 	}
 
@@ -39,7 +39,7 @@ public class BuyingStateTest {
 		game.setCurrentPlayer(a);
 		game.setState(new BuyingState());
 		BuyingState state= new BuyingState();
-		assertEquals(state.moveToNextTransition(game).getClass(), BuyingState.class);
+		assertEquals(state.moveToNextTransition(game).getClass(), BeginState.class);
 		assertEquals(state.moveToNextTransition(game).getClass(), BeginState.class);
 	}
 }

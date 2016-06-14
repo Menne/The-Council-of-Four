@@ -23,8 +23,6 @@ public class QuitDTORMI implements ActionDTO {
 
 	@Override
 	public Action startMapper(ActionMapperVisitor mapper) {
-		// TODO Auto-generated method stub
-		return null;
+		throw new IllegalArgumentException("this mapper shouldn't be called");
 	}
-
 }
