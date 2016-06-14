@@ -1,4 +1,4 @@
-package DTOTests;
+package modelDTOTests;
 
 import static org.junit.Assert.*;
 

@@ -1,19 +1,20 @@
-package DTOTests;
+package modelDTOTests;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import modelDTO.gameTableDTO.CityColourDTO;
+import modelDTO.gameTableDTO.CardColourDTO;
 
-public class CityColourDTOtest {
+public class CardColourDTOTest {
 
 	@Test
 	public void test() {
-		CityColourDTO colour= new CityColourDTO();
-		String name= "blu";
+		CardColourDTO colour= new CardColourDTO();
+		String name= "Blu";
 		colour.setName(name);
 		assertTrue(colour.getName()==name);
 	}
 	
+
 }
