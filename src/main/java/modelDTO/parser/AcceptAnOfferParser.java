@@ -1,8 +1,6 @@
 package modelDTO.parser;
 
 import client.view.ClientView;
-import client.view.notifies.AcceptAnOfferNotify;
-import client.view.notifies.ActionNotify;
 import modelDTO.GameDTO;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.marketActions.AcceptAnOfferDTO;
@@ -10,7 +8,6 @@ import modelDTO.actionsDTO.marketActions.AcceptAnOfferDTO;
 public class AcceptAnOfferParser implements ActionParserVisitor {
 
 	private AcceptAnOfferDTO selectedAction;
-	private Object currentParameter;
 	private ClientView view;
 	private GameDTO game;
 	
@@ -20,10 +17,6 @@ public class AcceptAnOfferParser implements ActionParserVisitor {
 		this.game=game;
 	}
 	
-	@Override
-	public void setCurrentParameter(String currentParameter) {
-		this.currentParameter=currentParameter;
-	}
 
 	@Override
 	public ActionDTO setParameters() {

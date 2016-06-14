@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import client.view.ClientView;
-import client.view.notifies.ActionNotify;
-import client.view.notifies.ParametersNotify;
 import modelDTO.GameDTO;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.standardActions.ElectCouncillorDTO;
@@ -15,7 +13,6 @@ import modelDTO.gameTableDTO.RegionDTO;
 public class ElectCouncillorParser implements ActionParserVisitor {
 
 	private ElectCouncillorDTO selectedAction;
-	private Object currentParameter;
 	private ClientView view;
 	private GameDTO game;
 	
@@ -23,10 +20,6 @@ public class ElectCouncillorParser implements ActionParserVisitor {
 		this.selectedAction=selectedAction;
 		this.view=view;
 		this.game=game;
-	}
-	
-	public void setCurrentParameter(String currentParameter) {
-		this.currentParameter=currentParameter;
 	}
 	
 	

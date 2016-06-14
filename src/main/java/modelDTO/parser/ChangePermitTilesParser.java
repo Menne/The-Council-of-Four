@@ -1,8 +1,6 @@
 package modelDTO.parser;
 
 import client.view.ClientView;
-import client.view.notifies.ActionNotify;
-import client.view.notifies.ParametersNotify;
 import modelDTO.GameDTO;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.standardActions.ChangePermitTilesDTO;
@@ -10,7 +8,6 @@ import modelDTO.actionsDTO.standardActions.ChangePermitTilesDTO;
 public class ChangePermitTilesParser implements ActionParserVisitor {
 
 	private ChangePermitTilesDTO selectedAction;
-	private Object currentParameter;
 	private ClientView view;
 	private GameDTO game;
 	
@@ -18,10 +15,6 @@ public class ChangePermitTilesParser implements ActionParserVisitor {
 		this.selectedAction=selectedAction;
 		this.view=view;
 		this.game=game;
-	}
-	
-	public void setCurrentParameter(String currentParameter) {
-		this.currentParameter=currentParameter;
 	}
 
 	

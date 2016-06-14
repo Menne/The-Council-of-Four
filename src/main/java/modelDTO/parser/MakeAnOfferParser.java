@@ -1,27 +1,18 @@
 package modelDTO.parser;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import client.view.ClientView;
-import client.view.notifies.ActionNotify;
-import client.view.notifies.MakeAnOfferNotify;
-import client.view.notifies.OfferPriceNotify;
-import client.view.notifies.ParametersNotify;
 import modelDTO.GameDTO;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.marketActions.MakeAnOfferDTO;
-import modelDTO.gameTableDTO.CardColourDTO;
-import modelDTO.gameTableDTO.PermitTileDTO;
 import modelDTO.marketDTO.MarketableDTO;
 import modelDTO.marketDTO.OfferDTO;
-import modelDTO.playerDTO.AssistantDTO;
 
 public class MakeAnOfferParser implements ActionParserVisitor {
 
 	private MakeAnOfferDTO selectedAction;
-	private String currentParameter;
 	private ClientView view;
 	private boolean otherSelling;
 	private GameDTO game;
@@ -33,9 +24,6 @@ public class MakeAnOfferParser implements ActionParserVisitor {
 		this.otherSelling=true;
 	}
 
-	public void setCurrentParameter(String currentParameter) {
-		this.currentParameter=currentParameter;
-	}
 	
 	public void setOtherSelling(boolean otherSelling) {
 		this.otherSelling=otherSelling;

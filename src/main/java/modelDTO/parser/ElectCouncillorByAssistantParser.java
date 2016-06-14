@@ -2,11 +2,8 @@ package modelDTO.parser;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ArrayBlockingQueue;
 
 import client.view.ClientView;
-import client.view.notifies.ActionNotify;
-import client.view.notifies.ParametersNotify;
 import modelDTO.GameDTO;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.standardActions.ElectCouncillorByAssistantDTO;
@@ -16,7 +13,6 @@ import modelDTO.gameTableDTO.RegionDTO;
 public class ElectCouncillorByAssistantParser implements ActionParserVisitor {
 
 	private ElectCouncillorByAssistantDTO selectedAction;
-	private Object currentParameter;
 	private ClientView view;
 	private GameDTO game;
 	
@@ -26,11 +22,6 @@ public class ElectCouncillorByAssistantParser implements ActionParserVisitor {
 		this.game=game;
 	}
 
-	@Override
-	public void setCurrentParameter(String currentParameter) {
-		this.currentParameter=currentParameter;
-	}
-	
 
 	@Override
 	public ActionDTO setParameters() {

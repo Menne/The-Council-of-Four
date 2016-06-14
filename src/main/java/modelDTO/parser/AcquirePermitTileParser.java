@@ -1,13 +1,9 @@
 package modelDTO.parser;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import client.view.ClientView;
-import client.view.notifies.ActionNotify;
-import client.view.notifies.ParametersNotify;
-import client.view.notifies.PoliticsCardsNotify;
 import modelDTO.GameDTO;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.standardActions.AcquirePermitTileDTO;
@@ -15,7 +11,6 @@ import modelDTO.actionsDTO.standardActions.AcquirePermitTileDTO;
 public class AcquirePermitTileParser implements ActionParserVisitor {
 	
 	private AcquirePermitTileDTO selectedAction;
-	private Object currentParameter;
 	private ClientView view;
 	private GameDTO game;
 	
@@ -23,10 +18,6 @@ public class AcquirePermitTileParser implements ActionParserVisitor {
 		this.selectedAction=selectedAction;
 		this.view=view;
 		this.game=game;
-	}
-
-	public void setCurrentParameter(String currentParameter) {
-		this.currentParameter=currentParameter;
 	}
 	
 	

@@ -4,21 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import client.view.ClientView;
-import client.view.notifies.ActionNotify;
-import client.view.notifies.ParametersNotify;
-import client.view.notifies.PoliticsCardsNotify;
 import modelDTO.GameDTO;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.standardActions.BuildByKingDTO;
-import modelDTO.gameTableDTO.CardColourDTO;
 import modelDTO.gameTableDTO.CityDTO;
-import modelDTO.gameTableDTO.GenericPlayerDTO;
 import modelDTO.gameTableDTO.RegionDTO;
 
 public class BuildByKingParser implements ActionParserVisitor {
 
 	private BuildByKingDTO selectedAction;
-	private Object currentParameter;
 	private ClientView view;
 	private GameDTO game;
 	
@@ -28,10 +22,6 @@ public class BuildByKingParser implements ActionParserVisitor {
 		this.game=game;
 	}
 
-	public void setCurrentParameter(String currentParameter) {
-		this.currentParameter=currentParameter;
-	}
-	
 	
 	@Override
 	public ActionDTO setParameters() {
