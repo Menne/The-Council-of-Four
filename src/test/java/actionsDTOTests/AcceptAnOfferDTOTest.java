@@ -17,10 +17,12 @@ public class AcceptAnOfferDTOTest {
 		GameDTO game= new GameDTO();
 		AcceptAnOfferDTO action= new AcceptAnOfferDTO();
 		assertEquals(AcceptAnOfferParser.class, action.setParser(game).getClass());
+		assertFalse(action.checkIfParametersSetted());
 		action.setOffer(offerDTO);
 		action.parametersSetted();
 		assertTrue(action.getOffer()==offerDTO);
 		assertTrue(action.checkIfParametersSetted());
+		assertEquals("ao: accept an offer", action.toString());
 	}
 
 }

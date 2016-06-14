@@ -25,12 +25,14 @@ public class AcquirePermitTileDTOTest {
 		action.setCardsToDescard(cardsToDescard);
 		action.setChosenRegion(chosenRegion);
 		action.setNumberOfPermitTile(numberOfPermitTile);
+		assertFalse(action.checkIfParametersSetted());
 		assertEquals(AcquirePermitTileParser.class, action.setParser(game).getClass());
 		action.parametersSetted();
 		assertTrue(action.checkIfParametersSetted());
 		assertTrue(action.getCardsToDescard()==cardsToDescard);
 		assertTrue(action.getChoosenRegion()==chosenRegion);
 		assertTrue(action.getNumberOfPermitTiles()==numberOfPermitTile);
+		assertEquals("m2: acquire a permit tile", action.toString());
 	}
 
 }

@@ -17,6 +17,7 @@ public class PurchasedPermitTileActionDTOTest {
 		GameDTO game= new GameDTO();
 		PurchasedPermitTileActionDTO action= new PurchasedPermitTileActionDTO();
 		action.setPermitTile(selectedPermitTile);
+		assertFalse(action.checkIfParametersSetted());
 		assertEquals(PurchasedPermitTileBonusParser.class, action.setParser(game).getClass());
 		action.parametersSetted();
 		assertTrue(action.getSelectedPermitTile()==selectedPermitTile);
