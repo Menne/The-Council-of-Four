@@ -14,8 +14,7 @@ public class ClientPermitTileBonusNotify implements ClientViewNotify {
 
 	@Override
 	public void updateView(ClientView view) {
-		// TODO Auto-generated method stub
-		
+		view.PurchasedPermitTileBonus(this.availablePermitTiles);
 	}
 
 }

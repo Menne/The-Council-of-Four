@@ -30,10 +30,10 @@ public abstract class ClientView implements Observer<ClientViewNotify> {
 	@Override
 	public abstract void update(ClientViewNotify notify);
 	
+	
 	public abstract void input() throws RemoteException;
 	
 	public abstract void welcome(String name) throws RemoteException;
-	
 	
 	
 	public abstract void displayMessage(String string);
@@ -49,7 +49,6 @@ public abstract class ClientView implements Observer<ClientViewNotify> {
 	public abstract void displayMarket(MarketDTO market);
 	
 	public abstract void displayFinalRanking(ArrayList<GenericPlayerDTO> finalRankingTable);
-	
 	
 	
 	public abstract RegionDTO askForRegionBoard(List<RegionDTO> acceptableRegions);
@@ -73,6 +72,10 @@ public abstract class ClientView implements Observer<ClientViewNotify> {
 	public abstract boolean askForOtherSelling();
 	
 	public abstract OfferDTO askForAcceptingAnOffer(List<OfferDTO> acceptableOffers);
-
 	
+	
+	public abstract void ChooseCityBonus(List<CityDTO> acceptableCities);
+	
+	public abstract void PurchasedPermitTileBonus(List<PermitTileDTO> acceptablePermitTiles);
+
 }

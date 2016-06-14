@@ -15,8 +15,7 @@ public class ClientPlayerNotify implements ClientViewNotify {
 
 	@Override
 	public void updateView(ClientView view) {
-		// TODO Auto-generated method stub
-		
+		view.displayPlayer(this.clientPlayerUpdated);
 	}
 
 }

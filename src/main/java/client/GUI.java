@@ -164,6 +164,19 @@ public class GUI extends ClientView {
 	}
 
 	
+	
+	
+	@Override
+	public void ChooseCityBonus(List<CityDTO> acceptableCities) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void PurchasedPermitTileBonus(List<PermitTileDTO> acceptablePermitTiles) {
+		// TODO Auto-generated method stub
+		
+	}
 
 
 }

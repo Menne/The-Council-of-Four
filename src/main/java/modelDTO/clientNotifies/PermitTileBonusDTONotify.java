@@ -1,7 +1,7 @@
 package modelDTO.clientNotifies;
 
+import client.view.notifies.ClientPermitTileBonusNotify;
 import modelDTO.GameDTO;
-import modelDTO.actionsDTO.bonusActions.PurchasedPermitTileActionDTO;
 
 public class PermitTileBonusDTONotify implements ClientNotify {
 
@@ -12,8 +12,8 @@ public class PermitTileBonusDTONotify implements ClientNotify {
 
 	@Override
 	public void updateModel(GameDTO gameDTOtoupdate) {
-		PurchasedPermitTileActionDTO purchasedPermitTileActionDTO=new PurchasedPermitTileActionDTO();
-	//	purchasedPermitTileActionDTO.setParser(gameDTOtoupdate).setParameters(gameDTOtoupdate.getParser());
+		gameDTOtoupdate.notifyObserver(new ClientPermitTileBonusNotify
+				(gameDTOtoupdate.getClientPlayer().getAvailablePermitTiles()));
 	}
 
 }
