@@ -2,7 +2,9 @@ package modelDTOTests;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.junit.Test;
@@ -29,6 +31,10 @@ public class CityDTOTest {
 		assertTrue(city.getColour()==colour);
 		assertTrue(city.getName()==name);
 		assertTrue(city.getRewardToken()==rewardToken);
+		List<String> emporiumsPlayers=new ArrayList<>();
+		for(GenericPlayerDTO player : emporiums)
+			emporiumsPlayers.add(player.getName());
+		assertEquals(name+"\t"+emporiums+"\t"+rewardToken+"\n", city.toString());
 	}
 
 }

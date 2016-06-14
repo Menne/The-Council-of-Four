@@ -11,6 +11,7 @@ import modelDTO.GameDTO;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.gameTableDTO.GameTableDTO;
 import modelDTO.marketDTO.MarketDTO;
+import modelDTO.parser.Parser;
 import modelDTO.playerDTO.ClientPlayerDTO;
 
 public class GameDTOTest {
@@ -30,6 +31,7 @@ public class GameDTOTest {
 		assertTrue(game.getAvailableActions()==actions);
 		assertTrue(game.getMarket()==market);
 		assertTrue(game.getClientGameTable()==gameTable);
+		assertEquals(game.getParser().getClass(), Parser.class);
 	}
 
 }

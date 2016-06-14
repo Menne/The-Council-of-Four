@@ -14,6 +14,7 @@ public class CityColourDTOtest {
 		String name= "blu";
 		colour.setName(name);
 		assertTrue(colour.getName()==name);
+		assertEquals(name, colour.toString());
 	}
 	
 }

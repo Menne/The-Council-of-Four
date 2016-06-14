@@ -3,6 +3,7 @@ package modelDTOTests;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
@@ -40,7 +41,9 @@ public class GameTableDTOTest {
 		assertTrue(gameTable.getClientRegions()==regions);
 		assertTrue(gameTable.getCurrentPlayer()==player);
 		assertTrue(gameTable.getKing()==king);
-		
+		assertEquals("\nUpdated game table:\nPlayers:\n" + players + "\nNow is plaiyng:\t" + player + "\n" +
+				 regions + "\nKingCity: "+ king+" \nKing's balcony:" + Arrays.toString(clientKingBalcony) + "\nCouncillors riserve"+
+				 cardColours + "\n" + bonuses, gameTable.toString());
 	}
 
 }
