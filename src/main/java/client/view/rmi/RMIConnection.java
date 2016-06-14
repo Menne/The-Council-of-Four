@@ -12,10 +12,7 @@ import server.view.RMIViewRemote;
 
 public class RMIConnection extends Connection implements ClientRMIViewRemote{
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 6062596454352046673L;
+
 	private final RMIViewRemote serverStub;
 	
 	public RMIConnection(RMIViewRemote serverStub) {

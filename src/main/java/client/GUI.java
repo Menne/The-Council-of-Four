@@ -5,17 +5,17 @@ import java.rmi.RemoteException;
 import client.view.ClientView;
 import client.view.Connection;
 import client.view.notifies.ClientViewNotify;
+import javafx.application.Application;
 
 
 public class GUI extends ClientView {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 4145493495640741715L;
+	private final MainApp mainApp;
 	
 	public GUI(Connection connection) {
 		super(connection);
+		this.mainApp=new MainApp();
+		Application.launch(MainApp.class);
 	}
 
 	@Override

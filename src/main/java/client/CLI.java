@@ -16,10 +16,6 @@ import modelDTO.parser.Parser;
 public class CLI extends ClientView {
 
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 5481163601777854172L;
 	private final Parser parser;
 	private final Scanner scanner;
 	

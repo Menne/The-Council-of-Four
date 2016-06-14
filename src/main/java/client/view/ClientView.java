@@ -1,18 +1,13 @@
 package client.view;
 
-import java.io.Serializable;
+
 import java.rmi.RemoteException;
 
 import client.view.notifies.ClientViewNotify;
 import observerPattern.Observer;
 
-public abstract class ClientView implements Observer<ClientViewNotify>, Serializable {
+public abstract class ClientView implements Observer<ClientViewNotify> {
 
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -6692372505563332254L;
 	protected final Connection connection;
 	
 	public ClientView(Connection connection) {
