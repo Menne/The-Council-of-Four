@@ -28,6 +28,7 @@ public class MainActionBonusTest {
 		MainActionBonus bonus= new MainActionBonus();
 		bonus.assignBonus(game);
 		assertEquals(AdditionalMainActionBonusState.class, game.getState().getClass());
+		assertEquals("MainAction+1", bonus.toString());
 	}
 
 	@Test

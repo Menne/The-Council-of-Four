@@ -24,8 +24,12 @@ public class CoinsBonusTest {
 		game.setCurrentPlayer(game.getPlayers().get(0));
 		int temp= game.getCurrentPlayer().getCoins();
 		CoinsBonus bonus= new CoinsBonus(3);
+		CoinsBonus bonus1= new CoinsBonus(3);
 		bonus.assignBonus(game);
 		assertEquals(temp+3, game.getCurrentPlayer().getCoins());
+		assertEquals("Coins+" + 3, bonus.toString());
+		assertEquals(34, bonus.hashCode());
+		assertEquals(bonus, bonus1);
 	}
 
 	@Test(expected=IllegalArgumentException.class)

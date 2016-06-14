@@ -23,8 +23,12 @@ public class ScoreBonusTest {
 		game.start(players);
 		game.setCurrentPlayer(game.getPlayers().get(0));
 		ScoreBonus bonus=new ScoreBonus(1);
+		ScoreBonus bonus1=new ScoreBonus(1);
 		bonus.assignBonus(game);
 		assertEquals(1, game.getCurrentPlayer().getScore());
+		assertEquals("Score+" + 1, bonus.toString());
+		assertEquals(32, bonus.hashCode());
+		assertEquals(bonus, bonus1);
 	}
 	
 	@Test

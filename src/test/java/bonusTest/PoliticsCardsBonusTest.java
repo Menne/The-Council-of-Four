@@ -34,7 +34,11 @@ public class PoliticsCardsBonusTest {
 		game.setCurrentPlayer(game.getPlayers().get(0));
 		int temp=game.getCurrentPlayer().getHand().size();
 		PoliticsCardsBonus bonus= new PoliticsCardsBonus(3);
+		PoliticsCardsBonus bonus1= new PoliticsCardsBonus(3);
 		bonus.assignBonus(game);
 		assertEquals(temp+3, game.getCurrentPlayer().getHand().size());
+		assertEquals("PoliticsCards+" + 3, bonus.toString());
+		assertEquals(34, bonus.hashCode());
+		assertEquals(bonus, bonus1);
 	}
 }

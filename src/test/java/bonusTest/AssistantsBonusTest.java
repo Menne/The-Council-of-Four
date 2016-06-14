@@ -23,9 +23,13 @@ public class AssistantsBonusTest {
 		game.start(players);
 		game.setCurrentPlayer(game.getPlayers().get(0));
 		AssistantsBonus bonus= new AssistantsBonus(1);
+		AssistantsBonus bonus1= new AssistantsBonus(1);
 		int temp=game.getPlayers().get(0).getNumberOfAssistants();
 		bonus.assignBonus(game);
 		assertEquals(temp+1, game.getPlayers().get(0).getNumberOfAssistants());
+		assertEquals("assistants+" + 1, bonus.toString());
+		assertEquals(32, bonus.hashCode());
+		assertEquals(bonus, bonus1);
 	}
 	
 	@Test(expected= IllegalArgumentException.class)
