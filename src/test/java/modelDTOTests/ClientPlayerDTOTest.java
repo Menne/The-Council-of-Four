@@ -1,4 +1,4 @@
-package DTOTests;
+package modelDTOTests;
 
 import static org.junit.Assert.*;
 
@@ -35,6 +35,8 @@ public class ClientPlayerDTOTest {
 		assertTrue(player.getHand()==colour);
 		assertTrue(player.getName()==name);
 		assertTrue(player.getPlayerNumber()==playerNumber);
-	} 
+		assertEquals("\n" + name +", Here is your current status: [hand=" + colour + ", coveredPermitTiles=" + coveredTiles
+				+ ", availablePermitTiles=" + uncoveredTiles + ", assistants=" + assistants + "]", player.toString());
+	}
 
 }

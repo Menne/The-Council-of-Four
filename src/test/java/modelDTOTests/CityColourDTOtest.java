@@ -1,4 +1,4 @@
-package DTOTests;
+package modelDTOTests;
 
 import static org.junit.Assert.*;
 
@@ -14,6 +14,7 @@ public class CityColourDTOtest {
 		String name= "blu";
 		colour.setName(name);
 		assertTrue(colour.getName()==name);
+		assertEquals(name, colour.toString());
 	}
 	
 }

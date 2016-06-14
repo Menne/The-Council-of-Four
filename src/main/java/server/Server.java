@@ -53,7 +53,7 @@ public class Server {
 		System.out.println("Constructing the RMI registry");
 		this.currentRMIView=new ServerRMIView(this, currentGame);
 		RMIViewRemote rmiViewRemote=(RMIViewRemote) UnicastRemoteObject.exportObject(currentRMIView,0);
-		registry.bind(NAME, currentRMIView);
+		registry.bind(NAME, rmiViewRemote);
 	}
 	
 	
