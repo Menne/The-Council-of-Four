@@ -18,7 +18,7 @@ public class ChooseCityActionDTOTest {
 		ChooseCityActionDTO action= new ChooseCityActionDTO();
 		action.setCity(selectedCity);
 		assertFalse(action.checkIfParametersSetted());
-		assertEquals(ChooseCityBonusParser.class, action.setParser(gameDTO).getClass());
+		assertEquals(ChooseCityBonusParser.class, action.setParser(null, null).getClass());
 		action.parametersSetted();
 		assertTrue(action.checkIfParametersSetted());
 		assertTrue(action.getSelectedCity()==selectedCity);

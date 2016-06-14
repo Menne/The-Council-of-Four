@@ -6,7 +6,6 @@ import java.util.List;
 import modelDTO.actionsDTO.ActionDTO;
 import client.view.notifies.ClientViewNotify;
 import modelDTO.marketDTO.MarketDTO;
-import modelDTO.parser.Parser;
 import modelDTO.playerDTO.ClientPlayerDTO;
 import observerPattern.Observable;
 import server.model.Game;
@@ -22,14 +21,12 @@ public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Ga
 	private ClientPlayerDTO clientPlayer;
 	private ArrayList<ActionDTO> availableActions;
 	private MarketDTO market;
-	private Parser parser;
 	
 	public GameDTO() {
 		this.clientGameTable=new GameTableDTO();
 		this.clientPlayer=new ClientPlayerDTO();
 		this.availableActions=new ArrayList<>();
 		this.market=new MarketDTO();
-		this.parser=new Parser(this);
 	}
 
 	
@@ -63,10 +60,6 @@ public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Ga
 
 	public void setMarket(MarketDTO market) {
 		this.market=market;
-	}
-
-	public Parser getParser() {
-		return this.parser;
 	}
 
 	

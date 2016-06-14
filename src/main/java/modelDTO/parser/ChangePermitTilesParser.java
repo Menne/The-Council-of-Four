@@ -1,5 +1,6 @@
 package modelDTO.parser;
 
+import client.view.ClientView;
 import client.view.notifies.ActionNotify;
 import client.view.notifies.ParametersNotify;
 import modelDTO.GameDTO;
@@ -9,11 +10,13 @@ import modelDTO.actionsDTO.standardActions.ChangePermitTilesDTO;
 public class ChangePermitTilesParser implements ActionParserVisitor {
 
 	private ChangePermitTilesDTO selectedAction;
-	private String currentParameter;
+	private Object currentParameter;
+	private ClientView view;
 	private GameDTO game;
 	
-	public ChangePermitTilesParser(ChangePermitTilesDTO selectedAction, GameDTO game) {
+	public ChangePermitTilesParser(ChangePermitTilesDTO selectedAction, ClientView view, GameDTO game) {
 		this.selectedAction=selectedAction;
+		this.view=view;
 		this.game=game;
 	}
 	
@@ -23,14 +26,12 @@ public class ChangePermitTilesParser implements ActionParserVisitor {
 
 	
 	@Override
-	public ActionDTO setParameters(Parser parser) {
-		this.game.notifyObserver(new ActionNotify
-				("Ok! you have chosen to change the permit tiles of a region. Now I need some other infos, like:"));
+	public ActionDTO setParameters() {
+		this.view.displayMessage("Ok! you have chosen to change the permit tiles of a region. Now I need some other infos, like:");
 		
-		this.game.notifyObserver(new ActionNotify
-				("the name of the region in which you want to pick"));
-		this.game.notifyObserver(new ParametersNotify(parser.acceptableRegions(), this));
-		this.selectedAction.setSelectedRegion(parser.regionTranslator(currentParameter));
+		this.view.displayMessage("the name of the region in which you want to pick");
+		this.selectedAction.setSelectedRegion(this.view.askForRegionBoard
+				(this.game.getClientGameTable().getClientRegions()));
 		
 		this.selectedAction.parametersSetted();
 		

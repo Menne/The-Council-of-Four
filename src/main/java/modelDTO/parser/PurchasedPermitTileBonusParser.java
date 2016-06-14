@@ -1,5 +1,6 @@
 package modelDTO.parser;
 
+import client.view.ClientView;
 import client.view.notifies.ActionNotify;
 import client.view.notifies.ParametersNotify;
 import modelDTO.GameDTO;
@@ -9,11 +10,13 @@ import modelDTO.actionsDTO.bonusActions.PurchasedPermitTileActionDTO;
 public class PurchasedPermitTileBonusParser implements ActionParserVisitor {
 
 	private PurchasedPermitTileActionDTO selectedAction;
+	private ClientView view;
+	private Object currentParameter;
 	private GameDTO game;
-	private String currentParameter;
 
-	public PurchasedPermitTileBonusParser(PurchasedPermitTileActionDTO selectedAction, GameDTO game) {
+	public PurchasedPermitTileBonusParser(PurchasedPermitTileActionDTO selectedAction, ClientView view, GameDTO game) {
 		this.selectedAction=selectedAction;
+		this.view=view;
 		this.game=game;
 	}
 
@@ -23,22 +26,20 @@ public class PurchasedPermitTileBonusParser implements ActionParserVisitor {
 	}
 
 	@Override
-	public ActionDTO setParameters(Parser parser) {
-		this.game.notifyObserver(new ActionNotify
-				("Permit tile bonus earned! You have the possibility to choose from your permit tiles,"
-						+ "covered or not, and get the bonuses associated to that"));
+	public ActionDTO setParameters() {
+		this.view.displayMessage("Permit tile bonus earned! You have the possibility to choose from your permit tiles,"
+						+ "covered or not, and get the bonuses associated to that");
 		
 		if (!this.game.getClientPlayer().getAvailablePermitTiles().isEmpty()) {
 			
-			this.game.notifyObserver(new ParametersNotify(parser.acceptablePermitTiles(), this));
-			this.selectedAction.setPermitTile(parser.permitTileTranslator(currentParameter));
+			this.selectedAction.setPermitTile(this.view.askForPermitTile
+					(this.game.getClientPlayer().getAvailablePermitTiles()));
 			
 			this.selectedAction.parametersSetted();
 		}
 		
 		else 
-			this.game.notifyObserver(new ActionNotify
-					("But it seems that you haven't any permit tiles in your hand!"));
+			this.view.displayMessage("But it seems that you haven't any permit tiles in your hand!");
 		
 		return this.selectedAction;
 		

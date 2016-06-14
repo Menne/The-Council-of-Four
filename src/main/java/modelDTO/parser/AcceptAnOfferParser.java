@@ -1,5 +1,6 @@
 package modelDTO.parser;
 
+import client.view.ClientView;
 import client.view.notifies.AcceptAnOfferNotify;
 import client.view.notifies.ActionNotify;
 import modelDTO.GameDTO;
@@ -9,11 +10,13 @@ import modelDTO.actionsDTO.marketActions.AcceptAnOfferDTO;
 public class AcceptAnOfferParser implements ActionParserVisitor {
 
 	private AcceptAnOfferDTO selectedAction;
-	private String currentParameter;
+	private Object currentParameter;
+	private ClientView view;
 	private GameDTO game;
 	
-	public AcceptAnOfferParser(AcceptAnOfferDTO selectedAction, GameDTO game) {
+	public AcceptAnOfferParser(AcceptAnOfferDTO selectedAction, ClientView view, GameDTO game) {
 		this.selectedAction=selectedAction;
+		this.view=view;
 		this.game=game;
 	}
 	
@@ -23,20 +26,19 @@ public class AcceptAnOfferParser implements ActionParserVisitor {
 	}
 
 	@Override
-	public ActionDTO setParameters(Parser parser) {
+	public ActionDTO setParameters() {
 		
 		if (!this.game.getMarket().getOffersList().isEmpty()) {
 		
-			this.game.notifyObserver(new ActionNotify("Do you want to buy one of these objects?"));
-			this.game.notifyObserver(new AcceptAnOfferNotify(parser.acceptableOffers(), this));
-			this.selectedAction.setOffer(parser.OfferTranslator(parser.acceptableOffers().get(Integer.parseInt(currentParameter)-1)));
+			this.view.displayMessage("Do you want to buy one of these objects?");
+			this.selectedAction.setOffer(this.view.askForAcceptingAnOffer
+					(this.game.getMarket().getOffersList()));
 			
 			this.selectedAction.parametersSetted();
 			
 		}
 		else 
-			this.game.notifyObserver(new ActionNotify
-					("There is nothing to buy from other players"));
+			this.view.displayMessage("There is nothing to buy from other players");
 		
 		return selectedAction;
 	}

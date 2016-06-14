@@ -20,7 +20,7 @@ public class ElectCouncillorByAssistantDTOTest {
 		action.setCouncilBalcony(councilBalcony);
 		action.setNewCouncillor(newCouncillor);
 		assertFalse(action.checkIfParametersSetted());
-		assertEquals(ElectCouncillorByAssistantParser.class, action.setParser(game).getClass());
+		assertEquals(ElectCouncillorByAssistantParser.class, action.setParser(null, null).getClass());
 		action.parametersSetted();
 		assertTrue(action.checkIfParametersSetted());
 		assertTrue(action.getCouncilBalcony()==councilBalcony);

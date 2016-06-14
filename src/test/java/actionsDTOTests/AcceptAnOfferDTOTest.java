@@ -14,9 +14,7 @@ public class AcceptAnOfferDTOTest {
 	@Test
 	public void testSetters() {
 		OfferDTO offerDTO= new OfferDTO();
-		GameDTO game= new GameDTO();
 		AcceptAnOfferDTO action= new AcceptAnOfferDTO();
-		assertEquals(AcceptAnOfferParser.class, action.setParser(game).getClass());
 		assertFalse(action.checkIfParametersSetted());
 		action.setOffer(offerDTO);
 		action.parametersSetted();

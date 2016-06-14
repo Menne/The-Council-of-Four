@@ -3,6 +3,7 @@ package client.view.notifies;
 import java.util.List;
 import java.util.Scanner;
 
+import client.view.ClientView;
 import modelDTO.parser.ActionParserVisitor;
 
 public class OfferPriceNotify implements ClientViewNotify {
@@ -24,6 +25,12 @@ public class OfferPriceNotify implements ClientViewNotify {
 				input=scanner.nextLine();
 			}
 		this.currentParser.setCurrentParameter(input);
+	}
+
+	@Override
+	public void updateView(ClientView view) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -24,7 +24,7 @@ public class BuildByKingDTOTest {
 		action.setCardsToDescard(cardsToDescard);
 		action.setSelectedCity(selectedCity);
 		assertFalse(action.checkIfParametersSetted());
-		assertEquals(BuildByKingParser.class, action.setParser(game).getClass());
+		assertEquals(BuildByKingParser.class, action.setParser(null, null).getClass());
 		assertTrue(action.getCardsToDescard()==cardsToDescard);
 		assertTrue(action.getSelectedCity()==selectedCity);
 		action.parametersSetted();

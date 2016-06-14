@@ -42,6 +42,9 @@ public class GenericPlayerDTOTest {
 		assertTrue(player.getNobility()==nobility);
 		assertTrue(player.getPlayerNumber()==playerNumber);
 		assertTrue(player.getScore()==score);
+		assertEquals("\nPlayer " + playerNumber + "\tname: "+ name + "\tassistants=" + assistants + "\tscore="
+				+ score + "\tnobility=" + nobility + "\tcoins=" + coins + "\thand="+hand+"\tplayersPermitTilesTurnedUp=" + availablePermitTiles +
+				 "\temporiums=" + emporiums + "]", player.toString());
 	}
 
 }

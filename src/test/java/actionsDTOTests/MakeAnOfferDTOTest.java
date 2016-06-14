@@ -22,7 +22,7 @@ public class MakeAnOfferDTOTest {
 		MakeAnOfferDTO action= new MakeAnOfferDTO();
 		action.setOfferedObjectsDTO(offeredObjectsDTO);
 		assertFalse(action.checkIfParametersSetted());
-		assertEquals(MakeAnOfferParser.class, action.setParser(game).getClass());
+		assertEquals(MakeAnOfferParser.class, action.setParser(null, null).getClass());
 		assertTrue(action.getOfferedObjectsDTO()==offeredObjectsDTO);
 		action.addOfferToList(offerDTO);
 		assertTrue(action.getOfferedObjectsDTO().get(0)==offerDTO);

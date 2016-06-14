@@ -100,7 +100,9 @@ public class GameDTOMapper implements GameMapperInterface {
 			clientPlayerDTO.getCoveredPermitTiles().add(this.permitTileMap(permitTile));
 		for (PermitTile permitTile : realObject.getPlayersPermitTilesTurnedUp())
 			clientPlayerDTO.getAvailablePermitTiles().add(this.permitTileMap(permitTile));
-		clientPlayerDTO.setAssistants(realObject.getNumberOfAssistants());
+		clientPlayerDTO.setAssistants(new ArrayList<>());
+		for (int i=1; i<=realObject.getNumberOfAssistants(); i++)
+			clientPlayerDTO.getAssistants().add(new AssistantDTO());
 		
 		return clientPlayerDTO;	
 	}

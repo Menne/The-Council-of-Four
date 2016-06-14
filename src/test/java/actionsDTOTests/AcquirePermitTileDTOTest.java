@@ -26,7 +26,7 @@ public class AcquirePermitTileDTOTest {
 		action.setChosenRegion(chosenRegion);
 		action.setNumberOfPermitTile(numberOfPermitTile);
 		assertFalse(action.checkIfParametersSetted());
-		assertEquals(AcquirePermitTileParser.class, action.setParser(game).getClass());
+		assertEquals(AcquirePermitTileParser.class, action.setParser(null, null).getClass());
 		action.parametersSetted();
 		assertTrue(action.checkIfParametersSetted());
 		assertTrue(action.getCardsToDescard()==cardsToDescard);

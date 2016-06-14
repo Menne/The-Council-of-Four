@@ -2,6 +2,7 @@ package modelDTO.actionsDTO.standardActions;
 
 import java.util.List;
 
+import client.view.ClientView;
 import modelDTO.GameDTO;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.ActionWithParameters;
@@ -52,8 +53,8 @@ public class BuildByKingDTO implements ActionDTO, ActionWithParameters {
 	}
 
 	@Override
-	public ActionParserVisitor setParser(GameDTO game) {
-		return new BuildByKingParser(this, game);
+	public ActionParserVisitor setParser(ClientView view, GameDTO game) {
+		return new BuildByKingParser(this, view, game);
 	}
 
 	@Override

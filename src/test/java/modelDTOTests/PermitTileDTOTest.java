@@ -22,6 +22,10 @@ public class PermitTileDTOTest {
 		permitTile.setBuildablecities(buildablecities);
 		assertTrue(permitTile.getBonuses()==bonuses);
 		assertTrue(permitTile.getBuildablecities()==buildablecities);
+		Set<String> cities=new HashSet<>();
+		for(CityDTO cityDTO : buildablecities)
+			cities.add(cityDTO.getName());
+		assertEquals(cities + "\t" + bonuses, permitTile.toString());
 	}
 
 }

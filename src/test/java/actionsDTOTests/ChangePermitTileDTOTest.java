@@ -18,7 +18,7 @@ public class ChangePermitTileDTOTest {
 		ChangePermitTilesDTO action= new ChangePermitTilesDTO();
 		action.setSelectedRegion(selectedRegion);
 		assertFalse(action.checkIfParametersSetted());
-		assertEquals(ChangePermitTilesParser.class, action.setParser(game).getClass());
+		assertEquals(ChangePermitTilesParser.class, action.setParser(null, null).getClass());
 		assertTrue(action.getSelectedRegion()==selectedRegion);
 		action.parametersSetted();
 		assertTrue(action.checkIfParametersSetted());

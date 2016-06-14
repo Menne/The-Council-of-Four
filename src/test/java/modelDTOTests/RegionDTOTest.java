@@ -2,6 +2,7 @@ package modelDTOTests;
 
 import static org.junit.Assert.*;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -29,6 +30,8 @@ public class RegionDTOTest {
 		assertTrue(region.getCities()==cities);
 		assertTrue(region.getName()==name);
 		assertTrue(region.getUncoveredPermitTiles()==uncoveredPermitTiles);
+		assertEquals("\n"+name + "\t" + Arrays.toString(balcony) + "\tTiles:" + Arrays.toString(uncoveredPermitTiles)+
+				"\t" + cities, region.toString());
 	}
 
 	public void testEquals() {

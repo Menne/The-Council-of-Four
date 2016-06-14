@@ -1,5 +1,6 @@
 package modelDTO.actionsDTO.bonusActions;
 
+import client.view.ClientView;
 import modelDTO.GameDTO;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.ActionWithParameters;
@@ -37,8 +38,8 @@ public class PurchasedPermitTileActionDTO implements ActionDTO, ActionWithParame
 	}
 
 	@Override
-	public ActionParserVisitor setParser(GameDTO game) {
-		return new PurchasedPermitTileBonusParser(this, game);
+	public ActionParserVisitor setParser(ClientView view, GameDTO game) {
+		return new PurchasedPermitTileBonusParser(this, view, game);
 	}
 
 	@Override

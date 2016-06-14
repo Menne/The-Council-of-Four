@@ -14,6 +14,7 @@ public class CardColourDTOTest {
 		String name= "Blu";
 		colour.setName(name);
 		assertTrue(colour.getName()==name);
+		assertEquals(name, colour.toString());
 	}
 	
 

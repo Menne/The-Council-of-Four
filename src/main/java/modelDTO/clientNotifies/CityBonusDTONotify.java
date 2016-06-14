@@ -13,7 +13,7 @@ public class CityBonusDTONotify implements ClientNotify {
 	@Override
 	public void updateModel(GameDTO gameDTOtoupdate) {
 		ChooseCityActionDTO chooseCityActionDTO=new ChooseCityActionDTO();
-		chooseCityActionDTO.setParser(gameDTOtoupdate).setParameters(gameDTOtoupdate.getParser());
+	//	chooseCityActionDTO.setParser(gameDTOtoupdate).setParameters(gameDTOtoupdate.getParser());
 	}
 
 }

@@ -3,6 +3,7 @@ package modelDTO.parser;
 import java.util.ArrayList;
 import java.util.List;
 
+import client.view.ClientView;
 import client.view.notifies.ActionNotify;
 import client.view.notifies.ParametersNotify;
 import modelDTO.GameDTO;
@@ -15,11 +16,13 @@ import modelDTO.gameTableDTO.RegionDTO;
 public class ChooseCityBonusParser implements ActionParserVisitor {
 
 	private ChooseCityActionDTO selectedAction;
+	private ClientView view;
+	private Object currentParameter;
 	private GameDTO game;
-	private String currentParameter;
 
-	public ChooseCityBonusParser(ChooseCityActionDTO selectedAction, GameDTO game) {
+	public ChooseCityBonusParser(ChooseCityActionDTO selectedAction, ClientView view, GameDTO game) {
 		this.selectedAction=selectedAction;
+		this.view=view;
 		this.game=game;
 	}
 
@@ -29,32 +32,29 @@ public class ChooseCityBonusParser implements ActionParserVisitor {
 	}
 
 	@Override
-	public ActionDTO setParameters(Parser parser) {
-		this.game.notifyObserver(new ActionNotify
-				("City bonus earned! You have the possibility to choose from the cities in which you have built"
-						+ "an emporium, and get the bonuses associated to that"));
+	public ActionDTO setParameters() {
+		this.view.displayMessage("City bonus earned! You have the possibility to choose from the cities in which you have built"
+						+ "an emporium, and get the bonuses associated to that");
 		
-		List<String> acceptableCityNames=new ArrayList<String>();
+		List<CityDTO> acceptableCities=new ArrayList<>();
 		for (RegionDTO region : this.game.getClientGameTable().getClientRegions())
 			for (CityDTO city : region.getCities())
 				if(city.getBuildedEmporiums().isEmpty())
-					acceptableCityNames.add(city.getName());
+					acceptableCities.add(city);
 				else
 					for (GenericPlayerDTO emporium : city.getBuildedEmporiums())
 						if (emporium.equals(this.game.getClientPlayer()))
-							acceptableCityNames.add(city.getName());
+							acceptableCities.add(city);
 				
-		if (!acceptableCityNames.isEmpty()) {
+		if (!acceptableCities.isEmpty()) {
 		
-			this.game.notifyObserver(new ParametersNotify(parser.acceptableCities(), this));
-			this.selectedAction.setCity(parser.cityTranslator(currentParameter));
-		
+			this.selectedAction.setCity(this.view.askForCity(acceptableCities));
+			
 			this.selectedAction.parametersSetted();
 		}
 		
 		else 
-			this.game.notifyObserver(new ActionNotify
-					("But it seems you haven't built an emporium yet"));
+			this.view.displayMessage("But it seems you haven't built an emporium yet");
 		
 		return selectedAction;
 	}

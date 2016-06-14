@@ -14,4 +14,12 @@ public class AddPlayerDTOTest {
 		AddPlayerDTO action= new AddPlayerDTO(playerName);
 		assertTrue(action.getPlayerName()==playerName);
 	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testException() {
+		String playerName= "andre";
+		AddPlayerDTO action= new AddPlayerDTO(playerName);
+		action.startMapper(null);
+		assertTrue(false);
+	}
 }

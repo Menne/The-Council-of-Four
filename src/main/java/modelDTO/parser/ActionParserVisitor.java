@@ -6,6 +6,6 @@ public abstract interface ActionParserVisitor {
 
 	public abstract void setCurrentParameter(String input);
 
-	public abstract ActionDTO setParameters(Parser parser);
+	public abstract ActionDTO setParameters();
 
 }

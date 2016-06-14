@@ -2,6 +2,8 @@ package modelDTO.actionsDTO.marketActions;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import client.view.ClientView;
 import modelDTO.GameDTO;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.ActionWithParameters;
@@ -25,8 +27,8 @@ public class MakeAnOfferDTO implements ActionDTO, ActionWithParameters {
 	}
 	
 	@Override
-	public ActionParserVisitor setParser(GameDTO game) {
-		return new MakeAnOfferParser(this, game);
+	public ActionParserVisitor setParser(ClientView view, GameDTO game) {
+		return new MakeAnOfferParser(this, view, game);
 	}
 
 

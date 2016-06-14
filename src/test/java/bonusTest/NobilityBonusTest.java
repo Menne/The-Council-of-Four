@@ -28,6 +28,7 @@ public class NobilityBonusTest {
 		bonus.assignBonus(game);
 		assertEquals(temp+2, game.getCurrentPlayer().getScore());
 		assertEquals(2, game.getCurrentPlayer().getNobility());
+		assertEquals("Nobility+" + 2, bonus.toString());
 	}
 	
 	@Test(expected=IllegalArgumentException.class)

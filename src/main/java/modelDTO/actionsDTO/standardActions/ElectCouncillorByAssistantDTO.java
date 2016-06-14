@@ -1,5 +1,6 @@
 package modelDTO.actionsDTO.standardActions;
 
+import client.view.ClientView;
 import modelDTO.GameDTO;
 import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.actionsDTO.ActionWithParameters;
@@ -50,8 +51,8 @@ public class ElectCouncillorByAssistantDTO implements ActionDTO, ActionWithParam
 	}
 
 	@Override
-	public ActionParserVisitor setParser(GameDTO game) {
-		return new ElectCouncillorByAssistantParser(this, game);
+	public ActionParserVisitor setParser(ClientView view, GameDTO game) {
+		return new ElectCouncillorByAssistantParser(this, view, game);
 	}
 
 	@Override
