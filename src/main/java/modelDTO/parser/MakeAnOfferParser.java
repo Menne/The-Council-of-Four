@@ -14,8 +14,8 @@ public class MakeAnOfferParser implements ActionParserVisitor {
 
 	private MakeAnOfferDTO selectedAction;
 	private ClientView view;
-	private boolean otherSelling;
 	private GameDTO game;
+	private boolean otherSelling;
 	
 	public MakeAnOfferParser(MakeAnOfferDTO selectedAction, ClientView view, GameDTO game) {
 		this.selectedAction=selectedAction;
@@ -52,7 +52,7 @@ public class MakeAnOfferParser implements ActionParserVisitor {
 			
 			this.selectedAction.addOfferToList(offerDTO);
 			
-			this.view.displayMessage("Do you want to sell more? (Yes/)");
+			this.view.displayMessage("Do you want to sell more? (yes/no)");
 			this.otherSelling=this.view.askForOtherSelling();
 		
 			this.selectedAction.parametersSetted();

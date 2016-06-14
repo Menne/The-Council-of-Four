@@ -1,7 +1,5 @@
 package client.view.notifies;
 
-import java.util.Scanner;
-
 import client.view.ClientView;
 
 
@@ -14,14 +12,8 @@ public class ClientErrorNotify implements ClientViewNotify {
 	}
 
 	@Override
-	public void stamp(Scanner scanner) {
-		System.out.println(message);
-	}
-
-	@Override
 	public void updateView(ClientView view) {
-		// TODO Auto-generated method stub
-		
+		view.displayError(this.message);
 	}
 
 }

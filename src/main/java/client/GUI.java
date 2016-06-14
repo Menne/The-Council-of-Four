@@ -1,6 +1,7 @@
 package client;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.List;
 
 import client.view.ClientView;
@@ -12,6 +13,7 @@ import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.gameTableDTO.CardColourDTO;
 import modelDTO.gameTableDTO.CityDTO;
 import modelDTO.gameTableDTO.GameTableDTO;
+import modelDTO.gameTableDTO.GenericPlayerDTO;
 import modelDTO.gameTableDTO.PermitTileDTO;
 import modelDTO.gameTableDTO.RegionDTO;
 import modelDTO.marketDTO.MarketDTO;
@@ -57,6 +59,12 @@ public class GUI extends ClientView {
 	}
 	
 	@Override
+	public void displayError(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
 	public void displayAvailableActions(List<ActionDTO> availableActions) {
 		// TODO Auto-generated method stub
 		
@@ -76,6 +84,12 @@ public class GUI extends ClientView {
 
 	@Override
 	public void displayMarket(MarketDTO market) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void displayFinalRanking(ArrayList<GenericPlayerDTO> finalRankingTable) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -148,8 +162,6 @@ public class GUI extends ClientView {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	
 
 	
 

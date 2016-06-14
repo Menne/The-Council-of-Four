@@ -20,6 +20,7 @@ import modelDTO.actionsDTO.QuitDTO;
 import modelDTO.gameTableDTO.CardColourDTO;
 import modelDTO.gameTableDTO.CityDTO;
 import modelDTO.gameTableDTO.GameTableDTO;
+import modelDTO.gameTableDTO.GenericPlayerDTO;
 import modelDTO.gameTableDTO.PermitTileDTO;
 import modelDTO.gameTableDTO.RegionDTO;
 import modelDTO.marketDTO.MarketDTO;
@@ -40,17 +41,12 @@ public class CLI extends ClientView {
 		this.clientGame=clientGame;
 	}
 	
-	private boolean parametersNeeded(ActionDTO selectedAction) throws RemoteException {
-		return (selectedAction instanceof ActionWithParameters);			
-	}
 	
-	private void insertParametersAndSend(ActionWithParameters actionWithParameters) throws RemoteException {
-		this.parametersParser(actionWithParameters);
-		if (actionWithParameters.checkIfParametersSetted())
-			connection.sendAction(actionWithParameters);
-		
-	}
-	
+	/**
+	 * This method gets from the current state of play the list of available actions and convert them to strings,
+	 * then cuts the initials of available actions to let the user choose more easily
+	 * @return the list of strings of initials
+	 */
 	public List<String> availableActions() {
 		List<String> acceptableStrings=new ArrayList<String>();
 		for (ActionDTO action : this.clientGame.getAvailableActions())
@@ -58,14 +54,24 @@ public class CLI extends ClientView {
 		return acceptableStrings;
 	}
 	
-	public ActionDTO actionParser(String selectedAction) {
+	/**
+	 * This method reads the string inserted by the user and returns the corresponding action
+	 * @param selectedAction is the sigle of the action inserted by the user
+	 * @return the corresponding available action
+	 */
+	private ActionDTO actionParser(String selectedAction) {
 		for (ActionDTO availableAction : this.clientGame.getAvailableActions())
 			if (selectedAction.equals(availableAction.toString().substring(0,2)))
 				return availableAction;
 		return null;
 	}
 	
-	public ActionDTO parametersParser(ActionWithParameters selectedAction) {
+	/**
+	 * This method translates the strings of parameters into effective parameters and sets them to the action
+	 * @param selectedAction is the action without parameters set
+	 * @return the selected action with the parameters set
+	 */
+	private ActionDTO parametersParser(ActionWithParameters selectedAction) {
 		return selectedAction.setParser(this, this.clientGame).setParameters();
 	}
 	
@@ -94,13 +100,28 @@ public class CLI extends ClientView {
 				System.out.println("Sorry, action not available!");	
 		}		
 	}
+	
+	private boolean parametersNeeded(ActionDTO selectedAction) throws RemoteException {
+		return (selectedAction instanceof ActionWithParameters);			
+	}
+	
+	private void insertParametersAndSend(ActionWithParameters actionWithParameters) throws RemoteException {
+		this.parametersParser(actionWithParameters);
+		if (actionWithParameters.checkIfParametersSetted())
+			connection.sendAction(actionWithParameters);
+		
+	}
+	
+	
 
 	@Override
 	public void update(ClientViewNotify notify) {
-		notify.stamp(scanner);
-		if(notify instanceof ClientGameOverNotify)
+		notify.updateView(this);
+		if (notify instanceof ClientGameOverNotify)
 			scanner.close();
 	}
+	
+	
 
 	@Override
 	public void welcome(String name) throws RemoteException {
@@ -112,6 +133,11 @@ public class CLI extends ClientView {
 	@Override
 	public void displayMessage(String message) {
 		System.out.println(message);
+	}
+	
+	@Override
+	public void displayError(String error) {
+		System.out.println(error);
 	}
 
 	@Override
@@ -132,6 +158,11 @@ public class CLI extends ClientView {
 	@Override
 	public void displayMarket(MarketDTO market) {
 		System.out.println(market);
+	}
+	
+	@Override
+	public void displayFinalRanking(ArrayList<GenericPlayerDTO> finalRankingTable) {
+		System.out.println("GAME OVER\n FINAL RANKING TABLE: \n"+finalRankingTable);
 	}
 	
 	
@@ -168,7 +199,7 @@ public class CLI extends ClientView {
 			System.out.println("Wrong parameter. Try again");
 			permitTileToTranslate=scanner.nextLine();
 		}
-		return acceptablePermitTiles.get(Integer.parseInt(permitTileToTranslate)+1);
+		return acceptablePermitTiles.get(Integer.parseInt(permitTileToTranslate)-1);
 	}
 
 	@Override
@@ -191,19 +222,19 @@ public class CLI extends ClientView {
 	@Override
 	public CardColourDTO[] askForCouncilBalcony(List<CardColourDTO[]> acceptableCounilBalconies) {
 		List<String> acceptableCouncilBalconiyNames=Arrays.asList("Sea", "Hill", "Mountain", "King balcony");
-		System.out.println(acceptableCounilBalconies.toString());
+		System.out.println(acceptableCouncilBalconiyNames);
 		String councilBalconyToTranslate=this.scanner.nextLine();
 		while (!acceptableCouncilBalconiyNames.contains(councilBalconyToTranslate)) {
 			System.out.println("Wrong parameter. Try again");
 			councilBalconyToTranslate=scanner.nextLine();
 		}
-		if (councilBalconyToTranslate.equals("Sea"))
+		if (councilBalconyToTranslate.equals(acceptableCouncilBalconiyNames.get(0)))
 			return acceptableCounilBalconies.get(0);
-		if (councilBalconyToTranslate.equals("Hill"))
+		if (councilBalconyToTranslate.equals(acceptableCouncilBalconiyNames.get(1)))
 			return acceptableCounilBalconies.get(1);
-		if (councilBalconyToTranslate.equals("Mountain"))
+		if (councilBalconyToTranslate.equals(acceptableCouncilBalconiyNames.get(2)))
 			return acceptableCounilBalconies.get(2);
-		if (councilBalconyToTranslate.equals("King council"))
+		if (councilBalconyToTranslate.equals(acceptableCouncilBalconiyNames.get(3)))
 			return acceptableCounilBalconies.get(3);
 		throw new IllegalArgumentException("councilBalconyToTranslate is not a valid balcony");
 	}
@@ -233,14 +264,14 @@ public class CLI extends ClientView {
                 .collect(Collectors.toCollection(ArrayList::new));
 		System.out.println(acceptableCardsColours);
 		String cardsToTranslate=scanner.nextLine();
-		StringTokenizer st = new StringTokenizer(cardsToTranslate);
-		while (!this.checkCards(st, cardsToTranslate, acceptableCardsColours)) {
+		StringTokenizer cardsToTranslateTokenized=new StringTokenizer(cardsToTranslate);
+		while (!this.checkCards(cardsToTranslate, acceptableCardsColours)) {
 			cardsToTranslate=scanner.nextLine();
-			st = new StringTokenizer(cardsToTranslate);
+			cardsToTranslateTokenized=new StringTokenizer(cardsToTranslate);
 		}
 		List<CardColourDTO> cardsTranslated=new ArrayList<>();
-		while (st.hasMoreTokens()) {
-			String currentCard=st.nextToken();
+		while (cardsToTranslateTokenized.hasMoreTokens()) {
+			String currentCard=cardsToTranslateTokenized.nextToken();
 			for (CardColourDTO cardTranslated : acceptablePoliticsCards)
 				if (cardTranslated.getName().equals(currentCard)) {
 					cardsTranslated.add(cardTranslated);
@@ -249,15 +280,16 @@ public class CLI extends ClientView {
 		}
 		return cardsTranslated;
 	}
-		
-	private boolean checkCards(StringTokenizer st, String cardsToTranslate, List<String> acceptableCardsColours) {
-		List<String> temporaryAcceptablePoliticsCards=Arrays.asList(cardsToTranslate);
-		if (!(st.countTokens()>0 && st.countTokens()<=CouncilBalcony.getNumberofcouncillors())) {
+	
+	private boolean checkCards(String cardsToTranslate, List<String> acceptableCardsColours) {
+		List<String> temporaryAcceptablePoliticsCards=new ArrayList<>(acceptableCardsColours);
+		StringTokenizer cardsToCheckTokenized=new StringTokenizer(cardsToTranslate);
+		if (!(cardsToCheckTokenized.countTokens()>0 && cardsToCheckTokenized.countTokens()<=CouncilBalcony.getNumberofcouncillors())) {
 			System.out.println("Remember: you must descard at least 1 card and a maximum of "+ CouncilBalcony.getNumberofcouncillors() +" cards");
 			return false;
 		}
-		while (st.hasMoreTokens()) {
-			String currentCard=st.nextToken();
+		while (cardsToCheckTokenized.hasMoreTokens()) {
+			String currentCard=cardsToCheckTokenized.nextToken();
 			if (temporaryAcceptablePoliticsCards.contains(currentCard))
 				temporaryAcceptablePoliticsCards.remove(currentCard);
 			else {
@@ -295,12 +327,12 @@ public class CLI extends ClientView {
 			System.out.println("Wrong parameter. Try again");
 			offeringObjectToTranslate=scanner.nextLine();
 		}
-		return acceptableObjectsToOffer.get(Integer.parseInt(offeringObjectToTranslate)+1);
+		return acceptableObjectsToOffer.get(Integer.parseInt(offeringObjectToTranslate)-1);
 	}
 	
 	@Override
 	public int askForPrice() {
-		return Integer.parseInt(this.scanner.nextLine());
+		return this.scanner.nextInt();
 	}
 	
 	@Override
@@ -327,8 +359,11 @@ public class CLI extends ClientView {
 			System.out.println("Wrong parameter. Try again");
 			offerToTranslate=scanner.nextLine();
 		}
-		return acceptableOffers.get(Integer.parseInt(offerToTranslate)+1);
+		return acceptableOffers.get(Integer.parseInt(offerToTranslate)-1);
 	}
+
+
+	
 	
 
 }

@@ -1,7 +1,5 @@
 package client.view.notifies;
 
-import java.util.Scanner;
-
 import client.view.ClientView;
 import modelDTO.marketDTO.MarketDTO;
 
@@ -11,11 +9,6 @@ public class ClientMarketNotify implements ClientViewNotify {
 
 	public ClientMarketNotify(MarketDTO marketDTO) {
 		this.marketUpdated=marketDTO;
-	}
-
-	@Override
-	public void stamp(Scanner scanner) {
-		System.out.println(this.marketUpdated.toString());
 	}
 
 	@Override

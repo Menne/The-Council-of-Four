@@ -2,6 +2,7 @@ package client.view;
 
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.List;
 
 import client.view.notifies.ClientViewNotify;
@@ -9,6 +10,7 @@ import modelDTO.actionsDTO.ActionDTO;
 import modelDTO.gameTableDTO.CardColourDTO;
 import modelDTO.gameTableDTO.CityDTO;
 import modelDTO.gameTableDTO.GameTableDTO;
+import modelDTO.gameTableDTO.GenericPlayerDTO;
 import modelDTO.gameTableDTO.PermitTileDTO;
 import modelDTO.gameTableDTO.RegionDTO;
 import modelDTO.marketDTO.MarketDTO;
@@ -36,6 +38,8 @@ public abstract class ClientView implements Observer<ClientViewNotify> {
 	
 	public abstract void displayMessage(String string);
 	
+	public abstract void displayError(String message);
+
 	public abstract void displayAvailableActions(List<ActionDTO> availableActions);
 	
 	public abstract void displayGameTable(GameTableDTO clientGame);
@@ -43,6 +47,8 @@ public abstract class ClientView implements Observer<ClientViewNotify> {
 	public abstract void displayPlayer(ClientPlayerDTO player);
 	
 	public abstract void displayMarket(MarketDTO market);
+	
+	public abstract void displayFinalRanking(ArrayList<GenericPlayerDTO> finalRankingTable);
 	
 	
 	
