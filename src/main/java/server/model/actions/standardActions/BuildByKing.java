@@ -78,6 +78,7 @@ public class BuildByKing extends MainAction {
 		}
 		
 		game.getCurrentPlayer().decrementCoins(CoinsToPay(game));
+		game.getCurrentPlayer().decrementAssistants(assistantsToPay(game));
 		for (PoliticsCard card : cardsToDescard)
 			game.getCurrentPlayer().removeCardFromHand(card);
 		
@@ -86,7 +87,6 @@ public class BuildByKing extends MainAction {
 		for (City city : likedCities.getConnectedBuiltCities(game.getGameTable().getMap().getGameMap(), this.selectedCity, temporaryEmporium))
 			for (Bonus bonusToAssign : city.getRewardToken())
 				bonusToAssign.assignBonus(game);
-		game.getCurrentPlayer().decrementAssistants(assistantsToPay(game));
 		game.getGameTable().getKing().moveKing(selectedCity);
 
 		if (this.selectedCity.getRegion().isBonusAvailable())
@@ -100,7 +100,8 @@ public class BuildByKing extends MainAction {
 		}
 		
 		this.nextState(game);
-		
+		System.out.println(game.getGameTable());
+		System.out.println(game.getPlayers());
 		return true;
 	}
 	
@@ -194,9 +195,9 @@ public class BuildByKing extends MainAction {
 			game.getCurrentPlayer().getPlayersFinalBonus().add(
 					this.selectedCity.getRegion().getRegionBonus());
 			this.selectedCity.getRegion().notBonusAvailable();
+			if (!(game.getGameTable().getKingRewardTiles().isEmpty()))
+				assignKingRewardTile(game);
 		}
-		if (!(game.getGameTable().getKingRewardTiles().isEmpty()))
-			assignKingRewardTile(game);
 	}
 
 	/**
@@ -214,9 +215,9 @@ public class BuildByKing extends MainAction {
 			game.getCurrentPlayer().getPlayersFinalBonus().add(
 					this.selectedCity.getColour().getColorBonus());
 			this.selectedCity.getColour().notBonusAvailable();
+			if (!(game.getGameTable().getKingRewardTiles().isEmpty()))
+				assignKingRewardTile(game);
 		}
-		if (!(game.getGameTable().getKingRewardTiles().isEmpty()))
-			assignKingRewardTile(game);
 	}
 	
 	/**

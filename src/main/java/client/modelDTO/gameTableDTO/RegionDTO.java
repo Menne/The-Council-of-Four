@@ -7,6 +7,7 @@ import java.util.Set;
 import client.modelDTO.ModelDTO;
 import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
+import server.model.bonus.ScoreBonus;
 import server.model.gameTable.RegionBoard;
 
 public class RegionDTO implements ModelDTO<RegionBoard>{
@@ -19,6 +20,7 @@ public class RegionDTO implements ModelDTO<RegionBoard>{
 	private CardColourDTO[] balcony;
 	private Set<CityDTO> cities;
 	private PermitTileDTO[] uncoveredPermitTiles;
+	private ScoreBonus regionBonus;
 	
 	public RegionDTO(){
 		
@@ -60,6 +62,16 @@ public class RegionDTO implements ModelDTO<RegionBoard>{
 		this.uncoveredPermitTiles = uncoveredPermitTiles;
 	}
 
+	public ScoreBonus getRegionBonus() {
+		return regionBonus;
+	}
+
+
+	public void setRegionBonus(ScoreBonus regionBonus) {
+		this.regionBonus = regionBonus;
+	}
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -88,7 +100,7 @@ public class RegionDTO implements ModelDTO<RegionBoard>{
 	@Override
 	public String toString() {
 		return  "\n"+name + "\t" + Arrays.toString(balcony) + "\tTiles:" + Arrays.toString(uncoveredPermitTiles)+
-				"\t" + cities;
+				"\tBonus: "+regionBonus+"\n" + cities;
 	}
 
 	

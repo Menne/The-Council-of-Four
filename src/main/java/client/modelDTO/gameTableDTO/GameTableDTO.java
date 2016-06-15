@@ -2,7 +2,9 @@ package client.modelDTO.gameTableDTO;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import client.modelDTO.ModelDTO;
@@ -12,6 +14,7 @@ import client.view.notifies.ClientViewNotify;
 import observerPattern.Observable;
 import server.model.Game;
 import server.model.bonus.Bonus;
+import server.model.bonus.ScoreBonus;
 
 public class GameTableDTO extends Observable<ClientViewNotify> implements ModelDTO<Game> {
 	
@@ -26,6 +29,8 @@ public class GameTableDTO extends Observable<ClientViewNotify> implements ModelD
 	private ArrayList<GenericPlayerDTO> players;
 	private String currentPlayer;
 	private String king;
+	private ScoreBonus nextKingRewardTile;
+	private Map<CityColourDTO, ScoreBonus> colourBonuses;
 	
 	public GameTableDTO() {
 		this.clientRegions=new ArrayList<RegionDTO>();
@@ -33,6 +38,7 @@ public class GameTableDTO extends Observable<ClientViewNotify> implements ModelD
 		this.clientCouncillorReserve=new ArrayList<CardColourDTO>();
 		this.clientNobilityTrack=new ArrayList<Set<Bonus>>();
 		this.players=new ArrayList<GenericPlayerDTO>();
+		this.colourBonuses=new HashMap<>();
 	}
 
 	
@@ -92,11 +98,32 @@ public class GameTableDTO extends Observable<ClientViewNotify> implements ModelD
 		this.king = king;
 	}
 
+	public ScoreBonus getNextKingRewardTile() {
+		return nextKingRewardTile;
+	}
+
+
+	public void setNextKingRewardTile(ScoreBonus nextKingRewardTile) {
+		this.nextKingRewardTile = nextKingRewardTile;
+	}
+
+
+	public Map<CityColourDTO, ScoreBonus> getColourBonuses() {
+		return colourBonuses;
+	}
+
+
+	public void setColourBonuses(Map<CityColourDTO, ScoreBonus> colourBonuses) {
+		this.colourBonuses = colourBonuses;
+	}
+
+
 	@Override
 	public String toString() {
 		return "\nUpdated game table:\nPlayers:\n" + players + "\nNow is plaiyng:\t" + currentPlayer + "\n" +
 				 clientRegions + "\nKingCity: "+ king+" \nKing's balcony:" + Arrays.toString(clientKingBalcony) + "\nCouncillors riserve"+
-				 clientCouncillorReserve + "\n" + clientNobilityTrack;
+				 clientCouncillorReserve + "\nNobilityTrack: " + clientNobilityTrack
+				 +"\nNextKingRewardTile: "+nextKingRewardTile+"\nColourBonuses: "+colourBonuses;
 	}
 	
 	

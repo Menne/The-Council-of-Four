@@ -25,6 +25,8 @@ public class GameTableDTONotify implements ClientNotify{
 		gameDTOtoupdate.getClientGameTable().setClientRegions(this.updatedGame.getClientRegions());
 		gameDTOtoupdate.getClientGameTable().setCurrentPlayer(this.updatedGame.getCurrentPlayer());
 		gameDTOtoupdate.getClientGameTable().setKing(this.updatedGame.getKing());
+		gameDTOtoupdate.getClientGameTable().setNextKingRewardTile(this.updatedGame.getNextKingRewardTile());
+		gameDTOtoupdate.getClientGameTable().setColourBonuses(this.updatedGame.getColourBonuses());
 
 		gameDTOtoupdate.notifyObserver(new ClientGameTableNotify(gameDTOtoupdate.getClientGameTable()));
 	}

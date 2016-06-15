@@ -9,8 +9,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-public class MainApp extends Application {
-
+public class ProvaMap extends Application {
+	
 	private Stage primaryStage;
     private BorderPane rootLayout;
     
@@ -27,7 +27,7 @@ public class MainApp extends Application {
 	
 	public void initRootLayout(){
 		 FXMLLoader loader = new FXMLLoader();
-		 loader.setLocation(GUI.class.getResource("RootLayout.fxml"));
+		 loader.setLocation(getClass().getResource("RootLayout.fxml"));
 		 try {
 			 
 			rootLayout=(BorderPane) loader.load();
@@ -44,7 +44,7 @@ public class MainApp extends Application {
 	
 	public void showGame(){
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(GUI.class.getResource("Prova.fxml"));
+		loader.setLocation(getClass().getResource("Mappa.fxml"));
 		try {
 			AnchorPane gameOverwiew=(AnchorPane) loader.load();
 			rootLayout.setCenter(gameOverwiew);
@@ -53,6 +53,10 @@ public class MainApp extends Application {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public static void main(String[] args) {
+		launch(args);
 	}
 
 }

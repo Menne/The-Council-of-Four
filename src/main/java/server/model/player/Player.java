@@ -254,7 +254,7 @@ public class Player {
 		return "Player " + playerNumber + "\tassistants=" + assistants.size() + "\tscore="
 				+ score + "\tnobility=" + nobility + "\tcoins=" + coins + "\n hand=" + hand
 				+ ", playersPermitTilesTurnedUp=" + playersPermitTilesTurnedUp + ", playersPermitTilesTurnedDown="
-				+ playersPermitTilesTurnedDown + ", emporiums=" + this.emporiums.size() + "]\n\n";
+				+ playersPermitTilesTurnedDown + ", emporiums=" + this.emporiums.size() + ", finalBuons "+playersFinalBonus+"]\n\n";
 	}
 	
 	

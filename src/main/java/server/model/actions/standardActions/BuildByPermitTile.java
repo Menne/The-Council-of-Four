@@ -67,12 +67,12 @@ public class BuildByPermitTile extends MainAction {
 			return false;
 		}
 		
+		game.getCurrentPlayer().decrementAssistants(assistantsToPay());	
 		Emporium temporaryEmporium=game.getCurrentPlayer().removeEmporium();
 		this.selectedCity.addEmporium(temporaryEmporium);
 		for (City city : likedCities.getConnectedBuiltCities(game.getGameTable().getMap().getGameMap(), this.selectedCity, temporaryEmporium))
 			for (Bonus bonusToAssign : city.getRewardToken())
 				bonusToAssign.assignBonus(game);
-		game.getCurrentPlayer().decrementAssistants(assistantsToPay());	
 		game.getCurrentPlayer().getPlayersPermitTilesTurnedDown().add(this.selectedPermitTile);
 		game.getCurrentPlayer().getPlayersPermitTilesTurnedUp().remove(this.selectedPermitTile);
 
@@ -141,9 +141,9 @@ public class BuildByPermitTile extends MainAction {
 			game.getCurrentPlayer().getPlayersFinalBonus().add(
 			this.selectedCity.getRegion().getRegionBonus());
 			this.selectedCity.getRegion().notBonusAvailable();
+			if (!(game.getGameTable().getKingRewardTiles().isEmpty()))
+				assignKingRewardTile(game);
 		}
-		if (!(game.getGameTable().getKingRewardTiles().isEmpty()))
-			assignKingRewardTile(game);
 	}
 
 	/**
@@ -161,9 +161,9 @@ public class BuildByPermitTile extends MainAction {
 			game.getCurrentPlayer().getPlayersFinalBonus().add(
 			this.selectedCity.getColour().getColorBonus());
 			this.selectedCity.getColour().notBonusAvailable();
+			if (!(game.getGameTable().getKingRewardTiles().isEmpty()))
+				assignKingRewardTile(game);
 		}
-		if (!(game.getGameTable().getKingRewardTiles().isEmpty()))
-			assignKingRewardTile(game);
 	}
 	
 	/**

@@ -1,6 +1,7 @@
 package server.model.gameMapper;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
 
 import client.modelDTO.gameTableDTO.CardColourDTO;
@@ -60,6 +61,13 @@ public class GameDTOMapper implements GameMapperInterface {
 		gameTableDTO.setClientNobilityTrack((ArrayList<Set<Bonus>>) realObject.getGameTable().getNobilityTrack().getTrack());
 		gameTableDTO.setCurrentPlayer(realObject.getCurrentPlayer().getName());
 		gameTableDTO.setKing(realObject.getGameTable().getKing().getCity().getName());
+		gameTableDTO.setNextKingRewardTile(realObject.getGameTable().getKingRewardTiles().get(0));
+		
+		Set<CityColour> colours=new HashSet<>();
+		for(City city : realObject.getGameTable().getMap().getGameMap().vertexSet())
+			colours.add(city.getColour());
+		for(CityColour cityColour: colours)
+			gameTableDTO.getColourBonuses().put(cityColourMap(cityColour), cityColour.getColorBonus());
 		
 		return gameTableDTO;
 	}
@@ -170,6 +178,7 @@ public class GameDTOMapper implements GameMapperInterface {
 		for (PermitTile permitTile : realObject.getPlayersPermitTilesTurnedUp())
 			genericPlayerDTO.getAvailablePermitTiles().add
 					(this.permitTileMap(permitTile));
+		genericPlayerDTO.setPlayersFinalBonus(realObject.getPlayersFinalBonus());
 		
 		return genericPlayerDTO;
 	}
@@ -208,6 +217,8 @@ public class GameDTOMapper implements GameMapperInterface {
 		for (int i=0; i<2; i++)
 			regionDTO.getUncoveredPermitTiles()[i]=this.permitTileMap
 					(realObject.getUncoveredPermitTiles()[i]);
+		if(realObject.isBonusAvailable())
+			regionDTO.setRegionBonus(realObject.getRegionBonus());
 		
 		return regionDTO;
 	}

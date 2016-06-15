@@ -1,0 +1,14 @@
+.sea{
+	-fx-background-image: url(mountain.png);
+	-fx-background-size: contain;
+	-fx-background-repeat: no-repeat;
+	
+}
+
+.hill{
+	-fx-background-image: url(hill.png);
+}
+
+.mountain{
+	-fx-background-image: url(mountain.png);
+}

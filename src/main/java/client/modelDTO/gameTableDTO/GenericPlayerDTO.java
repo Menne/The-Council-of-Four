@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import client.modelDTO.ModelDTO;
+import server.model.bonus.ScoreBonus;
 import server.model.player.Player;
 
 public class GenericPlayerDTO implements ModelDTO<Player>{
@@ -21,6 +22,7 @@ public class GenericPlayerDTO implements ModelDTO<Player>{
 	private int emporiums;
 	private int hand;
 	private List<PermitTileDTO> availablePermitTiles;
+	private List<ScoreBonus> playersFinalBonus;
 	
 	public GenericPlayerDTO(){
 		this.availablePermitTiles=new ArrayList<PermitTileDTO>();
@@ -99,11 +101,21 @@ public class GenericPlayerDTO implements ModelDTO<Player>{
 		this.availablePermitTiles = availablePermitTiles;
 	}
 
+	public List<ScoreBonus> getPlayersFinalBonus() {
+		return playersFinalBonus;
+	}
+
+
+	public void setPlayersFinalBonus(List<ScoreBonus> playersFinalBonus) {
+		this.playersFinalBonus = playersFinalBonus;
+	}
+
+
 	@Override
 	public String toString() {
 		return "\nPlayer " + playerNumber + "\tname: "+ name + "\tassistants=" + assistants + "\tscore="
 				+ score + "\tnobility=" + nobility + "\tcoins=" + coins + "\thand="+hand+"\tplayersPermitTilesTurnedUp=" + availablePermitTiles +
-				 "\temporiums=" + this.emporiums + "]";
+				 "\temporiums=" + this.emporiums + "\tfinalBonus= " + playersFinalBonus+"]";
 	}
 
 
