@@ -2,10 +2,10 @@ package server.view.notifies;
 
 import java.util.List;
 
-import modelDTO.clientNotifies.ClientNotify;
-import modelDTO.clientNotifies.GameTableDTONotify;
-import players.Player;
+import client.modelDTO.clientNotifies.ClientNotify;
+import client.modelDTO.clientNotifies.GameTableDTONotify;
 import server.model.Game;
+import server.model.player.Player;
 
 public class GameTableNotify implements ViewNotify {
 	

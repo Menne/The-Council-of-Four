@@ -2,10 +2,8 @@ package client.view.notifies;
 
 
 
-import java.util.Scanner;
-
+import client.modelDTO.playerDTO.ClientPlayerDTO;
 import client.view.ClientView;
-import modelDTO.playerDTO.ClientPlayerDTO;
 
 public class ClientPlayerNotify implements ClientViewNotify {
 
@@ -16,15 +14,8 @@ public class ClientPlayerNotify implements ClientViewNotify {
 	}
 
 	@Override
-	public void stamp(Scanner scanner) {
-		System.out.println(clientPlayerUpdated);
-
-	}
-
-	@Override
 	public void updateView(ClientView view) {
-		// TODO Auto-generated method stub
-		
+		view.displayPlayer(this.clientPlayerUpdated);
 	}
 
 }

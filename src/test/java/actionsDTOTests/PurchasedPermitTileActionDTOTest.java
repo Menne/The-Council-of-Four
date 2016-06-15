@@ -4,10 +4,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import modelDTO.GameDTO;
-import modelDTO.actionsDTO.bonusActions.PurchasedPermitTileActionDTO;
-import modelDTO.gameTableDTO.PermitTileDTO;
-import modelDTO.parser.PurchasedPermitTileBonusParser;
+import client.modelDTO.GameDTO;
+import client.modelDTO.actionsDTO.actionsParametersSetters.PurchasedPermitTileBonusParser;
+import client.modelDTO.actionsDTO.bonusActions.PurchasedPermitTileActionDTO;
+import client.modelDTO.gameTableDTO.PermitTileDTO;
 
 public class PurchasedPermitTileActionDTOTest {
 

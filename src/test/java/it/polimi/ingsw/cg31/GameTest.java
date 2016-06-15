@@ -8,10 +8,10 @@ import java.util.List;
 
 import org.junit.Test;
 
-import players.Player;
 import server.model.Game;
 import server.model.bonus.ScoreBonus;
 import server.model.market.Market;
+import server.model.player.Player;
 import server.model.stateMachine.BeginState;
 
 public class GameTest {

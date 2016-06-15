@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import players.Player;
 import server.model.Game;
 import server.model.actions.Action;
 import server.model.actions.PickPoliticsCard;
+import server.model.player.Player;
 import server.view.notifies.AvailableActionsNotify;
 import server.view.notifies.GameTableNotify;
 import server.view.notifies.PlayerNotify;

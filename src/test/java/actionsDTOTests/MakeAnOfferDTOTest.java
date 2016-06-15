@@ -7,10 +7,10 @@ import java.util.List;
 
 import org.junit.Test;
 
-import modelDTO.GameDTO;
-import modelDTO.actionsDTO.marketActions.MakeAnOfferDTO;
-import modelDTO.marketDTO.OfferDTO;
-import modelDTO.parser.MakeAnOfferParser;
+import client.modelDTO.GameDTO;
+import client.modelDTO.actionsDTO.actionsParametersSetters.MakeAnOfferParser;
+import client.modelDTO.actionsDTO.marketActions.MakeAnOfferDTO;
+import client.modelDTO.marketDTO.OfferDTO;
 
 public class MakeAnOfferDTOTest {
 

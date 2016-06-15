@@ -2,9 +2,9 @@ package server.view.notifies;
 
 import java.util.List;
 
-import modelDTO.clientNotifies.ClientNotify;
-import modelDTO.clientNotifies.ErrorDTONotify;
-import players.Player;
+import client.modelDTO.clientNotifies.ClientNotify;
+import client.modelDTO.clientNotifies.ErrorDTONotify;
+import server.model.player.Player;
 
 public class ErrorNotify implements ViewNotify {
 

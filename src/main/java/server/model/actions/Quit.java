@@ -1,8 +1,8 @@
 package server.model.actions;
 
-import modelDTO.actionsDTO.ActionDTO;
-import players.Player;
+import client.modelDTO.actionsDTO.ActionDTO;
 import server.model.Game;
+import server.model.player.Player;
 import server.view.notifies.GameTableNotify;
 
 public class Quit implements Action {

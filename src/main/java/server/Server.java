@@ -19,9 +19,9 @@ import java.util.TimerTask;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import players.Player;
 import server.controller.Controller;
 import server.model.Game;
+import server.model.player.Player;
 import server.view.ServerRMIView;
 import server.view.RMIViewRemote;
 import server.view.ServerSocketView;

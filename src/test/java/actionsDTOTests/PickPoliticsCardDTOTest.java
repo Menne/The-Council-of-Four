@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import modelDTO.actionsDTO.PickPoliticsCardDTO;
+import client.modelDTO.actionsDTO.PickPoliticsCardDTO;
 import server.model.actions.PickPoliticsCard;
 
 public class PickPoliticsCardDTOTest {

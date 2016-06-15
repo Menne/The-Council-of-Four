@@ -1,33 +1,36 @@
 package client;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.List;
 
+import client.modelDTO.GameDTO;
+import client.modelDTO.actionsDTO.ActionDTO;
+import client.modelDTO.gameTableDTO.CardColourDTO;
+import client.modelDTO.gameTableDTO.CityDTO;
+import client.modelDTO.gameTableDTO.GameTableDTO;
+import client.modelDTO.gameTableDTO.GenericPlayerDTO;
+import client.modelDTO.gameTableDTO.PermitTileDTO;
+import client.modelDTO.gameTableDTO.RegionDTO;
+import client.modelDTO.marketDTO.MarketDTO;
+import client.modelDTO.marketDTO.MarketableDTO;
+import client.modelDTO.marketDTO.OfferDTO;
+import client.modelDTO.playerDTO.ClientPlayerDTO;
 import client.view.ClientView;
 import client.view.Connection;
 import client.view.notifies.ClientViewNotify;
-import modelDTO.GameDTO;
-import modelDTO.actionsDTO.ActionDTO;
-import modelDTO.gameTableDTO.CardColourDTO;
-import modelDTO.gameTableDTO.CityDTO;
-import modelDTO.gameTableDTO.GameTableDTO;
-import modelDTO.gameTableDTO.PermitTileDTO;
-import modelDTO.gameTableDTO.RegionDTO;
-import modelDTO.marketDTO.MarketDTO;
-import modelDTO.marketDTO.MarketableDTO;
-import modelDTO.marketDTO.OfferDTO;
-import modelDTO.playerDTO.ClientPlayerDTO;
+import javafx.application.Application;
+
 
 
 public class GUI extends ClientView {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 4145493495640741715L;
+	private final MainApp mainApp;
 	
 	public GUI(Connection connection, GameDTO clientGame) {
 		super(connection);
+		this.mainApp=new MainApp();
+		Application.launch(MainApp.class);
 	}
 
 	@Override
@@ -56,6 +59,12 @@ public class GUI extends ClientView {
 	}
 	
 	@Override
+	public void displayError(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
 	public void displayAvailableActions(List<ActionDTO> availableActions) {
 		// TODO Auto-generated method stub
 		
@@ -75,6 +84,12 @@ public class GUI extends ClientView {
 
 	@Override
 	public void displayMarket(MarketDTO market) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void displayFinalRanking(ArrayList<GenericPlayerDTO> finalRankingTable) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -149,8 +164,19 @@ public class GUI extends ClientView {
 	}
 
 	
-
 	
+	
+	@Override
+	public void ChooseCityBonus(List<CityDTO> acceptableCities) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void PurchasedPermitTileBonus(List<PermitTileDTO> acceptablePermitTiles) {
+		// TODO Auto-generated method stub
+		
+	}
 
 
 }

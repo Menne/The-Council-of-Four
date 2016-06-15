@@ -1,7 +1,7 @@
 package server.model.gameTable;
 
-import players.Player;
 import server.model.market.Marketable;
+import server.model.player.Player;
 
 /**
 	 * this class models a politics card

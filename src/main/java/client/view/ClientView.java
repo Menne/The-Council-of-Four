@@ -1,29 +1,26 @@
 package client.view;
 
-import java.io.Serializable;
+
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.List;
 
+import client.modelDTO.actionsDTO.ActionDTO;
+import client.modelDTO.gameTableDTO.CardColourDTO;
+import client.modelDTO.gameTableDTO.CityDTO;
+import client.modelDTO.gameTableDTO.GameTableDTO;
+import client.modelDTO.gameTableDTO.GenericPlayerDTO;
+import client.modelDTO.gameTableDTO.PermitTileDTO;
+import client.modelDTO.gameTableDTO.RegionDTO;
+import client.modelDTO.marketDTO.MarketDTO;
+import client.modelDTO.marketDTO.MarketableDTO;
+import client.modelDTO.marketDTO.OfferDTO;
+import client.modelDTO.playerDTO.ClientPlayerDTO;
 import client.view.notifies.ClientViewNotify;
-import modelDTO.actionsDTO.ActionDTO;
-import modelDTO.gameTableDTO.CardColourDTO;
-import modelDTO.gameTableDTO.CityDTO;
-import modelDTO.gameTableDTO.GameTableDTO;
-import modelDTO.gameTableDTO.PermitTileDTO;
-import modelDTO.gameTableDTO.RegionDTO;
-import modelDTO.marketDTO.MarketDTO;
-import modelDTO.marketDTO.MarketableDTO;
-import modelDTO.marketDTO.OfferDTO;
-import modelDTO.playerDTO.ClientPlayerDTO;
 import observerPattern.Observer;
 
-public abstract class ClientView implements Observer<ClientViewNotify>, Serializable {
+public abstract class ClientView implements Observer<ClientViewNotify> {
 
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -6692372505563332254L;
 	protected final Connection connection;
 	
 	public ClientView(Connection connection) {
@@ -33,14 +30,16 @@ public abstract class ClientView implements Observer<ClientViewNotify>, Serializ
 	@Override
 	public abstract void update(ClientViewNotify notify);
 	
+	
 	public abstract void input() throws RemoteException;
 	
 	public abstract void welcome(String name) throws RemoteException;
 	
 	
-	
 	public abstract void displayMessage(String string);
 	
+	public abstract void displayError(String message);
+
 	public abstract void displayAvailableActions(List<ActionDTO> availableActions);
 	
 	public abstract void displayGameTable(GameTableDTO clientGame);
@@ -49,6 +48,7 @@ public abstract class ClientView implements Observer<ClientViewNotify>, Serializ
 	
 	public abstract void displayMarket(MarketDTO market);
 	
+	public abstract void displayFinalRanking(ArrayList<GenericPlayerDTO> finalRankingTable);
 	
 	
 	public abstract RegionDTO askForRegionBoard(List<RegionDTO> acceptableRegions);
@@ -72,6 +72,10 @@ public abstract class ClientView implements Observer<ClientViewNotify>, Serializ
 	public abstract boolean askForOtherSelling();
 	
 	public abstract OfferDTO askForAcceptingAnOffer(List<OfferDTO> acceptableOffers);
-
 	
+	
+	public abstract void ChooseCityBonus(List<CityDTO> acceptableCities);
+	
+	public abstract void PurchasedPermitTileBonus(List<PermitTileDTO> acceptablePermitTiles);
+
 }

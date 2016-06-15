@@ -10,7 +10,6 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import players.Player;
 import server.model.Game;
 import server.model.bonus.AssistantsBonus;
 import server.model.bonus.Bonus;
@@ -18,6 +17,7 @@ import server.model.bonus.ScoreBonus;
 import server.model.gameTable.City;
 import server.model.gameTable.PermitDeck;
 import server.model.gameTable.PermitTile;
+import server.model.player.Player;
 
 public class PermitTileTest {
 	

@@ -1,7 +1,5 @@
 package client.view.notifies;
 
-import java.util.Scanner;
-
 import client.view.ClientView;
 
 public class ClientMessageNotify implements ClientViewNotify{
@@ -10,11 +8,6 @@ public class ClientMessageNotify implements ClientViewNotify{
 
 	public ClientMessageNotify(String message) {
 		this.message=message;
-	}
-
-	@Override
-	public void stamp(Scanner scanner) {
-		System.out.println(message);
 	}
 
 	@Override

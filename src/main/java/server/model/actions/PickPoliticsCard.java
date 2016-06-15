@@ -1,7 +1,7 @@
 package server.model.actions;
 
-import modelDTO.actionsDTO.ActionDTO;
-import modelDTO.actionsDTO.PickPoliticsCardDTO;
+import client.modelDTO.actionsDTO.ActionDTO;
+import client.modelDTO.actionsDTO.PickPoliticsCardDTO;
 import server.model.Game;
 
 public class PickPoliticsCard implements Action {

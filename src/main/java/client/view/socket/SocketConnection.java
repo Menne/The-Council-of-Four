@@ -5,20 +5,16 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
+import client.modelDTO.actionsDTO.ActionDTO;
+import client.modelDTO.clientNotifies.ClientNotify;
 import client.view.Connection;
-import modelDTO.actionsDTO.ActionDTO;
-import modelDTO.clientNotifies.ClientNotify;
 
 
 public class SocketConnection extends Connection implements Runnable{
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 7760277542526033095L;
-	private transient final Socket socket;
-	private transient final ObjectOutputStream socketOut;
-	private transient final ObjectInputStream socketIn;
+	private final Socket socket;
+	private final ObjectOutputStream socketOut;
+	private final ObjectInputStream socketIn;
 	
 	public SocketConnection(Socket socket) throws IOException {
 		

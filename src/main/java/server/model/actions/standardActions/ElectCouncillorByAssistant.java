@@ -2,8 +2,8 @@ package server.model.actions.standardActions;
 
 import java.util.Arrays;
 
-import modelDTO.actionsDTO.ActionDTO;
-import modelDTO.actionsDTO.standardActions.ElectCouncillorByAssistantDTO;
+import client.modelDTO.actionsDTO.ActionDTO;
+import client.modelDTO.actionsDTO.standardActions.ElectCouncillorByAssistantDTO;
 import server.model.Game;
 import server.model.actions.QuickAction;
 import server.model.gameTable.CouncilBalcony;

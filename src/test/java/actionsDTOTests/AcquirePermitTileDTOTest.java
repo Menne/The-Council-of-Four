@@ -7,11 +7,11 @@ import java.util.List;
 
 import org.junit.Test;
 
-import modelDTO.GameDTO;
-import modelDTO.actionsDTO.standardActions.AcquirePermitTileDTO;
-import modelDTO.gameTableDTO.CardColourDTO;
-import modelDTO.gameTableDTO.RegionDTO;
-import modelDTO.parser.AcquirePermitTileParser;
+import client.modelDTO.GameDTO;
+import client.modelDTO.actionsDTO.actionsParametersSetters.AcquirePermitTileParser;
+import client.modelDTO.actionsDTO.standardActions.AcquirePermitTileDTO;
+import client.modelDTO.gameTableDTO.CardColourDTO;
+import client.modelDTO.gameTableDTO.RegionDTO;
 
 public class AcquirePermitTileDTOTest {
 

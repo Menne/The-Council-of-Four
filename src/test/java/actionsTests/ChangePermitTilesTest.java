@@ -10,10 +10,10 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import players.Player;
 import server.model.Game;
 import server.model.actions.standardActions.ChangePermitTiles;
 import server.model.gameTable.PermitTile;
+import server.model.player.Player;
 import server.model.stateMachine.State10;
 import server.model.stateMachine.State11;
 

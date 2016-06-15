@@ -1,5 +1,5 @@
 package server.model.gameTable;
-import players.Player;
+import server.model.player.Player;
 
 /**
  * modelizes the emporium object and has only the emporium's handler(player) as attribute

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import players.Player;
 import server.model.Game;
 import server.model.actions.Action;
 import server.model.actions.MoveToNext;
@@ -12,6 +11,7 @@ import server.model.actions.standardActions.AdditionalMainAction;
 import server.model.actions.standardActions.ChangePermitTiles;
 import server.model.actions.standardActions.ElectCouncillorByAssistant;
 import server.model.actions.standardActions.EngageAssistant;
+import server.model.player.Player;
 import server.view.notifies.AvailableActionsNotify;
 import server.view.notifies.GameTableNotify;
 import server.view.notifies.PlayerNotify;

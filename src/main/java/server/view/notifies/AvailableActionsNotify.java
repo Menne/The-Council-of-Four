@@ -3,11 +3,11 @@ package server.view.notifies;
 import java.util.ArrayList;
 import java.util.List;
 
-import modelDTO.actionsDTO.ActionDTO;
-import modelDTO.clientNotifies.AvailableActionsDTONotify;
-import modelDTO.clientNotifies.ClientNotify;
-import players.Player;
+import client.modelDTO.actionsDTO.ActionDTO;
+import client.modelDTO.clientNotifies.AvailableActionsDTONotify;
+import client.modelDTO.clientNotifies.ClientNotify;
 import server.model.actions.Action;
+import server.model.player.Player;
 
 public class AvailableActionsNotify implements ViewNotify {
 	

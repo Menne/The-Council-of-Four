@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import modelDTO.actionsDTO.standardActions.AddictionalMainActionDTO;
+import client.modelDTO.actionsDTO.standardActions.AddictionalMainActionDTO;
 import server.model.actions.standardActions.AdditionalMainAction;
 
 

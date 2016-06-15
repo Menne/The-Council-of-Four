@@ -7,10 +7,10 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
 import client.controller.ClientController;
+import client.modelDTO.GameDTO;
 import client.view.rmi.RMIConnection;
 import client.view.ClientView;
 import client.view.rmi.ClientRMIViewRemote;
-import modelDTO.GameDTO;
 import server.view.RMIViewRemote;
 
 public class ClientRMI{

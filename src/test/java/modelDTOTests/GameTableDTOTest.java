@@ -9,10 +9,10 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import modelDTO.gameTableDTO.CardColourDTO;
-import modelDTO.gameTableDTO.GameTableDTO;
-import modelDTO.gameTableDTO.GenericPlayerDTO;
-import modelDTO.gameTableDTO.RegionDTO;
+import client.modelDTO.gameTableDTO.CardColourDTO;
+import client.modelDTO.gameTableDTO.GameTableDTO;
+import client.modelDTO.gameTableDTO.GenericPlayerDTO;
+import client.modelDTO.gameTableDTO.RegionDTO;
 import server.model.bonus.Bonus;
 
 public class GameTableDTOTest {

@@ -4,10 +4,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import modelDTO.GameDTO;
-import modelDTO.actionsDTO.standardActions.ElectCouncillorByAssistantDTO;
-import modelDTO.gameTableDTO.CardColourDTO;
-import modelDTO.parser.ElectCouncillorByAssistantParser;
+import client.modelDTO.GameDTO;
+import client.modelDTO.actionsDTO.actionsParametersSetters.ElectCouncillorByAssistantParser;
+import client.modelDTO.actionsDTO.standardActions.ElectCouncillorByAssistantDTO;
+import client.modelDTO.gameTableDTO.CardColourDTO;
 
 public class ElectCouncillorByAssistantDTOTest {
 

@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import modelDTO.actionsDTO.AddPlayerDTO;
+import client.modelDTO.actionsDTO.AddPlayerDTO;
 
 public class AddPlayerDTOTest {
 

@@ -6,8 +6,8 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
-import players.Player;
 import server.model.market.Market;
+import server.model.player.Player;
 
 public class SortMarketListTest {
 

@@ -2,8 +2,8 @@ package server.model.actions.standardActions;
 
 import java.util.Arrays;
 
-import modelDTO.actionsDTO.ActionDTO;
-import modelDTO.actionsDTO.standardActions.BuildByPermitTileDTO;
+import client.modelDTO.actionsDTO.ActionDTO;
+import client.modelDTO.actionsDTO.standardActions.BuildByPermitTileDTO;
 import server.model.Game;
 import server.model.actions.MainAction;
 import server.model.bonus.Bonus;

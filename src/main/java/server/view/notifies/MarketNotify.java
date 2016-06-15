@@ -2,10 +2,10 @@ package server.view.notifies;
 
 import java.util.List;
 
-import modelDTO.clientNotifies.ClientNotify;
-import modelDTO.clientNotifies.MarketDTONotify;
-import players.Player;
+import client.modelDTO.clientNotifies.ClientNotify;
+import client.modelDTO.clientNotifies.MarketDTONotify;
 import server.model.Game;
+import server.model.player.Player;
 
 public class MarketNotify implements ViewNotify {
 	

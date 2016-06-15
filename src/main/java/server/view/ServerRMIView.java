@@ -5,14 +5,14 @@ import java.rmi.RemoteException;
 import java.util.HashMap;
 import java.util.Map;
 
+import client.modelDTO.actionsDTO.ActionDTO;
+import client.modelDTO.actionsDTO.QuitDTORMI;
+import client.modelDTO.clientNotifies.PlayerAcceptedDTONotify;
 import client.view.rmi.ClientRMIViewRemote;
-import modelDTO.actionsDTO.ActionDTO;
-import modelDTO.actionsDTO.QuitDTORMI;
-import modelDTO.clientNotifies.PlayerAcceptedDTONotify;
-import players.Player;
 import server.Server;
 import server.model.Game;
 import server.model.actions.Quit;
+import server.model.player.Player;
 import server.view.actionMapperVisitor.ActionDTOMapper;
 import server.view.notifies.ViewNotify;
 

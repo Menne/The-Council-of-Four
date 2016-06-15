@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import modelDTO.gameTableDTO.CityColourDTO;
+import client.modelDTO.gameTableDTO.CityColourDTO;
 
 public class CityColourDTOtest {
 

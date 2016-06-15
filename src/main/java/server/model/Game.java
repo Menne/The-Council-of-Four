@@ -8,15 +8,15 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import initializer.Initializer;
 import observerPattern.Observable;
-import players.Player;
+import server.Initializer;
 import server.model.bonus.ScoreBonus;
 import server.model.gameMapper.GameDTOMapper;
 import server.model.gameMapper.GameMapperInterface;
 import server.model.gameTable.Emporium;
 import server.model.gameTable.GameTable;
 import server.model.market.Market;
+import server.model.player.Player;
 import server.model.stateMachine.BeginState;
 import server.model.stateMachine.State;
 import server.view.notifies.EndGameNotify;

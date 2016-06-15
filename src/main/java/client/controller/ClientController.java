@@ -1,8 +1,8 @@
 package client.controller;
 
 
-import modelDTO.GameDTO;
-import modelDTO.clientNotifies.ClientNotify;
+import client.modelDTO.GameDTO;
+import client.modelDTO.clientNotifies.ClientNotify;
 import observerPattern.Observer;
 
 public class ClientController implements Observer<ClientNotify> {

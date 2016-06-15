@@ -1,7 +1,7 @@
 package server.model.actions.standardActions;
 
-import modelDTO.actionsDTO.ActionDTO;
-import modelDTO.actionsDTO.standardActions.ElectCouncillorDTO;
+import client.modelDTO.actionsDTO.ActionDTO;
+import client.modelDTO.actionsDTO.standardActions.ElectCouncillorDTO;
 import server.model.Game;
 import server.model.actions.MainAction;
 import server.model.gameTable.CouncilBalcony;

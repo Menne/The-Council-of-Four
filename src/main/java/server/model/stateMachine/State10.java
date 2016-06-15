@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import players.Player;
 import server.model.Game;
 import server.model.actions.Action;
 import server.model.actions.standardActions.AcquirePermitTile;
 import server.model.actions.standardActions.BuildByKing;
 import server.model.actions.standardActions.BuildByPermitTile;
 import server.model.actions.standardActions.ElectCouncillor;
+import server.model.player.Player;
 import server.model.stateMachine.bonusStates.AdditionalMainActionBonusState;
 import server.model.stateMachine.bonusStates.InteractiveBonusState;
 import server.view.notifies.AvailableActionsNotify;

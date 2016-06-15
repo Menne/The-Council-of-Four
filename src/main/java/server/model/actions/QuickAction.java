@@ -2,8 +2,8 @@ package server.model.actions;
 
 import java.util.List;
 
-import players.Player;
 import server.model.Game;
+import server.model.player.Player;
 import server.view.notifies.ErrorNotify;
 
 /**

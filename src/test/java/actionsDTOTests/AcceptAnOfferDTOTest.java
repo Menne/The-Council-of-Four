@@ -4,10 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import modelDTO.GameDTO;
-import modelDTO.actionsDTO.marketActions.AcceptAnOfferDTO;
-import modelDTO.marketDTO.OfferDTO;
-import modelDTO.parser.AcceptAnOfferParser;
+import client.modelDTO.actionsDTO.marketActions.AcceptAnOfferDTO;
+import client.modelDTO.marketDTO.OfferDTO;
 
 public class AcceptAnOfferDTOTest {
 

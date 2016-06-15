@@ -2,8 +2,8 @@ package server.view.notifies;
 
 import java.util.List;
 
-import modelDTO.clientNotifies.ClientNotify;
-import players.Player;
+import client.modelDTO.clientNotifies.ClientNotify;
+import server.model.player.Player;
 
 public interface ViewNotify {
 	

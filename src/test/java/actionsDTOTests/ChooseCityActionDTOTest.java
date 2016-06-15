@@ -4,10 +4,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import modelDTO.GameDTO;
-import modelDTO.actionsDTO.bonusActions.ChooseCityActionDTO;
-import modelDTO.gameTableDTO.CityDTO;
-import modelDTO.parser.ChooseCityBonusParser;
+import client.modelDTO.GameDTO;
+import client.modelDTO.actionsDTO.actionsParametersSetters.ChooseCityBonusParser;
+import client.modelDTO.actionsDTO.bonusActions.ChooseCityActionDTO;
+import client.modelDTO.gameTableDTO.CityDTO;
 
 public class ChooseCityActionDTOTest {
 

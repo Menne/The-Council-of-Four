@@ -8,8 +8,8 @@ import java.util.List;
 
 import org.junit.Test;
 
-import players.Player;
 import server.model.Game;
+import server.model.player.Player;
 import server.model.stateMachine.BeginState;
 import server.model.stateMachine.SellingState;
 import server.model.stateMachine.State01;

@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import modelDTO.actionsDTO.QuitDTO;
+import client.modelDTO.actionsDTO.QuitDTO;
 
 public class QuitDTOTest {
 
