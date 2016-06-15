@@ -56,6 +56,8 @@ public abstract class ClientView implements Observer<ClientViewNotify> {
 	
 	public abstract void displayFinalRanking(ArrayList<GenericPlayerDTO> finalRankingTable);
 	
+	public abstract void displayChatMessage(String message);
+	
 	
 	public abstract RegionDTO askForRegionBoard(List<RegionDTO> acceptableRegions);
 	

@@ -2,7 +2,7 @@ White
 Black
 Orange
 Violet
-Blu
+Blue
 Pink
 Rainbow
 STOPCOLOURS

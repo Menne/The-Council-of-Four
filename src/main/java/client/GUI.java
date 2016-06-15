@@ -83,6 +83,12 @@ public class GUI extends ClientView {
 		
 	}
 	
+	@Override
+	public void displayChatMessage(String message) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	
 
 	@Override
