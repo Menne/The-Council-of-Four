@@ -11,7 +11,6 @@ import java.util.stream.Collectors;
 import client.modelDTO.GameDTO;
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.ActionWithParameters;
-import client.modelDTO.actionsDTO.AddPlayerDTO;
 import client.modelDTO.actionsDTO.QuitDTO;
 import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
@@ -33,12 +32,11 @@ public class CLI extends ClientView {
 
 
 	private final Scanner scanner;
-	private GameDTO clientGame;
+
 	
 	public CLI(Connection connection, GameDTO clientGame) {
-		super(connection);
+		super(connection, clientGame);
 		this.scanner=new Scanner(System.in);
-		this.clientGame=clientGame;
 	}
 	
 	
@@ -120,15 +118,6 @@ public class CLI extends ClientView {
 		if (notify instanceof ClientGameOverNotify)
 			scanner.close();
 	}
-	
-	
-
-	@Override
-	public void welcome(String name) throws RemoteException {
-		AddPlayerDTO actionDTO=new AddPlayerDTO(name);
-		this.connection.sendAction(actionDTO);	
-	}
-
 
 	@Override
 	public void displayMessage(String message) {
