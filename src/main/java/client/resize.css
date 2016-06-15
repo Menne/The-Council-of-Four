@@ -1,0 +1,12 @@
+
+.percorsoNobilta{
+	-fx-background-image: url("nobility.jpg");  
+	-fx-background-size: contain;
+	-fx-background-repeat: no-repeat;
+}
+
+.map{
+	-fx-background-image: url("map.jpg");  
+	-fx-background-size: contain;
+	-fx-background-repeat: no-repeat;
+}
