@@ -12,6 +12,8 @@ import client.modelDTO.GameDTO;
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.ActionWithParameters;
 import client.modelDTO.actionsDTO.QuitDTO;
+import client.modelDTO.actionsDTO.bonusActions.ChooseCityActionDTO;
+import client.modelDTO.actionsDTO.bonusActions.PurchasedPermitTileActionDTO;
 import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.GameTableDTO;
@@ -354,15 +356,29 @@ public class CLI extends ClientView {
 	
 	
 	@Override
-	public void ChooseCityBonus(List<CityDTO> acceptableCities) {
-		// TODO Auto-generated method stub
-		
+	public void ChooseCityBonus() {
+		ChooseCityActionDTO action=new ChooseCityActionDTO();
+		action.setParser(this, this.clientGame).setParameters();
+		if (action.checkIfParametersSetted());
+		try {
+			connection.sendAction(action);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
-	public void PurchasedPermitTileBonus(List<PermitTileDTO> acceptablePermitTiles) {
-		// TODO Auto-generated method stub
-		
+	public void PurchasedPermitTileBonus() {
+		PurchasedPermitTileActionDTO action=new PurchasedPermitTileActionDTO();
+		action.setParser(this, this.clientGame).setParameters();
+		if (action.checkIfParametersSetted());
+		try {
+			connection.sendAction(action);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

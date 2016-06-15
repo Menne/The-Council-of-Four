@@ -1,8 +1,12 @@
 package client.modelDTO.actionsDTO.actionsParametersSetters;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import client.modelDTO.GameDTO;
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.bonusActions.PurchasedPermitTileActionDTO;
+import client.modelDTO.gameTableDTO.PermitTileDTO;
 import client.view.ClientView;
 
 public class PurchasedPermitTileBonusParser implements ActionParserVisitor {
@@ -23,10 +27,13 @@ public class PurchasedPermitTileBonusParser implements ActionParserVisitor {
 		this.view.displayMessage("Permit tile bonus earned! You have the possibility to choose from your permit tiles,"
 						+ "covered or not, and get the bonuses associated to that");
 		
-		if (!this.game.getClientPlayer().getAvailablePermitTiles().isEmpty()) {
+		List<PermitTileDTO> availablePermitTiles=new ArrayList<>();
+		availablePermitTiles.addAll(this.game.getClientPlayer().getAvailablePermitTiles());
+		availablePermitTiles.addAll(this.game.getClientPlayer().getCoveredPermitTiles());
+		
+		if (!availablePermitTiles.isEmpty()) {
 			
-			this.selectedAction.setPermitTile(this.view.askForPermitTile
-					(this.game.getClientPlayer().getAvailablePermitTiles()));
+			this.selectedAction.setPermitTile(this.view.askForPermitTile(availablePermitTiles));
 			
 			this.selectedAction.parametersSetted();
 		}

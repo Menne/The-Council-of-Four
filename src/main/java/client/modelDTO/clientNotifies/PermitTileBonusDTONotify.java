@@ -12,8 +12,7 @@ public class PermitTileBonusDTONotify implements ClientNotify {
 
 	@Override
 	public void updateModel(GameDTO gameDTOtoupdate) {
-		gameDTOtoupdate.notifyObserver(new ClientPermitTileBonusNotify
-				(gameDTOtoupdate.getClientPlayer().getAvailablePermitTiles()));
+		gameDTOtoupdate.notifyObserver(new ClientPermitTileBonusNotify());
 	}
 
 }

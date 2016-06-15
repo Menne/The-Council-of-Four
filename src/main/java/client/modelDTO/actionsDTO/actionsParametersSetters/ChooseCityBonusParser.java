@@ -32,12 +32,9 @@ public class ChooseCityBonusParser implements ActionParserVisitor {
 		List<CityDTO> acceptableCities=new ArrayList<>();
 		for (RegionDTO region : this.game.getClientGameTable().getClientRegions())
 			for (CityDTO city : region.getCities())
-				if(city.getBuildedEmporiums().isEmpty())
-					acceptableCities.add(city);
-				else
-					for (GenericPlayerDTO emporium : city.getBuildedEmporiums())
-						if (emporium.equals(this.game.getClientPlayer()))
-							acceptableCities.add(city);
+				for (GenericPlayerDTO emporium : city.getBuildedEmporiums())
+					if (emporium.equals(this.game.getClientPlayer()))
+						acceptableCities.add(city);
 				
 		if (!acceptableCities.isEmpty()) {
 		

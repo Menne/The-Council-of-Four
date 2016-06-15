@@ -80,8 +80,8 @@ public abstract class ClientView implements Observer<ClientViewNotify> {
 	public abstract OfferDTO askForAcceptingAnOffer(List<OfferDTO> acceptableOffers);
 	
 	
-	public abstract void ChooseCityBonus(List<CityDTO> acceptableCities);
+	public abstract void ChooseCityBonus();
 	
-	public abstract void PurchasedPermitTileBonus(List<PermitTileDTO> acceptablePermitTiles);
+	public abstract void PurchasedPermitTileBonus();
 
 }
