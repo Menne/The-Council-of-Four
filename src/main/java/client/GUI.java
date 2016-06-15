@@ -1,5 +1,6 @@
 package client;
 
+
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,66 +21,54 @@ import client.view.ClientView;
 import client.view.Connection;
 import client.view.notifies.ClientViewNotify;
 import javafx.application.Application;
+import javafx.scene.image.Image;
 
 
 
 public class GUI extends ClientView {
 
-	private final MainApp mainApp;
+	private final ControllerGUI controllerGUI;
 	
 	public GUI(Connection connection, GameDTO clientGame) {
-		super(connection);
-		this.mainApp=new MainApp();
+		super(connection, clientGame);
 		Application.launch(MainApp.class);
+		this.controllerGUI=new ControllerGUI();
 	}
 
 	@Override
 	public void update(ClientViewNotify notify) {
-		// TODO Auto-generated method stub
-		
+		notify.updateView(this);	
 	}
 
 	@Override
 	public void input() throws RemoteException {
-		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public void welcome(String name) {
-		// TODO Auto-generated method stub
-		
-	}
-
 
 	@Override
 	public void displayMessage(String string) {
-		// TODO Auto-generated method stub
-		
+		controllerGUI.getMessageBox().appendText(string);
 	}
 	
 	@Override
 	public void displayError(String string) {
-		// TODO Auto-generated method stub
-		
+		controllerGUI.getMessageBox().appendText("ERROR: "+string);		
 	}
 	
 	@Override
 	public void displayAvailableActions(List<ActionDTO> availableActions) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub		
 	}
 
 	@Override
 	public void displayGameTable(GameTableDTO clientGame) {
-		// TODO Auto-generated method stub
-		
+		controllerGUI.getSeaConcillor1().setImage(new Image("main/images/councillors/Black.jpg"));
+	
 	}
 
 	@Override
 	public void displayPlayer(ClientPlayerDTO player) {
-		// TODO Auto-generated method stub
-		
+		controllerGUI.getMessageBox().appendText(player.toString());		
 	}
 
 	@Override

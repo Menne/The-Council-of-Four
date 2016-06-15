@@ -10,13 +10,15 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
-<?import javafx.scene.text.TextFlow?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.ControllerGUI">
    <children>
       <BorderPane layoutX="340.0" layoutY="322.0" prefHeight="800.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
@@ -28,35 +30,23 @@
                            <children>
                               <VBox prefHeight="463.0" prefWidth="240.0">
                                  <children>
-                                    <Pane prefHeight="414.0" prefWidth="238.0">
+                                    <Pane fx:id="seaRegion" prefHeight="414.0" prefWidth="238.0">
                                        <children>
                                           <Text layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sea Region" />
                                        </children></Pane>
                                     <AnchorPane prefHeight="133.0" prefWidth="238.0">
                                        <children>
-                                          <ImageView fitHeight="50.0" fitWidth="25.0" layoutX="1.0" layoutY="75.0">
-                                             <image>
-                                                <Image url="@viola.jpg" />
-                                             </image>
+                                          <ImageView fx:id="seaConcillor1" fitHeight="50.0" fitWidth="25.0" layoutX="1.0" layoutY="75.0">                                          
                                           </ImageView>
-                                          <ImageView fitHeight="50.0" fitWidth="25.0" layoutX="26.0" layoutY="75.0">
-                                             <image>
-                                                <Image url="@blu.jpg" />
-                                             </image>
+                                          <ImageView fx:id="seaConcillor2" fitHeight="50.0" fitWidth="25.0" layoutX="26.0" layoutY="75.0">
                                           </ImageView>
-                                          <ImageView fitHeight="50.0" fitWidth="25.0" layoutX="51.0" layoutY="75.0">
-                                             <image>
-                                                <Image url="@blu.jpg" />
-                                             </image>
+                                          <ImageView fx:id="seaConcillor3" fitHeight="50.0" fitWidth="25.0" layoutX="51.0" layoutY="75.0">
                                           </ImageView>
-                                          <ImageView fitHeight="50.0" fitWidth="25.0" layoutX="76.0" layoutY="75.0">
-                                             <image>
-                                                <Image url="@viola.jpg" />
-                                             </image>
+                                          <ImageView fx:id="seaConcillor4" fitHeight="50.0" fitWidth="25.0" layoutX="76.0" layoutY="75.0">
                                           </ImageView>
                                           <ImageView fitHeight="32.0" fitWidth="113.0" layoutY="101.0">
-                                             <image>
-                                                <Image url="@Balcone.jpg" />
+                                          	<image>
+                                           	     <Image url="@Balcone.jpg" />
                                              </image>
                                           </ImageView>
                                        </children></AnchorPane>
@@ -64,7 +54,7 @@
                               </VBox>
                               <VBox prefHeight="509.0" prefWidth="274.0">
                                  <children>
-                                    <Pane prefHeight="412.0" prefWidth="272.0">
+                                    <Pane fx:id="hillRegion" prefHeight="412.0" prefWidth="272.0">
                                        <children>
                                           <Text layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hill Region" />
                                        </children></Pane>
@@ -75,56 +65,32 @@
                                                 <Image url="@Balcone.jpg" />
                                              </image>
                                           </ImageView>
-                                          <ImageView fitHeight="50.0" fitWidth="25.0" layoutX="1.0" layoutY="76.0">
-                                             <image>
-                                                <Image url="@arancione.jpg" />
-                                             </image>
+                                          <ImageView fx:id="hillConcillor1" fitHeight="50.0" fitWidth="25.0" layoutX="1.0" layoutY="76.0">
                                           </ImageView>
-                                          <ImageView fitHeight="50.0" fitWidth="25.0" layoutX="84.0" layoutY="77.0">
-                                             <image>
-                                                <Image url="@arancione.jpg" />
-                                             </image>
+                                          <ImageView fx:id="hillConcillor4" fitHeight="50.0" fitWidth="25.0" layoutX="84.0" layoutY="77.0">
                                           </ImageView>
-                                          <ImageView fitHeight="50.0" fitWidth="25.0" layoutX="52.0" layoutY="76.0">
-                                             <image>
-                                                <Image url="@bianco.jpg" />
-                                             </image>
+                                          <ImageView fx:id="hillConcillor3" fitHeight="50.0" fitWidth="25.0" layoutX="52.0" layoutY="76.0">
                                           </ImageView>
-                                          <ImageView fitHeight="50.0" fitWidth="25.0" layoutX="29.0" layoutY="78.0">
-                                             <image>
-                                                <Image url="@blu.jpg" />
-                                             </image>
+                                          <ImageView fx:id="hillConcillor2" fitHeight="50.0" fitWidth="25.0" layoutX="29.0" layoutY="78.0">
                                           </ImageView>
                                        </children></AnchorPane>
                                  </children>
                               </VBox>
                               <VBox prefHeight="509.0" prefWidth="241.0">
                                  <children>
-                                    <Pane prefHeight="412.0" prefWidth="240.0">
+                                    <Pane fx:id="mountainRegion" prefHeight="412.0" prefWidth="240.0">
                                        <children>
                                           <Text layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mountain Region" />
                                        </children></Pane>
                                     <AnchorPane prefHeight="166.0" prefWidth="240.0">
                                        <children>
-                                          <ImageView fitHeight="50.0" fitWidth="25.0" layoutY="77.0">
-                                             <image>
-                                                <Image url="@arancione.jpg" />
-                                             </image>
+                                          <ImageView fx:id="mountainConcillor1" fitHeight="50.0" fitWidth="25.0" layoutY="77.0">
                                           </ImageView>
-                                          <ImageView fitHeight="50.0" fitWidth="25.0" layoutX="25.0" layoutY="77.0">
-                                             <image>
-                                                <Image url="@nero.jpg" />
-                                             </image>
+                                          <ImageView fx:id="mountainConcillor2" fitHeight="50.0" fitWidth="25.0" layoutX="25.0" layoutY="77.0">
                                           </ImageView>
-                                          <ImageView fitHeight="50.0" fitWidth="25.0" layoutX="50.0" layoutY="77.0">
-                                             <image>
-                                                <Image url="@bianco.jpg" />
-                                             </image>
+                                          <ImageView fx:id="mountainConcillor3" fitHeight="50.0" fitWidth="25.0" layoutX="50.0" layoutY="77.0">
                                           </ImageView>
-                                          <ImageView fitHeight="50.0" fitWidth="25.0" layoutX="75.0" layoutY="77.0">
-                                             <image>
-                                                <Image url="@bianco.jpg" />
-                                             </image>
+                                          <ImageView fx:id="mountainConcillor4" fitHeight="50.0" fitWidth="25.0" layoutX="75.0" layoutY="77.0">
                                           </ImageView>
                                           <ImageView fitHeight="32.0" fitWidth="113.0" layoutY="102.0">
                                              <image>
@@ -173,7 +139,7 @@
                                  <children>
                                     <VBox layoutX="111.0" prefHeight="160.0" prefWidth="349.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <TextFlow minWidth="240.0" prefHeight="200.0" prefWidth="200.0" />
+                                          <TextArea fx:id="messageBox" prefHeight="200.0" prefWidth="200.0" />
                                           <TextArea minWidth="240.0" prefHeight="47.0" prefWidth="349.0" text="Text yor message" />
                                        </children>
                                     </VBox>
@@ -210,10 +176,22 @@
                     <content>
                       <AnchorPane minHeight="90.0" minWidth="240.0" prefHeight="112.0" prefWidth="422.0">
                            <children>
-                              <Button layoutX="14.0" layoutY="14.0" minWidth="0.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="125.0" text="Elect a councillor" />
-                              <Button layoutX="186.0" layoutY="54.0" minWidth="30.0" mnemonicParsing="false" text="Build by king" />
-                              <Button layoutX="14.0" layoutY="54.0" mnemonicParsing="false" text="Build by permit tile" />
-                              <Button layoutX="169.0" layoutY="14.0" minWidth="30.0" mnemonicParsing="false" text="Acquire permit tile" />
+                              <GridPane layoutX="14.0" layoutY="14.0" prefHeight="90.0" prefWidth="422.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Button fx:id="m1" minHeight="-Infinity" minWidth="0.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="125.0" text="Elect a councillor" />
+                                    <Button fx:id="m4" minWidth="30.0" mnemonicParsing="false" text="Build by king" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Button fx:id="m3" mnemonicParsing="false" text="Build by permit tile" GridPane.rowIndex="1" />
+                                    <Button fx:id="m2" minWidth="30.0" mnemonicParsing="false" prefWidth="125.0" text="Acquire permit tile" GridPane.columnIndex="1" />
+                                 </children>
+                              </GridPane>
                            </children></AnchorPane>
                     </content>
                   </TitledPane>
@@ -221,11 +199,11 @@
                     <content>
                       <AnchorPane minHeight="140.0" minWidth="240.0" prefHeight="167.0" prefWidth="422.0">
                            <children>
-                              <Button layoutX="14.0" layoutY="18.0" mnemonicParsing="false" text="Buy assistant" />
-                              <Button layoutX="169.0" layoutY="57.0" mnemonicParsing="false" text="Change permit tiles" />
-                              <Button layoutX="152.0" layoutY="18.0" mnemonicParsing="false" text="Additional main action" />
-                              <Button layoutX="14.0" layoutY="57.0" mnemonicParsing="false" text="Elect a councillor" />
-                              <Button layoutX="88.0" layoutY="96.0" mnemonicParsing="false" text="Skip quick action" />
+                              <Button fx:id="q1" layoutX="14.0" layoutY="18.0" mnemonicParsing="false" text="Buy assistant" />
+                              <Button fx:id="q4" layoutX="169.0" layoutY="57.0" mnemonicParsing="false" text="Change permit tiles" />
+                              <Button fx:id="q2" layoutX="152.0" layoutY="18.0" mnemonicParsing="false" text="Additional main action" />
+                              <Button fx:id="q3" layoutX="14.0" layoutY="57.0" mnemonicParsing="false" text="Elect a councillor" />
+                              <Button fx:id="skip" layoutX="88.0" layoutY="96.0" mnemonicParsing="false" text="Skip quick action" />
                            </children></AnchorPane>
                     </content>
                   </TitledPane>
@@ -239,30 +217,18 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="110.0" prefHeight="72.0" prefWidth="164.0">
                            <children>
-                              <ImageView fitHeight="50.0" fitWidth="25.0" layoutY="17.0">
-                                 <image>
-                                    <Image url="@rosa.jpg" />
-                                 </image>
+                              <ImageView fx:id="kingConcillor1" fitHeight="50.0" fitWidth="25.0" layoutY="17.0">
                               </ImageView>
-                              <ImageView fitHeight="50.0" fitWidth="25.0" layoutX="25.0" layoutY="17.0">
-                                 <image>
-                                    <Image url="@nero.jpg" />
-                                 </image>
+                              <ImageView fx:id="kingConcillor2" fitHeight="50.0" fitWidth="25.0" layoutX="25.0" layoutY="17.0">
                               </ImageView>
-                              <ImageView fitHeight="50.0" fitWidth="25.0" layoutX="50.0" layoutY="17.0">
-                                 <image>
-                                    <Image url="@viola.jpg" />
-                                 </image>
+                              <ImageView fx:id="kingConcillor3" fitHeight="50.0" fitWidth="25.0" layoutX="50.0" layoutY="17.0">
                               </ImageView>
-                              <ImageView fitHeight="50.0" fitWidth="25.0" layoutX="75.0" layoutY="17.0">
-                                 <image>
-                                    <Image url="@blu.jpg" />
-                                 </image>
+                              <ImageView fx:id="kingConcillor4" fitHeight="50.0" fitWidth="25.0" layoutX="75.0" layoutY="17.0">
                               </ImageView>
-                              <ImageView fitHeight="32.0" fitWidth="110.0" layoutY="42.0">
-                                 <image>
-                                    <Image url="@Balcone.jpg" />
-                                 </image>
+                              <ImageView fx:id="kingBalcony" fitHeight="32.0" fitWidth="110.0" layoutY="42.0">
+                              	<image>
+                                   <Image url="@Balcone.jpg" />
+                                </image>
                               </ImageView>
                            </children>
                         </AnchorPane>
@@ -271,45 +237,21 @@
                   <AnchorPane prefHeight="275.0" prefWidth="110.0">
                      <children>
                         <Text layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Assistant Reserve" />
-                        <ImageView fitHeight="50.0" fitWidth="25.0" layoutX="2.0" layoutY="22.0">
-                           <image>
-                              <Image url="@arancione.jpg" />
-                           </image>
+                        <ImageView fx:id="reserveConcillor1" fitHeight="50.0" fitWidth="25.0" layoutX="2.0" layoutY="22.0">
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="25.0" layoutX="29.0" layoutY="23.0">
-                           <image>
-                              <Image url="@rosa.jpg" />
-                           </image>
+                        <ImageView fx:id="reserveConcillor5" fitHeight="50.0" fitWidth="25.0" layoutX="29.0" layoutY="23.0">
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="25.0" layoutX="29.0" layoutY="79.0">
-                           <image>
-                              <Image url="@rosa.jpg" />
-                           </image>
+                        <ImageView fx:id="reserveConcillor6" fitHeight="50.0" fitWidth="25.0" layoutX="29.0" layoutY="79.0">
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="25.0" layoutX="2.0" layoutY="79.0">
-                           <image>
-                              <Image url="@rosa.jpg" />
-                           </image>
+                        <ImageView fx:id="reserveConcillor2" fitHeight="50.0" fitWidth="25.0" layoutX="2.0" layoutY="79.0">
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="25.0" layoutX="4.0" layoutY="139.0">
-                           <image>
-                              <Image url="@nero.jpg" />
-                           </image>
+                        <ImageView fx:id="reserveConcillor3" fitHeight="50.0" fitWidth="25.0" layoutX="4.0" layoutY="139.0">
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="25.0" layoutX="29.0" layoutY="139.0">
-                           <image>
-                              <Image url="@nero.jpg" />
-                           </image>
+                        <ImageView fx:id="reserveConcillor7" fitHeight="50.0" fitWidth="25.0" layoutX="29.0" layoutY="139.0">
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="25.0" layoutX="4.0" layoutY="197.0">
-                           <image>
-                              <Image url="@viola.jpg" />
-                           </image>
+                        <ImageView fx:id="reserveConcillor4" fitHeight="50.0" fitWidth="25.0" layoutX="4.0" layoutY="197.0">
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="25.0" layoutX="29.0" layoutY="197.0">
-                           <image>
-                              <Image url="@bianco.jpg" />
-                           </image>
+                        <ImageView fx:id="reserveConcillor8" fitHeight="50.0" fitWidth="25.0" layoutX="29.0" layoutY="197.0">
                         </ImageView>
                      </children>
                   </AnchorPane>
