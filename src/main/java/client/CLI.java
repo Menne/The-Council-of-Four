@@ -256,7 +256,6 @@ public class CLI extends ClientView {
 		throw new IllegalArgumentException("cityToTranslate is not a city name");
 	}
 
-	//da fare
 	@Override
 	public List<CardColourDTO> askForPoliticsCards(List<CardColourDTO> acceptablePoliticsCards) {
 		List<String> acceptableCardsColours=acceptablePoliticsCards.stream()
@@ -376,7 +375,5 @@ public class CLI extends ClientView {
 		// TODO Auto-generated method stub
 		
 	}
-
-
 
 }
