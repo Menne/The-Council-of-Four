@@ -1,8 +1,7 @@
 package client.modelDTO.clientNotifies;
 
 import client.modelDTO.GameDTO;
-import client.modelDTO.actionsDTO.bonusActions.ChooseCityActionDTO;
-import client.view.notifies.ClientPermitTileBonusNotify;
+import client.view.notifies.ClientCityBonusNotify;
 
 public class CityBonusDTONotify implements ClientNotify {
 
@@ -13,9 +12,7 @@ public class CityBonusDTONotify implements ClientNotify {
 
 	@Override
 	public void updateModel(GameDTO gameDTOtoupdate) {
-	//	gameDTOtoupdate.notifyObserver(new CityBonusDTONotify())
-		
-	//	chooseCityActionDTO.setParser(gameDTOtoupdate).setParameters(gameDTOtoupdate.getParser());
+		gameDTOtoupdate.notifyObserver(new ClientCityBonusNotify());
 	}
 
 }

@@ -11,7 +11,10 @@ import java.util.stream.Collectors;
 import client.modelDTO.GameDTO;
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.ActionWithParameters;
+import client.modelDTO.actionsDTO.ChatMessageDTO;
 import client.modelDTO.actionsDTO.QuitDTO;
+import client.modelDTO.actionsDTO.bonusActions.ChooseCityActionDTO;
+import client.modelDTO.actionsDTO.bonusActions.PurchasedPermitTileActionDTO;
 import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.GameTableDTO;
@@ -77,9 +80,9 @@ public class CLI extends ClientView {
 	public void input() throws RemoteException {
 		String input="";
 		while (!"quit".equals(input)) {
-			try{
+			try {
 				input=this.scanner.nextLine();
-			}catch(IllegalStateException e){
+			} catch (IllegalStateException e){
 				break;
 			}
 			if (this.availableActions().contains(input)) {
@@ -91,9 +94,11 @@ public class CLI extends ClientView {
 				else
 					connection.sendAction(selectedAction);
 			}
-			else if("quit".equals(input)){
+			else if (input.startsWith("chat:"))
+				connection.sendAction(new ChatMessageDTO(this.clientGame.getClientPlayer().getName() 
+						+ ": " + input.substring(5)));
+			else if ("quit".equals(input))
 				connection.sendAction(new QuitDTO());
-			}
 			else
 				System.out.println("Sorry, action not available!");	
 		}		
@@ -152,6 +157,11 @@ public class CLI extends ClientView {
 	@Override
 	public void displayFinalRanking(ArrayList<GenericPlayerDTO> finalRankingTable) {
 		System.out.println("GAME OVER\n FINAL RANKING TABLE: \n"+finalRankingTable);
+	}
+	
+	@Override
+	public void displayChatMessage(String message) {
+		System.out.println(message);
 	}
 	
 	
@@ -245,7 +255,6 @@ public class CLI extends ClientView {
 		throw new IllegalArgumentException("cityToTranslate is not a city name");
 	}
 
-	//da fare
 	@Override
 	public List<CardColourDTO> askForPoliticsCards(List<CardColourDTO> acceptablePoliticsCards) {
 		List<String> acceptableCardsColours=acceptablePoliticsCards.stream()
@@ -355,17 +364,30 @@ public class CLI extends ClientView {
 	
 	
 	@Override
-	public void ChooseCityBonus(List<CityDTO> acceptableCities) {
-		// TODO Auto-generated method stub
-		
+	public void ChooseCityBonus() {
+		ChooseCityActionDTO action=new ChooseCityActionDTO();
+		action.setParser(this, this.clientGame).setParameters();
+		if (action.checkIfParametersSetted());
+		try {
+			connection.sendAction(action);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
-	public void PurchasedPermitTileBonus(List<PermitTileDTO> acceptablePermitTiles) {
-		// TODO Auto-generated method stub
-		
+	public void PurchasedPermitTileBonus() {
+		PurchasedPermitTileActionDTO action=new PurchasedPermitTileActionDTO();
+		action.setParser(this, this.clientGame).setParameters();
+		if (action.checkIfParametersSetted());
+		try {
+			connection.sendAction(action);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-
 
 
 }

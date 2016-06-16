@@ -23,6 +23,6 @@ public class QuitDTORMI implements ActionDTO {
 
 	@Override
 	public Action startMapper(ActionMapperVisitor mapper) {
-		throw new IllegalArgumentException("this mapper shouldn't be called");
+		throw new IllegalArgumentException("QuitDTO doesn't require mapping");
 	}
 }

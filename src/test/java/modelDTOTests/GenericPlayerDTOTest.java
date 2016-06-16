@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import client.modelDTO.gameTableDTO.GenericPlayerDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
+import server.model.bonus.ScoreBonus;
 
 public class GenericPlayerDTOTest {
 
@@ -24,6 +25,8 @@ public class GenericPlayerDTOTest {
 		int hand=2;
 		List<PermitTileDTO> availablePermitTiles= new ArrayList<>();
 		GenericPlayerDTO player= new GenericPlayerDTO();
+		List<ScoreBonus> playersFinalBonus= new ArrayList<>();
+		player.setPlayersFinalBonus(playersFinalBonus);
 		player.setAssistants(assistants);
 		player.setAvailablePermitTiles(availablePermitTiles);
 		player.setCoins(coins);
@@ -44,7 +47,7 @@ public class GenericPlayerDTOTest {
 		assertTrue(player.getScore()==score);
 		assertEquals("\nPlayer " + playerNumber + "\tname: "+ name + "\tassistants=" + assistants + "\tscore="
 				+ score + "\tnobility=" + nobility + "\tcoins=" + coins + "\thand="+hand+"\tplayersPermitTilesTurnedUp=" + availablePermitTiles +
-				 "\temporiums=" + emporiums + "]", player.toString());
+				 "\temporiums=" + emporiums + "\tfinalBonus= " + playersFinalBonus+"]", player.toString());
 	}
 
 }

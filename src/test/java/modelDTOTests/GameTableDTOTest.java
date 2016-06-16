@@ -5,15 +5,18 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.junit.Test;
 
 import client.modelDTO.gameTableDTO.CardColourDTO;
+import client.modelDTO.gameTableDTO.CityColourDTO;
 import client.modelDTO.gameTableDTO.GameTableDTO;
 import client.modelDTO.gameTableDTO.GenericPlayerDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
 import server.model.bonus.Bonus;
+import server.model.bonus.ScoreBonus;
 
 public class GameTableDTOTest {
 
@@ -27,6 +30,10 @@ public class GameTableDTOTest {
 		GameTableDTO gameTable= new GameTableDTO();
 		String player= "andre";
 		String king= "king";
+		ScoreBonus nextKingRewardTile= new ScoreBonus(5);
+		Map<CityColourDTO, ScoreBonus> colourBonuses = null;
+		gameTable.setNextKingRewardTile(nextKingRewardTile);
+		gameTable.setColourBonuses(colourBonuses);
 		gameTable.setClientCouncillorReserve(cardColours);
 		gameTable.setClientKingBalcony(clientKingBalcony);
 		gameTable.setClientNobilityTrack(bonuses);
@@ -34,6 +41,8 @@ public class GameTableDTOTest {
 		gameTable.setClientRegions(regions);
 		gameTable.setCurrentPlayer(player);
 		gameTable.setKing(king);
+		assertTrue(gameTable.getNextKingRewardTile()==nextKingRewardTile);
+		assertTrue(gameTable.getColourBonuses()==colourBonuses);
 		assertTrue(gameTable.getClientCouncillorReserve()==cardColours);
 		assertTrue(gameTable.getClientKingBalcony()==clientKingBalcony);
 		assertTrue(gameTable.getClientNobilityTrack()==bonuses);
@@ -43,7 +52,8 @@ public class GameTableDTOTest {
 		assertTrue(gameTable.getKing()==king);
 		assertEquals("\nUpdated game table:\nPlayers:\n" + players + "\nNow is plaiyng:\t" + player + "\n" +
 				 regions + "\nKingCity: "+ king+" \nKing's balcony:" + Arrays.toString(clientKingBalcony) + "\nCouncillors riserve"+
-				 cardColours + "\n" + bonuses, gameTable.toString());
+				 cardColours + "\nNobilityTrack: " + bonuses
+				 +"\nNextKingRewardTile: "+nextKingRewardTile+"\nColourBonuses: "+colourBonuses, gameTable.toString());
 	}
 
 }

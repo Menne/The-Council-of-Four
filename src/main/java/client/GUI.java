@@ -92,6 +92,12 @@ public class GUI extends ClientView{
 		
 	}
 	
+	@Override
+	public void displayChatMessage(String message) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	
 
 	@Override
@@ -165,13 +171,13 @@ public class GUI extends ClientView{
 	
 	
 	@Override
-	public void ChooseCityBonus(List<CityDTO> acceptableCities) {
+	public void ChooseCityBonus() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void PurchasedPermitTileBonus(List<PermitTileDTO> acceptablePermitTiles) {
+	public void PurchasedPermitTileBonus() {
 		// TODO Auto-generated method stub
 		
 	}
