@@ -5,15 +5,14 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
+import client.connections.ClientRMIViewRemote;
+import client.connections.RMIConnection;
 import client.controller.ClientController;
 import client.modelDTO.GameDTO;
-import client.view.rmi.RMIConnection;
-import javafx.application.Application;
+import client.view.CLI;
 import client.view.ClientView;
-import client.view.rmi.ClientRMIViewRemote;
+import client.view.GUI;
 import server.view.RMIViewRemote;
 
 public class ClientRMI{
@@ -28,7 +27,7 @@ public class ClientRMI{
 		this.HOST=HOST;
 	}
 	
-	public void startClient(String graphic) throws RemoteException, NotBoundException{
+	public void startClient(Object parameter) throws RemoteException, NotBoundException{
 		
 		Registry registry = LocateRegistry.getRegistry(HOST, PORT);
 		RMIViewRemote serverStub= (RMIViewRemote) registry.lookup(NAME);
@@ -38,18 +37,10 @@ public class ClientRMI{
 		RMIConnection connection=new RMIConnection(serverStub);
 		ClientRMIViewRemote clientRMIViewRemote=(ClientRMIViewRemote) UnicastRemoteObject.exportObject(connection,0);	
 		ClientView view;
-		if("CLI".equals(graphic))
+		if(!(parameter instanceof ControllerGUI))
 			view=new CLI(connection, clientGame);
 		else{
-			view=new GUI(connection, clientGame);
-			ExecutorService executor=Executors.newSingleThreadExecutor();
-			executor.submit(new Runnable() {
-				
-				@Override
-				public void run() {
-					Application.launch(MainApp.class);				
-				}
-			});
+			view=new GUI(connection, clientGame, (ControllerGUI)parameter);
 		}
 		clientGame.registerObserver(view);
 		connection.registerObserver(clientController);

@@ -1,4 +1,4 @@
-package client.view.socket;
+package client.connections;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -7,7 +7,6 @@ import java.net.Socket;
 
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.clientNotifies.ClientNotify;
-import client.view.Connection;
 
 
 public class SocketConnection extends Connection implements Runnable{

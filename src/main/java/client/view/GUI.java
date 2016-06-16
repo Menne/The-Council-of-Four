@@ -1,10 +1,12 @@
-package client;
+package client.view;
 
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
+import client.ControllerGUI;
+import client.connections.Connection;
 import client.modelDTO.GameDTO;
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.gameTableDTO.CardColourDTO;
@@ -17,33 +19,18 @@ import client.modelDTO.marketDTO.MarketDTO;
 import client.modelDTO.marketDTO.MarketableDTO;
 import client.modelDTO.marketDTO.OfferDTO;
 import client.modelDTO.playerDTO.ClientPlayerDTO;
-import client.view.ClientView;
-import client.view.Connection;
 import client.view.notifies.ClientViewNotify;
-import javafx.application.Application;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 
 
 public class GUI extends ClientView{
 
-	private ControllerGUI controllerGUI;
+	private final ControllerGUI controllerGUI;
 	
-	public GUI(Connection connection, GameDTO clientGame) {
+	public GUI(Connection connection, GameDTO clientGame, ControllerGUI controllerGUI) {
 		super(connection, clientGame);
+		this.controllerGUI=controllerGUI;
 	}
-	
-	
-
-	public void setControllerGUI(ControllerGUI controllerGUI) {
-		this.controllerGUI = controllerGUI;
-	}
-
-
 
 	@Override
 	public void update(ClientViewNotify notify) {

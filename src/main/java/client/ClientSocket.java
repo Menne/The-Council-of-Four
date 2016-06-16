@@ -6,11 +6,12 @@ import java.net.UnknownHostException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import client.connections.SocketConnection;
 import client.controller.ClientController;
 import client.modelDTO.GameDTO;
+import client.view.CLI;
 import client.view.ClientView;
-import client.view.socket.SocketConnection;
-import javafx.application.Application;
+import client.view.GUI;
 
 public class ClientSocket {
 
@@ -23,7 +24,7 @@ public class ClientSocket {
 		this.clientName=clientname;
 	}
 	
-	public void startClient(String graphic)
+	public void startClient(Object parameter)
 				throws UnknownHostException, IOException {
 		Socket socket=new Socket(IP, PORT);
 		System.out.println("Connection created");
@@ -33,20 +34,10 @@ public class ClientSocket {
 		ClientController clientController=new ClientController(clientGame);
 		SocketConnection connection=new SocketConnection(socket);
 		ClientView view;
-		if("CLI".equals(graphic))
+		if(!(parameter instanceof ControllerGUI))
 			view=new CLI(connection, clientGame);
-		else{
-			view=new GUI(connection, clientGame);
-			ExecutorService executor=Executors.newSingleThreadExecutor();
-			executor.submit(new Runnable() {
-				
-				@Override
-				public void run() {
-					MainApp mainApp=new MainApp((GUI)view);
-//					Application.launch(mainApp);				
-				}
-			});
-		}
+		else
+			view=new GUI(connection, clientGame, (ControllerGUI) parameter);
 		clientGame.registerObserver(view);				
 		connection.registerObserver(clientController);
 		ExecutorService executor=Executors.newSingleThreadExecutor();

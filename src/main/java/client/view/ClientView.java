@@ -5,6 +5,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
+import client.connections.Connection;
 import client.modelDTO.GameDTO;
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.AddPlayerDTO;

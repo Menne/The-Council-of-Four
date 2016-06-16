@@ -5,10 +5,10 @@ import java.rmi.RemoteException;
 import java.util.HashMap;
 import java.util.Map;
 
+import client.connections.ClientRMIViewRemote;
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.QuitDTORMI;
 import client.modelDTO.clientNotifies.PlayerAcceptedDTONotify;
-import client.view.rmi.ClientRMIViewRemote;
 import server.Server;
 import server.model.Game;
 import server.model.actions.Quit;

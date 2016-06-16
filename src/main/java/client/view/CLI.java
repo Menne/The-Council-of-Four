@@ -1,4 +1,4 @@
- package client;
+ package client.view;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -8,6 +8,7 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 import java.util.stream.Collectors;
 
+import client.connections.Connection;
 import client.modelDTO.GameDTO;
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.ActionWithParameters;
@@ -25,8 +26,6 @@ import client.modelDTO.marketDTO.MarketDTO;
 import client.modelDTO.marketDTO.MarketableDTO;
 import client.modelDTO.marketDTO.OfferDTO;
 import client.modelDTO.playerDTO.ClientPlayerDTO;
-import client.view.ClientView;
-import client.view.Connection;
 import client.view.notifies.ClientGameOverNotify;
 import client.view.notifies.ClientViewNotify;
 import server.model.gameTable.CouncilBalcony;

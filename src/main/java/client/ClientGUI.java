@@ -2,6 +2,7 @@ package client;
 
 import java.io.IOException;
 
+import client.view.GUI;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -9,27 +10,22 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-public class MainApp extends Application {
+public class ClientGUI extends Application {
 
 	private Stage primaryStage;
     private BorderPane rootLayout;
-    private final GUI viewGUI;
-
-    public MainApp(GUI viewGUI) {
-		this.viewGUI=viewGUI;
-	}
      	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		this.primaryStage=primaryStage;
 		this.primaryStage.setTitle("The Council of Four");
 		initRootLayout();
-		showGame();
+		welcome();
  	}
 	
 	public void initRootLayout(){
 		 FXMLLoader loader = new FXMLLoader();
-		 loader.setLocation(GUI.class.getResource("RootLayout.fxml"));
+		 loader.setLocation(getClass().getResource("RootLayout.fxml"));
 		 try {
 			 
 			rootLayout=(BorderPane) loader.load();
@@ -44,6 +40,35 @@ public class MainApp extends Application {
 		 primaryStage.show();
 	}
 	
+	public void welcome(){
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("Welcome.fxml"));
+		try {
+			
+			AnchorPane welcomeOverview = (AnchorPane) loader.load();
+			rootLayout.setCenter(welcomeOverview);
+			
+			ControllerLogin controllerLogin= loader.getController();
+			controllerLogin.setClientGUI(this);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		};
+	}
+	
+	public ControllerGUI getControllerGUI(){
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("GUIGioco.fxml"));
+		try {
+			AnchorPane gameOverwiew=(AnchorPane) loader.load();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return loader.getController();
+	}
+	
 	public void showGame(){
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("GUIGioco.fxml"));
@@ -51,8 +76,6 @@ public class MainApp extends Application {
 			
 			AnchorPane gameOverwiew=(AnchorPane) loader.load();
 			rootLayout.setCenter(gameOverwiew);
-			
-			loader.getController();
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

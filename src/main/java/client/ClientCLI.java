@@ -8,22 +8,14 @@ import java.rmi.RemoteException;
 import java.util.Scanner;
 
 
-public class Client {
+public class ClientCLI {
 
 	public static void main(String[] args) throws NotBoundException, UnknownHostException, IOException {
 		String connection="";
 		String name="";
-		String graphic="";
 		Scanner scanner=new Scanner(System.in);
 		System.out.println("Welcome to CoF, please enter your name!");
-		name=scanner.nextLine();
-		
-		System.out.println("Hi, "+name+" do you want to play with CLI or GUI inteface?");
-		while(!"CLI".equals(graphic) && !"GUI".equals(graphic)){
-			graphic=scanner.nextLine();
-			if(!"CLI".equals(graphic) && !"GUI".equals(graphic))
-				System.out.println("Wrong input. Try again.");
-		}	
+		name=scanner.nextLine();	
 		
 		System.out.println("Do you want to use Socket or RMI?");
 		while(!"Socket".equals(connection) && !"RMI".equals(connection)){
@@ -38,12 +30,12 @@ public class Client {
 			try{
 				if("RMI".equals(connection)){
 					ClientRMI clientRMI=new ClientRMI(ip,name);
-					clientRMI.startClient(graphic);
+					clientRMI.startClient("CLI");
 					break;
 				}
 				else{
 					ClientSocket clientSocket=new ClientSocket(ip,name);
-					clientSocket.startClient(graphic);
+					clientSocket.startClient("CLI");
 					break;
 				}
 			}catch(SocketException | RemoteException e){

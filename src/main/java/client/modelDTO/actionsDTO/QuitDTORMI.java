@@ -1,6 +1,6 @@
 package client.modelDTO.actionsDTO;
 
-import client.view.rmi.ClientRMIViewRemote;
+import client.connections.ClientRMIViewRemote;
 import server.model.actions.Action;
 import server.view.actionMapperVisitor.ActionMapperVisitor;
 

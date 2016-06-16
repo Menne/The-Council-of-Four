@@ -1,4 +1,4 @@
-package client.view.rmi;
+package client.connections;
 
 import java.rmi.RemoteException;
 
@@ -7,7 +7,6 @@ import client.modelDTO.actionsDTO.AddPlayerDTO;
 import client.modelDTO.actionsDTO.QuitDTO;
 import client.modelDTO.actionsDTO.QuitDTORMI;
 import client.modelDTO.clientNotifies.ClientNotify;
-import client.view.Connection;
 import server.view.RMIViewRemote;
 
 public class RMIConnection extends Connection implements ClientRMIViewRemote{
