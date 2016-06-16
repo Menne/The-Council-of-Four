@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="754.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="543.0" fitWidth="754.0" opacity="0.79">
+         <image>
+            <Image url="@council-of-four.jpg" />
+         </image>
+      </ImageView>
+      <Button layoutX="255.0" layoutY="436.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="225.0" text="Play!" />
+      <TextArea layoutX="18.0" layoutY="38.0" opacity="0.52" prefHeight="150.0" prefWidth="715.0" text="Welcome to a The Council of Four!&#10;If you want to start a new game, please insert your name:">
+         <font>
+            <Font name="Algerian" size="21.0" />
+         </font>
+      </TextArea>
+      <TextField layoutX="38.0" layoutY="119.0" prefHeight="45.0" prefWidth="372.0" />
+      <TextArea layoutX="18.0" layoutY="212.0" opacity="0.5" prefHeight="166.0" prefWidth="715.0" text="Please select the connection to communicate with the server, &#10;and the IP address of the server">
+         <font>
+            <Font name="Algerian" size="21.0" />
+         </font>
+      </TextArea>
+      <PasswordField layoutX="274.0" layoutY="308.0" prefHeight="45.0" prefWidth="427.0" promptText="(0 for localhost)" />
+      <RadioButton layoutX="50.0" layoutY="292.0" mnemonicParsing="false" text="Socket" />
+      <RadioButton layoutX="50.0" layoutY="330.0" mnemonicParsing="false" text="RMI" />
+   </children>
+</AnchorPane>
