@@ -53,5 +53,27 @@ public class CityColourTest {
 		Set<City> colourCity= new HashSet<>();
 		colourCity.add(city);
 		assertEquals(colourCity, colour.getCitiesOfThisColour());
+	} 
+	
+	@Test
+	public void testGettersAndSetters(){
+		String name="blu";
+		ScoreBonus colorBonus= new ScoreBonus(5);
+		Set<City> citiesOfThisColour= new HashSet<>();
+		City c= null;
+		citiesOfThisColour.add(c);
+		CityColour cityColour= new CityColour(name, colorBonus);
+		cityColour.addCityOfThisColour(c);
+		assertEquals(citiesOfThisColour, cityColour.getCitiesOfThisColour());
+		assertTrue(cityColour.getName()==name);
+		assertTrue(cityColour.getColorBonus()==colorBonus);
+		assertTrue(cityColour.isBonusAvailable());
+		cityColour.notBonusAvailable();
+		assertFalse(cityColour.isBonusAvailable());
+		assertEquals(97674, cityColour.hashCode());
+		CityColour cityColour1= new CityColour(name, colorBonus);
+		cityColour1.addCityOfThisColour(c);
+		assertTrue(cityColour.equals(cityColour1));
 	}
 }
+

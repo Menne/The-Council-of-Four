@@ -6,7 +6,7 @@
 }
 
 .map{
-	-fx-background-image: url("map.jpg");  
+	-fx-background-image: url("legno.png");  
 	-fx-background-size: contain;
 	-fx-background-repeat: no-repeat;
 }
