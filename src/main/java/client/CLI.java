@@ -94,7 +94,7 @@ public class CLI extends ClientView {
 				else
 					connection.sendAction(selectedAction);
 			}
-			else if ("chat:".equals(input.substring(0,5)))
+			else if (input.startsWith("chat:"))
 				connection.sendAction(new ChatMessageDTO(this.clientGame.getClientPlayer().getName() 
 						+ ": " + input.substring(5)));
 			else if ("quit".equals(input))
