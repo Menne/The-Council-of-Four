@@ -5,10 +5,13 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import client.controller.ClientController;
 import client.modelDTO.GameDTO;
 import client.view.rmi.RMIConnection;
+import javafx.application.Application;
 import client.view.ClientView;
 import client.view.rmi.ClientRMIViewRemote;
 import server.view.RMIViewRemote;
@@ -37,8 +40,17 @@ public class ClientRMI{
 		ClientView view;
 		if("CLI".equals(graphic))
 			view=new CLI(connection, clientGame);
-		else
+		else{
 			view=new GUI(connection, clientGame);
+			ExecutorService executor=Executors.newSingleThreadExecutor();
+			executor.submit(new Runnable() {
+				
+				@Override
+				public void run() {
+					Application.launch(MainApp.class);				
+				}
+			});
+		}
 		clientGame.registerObserver(view);
 		connection.registerObserver(clientController);
 		view.welcome(clientName);

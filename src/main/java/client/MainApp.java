@@ -13,16 +13,19 @@ public class MainApp extends Application {
 
 	private Stage primaryStage;
     private BorderPane rootLayout;
-    
-    
-	
+    private final GUI viewGUI;
+
+    public MainApp(GUI viewGUI) {
+		this.viewGUI=viewGUI;
+	}
+     	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		this.primaryStage=primaryStage;
 		this.primaryStage.setTitle("The Council of Four");
 		initRootLayout();
 		showGame();
-	}
+ 	}
 	
 	public void initRootLayout(){
 		 FXMLLoader loader = new FXMLLoader();
@@ -43,17 +46,20 @@ public class MainApp extends Application {
 	
 	public void showGame(){
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(GUI.class.getResource("GUIGioco.fxml"));
+		loader.setLocation(getClass().getResource("GUIGioco.fxml"));
 		try {
+			
 			AnchorPane gameOverwiew=(AnchorPane) loader.load();
 			rootLayout.setCenter(gameOverwiew);
+			
+			loader.getController();
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}

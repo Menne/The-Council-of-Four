@@ -21,19 +21,29 @@ import client.view.ClientView;
 import client.view.Connection;
 import client.view.notifies.ClientViewNotify;
 import javafx.application.Application;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 
 
+public class GUI extends ClientView{
 
-public class GUI extends ClientView {
-
-	private final ControllerGUI controllerGUI;
+	private ControllerGUI controllerGUI;
 	
 	public GUI(Connection connection, GameDTO clientGame) {
 		super(connection, clientGame);
-		Application.launch(MainApp.class);
-		this.controllerGUI=new ControllerGUI();
 	}
+	
+	
+
+	public void setControllerGUI(ControllerGUI controllerGUI) {
+		this.controllerGUI = controllerGUI;
+	}
+
+
 
 	@Override
 	public void update(ClientViewNotify notify) {
@@ -47,12 +57,12 @@ public class GUI extends ClientView {
 
 	@Override
 	public void displayMessage(String string) {
-		controllerGUI.getMessageBox().appendText(string);
+		this.controllerGUI.getMessageBox().appendText(string);
 	}
 	
 	@Override
 	public void displayError(String string) {
-		controllerGUI.getMessageBox().appendText("ERROR: "+string);		
+		this.controllerGUI.getMessageBox().appendText("ERROR: "+string);		
 	}
 	
 	@Override
@@ -62,13 +72,12 @@ public class GUI extends ClientView {
 
 	@Override
 	public void displayGameTable(GameTableDTO clientGame) {
-		controllerGUI.getSeaConcillor1().setImage(new Image("main/images/councillors/Black.jpg"));
-	
+		this.controllerGUI.getSeaConcillor1().setImage(new Image("main/images/councillors/Black.jpg")); 
 	}
 
 	@Override
 	public void displayPlayer(ClientPlayerDTO player) {
-		controllerGUI.getMessageBox().appendText(player.toString());		
+		this.controllerGUI.getMessageBox().appendText(player.toString());		
 	}
 
 	@Override
@@ -166,6 +175,4 @@ public class GUI extends ClientView {
 		// TODO Auto-generated method stub
 		
 	}
-
-
 }
