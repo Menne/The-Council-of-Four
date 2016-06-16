@@ -51,7 +51,7 @@ public class AcquirePermitTile extends MainAction {
 	 * each rainbow card requires 1 additional coin each to use.
 	 */
 	@Override
-	public boolean executeAction(Game game) throws NullPointerException, IllegalArgumentException{
+	public boolean executeAction(Game game) {
 		if (this.numberOfPermitTile==null||
 				this.cardsToDescard==null||
 				this.chosenRegion==null)
@@ -62,7 +62,7 @@ public class AcquirePermitTile extends MainAction {
 					Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}
-		if (!this.CheckHandSatisfiesBalcony(game)) {
+		if (!this.CheckHandSatisfiesBalcony()) {
 					game.notifyObserver(new ErrorNotify("It seems that the cards in you hand don't satisfy the councillors!. Try again or choose another action", 
 							Arrays.asList(game.getCurrentPlayer())));
 			return false;
@@ -92,7 +92,7 @@ public class AcquirePermitTile extends MainAction {
 	 * @return the amount of coins
 	 * @throws IndexOutOfBoundsException if the list of cards to discard is empty
 	 */
-	private int CoinsToPay() throws IndexOutOfBoundsException {
+	private int CoinsToPay() {
 		if (this.cardsToDescard.isEmpty())
 			throw new IndexOutOfBoundsException("you have selected 0 cards to buy a permit tile");
 		
@@ -120,8 +120,8 @@ public class AcquirePermitTile extends MainAction {
 	 * checks if the player hands cards' colour match with the colour of councillors
 	 * of the selected balcony
 	 */
-	private boolean CheckHandSatisfiesBalcony(Game game) {
-		List<Councillor> temporaryBalcony=new ArrayList<Councillor>();
+	private boolean CheckHandSatisfiesBalcony() {
+		List<Councillor> temporaryBalcony=new ArrayList<>();
 		int satisfyCounter=0;
 		for (int i=0; i<=CouncilBalcony.getNumberofcouncillors()-1; i++)
 			temporaryBalcony.add(chosenRegion.getRegionBalcony().getCouncillors()[i]);		
@@ -129,7 +129,7 @@ public class AcquirePermitTile extends MainAction {
 		for (PoliticsCard politicsCardInHand: this.cardsToDescard) {
 			if (politicsCardInHand.getColour().getColour().equals("Rainbow"))
 				satisfyCounter++;		
-				for (Councillor councillorToSatisfy : temporaryBalcony)
+			for (Councillor councillorToSatisfy : temporaryBalcony)
 				if (councillorToSatisfy.getColour().getColour().equals(politicsCardInHand.getColour().getColour())) {
 					temporaryBalcony.remove(councillorToSatisfy);
 					satisfyCounter++;

@@ -7,7 +7,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 public class ControllerGUI {
- 
+
 	@FXML
 	private Pane seaRegion;
 	
@@ -121,10 +121,6 @@ public class ControllerGUI {
 	
 	@FXML
 	private TextArea messageBox;
-	
-	public ControllerGUI(){
-		this.messageBox=new TextArea();
-	}
 
 	public Pane getSeaRegion() {
 		return seaRegion;
@@ -136,6 +132,10 @@ public class ControllerGUI {
 
 	public Pane getMountainRegion() {
 		return mountainRegion;
+	}
+
+	public ImageView getKingBalcony() {
+		return kingBalcony;
 	}
 
 	public ImageView getSeaConcillor1() {
@@ -184,6 +184,22 @@ public class ControllerGUI {
 
 	public ImageView getMountainConcillor4() {
 		return mountainConcillor4;
+	}
+
+	public ImageView getKingConcillor1() {
+		return kingConcillor1;
+	}
+
+	public ImageView getKingConcillor2() {
+		return kingConcillor2;
+	}
+
+	public ImageView getKingConcillor3() {
+		return kingConcillor3;
+	}
+
+	public ImageView getKingConcillor4() {
+		return kingConcillor4;
 	}
 
 	public ImageView getReserveConcillor1() {
@@ -257,7 +273,6 @@ public class ControllerGUI {
 	public TextArea getMessageBox() {
 		return messageBox;
 	}
-	
 	
 	
 }

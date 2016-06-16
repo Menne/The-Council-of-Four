@@ -10,6 +10,7 @@ import client.controller.ClientController;
 import client.modelDTO.GameDTO;
 import client.view.ClientView;
 import client.view.socket.SocketConnection;
+import javafx.application.Application;
 
 public class ClientSocket {
 
@@ -34,8 +35,18 @@ public class ClientSocket {
 		ClientView view;
 		if("CLI".equals(graphic))
 			view=new CLI(connection, clientGame);
-		else
+		else{
 			view=new GUI(connection, clientGame);
+			ExecutorService executor=Executors.newSingleThreadExecutor();
+			executor.submit(new Runnable() {
+				
+				@Override
+				public void run() {
+					MainApp mainApp=new MainApp((GUI)view);
+//					Application.launch(mainApp);				
+				}
+			});
+		}
 		clientGame.registerObserver(view);				
 		connection.registerObserver(clientController);
 		ExecutorService executor=Executors.newSingleThreadExecutor();
