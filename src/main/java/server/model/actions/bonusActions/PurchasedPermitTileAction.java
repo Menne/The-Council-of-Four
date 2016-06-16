@@ -23,6 +23,8 @@ public class PurchasedPermitTileAction implements Action {
 	
 	@Override
 	public boolean executeAction(Game game) {
+		if(this.selectedPermitTile==null)
+			throw new NullPointerException("you have to select a permit tile to do this action");
 		for (Bonus bonusToAssign : this.selectedPermitTile.getBonuses())
 			bonusToAssign.assignBonus(game);
 		
