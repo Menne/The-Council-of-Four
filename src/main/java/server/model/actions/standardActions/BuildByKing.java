@@ -49,7 +49,7 @@ public class BuildByKing extends MainAction {
 	 * @return TRUE if the action goes well, false otherwise
 	 */
 	@Override
-	public boolean executeAction(Game game) throws NullPointerException{
+	public boolean executeAction(Game game) {
 		
 		if(this.cardsToDescard==null || this.selectedCity==null)
 			throw new NullPointerException("Paramters not setted");
@@ -66,19 +66,19 @@ public class BuildByKing extends MainAction {
 					Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}
-		if (!CheckHandSatisfiesBalcony(game)) {
+		if (!checkHandSatisfiesBalcony(game)) {
 			game.notifyObserver(new ErrorNotify("It seems that these cards don't satisfy the councillors!. Try again or choose another action",
 					Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}	
-		if (!CheckEnoughCoins(game)) {
+		if (!checkEnoughCoins(game)) {
 			game.notifyObserver(new ErrorNotify("It seems that you haven't enough coins!. Try again or choose another action",
 					Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}
 		
-		game.getCurrentPlayer().decrementCoins(CoinsToPay(game));
-		game.getCurrentPlayer().decrementAssistants(assistantsToPay(game));
+		game.getCurrentPlayer().decrementCoins(coinsToPay(game));
+		game.getCurrentPlayer().decrementAssistants(assistantsToPay());
 		for (PoliticsCard card : cardsToDescard)
 			game.getCurrentPlayer().removeCardFromHand(card);
 		
@@ -94,14 +94,12 @@ public class BuildByKing extends MainAction {
 		if (this.selectedCity.getColour().isBonusAvailable())
 			assignColourBonus(game);
 		
-		if(game.getCurrentPlayer().getRemainigEmporiums().size()==0){
+		if (game.getCurrentPlayer().getRemainigEmporiums().isEmpty()){
 			game.setLastLap(true);
 			game.getCurrentPlayer().incrementScore(3);
 		}
 		
 		this.nextState(game);
-		System.out.println(game.getGameTable());
-		System.out.println(game.getPlayers());
 		return true;
 	}
 	
@@ -122,20 +120,20 @@ public class BuildByKing extends MainAction {
 	 */
 	private boolean checkEnoughAssistants(Game game) {
 		return game.getCurrentPlayer().getNumberOfAssistants() >= 
-				assistantsToPay(game);
+				assistantsToPay();
 	}
 	
 	/**
 	 * checks if the player has enough coins
 	 */
-	private boolean CheckEnoughCoins(Game game) {
-		return game.getCurrentPlayer().getCoins() >= CoinsToPay(game);
+	private boolean checkEnoughCoins(Game game) {
+		return game.getCurrentPlayer().getCoins() >= coinsToPay(game);
 	}
 	
 	/**
 	 * @return the amount of assistants to pay
 	 */
-	private int assistantsToPay(Game game) {
+	private int assistantsToPay() {
 		return this.selectedCity.getCityEmporiums().size();
 	}
 	
@@ -144,7 +142,7 @@ public class BuildByKing extends MainAction {
 	 * selected and the number of rainbow politics cards
 	 * @return the amount of coins
 	 */
-	private int CoinsToPay(Game game) {
+	private int coinsToPay(Game game) {
 		int coinsToPay;
 		game.getGameTable().getCouncilOfKing();
 		if (this.cardsToDescard.size()==CouncilBalcony.getNumberofcouncillors())
@@ -161,8 +159,8 @@ public class BuildByKing extends MainAction {
 	 * checks if the player hands cards' colour matches with the colour of councillors
 	 * of the selected balcony
 	 */
-	private boolean CheckHandSatisfiesBalcony(Game game) {
-		List<Councillor> temporaryBalcony=new ArrayList<Councillor>();
+	private boolean checkHandSatisfiesBalcony(Game game) {
+		List<Councillor> temporaryBalcony=new ArrayList<>();
 		int satisfyCounter=0;
 		for (int i=0; i<=CouncilBalcony.getNumberofcouncillors()-1; i++)
 			temporaryBalcony.add(game.getGameTable().getCouncilOfKing().getCouncillors()[i]);
@@ -170,7 +168,7 @@ public class BuildByKing extends MainAction {
 		for (PoliticsCard politicsCardInHand: this.cardsToDescard) {
 			if (politicsCardInHand.getColour().getColour().equals("Rainbow"))
 				satisfyCounter++;		
-				for (Councillor councillorToSatisfy : temporaryBalcony)
+			for (Councillor councillorToSatisfy : temporaryBalcony)
 				if (councillorToSatisfy.getColour().getColour().equals(politicsCardInHand.getColour().getColour())) {
 					temporaryBalcony.remove(councillorToSatisfy);
 					satisfyCounter++;
