@@ -43,8 +43,10 @@ public class ControllerLogin {
 
 
 	public void play() throws UnknownHostException, IOException, NotBoundException{
-		if(name.getText().isEmpty() || address.getText().isEmpty())
+		if(name.getText().isEmpty() || address.getText().isEmpty()){
 			error.appendText("Error, try again!");
+			return;
+		}
 		ControllerGUI controllerGUI=clientGUI.getControllerGUI();
 		while(true){
 			try {
@@ -59,7 +61,7 @@ public class ControllerLogin {
 					break;
 				}
 			} catch (SocketException | RemoteException e) {
-					error.appendText("Wrong address, try again!");
+					error.setText("Wrong address, try again!");
 				}
 			}
 		clientGUI.showGame();

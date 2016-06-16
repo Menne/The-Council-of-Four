@@ -8,6 +8,7 @@ import javafx.scene.layout.Pane;
 
 public class ControllerGUI {
 
+
 	@FXML
 	private Pane seaRegion;
 	
@@ -121,7 +122,7 @@ public class ControllerGUI {
 	
 	@FXML
 	private TextArea messageBox;
-
+	
 	public Pane getSeaRegion() {
 		return seaRegion;
 	}
@@ -273,6 +274,6 @@ public class ControllerGUI {
 	public TextArea getMessageBox() {
 		return messageBox;
 	}
-	
+
 	
 }

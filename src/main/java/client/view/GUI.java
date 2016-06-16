@@ -20,6 +20,7 @@ import client.modelDTO.marketDTO.MarketableDTO;
 import client.modelDTO.marketDTO.OfferDTO;
 import client.modelDTO.playerDTO.ClientPlayerDTO;
 import client.view.notifies.ClientViewNotify;
+import javafx.application.Platform;
 import javafx.scene.image.Image;
 
 
@@ -39,12 +40,12 @@ public class GUI extends ClientView{
 
 	@Override
 	public void input() throws RemoteException {
-		
+		return;
 	}
 
 	@Override
 	public void displayMessage(String string) {
-		this.controllerGUI.getMessageBox().appendText(string);
+		controllerGUI.getMessageBox().setText(string);
 	}
 	
 	@Override

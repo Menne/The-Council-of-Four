@@ -6,6 +6,7 @@ import client.view.GUI;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -13,7 +14,7 @@ import javafx.stage.Stage;
 public class ClientGUI extends Application {
 
 	private Stage primaryStage;
-    private BorderPane rootLayout;
+    private ScrollPane rootLayout;
      	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -28,7 +29,7 @@ public class ClientGUI extends Application {
 		 loader.setLocation(getClass().getResource("RootLayout.fxml"));
 		 try {
 			 
-			rootLayout=(BorderPane) loader.load();
+			rootLayout=(ScrollPane) loader.load();
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -46,7 +47,7 @@ public class ClientGUI extends Application {
 		try {
 			
 			AnchorPane welcomeOverview = (AnchorPane) loader.load();
-			rootLayout.setCenter(welcomeOverview);
+			rootLayout.setContent(welcomeOverview);
 			
 			ControllerLogin controllerLogin= loader.getController();
 			controllerLogin.setClientGUI(this);
@@ -75,7 +76,7 @@ public class ClientGUI extends Application {
 		try {
 			
 			AnchorPane gameOverwiew=(AnchorPane) loader.load();
-			rootLayout.setCenter(gameOverwiew);
+			rootLayout.setContent(gameOverwiew);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
