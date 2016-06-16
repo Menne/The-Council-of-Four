@@ -12,6 +12,7 @@ import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
+import server.model.bonus.ScoreBonus;
 
 public class RegionDTOTest {
 
@@ -25,13 +26,16 @@ public class RegionDTOTest {
 		region.setBalcony(balcony);
 		region.setCities(cities);
 		region.setName(name);
+		ScoreBonus regionBonus= new ScoreBonus(5);
+		region.setRegionBonus(regionBonus);
 		region.setUncoveredPermitTiles(uncoveredPermitTiles);
 		assertTrue(region.getBalcony()==balcony);
+		assertTrue(region.getRegionBonus()==regionBonus);
 		assertTrue(region.getCities()==cities);
 		assertTrue(region.getName()==name);
 		assertTrue(region.getUncoveredPermitTiles()==uncoveredPermitTiles);
 		assertEquals("\n"+name + "\t" + Arrays.toString(balcony) + "\tTiles:" + Arrays.toString(uncoveredPermitTiles)+
-				"\t" + cities, region.toString());
+				"\tBonus: "+regionBonus+"\n" + cities, region.toString());
 	}
 
 	public void testEquals() {
