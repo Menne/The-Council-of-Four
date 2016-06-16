@@ -132,7 +132,7 @@ public class CityTest {
 	}
 	
 	@Test
-	public void testAddEmporiumsAndGetEmporiums() throws IOException {
+	public void testAddEmporiumsAndGetEmporiumsAndTostringAndEqualsAndHashcode() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
 		Player a = new Player("Andre");
@@ -145,12 +145,18 @@ public class CityTest {
 		Bonus bonus1= new ScoreBonus(1);
 		set.add(bonus1);
 		list.add(set);
+		list.add(set);
 		City city=new City("città1",game.getGameTable().getRegionBoards().get(0), colour, list);
+		City city1=new City("città1",game.getGameTable().getRegionBoards().get(0), colour, list);
 		Emporium e=new Emporium(game.getPlayers().get(0));
 		city.addEmporium(e);
+		city1.addEmporium(e);
 		Set<Emporium> emporiums= new HashSet<>();
 		emporiums.add(e);
 		assertEquals(emporiums, city.getCityEmporiums());
+		assertTrue(city.equals(city1));
+		assertEquals(-1360137386, city.hashCode());
+		assertEquals(city.getName()+"\t"+city.getCityEmporiums()+"\t"+city.getRewardToken()+"\n", city.toString());
 	}
 	
 	@Test
