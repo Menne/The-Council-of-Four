@@ -11,6 +11,7 @@ import client.modelDTO.actionsDTO.standardActions.ChangePermitTilesDTO;
 import client.modelDTO.actionsDTO.standardActions.ElectCouncillorByAssistantDTO;
 import client.modelDTO.actionsDTO.standardActions.ElectCouncillorDTO;
 import client.modelDTO.actionsDTO.standardActions.EngageAssistantDTO;
+import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
 import client.view.GUI;
@@ -370,51 +371,60 @@ public class ControllerGUI {
 	
 	
 	public RegionDTO seaRegionClicked() {
-		return null;
+		for (RegionDTO region : this.clientGame.getClientGameTable().getClientRegions())
+		    if ("Sea".equals(region.getName()))
+		        return region;
+		throw new IllegalArgumentException("Clicked region not found");
 	}
 
-	public Pane hillRegionClicked() {
-		return null;
+	public RegionDTO hillRegionClicked() {
+		for (RegionDTO region : this.clientGame.getClientGameTable().getClientRegions())
+		    if ("Hill".equals(region.getName()))
+		        return region;
+		throw new IllegalArgumentException("Clicked region not found");
 	}
 
-	public Pane mountainRegionClicked() {
-		return null;
+	public RegionDTO mountainRegionClicked() {
+		for (RegionDTO region : this.clientGame.getClientGameTable().getClientRegions())
+		    if ("Mountain".equals(region.getName()))
+		        return region;
+		throw new IllegalArgumentException("Clicked region not found");
 	}
 
-	public ImageView kingBalconyClicked() {
-		return null;
+	public CardColourDTO[] kingBalconyClicked() {
+		return this.clientGame.getClientGameTable().getClientKingBalcony();
 	}
 
-	public ImageView reserveConcillor1Clicked() {
-		return null;
+	public CardColourDTO reserveConcillor1Clicked() {
+		return this.clientGame.getClientGameTable().getClientCouncillorReserve().get(0);
 	}
 
-	public ImageView reserveConcillor2Clicked() {
-		return null;
+	public CardColourDTO reserveConcillor2Clicked() {
+		return this.clientGame.getClientGameTable().getClientCouncillorReserve().get(1);
 	}
 
-	public ImageView reserveConcillor3Clicked() {
-		return null;
+	public CardColourDTO reserveConcillor3Clicked() {
+		return this.clientGame.getClientGameTable().getClientCouncillorReserve().get(2);
 	}
 
-	public ImageView reserveConcillor4Clicked() {
-		return null;
+	public CardColourDTO reserveConcillor4Clicked() {
+		return this.clientGame.getClientGameTable().getClientCouncillorReserve().get(3);
 	}
 
-	public ImageView reserveConcillor5Clicked() {
-		return null;
+	public CardColourDTO reserveConcillor5Clicked() {
+		return this.clientGame.getClientGameTable().getClientCouncillorReserve().get(4);
 	}
 
-	public ImageView reserveConcillor6Clicked() {
-		return null;
+	public CardColourDTO reserveConcillor6Clicked() {
+		return this.clientGame.getClientGameTable().getClientCouncillorReserve().get(5);
 	}
 
-	public ImageView reserveConcillor7Clicked() {
-		return null;
+	public CardColourDTO reserveConcillor7Clicked() {
+		return this.clientGame.getClientGameTable().getClientCouncillorReserve().get(6);
 	}
 
-	public ImageView reserveConcillor8Clicked() {
-		return null;
+	public CardColourDTO reserveConcillor8Clicked() {
+		return this.clientGame.getClientGameTable().getClientCouncillorReserve().get(7);
 	}
 	
 	public CityDTO arkonClicked() {
