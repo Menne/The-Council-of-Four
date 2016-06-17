@@ -56,18 +56,6 @@ public class ClientGUI extends Application {
 		};
 	}
 	
-	public ControllerGUI getControllerGUI(){
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("GUIGioco.fxml"));
-		try {
-			AnchorPane gameOverwiew=(AnchorPane) loader.load();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return loader.getController();
-	}
-	
 	public ControllerGUI showGame(){
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("GUIGioco.fxml"));

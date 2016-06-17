@@ -1,5 +1,9 @@
 package client;
 
+import java.util.Arrays;
+import java.util.List;
+
+import client.modelDTO.gameTableDTO.RegionDTO;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -273,6 +277,23 @@ public class ControllerGUI {
 
 	public TextArea getMessageBox() {
 		return messageBox;
+	}
+	
+	public List<ImageView> getCouncillors(RegionDTO balcony){
+		switch(balcony.getName()){
+		case "Sea":
+			return Arrays.asList(seaConcillor1,seaConcillor2,seaConcillor3,seaConcillor4);
+		case "Hill":
+			return Arrays.asList(hillConcillor1,hillConcillor2,hillConcillor3,hillConcillor4);
+		case "Mountain":
+			return Arrays.asList(mountainConcillor1,mountainConcillor2,mountainConcillor3,mountainConcillor4);
+		default:
+			throw new IllegalArgumentException("Region does not exist!");
+		}
+	}
+	
+	public List<ImageView> getKingCouncillors(){
+		return Arrays.asList(kingConcillor1,kingConcillor2,kingConcillor3,kingConcillor4);
 	}
 
 	
