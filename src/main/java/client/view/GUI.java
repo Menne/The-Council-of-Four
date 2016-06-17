@@ -190,4 +190,10 @@ public class GUI extends ClientView{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
+	
+	public Connection getConnection() {
+		return this.connection;
+	}
 }
