@@ -47,23 +47,21 @@ public class ControllerLogin {
 			error.appendText("Error, try again!");
 			return;
 		}
-		ControllerGUI controllerGUI=clientGUI.getControllerGUI();
 		while(true){
 			try {
 				if(connection.getSelectedToggle().equals(socket)){
 					ClientSocket clientSocket=new ClientSocket(address.getText(),name.getText());
-					clientSocket.startClient(controllerGUI);
+					clientSocket.startClient(clientGUI.showGame());
 					break;
 				}
 				else{
 					ClientRMI clientRMI=new ClientRMI(address.getText(),name.getText());
-					clientRMI.startClient(controllerGUI);
+					clientRMI.startClient(clientGUI.showGame());
 					break;
 				}
 			} catch (SocketException | RemoteException e) {
 					error.setText("Wrong address, try again!");
 				}
 			}
-		clientGUI.showGame();
 		}
 }

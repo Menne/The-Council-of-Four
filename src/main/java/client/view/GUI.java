@@ -45,7 +45,14 @@ public class GUI extends ClientView{
 
 	@Override
 	public void displayMessage(String string) {
-		controllerGUI.getMessageBox().setText(string);
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				controllerGUI.getMessageBox().appendText(string+"\n");	
+			}
+		});
+		
 	}
 	
 	@Override
@@ -60,7 +67,7 @@ public class GUI extends ClientView{
 
 	@Override
 	public void displayGameTable(GameTableDTO clientGame) {
-		this.controllerGUI.getSeaConcillor1().setImage(new Image("main/images/councillors/Black.jpg")); 
+		this.controllerGUI.getSeaConcillor1().setImage(new Image("images/councillors/Black.jpg")); 
 	}
 
 	@Override

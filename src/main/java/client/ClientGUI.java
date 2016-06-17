@@ -2,13 +2,11 @@ package client;
 
 import java.io.IOException;
 
-import client.view.GUI;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class ClientGUI extends Application {
@@ -70,18 +68,19 @@ public class ClientGUI extends Application {
 		return loader.getController();
 	}
 	
-	public void showGame(){
+	public ControllerGUI showGame(){
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("GUIGioco.fxml"));
 		try {
 			
 			AnchorPane gameOverwiew=(AnchorPane) loader.load();
 			rootLayout.setContent(gameOverwiew);
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return loader.getController();
 	}
 
 	public static void main(String[] args) {
