@@ -3,7 +3,9 @@ package client.view;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import client.ControllerGUI;
 import client.connections.Connection;
@@ -25,12 +27,21 @@ import javafx.scene.image.Image;
 
 
 public class GUI extends ClientView{
-
+	
+	private final Map<String, Image> imageMap;		
+		
 	private final ControllerGUI controllerGUI;
 	
 	public GUI(Connection connection, GameDTO clientGame, ControllerGUI controllerGUI) {
 		super(connection, clientGame);
 		this.controllerGUI=controllerGUI;
+		imageMap=new HashMap<String,Image>();
+		imageMap.put("Black",new Image(getClass().getResource("councillors/Black.jpg").toExternalForm()));
+		imageMap.put("Blue",new Image(getClass().getResource("councillors/Blue.jpg").toExternalForm()));
+		imageMap.put("Orange",new Image(getClass().getResource("councillors/Orange.jpg").toExternalForm()));
+		imageMap.put("Pink",new Image(getClass().getResource("councillors/Pink.jpg").toExternalForm()));
+		imageMap.put("Violet",new Image(getClass().getResource("councillors/Violet.jpg").toExternalForm()));
+		imageMap.put("White",new Image(getClass().getResource("councillors/White.jpg").toExternalForm()));
 	}
 
 	@Override
@@ -66,16 +77,11 @@ public class GUI extends ClientView{
 
 	@Override
 	public void displayGameTable(GameTableDTO clientGame) {
-		Platform.runLater(new Runnable() {
-			
-			@Override
-			public void run() {
-				for(RegionDTO region : clientGame.getClientRegions())
-					for(int i=0; i<4; i++)
-						controllerGUI.getCouncillors(region).get(i).setImage(new Image(getClass().getResource("councillors/"+region.getBalcony()[i].getName()+".jpg").toExternalForm()));			
-			}
-		});
-		
+		for(RegionDTO region : clientGame.getClientRegions())
+			for(int i=0; i<4; i++)
+				controllerGUI.getCouncillors(region).get(i).setImage(imageMap.get(region.getBalcony()[i].getName()));
+		for(int i=0; i<4; i++)
+			controllerGUI.getKingCouncillors().get(i).setImage(imageMap.get(clientGame.getClientKingBalcony()[i].getName()));
 	}
 
 	@Override
