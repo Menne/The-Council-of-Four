@@ -1,5 +1,18 @@
 package client;
 
+import java.rmi.RemoteException;
+
+import client.modelDTO.GameDTO;
+import client.modelDTO.actionsDTO.standardActions.AcquirePermitTileDTO;
+import client.modelDTO.actionsDTO.standardActions.AddictionalMainActionDTO;
+import client.modelDTO.actionsDTO.standardActions.BuildByKingDTO;
+import client.modelDTO.actionsDTO.standardActions.BuildByPermitTileDTO;
+import client.modelDTO.actionsDTO.standardActions.ChangePermitTilesDTO;
+import client.modelDTO.actionsDTO.standardActions.ElectCouncillorByAssistantDTO;
+import client.modelDTO.actionsDTO.standardActions.ElectCouncillorDTO;
+import client.modelDTO.actionsDTO.standardActions.EngageAssistantDTO;
+import client.modelDTO.gameTableDTO.RegionDTO;
+import client.view.GUI;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -7,6 +20,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 public class ControllerGUI {
+	
+	private GameDTO clientGame;
+	private GUI view;
+
+	public ControllerGUI(GameDTO clientGame, GUI view) {
+		this.clientGame=clientGame;
+		this.view=view;
+	}
 
 
 	@FXML
@@ -274,6 +295,95 @@ public class ControllerGUI {
 	public TextArea getMessageBox() {
 		return messageBox;
 	}
+	
+	public void startM1() {
+		ElectCouncillorDTO action=new ElectCouncillorDTO();
+		action.setParser(this.view, this.clientGame).setParameters();
+	}
+	
+	public void startM2() {
+		AcquirePermitTileDTO action=new AcquirePermitTileDTO();
+		action.setParser(this.view, this.clientGame).setParameters();
+	}
+	
+	public void startM3() {
+		BuildByPermitTileDTO action=new BuildByPermitTileDTO();
+		action.setParser(this.view, this.clientGame).setParameters();
+	}
+	
+	public void startM4() {
+		BuildByKingDTO action=new BuildByKingDTO();
+		action.setParser(this.view, this.clientGame).setParameters();
+	}
+	
+	public void startQ1() throws RemoteException {
+		EngageAssistantDTO action=new EngageAssistantDTO();
+		this.view.getConnection().sendAction(action);
+	}
+	
+	public void startQ2() {
+		ChangePermitTilesDTO action=new ChangePermitTilesDTO();
+		action.setParser(this.view, this.clientGame).setParameters();
+	}
+	
+	public void startQ3() {
+		ElectCouncillorByAssistantDTO action=new ElectCouncillorByAssistantDTO();
+		action.setParser(this.view, this.clientGame).setParameters();
+	}
+	
+	public void startQ4() throws RemoteException {
+		AddictionalMainActionDTO action=new AddictionalMainActionDTO();
+		this.view.getConnection().sendAction(action);
+	}
+	
+	
+	
+	public RegionDTO seaRegionClicked() {
+		return null;
+	}
 
+	public Pane hillRegionClicked() {
+		return null;
+	}
+
+	public Pane mountainRegionClicked() {
+		return null;
+	}
+
+	public ImageView kingBalconyClicked() {
+		return null;
+	}
+
+	public ImageView reserveConcillor1Clicked() {
+		return null;
+	}
+
+	public ImageView reserveConcillor2Clicked() {
+		return null;
+	}
+
+	public ImageView reserveConcillor3Clicked() {
+		return null;
+	}
+
+	public ImageView reserveConcillor4Clicked() {
+		return null;
+	}
+
+	public ImageView reserveConcillor5Clicked() {
+		return null;
+	}
+
+	public ImageView reserveConcillor6Clicked() {
+		return null;
+	}
+
+	public ImageView reserveConcillor7Clicked() {
+		return null;
+	}
+
+	public ImageView reserveConcillor8Clicked() {
+		return null;
+	}
 	
 }
