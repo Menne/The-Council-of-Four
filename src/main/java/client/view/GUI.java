@@ -31,6 +31,8 @@ public class GUI extends ClientView{
 	public GUI(Connection connection, GameDTO clientGame, ControllerGUI controllerGUI) {
 		super(connection, clientGame);
 		this.controllerGUI=controllerGUI;
+		this.controllerGUI.setClientGame(clientGame);
+		this.controllerGUI.setView(this);
 	}
 
 	@Override

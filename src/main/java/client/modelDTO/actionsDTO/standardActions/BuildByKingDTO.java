@@ -2,14 +2,12 @@ package client.modelDTO.actionsDTO.standardActions;
 
 import java.util.List;
 
-import client.modelDTO.GameDTO;
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.ActionWithParameters;
 import client.modelDTO.actionsDTO.actionsParametersSetters.ActionParserVisitor;
 import client.modelDTO.actionsDTO.actionsParametersSetters.BuildByKingParser;
 import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
-import client.view.ClientView;
 import server.model.actions.Action;
 import server.view.actionMapperVisitor.ActionMapperVisitor;
 
@@ -53,8 +51,8 @@ public class BuildByKingDTO implements ActionDTO, ActionWithParameters {
 	}
 
 	@Override
-	public ActionParserVisitor setParser(ClientView view, GameDTO game) {
-		return new BuildByKingParser(this, view, game);
+	public ActionParserVisitor setParser() {
+		return new BuildByKingParser(this);
 	}
 
 	@Override

@@ -1,12 +1,10 @@
 package client.modelDTO.actionsDTO.bonusActions;
 
-import client.modelDTO.GameDTO;
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.ActionWithParameters;
 import client.modelDTO.actionsDTO.actionsParametersSetters.ActionParserVisitor;
 import client.modelDTO.actionsDTO.actionsParametersSetters.ChooseCityBonusParser;
 import client.modelDTO.gameTableDTO.CityDTO;
-import client.view.ClientView;
 import server.model.actions.Action;
 import server.view.actionMapperVisitor.ActionMapperVisitor;
 
@@ -20,8 +18,8 @@ public class ChooseCityActionDTO implements ActionDTO, ActionWithParameters{
 	private boolean parametersSetted=false;
 
 	@Override
-	public ActionParserVisitor setParser(ClientView view, GameDTO game) {
-		return new ChooseCityBonusParser(this, view, game);
+	public ActionParserVisitor setParser() {
+		return new ChooseCityBonusParser(this);
 	}
 	
 	public void setCity(CityDTO selectedCity) {

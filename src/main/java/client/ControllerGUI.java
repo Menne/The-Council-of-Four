@@ -11,6 +11,7 @@ import client.modelDTO.actionsDTO.standardActions.ChangePermitTilesDTO;
 import client.modelDTO.actionsDTO.standardActions.ElectCouncillorByAssistantDTO;
 import client.modelDTO.actionsDTO.standardActions.ElectCouncillorDTO;
 import client.modelDTO.actionsDTO.standardActions.EngageAssistantDTO;
+import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
 import client.view.GUI;
 
@@ -26,9 +27,13 @@ public class ControllerGUI {
 	
 	private GameDTO clientGame;
 	private GUI view;
-
-	public ControllerGUI(GameDTO clientGame, GUI view) {
+	
+	
+	public void setClientGame(GameDTO clientGame) {
 		this.clientGame=clientGame;
+	}
+	
+	public void setView(GUI view) {
 		this.view=view;
 	}
 
@@ -324,22 +329,22 @@ public class ControllerGUI {
 
 	public void startM1() {
 		ElectCouncillorDTO action=new ElectCouncillorDTO();
-		action.setParser(this.view, this.clientGame).setParameters();
+		action.setParser().setParameters(this.view, this.clientGame);
 	}
 	
 	public void startM2() {
 		AcquirePermitTileDTO action=new AcquirePermitTileDTO();
-		action.setParser(this.view, this.clientGame).setParameters();
+		action.setParser().setParameters(this.view, this.clientGame);
 	}
 	
 	public void startM3() {
 		BuildByPermitTileDTO action=new BuildByPermitTileDTO();
-		action.setParser(this.view, this.clientGame).setParameters();
+		action.setParser().setParameters(this.view, this.clientGame);
 	}
 	
 	public void startM4() {
 		BuildByKingDTO action=new BuildByKingDTO();
-		action.setParser(this.view, this.clientGame).setParameters();
+		action.setParser().setParameters(this.view, this.clientGame);
 	}
 	
 	public void startQ1() throws RemoteException {
@@ -349,12 +354,12 @@ public class ControllerGUI {
 	
 	public void startQ2() {
 		ChangePermitTilesDTO action=new ChangePermitTilesDTO();
-		action.setParser(this.view, this.clientGame).setParameters();
+		action.setParser().setParameters(this.view, this.clientGame);
 	}
 	
 	public void startQ3() {
 		ElectCouncillorByAssistantDTO action=new ElectCouncillorByAssistantDTO();
-		action.setParser(this.view, this.clientGame).setParameters();
+		action.setParser().setParameters(this.view, this.clientGame);
 	}
 	
 	public void startQ4() throws RemoteException {
@@ -411,5 +416,67 @@ public class ControllerGUI {
 	public ImageView reserveConcillor8Clicked() {
 		return null;
 	}
+	
+	public CityDTO arkonClicked() {
+		return null;
+	}
+	
+	public CityDTO burgenClicked() {
+		return null;
+	}
+	
+	public CityDTO castrumClicked() {
+		return null;
+	}
+	
+	public CityDTO dorfulClicked() {
+		return null;
+	}
+	
+	public CityDTO eskiClicked() {
+		return null;
+	}
+	
+	public CityDTO framekClicked() {
+		return null;
+	}
+	
+	public CityDTO gradenClicked() {
+		return null;
+	}
+	
+	public CityDTO hellarClicked() {
+		return null;
+	}
+	
+	public CityDTO indurClicked() {
+		return null;
+	}
+	
+	public CityDTO juvelarClicked() {
+		return null;
+	}
+	
+	public CityDTO kultosClicked() {
+		return null;
+	}
+	
+	public CityDTO lyramClicked() {
+		return null;
+	}
+	
+	public CityDTO merkatimClicked() {
+		return null;
+	}
+	
+	public CityDTO narisClicked() {
+		return null;
+	}
+	
+	public CityDTO osiumClicked() {
+		return null;
+	}
+	
+
 	
 }
