@@ -22,7 +22,7 @@
     -fx-border-width: 2;
     -fx-background-radius: 0;
     -fx-background-color: #8c8a3a;
-    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font: 13 Papyrus;
     -fx-text-fill: #6b4208;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
