@@ -18,17 +18,24 @@ public class Initializer {
 	private String s;
 	@SuppressWarnings("unused")
 	private String r;
+	private String mapNumber= null;
+	
+	public void setMapNumber(String mapNumber) {
+		this.mapNumber = mapNumber;
+	}
+
 
 	public GameTable initialize() throws IOException{
 	
-		
+	
 	FileReader f;
-    f=new FileReader("src/main/file.txt");
-
+	if(mapNumber!=null)
+		f=new FileReader("src/main/file"+mapNumber+".txt");
+	else
+		f=new FileReader("src/main/file1.txt");
     BufferedReader b;
     b=new BufferedReader(f);
 	
-    
     
     /*
      *inizializzo colori carte in una lista cardColourList
