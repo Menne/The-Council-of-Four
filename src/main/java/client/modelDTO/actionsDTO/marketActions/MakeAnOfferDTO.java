@@ -3,13 +3,11 @@ package client.modelDTO.actionsDTO.marketActions;
 import java.util.ArrayList;
 import java.util.List;
 
-import client.modelDTO.GameDTO;
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.ActionWithParameters;
 import client.modelDTO.actionsDTO.actionsParametersSetters.ActionParserVisitor;
 import client.modelDTO.actionsDTO.actionsParametersSetters.MakeAnOfferParser;
 import client.modelDTO.marketDTO.OfferDTO;
-import client.view.ClientView;
 import server.model.actions.Action;
 import server.view.actionMapperVisitor.ActionMapperVisitor;
 
@@ -27,8 +25,8 @@ public class MakeAnOfferDTO implements ActionDTO, ActionWithParameters {
 	}
 	
 	@Override
-	public ActionParserVisitor setParser(ClientView view, GameDTO game) {
-		return new MakeAnOfferParser(this, view, game);
+	public ActionParserVisitor setParser() {
+		return new MakeAnOfferParser(this);
 	}
 
 

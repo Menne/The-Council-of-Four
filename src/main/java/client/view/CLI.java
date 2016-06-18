@@ -66,15 +66,6 @@ public class CLI extends ClientView {
 		return null;
 	}
 	
-	/**
-	 * This method translates the strings of parameters into effective parameters and sets them to the action
-	 * @param selectedAction is the action without parameters set
-	 * @return the selected action with the parameters set
-	 */
-	private ActionDTO parametersParser(ActionWithParameters selectedAction) {
-		return selectedAction.setParser(this, this.clientGame).setParameters();
-	}
-	
 	@Override
 	public void input() throws RemoteException {
 		String input="";
@@ -86,7 +77,7 @@ public class CLI extends ClientView {
 			}
 			if (this.availableActions().contains(input)) {
 				ActionDTO selectedAction=this.actionParser(input);
-				if (parametersNeeded(selectedAction)) {
+				if (selectedAction instanceof ActionWithParameters) {
 					ActionWithParameters actionWithParameters=(ActionWithParameters) selectedAction;
 					this.insertParametersAndSend(actionWithParameters);
 				}
@@ -103,12 +94,8 @@ public class CLI extends ClientView {
 		}		
 	}
 	
-	private boolean parametersNeeded(ActionDTO selectedAction) throws RemoteException {
-		return (selectedAction instanceof ActionWithParameters);			
-	}
-	
 	private void insertParametersAndSend(ActionWithParameters actionWithParameters) throws RemoteException {
-		this.parametersParser(actionWithParameters);
+		actionWithParameters.setParser().setParameters(this, this.clientGame);
 		if (actionWithParameters.checkIfParametersSetted())
 			connection.sendAction(actionWithParameters);
 		
@@ -365,7 +352,7 @@ public class CLI extends ClientView {
 	@Override
 	public void ChooseCityBonus() {
 		ChooseCityActionDTO action=new ChooseCityActionDTO();
-		action.setParser(this, this.clientGame).setParameters();
+		action.setParser().setParameters(this, this.clientGame);
 		if (action.checkIfParametersSetted());
 		try {
 			connection.sendAction(action);
@@ -378,7 +365,7 @@ public class CLI extends ClientView {
 	@Override
 	public void PurchasedPermitTileBonus() {
 		PurchasedPermitTileActionDTO action=new PurchasedPermitTileActionDTO();
-		action.setParser(this, this.clientGame).setParameters();
+		action.setParser().setParameters(this, this.clientGame);
 		if (action.checkIfParametersSetted());
 		try {
 			connection.sendAction(action);

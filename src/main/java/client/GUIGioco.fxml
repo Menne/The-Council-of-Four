@@ -167,10 +167,7 @@
                         <ImageView fx:id="kingConcillor2" fitHeight="33.0" fitWidth="21.0" layoutX="516.0" layoutY="501.0" pickOnBounds="true" preserveRatio="true" />
                         <ImageView fx:id="kingConcillor3" fitHeight="33.0" fitWidth="21.0" layoutX="541.0" layoutY="505.0" pickOnBounds="true" preserveRatio="true" />
                         <ImageView fx:id="kingConcillor4" fitHeight="33.0" fitWidth="21.0" layoutX="563.0" layoutY="505.0" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fx:id="mountainConcillor1" fitHeight="33.0" fitWidth="21.0" layoutX="611.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fx:id="mountainConcillor2" fitHeight="33.0" fitWidth="21.0" layoutX="637.0" layoutY="469.0" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fx:id="mountainConcillor3" fitHeight="33.0" fitWidth="21.0" layoutX="662.0" layoutY="473.0" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fx:id="mountainConcillor4" fitHeight="33.0" fitWidth="21.0" layoutX="684.0" layoutY="473.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="mountainConcillor1" fitHeight="33.0" fitWidth="21.0" layoutX="611.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true" />       
                         <ImageView fx:id="seaConcillor1" fitHeight="33.0" fitWidth="21.0" layoutX="82.0" layoutY="470.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="133.0" AnchorPane.leftAnchor="82.0" AnchorPane.rightAnchor="658.0" AnchorPane.topAnchor="470.0" />
                         <ImageView fx:id="seaConcillor2" fitHeight="33.0" fitWidth="21.0" layoutX="108.0" layoutY="471.0" pickOnBounds="true" preserveRatio="true" />
                         <ImageView fx:id="seaConcillor3" fitHeight="33.0" fitWidth="21.0" layoutX="132.0" layoutY="474.0" pickOnBounds="true" preserveRatio="true" />
@@ -180,6 +177,9 @@
                         <ImageView fx:id="hillConcillor3" fitHeight="33.0" fitWidth="21.0" layoutX="381.0" layoutY="472.0" pickOnBounds="true" preserveRatio="true" />
                         <ImageView fx:id="hillConcillor4" fitHeight="33.0" fitWidth="21.0" layoutX="403.0" layoutY="472.0" pickOnBounds="true" preserveRatio="true" />
                         <ImageView fx:id="kingConcillor1" fitHeight="33.0" fitWidth="21.0" layoutX="490.0" layoutY="500.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="mountainConcillor4" fitHeight="33.0" fitWidth="21.0" layoutX="684.0" layoutY="473.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="mountainConcillor3" fitHeight="33.0" fitWidth="21.0" layoutX="662.0" layoutY="473.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="mountainConcillor2" fitHeight="33.0" fitWidth="21.0" layoutX="637.0" layoutY="469.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </AnchorPane>
                   <VBox prefHeight="596.0" prefWidth="124.0">

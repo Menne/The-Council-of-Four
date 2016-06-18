@@ -1,12 +1,10 @@
 package client.modelDTO.actionsDTO.standardActions;
 
-import client.modelDTO.GameDTO;
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.ActionWithParameters;
 import client.modelDTO.actionsDTO.actionsParametersSetters.ActionParserVisitor;
 import client.modelDTO.actionsDTO.actionsParametersSetters.ElectCouncillorParser;
 import client.modelDTO.gameTableDTO.CardColourDTO;
-import client.view.ClientView;
 import server.model.actions.Action;
 import server.view.actionMapperVisitor.ActionMapperVisitor;
 
@@ -52,8 +50,8 @@ public class ElectCouncillorDTO implements ActionDTO, ActionWithParameters {
 	}
 
 	@Override
-	public ActionParserVisitor setParser(ClientView view, GameDTO game) {
-		return new ElectCouncillorParser(this, view, game);
+	public ActionParserVisitor setParser() {
+		return new ElectCouncillorParser(this);
 	}
 
 	@Override
