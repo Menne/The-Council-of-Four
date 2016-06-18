@@ -2,14 +2,12 @@ package client.modelDTO.actionsDTO.standardActions;
 
 import java.util.List;
 
-import client.modelDTO.GameDTO;
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.ActionWithParameters;
 import client.modelDTO.actionsDTO.actionsParametersSetters.AcquirePermitTileParser;
 import client.modelDTO.actionsDTO.actionsParametersSetters.ActionParserVisitor;
 import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
-import client.view.ClientView;
 import server.model.actions.Action;
 import server.view.actionMapperVisitor.ActionMapperVisitor;
 
@@ -63,8 +61,8 @@ public class AcquirePermitTileDTO implements ActionDTO, ActionWithParameters {
 	}
 
 	@Override
-	public ActionParserVisitor setParser(ClientView view, GameDTO game) {
-		return new AcquirePermitTileParser(this, view, game);
+	public ActionParserVisitor setParser() {
+		return new AcquirePermitTileParser(this);
 	}
 
 	@Override

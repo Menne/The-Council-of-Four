@@ -8,23 +8,19 @@ import client.view.ClientView;
 public class ChangePermitTilesParser implements ActionParserVisitor {
 
 	private ChangePermitTilesDTO selectedAction;
-	private ClientView view;
-	private GameDTO game;
-	
-	public ChangePermitTilesParser(ChangePermitTilesDTO selectedAction, ClientView view, GameDTO game) {
+
+	public ChangePermitTilesParser(ChangePermitTilesDTO selectedAction) {
 		this.selectedAction=selectedAction;
-		this.view=view;
-		this.game=game;
 	}
 
 	
 	@Override
-	public ActionDTO setParameters() {
-		this.view.displayMessage("Ok! you have chosen to change the permit tiles of a region. Now I need some other infos, like:");
+	public ActionDTO setParameters(ClientView view, GameDTO game) {
+		view.displayMessage("Ok! you have chosen to change the permit tiles of a region. Now I need some other infos, like:");
 		
-		this.view.displayMessage("the name of the region in which you want to pick");
-		this.selectedAction.setSelectedRegion(this.view.askForRegionBoard
-				(this.game.getClientGameTable().getClientRegions()));
+		view.displayMessage("the name of the region in which you want to pick");
+		this.selectedAction.setSelectedRegion(view.askForRegionBoard
+				(game.getClientGameTable().getClientRegions()));
 		
 		this.selectedAction.parametersSetted();
 		

@@ -7,7 +7,6 @@ import java.util.List;
 
 import org.junit.Test;
 
-import client.modelDTO.GameDTO;
 import client.modelDTO.actionsDTO.actionsParametersSetters.MakeAnOfferParser;
 import client.modelDTO.actionsDTO.marketActions.MakeAnOfferDTO;
 import client.modelDTO.marketDTO.OfferDTO;
@@ -18,11 +17,10 @@ public class MakeAnOfferDTOTest {
 	public void testSettersAndToString() {
 		List<OfferDTO> offeredObjectsDTO= new ArrayList<>();
 		OfferDTO offerDTO= new OfferDTO();
-		GameDTO game=new GameDTO();
 		MakeAnOfferDTO action= new MakeAnOfferDTO();
 		action.setOfferedObjectsDTO(offeredObjectsDTO);
 		assertFalse(action.checkIfParametersSetted());
-		assertEquals(MakeAnOfferParser.class, action.setParser(null, null).getClass());
+		assertEquals(MakeAnOfferParser.class, action.setParser().getClass());
 		assertTrue(action.getOfferedObjectsDTO()==offeredObjectsDTO);
 		action.addOfferToList(offerDTO);
 		assertTrue(action.getOfferedObjectsDTO().get(0)==offerDTO);
