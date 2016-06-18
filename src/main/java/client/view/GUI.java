@@ -27,10 +27,9 @@ import javafx.scene.image.Image;
 
 
 public class GUI extends ClientView{
-	
-	private final Map<String, Image> imageMap;		
-		
+
 	private final ControllerGUI controllerGUI;
+	private final Map<String, Image> imageMap;
 	
 	public GUI(Connection connection, GameDTO clientGame, ControllerGUI controllerGUI) {
 		super(connection, clientGame);
@@ -79,11 +78,18 @@ public class GUI extends ClientView{
 
 	@Override
 	public void displayGameTable(GameTableDTO clientGame) {
-		for(RegionDTO region : clientGame.getClientRegions())
-			for(int i=0; i<4; i++)
-				controllerGUI.getCouncillors(region).get(i).setImage(imageMap.get(region.getBalcony()[i].getName()));
-		for(int i=0; i<4; i++)
-			controllerGUI.getKingCouncillors().get(i).setImage(imageMap.get(clientGame.getClientKingBalcony()[i].getName()));
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				for(RegionDTO region : clientGame.getClientRegions())
+					for(int i=0; i<4; i++)
+						controllerGUI.getCouncillors(region).get(i).setImage(imageMap.get(region.getBalcony()[i].getName()));
+				for(int i=0; i<4; i++)
+					controllerGUI.getKingCouncillors().get(i).setImage(imageMap.get(clientGame.getClientKingBalcony()[i].getName()));
+			}
+		});
+		
 	}
 
 	@Override
