@@ -18,6 +18,11 @@ import client.view.GUI;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -335,7 +340,15 @@ public class ControllerGUI {
 	
 	public void startM2() {
 		AcquirePermitTileDTO action=new AcquirePermitTileDTO();
-		action.setParser().setParameters(this.view, this.clientGame);
+		ExecutorService executor=Executors.newSingleThreadExecutor();
+		executor.submit(new Runnable() {
+			
+			@Override
+			public void run() {
+				action.setParser().setParameters(view, clientGame);
+				
+			}
+		});
 	}
 	
 	public void startM3() {
@@ -487,6 +500,12 @@ public class ControllerGUI {
 		return null;
 	}
 	
-
-	
+	@FXML
+	public void clickSeaRegion(){
+		synchronized (view.getLock()) {
+			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(0));
+			view.getLock().notify();
+		}
+		
+	}	
 }

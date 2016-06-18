@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.ControllerGUI">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.ControllerGUI">
    <children>
       <BorderPane prefHeight="800.0" prefWidth="1280.0">
          <bottom>
@@ -435,7 +435,7 @@
                                     <Button fx:id="m1" minHeight="-Infinity" minWidth="0.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="191.0" text="Elect a councillor" textAlignment="CENTER" textFill="#6b4208" />
                                     <Button fx:id="m4" minWidth="30.0" mnemonicParsing="false" text="Build by king" textAlignment="CENTER" textFill="#6b4208" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     <Button fx:id="m3" mnemonicParsing="false" text="Build by permit tile" textAlignment="CENTER" textFill="#6b4208" GridPane.rowIndex="1" />
-                                    <Button fx:id="m2" minWidth="30.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="177.0" styleClass="submit" stylesheets="@resize.css" text="Acquire permit tile" textAlignment="CENTER" textFill="#6b4208" GridPane.columnIndex="1" />
+                                    <Button fx:id="m2" minWidth="30.0" mnemonicParsing="false" onAction="#startM2" prefHeight="31.0" prefWidth="177.0" styleClass="submit" stylesheets="@resize.css" text="Acquire permit tile" textAlignment="CENTER" textFill="#6b4208" GridPane.columnIndex="1" />
                                  </children>
                               </GridPane>
                            </children>
@@ -476,7 +476,7 @@
                               <Image url="@mountainTile.png" />
                            </image>
                         </ImageView>
-                        <AnchorPane fx:id="seaRegion" layoutX="-2.0" layoutY="-4.0" prefHeight="385.0" prefWidth="245.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="519.0" AnchorPane.topAnchor="0.0" />
+                        <AnchorPane fx:id="seaRegion" layoutX="-2.0" layoutY="-4.0" onMouseClicked="#clickSeaRegion" prefHeight="385.0" prefWidth="245.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="519.0" AnchorPane.topAnchor="0.0" />
                         <AnchorPane fx:id="hillRegion" layoutX="245.0" layoutY="-7.0" prefHeight="385.0" prefWidth="278.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="241.0" AnchorPane.topAnchor="0.0" />
                         <AnchorPane fx:id="mountainRegion" layoutX="522.0" prefHeight="385.0" prefWidth="242.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="522.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                         <ImageView fx:id="kingConcillor2" fitHeight="33.0" fitWidth="21.0" layoutX="516.0" layoutY="501.0" pickOnBounds="true" preserveRatio="true" />
