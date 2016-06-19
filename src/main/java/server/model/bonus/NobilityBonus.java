@@ -43,7 +43,7 @@ public class NobilityBonus implements Bonus{
 
 	@Override
 	public String toString() {
-		return "Nobility+" + nobilityAdvancement;
+		return "nobility+" + nobilityAdvancement;
 	}
 
 	public int getNobilityAdvancement() {

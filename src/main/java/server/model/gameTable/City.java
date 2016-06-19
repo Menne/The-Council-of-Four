@@ -2,6 +2,7 @@ package server.model.gameTable;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 import server.model.bonus.Bonus;
@@ -40,8 +41,10 @@ public class City {
 		this.cityEmporiums=new HashSet<>();
 		this.nearCities=new HashSet<>();
 		this.rewardToken=new HashSet<>();
-		if(!"KingColour".equals(colour.getName()))
-			this.rewardToken.addAll(rewardTokenList.remove(0));
+		if(!"KingColour".equals(colour.getName())){
+			Random random=new Random();
+			this.rewardToken.addAll(rewardTokenList.remove(random.nextInt(rewardTokenList.size())));
+		}			
 		colour.addCityOfThisColour(this);
 		region.addCityOfThisRegion(this);
 	}

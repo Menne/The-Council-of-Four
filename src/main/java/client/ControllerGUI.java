@@ -25,6 +25,7 @@ import java.util.concurrent.Executors;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -54,7 +55,16 @@ public class ControllerGUI {
 	private Pane mountainRegion;
 	
 	@FXML
-	private ImageView kingBalcony;
+	private Pane kingBalcony;
+	
+	@FXML
+	private Pane seaBalcony;
+	
+	@FXML
+	private Pane hillBalcony;
+	
+	@FXML
+	private Pane mountainBalcony;
 	
 	@FXML
 	private ImageView seaConcillor1;
@@ -312,6 +322,78 @@ public class ControllerGUI {
 	private ImageView kingRewardTile5;
 	
 	@FXML
+	private Label scorePlayer1;
+	
+	@FXML
+	private Label scorePlayer2;
+	
+	@FXML
+	private Label scorePlayer3;
+	
+	@FXML
+	private Label scorePlayer4;
+	
+	@FXML
+	private Label nobilityPlayer1;
+	
+	@FXML
+	private Label nobilityPlayer2;
+	
+	@FXML
+	private Label nobilityPlayer3;
+	
+	@FXML
+	private Label nobilityPlayer4;
+	
+	@FXML
+	private Label coinsPlayer1;
+	
+	@FXML
+	private Label coinsPlayer2;
+	
+	@FXML
+	private Label coinsPlayer3;
+	
+	@FXML
+	private Label coinsPlayer4;
+	
+	@FXML
+	private Label assistantsPlayer1;
+	
+	@FXML
+	private Label assistantsPlayer2;
+	
+	@FXML
+	private Label assistantsPlayer3;
+	
+	@FXML
+	private Label assistantsPlayer4;
+	
+	@FXML
+	private Label remainingEmporiumPlayer1;
+	
+	@FXML
+	private Label remainingEmporiumPlayer2;
+	
+	@FXML
+	private Label remainingEmporiumPlayer3;
+	
+	@FXML
+	private Label remainingEmporiumPlayer4;
+	
+	@FXML
+	private Label namePlayer1;
+	
+	@FXML
+	private Label namePlayer2;
+	
+	@FXML
+	private Label namePlayer3;
+	
+	@FXML
+	private Label namePlayer4;
+	
+	@FXML
 	private TextArea messageBox;
 	
 	public Pane getSeaRegion() {
@@ -326,73 +408,10 @@ public class ControllerGUI {
 		return mountainRegion;
 	}
 
-	public ImageView getKingBalcony() {
+	public Pane getKingBalcony() {
 		return kingBalcony;
 	}
 
-	public ImageView getSeaConcillor1() {
-		return seaConcillor1;
-	}
-
-	public ImageView getSeaConcillor2() {
-		return seaConcillor2;
-	}
-
-	public ImageView getSeaConcillor3() {
-		return seaConcillor3;
-	}
-
-	public ImageView getSeaConcillor4() {
-		return seaConcillor4;
-	}
-
-	public ImageView getHillConcillor1() {
-		return hillConcillor1;
-	}
-
-	public ImageView getHillConcillor2() {
-		return hillConcillor2;
-	}
-
-	public ImageView getHillConcillor3() {
-		return hillConcillor3;
-	}
-
-	public ImageView getHillConcillor4() {
-		return hillConcillor4;
-	}
-
-	public ImageView getMountainConcillor1() {
-		return mountainConcillor1;
-	}
-
-	public ImageView getMountainConcillor2() {
-		return mountainConcillor2;
-	}
-
-	public ImageView getMountainConcillor3() {
-		return mountainConcillor3;
-	}
-
-	public ImageView getMountainConcillor4() {
-		return mountainConcillor4;
-	}
-
-	public ImageView getKingConcillor1() {
-		return kingConcillor1;
-	}
-
-	public ImageView getKingConcillor2() {
-		return kingConcillor2;
-	}
-
-	public ImageView getKingConcillor3() {
-		return kingConcillor3;
-	}
-
-	public ImageView getKingConcillor4() {
-		return kingConcillor4;
-	}
 
 	public ImageView getReserveConcillor1() {
 		return reserveConcillor1;
@@ -426,41 +445,6 @@ public class ControllerGUI {
 		return reserveConcillor8;
 	}
 
-	public Button getM1() {
-		return m1;
-	}
-
-	public Button getM2() {
-		return m2;
-	}
-
-	public Button getM3() {
-		return m3;
-	}
-
-	public Button getM4() {
-		return m4;
-	}
-
-	public Button getQ1() {
-		return q1;
-	}
-
-	public Button getQ2() {
-		return q2;
-	}
-
-	public Button getQ3() {
-		return q3;
-	}
-
-	public Button getQ4() {
-		return q4;
-	}
-
-	public Button getSkip() {
-		return skip;
-	}
 
 	public TextArea getMessageBox() {
 		return messageBox;
@@ -483,6 +467,44 @@ public class ControllerGUI {
 	
 	public List<ImageView> getKingCouncillors(){
 		return Arrays.asList(kingConcillor1,kingConcillor2,kingConcillor3,kingConcillor4);
+	}
+	
+	public ImageView getRewardToken(CityDTO city){
+		switch(city.getName()){
+			case "Arkon":
+				return rewardTokenA;
+			case "Burgen":
+				return rewardTokenB;
+			case "Castrum":
+				return rewardTokenC;
+			case "Dorful":
+				return rewardTokenD;
+			case "Esti":
+				return rewardTokenE;
+			case "Framek":
+				return rewardTokenF;
+			case "Graden":
+				return rewardTokenG;
+			case "Hellar":
+				return rewardTokenH;
+			case "Indur":
+				return rewardTokenI;
+			case "Juvelar":
+				return rewardTokenJ;
+			case "Kultos":
+				return rewardTokenK;
+			case "Lyram":
+				return rewardTokenL;
+			case "Merkatim":
+				return rewardTokenM;
+			case "Naris":
+				return rewardTokenN;
+			case "Osium":
+				return rewardTokenO;
+			default:
+				throw new IllegalArgumentException("City "+city+"does not exist!");
+			
+		}
 	}
 	
 	

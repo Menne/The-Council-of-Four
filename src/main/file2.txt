@@ -100,10 +100,6 @@ NextRewardToken
 NobilityBonus
 1
 NextRewardToken
-
-NobilityBonus
-1
-NextRewardToken
 STOPRewardTokenList
 
 FirstRegionCities
