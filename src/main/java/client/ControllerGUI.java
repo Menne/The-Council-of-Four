@@ -153,6 +153,122 @@ public class ControllerGUI {
 	private Button skip;
 	
 	@FXML
+	private ImageView RewardTokenA;
+	
+	@FXML
+	private ImageView RewardTokenB;
+
+	@FXML
+	private ImageView RewardTokenC;
+	
+	@FXML
+	private ImageView RewardTokenD;
+	
+	@FXML
+	private ImageView RewardTokenE;
+	
+	@FXML
+	private ImageView RewardTokenF;
+	
+	@FXML
+	private ImageView RewardTokenG;
+	
+	@FXML
+	private ImageView RewardTokenH;
+
+	@FXML
+	private ImageView RewardTokenI;
+	
+	@FXML
+	private ImageView RewardTokenJ;
+	
+	@FXML
+	private ImageView RewardTokenK;
+	
+	@FXML
+	private ImageView RewardTokenL;
+	
+	@FXML
+	private ImageView RewardTokenM;
+	
+	@FXML
+	private ImageView RewardTokenN;
+	
+	@FXML
+	private ImageView RewardTokenO;
+	
+	@FXML
+	private ImageView PermitDeckSeaRegion;
+	
+	@FXML
+	private ImageView PermitDeckHillRegion;
+	
+	@FXML
+	private ImageView PermitDeckMountainRegion;
+	
+	@FXML
+	private ImageView PermitTileSea0;
+	
+	@FXML
+	private ImageView PermitTileSea1;
+	
+	@FXML
+	private ImageView PermitTileHill0;
+	
+	@FXML
+	private ImageView PermitTileHill1;
+	
+	@FXML
+	private ImageView PermitTileMountain0;
+	
+	@FXML
+	private ImageView PermitTileMountain1;
+	
+	@FXML
+	private Pane Arkon;
+	
+	@FXML
+	private Pane Burgen;
+	
+	@FXML
+	private Pane Castrum;
+	
+	@FXML
+	private Pane Dorful;
+	
+	@FXML
+	private Pane Esti;
+	
+	@FXML
+	private Pane Framek;
+	
+	@FXML
+	private Pane Graden;
+	
+	@FXML
+	private Pane Hellar;
+	
+	@FXML
+	private Pane Indur;
+	
+	@FXML
+	private Pane Juvelar;
+	
+	@FXML
+	private Pane Kultos;
+	
+	@FXML
+	private Pane Lyram;
+	
+	@FXML
+	private Pane Merkatim;
+	
+	@FXML
+	private Pane Naris;
+	
+	@FXML
+	private Pane Osium;
+	@FXML
 	private TextArea messageBox;
 	
 	public Pane getSeaRegion() {

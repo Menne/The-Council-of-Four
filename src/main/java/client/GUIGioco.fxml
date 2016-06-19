@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -20,11 +15,12 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.ControllerGUI">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.ControllerGUI">
    <children>
       <BorderPane prefHeight="800.0" prefWidth="1280.0">
          <bottom>
@@ -563,10 +559,10 @@
                     <content>
                       <AnchorPane minHeight="140.0" minWidth="240.0" prefHeight="143.0" prefWidth="396.0" styleClass="sfondo" stylesheets="@resize.css">
                            <children>
-                              <Button fx:id="q1" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" stylesheets="@resize.css" text="Buy assistant" textFill="#6b4208" />
-                              <Button fx:id="q4" layoutX="169.0" layoutY="57.0" mnemonicParsing="false" text="Change permit tiles" textFill="#6b4208" />
-                              <Button fx:id="q2" layoutX="177.0" layoutY="14.0" mnemonicParsing="false" text="Additional main action" textFill="#6b4208" />
-                              <Button fx:id="q3" layoutX="14.0" layoutY="57.0" mnemonicParsing="false" text="Elect a councillor" textFill="#6b4208" />
+                              <Button fx:id="q1" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#startQ1" stylesheets="@resize.css" text="Engage assistant" textFill="#6b4208" />
+                              <Button fx:id="q4" layoutX="169.0" layoutY="57.0" mnemonicParsing="false" onMouseClicked="#startQ2" text="Change permit tiles" textFill="#6b4208" />
+                              <Button fx:id="q2" layoutX="177.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#startQ4" text="Additional main action" textFill="#6b4208" />
+                              <Button fx:id="q3" layoutX="14.0" layoutY="57.0" mnemonicParsing="false" onMouseClicked="#startQ3" text="Elect a councillor" textFill="#6b4208" />
                               <Button fx:id="skip" layoutX="88.0" layoutY="96.0" mnemonicParsing="false" text="Skip quick action" textFill="#6b4208" />
                            </children>
                         </AnchorPane>
@@ -590,9 +586,9 @@
                                     <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <Button fx:id="m1" minHeight="-Infinity" minWidth="0.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="185.0" text="Elect a councillor" textAlignment="CENTER" textFill="#6b4208" GridPane.rowIndex="1" />
-                                    <Button fx:id="m4" minWidth="30.0" mnemonicParsing="false" text="Build by king" textAlignment="CENTER" textFill="#6b4208" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                    <Button fx:id="m3" mnemonicParsing="false" text="Build by permit tile" textAlignment="CENTER" textFill="#6b4208" GridPane.rowIndex="2" />
+                                    <Button fx:id="m1" minHeight="-Infinity" minWidth="0.0" mnemonicParsing="false" onMouseClicked="#startM1" prefHeight="37.0" prefWidth="185.0" text="Elect a councillor" textAlignment="CENTER" textFill="#6b4208" GridPane.rowIndex="1" />
+                                    <Button fx:id="m4" minWidth="30.0" mnemonicParsing="false" onMouseClicked="#startM4" text="Build by king" textAlignment="CENTER" textFill="#6b4208" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <Button fx:id="m3" mnemonicParsing="false" onMouseClicked="#startM3" text="Build by permit tile" textAlignment="CENTER" textFill="#6b4208" GridPane.rowIndex="2" />
                                     <Button fx:id="m2" minWidth="30.0" mnemonicParsing="false" onMouseClicked="#startM2" prefHeight="31.0" prefWidth="177.0" styleClass="submit" stylesheets="@resize.css" text="Acquire permit tile" textAlignment="CENTER" textFill="#6b4208" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                  </children>
                               </GridPane>
@@ -619,69 +615,80 @@
                               <Image url="@map_compressa.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="66.0" fitWidth="57.0" layoutX="84.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="177.0" AnchorPane.leftAnchor="84.0" AnchorPane.rightAnchor="620.0" AnchorPane.topAnchor="393.0" />
-                        <ImageView fitHeight="64.0" fitWidth="56.0" layoutX="146.0" layoutY="396.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="176.0" AnchorPane.leftAnchor="146.0" AnchorPane.rightAnchor="559.0" AnchorPane.topAnchor="396.0" />
-                        <ImageView fitHeight="63.0" fitWidth="56.0" layoutX="332.0" layoutY="399.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="174.0" AnchorPane.leftAnchor="332.0" AnchorPane.rightAnchor="373.0" AnchorPane.topAnchor="399.0" />
-                        <ImageView fitHeight="63.0" fitWidth="56.0" layoutX="394.0" layoutY="394.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="179.0" AnchorPane.leftAnchor="394.0" AnchorPane.rightAnchor="311.0" AnchorPane.topAnchor="394.0" />
-                        <ImageView fitHeight="59.0" fitWidth="56.0" layoutX="607.0" layoutY="396.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="181.0" AnchorPane.leftAnchor="607.0" AnchorPane.rightAnchor="98.0" AnchorPane.topAnchor="396.0" />
-                        <ImageView fitHeight="59.0" fitWidth="56.0" layoutX="671.0" layoutY="398.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="179.0" AnchorPane.leftAnchor="671.0" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="398.0" />
-                        <ImageView fitHeight="64.0" fitWidth="56.0" layoutX="22.0" layoutY="395.0">
+                        <ImageView fx:id="PermitTileSea0" fitHeight="66.0" fitWidth="57.0" layoutX="84.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="177.0" AnchorPane.leftAnchor="84.0" AnchorPane.rightAnchor="620.0" AnchorPane.topAnchor="393.0" />
+                        <ImageView fx:id="PermitTileSea1" fitHeight="64.0" fitWidth="56.0" layoutX="146.0" layoutY="396.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="176.0" AnchorPane.leftAnchor="146.0" AnchorPane.rightAnchor="559.0" AnchorPane.topAnchor="396.0" />
+                        <ImageView fx:id="PermitTileHill0" fitHeight="63.0" fitWidth="56.0" layoutX="332.0" layoutY="399.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="174.0" AnchorPane.leftAnchor="332.0" AnchorPane.rightAnchor="373.0" AnchorPane.topAnchor="399.0" />
+                        <ImageView fx:id="PermitTileHill1" fitHeight="63.0" fitWidth="56.0" layoutX="394.0" layoutY="394.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="179.0" AnchorPane.leftAnchor="394.0" AnchorPane.rightAnchor="311.0" AnchorPane.topAnchor="394.0" />
+                        <ImageView fx:id="PermitTileMountain0" fitHeight="59.0" fitWidth="56.0" layoutX="607.0" layoutY="396.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="181.0" AnchorPane.leftAnchor="607.0" AnchorPane.rightAnchor="98.0" AnchorPane.topAnchor="396.0" />
+                        <ImageView fx:id="PermitTileMountain1" fitHeight="59.0" fitWidth="56.0" layoutX="671.0" layoutY="398.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="179.0" AnchorPane.leftAnchor="671.0" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="398.0" />
+                        <ImageView fx:id="PermitDeckSeaRegion" fitHeight="64.0" fitWidth="56.0" layoutX="22.0" layoutY="395.0">
                            <image>
                               <Image url="@seaTile.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="66.0" fitWidth="58.0" layoutX="270.0" layoutY="393.0">
+                        <ImageView fx:id="PermitDeckHillRegion" fitHeight="66.0" fitWidth="58.0" layoutX="270.0" layoutY="393.0">
                            <image>
                               <Image url="@hillTile.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="65.0" fitWidth="58.0" layoutX="545.0" layoutY="395.0">
+                        <ImageView fx:id="PermitDeckMountainRegion" fitHeight="65.0" fitWidth="58.0" layoutX="545.0" layoutY="395.0">
                            <image>
                               <Image url="@mountainTile.png" />
                            </image>
                         </ImageView>
                         <AnchorPane fx:id="seaRegion" layoutX="-2.0" layoutY="-4.0" prefHeight="385.0" prefWidth="245.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="519.0" AnchorPane.topAnchor="0.0">
                            <children>
+                              <Pane fx:id="Arkon" layoutX="11.0" layoutY="1.0" prefHeight="114.0" prefWidth="117.0" />
                               <ImageView fitHeight="34.0" fitWidth="56.0" layoutX="174.0" layoutY="338.0">
                                  <image>
                                     <Image url="@bonusMare.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="13.0" layoutY="132.0">
-                                 <image>
-                                    <Image url="@5.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="21.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
-                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="130.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true" />
-                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="141.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true" />
-                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="58.0" layoutY="251.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="RewardTokenA" fitHeight="45.0" fitWidth="45.0" layoutX="21.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="RewardTokenD" fitHeight="45.0" fitWidth="45.0" layoutX="130.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="RewardTokenC" fitHeight="45.0" fitWidth="45.0" layoutX="141.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="RewardTokenE" fitHeight="45.0" fitWidth="45.0" layoutX="58.0" layoutY="251.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="RewardTokenB" fitHeight="45.0" fitWidth="45.0" layoutX="14.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true" />
+                              <Pane fx:id="Esti" layoutX="49.0" layoutY="252.0" prefHeight="103.0" prefWidth="108.0" />
+                              <Pane fx:id="Dorful" layoutX="130.0" layoutY="164.0" prefHeight="106.0" prefWidth="110.0" />
+                              <Pane fx:id="Burgen" layoutX="5.0" layoutY="131.0" prefHeight="114.0" prefWidth="108.0" />
+                              <Pane fx:id="Castrum" layoutX="130.0" layoutY="38.0" prefHeight="114.0" prefWidth="110.0" />
                            </children></AnchorPane>
                         <AnchorPane fx:id="hillRegion" layoutX="245.0" layoutY="-7.0" prefHeight="385.0" prefWidth="278.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="241.0" AnchorPane.topAnchor="0.0">
                            <children>
+                              <Pane fx:id="Framek" layoutX="23.0" layoutY="21.0" prefHeight="114.0" prefWidth="110.0" />
                               <ImageView fitHeight="34.0" fitWidth="56.0" layoutX="177.0" layoutY="340.0">
                                  <image>
                                     <Image url="@bonusColline.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="39.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
-                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="46.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true" />
-                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="169.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
-                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="169.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true" />
-                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="55.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="RewardTokenF" fitHeight="45.0" fitWidth="45.0" layoutX="39.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="RewardTokenG" fitHeight="45.0" fitWidth="45.0" layoutX="46.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="RewardTokenI" fitHeight="45.0" fitWidth="45.0" layoutX="169.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="RewardTokenJ" fitHeight="45.0" fitWidth="45.0" layoutX="169.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="RewardTokenH" fitHeight="45.0" fitWidth="45.0" layoutX="55.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true" />
+                              <Pane fx:id="Hellar" layoutX="45.0" layoutY="242.0" prefHeight="99.0" prefWidth="110.0" />
+                              <Pane fx:id="Juvelar" layoutX="159.0" layoutY="170.0" prefHeight="114.0" prefWidth="110.0" />
+                              <Pane fx:id="Graden" layoutX="33.0" layoutY="136.0" prefHeight="106.0" prefWidth="110.0" />
+                              <Pane fx:id="Indur" layoutX="159.0" layoutY="21.0" prefHeight="114.0" prefWidth="110.0" />
                            </children></AnchorPane>
                         <AnchorPane fx:id="mountainRegion" layoutX="522.0" prefHeight="385.0" prefWidth="242.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="522.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
+                              <Pane fx:id="Naris" layoutX="121.0" layoutY="84.0" prefHeight="114.0" prefWidth="110.0" />
+                              <Pane fx:id="Kultos" layoutX="25.0" layoutY="14.0" prefHeight="114.0" prefWidth="110.0" />
                               <ImageView fitHeight="34.0" fitWidth="56.0" layoutX="176.0" layoutY="340.0">
                                  <image>
                                     <Image url="@bonusMontagna.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="35.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="141.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" />
-                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="13.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true" />
-                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="141.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true" />
-                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="RewardTokenK" fitHeight="45.0" fitWidth="45.0" layoutX="35.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="RewardTokenN" fitHeight="45.0" fitWidth="45.0" layoutX="141.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="RewardTokenL" fitHeight="45.0" fitWidth="45.0" layoutX="13.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="RewardTokenO" fitHeight="45.0" fitWidth="45.0" layoutX="141.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="RewardTokenM" fitHeight="45.0" fitWidth="45.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true" />
+                              <Pane fx:id="Lyram" layoutX="3.0" layoutY="136.0" prefHeight="114.0" prefWidth="110.0" />
+                              <Pane fx:id="Merkatim" layoutX="3.0" layoutY="268.0" prefHeight="114.0" prefWidth="110.0" />
+                              <Pane fx:id="Osium" layoutX="121.0" layoutY="211.0" prefHeight="114.0" prefWidth="110.0" />
                            </children></AnchorPane>
                         <ImageView fx:id="kingConcillor2" fitHeight="33.0" fitWidth="21.0" layoutX="516.0" layoutY="501.0" pickOnBounds="true" preserveRatio="true" />
                         <ImageView fx:id="kingConcillor3" fitHeight="33.0" fitWidth="21.0" layoutX="541.0" layoutY="505.0" pickOnBounds="true" preserveRatio="true" />
