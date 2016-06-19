@@ -38,7 +38,7 @@ public class CoinsBonus implements Bonus{
 
 	@Override
 	public String toString() {
-		return "Coins+" + coinsIncreasement;
+		return "coins+" + coinsIncreasement;
 	}
 
 	
