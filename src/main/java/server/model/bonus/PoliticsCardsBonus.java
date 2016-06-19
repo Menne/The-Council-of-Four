@@ -39,7 +39,7 @@ public class PoliticsCardsBonus implements Bonus{
 
 	@Override
 	public String toString() {
-		return "PoliticsCards+" + numberOfCards;
+		return "politics+" + numberOfCards;
 	}
 
 	
