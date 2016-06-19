@@ -3,14 +3,16 @@ package client.view;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
 import client.ControllerGUI;
 import client.connections.Connection;
 import client.modelDTO.GameDTO;
+import client.modelDTO.ModelDTO;
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
@@ -19,6 +21,7 @@ import client.modelDTO.gameTableDTO.GameTableDTO;
 import client.modelDTO.gameTableDTO.GenericPlayerDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
+import client.modelDTO.gameTableDTO.RewardTokenDTO;
 import client.modelDTO.marketDTO.MarketDTO;
 import client.modelDTO.marketDTO.MarketableDTO;
 import client.modelDTO.marketDTO.OfferDTO;
@@ -26,13 +29,17 @@ import client.modelDTO.playerDTO.ClientPlayerDTO;
 import client.view.notifies.ClientViewNotify;
 import javafx.application.Platform;
 import javafx.scene.image.Image;
-import server.model.bonus.Bonus;
+import server.model.bonus.AssistantsBonus;
+import server.model.bonus.CoinsBonus;
+import server.model.bonus.NobilityBonus;
+import server.model.bonus.PoliticsCardsBonus;
+import server.model.bonus.ScoreBonus;
 
 
 public class GUI extends ClientView{
 
 	private final ControllerGUI controllerGUI;
-	private final Map<String, Image> imageMap;
+	private final Map<ModelDTO, Image> imageMap;
 	private Object currentParameter;
 	
 	public GUI(Connection connection, GameDTO clientGame, ControllerGUI controllerGUI) {
@@ -40,26 +47,26 @@ public class GUI extends ClientView{
 		this.controllerGUI=controllerGUI;
 		this.controllerGUI.setClientGame(clientGame);
 		this.controllerGUI.setView(this);
-		imageMap=new HashMap<String,Image>();
-		imageMap.put("Black",new Image(getClass().getResource("images/councillors/Black.png").toExternalForm()));
-		imageMap.put("Blue",new Image(getClass().getResource("images/councillors/Blue.png").toExternalForm()));
-		imageMap.put("Orange",new Image(getClass().getResource("images/councillors/Orange.png").toExternalForm()));
-		imageMap.put("Pink",new Image(getClass().getResource("images/councillors/Pink.png").toExternalForm()));
-		imageMap.put("Violet",new Image(getClass().getResource("images/councillors/Violet.png").toExternalForm()));
-		imageMap.put("White",new Image(getClass().getResource("images/councillors/White.png").toExternalForm()));
-		imageMap.put("assistants+1", new Image(getClass().getResource("images/token/Assistants+1.png").toExternalForm()));
-		imageMap.put("assistants+1coins+1", new Image(getClass().getResource("images/token/Assistants+1Coins+1.png").toExternalForm()));
-		imageMap.put("assistants+2", new Image(getClass().getResource("images/token/Assistants+2.png").toExternalForm()));
-		imageMap.put("coins+1", new Image(getClass().getResource("images/token/Coins+1.png").toExternalForm()));
-		imageMap.put("coins+2", new Image(getClass().getResource("images/token/Coins+2.png").toExternalForm()));
-		imageMap.put("coins+3", new Image(getClass().getResource("images/token/Coins+3.png").toExternalForm()));
-		imageMap.put("nobility+1", new Image(getClass().getResource("images/token/Nobility+1.png").toExternalForm()));
-		imageMap.put("politics+1", new Image(getClass().getResource("images/token/Politics+1.png").toExternalForm()));
-		imageMap.put("assistants+1politics+1", new Image(getClass().getResource("images/token/Politics+1Assistants+1.png").toExternalForm()));
-		imageMap.put("politics+1score+1", new Image(getClass().getResource("images/token/Politics+1Score+1.png").toExternalForm()));
-		imageMap.put("score+1", new Image(getClass().getResource("images/token/Score+1.png").toExternalForm()));
-		imageMap.put("score+2", new Image(getClass().getResource("images/token/Score+2.png").toExternalForm()));
-		imageMap.put("score+3", new Image(getClass().getResource("images/token/Score+3.png").toExternalForm()));
+		imageMap=new HashMap<>();
+		imageMap.put(new CouncillorDTO(new CardColourDTO("Black")),new Image(getClass().getResource("images/councillors/Black.png").toExternalForm()));
+		imageMap.put(new CouncillorDTO(new CardColourDTO("Blue")),new Image(getClass().getResource("images/councillors/Blue.png").toExternalForm()));
+		imageMap.put(new CouncillorDTO(new CardColourDTO("Orange")),new Image(getClass().getResource("images/councillors/Orange.png").toExternalForm()));
+		imageMap.put(new CouncillorDTO(new CardColourDTO("Pink")),new Image(getClass().getResource("images/councillors/Pink.png").toExternalForm()));
+		imageMap.put(new CouncillorDTO(new CardColourDTO("Violet")),new Image(getClass().getResource("images/councillors/Violet.png").toExternalForm()));
+		imageMap.put(new CouncillorDTO(new CardColourDTO("White")),new Image(getClass().getResource("images/councillors/White.png").toExternalForm()));
+		imageMap.put(new RewardTokenDTO(new HashSet<>(Arrays.asList(new AssistantsBonus(1)))), new Image(getClass().getResource("images/token/Assistants+1.png").toExternalForm()));
+		imageMap.put(new RewardTokenDTO(new HashSet<>(Arrays.asList(new AssistantsBonus(1),new CoinsBonus(1)))), new Image(getClass().getResource("images/token/Assistants+1Coins+1.png").toExternalForm()));
+		imageMap.put(new RewardTokenDTO(new HashSet<>(Arrays.asList(new AssistantsBonus(2)))), new Image(getClass().getResource("images/token/Assistants+2.png").toExternalForm()));
+		imageMap.put(new RewardTokenDTO(new HashSet<>(Arrays.asList(new CoinsBonus(1)))), new Image(getClass().getResource("images/token/Coins+1.png").toExternalForm()));
+		imageMap.put(new RewardTokenDTO(new HashSet<>(Arrays.asList(new CoinsBonus(2)))), new Image(getClass().getResource("images/token/Coins+2.png").toExternalForm()));
+		imageMap.put(new RewardTokenDTO(new HashSet<>(Arrays.asList(new CoinsBonus(3)))), new Image(getClass().getResource("images/token/Coins+3.png").toExternalForm()));
+		imageMap.put(new RewardTokenDTO(new HashSet<>(Arrays.asList(new NobilityBonus(1)))), new Image(getClass().getResource("images/token/Nobility+1.png").toExternalForm()));
+		imageMap.put(new RewardTokenDTO(new HashSet<>(Arrays.asList(new PoliticsCardsBonus(1)))), new Image(getClass().getResource("images/token/Politics+1.png").toExternalForm()));
+		imageMap.put(new RewardTokenDTO(new HashSet<>(Arrays.asList(new AssistantsBonus(1),new PoliticsCardsBonus(1)))), new Image(getClass().getResource("images/token/Politics+1Assistants+1.png").toExternalForm()));
+		imageMap.put(new RewardTokenDTO(new HashSet<>(Arrays.asList(new PoliticsCardsBonus(1),new ScoreBonus(1)))), new Image(getClass().getResource("images/token/Politics+1Score+1.png").toExternalForm()));
+		imageMap.put(new RewardTokenDTO(new HashSet<>(Arrays.asList(new ScoreBonus(1)))), new Image(getClass().getResource("images/token/Score+1.png").toExternalForm()));
+		imageMap.put(new RewardTokenDTO(new HashSet<>(Arrays.asList(new ScoreBonus(2)))), new Image(getClass().getResource("images/token/Score+2.png").toExternalForm()));
+		imageMap.put(new RewardTokenDTO(new HashSet<>(Arrays.asList(new ScoreBonus(3)))), new Image(getClass().getResource("images/token/Score+3.png").toExternalForm()));
 	}
 
 	
@@ -121,26 +128,18 @@ public class GUI extends ClientView{
 	}
 	
 	private void displayCouncillors(GameTableDTO clientGame){
-	/*	for(RegionDTO region : clientGame.getClientRegions())
+		for(RegionDTO region : clientGame.getClientRegions())
 			for(int i=0; i<4; i++)
-				controllerGUI.getCouncillors(region).get(i).setImage(imageMap.get(region.getBalcony()[i].getName()));
+				controllerGUI.getCouncillors(region).get(i).setImage(imageMap.get(region.getBalcony()[i]));
 		for(int i=0; i<4; i++)
-			controllerGUI.getKingCouncillors().get(i).setImage(imageMap.get(clientGame.getClientKingBalcony()[i].getName()));
-			*/
+			controllerGUI.getKingCouncillors().get(i).setImage(imageMap.get(clientGame.getClientKingBalcony()[i]));
+			
 	}
 	
 	private void displayTokens(GameTableDTO clientGame){
-		/*for(RegionDTO region : clientGame.getClientRegions())
-			for(CityDTO city : region.getCities()){
-				List<String> stringBonuses=new ArrayList<>();
-				for(Bonus bonus : city.getRewardToken())
-					stringBonuses.add(bonus.toString());
-				Collections.sort(stringBonuses);
-				String stringToken="";
-				for(String singleBonusString : stringBonuses)
-					stringToken=stringToken+singleBonusString;
-				controllerGUI.getRewardToken(city).setImage(imageMap.get(stringToken));
-			}		*/	
+		for(RegionDTO region : clientGame.getClientRegions())
+			for(CityDTO city : region.getCities())
+				controllerGUI.getRewardToken(city).setImage(imageMap.get(city.getRewardToken()));
 	}
 
 	@Override

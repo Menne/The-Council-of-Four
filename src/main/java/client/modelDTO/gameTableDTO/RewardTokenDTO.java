@@ -28,6 +28,31 @@ public class RewardTokenDTO implements ModelDTO {
 	public void setBonuses(Set<Bonus> bonuses) {
 		this.bonuses = bonuses;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((bonuses == null) ? 0 : bonuses.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		RewardTokenDTO other = (RewardTokenDTO) obj;
+		if (bonuses == null) {
+			if (other.bonuses != null)
+				return false;
+		} else if (!bonuses.equals(other.bonuses))
+			return false;
+		return true;
+	}
 	
 	
 

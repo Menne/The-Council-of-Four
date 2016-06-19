@@ -118,6 +118,30 @@ public class GenericPlayerDTO implements ModelDTO{
 	}
 
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + playerNumber;
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		GenericPlayerDTO other = (GenericPlayerDTO) obj;
+		if (playerNumber != other.playerNumber)
+			return false;
+		return true;
+	}
+
+
 
 	
 }
