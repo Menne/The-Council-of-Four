@@ -30,6 +30,8 @@ public class GUI extends ClientView{
 
 	private final ControllerGUI controllerGUI;
 	private final Map<String, Image> imageMap;
+	private Object currentParameter;
+	private Object lock;
 	
 	public GUI(Connection connection, GameDTO clientGame, ControllerGUI controllerGUI) {
 		super(connection, clientGame);
@@ -43,7 +45,27 @@ public class GUI extends ClientView{
 		imageMap.put("Pink",new Image(getClass().getResource("councillors/Pink.jpg").toExternalForm()));
 		imageMap.put("Violet",new Image(getClass().getResource("councillors/Violet.jpg").toExternalForm()));
 		imageMap.put("White",new Image(getClass().getResource("councillors/White.jpg").toExternalForm()));
+		lock=new Object();
 	}
+
+	
+	
+	public Object getCurrentParameter() {
+		return currentParameter;
+	}
+
+
+
+	public void setCurrentParameter(Object currentParameter) {
+		this.currentParameter = currentParameter;
+	}
+
+
+
+	public Object getLock() {
+		return lock;
+	}
+
 
 	@Override
 	public void update(ClientViewNotify notify) {
@@ -119,7 +141,17 @@ public class GUI extends ClientView{
 
 	@Override
 	public RegionDTO askForRegionBoard(List<RegionDTO> acceptableRegions) {
-		// TODO Auto-generated method stub
+		System.out.println("ho reso cliccabile le regioni");
+		synchronized (lock) {
+			try {
+				while(currentParameter==null)
+					lock.wait();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		System.out.println("ho ritornato currentParameter"+((RegionDTO)currentParameter).toString());
 		return null;
 	}
 

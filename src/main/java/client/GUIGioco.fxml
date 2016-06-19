@@ -606,6 +606,9 @@
                <children>
                   <AnchorPane minHeight="595.0" minWidth="761.0" prefHeight="632.0" prefWidth="764.0">
                      <children>
+                        <AnchorPane fx:id="mountainRegion" layoutX="522.0" prefHeight="385.0" prefWidth="242.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="522.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <AnchorPane fx:id="hillRegion" layoutX="245.0" layoutY="-7.0" prefHeight="385.0" prefWidth="278.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="241.0" AnchorPane.topAnchor="0.0" />
+                        <AnchorPane fx:id="seaRegion" layoutX="-2.0" layoutY="-4.0" onMouseClicked="#clickSeaRegion" prefHeight="385.0" prefWidth="245.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="519.0" AnchorPane.topAnchor="0.0" />
                         <ImageView fitHeight="597.0" fitWidth="764.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <image>
                               <Image url="@map_compressa.jpg" />

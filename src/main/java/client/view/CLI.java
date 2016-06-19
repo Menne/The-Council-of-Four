@@ -98,7 +98,6 @@ public class CLI extends ClientView {
 		actionWithParameters.setParser().setParameters(this, this.clientGame);
 		if (actionWithParameters.checkIfParametersSetted())
 			connection.sendAction(actionWithParameters);
-		
 	}
 	
 	
