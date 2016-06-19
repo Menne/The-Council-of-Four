@@ -41,7 +41,7 @@ public class ScoreBonus implements Bonus{
 	
 	@Override
 	public String toString() {
-		return "Score+" + scoreAdvancement;
+		return "score+" + scoreAdvancement;
 	}
 	
 	

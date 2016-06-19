@@ -27,7 +27,7 @@ public class MainActionBonus implements Bonus {
 
 	@Override
 	public String toString() {
-		return "MainAction+1";
+		return "mainAction+1";
 	}
 
 }

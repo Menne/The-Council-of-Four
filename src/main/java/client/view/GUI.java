@@ -3,6 +3,7 @@ package client.view;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +25,7 @@ import client.modelDTO.playerDTO.ClientPlayerDTO;
 import client.view.notifies.ClientViewNotify;
 import javafx.application.Platform;
 import javafx.scene.image.Image;
+import server.model.bonus.Bonus;
 
 
 public class GUI extends ClientView{
@@ -126,7 +128,17 @@ public class GUI extends ClientView{
 	}
 	
 	private void displayTokens(GameTableDTO clientGame){
-		 
+		for(RegionDTO region : clientGame.getClientRegions())
+			for(CityDTO city : region.getCities()){
+				List<String> stringBonuses=new ArrayList<>();
+				for(Bonus bonus : city.getRewardToken())
+					stringBonuses.add(bonus.toString());
+				Collections.sort(stringBonuses);
+				String stringToken="";
+				for(String singleBonusString : stringBonuses)
+					stringToken=stringToken+singleBonusString;
+				controllerGUI.getRewardToken(city).setImage(imageMap.get(stringToken));
+			}			
 	}
 
 	@Override
