@@ -38,12 +38,25 @@ public class GUI extends ClientView{
 		this.controllerGUI.setClientGame(clientGame);
 		this.controllerGUI.setView(this);
 		imageMap=new HashMap<String,Image>();
-		imageMap.put("Black",new Image(getClass().getResource("councillors/Black.jpg").toExternalForm()));
-		imageMap.put("Blue",new Image(getClass().getResource("councillors/Blue.jpg").toExternalForm()));
-		imageMap.put("Orange",new Image(getClass().getResource("councillors/Orange.jpg").toExternalForm()));
-		imageMap.put("Pink",new Image(getClass().getResource("councillors/Pink.jpg").toExternalForm()));
-		imageMap.put("Violet",new Image(getClass().getResource("councillors/Violet.jpg").toExternalForm()));
-		imageMap.put("White",new Image(getClass().getResource("councillors/White.jpg").toExternalForm()));
+		imageMap.put("Black",new Image(getClass().getResource("images/councillors/Black.png").toExternalForm()));
+		imageMap.put("Blue",new Image(getClass().getResource("images/councillors/Blue.png").toExternalForm()));
+		imageMap.put("Orange",new Image(getClass().getResource("images/councillors/Orange.png").toExternalForm()));
+		imageMap.put("Pink",new Image(getClass().getResource("images/councillors/Pink.png").toExternalForm()));
+		imageMap.put("Violet",new Image(getClass().getResource("images/councillors/Violet.png").toExternalForm()));
+		imageMap.put("White",new Image(getClass().getResource("images/councillors/White.png").toExternalForm()));
+		imageMap.put("assistants+1", new Image(getClass().getResource("images/token/Assistants+1.png").toExternalForm()));
+		imageMap.put("assistants+1coins+1", new Image(getClass().getResource("images/token/Assistants+1Coins+1.png").toExternalForm()));
+		imageMap.put("assistants+2", new Image(getClass().getResource("images/token/Assistants+2.png").toExternalForm()));
+		imageMap.put("coins+1", new Image(getClass().getResource("images/token/Coins+1.png").toExternalForm()));
+		imageMap.put("coins+2", new Image(getClass().getResource("images/token/Coins+2.png").toExternalForm()));
+		imageMap.put("coins+3", new Image(getClass().getResource("images/token/Coins+3.png").toExternalForm()));
+		imageMap.put("nobility+1", new Image(getClass().getResource("images/token/Nobility+1.png").toExternalForm()));
+		imageMap.put("politics+1", new Image(getClass().getResource("images/token/Politics+1.png").toExternalForm()));
+		imageMap.put("assistants+1politics+1", new Image(getClass().getResource("images/token/Politics+1Assistants+1.png").toExternalForm()));
+		imageMap.put("politics+1score+1", new Image(getClass().getResource("images/token/Politics+1Score+1.png").toExternalForm()));
+		imageMap.put("score+1", new Image(getClass().getResource("images/token/Score+1.png").toExternalForm()));
+		imageMap.put("score+2", new Image(getClass().getResource("images/token/Score+2.png").toExternalForm()));
+		imageMap.put("score+3", new Image(getClass().getResource("images/token/Score+3.png").toExternalForm()));
 	}
 
 	
