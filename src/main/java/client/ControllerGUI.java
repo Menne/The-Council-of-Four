@@ -449,7 +449,15 @@ public class ControllerGUI {
 	@FXML
 	public void startM1() {
 		ElectCouncillorDTO action=new ElectCouncillorDTO();
-		action.setParser().setParameters(this.view, this.clientGame);
+		ExecutorService executor=Executors.newSingleThreadExecutor();
+		executor.submit(new Runnable() {
+			
+			@Override
+			public void run() {
+				action.setParser().setParameters(view, clientGame);
+				
+			}
+		});
 	}
 	
 	@FXML
@@ -469,37 +477,67 @@ public class ControllerGUI {
 	@FXML
 	public void startM3() {
 		BuildByPermitTileDTO action=new BuildByPermitTileDTO();
-		action.setParser().setParameters(this.view, this.clientGame);
+		ExecutorService executor=Executors.newSingleThreadExecutor();
+		executor.submit(new Runnable() {
+			
+			@Override
+			public void run() {
+				action.setParser().setParameters(view, clientGame);
+				
+			}
+		});
 	}
 	
 	@FXML
 	public void startM4() {
 		BuildByKingDTO action=new BuildByKingDTO();
-		action.setParser().setParameters(this.view, this.clientGame);
+		ExecutorService executor=Executors.newSingleThreadExecutor();
+		executor.submit(new Runnable() {
+			
+			@Override
+			public void run() {
+				action.setParser().setParameters(view, clientGame);
+				
+			}
+		});
 	}
 	
 	@FXML
 	public void startQ1() throws RemoteException {
-		EngageAssistantDTO action=new EngageAssistantDTO();
-		this.view.getConnection().sendAction(action);
+		this.view.getConnection().sendAction(new EngageAssistantDTO());
 	}
 	
 	@FXML
 	public void startQ2() {
 		ChangePermitTilesDTO action=new ChangePermitTilesDTO();
-		action.setParser().setParameters(this.view, this.clientGame);
+		ExecutorService executor=Executors.newSingleThreadExecutor();
+		executor.submit(new Runnable() {
+			
+			@Override
+			public void run() {
+				action.setParser().setParameters(view, clientGame);
+				
+			}
+		});
 	}
 	
 	@FXML
 	public void startQ3() {
 		ElectCouncillorByAssistantDTO action=new ElectCouncillorByAssistantDTO();
-		action.setParser().setParameters(this.view, this.clientGame);
+		ExecutorService executor=Executors.newSingleThreadExecutor();
+		executor.submit(new Runnable() {
+			
+			@Override
+			public void run() {
+				action.setParser().setParameters(view, clientGame);
+				
+			}
+		});
 	}
 	
 	@FXML
 	public void startQ4() throws RemoteException {
-		AddictionalMainActionDTO action=new AddictionalMainActionDTO();
-		this.view.getConnection().sendAction(action);
+		this.view.getConnection().sendAction(new AddictionalMainActionDTO());
 	}
 	
 	
@@ -512,7 +550,7 @@ public class ControllerGUI {
 	}
 
 	@FXML
-	public void clickOnHillRegion() {
+	public void clickOnRegionHill() {
 		synchronized (this) {
 			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(1));
 			this.notify();
@@ -520,7 +558,7 @@ public class ControllerGUI {
 	}
 
 	@FXML
-	public void clickOnMountainRegion() {
+	public void clickOnRegionMountain() {
 		synchronized (this) {
 			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(2));
 			this.notify();
@@ -528,7 +566,7 @@ public class ControllerGUI {
 	}
 
 	@FXML
-	public void clickOnKingBlacony() {
+	public void clickOnKingBalcony() {
 		synchronized (this) {
 			view.setCurrentParameter(clientGame.getClientGameTable().getClientKingBalcony());
 			this.notify();
@@ -537,7 +575,7 @@ public class ControllerGUI {
 	}
 
 	@FXML
-	public void reserveConcillor1Clicked() {
+	public void clickOnReserveCouncillor1() {
 		synchronized (this) {
 			view.setCurrentParameter(clientGame.getClientGameTable().getClientCouncillorReserve().get(0));
 			this.notify();
@@ -545,7 +583,7 @@ public class ControllerGUI {
 	}
 
 	@FXML
-	public void reserveConcillor2Clicked() {
+	public void clickOnReserveCouncillor2() {
 		synchronized (this) {
 			view.setCurrentParameter(clientGame.getClientGameTable().getClientCouncillorReserve().get(1));
 			this.notify();
@@ -553,7 +591,7 @@ public class ControllerGUI {
 	}
 
 	@FXML
-	public void reserveConcillor3Clicked() {
+	public void clickOnReserveCouncillor3() {
 		synchronized (this) {
 			view.setCurrentParameter(clientGame.getClientGameTable().getClientCouncillorReserve().get(2));
 			this.notify();
@@ -561,7 +599,7 @@ public class ControllerGUI {
 	}
 
 	@FXML
-	public void reserveConcillor4Clicked() {
+	public void clickOnReserveCouncillor4() {
 		synchronized (this) {
 			view.setCurrentParameter(clientGame.getClientGameTable().getClientCouncillorReserve().get(3));
 			this.notify();
@@ -569,7 +607,7 @@ public class ControllerGUI {
 	}
 
 	@FXML
-	public void reserveConcillor5Clicked() {
+	public void clickOnReserveCouncillor5() {
 		synchronized (this) {
 			view.setCurrentParameter(clientGame.getClientGameTable().getClientCouncillorReserve().get(4));
 			this.notify();
@@ -577,7 +615,7 @@ public class ControllerGUI {
 	}
 
 	@FXML
-	public void reserveConcillor6Clicked() {
+	public void clickOnReserveCouncillor6() {
 		synchronized (this) {
 			view.setCurrentParameter(clientGame.getClientGameTable().getClientCouncillorReserve().get(5));
 			this.notify();
@@ -585,7 +623,7 @@ public class ControllerGUI {
 	}
 
 	@FXML
-	public void reserveConcillor7Clicked() {
+	public void clickOnReserveCouncillor7() {
 		synchronized (this) {
 			view.setCurrentParameter(clientGame.getClientGameTable().getClientCouncillorReserve().get(6));
 			this.notify();
@@ -593,7 +631,7 @@ public class ControllerGUI {
 	}
 
 	@FXML
-	public void reserveConcillor8Clicked() {
+	public void clickOnReserveCouncillor8() {
 		synchronized (this) {
 			view.setCurrentParameter(clientGame.getClientGameTable().getClientCouncillorReserve().get(7));
 			this.notify();
@@ -601,7 +639,7 @@ public class ControllerGUI {
 	}
 	
 	@FXML
-	public void arkonClicked() {
+	public void clickOnCityArkon() {
 		synchronized (this) {
 			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
 			for (CityDTO city : region.getCities())
@@ -612,7 +650,7 @@ public class ControllerGUI {
 	}
 	
 	@FXML
-	public void burgenClicked() {
+	public void clickOnCityBurgen() {
 		synchronized (this) {
 			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
 			for (CityDTO city : region.getCities())
@@ -623,7 +661,7 @@ public class ControllerGUI {
 	}
 	
 	@FXML
-	public void castrumClicked() {
+	public void clickOnCityCastrum() {
 		synchronized (this) {
 			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
 			for (CityDTO city : region.getCities())
@@ -634,7 +672,7 @@ public class ControllerGUI {
 	}
 	
 	@FXML
-	public void dorfulClicked() {
+	public void clickOnCityDorful() {
 		synchronized (this) {
 			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
 			for (CityDTO city : region.getCities())
@@ -645,7 +683,7 @@ public class ControllerGUI {
 	}
 	
 	@FXML
-	public void eskiClicked() {
+	public void clickOnCityEski() {
 		synchronized (this) {
 			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
 			for (CityDTO city : region.getCities())
@@ -656,7 +694,7 @@ public class ControllerGUI {
 	}
 	
 	@FXML
-	public void framekClicked() {
+	public void clickOnCityFramek() {
 		synchronized (this) {
 			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
 			for (CityDTO city : region.getCities())
@@ -667,7 +705,7 @@ public class ControllerGUI {
 	}
 	
 	@FXML
-	public void gradenClicked() {
+	public void clickOnCityGraden() {
 		synchronized (this) {
 			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
 			for (CityDTO city : region.getCities())
@@ -678,7 +716,7 @@ public class ControllerGUI {
 	}
 	
 	@FXML
-	public void hellarClicked() {
+	public void clickOnCityHellar() {
 		synchronized (this) {
 			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
 			for (CityDTO city : region.getCities())
@@ -689,7 +727,7 @@ public class ControllerGUI {
 	}
 	
 	@FXML
-	public void indurClicked() {
+	public void clickOnCityIndur() {
 		synchronized (this) {
 			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
 			for (CityDTO city : region.getCities())
@@ -700,7 +738,7 @@ public class ControllerGUI {
 	}
 	
 	@FXML
-	public void juvelarClicked() {
+	public void clickOnCityJuvelar() {
 		synchronized (this) {
 			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
 			for (CityDTO city : region.getCities())
@@ -711,7 +749,7 @@ public class ControllerGUI {
 	}
 	
 	@FXML
-	public void kultosClicked() {
+	public void clickOnCityKultos() {
 		synchronized (this) {
 			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
 			for (CityDTO city : region.getCities())
@@ -722,7 +760,7 @@ public class ControllerGUI {
 	}
 	
 	@FXML
-	public void clickOnLyram() {
+	public void clickOnCityLyram() {
 		synchronized (this) {
 			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
 			for (CityDTO city : region.getCities())
@@ -733,7 +771,7 @@ public class ControllerGUI {
 	}
 	
 	@FXML
-	public void clickOnMerkatim() {
+	public void clickOnCityMerkatim() {
 		synchronized (this) {
 			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
 			for (CityDTO city : region.getCities())
@@ -744,7 +782,7 @@ public class ControllerGUI {
 	}
 	
 	@FXML
-	public void clickOnNaris() {
+	public void clickOnCityNaris() {
 		synchronized (this) {
 			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
 			for (CityDTO city : region.getCities())
@@ -755,7 +793,7 @@ public class ControllerGUI {
 	}
 	
 	@FXML
-	public void clickOnOsium() {
+	public void clickOnCityOsium() {
 		synchronized (this) {
 			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
 			for (CityDTO city : region.getCities())

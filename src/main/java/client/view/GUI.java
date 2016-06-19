@@ -97,14 +97,23 @@ public class GUI extends ClientView{
 			
 			@Override
 			public void run() {
-				for(RegionDTO region : clientGame.getClientRegions())
-					for(int i=0; i<4; i++)
-						controllerGUI.getCouncillors(region).get(i).setImage(imageMap.get(region.getBalcony()[i].getName()));
-				for(int i=0; i<4; i++)
-					controllerGUI.getKingCouncillors().get(i).setImage(imageMap.get(clientGame.getClientKingBalcony()[i].getName()));
+				displayCouncillors(clientGame);
+				displayTokens(clientGame);
 			}
 		});
 		
+	}
+	
+	private void displayCouncillors(GameTableDTO clientGame){
+		for(RegionDTO region : clientGame.getClientRegions())
+			for(int i=0; i<4; i++)
+				controllerGUI.getCouncillors(region).get(i).setImage(imageMap.get(region.getBalcony()[i].getName()));
+		for(int i=0; i<4; i++)
+			controllerGUI.getKingCouncillors().get(i).setImage(imageMap.get(clientGame.getClientKingBalcony()[i].getName()));
+	}
+	
+	private void displayTokens(GameTableDTO clientGame){
+		 
 	}
 
 	@Override
