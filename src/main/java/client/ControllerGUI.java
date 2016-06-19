@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -526,8 +527,7 @@ public class ControllerGUI {
 		ElectCouncillorDTO selectedAction=new ElectCouncillorDTO();
 		for (ActionDTO action : this.clientGame.getAvailableActions())
 			if (action instanceof ElectCouncillorDTO) {
-				ExecutorService executor=Executors.newSingleThreadExecutor();
-				executor.submit(new Runnable() {
+				Platform.runLater(new Runnable() {
 					
 					@Override
 					public void run() {

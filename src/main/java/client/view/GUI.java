@@ -103,7 +103,7 @@ public class GUI extends ClientView{
 	
 	@Override
 	public void displayAvailableActions(List<ActionDTO> availableActions) {
-		// TODO Auto-generated method stub		
+		return;
 	}
 
 	@Override
@@ -168,7 +168,6 @@ public class GUI extends ClientView{
 
 	@Override
 	public RegionDTO askForRegionBoard(List<RegionDTO> acceptableRegions) {
-		System.out.println("ho reso cliccabile le regioni");
 		synchronized (this.controllerGUI) {
 			try {
 				while (currentParameter==null)
@@ -178,7 +177,6 @@ public class GUI extends ClientView{
 				e.printStackTrace();
 			}
 		}
-		System.out.println("ho ritornato currentParameter"+((RegionDTO)currentParameter).toString());
 		return (RegionDTO) this.currentParameter;
 	}
 
@@ -202,7 +200,6 @@ public class GUI extends ClientView{
 
 	@Override
 	public CityDTO askForCity(List<CityDTO> acceptableCities) {
-		System.out.println("ho reso cliccabili le città");
 		synchronized (this.controllerGUI) {
 			try {
 				while (currentParameter==null)
@@ -212,7 +209,6 @@ public class GUI extends ClientView{
 				e.printStackTrace();
 			}
 		}
-		System.out.println("ho ritornato currentParameter"+((CityDTO)currentParameter).toString());
 		return (CityDTO) this.currentParameter;
 	}
 
