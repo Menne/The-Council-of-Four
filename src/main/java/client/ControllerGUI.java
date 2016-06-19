@@ -24,6 +24,7 @@ import java.util.concurrent.Executors;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -53,7 +54,16 @@ public class ControllerGUI {
 	private Pane mountainRegion;
 	
 	@FXML
-	private ImageView kingBalcony;
+	private Pane kingBalcony;
+	
+	@FXML
+	private Pane seaBalcony;
+	
+	@FXML
+	private Pane hillBalcony;
+	
+	@FXML
+	private Pane mountainBalcony;
 	
 	@FXML
 	private ImageView seaConcillor1;
@@ -311,6 +321,78 @@ public class ControllerGUI {
 	private ImageView kingRewardTile5;
 	
 	@FXML
+	private Label scorePlayer1;
+	
+	@FXML
+	private Label scorePlayer2;
+	
+	@FXML
+	private Label scorePlayer3;
+	
+	@FXML
+	private Label scorePlayer4;
+	
+	@FXML
+	private Label nobilityPlayer1;
+	
+	@FXML
+	private Label nobilityPlayer2;
+	
+	@FXML
+	private Label nobilityPlayer3;
+	
+	@FXML
+	private Label nobilityPlayer4;
+	
+	@FXML
+	private Label coinsPlayer1;
+	
+	@FXML
+	private Label coinsPlayer2;
+	
+	@FXML
+	private Label coinsPlayer3;
+	
+	@FXML
+	private Label coinsPlayer4;
+	
+	@FXML
+	private Label assistantsPlayer1;
+	
+	@FXML
+	private Label assistantsPlayer2;
+	
+	@FXML
+	private Label assistantsPlayer3;
+	
+	@FXML
+	private Label assistantsPlayer4;
+	
+	@FXML
+	private Label remainingEmporiumPlayer1;
+	
+	@FXML
+	private Label remainingEmporiumPlayer2;
+	
+	@FXML
+	private Label remainingEmporiumPlayer3;
+	
+	@FXML
+	private Label remainingEmporiumPlayer4;
+	
+	@FXML
+	private Label namePlayer1;
+	
+	@FXML
+	private Label namePlayer2;
+	
+	@FXML
+	private Label namePlayer3;
+	
+	@FXML
+	private Label namePlayer4;
+	
+	@FXML
 	private TextArea messageBox;
 	
 	public Pane getSeaRegion() {
@@ -325,7 +407,7 @@ public class ControllerGUI {
 		return mountainRegion;
 	}
 
-	public ImageView getKingBalcony() {
+	public Pane getKingBalcony() {
 		return kingBalcony;
 	}
 
