@@ -39,12 +39,13 @@ public class GUI extends ClientView{
 		this.controllerGUI.setClientGame(clientGame);
 		this.controllerGUI.setView(this);
 		imageMap=new HashMap<String,Image>();
-		imageMap.put("Black",new Image(getClass().getResource("councillors/Black.jpg").toExternalForm()));
-		imageMap.put("Blue",new Image(getClass().getResource("councillors/Blue.jpg").toExternalForm()));
-		imageMap.put("Orange",new Image(getClass().getResource("councillors/Orange.jpg").toExternalForm()));
-		imageMap.put("Pink",new Image(getClass().getResource("councillors/Pink.jpg").toExternalForm()));
-		imageMap.put("Violet",new Image(getClass().getResource("councillors/Violet.jpg").toExternalForm()));
-		imageMap.put("White",new Image(getClass().getResource("councillors/White.jpg").toExternalForm()));
+		imageMap.put("Black",new Image(getClass().getResource("images/councillors/Black.png").toExternalForm()));
+		imageMap.put("Blue",new Image(getClass().getResource("images/councillors/Blue.png").toExternalForm()));
+		imageMap.put("Orange",new Image(getClass().getResource("images/councillors/Orange.png").toExternalForm()));
+		imageMap.put("Pink",new Image(getClass().getResource("images/councillors/Pink.png").toExternalForm()));
+		imageMap.put("Violet",new Image(getClass().getResource("images/councillors/Violet.png").toExternalForm()));
+		imageMap.put("White",new Image(getClass().getResource("images/councillors/White.png").toExternalForm()));
+		imageMap.put("T_Assistants+1", new Image(getClass().getResource("images/token/Assistants+1.png").toExternalForm()));
 		lock=new Object();
 	}
 
@@ -104,14 +105,23 @@ public class GUI extends ClientView{
 			
 			@Override
 			public void run() {
-				for(RegionDTO region : clientGame.getClientRegions())
-					for(int i=0; i<4; i++)
-						controllerGUI.getCouncillors(region).get(i).setImage(imageMap.get(region.getBalcony()[i].getName()));
-				for(int i=0; i<4; i++)
-					controllerGUI.getKingCouncillors().get(i).setImage(imageMap.get(clientGame.getClientKingBalcony()[i].getName()));
+				displayCouncillors(clientGame);
+				displayTokens(clientGame);
 			}
 		});
 		
+	}
+	
+	private void displayCouncillors(GameTableDTO clientGame){
+		for(RegionDTO region : clientGame.getClientRegions())
+			for(int i=0; i<4; i++)
+				controllerGUI.getCouncillors(region).get(i).setImage(imageMap.get(region.getBalcony()[i].getName()));
+		for(int i=0; i<4; i++)
+			controllerGUI.getKingCouncillors().get(i).setImage(imageMap.get(clientGame.getClientKingBalcony()[i].getName()));
+	}
+	
+	private void displayTokens(GameTableDTO clientGame){
+		 
 	}
 
 	@Override
