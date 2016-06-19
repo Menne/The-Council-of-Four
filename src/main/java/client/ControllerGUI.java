@@ -3,8 +3,11 @@ package client;
 import java.rmi.RemoteException;
 
 import client.modelDTO.GameDTO;
+import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.MoveToNextDTO;
 import client.modelDTO.actionsDTO.PickPoliticsCardDTO;
+import client.modelDTO.actionsDTO.marketActions.AcceptAnOfferDTO;
+import client.modelDTO.actionsDTO.marketActions.MakeAnOfferDTO;
 import client.modelDTO.actionsDTO.standardActions.AcquirePermitTileDTO;
 import client.modelDTO.actionsDTO.standardActions.AddictionalMainActionDTO;
 import client.modelDTO.actionsDTO.standardActions.BuildByKingDTO;
@@ -22,8 +25,10 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -53,7 +58,16 @@ public class ControllerGUI {
 	private Pane mountainRegion;
 	
 	@FXML
-	private ImageView kingBalcony;
+	private Pane kingBalcony;
+	
+	@FXML
+	private Pane seaBalcony;
+	
+	@FXML
+	private Pane hillBalcony;
+	
+	@FXML
+	private Pane mountainBalcony;
 	
 	@FXML
 	private ImageView seaConcillor1;
@@ -311,6 +325,78 @@ public class ControllerGUI {
 	private ImageView kingRewardTile5;
 	
 	@FXML
+	private Label scorePlayer1;
+	
+	@FXML
+	private Label scorePlayer2;
+	
+	@FXML
+	private Label scorePlayer3;
+	
+	@FXML
+	private Label scorePlayer4;
+	
+	@FXML
+	private Label nobilityPlayer1;
+	
+	@FXML
+	private Label nobilityPlayer2;
+	
+	@FXML
+	private Label nobilityPlayer3;
+	
+	@FXML
+	private Label nobilityPlayer4;
+	
+	@FXML
+	private Label coinsPlayer1;
+	
+	@FXML
+	private Label coinsPlayer2;
+	
+	@FXML
+	private Label coinsPlayer3;
+	
+	@FXML
+	private Label coinsPlayer4;
+	
+	@FXML
+	private Label assistantsPlayer1;
+	
+	@FXML
+	private Label assistantsPlayer2;
+	
+	@FXML
+	private Label assistantsPlayer3;
+	
+	@FXML
+	private Label assistantsPlayer4;
+	
+	@FXML
+	private Label remainingEmporiumPlayer1;
+	
+	@FXML
+	private Label remainingEmporiumPlayer2;
+	
+	@FXML
+	private Label remainingEmporiumPlayer3;
+	
+	@FXML
+	private Label remainingEmporiumPlayer4;
+	
+	@FXML
+	private Label namePlayer1;
+	
+	@FXML
+	private Label namePlayer2;
+	
+	@FXML
+	private Label namePlayer3;
+	
+	@FXML
+	private Label namePlayer4;
+	
+	@FXML
 	private TextArea messageBox;
 	
 	public Pane getSeaRegion() {
@@ -325,7 +411,7 @@ public class ControllerGUI {
 		return mountainRegion;
 	}
 
-	public ImageView getKingBalcony() {
+	public Pane getKingBalcony() {
 		return kingBalcony;
 	}
 
@@ -427,141 +513,191 @@ public class ControllerGUI {
 	
 	
 	@FXML
-	public void pickPoliticsCard() throws RemoteException{
-		PickPoliticsCardDTO action=new PickPoliticsCardDTO();
-		if (this.clientGame.getAvailableActions().contains(action)) 
-			this.view.getConnection().sendAction(action);
-		else
-			this.view.displayError("You can't pick a politics card now");
+	public void pickPoliticsCard() throws RemoteException {
+		for (ActionDTO action : this.clientGame.getAvailableActions())
+			if (action instanceof PickPoliticsCardDTO) {
+				this.view.getConnection().sendAction(action);
+				return;
+			}
+		this.view.displayError("You can't pick a politics card now");
 	}
 
 	@FXML
 	public void startM1() {
-		ElectCouncillorDTO action=new ElectCouncillorDTO();
-		if (this.clientGame.getAvailableActions().contains(action)) {
-			ExecutorService executor=Executors.newSingleThreadExecutor();
-			executor.submit(new Runnable() {
-				
-				@Override
-				public void run() {
-					action.setParser().setParameters(view, clientGame);
-				}
-			});
-		}
-		else
-			this.view.displayError("Sorry, action not available!");
+		ElectCouncillorDTO selectedAction=new ElectCouncillorDTO();
+		for (ActionDTO action : this.clientGame.getAvailableActions())
+			if (action instanceof ElectCouncillorDTO) {
+				Platform.runLater(new Runnable() {
+					
+					@Override
+					public void run() {
+						selectedAction.setParser().setParameters(view, clientGame);
+					}
+				});
+				return;
+			}
+		this.view.displayError("Sorry, action not available!");
 	}
 	
 	@FXML
 	public void startM2() {
-		AcquirePermitTileDTO action=new AcquirePermitTileDTO();
-		if (this.clientGame.getAvailableActions().contains(action)) {
-			ExecutorService executor=Executors.newSingleThreadExecutor();
-			executor.submit(new Runnable() {
-				
-				@Override
-				public void run() {
-					action.setParser().setParameters(view, clientGame);
-				}
-			});
-		}
+		AcquirePermitTileDTO selectedAction=new AcquirePermitTileDTO();
+		for (ActionDTO action : this.clientGame.getAvailableActions())
+			if (action instanceof AcquirePermitTileDTO) {
+				ExecutorService executor=Executors.newSingleThreadExecutor();
+				executor.submit(new Runnable() {
+					
+					@Override
+					public void run() {
+						selectedAction.setParser().setParameters(view, clientGame);
+					}
+				});
+				return;
+			}
+		this.view.displayError("Sorry, action not available!");
 	}
 	
 	@FXML
 	public void startM3() {
-		BuildByPermitTileDTO action=new BuildByPermitTileDTO();
-		if (this.clientGame.getAvailableActions().contains(action)) {
-			ExecutorService executor=Executors.newSingleThreadExecutor();
-			executor.submit(new Runnable() {
-				
-				@Override
-				public void run() {
-					action.setParser().setParameters(view, clientGame);
-				}
-			});
-		}
-		else
-			this.view.displayError("Sorry, action not available!");
+		BuildByPermitTileDTO selectedAction=new BuildByPermitTileDTO();
+		for (ActionDTO action : this.clientGame.getAvailableActions())
+			if (action instanceof BuildByPermitTileDTO) {
+				ExecutorService executor=Executors.newSingleThreadExecutor();
+				executor.submit(new Runnable() {
+					
+					@Override
+					public void run() {
+						selectedAction.setParser().setParameters(view, clientGame);
+					}
+				});
+				return;
+			}
+		this.view.displayError("Sorry, action not available!");
 	}
 	
 	@FXML
 	public void startM4() {
-		BuildByKingDTO action=new BuildByKingDTO();
-		if (this.clientGame.getAvailableActions().contains(action)) {
-			ExecutorService executor=Executors.newSingleThreadExecutor();
-			executor.submit(new Runnable() {
-				
-				@Override
-				public void run() {
-					action.setParser().setParameters(view, clientGame);
-				}
-			});
-		}
-		else
-			this.view.displayError("Sorry, action not available!");
+		BuildByKingDTO selectedAction=new BuildByKingDTO();
+		for (ActionDTO action : this.clientGame.getAvailableActions())
+			if (action instanceof BuildByKingDTO) {
+				ExecutorService executor=Executors.newSingleThreadExecutor();
+				executor.submit(new Runnable() {
+					
+					@Override
+					public void run() {
+						selectedAction.setParser().setParameters(view, clientGame);
+					}
+				});
+				return;
+			}
+		this.view.displayError("Sorry, action not available!");
 	}
 	
 	@FXML
 	public void startQ1() throws RemoteException {
-		EngageAssistantDTO action=new EngageAssistantDTO();
-		if (this.clientGame.getAvailableActions().contains(action)) 
-			this.view.getConnection().sendAction(action);
-		else
-			this.view.displayError("Sorry, action not available!");
+		for (ActionDTO action : this.clientGame.getAvailableActions())
+			if (action instanceof EngageAssistantDTO) {
+				this.view.getConnection().sendAction(action);
+				return;
+			}
+		this.view.displayError("Sorry, action not available!");
 	}
 	
 	@FXML
 	public void startQ2() {
-		ChangePermitTilesDTO action=new ChangePermitTilesDTO();
-		if (this.clientGame.getAvailableActions().contains(action)) {
-			ExecutorService executor=Executors.newSingleThreadExecutor();
-			executor.submit(new Runnable() {
-				
-				@Override
-				public void run() {
-					action.setParser().setParameters(view, clientGame);
-				}
-			});
-		}
-		else
-			this.view.displayError("Sorry, action not available!");
+		ChangePermitTilesDTO selectedAction=new ChangePermitTilesDTO();
+		for (ActionDTO action : this.clientGame.getAvailableActions())
+			if (action instanceof ChangePermitTilesDTO) {
+				ExecutorService executor=Executors.newSingleThreadExecutor();
+				executor.submit(new Runnable() {
+					
+					@Override
+					public void run() {
+						selectedAction.setParser().setParameters(view, clientGame);
+					}
+				});
+				return;
+			}
+		this.view.displayError("Sorry, action not available!");
 	}
 	
 	@FXML
 	public void startQ3() {
-		ElectCouncillorByAssistantDTO action=new ElectCouncillorByAssistantDTO();
-		if (this.clientGame.getAvailableActions().contains(action)) {
-			ExecutorService executor=Executors.newSingleThreadExecutor();
-			executor.submit(new Runnable() {
-				
-				@Override
-				public void run() {
-					action.setParser().setParameters(view, clientGame);
-				}
-			});
-		}
-		else
-			this.view.displayError("Sorry, action not available!");
-		}
+		ElectCouncillorByAssistantDTO selectedAction=new ElectCouncillorByAssistantDTO();
+		for (ActionDTO action : this.clientGame.getAvailableActions())
+			if (action instanceof ElectCouncillorByAssistantDTO) {
+				ExecutorService executor=Executors.newSingleThreadExecutor();
+				executor.submit(new Runnable() {
+					
+					@Override
+					public void run() {
+						selectedAction.setParser().setParameters(view, clientGame);
+					}
+				});
+				return;
+			}
+		this.view.displayError("Sorry, action not available!");
+	}
 	
 	@FXML
 	public void startQ4() throws RemoteException {
-		AddictionalMainActionDTO action=new AddictionalMainActionDTO();
-		if (this.clientGame.getAvailableActions().contains(action)) 
-			this.view.getConnection().sendAction(action);
-		else
-			this.view.displayError("Sorry, action not available!");
+		for (ActionDTO action : this.clientGame.getAvailableActions())
+			if (action instanceof AddictionalMainActionDTO) {
+				this.view.getConnection().sendAction(action);
+				return;
+			}
+		this.view.displayError("Sorry, action not available!");
 	}
 	
 	
 	@FXML
-	public void clickOnSkip() throws RemoteException {
-		MoveToNextDTO action=new MoveToNextDTO();
-		if (this.clientGame.getAvailableActions().contains(action)) 
-			this.view.getConnection().sendAction(action);
-		else
-			this.view.displayError("Sorry, action not available!");
+	public void clickOnActionSkip() throws RemoteException {
+		for (ActionDTO action : this.clientGame.getAvailableActions())
+			if (action instanceof MoveToNextDTO) {
+				this.view.getConnection().sendAction(action);
+				return;
+			}
+		this.view.displayError("Sorry, action not available!");
 	}
+	
+	
+	@FXML
+	public void clickOnActionMakeAnOffer() {
+		MakeAnOfferDTO selectedAction=new MakeAnOfferDTO();
+		for (ActionDTO action : this.clientGame.getAvailableActions())
+			if (action instanceof MakeAnOfferDTO) {
+				ExecutorService executor=Executors.newSingleThreadExecutor();
+				executor.submit(new Runnable() {
+					
+					@Override
+					public void run() {
+						selectedAction.setParser().setParameters(view, clientGame);
+					}
+				});
+				return;
+			}
+		this.view.displayError("You cant't make an offer now!");
+	}
+	
+	@FXML
+	public void clickOnActionAcceptAnOffer() {
+		MakeAnOfferDTO selectedAction=new MakeAnOfferDTO();
+		for (ActionDTO action : this.clientGame.getAvailableActions())
+			if (action instanceof AcceptAnOfferDTO) {
+				ExecutorService executor=Executors.newSingleThreadExecutor();
+				executor.submit(new Runnable() {
+					
+					@Override
+					public void run() {
+						selectedAction.setParser().setParameters(view, clientGame);
+					}
+				});
+				return;
+			}
+		this.view.displayError("You cant't accept an offer now!");
+	}
+	
+	
 		
 	
 	
@@ -714,7 +850,7 @@ public class ControllerGUI {
 		synchronized (this) {
 			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
 			for (CityDTO city : region.getCities())
-				if ("Eski".equals(city.getName()))
+				if ("Esti".equals(city.getName()))
 					view.setCurrentParameter(city);
 			this.notify();
 		}
