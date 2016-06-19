@@ -53,6 +53,11 @@ public class RewardTokenDTO implements ModelDTO {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return bonuses.toString();
+	}
 	
 	
 

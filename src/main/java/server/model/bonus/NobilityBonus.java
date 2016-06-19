@@ -49,6 +49,28 @@ public class NobilityBonus implements Bonus{
 	public int getNobilityAdvancement() {
 		return nobilityAdvancement;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + nobilityAdvancement;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		NobilityBonus other = (NobilityBonus) obj;
+		if (nobilityAdvancement != other.nobilityAdvancement)
+			return false;
+		return true;
+	}
 	
 	
 	

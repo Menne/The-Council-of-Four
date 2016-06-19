@@ -20,4 +20,11 @@ public class RewardToken {
 	public Set<Bonus> getRewardTokenBonus() {
 		return rewardToken;
 	}
+
+	@Override
+	public String toString() {
+		return rewardToken.toString();
+	}
+	
+	
 }

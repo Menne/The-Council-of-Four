@@ -51,5 +51,10 @@ public class CouncillorDTO implements ModelDTO{
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return colour.toString();
+	}
+
 	
 }

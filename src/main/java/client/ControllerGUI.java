@@ -31,7 +31,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 public class ControllerGUI {
 	
@@ -325,6 +328,9 @@ public class ControllerGUI {
 	private ImageView kingRewardTile5;
 	
 	@FXML
+	private VBox councillorReserve;
+	
+	@FXML
 	private Label scorePlayer1;
 	
 	@FXML
@@ -397,8 +403,27 @@ public class ControllerGUI {
 	private Label namePlayer4;
 	
 	@FXML
-	private TextArea messageBox;
+	private Label playerName;
 	
+	@FXML
+	private Label playerScore;
+	@FXML
+	private Label playerCoins;
+	@FXML
+	private Label playerAssistants;
+	@FXML
+	private Label playerNobility;
+	@FXML
+	private HBox hand;
+	
+	@FXML
+	private TextArea messageBox;
+
+	
+	public HBox getHand() {
+		return hand;
+	}
+
 	public Pane getSeaRegion() {
 		return seaRegion;
 	}
@@ -415,45 +440,53 @@ public class ControllerGUI {
 		return kingBalcony;
 	}
 
-
-	public ImageView getReserveConcillor1() {
-		return reserveConcillor1;
-	}
-
-	public ImageView getReserveConcillor2() {
-		return reserveConcillor2;
-	}
-
-	public ImageView getReserveConcillor3() {
-		return reserveConcillor3;
-	}
-
-	public ImageView getReserveConcillor4() {
-		return reserveConcillor4;
-	}
-
-	public ImageView getReserveConcillor5() {
-		return reserveConcillor5;
-	}
-
-	public ImageView getReserveConcillor6() {
-		return reserveConcillor6;
-	}
-
-	public ImageView getReserveConcillor7() {
-		return reserveConcillor7;
-	}
-
-	public ImageView getReserveConcillor8() {
-		return reserveConcillor8;
-	}
-
-
 	public TextArea getMessageBox() {
 		return messageBox;
 	}
 	
-	
+	public Label getPlayerName() {
+		return playerName;
+	}
+
+	public void setPlayerName(Label playerName) {
+		this.playerName = playerName;
+	}
+
+	public Label getPlayerScore() {
+		return playerScore;
+	}
+
+	public void setPlayerScore(Label playerScore) {
+		this.playerScore = playerScore;
+	}
+
+	public Label getPlayerCoins() {
+		return playerCoins;
+	}
+
+	public void setPlayerCoins(Label playerCoins) {
+		this.playerCoins = playerCoins;
+	}
+
+	public Label getPlayerAssistants() {
+		return playerAssistants;
+	}
+
+	public void setPlayerAssistants(Label playerAssistants) {
+		this.playerAssistants = playerAssistants;
+	}
+
+	public Label getPlayerNobility() {
+		return playerNobility;
+	}
+
+	public void setPlayerNobility(Label playerNobility) {
+		this.playerNobility = playerNobility;
+	}
+
+	public VBox getCouncillorReserve(){
+		return councillorReserve;
+	}
 	
 	public List<ImageView> getCouncillors(RegionDTO balcony){
 		switch(balcony.getName()){
@@ -470,6 +503,30 @@ public class ControllerGUI {
 	
 	public List<ImageView> getKingCouncillors(){
 		return Arrays.asList(kingConcillor1,kingConcillor2,kingConcillor3,kingConcillor4);
+	}
+	
+	public List<Label> getNamesLabels(){
+		return Arrays.asList(namePlayer1,namePlayer2,namePlayer3,namePlayer4);
+	}
+	
+	public List<Label> getRemainingEmporiumsLabels(){
+		return Arrays.asList(remainingEmporiumPlayer1,remainingEmporiumPlayer2,remainingEmporiumPlayer3,remainingEmporiumPlayer4);
+	}
+	
+	public List<Label> getScoreLabels(){
+		return Arrays.asList(scorePlayer1,scorePlayer2,scorePlayer3,scorePlayer4);
+	}
+	
+	public List<Label> getCoinsLabels(){
+		return Arrays.asList(coinsPlayer1,coinsPlayer2, coinsPlayer3, coinsPlayer4);
+	}
+	
+	public List<Label> getAssistantsLabels(){
+		return Arrays.asList(assistantsPlayer1,assistantsPlayer2,assistantsPlayer3,assistantsPlayer4);
+	}
+	
+	public List<Label> getNobilityLabels(){
+		return Arrays.asList(nobilityPlayer1,nobilityPlayer2,nobilityPlayer3,nobilityPlayer4);
 	}
 	
 	public ImageView getRewardToken(CityDTO city){
@@ -509,8 +566,6 @@ public class ControllerGUI {
 			
 		}
 	}
-	
-	
 	
 	@FXML
 	public void startActionPickPoliticsCard() throws RemoteException {
