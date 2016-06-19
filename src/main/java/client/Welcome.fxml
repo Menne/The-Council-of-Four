@@ -10,21 +10,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="754.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.ControllerLogin">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.ControllerLogin">
    <children>
-      <ImageView fitHeight="543.0" fitWidth="754.0" opacity="0.79">
+      <ImageView fitHeight="486.0" fitWidth="650.0" layoutX="-7.0" layoutY="-4.0" opacity="0.79">
          <image>
             <Image url="@council-of-four.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="255.0" layoutY="436.0" mnemonicParsing="false" onAction="#play" prefHeight="58.0" prefWidth="225.0" text="Play!" />
-      <TextArea layoutX="18.0" layoutY="38.0" opacity="0.52" prefHeight="150.0" prefWidth="715.0" text="Welcome to a The Council of Four!&#10;If you want to start a new game, please insert your name:">
+      <Button layoutX="322.0" layoutY="393.0" mnemonicParsing="false" onAction="#play" prefHeight="58.0" prefWidth="225.0" text="Play!" />
+      <TextArea layoutX="18.0" layoutY="38.0" opacity="0.52" prefHeight="150.0" prefWidth="604.0" text="Welcome to a The Council of Four!&#10;If you want to start a new game, please insert your name:" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="18.0">
          <font>
             <Font name="Algerian" size="21.0" />
          </font>
       </TextArea>
       <TextField fx:id="name" layoutX="38.0" layoutY="119.0" prefHeight="45.0" prefWidth="372.0" />
-      <TextArea layoutX="25.0" layoutY="209.0" opacity="0.5" prefHeight="166.0" prefWidth="715.0" text="Please select the connection to communicate with the server, &#10;and the IP address of the server">
+      <TextArea layoutX="18.0" layoutY="208.0" opacity="0.5" prefHeight="166.0" prefWidth="604.0" text="Please select the connection to communicate with &#10;the server, and the IP address of the server" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="18.0">
          <font>
             <Font name="Algerian" size="21.0" />
          </font>
@@ -34,7 +34,7 @@
             <ToggleGroup fx:id="connection" />
          </toggleGroup></RadioButton>
       <RadioButton fx:id="rmi" layoutX="50.0" layoutY="330.0" mnemonicParsing="false" text="RMI" toggleGroup="$connection" />
-      <TextArea fx:id="error" layoutX="38.0" layoutY="403.0" prefHeight="99.0" prefWidth="165.0" />
-      <TextField fx:id="address" layoutX="345.0" layoutY="301.0" prefHeight="45.0" prefWidth="354.0" promptText="0 for localhost" />
+      <TextArea fx:id="error" layoutX="25.0" layoutY="401.0" prefHeight="51.0" prefWidth="165.0" />
+      <TextField fx:id="address" layoutX="214.0" layoutY="302.0" prefHeight="45.0" prefWidth="354.0" promptText="0 for localhost" />
    </children>
 </AnchorPane>
