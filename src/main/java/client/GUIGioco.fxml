@@ -728,12 +728,12 @@
                         </ScrollPane>
                         <AnchorPane prefHeight="215.0" prefWidth="124.0" styleClass="sfondo" stylesheets="@resize.css">
                            <children>
-                              <ImageView fx:id="politicsDeck" fitHeight="119.0" fitWidth="82.0" layoutX="21.0" layoutY="68.0">
+                              <ImageView fx:id="politicsDeck" fitHeight="119.0" fitWidth="82.0" layoutX="21.0" layoutY="68.0" onMouseClicked="#pickPoliticsCard">
                                  <image>
                                     <Image url="@PoliticCard.png" />
                                  </image>
                               </ImageView>
-                              <Label layoutX="16.0" layoutY="23.0" text="Pick Politic card">
+                              <Label layoutX="16.0" layoutY="23.0" onMouseClicked="#pickPoliticsCard" text="Pick Politic card">
                                  <font>
                                     <Font name="Papyrus" size="13.0" />
                                  </font>
