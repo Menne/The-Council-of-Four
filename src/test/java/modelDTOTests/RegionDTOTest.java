@@ -8,8 +8,8 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
+import client.modelDTO.gameTableDTO.CouncillorDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
 import server.model.bonus.ScoreBonus;
@@ -19,7 +19,7 @@ public class RegionDTOTest {
 	@Test
 	public void testGettersAndSetters() {
 		String name="Sea";
-		CardColourDTO[] balcony=new CardColourDTO[4];
+		CouncillorDTO[] balcony=new CouncillorDTO[4];
 		Set<CityDTO> cities= new HashSet<>();
 		PermitTileDTO[] uncoveredPermitTiles= new PermitTileDTO[2];
 		RegionDTO region= new RegionDTO();
@@ -40,11 +40,11 @@ public class RegionDTOTest {
 
 	public void testEquals() {
 		String name1="Sea";
-		CardColourDTO[] balcony1=new CardColourDTO[4];
+		CouncillorDTO[] balcony1=new CouncillorDTO[4];
 		Set<CityDTO> cities1= new HashSet<>();
 		PermitTileDTO[] uncoveredPermitTiles1= new PermitTileDTO[2];
 		String name2="Sea";
-		CardColourDTO[] balcony2=new CardColourDTO[4];
+		CouncillorDTO[] balcony2=new CouncillorDTO[4];
 		Set<CityDTO> cities2= new HashSet<>();
 		PermitTileDTO[] uncoveredPermitTiles2= new PermitTileDTO[2];
 		RegionDTO region1= new RegionDTO();

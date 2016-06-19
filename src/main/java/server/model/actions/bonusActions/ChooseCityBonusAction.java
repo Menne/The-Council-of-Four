@@ -28,7 +28,7 @@ public class ChooseCityBonusAction implements Action {
 			
 		if(this.selectedCity==null)
 			throw new NullPointerException("you have to select a city for this action");
-		for (Bonus bonusToAssign : this.selectedCity.getRewardToken())
+		for (Bonus bonusToAssign : this.selectedCity.getRewardToken().getRewardTokenBonus())
 			bonusToAssign.assignBonus(game);
 		
 		game.setState(game.getState().moveToNextTransition(game));

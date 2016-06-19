@@ -12,6 +12,7 @@ import org.junit.Test;
 import client.modelDTO.gameTableDTO.CityColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.GenericPlayerDTO;
+import client.modelDTO.gameTableDTO.RewardTokenDTO;
 import server.model.bonus.Bonus;
 
 public class CityDTOTest {
@@ -26,7 +27,7 @@ public class CityDTOTest {
 		Set<GenericPlayerDTO> emporiums= new HashSet<>();
 		city.setBuildedEmporiums(emporiums);
 		Set<Bonus> rewardToken= new HashSet<>();
-		city.setRewardToken(rewardToken);
+		city.setRewardToken(new RewardTokenDTO(rewardToken));
 		assertTrue(city.getBuildedEmporiums()==emporiums);
 		assertTrue(city.getColour()==colour);
 		assertTrue(city.getName()==name);

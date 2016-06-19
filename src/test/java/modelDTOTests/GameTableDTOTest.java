@@ -12,6 +12,7 @@ import org.junit.Test;
 
 import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityColourDTO;
+import client.modelDTO.gameTableDTO.CouncillorDTO;
 import client.modelDTO.gameTableDTO.GameTableDTO;
 import client.modelDTO.gameTableDTO.GenericPlayerDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
@@ -23,7 +24,7 @@ public class GameTableDTOTest {
 	@Test
 	public void testGettersAndSetters() {
 		List<RegionDTO> regions= new ArrayList<>();
-		CardColourDTO[] clientKingBalcony= new CardColourDTO[4];
+		CouncillorDTO[] clientKingBalcony= new CouncillorDTO[4];
 		List<CardColourDTO> cardColours= new ArrayList<>();
 		List<Set<Bonus>> bonuses= new ArrayList<>();
 		List<GenericPlayerDTO> players= new ArrayList<>();

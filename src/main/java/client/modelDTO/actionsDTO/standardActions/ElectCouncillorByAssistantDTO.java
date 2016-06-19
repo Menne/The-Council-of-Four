@@ -4,7 +4,7 @@ import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.ActionWithParameters;
 import client.modelDTO.actionsDTO.actionsParametersSetters.ActionParserVisitor;
 import client.modelDTO.actionsDTO.actionsParametersSetters.ElectCouncillorByAssistantParser;
-import client.modelDTO.gameTableDTO.CardColourDTO;
+import client.modelDTO.gameTableDTO.CouncillorDTO;
 import server.model.actions.Action;
 import server.view.actionMapperVisitor.ActionMapperVisitor;
 
@@ -14,27 +14,27 @@ public class ElectCouncillorByAssistantDTO implements ActionDTO, ActionWithParam
 	 * 
 	 */
 	private static final long serialVersionUID = -6230692405420942190L;
-	private CardColourDTO newCouncillor;
-	private CardColourDTO[] councilBalcony;
+	private CouncillorDTO newCouncillor;
+	private CouncillorDTO[] councilBalcony;
 	private boolean parametersSetted=false;
 
-
-	public CardColourDTO getNewCouncillor() {
+	
+	public CouncillorDTO getNewCouncillor() {
 		return newCouncillor;
 	}
 
-	public CardColourDTO[] getCouncilBalcony() {
-		return councilBalcony;
-	}
-
-	public void setNewCouncillor(CardColourDTO newCouncillor) {
+	public void setNewCouncillor(CouncillorDTO newCouncillor) {
 		this.newCouncillor = newCouncillor;
 	}
 
-	public void setCouncilBalcony(CardColourDTO[] councilBalcony) {
+	public CouncillorDTO[] getCouncilBalcony() {
+		return councilBalcony;
+	}
+
+	public void setCouncilBalcony(CouncillorDTO[] councilBalcony) {
 		this.councilBalcony = councilBalcony;
 	}
-	
+
 	public boolean checkIfParametersSetted() {
 		return parametersSetted;
 	}

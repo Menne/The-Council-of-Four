@@ -11,6 +11,7 @@ import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.AddPlayerDTO;
 import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
+import client.modelDTO.gameTableDTO.CouncillorDTO;
 import client.modelDTO.gameTableDTO.GameTableDTO;
 import client.modelDTO.gameTableDTO.GenericPlayerDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
@@ -64,9 +65,9 @@ public abstract class ClientView implements Observer<ClientViewNotify> {
 	
 	public abstract PermitTileDTO askForPermitTile(List<PermitTileDTO> acceptablePermitTiles);
 	
-	public abstract CardColourDTO askForCouncillor(List<CardColourDTO> acceptableCouncillors);
+	public abstract CouncillorDTO askForCouncillor(List<CouncillorDTO> acceptableCouncillors);
 	
-	public abstract CardColourDTO[] askForCouncilBalcony(List<CardColourDTO[]> acceptableCouncillors);
+	public abstract CouncillorDTO[] askForCouncilBalcony(List<CouncillorDTO[]> acceptableCouncilBalconies);
 	
 	public abstract CityDTO askForCity(List<CityDTO> acceptableCities);
 	

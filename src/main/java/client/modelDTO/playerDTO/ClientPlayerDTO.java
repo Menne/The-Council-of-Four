@@ -6,9 +6,8 @@ import java.util.List;
 import client.modelDTO.ModelDTO;
 import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
-import server.model.player.Player;
 
-public class ClientPlayerDTO implements ModelDTO<Player>{
+public class ClientPlayerDTO implements ModelDTO{
 	
 	/**
 	 * 

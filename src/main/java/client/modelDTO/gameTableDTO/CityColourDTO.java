@@ -1,9 +1,9 @@
 package client.modelDTO.gameTableDTO;
 
 import client.modelDTO.ModelDTO;
-import server.model.gameTable.CityColour;
 
-public class CityColourDTO implements ModelDTO<CityColour>{
+
+public class CityColourDTO implements ModelDTO{
 
 	/**
 	 * 

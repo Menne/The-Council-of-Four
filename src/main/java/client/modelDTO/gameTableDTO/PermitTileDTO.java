@@ -7,9 +7,8 @@ import client.modelDTO.ModelDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.marketDTO.MarketableDTO;
 import server.model.bonus.Bonus;
-import server.model.gameTable.PermitTile;
 
-public class PermitTileDTO implements ModelDTO<PermitTile>, MarketableDTO {
+public class PermitTileDTO implements ModelDTO, MarketableDTO {
 
 	/**
 	 * 

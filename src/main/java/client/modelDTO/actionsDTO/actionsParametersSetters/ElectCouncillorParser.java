@@ -21,7 +21,7 @@ public class ElectCouncillorParser implements ActionParserVisitor {
 	
 	@Override
 	public ActionDTO setParameters(ClientView view, GameDTO game) {
-		view.displayMessage("Ok! you have chosen to elect a councillor. Now I need some other infos, like:");
+/*		view.displayMessage("Ok! you have chosen to elect a councillor. Now I need some other infos, like:");
 		
 		view.displayMessage("the colour of the councillor you want to elect");
 		this.selectedAction.setNewCouncillor(view.askForCouncillor
@@ -36,8 +36,9 @@ public class ElectCouncillorParser implements ActionParserVisitor {
 				(acceptableCouncilBalconies));
 		
 		this.selectedAction.parametersSetted();
-		
+*/		
 		return this.selectedAction;
 	}
 
 }
+

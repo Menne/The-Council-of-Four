@@ -7,10 +7,12 @@ import java.util.Set;
 import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
+import client.modelDTO.gameTableDTO.CouncillorDTO;
 import client.modelDTO.gameTableDTO.GameTableDTO;
 import client.modelDTO.gameTableDTO.GenericPlayerDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
+import client.modelDTO.gameTableDTO.RewardTokenDTO;
 import client.modelDTO.marketDTO.MarketDTO;
 import client.modelDTO.marketDTO.OfferDTO;
 import client.modelDTO.playerDTO.AssistantDTO;
@@ -27,6 +29,7 @@ import server.model.gameTable.Emporium;
 import server.model.gameTable.PermitTile;
 import server.model.gameTable.PoliticsCard;
 import server.model.gameTable.RegionBoard;
+import server.model.gameTable.RewardToken;
 import server.model.market.Market;
 import server.model.market.Offer;
 import server.model.player.Player;
@@ -51,8 +54,8 @@ public class GameDTOMapper implements GameMapperInterface {
 		for (RegionBoard region : realObject.getGameTable().getRegionBoards())
 			gameTableDTO.getClientRegions().add(this.regionMap(region));
 		for (int i=0; i<CouncilBalcony.getNumberofcouncillors(); i++)
-			gameTableDTO.getClientKingBalcony()[i]=this.cardColourMap
-					(realObject.getGameTable().getCouncilOfKing().getCouncillors()[i].getColour());
+			gameTableDTO.getClientKingBalcony()[i]=this.councillorMap
+					(realObject.getGameTable().getCouncilOfKing().getCouncillors()[i]);
 		for (Councillor councillor : realObject.getGameTable().getCouncilReserve().getCouncillors())
 			gameTableDTO.getClientCouncillorReserve().add
 					(this.cardColourMap(councillor.getColour()));
@@ -126,6 +129,8 @@ public class GameDTOMapper implements GameMapperInterface {
 		cardColourDTO.setName(realObject.getColour());
 		return cardColourDTO;
 	}
+	
+	
 
 	/**
 	 * This method maps all the attributes that a client can see in a city colour DTO object
@@ -153,7 +158,7 @@ public class GameDTOMapper implements GameMapperInterface {
 		for (Emporium emporium : realObject.getCityEmporiums())
 			cityDTO.getBuildedEmporiums().add
 					(this.genericPlayerMap(emporium.getEmporiumsPlayer()));
-		cityDTO.setRewardToken(realObject.getRewardToken());
+		cityDTO.setRewardToken(this.rewardTokenMap(realObject.getRewardToken()));
 		
 		return cityDTO;
 	}
@@ -210,8 +215,8 @@ public class GameDTOMapper implements GameMapperInterface {
 		
 		regionDTO.setName(realObject.getName());
 		for (int i=0; i<CouncilBalcony.getNumberofcouncillors(); i++)
-			regionDTO.getBalcony()[i]=this.cardColourMap
-					(realObject.getRegionBalcony().getCouncillors()[i].getColour());
+			regionDTO.getBalcony()[i]=this.councillorMap(
+					realObject.getRegionBalcony().getCouncillors()[i]);
 		for (City city : realObject.getRegionCities())
 			regionDTO.getCities().add(this.cityMap(city));
 		for (int i=0; i<2; i++)
@@ -246,5 +251,19 @@ public class GameDTOMapper implements GameMapperInterface {
 		
 		return offerDTO;
 	}
+
+	@Override
+	public CouncillorDTO councillorMap(Councillor realCouncillor) {
+		CouncillorDTO councillorDTO=new CouncillorDTO();
+		councillorDTO.setColour(this.cardColourMap(realCouncillor.getColour()));
+		return councillorDTO;
+	}
+
+	@Override
+	public RewardTokenDTO rewardTokenMap(RewardToken realToken) {
+		return new RewardTokenDTO(realToken.getRewardTokenBonus());
+	}
+	
+	
 	
 }

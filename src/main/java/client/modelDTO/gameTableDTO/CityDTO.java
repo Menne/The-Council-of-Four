@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Set;
 
 import client.modelDTO.ModelDTO;
-import server.model.bonus.Bonus;
-import server.model.gameTable.City;
 
-public class CityDTO implements ModelDTO<City>{
+public class CityDTO implements ModelDTO{
 
 	/**
 	 * 
@@ -18,7 +16,7 @@ public class CityDTO implements ModelDTO<City>{
 	private String name;
 	private CityColourDTO colour;
 	private Set<GenericPlayerDTO> buildedEmporiums;
-	private Set<Bonus> rewardToken;
+	private RewardTokenDTO rewardToken;
 	
 	public CityDTO(){		
 		this.buildedEmporiums=new HashSet<>();
@@ -50,13 +48,17 @@ public class CityDTO implements ModelDTO<City>{
 		this.buildedEmporiums = buildedEmporiums;
 	}
 
-	public Set<Bonus> getRewardToken() {
+	
+
+	public RewardTokenDTO getRewardToken() {
 		return rewardToken;
 	}
 
-	public void setRewardToken(Set<Bonus> rewardToken) {
+
+	public void setRewardToken(RewardTokenDTO rewardToken) {
 		this.rewardToken = rewardToken;
 	}
+
 
 	@Override
 	public String toString() {

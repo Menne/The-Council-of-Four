@@ -8,23 +8,22 @@ import client.modelDTO.ModelDTO;
 import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
 import server.model.bonus.ScoreBonus;
-import server.model.gameTable.RegionBoard;
 
-public class RegionDTO implements ModelDTO<RegionBoard>{
+public class RegionDTO implements ModelDTO{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 6668103687292375094L;
 	private String name;
-	private CardColourDTO[] balcony;
+	private CouncillorDTO[] balcony;
 	private Set<CityDTO> cities;
 	private PermitTileDTO[] uncoveredPermitTiles;
 	private ScoreBonus regionBonus;
 	
 	public RegionDTO(){
 		
-		this.balcony=new CardColourDTO[4]; 
+		this.balcony=new CouncillorDTO[4]; 
 		this.cities=new HashSet<>();		
 		this.uncoveredPermitTiles=new PermitTileDTO[2];
 	}
@@ -38,13 +37,16 @@ public class RegionDTO implements ModelDTO<RegionBoard>{
 		this.name = name;
 	}
 
-	public CardColourDTO[] getBalcony() {
+
+	public CouncillorDTO[] getBalcony() {
 		return balcony;
 	}
 
-	public void setBalcony(CardColourDTO[] balcony) {
+
+	public void setBalcony(CouncillorDTO[] balcony) {
 		this.balcony = balcony;
 	}
+
 
 	public Set<CityDTO> getCities() {
 		return cities;

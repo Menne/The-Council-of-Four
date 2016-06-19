@@ -85,7 +85,7 @@ public class BuildByKing extends MainAction {
 		Emporium temporaryEmporium=game.getCurrentPlayer().removeEmporium();
 		this.selectedCity.addEmporium(temporaryEmporium);
 		for (City city : likedCities.getConnectedBuiltCities(game.getGameTable().getMap().getGameMap(), this.selectedCity, temporaryEmporium))
-			for (Bonus bonusToAssign : city.getRewardToken())
+			for (Bonus bonusToAssign : city.getRewardToken().getRewardTokenBonus())
 				bonusToAssign.assignBonus(game);
 		game.getGameTable().getKing().moveKing(selectedCity);
 

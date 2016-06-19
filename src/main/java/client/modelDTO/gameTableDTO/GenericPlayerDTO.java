@@ -5,9 +5,8 @@ import java.util.List;
 
 import client.modelDTO.ModelDTO;
 import server.model.bonus.ScoreBonus;
-import server.model.player.Player;
 
-public class GenericPlayerDTO implements ModelDTO<Player>{
+public class GenericPlayerDTO implements ModelDTO{
 
 	/**
 	 * 

@@ -179,7 +179,7 @@ public class ActionDTOMapper implements ActionMapperVisitor{
 			action.setCouncilBalcony(this.game.getGameTable().getCouncilOfKing());
 		
 		for (Councillor councillor : this.game.getGameTable().getCouncilReserve().getCouncillors())
-			if(councillor.getColour().getColour().equals(selectedActionDTO.getNewCouncillor().getName()))
+			if(councillor.equals(selectedActionDTO.getNewCouncillor()))
 				action.setNewCouncillor(councillor);
 			
 		return action;
@@ -321,7 +321,7 @@ public class ActionDTOMapper implements ActionMapperVisitor{
 	 */
 	private boolean checkCouncilBalcony(CouncilBalcony realBalcony, ElectCouncillorByAssistantDTO selectedActionDTO) {
 		for (int i=0; i<CouncilBalcony.getNumberofcouncillors(); i++)
-			if (!realBalcony.getCouncillors()[i].getColour().getColour().equals(selectedActionDTO.getCouncilBalcony()[i].getName()))
+			if (!realBalcony.getCouncillors()[i].equals(selectedActionDTO.getCouncilBalcony()[i]))
 				return false;
 		return true;
 	}

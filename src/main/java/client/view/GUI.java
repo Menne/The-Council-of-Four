@@ -14,6 +14,7 @@ import client.modelDTO.GameDTO;
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
+import client.modelDTO.gameTableDTO.CouncillorDTO;
 import client.modelDTO.gameTableDTO.GameTableDTO;
 import client.modelDTO.gameTableDTO.GenericPlayerDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
@@ -120,15 +121,16 @@ public class GUI extends ClientView{
 	}
 	
 	private void displayCouncillors(GameTableDTO clientGame){
-		for(RegionDTO region : clientGame.getClientRegions())
+	/*	for(RegionDTO region : clientGame.getClientRegions())
 			for(int i=0; i<4; i++)
 				controllerGUI.getCouncillors(region).get(i).setImage(imageMap.get(region.getBalcony()[i].getName()));
 		for(int i=0; i<4; i++)
 			controllerGUI.getKingCouncillors().get(i).setImage(imageMap.get(clientGame.getClientKingBalcony()[i].getName()));
+			*/
 	}
 	
 	private void displayTokens(GameTableDTO clientGame){
-		for(RegionDTO region : clientGame.getClientRegions())
+		/*for(RegionDTO region : clientGame.getClientRegions())
 			for(CityDTO city : region.getCities()){
 				List<String> stringBonuses=new ArrayList<>();
 				for(Bonus bonus : city.getRewardToken())
@@ -138,7 +140,7 @@ public class GUI extends ClientView{
 				for(String singleBonusString : stringBonuses)
 					stringToken=stringToken+singleBonusString;
 				controllerGUI.getRewardToken(city).setImage(imageMap.get(stringToken));
-			}			
+			}		*/	
 	}
 
 	@Override
@@ -189,13 +191,13 @@ public class GUI extends ClientView{
 	}
 
 	@Override
-	public CardColourDTO askForCouncillor(List<CardColourDTO> acceptableCouncillors) {
+	public CouncillorDTO askForCouncillor(List<CouncillorDTO> acceptableCouncillors) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
 	@Override
-	public CardColourDTO[] askForCouncilBalcony(List<CardColourDTO[]> acceptableCouncillors) {
+	public CouncillorDTO[] askForCouncilBalcony(List<CouncillorDTO[]> acceptableCouncillors) {
 		// TODO Auto-generated method stub
 		return null;
 	}
