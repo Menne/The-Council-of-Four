@@ -153,121 +153,161 @@ public class ControllerGUI {
 	private Button skip;
 	
 	@FXML
-	private ImageView RewardTokenA;
+	private ImageView rewardTokenA;
 	
 	@FXML
-	private ImageView RewardTokenB;
+	private ImageView rewardTokenB;
 
 	@FXML
-	private ImageView RewardTokenC;
+	private ImageView rewardTokenC;
 	
 	@FXML
-	private ImageView RewardTokenD;
+	private ImageView rewardTokenD;
 	
 	@FXML
-	private ImageView RewardTokenE;
+	private ImageView rewardTokenE;
 	
 	@FXML
-	private ImageView RewardTokenF;
+	private ImageView rewardTokenF;
 	
 	@FXML
-	private ImageView RewardTokenG;
+	private ImageView rewardTokenG;
 	
 	@FXML
-	private ImageView RewardTokenH;
+	private ImageView rewardTokenH;
 
 	@FXML
-	private ImageView RewardTokenI;
+	private ImageView rewardTokenI;
 	
 	@FXML
-	private ImageView RewardTokenJ;
+	private ImageView rewardTokenJ;
 	
 	@FXML
-	private ImageView RewardTokenK;
+	private ImageView rewardTokenK;
 	
 	@FXML
-	private ImageView RewardTokenL;
+	private ImageView rewardTokenL;
 	
 	@FXML
-	private ImageView RewardTokenM;
+	private ImageView rewardTokenM;
 	
 	@FXML
-	private ImageView RewardTokenN;
+	private ImageView rewardTokenN;
 	
 	@FXML
-	private ImageView RewardTokenO;
+	private ImageView rewardTokenO;
 	
 	@FXML
-	private ImageView PermitDeckSeaRegion;
+	private ImageView permitDeckSeaRegion;
 	
 	@FXML
-	private ImageView PermitDeckHillRegion;
+	private ImageView permitDeckHillRegion;
 	
 	@FXML
-	private ImageView PermitDeckMountainRegion;
+	private ImageView permitDeckMountainRegion;
 	
 	@FXML
-	private ImageView PermitTileSea0;
+	private ImageView permitTileSea0;
 	
 	@FXML
-	private ImageView PermitTileSea1;
+	private ImageView permitTileSea1;
 	
 	@FXML
-	private ImageView PermitTileHill0;
+	private ImageView permitTileHill0;
 	
 	@FXML
-	private ImageView PermitTileHill1;
+	private ImageView permitTileHill1;
 	
 	@FXML
-	private ImageView PermitTileMountain0;
+	private ImageView permitTileMountain0;
 	
 	@FXML
-	private ImageView PermitTileMountain1;
+	private ImageView permitTileMountain1;
 	
 	@FXML
-	private Pane Arkon;
+	private Pane arkon;
 	
 	@FXML
-	private Pane Burgen;
+	private Pane burgen;
 	
 	@FXML
-	private Pane Castrum;
+	private Pane castrum;
 	
 	@FXML
-	private Pane Dorful;
+	private Pane dorful;
 	
 	@FXML
-	private Pane Esti;
+	private Pane esti;
 	
 	@FXML
-	private Pane Framek;
+	private Pane framek;
 	
 	@FXML
-	private Pane Graden;
+	private Pane graden;
 	
 	@FXML
-	private Pane Hellar;
+	private Pane hellar;
 	
 	@FXML
-	private Pane Indur;
+	private Pane indur;
 	
 	@FXML
-	private Pane Juvelar;
+	private Pane juvelar;
 	
 	@FXML
-	private Pane Kultos;
+	private Pane kultos;
 	
 	@FXML
-	private Pane Lyram;
+	private Pane lyram;
 	
 	@FXML
-	private Pane Merkatim;
+	private Pane merkatim;
 	
 	@FXML
-	private Pane Naris;
+	private Pane naris;
 	
 	@FXML
-	private Pane Osium;
+	private Pane osium;
+	
+	@FXML
+	private ImageView politicsDeck;
+	
+	@FXML
+	private ImageView regionBonusSea;
+	
+	@FXML
+	private ImageView regionBonusHill;
+	
+	@FXML
+	private ImageView regionBonusMountain;
+	
+	@FXML
+	private ImageView colorBonusBlue;
+	
+	@FXML
+	private ImageView colorBonusGold;
+	
+	@FXML
+	private ImageView colorBonusSilver;
+	
+	@FXML
+	private ImageView colorBonusBronze;
+	
+	@FXML
+	private ImageView kingRewardTile1;
+	
+	@FXML
+	private ImageView kingRewardTile2;
+	
+	@FXML
+	private ImageView kingRewardTile3;
+	
+	@FXML
+	private ImageView kingRewardTile4;
+
+	@FXML
+	private ImageView kingRewardTile5;
+	
 	@FXML
 	private TextArea messageBox;
 	
