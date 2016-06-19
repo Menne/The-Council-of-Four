@@ -6,6 +6,8 @@ import client.modelDTO.GameDTO;
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.MoveToNextDTO;
 import client.modelDTO.actionsDTO.PickPoliticsCardDTO;
+import client.modelDTO.actionsDTO.marketActions.AcceptAnOfferDTO;
+import client.modelDTO.actionsDTO.marketActions.MakeAnOfferDTO;
 import client.modelDTO.actionsDTO.standardActions.AcquirePermitTileDTO;
 import client.modelDTO.actionsDTO.standardActions.AddictionalMainActionDTO;
 import client.modelDTO.actionsDTO.standardActions.BuildByKingDTO;
@@ -649,7 +651,7 @@ public class ControllerGUI {
 	
 	
 	@FXML
-	public void clickOnSkip() throws RemoteException {
+	public void clickOnActionSkip() throws RemoteException {
 		for (ActionDTO action : this.clientGame.getAvailableActions())
 			if (action instanceof MoveToNextDTO) {
 				this.view.getConnection().sendAction(action);
@@ -657,6 +659,45 @@ public class ControllerGUI {
 			}
 		this.view.displayError("Sorry, action not available!");
 	}
+	
+	
+	@FXML
+	public void clickOnActionMakeAnOffer() {
+		MakeAnOfferDTO selectedAction=new MakeAnOfferDTO();
+		for (ActionDTO action : this.clientGame.getAvailableActions())
+			if (action instanceof MakeAnOfferDTO) {
+				ExecutorService executor=Executors.newSingleThreadExecutor();
+				executor.submit(new Runnable() {
+					
+					@Override
+					public void run() {
+						selectedAction.setParser().setParameters(view, clientGame);
+					}
+				});
+				return;
+			}
+		this.view.displayError("You cant't make an offer now!");
+	}
+	
+	@FXML
+	public void clickOnActionAcceptAnOffer() {
+		MakeAnOfferDTO selectedAction=new MakeAnOfferDTO();
+		for (ActionDTO action : this.clientGame.getAvailableActions())
+			if (action instanceof AcceptAnOfferDTO) {
+				ExecutorService executor=Executors.newSingleThreadExecutor();
+				executor.submit(new Runnable() {
+					
+					@Override
+					public void run() {
+						selectedAction.setParser().setParameters(view, clientGame);
+					}
+				});
+				return;
+			}
+		this.view.displayError("You cant't accept an offer now!");
+	}
+	
+	
 		
 	
 	
