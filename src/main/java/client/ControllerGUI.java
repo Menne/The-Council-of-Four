@@ -513,7 +513,7 @@ public class ControllerGUI {
 	
 	
 	@FXML
-	public void pickPoliticsCard() throws RemoteException {
+	public void startActionPickPoliticsCard() throws RemoteException {
 		for (ActionDTO action : this.clientGame.getAvailableActions())
 			if (action instanceof PickPoliticsCardDTO) {
 				this.view.getConnection().sendAction(action);
@@ -523,7 +523,7 @@ public class ControllerGUI {
 	}
 
 	@FXML
-	public void startM1() {
+	public void startActionElectCouncillor() {
 		ElectCouncillorDTO selectedAction=new ElectCouncillorDTO();
 		for (ActionDTO action : this.clientGame.getAvailableActions())
 			if (action instanceof ElectCouncillorDTO) {
@@ -540,7 +540,7 @@ public class ControllerGUI {
 	}
 	
 	@FXML
-	public void startM2() {
+	public void startActionAcquirePermitTile() {
 		AcquirePermitTileDTO selectedAction=new AcquirePermitTileDTO();
 		for (ActionDTO action : this.clientGame.getAvailableActions())
 			if (action instanceof AcquirePermitTileDTO) {
@@ -558,7 +558,7 @@ public class ControllerGUI {
 	}
 	
 	@FXML
-	public void startM3() {
+	public void startActionBuildByPermitTile() {
 		BuildByPermitTileDTO selectedAction=new BuildByPermitTileDTO();
 		for (ActionDTO action : this.clientGame.getAvailableActions())
 			if (action instanceof BuildByPermitTileDTO) {
@@ -576,7 +576,7 @@ public class ControllerGUI {
 	}
 	
 	@FXML
-	public void startM4() {
+	public void clickOnActionBuildByKing() {
 		BuildByKingDTO selectedAction=new BuildByKingDTO();
 		for (ActionDTO action : this.clientGame.getAvailableActions())
 			if (action instanceof BuildByKingDTO) {
@@ -594,7 +594,7 @@ public class ControllerGUI {
 	}
 	
 	@FXML
-	public void startQ1() throws RemoteException {
+	public void startActionEngageAssistant() throws RemoteException {
 		for (ActionDTO action : this.clientGame.getAvailableActions())
 			if (action instanceof EngageAssistantDTO) {
 				this.view.getConnection().sendAction(action);
@@ -604,7 +604,7 @@ public class ControllerGUI {
 	}
 	
 	@FXML
-	public void startQ2() {
+	public void startActionChangePermitTiles() {
 		ChangePermitTilesDTO selectedAction=new ChangePermitTilesDTO();
 		for (ActionDTO action : this.clientGame.getAvailableActions())
 			if (action instanceof ChangePermitTilesDTO) {
@@ -622,7 +622,7 @@ public class ControllerGUI {
 	}
 	
 	@FXML
-	public void startQ3() {
+	public void startActionElectCouncillorByAssistant() {
 		ElectCouncillorByAssistantDTO selectedAction=new ElectCouncillorByAssistantDTO();
 		for (ActionDTO action : this.clientGame.getAvailableActions())
 			if (action instanceof ElectCouncillorByAssistantDTO) {
@@ -640,7 +640,7 @@ public class ControllerGUI {
 	}
 	
 	@FXML
-	public void startQ4() throws RemoteException {
+	public void startActionAdditionalMainAction() throws RemoteException {
 		for (ActionDTO action : this.clientGame.getAvailableActions())
 			if (action instanceof AddictionalMainActionDTO) {
 				this.view.getConnection().sendAction(action);
@@ -651,7 +651,7 @@ public class ControllerGUI {
 	
 	
 	@FXML
-	public void clickOnActionSkip() throws RemoteException {
+	public void startActionSkip() throws RemoteException {
 		for (ActionDTO action : this.clientGame.getAvailableActions())
 			if (action instanceof MoveToNextDTO) {
 				this.view.getConnection().sendAction(action);
@@ -662,7 +662,7 @@ public class ControllerGUI {
 	
 	
 	@FXML
-	public void clickOnActionMakeAnOffer() {
+	public void startActionMakeAnOffer() {
 		MakeAnOfferDTO selectedAction=new MakeAnOfferDTO();
 		for (ActionDTO action : this.clientGame.getAvailableActions())
 			if (action instanceof MakeAnOfferDTO) {
@@ -680,7 +680,7 @@ public class ControllerGUI {
 	}
 	
 	@FXML
-	public void clickOnActionAcceptAnOffer() {
+	public void startActionAcceptAnOffer() {
 		MakeAnOfferDTO selectedAction=new MakeAnOfferDTO();
 		for (ActionDTO action : this.clientGame.getAvailableActions())
 			if (action instanceof AcceptAnOfferDTO) {
@@ -705,7 +705,7 @@ public class ControllerGUI {
 	
 	
 	@FXML
-	public void clickOnSeaRegion() {
+	public void clickOnRegionSea() {
 		synchronized (this) {
 			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(0));
 			this.notify();
