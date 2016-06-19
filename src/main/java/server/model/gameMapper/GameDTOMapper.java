@@ -58,7 +58,7 @@ public class GameDTOMapper implements GameMapperInterface {
 					(realObject.getGameTable().getCouncilOfKing().getCouncillors()[i]);
 		for (Councillor councillor : realObject.getGameTable().getCouncilReserve().getCouncillors())
 			gameTableDTO.getClientCouncillorReserve().add
-					(this.cardColourMap(councillor.getColour()));
+					(this.councillorMap(councillor));
 		for (Player player : realObject.getPlayers())
 			gameTableDTO.getClientPlayers().add(this.genericPlayerMap(player));
 		gameTableDTO.setClientNobilityTrack((ArrayList<Set<Bonus>>) realObject.getGameTable().getNobilityTrack().getTrack());

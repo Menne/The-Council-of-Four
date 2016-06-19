@@ -8,7 +8,6 @@ import java.util.Map;
 import java.util.Set;
 
 import client.modelDTO.ModelDTO;
-import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
 import client.view.notifies.ClientViewNotify;
 import observerPattern.Observable;
@@ -23,7 +22,7 @@ public class GameTableDTO extends Observable<ClientViewNotify> implements ModelD
 	private static final long serialVersionUID = 8250245390720798602L;
 	private ArrayList<RegionDTO> clientRegions;
 	private CouncillorDTO[] clientKingBalcony;
-	private ArrayList<CardColourDTO> clientCouncillorReserve;
+	private List<CouncillorDTO> clientCouncillorReserve;
 	private ArrayList<Set<Bonus>> clientNobilityTrack;
 	private ArrayList<GenericPlayerDTO> players;
 	private String currentPlayer;
@@ -34,7 +33,7 @@ public class GameTableDTO extends Observable<ClientViewNotify> implements ModelD
 	public GameTableDTO() {
 		this.clientRegions=new ArrayList<RegionDTO>();
 		this.clientKingBalcony=new CouncillorDTO[4];
-		this.clientCouncillorReserve=new ArrayList<CardColourDTO>();
+		this.clientCouncillorReserve=new ArrayList<CouncillorDTO>();
 		this.clientNobilityTrack=new ArrayList<Set<Bonus>>();
 		this.players=new ArrayList<GenericPlayerDTO>();
 		this.colourBonuses=new HashMap<>();
@@ -61,12 +60,12 @@ public class GameTableDTO extends Observable<ClientViewNotify> implements ModelD
 	}
 
 
-	public List<CardColourDTO> getClientCouncillorReserve() {
-		return clientCouncillorReserve;
+	public List<CouncillorDTO> getClientCouncillorReserve() {
+		return this.clientCouncillorReserve;
 	}
 
-	public void setClientCouncillorReserve(List<CardColourDTO> clientCouncillorReserve) {
-		this.clientCouncillorReserve = (ArrayList<CardColourDTO>) clientCouncillorReserve;
+	public void setClientCouncillorReserve(List<CouncillorDTO> clientCouncillorReserve) {
+		this.clientCouncillorReserve=clientCouncillorReserve;
 	}
 
 	public List<Set<Bonus>> getClientNobilityTrack() {

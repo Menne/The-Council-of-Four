@@ -6,7 +6,7 @@ import java.util.List;
 import client.modelDTO.GameDTO;
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.standardActions.ElectCouncillorDTO;
-import client.modelDTO.gameTableDTO.CardColourDTO;
+import client.modelDTO.gameTableDTO.CouncillorDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
 import client.view.ClientView;
 
@@ -21,14 +21,14 @@ public class ElectCouncillorParser implements ActionParserVisitor {
 	
 	@Override
 	public ActionDTO setParameters(ClientView view, GameDTO game) {
-/*		view.displayMessage("Ok! you have chosen to elect a councillor. Now I need some other infos, like:");
+		view.displayMessage("Ok! you have chosen to elect a councillor. Now I need some other infos, like:");
 		
 		view.displayMessage("the colour of the councillor you want to elect");
 		this.selectedAction.setNewCouncillor(view.askForCouncillor
 				(game.getClientGameTable().getClientCouncillorReserve()));
 		
 		view.displayMessage("the name of the region in which you want to change the councillor");
-		List<CardColourDTO[]> acceptableCouncilBalconies=new ArrayList<>();
+		List<CouncillorDTO[]> acceptableCouncilBalconies=new ArrayList<>();
 		for (RegionDTO region : game.getClientGameTable().getClientRegions())
 			acceptableCouncilBalconies.add(region.getBalcony());
 		acceptableCouncilBalconies.add(game.getClientGameTable().getClientKingBalcony());
@@ -36,7 +36,7 @@ public class ElectCouncillorParser implements ActionParserVisitor {
 				(acceptableCouncilBalconies));
 		
 		this.selectedAction.parametersSetted();
-*/		
+		
 		return this.selectedAction;
 	}
 

@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import client.modelDTO.ModelDTO;
-import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
 import server.model.bonus.ScoreBonus;
 

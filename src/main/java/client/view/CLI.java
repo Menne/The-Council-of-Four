@@ -189,9 +189,14 @@ public class CLI extends ClientView {
 
 	@Override
 	public CouncillorDTO askForCouncillor(List<CouncillorDTO> acceptableCouncillors) {
-	/*	List<String> acceptableCouncillorsColours=acceptableCouncillors.stream()
-                .map(CouncillorDTO::getName)
-                .collect(Collectors.toCollection(ArrayList::new));
+		List<String> acceptableCouncillorsColours=new ArrayList<>();
+			for (CouncillorDTO councillor : acceptableCouncillors)
+				acceptableCouncillorsColours.add(councillor.getColour().getName());
+		
+		
+			/*List<String> acceptableCouncillorsColours=acceptableCouncillors.stream()
+                .map(CouncillorDTO::getColour().getName())
+                .collect(Collectors.toCollection(ArrayList::new));*/
 		System.out.println(acceptableCouncillorsColours);
 		String newCouncillorToTranslate=this.scanner.nextLine();
 		while (!acceptableCouncillorsColours.contains(newCouncillorToTranslate)) {
@@ -199,11 +204,10 @@ public class CLI extends ClientView {
 			newCouncillorToTranslate=scanner.nextLine();
 		}
 		for (CouncillorDTO councillor : acceptableCouncillors)
-			if (newCouncillorToTranslate.equals(councillor.getName()))
-				return councillor;*/
-		return null;
-	/*	throw new IllegalArgumentException("newCouncillorToTranslate is not a colour name");
-	*/}
+			if (newCouncillorToTranslate.equals(councillor.getColour().getName()))
+				return councillor;
+		throw new IllegalArgumentException("newCouncillorToTranslate is not a colour name");
+	}
 	
 	@Override
 	public CouncillorDTO[] askForCouncilBalcony(List<CouncillorDTO[]> acceptableCounilBalconies) {
