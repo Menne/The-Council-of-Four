@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 
 import client.modelDTO.GameDTO;
 import client.modelDTO.actionsDTO.MoveToNextDTO;
+import client.modelDTO.actionsDTO.PickPoliticsCardDTO;
 import client.modelDTO.actionsDTO.standardActions.AcquirePermitTileDTO;
 import client.modelDTO.actionsDTO.standardActions.AddictionalMainActionDTO;
 import client.modelDTO.actionsDTO.standardActions.BuildByKingDTO;
@@ -485,7 +486,14 @@ public class ControllerGUI {
 	
 	
 	
-	
+	@FXML
+	public void pickPoliticsCard() throws RemoteException{
+		PickPoliticsCardDTO action=new PickPoliticsCardDTO();
+		if (this.clientGame.getAvailableActions().contains(action)) 
+			this.view.getConnection().sendAction(action);
+		else
+			this.view.displayError("You can't pick a politics card now");
+	}
 
 	@FXML
 	public void startM1() {
