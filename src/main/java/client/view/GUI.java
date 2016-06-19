@@ -31,7 +31,6 @@ public class GUI extends ClientView{
 	private final ControllerGUI controllerGUI;
 	private final Map<String, Image> imageMap;
 	private Object currentParameter;
-	private Object lock;
 	
 	public GUI(Connection connection, GameDTO clientGame, ControllerGUI controllerGUI) {
 		super(connection, clientGame);
@@ -39,14 +38,12 @@ public class GUI extends ClientView{
 		this.controllerGUI.setClientGame(clientGame);
 		this.controllerGUI.setView(this);
 		imageMap=new HashMap<String,Image>();
-		imageMap.put("Black",new Image(getClass().getResource("images/councillors/Black.png").toExternalForm()));
-		imageMap.put("Blue",new Image(getClass().getResource("images/councillors/Blue.png").toExternalForm()));
-		imageMap.put("Orange",new Image(getClass().getResource("images/councillors/Orange.png").toExternalForm()));
-		imageMap.put("Pink",new Image(getClass().getResource("images/councillors/Pink.png").toExternalForm()));
-		imageMap.put("Violet",new Image(getClass().getResource("images/councillors/Violet.png").toExternalForm()));
-		imageMap.put("White",new Image(getClass().getResource("images/councillors/White.png").toExternalForm()));
-		imageMap.put("T_Assistants+1", new Image(getClass().getResource("images/token/Assistants+1.png").toExternalForm()));
-		lock=new Object();
+		imageMap.put("Black",new Image(getClass().getResource("councillors/Black.jpg").toExternalForm()));
+		imageMap.put("Blue",new Image(getClass().getResource("councillors/Blue.jpg").toExternalForm()));
+		imageMap.put("Orange",new Image(getClass().getResource("councillors/Orange.jpg").toExternalForm()));
+		imageMap.put("Pink",new Image(getClass().getResource("councillors/Pink.jpg").toExternalForm()));
+		imageMap.put("Violet",new Image(getClass().getResource("councillors/Violet.jpg").toExternalForm()));
+		imageMap.put("White",new Image(getClass().getResource("councillors/White.jpg").toExternalForm()));
 	}
 
 	
@@ -62,12 +59,7 @@ public class GUI extends ClientView{
 	}
 
 
-
-	public Object getLock() {
-		return lock;
-	}
-
-
+	
 	@Override
 	public void update(ClientViewNotify notify) {
 		notify.updateView(this);	
@@ -152,17 +144,17 @@ public class GUI extends ClientView{
 	@Override
 	public RegionDTO askForRegionBoard(List<RegionDTO> acceptableRegions) {
 		System.out.println("ho reso cliccabile le regioni");
-		synchronized (lock) {
+		synchronized (this.controllerGUI) {
 			try {
-				while(currentParameter==null)
-					lock.wait();
+				while (currentParameter==null)
+					this.controllerGUI.wait();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		System.out.println("ho ritornato currentParameter"+((RegionDTO)currentParameter).toString());
-		return null;
+		return (RegionDTO) this.currentParameter;
 	}
 
 	@Override
@@ -185,8 +177,18 @@ public class GUI extends ClientView{
 
 	@Override
 	public CityDTO askForCity(List<CityDTO> acceptableCities) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("ho reso cliccabili le città");
+		synchronized (this.controllerGUI) {
+			try {
+				while (currentParameter==null)
+					this.controllerGUI.wait();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		System.out.println("ho ritornato currentParameter"+((CityDTO)currentParameter).toString());
+		return (CityDTO) this.currentParameter;
 	}
 
 	@Override
