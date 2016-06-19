@@ -31,7 +31,6 @@ public class GUI extends ClientView{
 	private final ControllerGUI controllerGUI;
 	private final Map<String, Image> imageMap;
 	private Object currentParameter;
-	private Object lock;
 	
 	public GUI(Connection connection, GameDTO clientGame, ControllerGUI controllerGUI) {
 		super(connection, clientGame);
@@ -45,7 +44,6 @@ public class GUI extends ClientView{
 		imageMap.put("Pink",new Image(getClass().getResource("councillors/Pink.jpg").toExternalForm()));
 		imageMap.put("Violet",new Image(getClass().getResource("councillors/Violet.jpg").toExternalForm()));
 		imageMap.put("White",new Image(getClass().getResource("councillors/White.jpg").toExternalForm()));
-		lock=new Object();
 	}
 
 	
@@ -61,12 +59,7 @@ public class GUI extends ClientView{
 	}
 
 
-
-	public Object getLock() {
-		return lock;
-	}
-
-
+	
 	@Override
 	public void update(ClientViewNotify notify) {
 		notify.updateView(this);	
@@ -142,17 +135,17 @@ public class GUI extends ClientView{
 	@Override
 	public RegionDTO askForRegionBoard(List<RegionDTO> acceptableRegions) {
 		System.out.println("ho reso cliccabile le regioni");
-		synchronized (lock) {
+		synchronized (this.controllerGUI) {
 			try {
-				while(currentParameter==null)
-					lock.wait();
+				while (currentParameter==null)
+					this.controllerGUI.wait();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		System.out.println("ho ritornato currentParameter"+((RegionDTO)currentParameter).toString());
-		return null;
+		return (RegionDTO) this.currentParameter;
 	}
 
 	@Override
@@ -175,8 +168,18 @@ public class GUI extends ClientView{
 
 	@Override
 	public CityDTO askForCity(List<CityDTO> acceptableCities) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("ho reso cliccabili le città");
+		synchronized (this.controllerGUI) {
+			try {
+				while (currentParameter==null)
+					this.controllerGUI.wait();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		System.out.println("ho ritornato currentParameter"+((CityDTO)currentParameter).toString());
+		return (CityDTO) this.currentParameter;
 	}
 
 	@Override

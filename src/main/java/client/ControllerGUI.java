@@ -11,18 +11,15 @@ import client.modelDTO.actionsDTO.standardActions.ChangePermitTilesDTO;
 import client.modelDTO.actionsDTO.standardActions.ElectCouncillorByAssistantDTO;
 import client.modelDTO.actionsDTO.standardActions.ElectCouncillorDTO;
 import client.modelDTO.actionsDTO.standardActions.EngageAssistantDTO;
-import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
 import client.view.GUI;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -333,11 +330,13 @@ public class ControllerGUI {
 	
 	
 
+	@FXML
 	public void startM1() {
 		ElectCouncillorDTO action=new ElectCouncillorDTO();
 		action.setParser().setParameters(this.view, this.clientGame);
 	}
 	
+	@FXML
 	public void startM2() {
 		AcquirePermitTileDTO action=new AcquirePermitTileDTO();
 		ExecutorService executor=Executors.newSingleThreadExecutor();
@@ -351,161 +350,303 @@ public class ControllerGUI {
 		});
 	}
 	
+	@FXML
 	public void startM3() {
 		BuildByPermitTileDTO action=new BuildByPermitTileDTO();
 		action.setParser().setParameters(this.view, this.clientGame);
 	}
 	
+	@FXML
 	public void startM4() {
 		BuildByKingDTO action=new BuildByKingDTO();
 		action.setParser().setParameters(this.view, this.clientGame);
 	}
 	
+	@FXML
 	public void startQ1() throws RemoteException {
 		EngageAssistantDTO action=new EngageAssistantDTO();
 		this.view.getConnection().sendAction(action);
 	}
 	
+	@FXML
 	public void startQ2() {
 		ChangePermitTilesDTO action=new ChangePermitTilesDTO();
 		action.setParser().setParameters(this.view, this.clientGame);
 	}
 	
+	@FXML
 	public void startQ3() {
 		ElectCouncillorByAssistantDTO action=new ElectCouncillorByAssistantDTO();
 		action.setParser().setParameters(this.view, this.clientGame);
 	}
 	
+	@FXML
 	public void startQ4() throws RemoteException {
 		AddictionalMainActionDTO action=new AddictionalMainActionDTO();
 		this.view.getConnection().sendAction(action);
 	}
 	
 	
-	
-	public RegionDTO seaRegionClicked() {
-		for (RegionDTO region : this.clientGame.getClientGameTable().getClientRegions())
-		    if ("Sea".equals(region.getName()))
-		        return region;
-		throw new IllegalArgumentException("Clicked region not found");
+	@FXML
+	public void clickOnSeaRegion() {
+		synchronized (this) {
+			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(0));
+			this.notify();
+		}
 	}
 
-	public RegionDTO hillRegionClicked() {
-		for (RegionDTO region : this.clientGame.getClientGameTable().getClientRegions())
-		    if ("Hill".equals(region.getName()))
-		        return region;
-		throw new IllegalArgumentException("Clicked region not found");
+	@FXML
+	public void clickOnHillRegion() {
+		synchronized (this) {
+			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(1));
+			this.notify();
+		}
 	}
 
-	public RegionDTO mountainRegionClicked() {
-		for (RegionDTO region : this.clientGame.getClientGameTable().getClientRegions())
-		    if ("Mountain".equals(region.getName()))
-		        return region;
-		throw new IllegalArgumentException("Clicked region not found");
+	@FXML
+	public void clickOnMountainRegion() {
+		synchronized (this) {
+			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(2));
+			this.notify();
+		}
 	}
 
-	public CardColourDTO[] kingBalconyClicked() {
-		return this.clientGame.getClientGameTable().getClientKingBalcony();
+	@FXML
+	public void clickOnKingBlacony() {
+		synchronized (this) {
+			view.setCurrentParameter(clientGame.getClientGameTable().getClientKingBalcony());
+			this.notify();
+		}
+		
 	}
 
-	public CardColourDTO reserveConcillor1Clicked() {
-		return this.clientGame.getClientGameTable().getClientCouncillorReserve().get(0);
+	@FXML
+	public void reserveConcillor1Clicked() {
+		synchronized (this) {
+			view.setCurrentParameter(clientGame.getClientGameTable().getClientCouncillorReserve().get(0));
+			this.notify();
+		}
 	}
 
-	public CardColourDTO reserveConcillor2Clicked() {
-		return this.clientGame.getClientGameTable().getClientCouncillorReserve().get(1);
+	@FXML
+	public void reserveConcillor2Clicked() {
+		synchronized (this) {
+			view.setCurrentParameter(clientGame.getClientGameTable().getClientCouncillorReserve().get(1));
+			this.notify();
+		}
 	}
 
-	public CardColourDTO reserveConcillor3Clicked() {
-		return this.clientGame.getClientGameTable().getClientCouncillorReserve().get(2);
+	@FXML
+	public void reserveConcillor3Clicked() {
+		synchronized (this) {
+			view.setCurrentParameter(clientGame.getClientGameTable().getClientCouncillorReserve().get(2));
+			this.notify();
+		}
 	}
 
-	public CardColourDTO reserveConcillor4Clicked() {
-		return this.clientGame.getClientGameTable().getClientCouncillorReserve().get(3);
+	@FXML
+	public void reserveConcillor4Clicked() {
+		synchronized (this) {
+			view.setCurrentParameter(clientGame.getClientGameTable().getClientCouncillorReserve().get(3));
+			this.notify();
+		}
 	}
 
-	public CardColourDTO reserveConcillor5Clicked() {
-		return this.clientGame.getClientGameTable().getClientCouncillorReserve().get(4);
+	@FXML
+	public void reserveConcillor5Clicked() {
+		synchronized (this) {
+			view.setCurrentParameter(clientGame.getClientGameTable().getClientCouncillorReserve().get(4));
+			this.notify();
+		}
 	}
 
-	public CardColourDTO reserveConcillor6Clicked() {
-		return this.clientGame.getClientGameTable().getClientCouncillorReserve().get(5);
+	@FXML
+	public void reserveConcillor6Clicked() {
+		synchronized (this) {
+			view.setCurrentParameter(clientGame.getClientGameTable().getClientCouncillorReserve().get(5));
+			this.notify();
+		}
 	}
 
-	public CardColourDTO reserveConcillor7Clicked() {
-		return this.clientGame.getClientGameTable().getClientCouncillorReserve().get(6);
+	@FXML
+	public void reserveConcillor7Clicked() {
+		synchronized (this) {
+			view.setCurrentParameter(clientGame.getClientGameTable().getClientCouncillorReserve().get(6));
+			this.notify();
+		}
 	}
 
-	public CardColourDTO reserveConcillor8Clicked() {
-		return this.clientGame.getClientGameTable().getClientCouncillorReserve().get(7);
-	}
-	
-	public CityDTO arkonClicked() {
-		return null;
-	}
-	
-	public CityDTO burgenClicked() {
-		return null;
-	}
-	
-	public CityDTO castrumClicked() {
-		return null;
-	}
-	
-	public CityDTO dorfulClicked() {
-		return null;
-	}
-	
-	public CityDTO eskiClicked() {
-		return null;
-	}
-	
-	public CityDTO framekClicked() {
-		return null;
-	}
-	
-	public CityDTO gradenClicked() {
-		return null;
-	}
-	
-	public CityDTO hellarClicked() {
-		return null;
-	}
-	
-	public CityDTO indurClicked() {
-		return null;
-	}
-	
-	public CityDTO juvelarClicked() {
-		return null;
-	}
-	
-	public CityDTO kultosClicked() {
-		return null;
-	}
-	
-	public CityDTO lyramClicked() {
-		return null;
-	}
-	
-	public CityDTO merkatimClicked() {
-		return null;
-	}
-	
-	public CityDTO narisClicked() {
-		return null;
-	}
-	
-	public CityDTO osiumClicked() {
-		return null;
+	@FXML
+	public void reserveConcillor8Clicked() {
+		synchronized (this) {
+			view.setCurrentParameter(clientGame.getClientGameTable().getClientCouncillorReserve().get(7));
+			this.notify();
+		}
 	}
 	
 	@FXML
-	public void clickSeaRegion(){
-		synchronized (view.getLock()) {
-			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(0));
-			view.getLock().notify();
+	public void arkonClicked() {
+		synchronized (this) {
+			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
+			for (CityDTO city : region.getCities())
+				if ("Arkon".equals(city.getName()))
+					view.setCurrentParameter(city);
+			this.notify();
 		}
-		
-	}	
+	}
+	
+	@FXML
+	public void burgenClicked() {
+		synchronized (this) {
+			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
+			for (CityDTO city : region.getCities())
+				if ("Burgen".equals(city.getName()))
+					view.setCurrentParameter(city);
+			this.notify();
+		}
+	}
+	
+	@FXML
+	public void castrumClicked() {
+		synchronized (this) {
+			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
+			for (CityDTO city : region.getCities())
+				if ("Castrum".equals(city.getName()))
+					view.setCurrentParameter(city);
+			this.notify();
+		}
+	}
+	
+	@FXML
+	public void dorfulClicked() {
+		synchronized (this) {
+			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
+			for (CityDTO city : region.getCities())
+				if ("Dorful".equals(city.getName()))
+					view.setCurrentParameter(city);
+			this.notify();
+		}
+	}
+	
+	@FXML
+	public void eskiClicked() {
+		synchronized (this) {
+			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
+			for (CityDTO city : region.getCities())
+				if ("Eski".equals(city.getName()))
+					view.setCurrentParameter(city);
+			this.notify();
+		}
+	}
+	
+	@FXML
+	public void framekClicked() {
+		synchronized (this) {
+			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
+			for (CityDTO city : region.getCities())
+				if ("Framek".equals(city.getName()))
+					view.setCurrentParameter(city);
+			this.notify();
+		}
+	}
+	
+	@FXML
+	public void gradenClicked() {
+		synchronized (this) {
+			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
+			for (CityDTO city : region.getCities())
+				if ("Graden".equals(city.getName()))
+					view.setCurrentParameter(city);
+			this.notify();
+		}
+	}
+	
+	@FXML
+	public void hellarClicked() {
+		synchronized (this) {
+			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
+			for (CityDTO city : region.getCities())
+				if ("Hellar".equals(city.getName()))
+					view.setCurrentParameter(city);
+			this.notify();
+		}
+	}
+	
+	@FXML
+	public void indurClicked() {
+		synchronized (this) {
+			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
+			for (CityDTO city : region.getCities())
+				if ("Indur".equals(city.getName()))
+					view.setCurrentParameter(city);
+			this.notify();
+		}
+	}
+	
+	@FXML
+	public void juvelarClicked() {
+		synchronized (this) {
+			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
+			for (CityDTO city : region.getCities())
+				if ("Juvelar".equals(city.getName()))
+					view.setCurrentParameter(city);
+			this.notify();
+		}
+	}
+	
+	@FXML
+	public void kultosClicked() {
+		synchronized (this) {
+			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
+			for (CityDTO city : region.getCities())
+				if ("Kultos".equals(city.getName()))
+					view.setCurrentParameter(city);
+			this.notify();
+		}
+	}
+	
+	@FXML
+	public void clickOnLyram() {
+		synchronized (this) {
+			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
+			for (CityDTO city : region.getCities())
+				if ("Lyram".equals(city.getName()))
+					view.setCurrentParameter(city);
+			this.notify();
+		}
+	}
+	
+	@FXML
+	public void clickOnMerkatim() {
+		synchronized (this) {
+			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
+			for (CityDTO city : region.getCities())
+				if ("Merkatim".equals(city.getName()))
+					view.setCurrentParameter(city);
+			this.notify();
+		}
+	}
+	
+	@FXML
+	public void clickOnNaris() {
+		synchronized (this) {
+			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
+			for (CityDTO city : region.getCities())
+				if ("Naris".equals(city.getName()))
+					view.setCurrentParameter(city);
+			this.notify();
+		}
+	}
+	
+	@FXML
+	public void clickOnOsium() {
+		synchronized (this) {
+			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
+			for (CityDTO city : region.getCities())
+				if ("Osium".equals(city.getName()))
+					view.setCurrentParameter(city);
+			this.notify();
+		}
+	}
+
 }

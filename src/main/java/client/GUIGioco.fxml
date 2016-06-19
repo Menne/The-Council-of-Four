@@ -28,20 +28,12 @@
    <children>
       <BorderPane prefHeight="800.0" prefWidth="1280.0">
          <bottom>
-            <SplitPane dividerPositions="0.29797979797979796" prefHeight="204.0" prefWidth="1286.0" BorderPane.alignment="CENTER">
+            <SplitPane dividerPositions="0.29797979797979796" prefHeight="204.0" prefWidth="1286.0" styleClass="split-pane-divider" BorderPane.alignment="CENTER">
               <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                     <children>
-                        <TitledPane animated="false" collapsible="false" layoutX="-2.0" layoutY="-1.0" prefHeight="159.0" prefWidth="381.0" text="Permit tiles" textFill="#6b4208" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                          <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="sfondo" stylesheets="@resize.css" />
-                          </content>
-                        </TitledPane>
-                     </children>
-                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="sfondo" stylesheets="@resize.css" />
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="98.0" prefWidth="100.0">
                      <children>
-                        <SplitPane dividerPositions="0.5313199105145414" layoutX="283.0" layoutY="-22.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="162.0" prefWidth="896.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <SplitPane dividerPositions="0.5564245810055866" layoutX="283.0" layoutY="-22.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="162.0" prefWidth="896.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <items>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="328.0">
                                  <children>
@@ -84,8 +76,11 @@
                                  <children>
                                     <VBox layoutX="111.0" prefHeight="160.0" prefWidth="349.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <TextArea fx:id="messageBox" editable="false" prefHeight="157.0" prefWidth="400.0" />
-                                          <TextArea minWidth="240.0" prefHeight="47.0" prefWidth="349.0" text="Text yor message" />
+                                          <TextArea fx:id="messageBox" editable="false" prefHeight="157.0" prefWidth="400.0">
+                                             <font>
+                                                <Font name="Papyrus" size="13.0" />
+                                             </font></TextArea>
+                                          <TextArea minWidth="240.0" prefHeight="83.0" prefWidth="393.0" text="Text yor message" />
                                        </children>
                                     </VBox>
                                  </children>
@@ -104,15 +99,15 @@
                      <children>
                         <TabPane layoutX="-1.0" layoutY="-4.0" prefHeight="310.0" prefWidth="398.0" styleClass="sfondo" stylesheets="@resize.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <tabs>
-                            <Tab text="Player1">
+                            <Tab closable="false" text="Player1">
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="146.0" prefWidth="302.0" stylesheets="@resize.css">
                                        <children>
                                           <GridPane prefHeight="261.0" prefWidth="398.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <columnConstraints>
                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="194.0" minWidth="10.0" prefWidth="115.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="302.0" minWidth="10.0" prefWidth="164.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="302.0" minWidth="10.0" prefWidth="120.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="302.0" minWidth="10.0" prefWidth="184.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="302.0" minWidth="10.0" prefWidth="102.0" />
                                              </columnConstraints>
                                              <rowConstraints>
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -125,7 +120,11 @@
                                              <children>
                                                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
                                                    <children>
-                                                      <Label layoutX="21.0" layoutY="14.0" text="Permit Tiles" />
+                                                      <Label layoutX="21.0" layoutY="14.0" text="Permit Tiles">
+                                                         <font>
+                                                            <Font name="Papyrus" size="13.0" />
+                                                         </font>
+                                                      </Label>
                                                    </children>
                                                 </AnchorPane>
                                                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
@@ -164,22 +163,50 @@
                                                       </ImageView>
                                                    </children>
                                                 </AnchorPane>
-                                                <Label prefHeight="17.0" prefWidth="132.0" text="player's name" />
+                                                <Label prefHeight="17.0" prefWidth="132.0" text="player's name">
+                                                   <font>
+                                                      <Font name="Papyrus" size="13.0" />
+                                                   </font>
+                                                </Label>
                                                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                                <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                                <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                   <font>
+                                                      <Font name="Papyrus" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                   <font>
+                                                      <Font name="Papyrus" size="13.0" />
+                                                   </font>
+                                                </Label>
                                                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
-                                                <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                                <Label text="n of covered" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                                                <Label text="n of covered" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                                                   <font>
+                                                      <Font name="Papyrus" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                   <font>
+                                                      <Font name="Papyrus" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                   <font>
+                                                      <Font name="Papyrus" size="13.0" />
+                                                   </font>
+                                                </Label>
                                                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
                                                    <children>
-                                                      <ImageView fitHeight="37.0" fitWidth="38.0" layoutX="14.0" layoutY="5.0">
+                                                      <ImageView fitHeight="37.0" fitWidth="38.0" layoutX="6.0" layoutY="2.0">
                                                          <image>
                                                             <Image url="@emporioRosso.png" />
                                                          </image>
                                                       </ImageView>
-                                                      <Label layoutX="60.0" layoutY="15.0" text="10" />
+                                                      <Label layoutX="48.0" layoutY="14.0" text="10">
+                                                         <font>
+                                                            <Font name="Papyrus" size="13.0" />
+                                                         </font>
+                                                      </Label>
                                                    </children>
                                                 </AnchorPane>
                                              </children>
@@ -208,7 +235,11 @@
                                              <children>
                                                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
                                                    <children>
-                                                      <Label layoutX="21.0" layoutY="14.0" text="Permit Tiles" />
+                                                      <Label layoutX="21.0" layoutY="14.0" text="Permit Tiles">
+                                                         <font>
+                                                            <Font name="Papyrus" size="13.0" />
+                                                         </font>
+                                                      </Label>
                                                    </children>
                                                 </AnchorPane>
                                                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
@@ -247,14 +278,52 @@
                                                       </ImageView>
                                                    </children>
                                                 </AnchorPane>
-                                                <Label prefHeight="17.0" prefWidth="132.0" text="player's name" />
+                                                <Label prefHeight="17.0" prefWidth="132.0" text="player's name">
+                                                   <font>
+                                                      <Font name="Papyrus" size="13.0" />
+                                                   </font>
+                                                </Label>
                                                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                                <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                                <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                   <font>
+                                                      <Font name="Papyrus" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                   <font>
+                                                      <Font name="Papyrus" size="13.0" />
+                                                   </font>
+                                                </Label>
                                                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
-                                                <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                                <Label text="n of covered" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                                                <Label text="n of covered" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                                                   <font>
+                                                      <Font name="Papyrus" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                   <font>
+                                                      <Font name="Papyrus" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                   <font>
+                                                      <Font name="Papyrus" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+                                                   <children>
+                                                      <ImageView fitHeight="37.0" fitWidth="38.0" layoutX="6.0" layoutY="2.0">
+                                                         <image>
+                                                            <Image url="@emporioRosso.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <Label layoutX="48.0" layoutY="14.0" text="10">
+                                                         <font>
+                                                            <Font name="Papyrus" size="13.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </AnchorPane>
                                              </children>
                                           </GridPane>
                                        </children></AnchorPane>
@@ -281,7 +350,11 @@
                                              <children>
                                                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
                                                    <children>
-                                                      <Label layoutX="21.0" layoutY="14.0" text="Permit Tiles" />
+                                                      <Label layoutX="21.0" layoutY="14.0" text="Permit Tiles">
+                                                         <font>
+                                                            <Font name="Papyrus" size="13.0" />
+                                                         </font>
+                                                      </Label>
                                                    </children>
                                                 </AnchorPane>
                                                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
@@ -320,14 +393,52 @@
                                                       </ImageView>
                                                    </children>
                                                 </AnchorPane>
-                                                <Label prefHeight="17.0" prefWidth="132.0" text="player's name" />
+                                                <Label prefHeight="17.0" prefWidth="132.0" text="player's name">
+                                                   <font>
+                                                      <Font name="Papyrus" size="13.0" />
+                                                   </font>
+                                                </Label>
                                                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                                <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                                <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                   <font>
+                                                      <Font name="Papyrus" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                   <font>
+                                                      <Font name="Papyrus" size="13.0" />
+                                                   </font>
+                                                </Label>
                                                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
-                                                <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                                <Label text="n of covered" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                                                <Label text="n of covered" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                                                   <font>
+                                                      <Font name="Papyrus" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                   <font>
+                                                      <Font name="Papyrus" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                   <font>
+                                                      <Font name="Papyrus" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+                                                   <children>
+                                                      <ImageView fitHeight="37.0" fitWidth="38.0" layoutX="6.0" layoutY="2.0">
+                                                         <image>
+                                                            <Image url="@emporioRosso.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <Label layoutX="48.0" layoutY="14.0" text="10">
+                                                         <font>
+                                                            <Font name="Papyrus" size="13.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </AnchorPane>
                                              </children>
                                           </GridPane>
                                        </children></AnchorPane>
@@ -433,7 +544,7 @@
                                                       </ImageView>
                                                       <Label layoutX="48.0" layoutY="14.0" text="10">
                                                          <font>
-                                                            <Font name="Palatino Linotype" size="13.0" />
+                                                            <Font name="Papyrus" size="13.0" />
                                                          </font>
                                                       </Label>
                                                    </children>
@@ -448,7 +559,7 @@
                         </TabPane>
                      </children>
                   </AnchorPane>
-                  <TitledPane animated="false" collapsible="false" prefHeight="131.0" prefWidth="398.0" text="Quick Actions" textFill="#6b4208">
+                  <TitledPane animated="false" collapsible="false" prefHeight="131.0" prefWidth="398.0" styleClass="label" stylesheets="@resize.css" text="Quick Actions" textFill="#6b4208">
                     <content>
                       <AnchorPane minHeight="140.0" minWidth="240.0" prefHeight="143.0" prefWidth="396.0" styleClass="sfondo" stylesheets="@resize.css">
                            <children>
@@ -479,10 +590,10 @@
                                     <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <Button fx:id="m1" minHeight="-Infinity" minWidth="0.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="191.0" text="Elect a councillor" textAlignment="CENTER" textFill="#6b4208" />
-                                    <Button fx:id="m4" minWidth="30.0" mnemonicParsing="false" text="Build by king" textAlignment="CENTER" textFill="#6b4208" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <Button fx:id="m3" mnemonicParsing="false" text="Build by permit tile" textAlignment="CENTER" textFill="#6b4208" GridPane.rowIndex="1" />
-                                    <Button fx:id="m2" minWidth="30.0" mnemonicParsing="false" onAction="#startM2" prefHeight="31.0" prefWidth="177.0" styleClass="submit" stylesheets="@resize.css" text="Acquire permit tile" textAlignment="CENTER" textFill="#6b4208" GridPane.columnIndex="1" />
+                                    <Button fx:id="m1" minHeight="-Infinity" minWidth="0.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="185.0" text="Elect a councillor" textAlignment="CENTER" textFill="#6b4208" GridPane.rowIndex="1" />
+                                    <Button fx:id="m4" minWidth="30.0" mnemonicParsing="false" text="Build by king" textAlignment="CENTER" textFill="#6b4208" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <Button fx:id="m3" mnemonicParsing="false" text="Build by permit tile" textAlignment="CENTER" textFill="#6b4208" GridPane.rowIndex="2" />
+                                    <Button fx:id="m2" minWidth="30.0" mnemonicParsing="false" onMouseClicked="#startM2" prefHeight="31.0" prefWidth="177.0" styleClass="submit" stylesheets="@resize.css" text="Acquire permit tile" textAlignment="CENTER" textFill="#6b4208" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                  </children>
                               </GridPane>
                            </children>
@@ -500,6 +611,9 @@
                <children>
                   <AnchorPane minHeight="595.0" minWidth="761.0" prefHeight="632.0" prefWidth="764.0">
                      <children>
+                        <AnchorPane fx:id="mountainRegion" layoutX="522.0" prefHeight="385.0" prefWidth="242.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="522.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <AnchorPane fx:id="hillRegion" layoutX="245.0" layoutY="-7.0" prefHeight="385.0" prefWidth="278.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="241.0" AnchorPane.topAnchor="0.0" />
+                        <AnchorPane fx:id="seaRegion" layoutX="-2.0" layoutY="-4.0" onMouseClicked="#clickOnSeaRegion" prefHeight="385.0" prefWidth="245.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="519.0" AnchorPane.topAnchor="0.0" />
                         <ImageView fitHeight="597.0" fitWidth="764.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <image>
                               <Image url="@map_compressa.jpg" />
@@ -526,9 +640,49 @@
                               <Image url="@mountainTile.png" />
                            </image>
                         </ImageView>
-                        <AnchorPane fx:id="seaRegion" layoutX="-2.0" layoutY="-4.0" onMouseClicked="#seaRegionClicked" prefHeight="385.0" prefWidth="245.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="519.0" AnchorPane.topAnchor="0.0" />
-                        <AnchorPane fx:id="hillRegion" layoutX="245.0" layoutY="-7.0" prefHeight="385.0" prefWidth="278.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="241.0" AnchorPane.topAnchor="0.0" />
-                        <AnchorPane fx:id="mountainRegion" layoutX="522.0" prefHeight="385.0" prefWidth="242.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="522.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <AnchorPane fx:id="seaRegion" layoutX="-2.0" layoutY="-4.0" prefHeight="385.0" prefWidth="245.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="519.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <ImageView fitHeight="34.0" fitWidth="56.0" layoutX="174.0" layoutY="338.0">
+                                 <image>
+                                    <Image url="@bonusMare.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="13.0" layoutY="132.0">
+                                 <image>
+                                    <Image url="@5.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="21.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="130.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="141.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="58.0" layoutY="251.0" pickOnBounds="true" preserveRatio="true" />
+                           </children></AnchorPane>
+                        <AnchorPane fx:id="hillRegion" layoutX="245.0" layoutY="-7.0" prefHeight="385.0" prefWidth="278.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="241.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <ImageView fitHeight="34.0" fitWidth="56.0" layoutX="177.0" layoutY="340.0">
+                                 <image>
+                                    <Image url="@bonusColline.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="39.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="46.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="169.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="169.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="55.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true" />
+                           </children></AnchorPane>
+                        <AnchorPane fx:id="mountainRegion" layoutX="522.0" prefHeight="385.0" prefWidth="242.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="522.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <ImageView fitHeight="34.0" fitWidth="56.0" layoutX="176.0" layoutY="340.0">
+                                 <image>
+                                    <Image url="@bonusMontagna.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="35.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="141.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="13.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="141.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true" />
+                           </children></AnchorPane>
                         <ImageView fx:id="kingConcillor2" fitHeight="33.0" fitWidth="21.0" layoutX="516.0" layoutY="501.0" pickOnBounds="true" preserveRatio="true" />
                         <ImageView fx:id="kingConcillor3" fitHeight="33.0" fitWidth="21.0" layoutX="541.0" layoutY="505.0" pickOnBounds="true" preserveRatio="true" />
                         <ImageView fx:id="kingConcillor4" fitHeight="33.0" fitWidth="21.0" layoutX="563.0" layoutY="505.0" pickOnBounds="true" preserveRatio="true" />
@@ -553,12 +707,31 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="380.0" prefWidth="122.0">
                                  <children>
-                                    <VBox prefHeight="364.0" prefWidth="124.0" styleClass="sfondo" stylesheets="@resize.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <VBox prefHeight="364.0" prefWidth="124.0" styleClass="sfondo" stylesheets="@resize.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <Label text="Councillor reserve">
+                                             <font>
+                                                <Font name="Papyrus" size="13.0" />
+                                             </font>
+                                          </Label>
+                                       </children></VBox>
                                  </children>
                               </AnchorPane>
                           </content>
                         </ScrollPane>
-                        <AnchorPane prefHeight="215.0" prefWidth="124.0" styleClass="sfondo" stylesheets="@resize.css" />
+                        <AnchorPane prefHeight="215.0" prefWidth="124.0" styleClass="sfondo" stylesheets="@resize.css">
+                           <children>
+                              <ImageView fitHeight="119.0" fitWidth="82.0" layoutX="21.0" layoutY="68.0">
+                                 <image>
+                                    <Image url="@PoliticCard.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="16.0" layoutY="23.0" text="Pick Politic card">
+                                 <font>
+                                    <Font name="Papyrus" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children></AnchorPane>
                      </children>
                   </VBox>
                </children>
