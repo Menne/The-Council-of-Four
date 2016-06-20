@@ -21,6 +21,11 @@ public class PermitTileDTO implements ModelDTO, MarketableDTO {
 		this.buildablecities=new HashSet<>();
 		this.bonuses=new HashSet<>();
 	}
+	
+	public PermitTileDTO(Set<CityDTO> buildablecities, Set<Bonus> bonuses){
+		this.bonuses=bonuses;
+		this.buildablecities=buildablecities;
+	}
 
 
 	public Set<CityDTO> getBuildablecities() {

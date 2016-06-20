@@ -447,44 +447,50 @@ public class ControllerGUI {
 		return playerName;
 	}
 
-	public void setPlayerName(Label playerName) {
-		this.playerName = playerName;
-	}
 
 	public Label getPlayerScore() {
 		return playerScore;
 	}
 
-	public void setPlayerScore(Label playerScore) {
-		this.playerScore = playerScore;
-	}
 
 	public Label getPlayerCoins() {
 		return playerCoins;
 	}
 
-	public void setPlayerCoins(Label playerCoins) {
-		this.playerCoins = playerCoins;
-	}
 
 	public Label getPlayerAssistants() {
 		return playerAssistants;
 	}
 
-	public void setPlayerAssistants(Label playerAssistants) {
-		this.playerAssistants = playerAssistants;
-	}
 
 	public Label getPlayerNobility() {
 		return playerNobility;
 	}
 
-	public void setPlayerNobility(Label playerNobility) {
-		this.playerNobility = playerNobility;
-	}
 
 	public VBox getCouncillorReserve(){
 		return councillorReserve;
+	}
+	
+	public ImageView[] getSeaPermitTile(){
+		ImageView[] array=new ImageView[2];
+		array[0]=permitTileSea0;
+		array[1]=permitTileSea1;
+		return array;
+	}
+	
+	public ImageView[] getHillPermitTile(){
+		ImageView[] array=new ImageView[2];
+		array[0]=permitTileHill0;
+		array[1]=permitTileHill1;
+		return array;
+	}
+	
+	public ImageView[] getMountainPermitTile(){
+		ImageView[] array=new ImageView[2];
+		array[0]=permitTileMountain0;
+		array[1]=permitTileMountain1;
+		return array;
 	}
 	
 	public List<ImageView> getCouncillors(RegionDTO balcony){
