@@ -442,7 +442,6 @@ public class ControllerGUI {
 	@FXML
 	private TextArea messageBox;
 
-	
 	public HBox getHand() {
 		return hand;
 	}
@@ -494,6 +493,14 @@ public class ControllerGUI {
 
 	public VBox getCouncillorReserve(){
 		return councillorReserve;
+	}
+	
+	public List<Label> getNumberOfPoliticsCards(){
+		return Arrays.asList(numberOfPoliticsCardInHandPlayer1,numberOfPoliticsCardInHandPlayer2,numberOfPoliticsCardInHandPlayer3,numberOfPoliticsCardInHandPlayer4);
+	}
+	
+	public List<Label> getNumberOfCoveredPermitTiles(){
+		return Arrays.asList(numberOfCoveredPermitTilePlayer1,numberOfCoveredPermitTilePlayer2,numberOfCoveredPermitTilePlayer3,numberOfCoveredPermitTilePlayer4);
 	}
 	
 	public ImageView[] getSeaPermitTile(){
