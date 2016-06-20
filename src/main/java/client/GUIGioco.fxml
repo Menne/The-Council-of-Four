@@ -895,11 +895,19 @@
                                  <children>
                                     <VBox fx:id="councillorReserve" layoutX="-4.0" prefHeight="380.0" prefWidth="131.0" stylesheets="@resize.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-4.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <Label prefHeight="76.0" prefWidth="124.0" text="Councillor &#10;reserve">
+                                          <Label prefHeight="87.0" prefWidth="124.0" text="Councillor &#10;reserve">
                                              <font>
                                                 <Font name="Papyrus" size="13.0" />
                                              </font>
                                           </Label>
+                                          <ImageView fx:id="reserveConcillor1" fitHeight="46.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                                          <ImageView fx:id="reserveConcillor2" fitHeight="46.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                                          <ImageView fx:id="reserveConcillor3" fitHeight="46.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                                          <ImageView fx:id="reserveConcillor4" fitHeight="46.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                                          <ImageView fx:id="reserveConcillor5" fitHeight="46.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                                          <ImageView fx:id="reserveConcillor6" fitHeight="46.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                                          <ImageView fx:id="reserveConcillor7" fitHeight="46.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                                          <ImageView fx:id="reserveConcillor8" fitHeight="46.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
                                        </children>
                                        <styleClass>
                                           <String fx:value="sfondo" />

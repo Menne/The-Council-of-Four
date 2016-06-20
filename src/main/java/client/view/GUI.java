@@ -39,6 +39,7 @@ import server.model.bonus.MainActionBonus;
 import server.model.bonus.NobilityBonus;
 import server.model.bonus.PoliticsCardsBonus;
 import server.model.bonus.ScoreBonus;
+import server.model.gameTable.CouncillorsReserve;
 
 
 public class GUI extends ClientView{
@@ -226,8 +227,9 @@ public class GUI extends ClientView{
 				controllerGUI.getCouncillors(region).get(i).setImage(imageMap.get(region.getBalcony()[i]));
 		for(int i=0; i<4; i++)
 			controllerGUI.getKingCouncillors().get(i).setImage(imageMap.get(clientGame.getClientKingBalcony()[i]));
-//		for(CouncillorDTO councillor : clientGame.getClientCouncillorReserve())
-	//		controllerGUI.getCouncillorReserve().getChildren().add(new ImageView(imageMap.get(coucillor)));			
+	//	for(CouncillorDTO councillor : clientGame.getClientCouncillorReserve())
+			for(int i=0; i<8; i++)
+			controllerGUI.getCouncillorReserve().get(i).setImage(imageMap.get(clientGame.getClientCouncillorReserve().get(i)));			
 	}
 	
 	private void displayTokens(GameTableDTO clientGame){
@@ -248,6 +250,10 @@ public class GUI extends ClientView{
 					((ImageView)controllerGUI.getHand().getChildren().get(controllerGUI.getHand().getChildren().size()-1)).setFitHeight(90);
 					((ImageView)controllerGUI.getHand().getChildren().get(controllerGUI.getHand().getChildren().size()-1)).setFitWidth(50);
 				}			
+				controllerGUI.getPlayerCoins().setText(String.valueOf(player.getCoins()));
+				controllerGUI.getPlayerAssistants().setText(String.valueOf(player.getAssistants().size()));
+				controllerGUI.getPlayerNobility().setText(String.valueOf(player.getNobility()));
+				controllerGUI.getPlayerScore().setText(String.valueOf(player.getScore()));
 			}
 		});
 		
