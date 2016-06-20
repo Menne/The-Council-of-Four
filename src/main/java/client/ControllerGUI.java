@@ -20,6 +20,7 @@ import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
 import client.view.GUI;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -492,8 +493,8 @@ public class ControllerGUI {
 	}
 
 
-	public VBox getCouncillorReserve(){
-		return councillorReserve;
+	public List<ImageView> getCouncillorReserve(){
+		return Arrays.asList(reserveConcillor1,reserveConcillor2,reserveConcillor3,reserveConcillor4,reserveConcillor5,reserveConcillor6,reserveConcillor7,reserveConcillor8);
 	}
 	
 	public List<Label> getNumberOfPoliticsCards(){
@@ -565,6 +566,7 @@ public class ControllerGUI {
 	public List<Label> getNobilityLabels(){
 		return Arrays.asList(nobilityPlayer1,nobilityPlayer2,nobilityPlayer3,nobilityPlayer4);
 	}
+
 	
 	public ImageView getRewardToken(CityDTO city){
 		switch(city.getName()){
