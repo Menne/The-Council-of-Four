@@ -9,9 +9,8 @@ import client.modelDTO.marketDTO.MarketDTO;
 import client.modelDTO.playerDTO.ClientPlayerDTO;
 import client.view.notifies.ClientViewNotify;
 import observerPattern.Observable;
-import server.model.Game;
 
-public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO<Game> {
+public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO {
 	
 	/**
 	 * 

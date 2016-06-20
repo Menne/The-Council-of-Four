@@ -18,6 +18,7 @@ import client.modelDTO.actionsDTO.bonusActions.ChooseCityActionDTO;
 import client.modelDTO.actionsDTO.bonusActions.PurchasedPermitTileActionDTO;
 import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
+import client.modelDTO.gameTableDTO.CouncillorDTO;
 import client.modelDTO.gameTableDTO.GameTableDTO;
 import client.modelDTO.gameTableDTO.GenericPlayerDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
@@ -187,24 +188,29 @@ public class CLI extends ClientView {
 	}
 
 	@Override
-	public CardColourDTO askForCouncillor(List<CardColourDTO> acceptableCouncillors) {
-		List<String> acceptableCouncillorsColours=acceptableCouncillors.stream()
-                .map(CardColourDTO::getName)
-                .collect(Collectors.toCollection(ArrayList::new));
+	public CouncillorDTO askForCouncillor(List<CouncillorDTO> acceptableCouncillors) {
+		List<String> acceptableCouncillorsColours=new ArrayList<>();
+			for (CouncillorDTO councillor : acceptableCouncillors)
+				acceptableCouncillorsColours.add(councillor.getColour().getName());
+		
+		
+			/*List<String> acceptableCouncillorsColours=acceptableCouncillors.stream()
+                .map(CouncillorDTO::getColour().getName())
+                .collect(Collectors.toCollection(ArrayList::new));*/
 		System.out.println(acceptableCouncillorsColours);
 		String newCouncillorToTranslate=this.scanner.nextLine();
 		while (!acceptableCouncillorsColours.contains(newCouncillorToTranslate)) {
 			System.out.println("Wrong parameter. Try again");
 			newCouncillorToTranslate=scanner.nextLine();
 		}
-		for (CardColourDTO councillor : acceptableCouncillors)
-			if (newCouncillorToTranslate.equals(councillor.getName()))
+		for (CouncillorDTO councillor : acceptableCouncillors)
+			if (newCouncillorToTranslate.equals(councillor.getColour().getName()))
 				return councillor;
 		throw new IllegalArgumentException("newCouncillorToTranslate is not a colour name");
 	}
 	
 	@Override
-	public CardColourDTO[] askForCouncilBalcony(List<CardColourDTO[]> acceptableCounilBalconies) {
+	public CouncillorDTO[] askForCouncilBalcony(List<CouncillorDTO[]> acceptableCounilBalconies) {
 		List<String> acceptableCouncilBalconiyNames=Arrays.asList("Sea", "Hill", "Mountain", "King balcony");
 		System.out.println(acceptableCouncilBalconiyNames);
 		String councilBalconyToTranslate=this.scanner.nextLine();

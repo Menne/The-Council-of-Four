@@ -11,13 +11,20 @@ import server.model.bonus.Bonus;
  */
 public class RewardToken {
 
-	private final Set<Bonus> rewardTokenBonus;
+	private final Set<Bonus> rewardToken;
 	
 	public RewardToken(Set<Bonus> rewardTokenBonus){
-		this.rewardTokenBonus=rewardTokenBonus;
+		this.rewardToken=rewardTokenBonus;
 	}
 	
 	public Set<Bonus> getRewardTokenBonus() {
-		return rewardTokenBonus;
+		return rewardToken;
 	}
+
+	@Override
+	public String toString() {
+		return rewardToken.toString();
+	}
+	
+	
 }

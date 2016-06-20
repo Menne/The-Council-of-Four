@@ -6,7 +6,7 @@ import java.util.List;
 import client.modelDTO.GameDTO;
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.standardActions.ElectCouncillorByAssistantDTO;
-import client.modelDTO.gameTableDTO.CardColourDTO;
+import client.modelDTO.gameTableDTO.CouncillorDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
 import client.view.ClientView;
 
@@ -29,7 +29,7 @@ public class ElectCouncillorByAssistantParser implements ActionParserVisitor {
 				(game.getClientGameTable().getClientCouncillorReserve()));
 		
 		view.displayMessage("the name of the region in which you want to change the councillor");
-		List<CardColourDTO[]> acceptableCouncilBalconies=new ArrayList<>();
+		List<CouncillorDTO[]> acceptableCouncilBalconies=new ArrayList<>();
 		for (RegionDTO region : game.getClientGameTable().getClientRegions())
 			acceptableCouncilBalconies.add(region.getBalcony());
 		acceptableCouncilBalconies.add(game.getClientGameTable().getClientKingBalcony());

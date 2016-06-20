@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import client.modelDTO.ModelDTO;
-import server.model.market.Market;
 
-public class MarketDTO implements ModelDTO<Market>{
+public class MarketDTO implements ModelDTO{
 	
 	/**
 	 * 

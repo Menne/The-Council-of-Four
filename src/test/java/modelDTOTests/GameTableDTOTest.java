@@ -10,8 +10,8 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityColourDTO;
+import client.modelDTO.gameTableDTO.CouncillorDTO;
 import client.modelDTO.gameTableDTO.GameTableDTO;
 import client.modelDTO.gameTableDTO.GenericPlayerDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
@@ -23,8 +23,8 @@ public class GameTableDTOTest {
 	@Test
 	public void testGettersAndSetters() {
 		List<RegionDTO> regions= new ArrayList<>();
-		CardColourDTO[] clientKingBalcony= new CardColourDTO[4];
-		List<CardColourDTO> cardColours= new ArrayList<>();
+		CouncillorDTO[] clientKingBalcony= new CouncillorDTO[4];
+		List<CouncillorDTO> councillors= new ArrayList<>();
 		List<Set<Bonus>> bonuses= new ArrayList<>();
 		List<GenericPlayerDTO> players= new ArrayList<>();
 		GameTableDTO gameTable= new GameTableDTO();
@@ -34,7 +34,7 @@ public class GameTableDTOTest {
 		Map<CityColourDTO, ScoreBonus> colourBonuses = null;
 		gameTable.setNextKingRewardTile(nextKingRewardTile);
 		gameTable.setColourBonuses(colourBonuses);
-		gameTable.setClientCouncillorReserve(cardColours);
+		gameTable.setClientCouncillorReserve(councillors);
 		gameTable.setClientKingBalcony(clientKingBalcony);
 		gameTable.setClientNobilityTrack(bonuses);
 		gameTable.setClientPlayers(players);
@@ -43,7 +43,7 @@ public class GameTableDTOTest {
 		gameTable.setKing(king);
 		assertTrue(gameTable.getNextKingRewardTile()==nextKingRewardTile);
 		assertTrue(gameTable.getColourBonuses()==colourBonuses);
-		assertTrue(gameTable.getClientCouncillorReserve()==cardColours);
+		assertTrue(gameTable.getClientCouncillorReserve()==councillors);
 		assertTrue(gameTable.getClientKingBalcony()==clientKingBalcony);
 		assertTrue(gameTable.getClientNobilityTrack()==bonuses);
 		assertTrue(gameTable.getClientPlayers()==players);
@@ -52,7 +52,7 @@ public class GameTableDTOTest {
 		assertTrue(gameTable.getKing()==king);
 		assertEquals("\nUpdated game table:\nPlayers:\n" + players + "\nNow is plaiyng:\t" + player + "\n" +
 				 regions + "\nKingCity: "+ king+" \nKing's balcony:" + Arrays.toString(clientKingBalcony) + "\nCouncillors riserve"+
-				 cardColours + "\nNobilityTrack: " + bonuses
+				 councillors + "\nNobilityTrack: " + bonuses
 				 +"\nNextKingRewardTile: "+nextKingRewardTile+"\nColourBonuses: "+colourBonuses, gameTable.toString());
 	}
 

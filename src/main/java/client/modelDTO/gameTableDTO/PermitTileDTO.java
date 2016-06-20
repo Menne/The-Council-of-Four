@@ -7,9 +7,8 @@ import client.modelDTO.ModelDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.marketDTO.MarketableDTO;
 import server.model.bonus.Bonus;
-import server.model.gameTable.PermitTile;
 
-public class PermitTileDTO implements ModelDTO<PermitTile>, MarketableDTO {
+public class PermitTileDTO implements ModelDTO, MarketableDTO {
 
 	/**
 	 * 
@@ -46,6 +45,39 @@ public class PermitTileDTO implements ModelDTO<PermitTile>, MarketableDTO {
 		for(CityDTO cityDTO : buildablecities)
 			cities.add(cityDTO.getName());
 		return cities + "\t" + bonuses;
+	}
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((bonuses == null) ? 0 : bonuses.hashCode());
+		result = prime * result + ((buildablecities == null) ? 0 : buildablecities.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PermitTileDTO other = (PermitTileDTO) obj;
+		if (bonuses == null) {
+			if (other.bonuses != null)
+				return false;
+		} else if (!bonuses.equals(other.bonuses))
+			return false;
+		if (buildablecities == null) {
+			if (other.buildablecities != null)
+				return false;
+		} else if (!buildablecities.equals(other.buildablecities))
+			return false;
+		return true;
 	}
 	
 	

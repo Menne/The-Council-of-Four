@@ -130,28 +130,27 @@ public class Initializer {
 	/*
 	 * lista di set di bonus (reward tiles)
 	 */
-	List<Set<Bonus>> rewardTokenList= new ArrayList<>();
-	int i=0;
+	List<RewardToken> rewardTokenList= new ArrayList<>();
 	while(!"STOPRewardTokenList".equals(s)) {
-		rewardTokenList.add(new HashSet<Bonus>());
+		Set<Bonus> bonuses=new HashSet<Bonus>();
 		while(!"NextRewardToken".equals(s)){
 			s=b.readLine();
 			if("AssistantsBonus".equals(s)){
-				rewardTokenList.get(i).add(new AssistantsBonus(Integer.parseInt(b.readLine())));}
+				bonuses.add(new AssistantsBonus(Integer.parseInt(b.readLine())));}
 			if("CoinsBonus".equals(s))
-				rewardTokenList.get(i).add(new CoinsBonus(Integer.parseInt(b.readLine())));
+				bonuses.add(new CoinsBonus(Integer.parseInt(b.readLine())));
 			if("MainActionBonus".equals(s))
-				rewardTokenList.get(i).add(new MainActionBonus());
+				bonuses.add(new MainActionBonus());
 			if("NobilityBonus".equals(s))
-				rewardTokenList.get(i).add(new NobilityBonus(Integer.parseInt(b.readLine())));
+				bonuses.add(new NobilityBonus(Integer.parseInt(b.readLine())));
 			if("PoliticsCardsBonus".equals(s))
-				rewardTokenList.get(i).add(new PoliticsCardsBonus(Integer.parseInt(b.readLine())));
+				bonuses.add(new PoliticsCardsBonus(Integer.parseInt(b.readLine())));
 			if("ScoreBonus".equals(s))
-				rewardTokenList.get(i).add(new ScoreBonus(Integer.parseInt(b.readLine())));
+				bonuses.add(new ScoreBonus(Integer.parseInt(b.readLine())));
 			s=b.readLine(); //NextRewardToken or NEXTBonus (with next bonus it doesn't exit from the while)
 		}
-		s=b.readLine();
-		i++;	
+		rewardTokenList.add(new RewardToken(bonuses));
+		s=b.readLine();	
 	}
 	
 	r=b.readLine();

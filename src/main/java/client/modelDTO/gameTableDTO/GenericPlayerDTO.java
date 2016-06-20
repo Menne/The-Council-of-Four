@@ -5,9 +5,8 @@ import java.util.List;
 
 import client.modelDTO.ModelDTO;
 import server.model.bonus.ScoreBonus;
-import server.model.player.Player;
 
-public class GenericPlayerDTO implements ModelDTO<Player>{
+public class GenericPlayerDTO implements ModelDTO{
 
 	/**
 	 * 
@@ -116,6 +115,30 @@ public class GenericPlayerDTO implements ModelDTO<Player>{
 		return "\nPlayer " + playerNumber + "\tname: "+ name + "\tassistants=" + assistants + "\tscore="
 				+ score + "\tnobility=" + nobility + "\tcoins=" + coins + "\thand="+hand+"\tplayersPermitTilesTurnedUp=" + availablePermitTiles +
 				 "\temporiums=" + this.emporiums + "\tfinalBonus= " + playersFinalBonus+"]";
+	}
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + playerNumber;
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		GenericPlayerDTO other = (GenericPlayerDTO) obj;
+		if (playerNumber != other.playerNumber)
+			return false;
+		return true;
 	}
 
 

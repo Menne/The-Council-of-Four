@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-import server.model.bonus.Bonus;
-
 /**
  * Models a city of the game
  * @author Luca
@@ -16,7 +14,7 @@ import server.model.bonus.Bonus;
 public class City {
 
 	private final String name;
-	private final Set<Bonus> rewardToken;
+	private final RewardToken rewardToken;
 	private final RegionBoard region;
 	private final CityColour colour;
 	private final Set<Emporium> cityEmporiums;
@@ -34,26 +32,30 @@ public class City {
 	 * @param numberOfPlayers of the game. 
 	 * Useful to choose the size of the emporiums array.
 	 */
-	public City(String name, RegionBoard region, CityColour colour, List<Set< Bonus>> rewardTokenList){
+	public City(String name, RegionBoard region, CityColour colour, List<RewardToken> rewardTokenList){
 		this.name=name;
 		this.region=region;
 		this.colour=colour;
 		this.cityEmporiums=new HashSet<>();
 		this.nearCities=new HashSet<>();
-		this.rewardToken=new HashSet<>();
 		if(!"KingColour".equals(colour.getName())){
 			Random random=new Random();
-			this.rewardToken.addAll(rewardTokenList.remove(random.nextInt(rewardTokenList.size())));
-		}			
+			this.rewardToken=rewardTokenList.remove(random.nextInt(rewardTokenList.size()));
+		}
+		else
+			this.rewardToken=new RewardToken(new HashSet<>());
 		colour.addCityOfThisColour(this);
 		region.addCityOfThisRegion(this);
 	}
 
 	
 	
-	public Set<Bonus> getRewardToken() {
+	
+
+	public RewardToken getRewardToken() {
 		return rewardToken;
 	}
+
 
 	public RegionBoard getRegion() {
 		return region;

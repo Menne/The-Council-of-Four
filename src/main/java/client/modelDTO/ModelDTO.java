@@ -2,6 +2,6 @@ package client.modelDTO;
 
 import java.io.Serializable;
 
-public interface ModelDTO<O> extends Serializable {
+public interface ModelDTO extends Serializable {
 
 }
