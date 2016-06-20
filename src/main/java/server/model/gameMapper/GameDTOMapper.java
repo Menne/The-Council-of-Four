@@ -115,6 +115,9 @@ public class GameDTOMapper implements GameMapperInterface {
 		clientPlayerDTO.setAssistants(new ArrayList<>());
 		for (int i=1; i<=realObject.getNumberOfAssistants(); i++)
 			clientPlayerDTO.getAssistants().add(new AssistantDTO());
+		clientPlayerDTO.setScore(realObject.getScore());
+		clientPlayerDTO.setCoins(realObject.getCoins());
+		clientPlayerDTO.setNobility(realObject.getNobility());
 		
 		return clientPlayerDTO;	
 	}
