@@ -26,7 +26,7 @@
    <children>
       <BorderPane prefHeight="800.0" prefWidth="1280.0">
          <bottom>
-            <SplitPane dividerPositions="0.29797979797979796" prefHeight="204.0" prefWidth="1286.0" stylesheets="@resize.css" BorderPane.alignment="CENTER">
+            <SplitPane dividerPositions="0.29797979797979796" prefHeight="204.0" prefWidth="1286.0" BorderPane.alignment="CENTER">
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="sfondo" stylesheets="@resize.css" />
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="98.0" prefWidth="100.0">
@@ -67,7 +67,7 @@
                                           </AnchorPane>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="46.0" prefWidth="535.0" styleClass="sfondo" stylesheets="@resize.css">
                                              <children>
-                                                <HBox fx:id="hand" layoutX="39.0" layoutY="14.0" prefHeight="143.0" prefWidth="494.0" spacing="10.0" styleClass="card" stylesheets="@resize.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                <HBox fx:id="hand" layoutX="39.0" layoutY="14.0" prefHeight="90.0" prefWidth="50.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <padding>
                                                       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                                    </padding>
@@ -95,10 +95,6 @@
                      </children>
                   </AnchorPane>
               </items>
-               <styleClass>
-                  <String fx:value="split-pane-divider" />
-                  <String fx:value="submit" />
-               </styleClass>
             </SplitPane>
          </bottom>
          <right>

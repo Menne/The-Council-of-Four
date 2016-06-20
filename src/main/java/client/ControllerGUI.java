@@ -17,10 +17,10 @@ import client.modelDTO.actionsDTO.standardActions.ElectCouncillorByAssistantDTO;
 import client.modelDTO.actionsDTO.standardActions.ElectCouncillorDTO;
 import client.modelDTO.actionsDTO.standardActions.EngageAssistantDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
+import client.modelDTO.gameTableDTO.PoliticsCardDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
 import client.view.GUI;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -517,7 +517,7 @@ public class ControllerGUI {
 		array[0]=permitTileHill0;
 		array[1]=permitTileHill1;
 		return array;
-	}
+	} 
 	
 	public ImageView[] getMountainPermitTile(){
 		ImageView[] array=new ImageView[2];
@@ -1105,8 +1105,8 @@ public class ControllerGUI {
 	}
 
 	
-	public void handlePoliticsCard(ActionEvent event) {
-		((Button)event.getSource()).getUserData();
+	public void handlePoliticsCard(Object selectedObject) {
+		PoliticsCardDTO selectedCard=(PoliticsCardDTO) selectedObject;
 	}
 
 	

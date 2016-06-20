@@ -254,11 +254,22 @@ public class GUI extends ClientView{
 			public void run() {
 				controllerGUI.getHand().getChildren().clear();
 				for (PoliticsCardDTO card : player.getHand()){
-					BackgroundImage backgroundImage=new BackgroundImage(imageMap.get(card), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+					BackgroundImage backgroundImage=new BackgroundImage(imageMap.get(card), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(50, 90, false, false, true, false));
 					Background background=new Background(backgroundImage);
-					controllerGUI.getHand().getChildren().add(new Button());
-					((Button)controllerGUI.getHand().getChildren().get(controllerGUI.getHand().getChildren().size()-1)).getStyleClass().add("card");
-					((Button)controllerGUI.getHand().getChildren().get(controllerGUI.getHand().getChildren().size()-1)).setBackground(background);
+					Button cardButton=new Button();
+					controllerGUI.getHand().getChildren().add(cardButton);
+					cardButton.setMinSize(controllerGUI.getHand().getPrefWidth(),controllerGUI.getHand().getPrefHeight());
+					cardButton.setBackground(background);
+					cardButton.setUserData(card);
+					cardButton.setOnAction(
+							new EventHandler<ActionEvent>() {
+
+								@Override
+								public void handle(ActionEvent event) {
+									controllerGUI.handlePoliticsCard(((Button)event.getSource()).getUserData());								
+								}					
+					});
+					cardButton.setDisable(true);
 				}			
 				controllerGUI.getPlayerCoins().setText(String.valueOf(player.getCoins()));
 				controllerGUI.getPlayerAssistants().setText(String.valueOf(player.getAssistants().size()));
