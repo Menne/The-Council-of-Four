@@ -29,6 +29,9 @@ import client.modelDTO.marketDTO.OfferDTO;
 import client.modelDTO.playerDTO.ClientPlayerDTO;
 import client.view.notifies.ClientViewNotify;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import server.model.bonus.AssistantsBonus;
@@ -248,8 +251,30 @@ public class GUI extends ClientView{
 
 	@Override
 	public List<PoliticsCardDTO> askForPoliticsCards(List<PoliticsCardDTO> acceptablePoliticsCards) {
-		// TODO Auto-generated method stub
-		return null;
+		for (PoliticsCardDTO politicsCard : acceptablePoliticsCards) {
+			Button tp= new Button();
+			tp.getStyleClass().add("politicsCard");
+			tp.getStylesheets().add("-fx-background-image: url('./client/view/images/cards/"+politicsCard.toString()+".png');");
+			tp.setUserData(politicsCard);
+			this.controllerGUI.getHand().getChildren().add(tp);
+			tp.setOnAction(new EventHandler<ActionEvent>() {
+				
+				@Override
+				public void handle(ActionEvent event) {
+					controllerGUI.handleCartaPolitica(event);
+				}
+			});
+		}
+		synchronized (this.controllerGUI) {
+			try {
+				while (currentParameter==null)
+					this.controllerGUI.wait();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return (List<PoliticsCardDTO>) this.currentParameter;
 	}
 
 	@Override

@@ -26,6 +26,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -1064,4 +1065,10 @@ public class ControllerGUI {
 		}
 	}
 
+	
+	public void handleCartaPolitica(ActionEvent event) {
+		((Button)event.getSource()).getUserData();
+	}
+
+	
 }
