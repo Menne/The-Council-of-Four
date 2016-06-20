@@ -416,6 +416,29 @@ public class ControllerGUI {
 	private HBox hand;
 	
 	@FXML
+	private Label numberOfCoveredPermitTilePlayer1;
+	
+	@FXML
+	private Label numberOfCoveredPermitTilePlayer2;
+	
+	@FXML
+	private Label numberOfCoveredPermitTilePlayer3;
+	
+	@FXML
+	private Label numberOfCoveredPermitTilePlayer4;
+	
+	@FXML
+	private Label numberOfPoliticsCardInHandPlayer1;
+	
+	@FXML
+	private Label numberOfPoliticsCardInHandPlayer2;
+	
+	@FXML
+	private Label numberOfPoliticsCardInHandPlayer3;
+	
+	@FXML
+	private Label numberOfPoliticsCardInHandPlayer4;
+	@FXML
 	private TextArea messageBox;
 
 	
