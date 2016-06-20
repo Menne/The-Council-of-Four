@@ -198,13 +198,22 @@ public class GUI extends ClientView{
 	
 	private void displayPlayers(List<GenericPlayerDTO> players){
 		for(int i=0; i<players.size();i++){
+			controllerGUI.getScoreLabels().get(i).setText(String.valueOf(players.get(i).getScore()));
+			controllerGUI.getCoinsLabels().get(i).setText(String.valueOf(players.get(i).getCoins()));
+			controllerGUI.getAssistantsLabels().get(i).setText(String.valueOf(players.get(i).getAssistants()));
+			controllerGUI.getNobilityLabels().get(i).setText(String.valueOf(players.get(i).getNobility()));
+			controllerGUI.getRemainingEmporiumsLabels().get(i).setText(String.valueOf(players.get(i).getEmporiums()));
+			
+		}
+/*		for(int i=0; i<players.size();i++){
 			controllerGUI.getNamesLabels().get(i).setText(players.get(i).getName());
 			controllerGUI.getScoreLabels().get(i).setText(String.valueOf(players.get(i).getScore()));
 			controllerGUI.getCoinsLabels().get(i).setText(String.valueOf(players.get(i).getCoins()));
 			controllerGUI.getAssistantsLabels().get(i).setText(String.valueOf(players.get(i).getAssistants()));
 			controllerGUI.getNobilityLabels().get(i).setText(String.valueOf(players.get(i).getNobility()));
 			controllerGUI.getRemainingEmporiumsLabels().get(i).setText(String.valueOf(players.get(i).getEmporiums()));
-		}
+			
+		}*/
 	}
 	
 	private void displayCouncillors(GameTableDTO clientGame){
