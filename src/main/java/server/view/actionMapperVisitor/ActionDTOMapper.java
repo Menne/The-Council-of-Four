@@ -18,6 +18,7 @@ import client.modelDTO.actionsDTO.standardActions.ElectCouncillorDTO;
 import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
+import client.modelDTO.gameTableDTO.PoliticsCardDTO;
 import client.modelDTO.marketDTO.OfferDTO;
 import client.modelDTO.playerDTO.AssistantDTO;
 import server.model.Game;
@@ -73,8 +74,8 @@ public class ActionDTOMapper implements ActionMapperVisitor{
 				action.setChosenRegion(region);
 		
 		List<PoliticsCard> convertedCards =new ArrayList<>();
-		for(CardColourDTO cardColourDTO : selectedActionDTO.getCardsToDescard())
-			convertedCards.add(new PoliticsCard(new CardColour(cardColourDTO.getName())));
+		for (PoliticsCardDTO politicsCardDTO : selectedActionDTO.getCardsToDescard())
+			convertedCards.add(new PoliticsCard(new CardColour(politicsCardDTO.getColour().getName())));
 		action.setCardsToDescard(convertedCards);
 		
 		return action;
@@ -95,8 +96,8 @@ public class ActionDTOMapper implements ActionMapperVisitor{
 				action.setSelectedCity(city);
 		
 		List<PoliticsCard> convertedCards =new ArrayList<>();
-		for (CardColourDTO cardColourDTO : selectedActionDTO.getCardsToDescard())
-			convertedCards.add(new PoliticsCard(new CardColour(cardColourDTO.getName())));
+		for (PoliticsCardDTO politicsCardDTO : selectedActionDTO.getCardsToDescard())
+			convertedCards.add(new PoliticsCard(new CardColour(politicsCardDTO.getColour().getName())));
 		action.setCardsToDescard(convertedCards);
 		
 		return action;
@@ -230,10 +231,10 @@ public class ActionDTOMapper implements ActionMapperVisitor{
 	public AcceptAnOffer map(AcceptAnOfferDTO selectedActionDTO) {
 		AcceptAnOffer action = new AcceptAnOffer();
 		
-		if (selectedActionDTO.getOffer().getOfferedObjectDTO() instanceof CardColourDTO) {
-			CardColourDTO offeringCardDTO=(CardColourDTO) selectedActionDTO.getOffer().getOfferedObjectDTO();
+		if (selectedActionDTO.getOffer().getOfferedObjectDTO() instanceof PoliticsCardDTO) {
+			PoliticsCardDTO offeringCardDTO=(PoliticsCardDTO) selectedActionDTO.getOffer().getOfferedObjectDTO();
 			action.setOffer(new Offer(this.setOfferingPlayer(selectedActionDTO.getOffer()), 
-					new PoliticsCard(new CardColour(offeringCardDTO.getName())), selectedActionDTO.getOffer().getPrice()));
+					new PoliticsCard(new CardColour(offeringCardDTO.getColour().getName())), selectedActionDTO.getOffer().getPrice()));
 		}
 		if (selectedActionDTO.getOffer().getOfferedObjectDTO() instanceof PermitTileDTO) {
 			PermitTileDTO offeringPermitTileDTO=(PermitTileDTO) selectedActionDTO.getOffer().getOfferedObjectDTO();

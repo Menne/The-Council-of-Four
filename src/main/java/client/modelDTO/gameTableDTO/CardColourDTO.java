@@ -1,9 +1,8 @@
 package client.modelDTO.gameTableDTO;
 
 import client.modelDTO.ModelDTO;
-import client.modelDTO.marketDTO.MarketableDTO;
 
-public class CardColourDTO implements ModelDTO, MarketableDTO{
+public class CardColourDTO implements ModelDTO {
 
 	/**
 	 * 

@@ -20,6 +20,7 @@ import client.modelDTO.gameTableDTO.CouncillorDTO;
 import client.modelDTO.gameTableDTO.GameTableDTO;
 import client.modelDTO.gameTableDTO.GenericPlayerDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
+import client.modelDTO.gameTableDTO.PoliticsCardDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
 import client.modelDTO.gameTableDTO.RewardTokenDTO;
 import client.modelDTO.marketDTO.MarketDTO;
@@ -68,13 +69,13 @@ public class GUI extends ClientView{
 		imageMap.put(new RewardTokenDTO(new HashSet<>(Arrays.asList(new ScoreBonus(1)))), new Image(getClass().getResource("images/token/Score+1.png").toExternalForm()));
 		imageMap.put(new RewardTokenDTO(new HashSet<>(Arrays.asList(new ScoreBonus(2)))), new Image(getClass().getResource("images/token/Score+2.png").toExternalForm()));
 		imageMap.put(new RewardTokenDTO(new HashSet<>(Arrays.asList(new ScoreBonus(3)))), new Image(getClass().getResource("images/token/Score+3.png").toExternalForm()));
-		imageMap.put(new CardColourDTO("Black"), new Image(getClass().getResource("images/cards/Black.png").toExternalForm()));
-		imageMap.put(new CardColourDTO("Blue"), new Image(getClass().getResource("images/cards/Blu.png").toExternalForm()));
-		imageMap.put(new CardColourDTO("Orange"), new Image(getClass().getResource("images/cards/Orange.png").toExternalForm()));
-		imageMap.put(new CardColourDTO("Pink"), new Image(getClass().getResource("images/cards/Pink.png").toExternalForm()));
-		imageMap.put(new CardColourDTO("Rainbow"), new Image(getClass().getResource("images/cards/Rainbow.png").toExternalForm()));
-		imageMap.put(new CardColourDTO("Violet"), new Image(getClass().getResource("images/cards/Violet.png").toExternalForm()));
-		imageMap.put(new CardColourDTO("White"), new Image(getClass().getResource("images/cards/White.png").toExternalForm()));
+		imageMap.put(new PoliticsCardDTO(new CardColourDTO("Black")), new Image(getClass().getResource("images/cards/Black.png").toExternalForm()));
+		imageMap.put(new PoliticsCardDTO(new CardColourDTO("Blue")), new Image(getClass().getResource("images/cards/Blu.png").toExternalForm()));
+		imageMap.put(new PoliticsCardDTO(new CardColourDTO("Orange")), new Image(getClass().getResource("images/cards/Orange.png").toExternalForm()));
+		imageMap.put(new PoliticsCardDTO(new CardColourDTO("Pink")), new Image(getClass().getResource("images/cards/Pink.png").toExternalForm()));
+		imageMap.put(new PoliticsCardDTO(new CardColourDTO("Rainbow")), new Image(getClass().getResource("images/cards/Rainbow.png").toExternalForm()));
+		imageMap.put(new PoliticsCardDTO(new CardColourDTO("Violet")), new Image(getClass().getResource("images/cards/Violet.png").toExternalForm()));
+		imageMap.put(new PoliticsCardDTO(new CardColourDTO("White")), new Image(getClass().getResource("images/cards/White.png").toExternalForm()));
 	}
 
 	
@@ -153,7 +154,7 @@ public class GUI extends ClientView{
 				controllerGUI.getCouncillors(region).get(i).setImage(imageMap.get(region.getBalcony()[i]));
 		for(int i=0; i<4; i++)
 			controllerGUI.getKingCouncillors().get(i).setImage(imageMap.get(clientGame.getClientKingBalcony()[i]));
-//		for(CouncillorDTO coucillor : clientGame.getClientCouncillorReserve())
+//		for(CouncillorDTO councillor : clientGame.getClientCouncillorReserve())
 	//		controllerGUI.getCouncillorReserve().getChildren().add(new ImageView(imageMap.get(coucillor)));			
 	}
 	
@@ -169,7 +170,7 @@ public class GUI extends ClientView{
 			
 			@Override
 			public void run() {
-				for(CardColourDTO card : player.getHand()){
+				for (PoliticsCardDTO card : player.getHand()){
 					controllerGUI.getHand().getChildren().add(new ImageView(imageMap.get(card)));
 					((ImageView)controllerGUI.getHand().getChildren().get(controllerGUI.getHand().getChildren().size()-1)).setFitHeight(90);
 					((ImageView)controllerGUI.getHand().getChildren().get(controllerGUI.getHand().getChildren().size()-1)).setFitWidth(50);
@@ -246,7 +247,7 @@ public class GUI extends ClientView{
 	}
 
 	@Override
-	public List<CardColourDTO> askForPoliticsCards(List<CardColourDTO> acceptablePoliticsCards) {
+	public List<PoliticsCardDTO> askForPoliticsCards(List<PoliticsCardDTO> acceptablePoliticsCards) {
 		// TODO Auto-generated method stub
 		return null;
 	}

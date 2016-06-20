@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import client.modelDTO.ModelDTO;
-import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
+import client.modelDTO.gameTableDTO.PoliticsCardDTO;
 
 public class ClientPlayerDTO implements ModelDTO{
 	
@@ -15,13 +15,13 @@ public class ClientPlayerDTO implements ModelDTO{
 	private static final long serialVersionUID = 1059151897076991279L;
 	private String name;
 	private int playerNumber;
-	private List<CardColourDTO> hand;
+	private List<PoliticsCardDTO> hand;
 	private List<PermitTileDTO> coveredPermitTiles;
 	private List<PermitTileDTO> availablePermitTiles;
 	private List<AssistantDTO> assistants;
 	
 	public ClientPlayerDTO() {
-		this.hand=new ArrayList<CardColourDTO>();
+		this.hand=new ArrayList<PoliticsCardDTO>();
 		this.coveredPermitTiles=new ArrayList<PermitTileDTO>();
 		this.availablePermitTiles=new ArrayList<PermitTileDTO>();
 	}
@@ -43,12 +43,12 @@ public class ClientPlayerDTO implements ModelDTO{
 		this.playerNumber=playerNumber;
 	}	
 
-	public List<CardColourDTO> getHand() {
+	public List<PoliticsCardDTO> getHand() {
 		return this.hand;
 	}
 
-	public void setHand(List<CardColourDTO> hand) {
-		this.hand = hand;
+	public void setHand(List<PoliticsCardDTO> hand) {
+		this.hand=hand;
 	}
 
 	public List<PermitTileDTO> getCoveredPermitTiles() {

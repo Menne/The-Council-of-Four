@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import client.modelDTO.actionsDTO.actionsParametersSetters.AcquirePermitTileParser;
 import client.modelDTO.actionsDTO.standardActions.AcquirePermitTileDTO;
-import client.modelDTO.gameTableDTO.CardColourDTO;
+import client.modelDTO.gameTableDTO.PoliticsCardDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
 
 public class AcquirePermitTileDTOTest {
@@ -18,7 +18,7 @@ public class AcquirePermitTileDTOTest {
 	public void testSetters() {
 		Integer numberOfPermitTile=0;
 		RegionDTO chosenRegion= new RegionDTO();
-		List<CardColourDTO> cardsToDescard= new ArrayList<>();
+		List<PoliticsCardDTO> cardsToDescard= new ArrayList<>();
 		AcquirePermitTileDTO action= new AcquirePermitTileDTO();
 		action.setCardsToDescard(cardsToDescard);
 		action.setChosenRegion(chosenRegion);

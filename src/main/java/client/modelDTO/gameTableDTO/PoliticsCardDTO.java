@@ -1,19 +1,20 @@
 package client.modelDTO.gameTableDTO;
 
 import client.modelDTO.ModelDTO;
+import client.modelDTO.marketDTO.MarketableDTO;
 
-public class CouncillorDTO implements ModelDTO {
+public class PoliticsCardDTO implements ModelDTO, MarketableDTO {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 3297590450164485862L;
+	private static final long serialVersionUID = -6403924785270201186L;
 	private CardColourDTO colour;
 	
-	public CouncillorDTO() {	
+	public PoliticsCardDTO() {	
 	}
 	
-	public CouncillorDTO(CardColourDTO cardColourDTO) {
+	public PoliticsCardDTO(CardColourDTO cardColourDTO) {
 		this.colour=cardColourDTO;
 	}
 
@@ -24,6 +25,7 @@ public class CouncillorDTO implements ModelDTO {
 	public void setColour(CardColourDTO colour) {
 		this.colour=colour;
 	}
+	
 
 	@Override
 	public int hashCode() {
@@ -41,7 +43,7 @@ public class CouncillorDTO implements ModelDTO {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		CouncillorDTO other = (CouncillorDTO) obj;
+		PoliticsCardDTO other = (PoliticsCardDTO) obj;
 		if (colour == null) {
 			if (other.colour != null)
 				return false;

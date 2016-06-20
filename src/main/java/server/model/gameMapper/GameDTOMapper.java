@@ -11,6 +11,7 @@ import client.modelDTO.gameTableDTO.CouncillorDTO;
 import client.modelDTO.gameTableDTO.GameTableDTO;
 import client.modelDTO.gameTableDTO.GenericPlayerDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
+import client.modelDTO.gameTableDTO.PoliticsCardDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
 import client.modelDTO.gameTableDTO.RewardTokenDTO;
 import client.modelDTO.marketDTO.MarketDTO;
@@ -106,7 +107,7 @@ public class GameDTOMapper implements GameMapperInterface {
 		clientPlayerDTO.setName(realObject.getName());
 		clientPlayerDTO.setPlayerNumber(realObject.getPlayerNumber());
 		for (PoliticsCard card : realObject.getHand())
-			clientPlayerDTO.getHand().add(this.cardColourMap(card.getColour()));
+			clientPlayerDTO.getHand().add(this.politicsCardMap(card));
 		for (PermitTile permitTile : realObject.getPlayersPermitTilesTurnedDown())
 			clientPlayerDTO.getCoveredPermitTiles().add(this.permitTileMap(permitTile));
 		for (PermitTile permitTile : realObject.getPlayersPermitTilesTurnedUp())
@@ -130,7 +131,29 @@ public class GameDTOMapper implements GameMapperInterface {
 		return cardColourDTO;
 	}
 	
+	/**
+	 * This method maps all the attributes that a client can see in a politics card DTO object
+	 * @param realObject is a politics card from the real game table
+	 * @return the politics card DTO with all the attributes updated
+	 */
+	@Override
+	public PoliticsCardDTO politicsCardMap(PoliticsCard realCard) {
+		PoliticsCardDTO politicsCardDTO=new PoliticsCardDTO();
+		politicsCardDTO.setColour(this.cardColourMap(realCard.getColour()));
+		return politicsCardDTO;
+	}
 	
+	/**
+	 * This method maps all the attributes that a client can see in a councillor DTO object
+	 * @param realObject is a councillor from the real game table
+	 * @return the councillor DTO with all the attributes updated
+	 */
+	@Override
+	public CouncillorDTO councillorMap(Councillor realCouncillor) {
+		CouncillorDTO councillorDTO=new CouncillorDTO();
+		councillorDTO.setColour(this.cardColourMap(realCouncillor.getColour()));
+		return councillorDTO;
+	}
 
 	/**
 	 * This method maps all the attributes that a client can see in a city colour DTO object
@@ -238,8 +261,8 @@ public class GameDTOMapper implements GameMapperInterface {
 		OfferDTO offerDTO=new OfferDTO();
 		
 		if (realOffer.getOfferedObject() instanceof PoliticsCard)
-			offerDTO.setOfferedObjectDTO(this.cardColourMap
-					(((PoliticsCard) realOffer.getOfferedObject()).getColour()));
+			offerDTO.setOfferedObjectDTO(this.politicsCardMap
+					(((PoliticsCard) realOffer.getOfferedObject())));
 		if (realOffer.getOfferedObject() instanceof PermitTile)
 			offerDTO.setOfferedObjectDTO(this.permitTileMap
 					((PermitTile) realOffer.getOfferedObject()));
@@ -252,13 +275,11 @@ public class GameDTOMapper implements GameMapperInterface {
 		return offerDTO;
 	}
 
-	@Override
-	public CouncillorDTO councillorMap(Councillor realCouncillor) {
-		CouncillorDTO councillorDTO=new CouncillorDTO();
-		councillorDTO.setColour(this.cardColourMap(realCouncillor.getColour()));
-		return councillorDTO;
-	}
-
+	/**
+	 * This method maps all the attributes that a client can see in a reward token DTO object
+	 * @param realObject is a councillor from the real reward token
+	 * @return the reward token DTO with all the attributes updated
+	 */
 	@Override
 	public RewardTokenDTO rewardTokenMap(RewardToken realToken) {
 		return new RewardTokenDTO(realToken.getRewardTokenBonus());

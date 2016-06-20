@@ -22,6 +22,7 @@ import client.modelDTO.gameTableDTO.CouncillorDTO;
 import client.modelDTO.gameTableDTO.GameTableDTO;
 import client.modelDTO.gameTableDTO.GenericPlayerDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
+import client.modelDTO.gameTableDTO.PoliticsCardDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
 import client.modelDTO.marketDTO.MarketDTO;
 import client.modelDTO.marketDTO.MarketableDTO;
@@ -189,14 +190,9 @@ public class CLI extends ClientView {
 
 	@Override
 	public CouncillorDTO askForCouncillor(List<CouncillorDTO> acceptableCouncillors) {
-		List<String> acceptableCouncillorsColours=new ArrayList<>();
-			for (CouncillorDTO councillor : acceptableCouncillors)
-				acceptableCouncillorsColours.add(councillor.getColour().getName());
-		
-		
-			/*List<String> acceptableCouncillorsColours=acceptableCouncillors.stream()
-                .map(CouncillorDTO::getColour().getName())
-                .collect(Collectors.toCollection(ArrayList::new));*/
+		List<String> acceptableCouncillorsColours=acceptableCouncillors.stream()
+            .map(CouncillorDTO::getColour).map(CardColourDTO::getName)
+            .collect(Collectors.toCollection(ArrayList::new));
 		System.out.println(acceptableCouncillorsColours);
 		String newCouncillorToTranslate=this.scanner.nextLine();
 		while (!acceptableCouncillorsColours.contains(newCouncillorToTranslate)) {
@@ -247,9 +243,9 @@ public class CLI extends ClientView {
 	}
 
 	@Override
-	public List<CardColourDTO> askForPoliticsCards(List<CardColourDTO> acceptablePoliticsCards) {
+	public List<PoliticsCardDTO> askForPoliticsCards(List<PoliticsCardDTO> acceptablePoliticsCards) {
 		List<String> acceptableCardsColours=acceptablePoliticsCards.stream()
-                .map(CardColourDTO::getName)
+                .map(PoliticsCardDTO::getColour).map(CardColourDTO::getName)
                 .collect(Collectors.toCollection(ArrayList::new));
 		System.out.println(acceptableCardsColours);
 		String cardsToTranslate=scanner.nextLine();
@@ -258,11 +254,11 @@ public class CLI extends ClientView {
 			cardsToTranslate=scanner.nextLine();
 			cardsToTranslateTokenized=new StringTokenizer(cardsToTranslate);
 		}
-		List<CardColourDTO> cardsTranslated=new ArrayList<>();
+		List<PoliticsCardDTO> cardsTranslated=new ArrayList<>();
 		while (cardsToTranslateTokenized.hasMoreTokens()) {
 			String currentCard=cardsToTranslateTokenized.nextToken();
-			for (CardColourDTO cardTranslated : acceptablePoliticsCards)
-				if (cardTranslated.getName().equals(currentCard)) {
+			for (PoliticsCardDTO cardTranslated : acceptablePoliticsCards)
+				if (cardTranslated.getColour().getName().equals(currentCard)) {
 					cardsTranslated.add(cardTranslated);
 					break;
 				}

@@ -6,8 +6,8 @@ import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.ActionWithParameters;
 import client.modelDTO.actionsDTO.actionsParametersSetters.ActionParserVisitor;
 import client.modelDTO.actionsDTO.actionsParametersSetters.BuildByKingParser;
-import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
+import client.modelDTO.gameTableDTO.PoliticsCardDTO;
 import server.model.actions.Action;
 import server.view.actionMapperVisitor.ActionMapperVisitor;
 
@@ -18,14 +18,15 @@ public class BuildByKingDTO implements ActionDTO, ActionWithParameters {
 	 */
 	private static final long serialVersionUID = -3717084594434999743L;
 	private CityDTO selectedCity;
-	private List<CardColourDTO> cardsToDescard;
+	private List<PoliticsCardDTO> cardsToDescard;
 	private boolean parametersSetted=false;
 
+	
 	public CityDTO getSelectedCity() {
 		return selectedCity;
 	}
 
-	public List<CardColourDTO> getCardsToDescard() {
+	public List<PoliticsCardDTO> getCardsToDescard() {
 		return cardsToDescard;
 	}
 
@@ -33,8 +34,8 @@ public class BuildByKingDTO implements ActionDTO, ActionWithParameters {
 		this.selectedCity = selectedCity;
 	}
 
-	public void setCardsToDescard(List<CardColourDTO> cardsToDescard) {
-		this.cardsToDescard = cardsToDescard;
+	public void setCardsToDescard(List<PoliticsCardDTO> cardsToDescard) {
+		this.cardsToDescard=cardsToDescard;
 	}
 	
 	public boolean checkIfParametersSetted() {

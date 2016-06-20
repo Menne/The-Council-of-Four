@@ -6,7 +6,7 @@ import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.ActionWithParameters;
 import client.modelDTO.actionsDTO.actionsParametersSetters.AcquirePermitTileParser;
 import client.modelDTO.actionsDTO.actionsParametersSetters.ActionParserVisitor;
-import client.modelDTO.gameTableDTO.CardColourDTO;
+import client.modelDTO.gameTableDTO.PoliticsCardDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
 import server.model.actions.Action;
 import server.view.actionMapperVisitor.ActionMapperVisitor;
@@ -20,7 +20,7 @@ public class AcquirePermitTileDTO implements ActionDTO, ActionWithParameters {
 	
 	private Integer numberOfPermitTile;
 	private RegionDTO chosenRegion;
-	private List<CardColourDTO> cardsToDescard;
+	private List<PoliticsCardDTO> cardsToDescard;
 	private boolean parametersSetted=false;
 
 	public int getNumberOfPermitTiles() {
@@ -31,7 +31,7 @@ public class AcquirePermitTileDTO implements ActionDTO, ActionWithParameters {
 		return chosenRegion;
 	}
 
-	public List<CardColourDTO> getCardsToDescard() {
+	public List<PoliticsCardDTO> getCardsToDescard() {
 		return cardsToDescard;
 	}
 	
@@ -39,7 +39,7 @@ public class AcquirePermitTileDTO implements ActionDTO, ActionWithParameters {
 		this.numberOfPermitTile=numberOfPermitTile;
 	}
 
-	public void setCardsToDescard(List<CardColourDTO> cardsToDescard) {
+	public void setCardsToDescard(List<PoliticsCardDTO> cardsToDescard) {
 		this.cardsToDescard=cardsToDescard;
 	}
 

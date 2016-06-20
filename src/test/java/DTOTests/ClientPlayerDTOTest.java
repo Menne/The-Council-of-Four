@@ -7,8 +7,8 @@ import java.util.List;
 
 import org.junit.Test;
 
-import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
+import client.modelDTO.gameTableDTO.PoliticsCardDTO;
 import client.modelDTO.playerDTO.AssistantDTO;
 import client.modelDTO.playerDTO.ClientPlayerDTO;
 
@@ -16,7 +16,7 @@ public class ClientPlayerDTOTest {
 
 	@Test
 	public void test() {
-		List<CardColourDTO> colour= new ArrayList<>();
+		List<PoliticsCardDTO> colour= new ArrayList<>();
 		List<PermitTileDTO> coveredTiles= new ArrayList<>();
 		List<PermitTileDTO> uncoveredTiles= new ArrayList<>();
 		List<AssistantDTO> assistants= new ArrayList<>();

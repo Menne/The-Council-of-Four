@@ -752,11 +752,6 @@ public class ControllerGUI {
 	}
 	
 	
-		
-	
-	
-	
-	
 	
 	@FXML
 	public void clickOnRegionSea() {

@@ -9,12 +9,12 @@ import client.connections.Connection;
 import client.modelDTO.GameDTO;
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.AddPlayerDTO;
-import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.CouncillorDTO;
 import client.modelDTO.gameTableDTO.GameTableDTO;
 import client.modelDTO.gameTableDTO.GenericPlayerDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
+import client.modelDTO.gameTableDTO.PoliticsCardDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
 import client.modelDTO.marketDTO.MarketDTO;
 import client.modelDTO.marketDTO.MarketableDTO;
@@ -71,7 +71,7 @@ public abstract class ClientView implements Observer<ClientViewNotify> {
 	
 	public abstract CityDTO askForCity(List<CityDTO> acceptableCities);
 	
-	public abstract List<CardColourDTO> askForPoliticsCards(List<CardColourDTO> acceptablePoliticsCards);
+	public abstract List<PoliticsCardDTO> askForPoliticsCards(List<PoliticsCardDTO> acceptablePoliticsCards);
 	
 	public abstract int askForNumberOfPermitTile(List<Integer> acceptableNumberOfPermitTile);
 	
