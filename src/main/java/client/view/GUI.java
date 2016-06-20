@@ -31,6 +31,9 @@ import client.modelDTO.marketDTO.OfferDTO;
 import client.modelDTO.playerDTO.ClientPlayerDTO;
 import client.view.notifies.ClientViewNotify;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import server.model.bonus.AssistantsBonus;
@@ -290,25 +293,57 @@ public class GUI extends ClientView{
 				e.printStackTrace();
 			}
 		}
-		return (RegionDTO) this.currentParameter;
+		RegionDTO region=(RegionDTO) this.currentParameter;
+		this.currentParameter=null;
+		return region;
 	}
 
 	@Override
 	public PermitTileDTO askForPermitTile(List<PermitTileDTO> acceptablePermitTiles) {
-		// TODO Auto-generated method stub
-		return null;
+		synchronized (this.controllerGUI) {
+			try {
+				while (currentParameter==null)
+					this.controllerGUI.wait();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		PermitTileDTO permitTile=(PermitTileDTO) this.currentParameter;
+		this.currentParameter=null;
+		return permitTile;
 	}
 
 	@Override
 	public CouncillorDTO askForCouncillor(List<CouncillorDTO> acceptableCouncillors) {
-		// TODO Auto-generated method stub
-		return null;
+		synchronized (this.controllerGUI) {
+			try {
+				while (currentParameter==null)
+					this.controllerGUI.wait();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		CouncillorDTO councillor=(CouncillorDTO) this.currentParameter;
+		this.currentParameter=null;
+		return councillor;
 	}
 	
 	@Override
 	public CouncillorDTO[] askForCouncilBalcony(List<CouncillorDTO[]> acceptableCouncillors) {
-		// TODO Auto-generated method stub
-		return null;
+		synchronized (this.controllerGUI) {
+			try {
+				while (currentParameter==null)
+					this.controllerGUI.wait();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		CouncillorDTO[] councillBalcony=(CouncillorDTO[]) this.currentParameter;
+		this.currentParameter=null;
+		return councillBalcony;
 	}
 
 	@Override
@@ -322,44 +357,119 @@ public class GUI extends ClientView{
 				e.printStackTrace();
 			}
 		}
-		return (CityDTO) this.currentParameter;
+		CityDTO city=(CityDTO) this.currentParameter;
+		this.currentParameter=null;
+		return city;
 	}
 
 	@Override
 	public List<PoliticsCardDTO> askForPoliticsCards(List<PoliticsCardDTO> acceptablePoliticsCards) {
-		// TODO Auto-generated method stub
-		return null;
+		for (PoliticsCardDTO politicsCard : acceptablePoliticsCards) {
+			Button tp= new Button();
+			tp.getStyleClass().add("politicsCard");
+			tp.getStylesheets().add("-fx-background-image: url('./client/view/images/cards/"+politicsCard.toString()+".png');");
+			tp.setUserData(politicsCard);
+			this.controllerGUI.getHand().getChildren().add(tp);
+			tp.setOnAction(new EventHandler<ActionEvent>() {
+				
+				@Override
+				public void handle(ActionEvent event) {
+					controllerGUI.handlePoliticsCard(event);
+				}
+			});
+		}
+		synchronized (this.controllerGUI) {
+			try {
+				while (currentParameter==null)
+					this.controllerGUI.wait();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		List<PoliticsCardDTO> cards=(List<PoliticsCardDTO>) this.currentParameter;
+		this.currentParameter=null;
+		return cards;
 	}
 
 	@Override
 	public int askForNumberOfPermitTile(List<Integer> acceptableNumberOfPermitTile) {
-		// TODO Auto-generated method stub
-		return 0;
+		synchronized (this.controllerGUI) {
+			try {
+				while (currentParameter==null)
+					this.controllerGUI.wait();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		int numberOfPermitTile=(int) this.currentParameter;
+		this.currentParameter=null;
+		return numberOfPermitTile;
 	}
 
 	@Override
 	public MarketableDTO askForMakingAnOffer(List<MarketableDTO> acceptableObjectsToOffer) {
-		// TODO Auto-generated method stub
-		return null;
+		synchronized (this.controllerGUI) {
+			try {
+				while (currentParameter==null)
+					this.controllerGUI.wait();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		MarketableDTO offeringObject=(MarketableDTO) this.currentParameter;
+		this.currentParameter=null;
+		return offeringObject;
 	}
 
 	@Override
 	public int askForPrice() {
-		// TODO Auto-generated method stub
-		return 0;
+		synchronized (this.controllerGUI) {
+			try {
+				while (currentParameter==null)
+					this.controllerGUI.wait();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		int price=(int) this.currentParameter;
+		this.currentParameter=null;
+		return price;
 	}
 	
 	@Override
 	public boolean askForOtherSelling() {
-		return false;
-		// TODO Auto-generated method stub
-		
+		synchronized (this.controllerGUI) {
+			try {
+				while (currentParameter==null)
+					this.controllerGUI.wait();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		boolean choice=(boolean) this.currentParameter;
+		this.currentParameter=null;
+		return choice;
 	}
 	
 	@Override
 	public OfferDTO askForAcceptingAnOffer(List<OfferDTO> acceptableOffers) {
-		// TODO Auto-generated method stub
-		return null;
+		synchronized (this.controllerGUI) {
+			try {
+				while (currentParameter==null)
+					this.controllerGUI.wait();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		OfferDTO offer=(OfferDTO) this.currentParameter;
+		this.currentParameter=null;
+		return offer;
 	}
 
 	

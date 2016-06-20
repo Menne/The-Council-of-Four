@@ -27,6 +27,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -819,7 +820,7 @@ public class ControllerGUI {
 	@FXML
 	public void clickOnPermitTileRegionSea1() {
 		synchronized (this) {
-			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(0).getUncoveredPermitTiles()[0]);
+			view.setCurrentParameter(new Integer(0));
 			this.notify();
 		}
 	}
@@ -827,7 +828,7 @@ public class ControllerGUI {
 	@FXML
 	public void clickOnPermitTileRegionSea2() {
 		synchronized (this) {
-			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(0).getUncoveredPermitTiles()[1]);
+			view.setCurrentParameter(new Integer(1));
 			this.notify();
 		}
 	}
@@ -835,7 +836,7 @@ public class ControllerGUI {
 	@FXML
 	public void clickOnPermitTileRegionHill1() {
 		synchronized (this) {
-			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(1).getUncoveredPermitTiles()[0]);
+			view.setCurrentParameter(new Integer(0));
 			this.notify();
 		}
 	}
@@ -843,7 +844,7 @@ public class ControllerGUI {
 	@FXML
 	public void clickOnPermitTileRegionHill2() {
 		synchronized (this) {
-			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(1).getUncoveredPermitTiles()[1]);
+			view.setCurrentParameter(new Integer(1));
 			this.notify();
 		}
 	}
@@ -851,7 +852,7 @@ public class ControllerGUI {
 	@FXML
 	public void clickOnPermitTileRegionMountain1() {
 		synchronized (this) {
-			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(2).getUncoveredPermitTiles()[0]);
+			view.setCurrentParameter(new Integer(0));
 			this.notify();
 		}
 	}
@@ -859,7 +860,7 @@ public class ControllerGUI {
 	@FXML
 	public void clickOnPermitTileRegionMountain2() {
 		synchronized (this) {
-			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(2).getUncoveredPermitTiles()[1]);
+			view.setCurrentParameter(new Integer(1));
 			this.notify();
 		}
 	}
@@ -1103,4 +1104,10 @@ public class ControllerGUI {
 		}
 	}
 
+	
+	public void handlePoliticsCard(ActionEvent event) {
+		((Button)event.getSource()).getUserData();
+	}
+
+	
 }
