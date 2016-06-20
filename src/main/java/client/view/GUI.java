@@ -4,6 +4,8 @@ package client.view;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -197,23 +199,28 @@ public class GUI extends ClientView{
 	}
 	
 	private void displayPlayers(List<GenericPlayerDTO> players){
-		for(int i=0; i<players.size();i++){
-			controllerGUI.getScoreLabels().get(i).setText(String.valueOf(players.get(i).getScore()));
-			controllerGUI.getCoinsLabels().get(i).setText(String.valueOf(players.get(i).getCoins()));
-			controllerGUI.getAssistantsLabels().get(i).setText(String.valueOf(players.get(i).getAssistants()));
-			controllerGUI.getNobilityLabels().get(i).setText(String.valueOf(players.get(i).getNobility()));
-			controllerGUI.getRemainingEmporiumsLabels().get(i).setText(String.valueOf(players.get(i).getEmporiums()));
-			
+		List<GenericPlayerDTO> orderedPlayers = new ArrayList<>(players);
+		Collections.sort(orderedPlayers, new Comparator<GenericPlayerDTO>() {
+
+			@Override
+			public int compare(GenericPlayerDTO o1, GenericPlayerDTO o2) {
+				if(o1.getPlayerNumber()<o2.getPlayerNumber())
+					return -1;
+				else 
+					return 1;
+			}
+		});
+		
+		for(int i=0; i<orderedPlayers.size();i++){
+			controllerGUI.getNamesLabels().get(i).setText(orderedPlayers.get(i).getName());
+			controllerGUI.getScoreLabels().get(i).setText(String.valueOf(orderedPlayers.get(i).getScore()));
+			controllerGUI.getCoinsLabels().get(i).setText(String.valueOf(orderedPlayers.get(i).getCoins()));
+			controllerGUI.getAssistantsLabels().get(i).setText(String.valueOf(orderedPlayers.get(i).getAssistants()));
+			controllerGUI.getNobilityLabels().get(i).setText(String.valueOf(orderedPlayers.get(i).getNobility()));
+			controllerGUI.getRemainingEmporiumsLabels().get(i).setText(String.valueOf(orderedPlayers.get(i).getEmporiums()));	
+			controllerGUI.getNumberOfPoliticsCards().get(i).setText(String.valueOf(orderedPlayers.get(i).getHand()));
+			controllerGUI.getNumberOfCoveredPermitTiles().get(i).setText(String.valueOf(orderedPlayers.get(i).getNumberOfCoveredTiles()));
 		}
-/*		for(int i=0; i<players.size();i++){
-			controllerGUI.getNamesLabels().get(i).setText(players.get(i).getName());
-			controllerGUI.getScoreLabels().get(i).setText(String.valueOf(players.get(i).getScore()));
-			controllerGUI.getCoinsLabels().get(i).setText(String.valueOf(players.get(i).getCoins()));
-			controllerGUI.getAssistantsLabels().get(i).setText(String.valueOf(players.get(i).getAssistants()));
-			controllerGUI.getNobilityLabels().get(i).setText(String.valueOf(players.get(i).getNobility()));
-			controllerGUI.getRemainingEmporiumsLabels().get(i).setText(String.valueOf(players.get(i).getEmporiums()));
-			
-		}*/
 	}
 	
 	private void displayCouncillors(GameTableDTO clientGame){

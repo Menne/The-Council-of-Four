@@ -20,6 +20,7 @@ public class GenericPlayerDTO implements ModelDTO{
 	private int coins;
 	private int emporiums;
 	private int hand;
+	private int numberOfCoveredTiles;
 	private List<PermitTileDTO> availablePermitTiles;
 	private List<ScoreBonus> playersFinalBonus;
 	
@@ -28,6 +29,16 @@ public class GenericPlayerDTO implements ModelDTO{
 	}
 
 	
+	public int getNumberOfCoveredTiles() {
+		return numberOfCoveredTiles;
+	}
+
+
+	public void setNumberOfCoveredTiles(int numberOfCoveredTiles) {
+		this.numberOfCoveredTiles = numberOfCoveredTiles;
+	}
+
+
 	public String getName() {
 		return name;
 	}

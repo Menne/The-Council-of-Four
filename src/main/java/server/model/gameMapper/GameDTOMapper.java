@@ -210,6 +210,7 @@ public class GameDTOMapper implements GameMapperInterface {
 			genericPlayerDTO.getAvailablePermitTiles().add
 					(this.permitTileMap(permitTile));
 		genericPlayerDTO.setPlayersFinalBonus(realObject.getPlayersFinalBonus());
+		genericPlayerDTO.setNumberOfCoveredTiles(realObject.getPlayersPermitTilesTurnedDown().size());
 		
 		return genericPlayerDTO;
 	}
