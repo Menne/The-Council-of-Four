@@ -29,7 +29,10 @@
 
 .submit {
   -fx-background-color: #d1ca85; /* colore di sfondo    */
-  -fx-border: 2px solid #d1ca85; /* bordo dell'elemento */
+  -fx-border-color: #d1ca85;
+    -fx-border-width: 2;
+    -fx-border-curve: yes;
+  /* -fx-border: 2px solid #d1ca85; bordo dell'elemento */
   -fx-color: #d1ca85;               /* colore dello sfondo giusto   */
  /*  -fx-font-weight: bold;         /* testo in grassetto  */
   -fx-padding: 0;                /* padding             */
