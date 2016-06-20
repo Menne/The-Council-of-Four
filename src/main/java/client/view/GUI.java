@@ -368,6 +368,7 @@ public class GUI extends ClientView{
 
 	@Override
 	public CityDTO askForCity(List<CityDTO> acceptableCities) {
+		this.disableClickOnCities(false);
 		synchronized (this.controllerGUI) {
 			try {
 				while (currentParameter==null)
@@ -379,6 +380,7 @@ public class GUI extends ClientView{
 		}
 		CityDTO city=(CityDTO) this.currentParameter;
 		this.currentParameter=null;
+		this.disableClickOnCities(true);
 		return city;
 	}
 
@@ -524,7 +526,21 @@ public class GUI extends ClientView{
 	}
 	
 	private void disableClickOnCities(boolean disabled) {
-		
+		this.controllerGUI.getArkon().setDisable(disabled);
+		this.controllerGUI.getBurgen().setDisable(disabled);
+		this.controllerGUI.getCastrum().setDisable(disabled);
+		this.controllerGUI.getDorful().setDisable(disabled);
+		this.controllerGUI.getEsti().setDisable(disabled);
+		this.controllerGUI.getFramek().setDisable(disabled);
+		this.controllerGUI.getGraden().setDisable(disabled);
+		this.controllerGUI.getHellar().setDisable(disabled);
+		this.controllerGUI.getIndur().setDisable(disabled);
+		this.controllerGUI.getJuvelar().setDisable(disabled);
+		this.controllerGUI.getKultos().setDisable(disabled);
+		this.controllerGUI.getLyram().setDisable(disabled);
+		this.controllerGUI.getMerkatim().setDisable(disabled);
+		this.controllerGUI.getNaris().setDisable(disabled);
+		this.controllerGUI.getOsium().setDisable(disabled);
 	}
 	
 	private void disableClickOnPoliticsCards(boolean disabled) {
