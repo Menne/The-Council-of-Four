@@ -29,7 +29,6 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -442,15 +441,8 @@ public class ControllerGUI {
 	
 	@FXML
 	private TextArea messageBox;
-	
-	@FXML
-	private TabPane players;
 
 	
-	public TabPane getPlayers() {
-		return players;
-	}
-
 	public HBox getHand() {
 		return hand;
 	}
