@@ -799,6 +799,55 @@ public class ControllerGUI {
 			this.notify();
 		}
 	}
+	
+	@FXML
+	public void clickOnPermitTileRegionSea1() {
+		synchronized (this) {
+			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(0).getUncoveredPermitTiles()[0]);
+			this.notify();
+		}
+	}
+	
+	@FXML
+	public void clickOnPermitTileRegionSea2() {
+		synchronized (this) {
+			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(0).getUncoveredPermitTiles()[1]);
+			this.notify();
+		}
+	}
+	
+	@FXML
+	public void clickOnPermitTileRegionHill1() {
+		synchronized (this) {
+			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(1).getUncoveredPermitTiles()[0]);
+			this.notify();
+		}
+	}
+	
+	@FXML
+	public void clickOnPermitTileRegionHill2() {
+		synchronized (this) {
+			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(1).getUncoveredPermitTiles()[1]);
+			this.notify();
+		}
+	}
+	
+	@FXML
+	public void clickOnPermitTileRegionMountain1() {
+		synchronized (this) {
+			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(2).getUncoveredPermitTiles()[0]);
+			this.notify();
+		}
+	}
+	
+	@FXML
+	public void clickOnPermitTileRegionMountain2() {
+		synchronized (this) {
+			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(2).getUncoveredPermitTiles()[1]);
+			this.notify();
+		}
+	}
+	
 
 	@FXML
 	public void clickOnKingBalcony() {
