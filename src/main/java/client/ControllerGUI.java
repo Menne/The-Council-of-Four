@@ -438,6 +438,7 @@ public class ControllerGUI {
 	
 	@FXML
 	private Label numberOfPoliticsCardInHandPlayer4;
+	
 	@FXML
 	private TextArea messageBox;
 

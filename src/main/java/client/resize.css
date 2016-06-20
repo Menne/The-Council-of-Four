@@ -22,6 +22,11 @@
    /*  -fx-font-weight: bold; */
 }
 
+/*
+.tab{
+	-fx-background: red;
+}*/
+
 .submit {
   -fx-background-color: #d1ca85; /* colore di sfondo    */
   -fx-border: 2px solid #d1ca85; /* bordo dell'elemento */
