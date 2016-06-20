@@ -36,6 +36,11 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import server.model.bonus.AssistantsBonus;
 import server.model.bonus.CoinsBonus;
 import server.model.bonus.MainActionBonus;
@@ -247,9 +252,11 @@ public class GUI extends ClientView{
 			public void run() {
 				controllerGUI.getHand().getChildren().clear();
 				for (PoliticsCardDTO card : player.getHand()){
-					controllerGUI.getHand().getChildren().add(new ImageView(imageMap.get(card)));
-					((ImageView)controllerGUI.getHand().getChildren().get(controllerGUI.getHand().getChildren().size()-1)).setFitHeight(90);
-					((ImageView)controllerGUI.getHand().getChildren().get(controllerGUI.getHand().getChildren().size()-1)).setFitWidth(50);
+					BackgroundImage backgroundImage=new BackgroundImage(imageMap.get(card), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+					Background background=new Background(backgroundImage);
+					controllerGUI.getHand().getChildren().add(new Button());
+					((Button)controllerGUI.getHand().getChildren().get(controllerGUI.getHand().getChildren().size()-1)).getStyleClass().add("card");
+					((Button)controllerGUI.getHand().getChildren().get(controllerGUI.getHand().getChildren().size()-1)).setBackground(background);
 				}			
 			}
 		});
