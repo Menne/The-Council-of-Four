@@ -895,7 +895,7 @@ public class ControllerGUI {
 	}
 	
 	@FXML
-	public void clickOnCityEski() {
+	public void clickOnCityEsti() {
 		synchronized (this) {
 			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
 			for (CityDTO city : region.getCities())
@@ -908,7 +908,7 @@ public class ControllerGUI {
 	@FXML
 	public void clickOnCityFramek() {
 		synchronized (this) {
-			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
+			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(1);
 			for (CityDTO city : region.getCities())
 				if ("Framek".equals(city.getName()))
 					view.setCurrentParameter(city);
@@ -919,7 +919,7 @@ public class ControllerGUI {
 	@FXML
 	public void clickOnCityGraden() {
 		synchronized (this) {
-			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
+			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(1);
 			for (CityDTO city : region.getCities())
 				if ("Graden".equals(city.getName()))
 					view.setCurrentParameter(city);
@@ -930,7 +930,7 @@ public class ControllerGUI {
 	@FXML
 	public void clickOnCityHellar() {
 		synchronized (this) {
-			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
+			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(1);
 			for (CityDTO city : region.getCities())
 				if ("Hellar".equals(city.getName()))
 					view.setCurrentParameter(city);
@@ -941,7 +941,7 @@ public class ControllerGUI {
 	@FXML
 	public void clickOnCityIndur() {
 		synchronized (this) {
-			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
+			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(1);
 			for (CityDTO city : region.getCities())
 				if ("Indur".equals(city.getName()))
 					view.setCurrentParameter(city);
@@ -952,7 +952,7 @@ public class ControllerGUI {
 	@FXML
 	public void clickOnCityJuvelar() {
 		synchronized (this) {
-			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
+			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(1);
 			for (CityDTO city : region.getCities())
 				if ("Juvelar".equals(city.getName()))
 					view.setCurrentParameter(city);
@@ -963,7 +963,7 @@ public class ControllerGUI {
 	@FXML
 	public void clickOnCityKultos() {
 		synchronized (this) {
-			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
+			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(2);
 			for (CityDTO city : region.getCities())
 				if ("Kultos".equals(city.getName()))
 					view.setCurrentParameter(city);
@@ -974,7 +974,7 @@ public class ControllerGUI {
 	@FXML
 	public void clickOnCityLyram() {
 		synchronized (this) {
-			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
+			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(2);
 			for (CityDTO city : region.getCities())
 				if ("Lyram".equals(city.getName()))
 					view.setCurrentParameter(city);
@@ -985,7 +985,7 @@ public class ControllerGUI {
 	@FXML
 	public void clickOnCityMerkatim() {
 		synchronized (this) {
-			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
+			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(2);
 			for (CityDTO city : region.getCities())
 				if ("Merkatim".equals(city.getName()))
 					view.setCurrentParameter(city);
@@ -996,7 +996,7 @@ public class ControllerGUI {
 	@FXML
 	public void clickOnCityNaris() {
 		synchronized (this) {
-			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
+			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(2);
 			for (CityDTO city : region.getCities())
 				if ("Naris".equals(city.getName()))
 					view.setCurrentParameter(city);
@@ -1007,7 +1007,7 @@ public class ControllerGUI {
 	@FXML
 	public void clickOnCityOsium() {
 		synchronized (this) {
-			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
+			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(2);
 			for (CityDTO city : region.getCities())
 				if ("Osium".equals(city.getName()))
 					view.setCurrentParameter(city);
