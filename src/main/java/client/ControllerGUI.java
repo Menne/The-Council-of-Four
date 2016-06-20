@@ -811,7 +811,7 @@ public class ControllerGUI {
 	@FXML
 	public void clickOnPermitTileRegionSea1() {
 		synchronized (this) {
-			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(0).getUncoveredPermitTiles()[0]);
+			view.setCurrentParameter(new Integer(0));
 			this.notify();
 		}
 	}
@@ -819,7 +819,7 @@ public class ControllerGUI {
 	@FXML
 	public void clickOnPermitTileRegionSea2() {
 		synchronized (this) {
-			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(0).getUncoveredPermitTiles()[1]);
+			view.setCurrentParameter(new Integer(1));
 			this.notify();
 		}
 	}
@@ -827,7 +827,7 @@ public class ControllerGUI {
 	@FXML
 	public void clickOnPermitTileRegionHill1() {
 		synchronized (this) {
-			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(1).getUncoveredPermitTiles()[0]);
+			view.setCurrentParameter(new Integer(0));
 			this.notify();
 		}
 	}
@@ -835,7 +835,7 @@ public class ControllerGUI {
 	@FXML
 	public void clickOnPermitTileRegionHill2() {
 		synchronized (this) {
-			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(1).getUncoveredPermitTiles()[1]);
+			view.setCurrentParameter(new Integer(1));
 			this.notify();
 		}
 	}
@@ -843,7 +843,7 @@ public class ControllerGUI {
 	@FXML
 	public void clickOnPermitTileRegionMountain1() {
 		synchronized (this) {
-			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(2).getUncoveredPermitTiles()[0]);
+			view.setCurrentParameter(new Integer(0));
 			this.notify();
 		}
 	}
@@ -851,7 +851,7 @@ public class ControllerGUI {
 	@FXML
 	public void clickOnPermitTileRegionMountain2() {
 		synchronized (this) {
-			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(2).getUncoveredPermitTiles()[1]);
+			view.setCurrentParameter(new Integer(1));
 			this.notify();
 		}
 	}

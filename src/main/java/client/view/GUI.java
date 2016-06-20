@@ -271,25 +271,57 @@ public class GUI extends ClientView{
 				e.printStackTrace();
 			}
 		}
-		return (RegionDTO) this.currentParameter;
+		RegionDTO region=(RegionDTO) this.currentParameter;
+		this.currentParameter=null;
+		return region;
 	}
 
 	@Override
 	public PermitTileDTO askForPermitTile(List<PermitTileDTO> acceptablePermitTiles) {
-		// TODO Auto-generated method stub
-		return null;
+		synchronized (this.controllerGUI) {
+			try {
+				while (currentParameter==null)
+					this.controllerGUI.wait();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		PermitTileDTO permitTile=(PermitTileDTO) this.currentParameter;
+		this.currentParameter=null;
+		return permitTile;
 	}
 
 	@Override
 	public CouncillorDTO askForCouncillor(List<CouncillorDTO> acceptableCouncillors) {
-		// TODO Auto-generated method stub
-		return null;
+		synchronized (this.controllerGUI) {
+			try {
+				while (currentParameter==null)
+					this.controllerGUI.wait();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		CouncillorDTO councillor=(CouncillorDTO) this.currentParameter;
+		this.currentParameter=null;
+		return councillor;
 	}
 	
 	@Override
 	public CouncillorDTO[] askForCouncilBalcony(List<CouncillorDTO[]> acceptableCouncillors) {
-		// TODO Auto-generated method stub
-		return null;
+		synchronized (this.controllerGUI) {
+			try {
+				while (currentParameter==null)
+					this.controllerGUI.wait();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		CouncillorDTO[] councillBalcony=(CouncillorDTO[]) this.currentParameter;
+		this.currentParameter=null;
+		return councillBalcony;
 	}
 
 	@Override
@@ -303,7 +335,9 @@ public class GUI extends ClientView{
 				e.printStackTrace();
 			}
 		}
-		return (CityDTO) this.currentParameter;
+		CityDTO city=(CityDTO) this.currentParameter;
+		this.currentParameter=null;
+		return city;
 	}
 
 	@Override
@@ -331,38 +365,89 @@ public class GUI extends ClientView{
 				e.printStackTrace();
 			}
 		}
-		return (List<PoliticsCardDTO>) this.currentParameter;
+		List<PoliticsCardDTO> cards=(List<PoliticsCardDTO>) this.currentParameter;
+		this.currentParameter=null;
+		return cards;
 	}
 
 	@Override
 	public int askForNumberOfPermitTile(List<Integer> acceptableNumberOfPermitTile) {
-		// TODO Auto-generated method stub
-		return 0;
+		synchronized (this.controllerGUI) {
+			try {
+				while (currentParameter==null)
+					this.controllerGUI.wait();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		int numberOfPermitTile=(int) this.currentParameter;
+		this.currentParameter=null;
+		return numberOfPermitTile;
 	}
 
 	@Override
 	public MarketableDTO askForMakingAnOffer(List<MarketableDTO> acceptableObjectsToOffer) {
-		// TODO Auto-generated method stub
-		return null;
+		synchronized (this.controllerGUI) {
+			try {
+				while (currentParameter==null)
+					this.controllerGUI.wait();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		MarketableDTO offeringObject=(MarketableDTO) this.currentParameter;
+		this.currentParameter=null;
+		return offeringObject;
 	}
 
 	@Override
 	public int askForPrice() {
-		// TODO Auto-generated method stub
-		return 0;
+		synchronized (this.controllerGUI) {
+			try {
+				while (currentParameter==null)
+					this.controllerGUI.wait();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		int price=(int) this.currentParameter;
+		this.currentParameter=null;
+		return price;
 	}
 	
 	@Override
 	public boolean askForOtherSelling() {
-		return false;
-		// TODO Auto-generated method stub
-		
+		synchronized (this.controllerGUI) {
+			try {
+				while (currentParameter==null)
+					this.controllerGUI.wait();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		boolean choice=(boolean) this.currentParameter;
+		this.currentParameter=null;
+		return choice;
 	}
 	
 	@Override
 	public OfferDTO askForAcceptingAnOffer(List<OfferDTO> acceptableOffers) {
-		// TODO Auto-generated method stub
-		return null;
+		synchronized (this.controllerGUI) {
+			try {
+				while (currentParameter==null)
+					this.controllerGUI.wait();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		OfferDTO offer=(OfferDTO) this.currentParameter;
+		this.currentParameter=null;
+		return offer;
 	}
 
 	
