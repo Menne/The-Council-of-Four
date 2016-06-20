@@ -27,7 +27,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -460,6 +459,18 @@ public class ControllerGUI {
 		return mountainRegion;
 	}
 
+	public Pane getSeaBalcony() {
+		return seaBalcony;
+	}
+
+	public Pane getHillBalcony() {
+		return hillBalcony;
+	}
+
+	public Pane getMountainBalcony() {
+		return mountainBalcony;
+	}
+
 	public Pane getKingBalcony() {
 		return kingBalcony;
 	}
@@ -670,7 +681,7 @@ public class ControllerGUI {
 	}
 	
 	@FXML
-	public void clickOnActionBuildByKing() {
+	public void startActionBuildByKing() {
 		BuildByKingDTO selectedAction=new BuildByKingDTO();
 		for (ActionDTO action : this.clientGame.getAvailableActions())
 			if (action instanceof BuildByKingDTO) {
@@ -865,14 +876,37 @@ public class ControllerGUI {
 		}
 	}
 	
+	
+	@FXML
+	public void clickOnBalconyRegionSea() {
+		synchronized (this) {
+			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(0).getBalcony());
+			this.notify();
+		}
+	}
+	
+	@FXML
+	public void clickOnBalconyRegionHill() {
+		synchronized (this) {
+			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(1).getBalcony());
+			this.notify();
+		}
+	}
+	
+	@FXML
+	public void clickOnBalconyRegionMountain() {
+		synchronized (this) {
+			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(2).getBalcony());
+			this.notify();
+		}
+	}
 
 	@FXML
-	public void clickOnKingBalcony() {
+	public void clickOnBalconyKing() {
 		synchronized (this) {
 			view.setCurrentParameter(clientGame.getClientGameTable().getClientKingBalcony());
 			this.notify();
 		}
-		
 	}
 
 	@FXML
@@ -1105,7 +1139,8 @@ public class ControllerGUI {
 	}
 
 	
-	public void handlePoliticsCard(PoliticsCardDTO selectedObject) {
+	public void handlePoliticsCard(PoliticsCardDTO selectedCard) {
+		this.view.setCurrentParameter(selectedCard);
 	}
 
 	

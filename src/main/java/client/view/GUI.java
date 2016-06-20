@@ -35,7 +35,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -47,7 +46,6 @@ import server.model.bonus.MainActionBonus;
 import server.model.bonus.NobilityBonus;
 import server.model.bonus.PoliticsCardsBonus;
 import server.model.bonus.ScoreBonus;
-import server.model.gameTable.CouncillorsReserve;
 
 
 public class GUI extends ClientView{
@@ -136,18 +134,19 @@ public class GUI extends ClientView{
 	}
 
 	
-	
 	public Object getCurrentParameter() {
 		return currentParameter;
 	}
 
-
-
 	public void setCurrentParameter(Object currentParameter) {
 		this.currentParameter = currentParameter;
 	}
-
-
+	
+	
+	public Connection getConnection() {
+		return this.connection;
+	}
+	
 	
 	@Override
 	public void update(ClientViewNotify notify) {
@@ -301,6 +300,7 @@ public class GUI extends ClientView{
 
 	@Override
 	public RegionDTO askForRegionBoard(List<RegionDTO> acceptableRegions) {
+		this.disableClickOnRegions(false);
 		synchronized (this.controllerGUI) {
 			try {
 				while (currentParameter==null)
@@ -312,6 +312,7 @@ public class GUI extends ClientView{
 		}
 		RegionDTO region=(RegionDTO) this.currentParameter;
 		this.currentParameter=null;
+		this.disableClickOnRegions(true);
 		return region;
 	}
 
@@ -349,6 +350,7 @@ public class GUI extends ClientView{
 	
 	@Override
 	public CouncillorDTO[] askForCouncilBalcony(List<CouncillorDTO[]> acceptableCouncillors) {
+		this.disableClickOnCouncilBalconies(false);
 		synchronized (this.controllerGUI) {
 			try {
 				while (currentParameter==null)
@@ -360,6 +362,7 @@ public class GUI extends ClientView{
 		}
 		CouncillorDTO[] councillBalcony=(CouncillorDTO[]) this.currentParameter;
 		this.currentParameter=null;
+		this.disableClickOnCouncilBalconies(true);
 		return councillBalcony;
 	}
 
@@ -381,23 +384,24 @@ public class GUI extends ClientView{
 
 	@Override
 	public List<PoliticsCardDTO> askForPoliticsCards(List<PoliticsCardDTO> acceptablePoliticsCards) {
-		for(Object object : controllerGUI.getHand().getChildren()){
-			Button button=(Button) object;
-			button.setDisable(false);
-		}
-		
-		synchronized (this.controllerGUI) {
-			try {
-				while (currentParameter==null)
-					this.controllerGUI.wait();
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		this.disableClickOnPoliticsCards(false);
+		List<PoliticsCardDTO> selectedCards=new ArrayList<>();
+		while (selectedCards.size()<=4) {
+			synchronized (this.controllerGUI) {
+				try {
+					while (currentParameter==null)
+						this.controllerGUI.wait();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
+			selectedCards.add((PoliticsCardDTO) this.currentParameter);
+			System.out.println(selectedCards);
+			this.currentParameter=null;
 		}
-		List<PoliticsCardDTO> cards=(List<PoliticsCardDTO>) this.currentParameter;
-		this.currentParameter=null;
-		return cards;
+		this.disableClickOnPoliticsCards(true);
+		return selectedCards;
 	}
 
 	@Override
@@ -497,7 +501,42 @@ public class GUI extends ClientView{
 	
 	
 	
-	public Connection getConnection() {
-		return this.connection;
+	
+	private void disableClickOnRegions(boolean disabled) {
+		this.controllerGUI.getSeaRegion().setDisable(disabled);
+		this.controllerGUI.getHillRegion().setDisable(disabled);
+		this.controllerGUI.getMountainRegion().setDisable(disabled);
 	}
+	
+	private void disableClickOnPermitTilesInHand(boolean disabled) {
+		
+	}
+
+	private void disableClickOnCouncillorsInReserve(boolean disabled) {
+	
+	}
+	
+	private void disableClickOnCouncilBalconies(boolean disabled) {
+		this.controllerGUI.getSeaBalcony().setDisable(disabled);
+		this.controllerGUI.getHillBalcony().setDisable(disabled);
+		this.controllerGUI.getMountainBalcony().setDisable(disabled);
+		this.controllerGUI.getKingBalcony().setDisable(disabled);
+	}
+	
+	private void disableClickOnCities(boolean disabled) {
+		
+	}
+	
+	private void disableClickOnPoliticsCards(boolean disabled) {
+		for (Object object : controllerGUI.getHand().getChildren()){
+			Button button=(Button) object;
+			button.setDisable(disabled);
+		}
+	}
+	
+	private void disableClickOnPermitTilesInRegions(boolean disabled) {
+		
+	}
+
+	
 }

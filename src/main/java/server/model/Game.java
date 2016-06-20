@@ -3,6 +3,7 @@ package server.model;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -19,6 +20,7 @@ import server.model.player.Player;
 import server.model.stateMachine.BeginState;
 import server.model.stateMachine.State;
 import server.view.notifies.EndGameNotify;
+import server.view.notifies.PlayerNotify;
 import server.view.notifies.ViewNotify;
  
 public class Game extends Observable<ViewNotify>{
@@ -64,10 +66,9 @@ public class Game extends Observable<ViewNotify>{
 		this.lastLap=false;
 		this.market=new Market();
 		
-		System.out.println(this.gameTable);
-		
-	/*	for (Player player : this.players)
-			this.notifyObserver(new PlayerNotify(this, Arrays.asList(player)));*/
+		for (Player player : this.players)
+			if (!player.equals(this.currentPlayer))
+				this.notifyObserver(new PlayerNotify(this, Arrays.asList(player)));
 		
 		this.state.updateClients(this);
 		
