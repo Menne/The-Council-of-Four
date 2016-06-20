@@ -226,6 +226,7 @@ public class GUI extends ClientView{
 			
 			@Override
 			public void run() {
+				controllerGUI.getHand().getChildren().clear();
 				for (PoliticsCardDTO card : player.getHand()){
 					controllerGUI.getHand().getChildren().add(new ImageView(imageMap.get(card)));
 					((ImageView)controllerGUI.getHand().getChildren().get(controllerGUI.getHand().getChildren().size()-1)).setFitHeight(90);
