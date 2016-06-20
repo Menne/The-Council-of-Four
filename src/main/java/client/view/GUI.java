@@ -483,7 +483,7 @@ public class GUI extends ClientView{
 	
 	
 	@Override
-	public void ChooseCityBonus() {
+	public void ChooseCityBonus(int numberOfCities) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -1,5 +1,7 @@
 package client.modelDTO.actionsDTO.bonusActions;
 
+import java.util.List;
+
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.ActionWithParameters;
 import client.modelDTO.actionsDTO.actionsParametersSetters.ActionParserVisitor;
@@ -14,24 +16,29 @@ public class ChooseCityActionDTO implements ActionDTO, ActionWithParameters{
 	 * 
 	 */
 	private static final long serialVersionUID = 8237414941174350412L;
-	private CityDTO selectedCity;
+	private List<CityDTO> selectedCities;
 	private boolean parametersSetted=false;
+	private final int numberOfCities;
+
+	public ChooseCityActionDTO(int numberOfCities) {
+		this.numberOfCities=numberOfCities;
+	}
 
 	@Override
 	public ActionParserVisitor setParser() {
 		return new ChooseCityBonusParser(this);
 	}
 	
-	public void setCity(CityDTO selectedCity) {
-		this.selectedCity=selectedCity;
+	public int getNumberOfCities() {
+		return this.numberOfCities;
 	}
 
-	public CityDTO getSelectedCity() {
-		return this.selectedCity;
+	public List<CityDTO> getSelectedCities() {
+		return this.selectedCities;
 	}
 
-	public void setSelectedCity(CityDTO selectedCity) {
-		this.selectedCity = selectedCity;
+	public void setSelectedCities(List<CityDTO> selectedCities) {
+		this.selectedCities=selectedCities;
 	}
 
 	@Override

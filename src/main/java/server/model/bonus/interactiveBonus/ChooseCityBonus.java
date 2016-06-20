@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 import server.model.Game;
 import server.model.bonus.Bonus;
+import server.view.notifies.CityBonusNotify;
 import server.view.notifies.MessageNotify;
-import server.view.notifies.PermitTileBonusNotify;
 
 /**
  * This bonus allows the current player to choose from a city in which he has already built,
@@ -23,6 +23,11 @@ public class ChooseCityBonus implements Bonus {
 	 * 
 	 */
 	private static final long serialVersionUID = 4260484811602988062L;
+	private final int numberOfCities;
+	
+	public ChooseCityBonus(int numberOfCities) {
+		this.numberOfCities=numberOfCities;
+	}
 
 	/**
 	 * Invokes the action associated o this bonus
@@ -32,7 +37,7 @@ public class ChooseCityBonus implements Bonus {
 	public void assignBonus(Game game) {
 		if (game.getCurrentPlayer().getRemainigEmporiums().size() < Game.getIntialnumberofemporiums()) {
 			game.setState(game.getState().interactiveBonusTransition());
-			game.notifyObserver(new PermitTileBonusNotify(Arrays.asList(game.getCurrentPlayer())));
+			game.notifyObserver(new CityBonusNotify(Arrays.asList(game.getCurrentPlayer()), this.numberOfCities));
 		}
 		else
 			game.notifyObserver(new MessageNotify("Unable to get bonus because you haven't build any emporiums yet!", 

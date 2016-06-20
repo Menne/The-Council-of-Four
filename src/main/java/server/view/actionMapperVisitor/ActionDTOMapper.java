@@ -260,8 +260,9 @@ public class ActionDTOMapper implements ActionMapperVisitor{
 		ChooseCityBonusAction action=new ChooseCityBonusAction();
 		
 		for (City city : this.game.getGameTable().getMap().getGameMap().vertexSet())
-			if(city.getName().equals(selectedActionDTO.getSelectedCity().getName()))
-				action.setSelectedCity(city);
+			for (CityDTO selectedCity : selectedActionDTO.getSelectedCities())
+				if (city.getName().equals(selectedCity.getName()))
+					action.setSelectedCity(city);
 		
 		return action;
 	}

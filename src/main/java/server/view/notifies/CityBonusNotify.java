@@ -9,14 +9,16 @@ import server.model.player.Player;
 public class CityBonusNotify implements ViewNotify {
 
 	private List<Player> interestedPlayers;
+	private final int numberOfCities;
 
-	public CityBonusNotify(List<Player> interestedPlayers) {
+	public CityBonusNotify(List<Player> interestedPlayers, int numberOfCities) {
 		this.interestedPlayers=interestedPlayers;
+		this.numberOfCities=numberOfCities;
 	}
 
 	@Override
 	public ClientNotify toClientNotify() {
-		return new CityBonusDTONotify();
+		return new CityBonusDTONotify(this.numberOfCities);
 	}
 
 	@Override

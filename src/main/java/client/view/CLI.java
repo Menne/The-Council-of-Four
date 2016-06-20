@@ -351,8 +351,8 @@ public class CLI extends ClientView {
 	
 	
 	@Override
-	public void ChooseCityBonus() {
-		ChooseCityActionDTO action=new ChooseCityActionDTO();
+	public void ChooseCityBonus(int numberOfCities) {
+		ChooseCityActionDTO action=new ChooseCityActionDTO(numberOfCities);
 		action.setParser().setParameters(this, this.clientGame);
 		if (action.checkIfParametersSetted());
 		try {

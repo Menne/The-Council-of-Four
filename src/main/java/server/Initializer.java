@@ -322,7 +322,7 @@ public class Initializer {
 		if("CoinsBonus".equals(s))
 			nobilityTrack.addBonus(Integer.parseInt(b.readLine()), new CoinsBonus(Integer.parseInt(b.readLine())));
 		if("ChooseCityBonus".equals(s))
-			nobilityTrack.addBonus(Integer.parseInt(b.readLine()), new ChooseCityBonus());
+			nobilityTrack.addBonus(Integer.parseInt(b.readLine()), new ChooseCityBonus(1));
 //		if(b.readLine()=="PickPermitTileBonus")
 //			nobilityTrack.addBonus(Integer.parseInt(b.readLine()), new PickPermitTileBonus());
 		if("PurchasedPermitTileBonus".equals(s))

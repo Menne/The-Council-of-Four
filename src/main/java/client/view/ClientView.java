@@ -84,7 +84,7 @@ public abstract class ClientView implements Observer<ClientViewNotify> {
 	public abstract OfferDTO askForAcceptingAnOffer(List<OfferDTO> acceptableOffers);
 	
 	
-	public abstract void ChooseCityBonus();
+	public abstract void ChooseCityBonus(int numberOfCities);
 	
 	public abstract void PurchasedPermitTileBonus();
 

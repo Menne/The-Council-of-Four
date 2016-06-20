@@ -2,6 +2,9 @@ package actionsDTOTests;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 
 import client.modelDTO.actionsDTO.actionsParametersSetters.ChooseCityBonusParser;
@@ -12,13 +15,13 @@ public class ChooseCityActionDTOTest {
 
 	@Test
 	public void testSetter() {
-		CityDTO selectedCity= new CityDTO();
-		ChooseCityActionDTO action= new ChooseCityActionDTO();
-		action.setCity(selectedCity);
+		List<CityDTO> selectedCities= new ArrayList<CityDTO>();
+		ChooseCityActionDTO action= new ChooseCityActionDTO(1);
+		action.setSelectedCities(selectedCities);
 		assertFalse(action.checkIfParametersSetted());
 		assertEquals(ChooseCityBonusParser.class, action.setParser().getClass());
 		action.parametersSetted();
 		assertTrue(action.checkIfParametersSetted());
-		assertTrue(action.getSelectedCity()==selectedCity);
+		assertTrue(action.getSelectedCities()==selectedCities);
 	}
 }
