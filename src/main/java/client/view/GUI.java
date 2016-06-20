@@ -260,13 +260,12 @@ public class GUI extends ClientView{
 					controllerGUI.getHand().getChildren().add(cardButton);
 					cardButton.setMinSize(controllerGUI.getHand().getPrefWidth(),controllerGUI.getHand().getPrefHeight());
 					cardButton.setBackground(background);
-					cardButton.setUserData(card);
 					cardButton.setOnAction(
 							new EventHandler<ActionEvent>() {
 
 								@Override
 								public void handle(ActionEvent event) {
-									controllerGUI.handlePoliticsCard(((Button)event.getSource()).getUserData());								
+									controllerGUI.handlePoliticsCard(card);								
 								}					
 					});
 					cardButton.setDisable(true);
@@ -382,20 +381,11 @@ public class GUI extends ClientView{
 
 	@Override
 	public List<PoliticsCardDTO> askForPoliticsCards(List<PoliticsCardDTO> acceptablePoliticsCards) {
-		for (PoliticsCardDTO politicsCard : acceptablePoliticsCards) {
-			Button tp= new Button();
-			tp.getStyleClass().add("politicsCard");
-			tp.getStylesheets().add("-fx-background-image: url('./client/view/images/cards/"+politicsCard.toString()+".png');");
-			tp.setUserData(politicsCard);
-			this.controllerGUI.getHand().getChildren().add(tp);
-			tp.setOnAction(new EventHandler<ActionEvent>() {
-				
-				@Override
-				public void handle(ActionEvent event) {
-					controllerGUI.handlePoliticsCard(event);
-				}
-			});
+		for(Object object : controllerGUI.getHand().getChildren()){
+			Button button=(Button) object;
+			button.setDisable(false);
 		}
+		
 		synchronized (this.controllerGUI) {
 			try {
 				while (currentParameter==null)

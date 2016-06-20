@@ -1105,8 +1105,7 @@ public class ControllerGUI {
 	}
 
 	
-	public void handlePoliticsCard(Object selectedObject) {
-		PoliticsCardDTO selectedCard=(PoliticsCardDTO) selectedObject;
+	public void handlePoliticsCard(PoliticsCardDTO selectedObject) {
 	}
 
 	
