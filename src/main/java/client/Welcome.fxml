@@ -18,7 +18,7 @@
          </image>
       </ImageView>
       <Button layoutX="322.0" layoutY="393.0" mnemonicParsing="false" onAction="#play" prefHeight="58.0" prefWidth="225.0" text="Play!" />
-      <TextArea layoutX="18.0" layoutY="38.0" opacity="0.52" prefHeight="150.0" prefWidth="604.0" text="Welcome to a The Council of Four!&#10;If you want to start a new game, please insert your name:" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="18.0">
+      <TextArea layoutX="18.0" layoutY="38.0" opacity="0.52" prefHeight="150.0" prefWidth="604.0" text="Welcome to The Council of Four!&#10;If you want to start a new game, please insert your name:" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="18.0">
          <font>
             <Font name="Algerian" size="21.0" />
          </font>
