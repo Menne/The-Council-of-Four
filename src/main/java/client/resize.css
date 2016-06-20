@@ -1,28 +1,38 @@
 
-.percorsoNobilta{
-	-fx-background-image: url("nobility.jpg");  
-	-fx-background-size: contain;
-	-fx-background-repeat: no-repeat;
-}
-
-.map{
-	-fx-background-image: url("legno.png");  
-	-fx-background-size: contain;
-	-fx-background-repeat: no-repeat;
-}
-
 .sfondo{
 	-fx-background-image: url("sfondo.gif");  
 	-fx-background-repeat: repeat;
+/* 	-fx-background-size: contain;*/
 }
 
-.button {
-    -fx-padding: 5 22 5 22;   
-    -fx-border-color: #e2e2e2;
-    -fx-border-width: 2;
+.button { 
+    -fx-border-color: #6b4208;
+    -fx-border-width: 1;
+    -fx-border-curve: yes;
     -fx-background-radius: 0;
-    -fx-background-color: #8c8a3a;
+    -fx-background-color: #d1ca85;
     -fx-font: 13 Papyrus;
     -fx-text-fill: #6b4208;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+.label {
+	 -fx-font: 15 Papyrus;
+    -fx-text-fill: #6b4208;
+   /*  -fx-font-weight: bold; */
+}
+
+/*
+.tab{
+	-fx-background: red;
+}*/
+
+.submit {
+  -fx-background-color: #d1ca85; /* colore di sfondo    */
+  -fx-border: 2px solid #d1ca85; /* bordo dell'elemento */
+  -fx-color: #d1ca85;               /* colore dello sfondo giusto   */
+ /*  -fx-font-weight: bold;         /* testo in grassetto  */
+  -fx-padding: 0;                /* padding             */
+  -fx-height: 25px;              /* altezza             */
+  -fx-width: 80px;               /* larghezza           */
 }

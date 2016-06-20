@@ -22,6 +22,10 @@ public class CityDTO implements ModelDTO{
 		this.buildedEmporiums=new HashSet<>();
 	}
 	
+	public CityDTO(String name){
+		this.name=name;
+	}
+	
 	
 	public String getName() {
 		return name;
