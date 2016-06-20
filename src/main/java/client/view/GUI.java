@@ -317,7 +317,7 @@ public class GUI extends ClientView{
 				
 				@Override
 				public void handle(ActionEvent event) {
-					controllerGUI.handleCartaPolitica(event);
+					controllerGUI.handlePoliticsCard(event);
 				}
 			});
 		}

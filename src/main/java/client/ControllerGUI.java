@@ -1096,7 +1096,7 @@ public class ControllerGUI {
 	}
 
 	
-	public void handleCartaPolitica(ActionEvent event) {
+	public void handlePoliticsCard(ActionEvent event) {
 		((Button)event.getSource()).getUserData();
 	}
 
