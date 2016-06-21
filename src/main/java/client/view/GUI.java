@@ -213,7 +213,42 @@ public class GUI extends ClientView{
 	}
 	
 	private void displayCities(GameTableDTO clientGame) {
-		
+		for (CityDTO city : clientGame.getClientRegions().get(0).getCities()) {
+			if ("Arkon".equals(city.getName()))
+				controllerGUI.getArkon().setUserData(city);
+			if ("Burgen".equals(city.getName()))
+				controllerGUI.getBurgen().setUserData(city);
+			if ("Castrum".equals(city.getName()))
+				controllerGUI.getCastrum().setUserData(city);
+			if ("Dorful".equals(city.getName()))
+				controllerGUI.getDorful().setUserData(city);
+			if ("Esti".equals(city.getName()))
+				controllerGUI.getEsti().setUserData(city);
+		}
+		for (CityDTO city : clientGame.getClientRegions().get(0).getCities()) {
+			if ("Framek".equals(city.getName()))
+				controllerGUI.getFramek().setUserData(city);
+			if ("Graden".equals(city.getName()))
+				controllerGUI.getGraden().setUserData(city);
+			if ("Hellar".equals(city.getName()))
+				controllerGUI.getHellar().setUserData(city);
+			if ("Indur".equals(city.getName()))
+				controllerGUI.getIndur().setUserData(city);
+			if ("Juvelar".equals(city.getName()))
+				controllerGUI.getJuvelar().setUserData(city);
+		}
+		for (CityDTO city : clientGame.getClientRegions().get(0).getCities()) {
+			if ("Kultos".equals(city.getName()))
+				controllerGUI.getKultos().setUserData(city);
+			if ("Lyram".equals(city.getName()))
+				controllerGUI.getLyram().setUserData(city);
+			if ("Merkatim".equals(city.getName()))
+				controllerGUI.getMerkatim().setUserData(city);
+			if ("Naris".equals(city.getName()))
+				controllerGUI.getNaris().setUserData(city);
+			if ("Osium".equals(city.getName()))
+				controllerGUI.getOsium().setUserData(city);
+		}
 	}
 
 	private void diplayBalconies(GameTableDTO clientGame) {
