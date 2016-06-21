@@ -733,6 +733,12 @@ public class ControllerGUI {
 					@Override
 					public void run() {
 						selectedAction.setParser().setParameters(view, clientGame);
+						try {
+							view.getConnection().sendAction(selectedAction);
+						} catch (RemoteException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
 				});
 				return;
@@ -775,6 +781,12 @@ public class ControllerGUI {
 					@Override
 					public void run() {
 						selectedAction.setParser().setParameters(view, clientGame);
+						try {
+							view.getConnection().sendAction(selectedAction);
+						} catch (RemoteException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
 				});
 				return;
@@ -793,6 +805,12 @@ public class ControllerGUI {
 					@Override
 					public void run() {
 						selectedAction.setParser().setParameters(view, clientGame);
+						try {
+							view.getConnection().sendAction(selectedAction);
+						} catch (RemoteException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
 				});
 				return;
@@ -821,6 +839,12 @@ public class ControllerGUI {
 					@Override
 					public void run() {
 						selectedAction.setParser().setParameters(view, clientGame);
+						try {
+							view.getConnection().sendAction(selectedAction);
+						} catch (RemoteException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
 				});
 				return;
@@ -839,6 +863,12 @@ public class ControllerGUI {
 					@Override
 					public void run() {
 						selectedAction.setParser().setParameters(view, clientGame);
+						try {
+							view.getConnection().sendAction(selectedAction);
+						} catch (RemoteException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
 				});
 				return;
@@ -879,6 +909,12 @@ public class ControllerGUI {
 					@Override
 					public void run() {
 						selectedAction.setParser().setParameters(view, clientGame);
+						try {
+							view.getConnection().sendAction(selectedAction);
+						} catch (RemoteException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
 				});
 				return;
@@ -897,6 +933,12 @@ public class ControllerGUI {
 					@Override
 					public void run() {
 						selectedAction.setParser().setParameters(view, clientGame);
+						try {
+							view.getConnection().sendAction(selectedAction);
+						} catch (RemoteException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
 				});
 				return;
