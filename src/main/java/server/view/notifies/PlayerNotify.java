@@ -21,7 +21,6 @@ public class PlayerNotify implements ViewNotify {
 
 	@Override
 	public ClientNotify toClientNotify() {
-		System.out.println(this.player.getHand());
 		return new ClientPlayerDTONotify(this.game.getGameMapper().clientPlayerMap(this.player));
 	}
 
