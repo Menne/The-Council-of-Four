@@ -41,6 +41,7 @@ import server.model.bonus.MainActionBonus;
 import server.model.bonus.NobilityBonus;
 import server.model.bonus.PoliticsCardsBonus;
 import server.model.bonus.ScoreBonus;
+import server.model.gameTable.CouncilBalcony;
 
 
 public class GUI extends ClientView{
@@ -340,6 +341,7 @@ public class GUI extends ClientView{
 
 	@Override
 	public CouncillorDTO askForCouncillor(List<CouncillorDTO> acceptableCouncillors) {
+		this.disableClickOnCouncillorsInReserve(false);
 		synchronized (this.controllerGUI) {
 			try {
 				while (currentParameter==null)
@@ -351,6 +353,7 @@ public class GUI extends ClientView{
 		}
 		CouncillorDTO councillor=(CouncillorDTO) this.currentParameter;
 		this.currentParameter=null;
+		this.disableClickOnCouncillorsInReserve(true);
 		return councillor;
 	}
 	
@@ -366,10 +369,11 @@ public class GUI extends ClientView{
 				e.printStackTrace();
 			}
 		}
-		CouncillorDTO[] councillBalcony=(CouncillorDTO[]) this.currentParameter;
+		CouncillorDTO[] councilBalcony=(CouncillorDTO[]) this.currentParameter;
+		System.out.println(councilBalcony);
 		this.currentParameter=null;
 		this.disableClickOnCouncilBalconies(true);
-		return councillBalcony;
+		return councilBalcony;
 	}
 
 	@Override
@@ -392,9 +396,9 @@ public class GUI extends ClientView{
 
 	@Override
 	public List<PoliticsCardDTO> askForPoliticsCards(List<PoliticsCardDTO> acceptablePoliticsCards) {
-		this.disableClickOnPoliticsCards(true);
+		this.disableClickOnPoliticsCards(false);
 		List<PoliticsCardDTO> selectedCards=new ArrayList<>();
-		while (selectedCards.size()<=4) {
+		while (selectedCards.size()<CouncilBalcony.getNumberofcouncillors()) {
 			synchronized (this.controllerGUI) {
 				try {
 					while (currentParameter==null)
@@ -405,7 +409,6 @@ public class GUI extends ClientView{
 				}
 			}
 			selectedCards.add((PoliticsCardDTO) this.currentParameter);
-			System.out.println(selectedCards);
 			this.currentParameter=null;
 		}
 		this.disableClickOnPoliticsCards(true);
@@ -521,7 +524,14 @@ public class GUI extends ClientView{
 	}
 
 	private void disableClickOnCouncillorsInReserve(boolean disabled) {
-	
+		this.controllerGUI.getCouncillorReserve().get(0).setDisable(disabled);
+		this.controllerGUI.getCouncillorReserve().get(1).setDisable(disabled);
+		this.controllerGUI.getCouncillorReserve().get(2).setDisable(disabled);
+		this.controllerGUI.getCouncillorReserve().get(3).setDisable(disabled);
+		this.controllerGUI.getCouncillorReserve().get(4).setDisable(disabled);
+		this.controllerGUI.getCouncillorReserve().get(5).setDisable(disabled);
+		this.controllerGUI.getCouncillorReserve().get(6).setDisable(disabled);
+		this.controllerGUI.getCouncillorReserve().get(7).setDisable(disabled);
 	}
 	
 	private void disableClickOnCouncilBalconies(boolean disabled) {
