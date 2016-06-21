@@ -2,8 +2,6 @@ package server.model.gameTable;
  
 import java.util.List;
 
-import server.model.bonus.ScoreBonus;
-
 public class GameTable {
 	
 	private final Map map;
