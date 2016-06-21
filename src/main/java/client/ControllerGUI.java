@@ -1029,72 +1029,7 @@ public class ControllerGUI {
 			this.notify();
 		}
 	}
-	
-	@FXML
-	public void clickOnReserveCouncillor1() {
-		synchronized (this) {
-			view.setCurrentParameter(clientGame.getClientGameTable().getClientCouncillorReserve().get(0));
-			this.notify();
-		}
-	}
-
-	@FXML
-	public void clickOnReserveCouncillor2() {
-		synchronized (this) {
-			view.setCurrentParameter(clientGame.getClientGameTable().getClientCouncillorReserve().get(1));
-			this.notify();
-		}
-	}
-
-	@FXML
-	public void clickOnReserveCouncillor3() {
-		synchronized (this) {
-			view.setCurrentParameter(clientGame.getClientGameTable().getClientCouncillorReserve().get(2));
-			this.notify();
-		}
-	}
-
-	@FXML
-	public void clickOnReserveCouncillor4() {
-		synchronized (this) {
-			view.setCurrentParameter(clientGame.getClientGameTable().getClientCouncillorReserve().get(3));
-			this.notify();
-		}
-	}
-
-	@FXML
-	public void clickOnReserveCouncillor5() {
-		synchronized (this) {
-			view.setCurrentParameter(clientGame.getClientGameTable().getClientCouncillorReserve().get(4));
-			this.notify();
-		}
-	}
-
-	@FXML
-	public void clickOnReserveCouncillor6() {
-		synchronized (this) {
-			view.setCurrentParameter(clientGame.getClientGameTable().getClientCouncillorReserve().get(5));
-			this.notify();
-		}
-	}
-
-	@FXML
-	public void clickOnReserveCouncillor7() {
-		synchronized (this) {
-			view.setCurrentParameter(clientGame.getClientGameTable().getClientCouncillorReserve().get(6));
-			this.notify();
-		}
-	}
-
-	@FXML
-	public void clickOnReserveCouncillor8() {
-		synchronized (this) {
-			view.setCurrentParameter(clientGame.getClientGameTable().getClientCouncillorReserve().get(7));
-			this.notify();
-		}
-	}
-	
-	
+		
 	@FXML
 	public void clickOnCity(Event event) {
 		synchronized (this) {
@@ -1102,7 +1037,6 @@ public class ControllerGUI {
 			this.notify();
 		}
 	}
-	
 
 	@FXML
 	public void stopDiscarding(){

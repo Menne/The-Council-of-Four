@@ -258,7 +258,7 @@ public class GUI extends ClientView{
 		controllerGUI.getKingBalcony().setUserData(clientGame.getClientKingBalcony());
 	}
 	
-	private void displayPermitTiles(GameTableDTO clientGame){
+	private void displayPermitTiles(GameTableDTO clientGame) {
 		controllerGUI.getSeaPermitTile()[0].setImage(imageMap.get(clientGame.getClientRegions().get(0).getUncoveredPermitTiles()[0]));
 		controllerGUI.getSeaPermitTile()[0].setUserData(new Integer(0));
 		controllerGUI.getSeaPermitTile()[1].setImage(imageMap.get(clientGame.getClientRegions().get(0).getUncoveredPermitTiles()[1]));
@@ -304,19 +304,25 @@ public class GUI extends ClientView{
 		}
 	}
 	
-	private void displayCouncillors(GameTableDTO clientGame){
-		for(RegionDTO region : clientGame.getClientRegions())
-			for(int i=0; i<4; i++)
+	private void displayCouncillors(GameTableDTO clientGame) {
+		for (RegionDTO region : clientGame.getClientRegions())
+			for (int i=0; i<4; i++) {
 				controllerGUI.getCouncillors(region).get(i).setImage(imageMap.get(region.getBalcony()[i]));
-		for(int i=0; i<4; i++)
+				controllerGUI.getCouncillors(region).get(i).setUserData(region.getBalcony()[i]);
+			}
+		for (int i=0; i<4; i++) {
 			controllerGUI.getKingCouncillors().get(i).setImage(imageMap.get(clientGame.getClientKingBalcony()[i]));
-			for(int i=0; i<8; i++)
-			controllerGUI.getCouncillorReserve().get(i).setImage(imageMap.get(clientGame.getClientCouncillorReserve().get(i)));			
+			controllerGUI.getKingCouncillors().get(i).setUserData(clientGame.getClientKingBalcony()[i]);
+		}
+		for (int i=0; i<8; i++) {
+			controllerGUI.getCouncillorReserve().get(i).setImage(imageMap.get(clientGame.getClientCouncillorReserve().get(i)));
+			controllerGUI.getCouncillorReserve().get(i).setUserData(clientGame.getClientCouncillorReserve().get(i));
+		}
 	}
 	
 	private void displayTokens(GameTableDTO clientGame){
-		for(RegionDTO region : clientGame.getClientRegions())
-			for(CityDTO city : region.getCities())
+		for (RegionDTO region : clientGame.getClientRegions())
+			for (CityDTO city : region.getCities())
 				controllerGUI.getRewardToken(city).setImage(imageMap.get(city.getRewardToken()));
 	}
 
@@ -344,7 +350,7 @@ public class GUI extends ClientView{
 					});
 					imageView.setDisable(true);
 				}
-				for(PermitTileDTO permitTileDTO : player.getAvailablePermitTiles()){
+				for (PermitTileDTO permitTileDTO : player.getAvailablePermitTiles()){
 					ImageView imageView=new ImageView(imageMap.get(permitTileDTO));
 					controllerGUI.getPermitTilesTurnedUpOwned().getChildren().add(imageView);
 					imageView.setFitHeight(70);
