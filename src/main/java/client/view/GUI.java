@@ -41,6 +41,7 @@ import server.model.bonus.MainActionBonus;
 import server.model.bonus.NobilityBonus;
 import server.model.bonus.PoliticsCardsBonus;
 import server.model.bonus.ScoreBonus;
+import server.model.gameTable.CouncilBalcony;
 
 
 public class GUI extends ClientView{
@@ -389,7 +390,7 @@ public class GUI extends ClientView{
 	public List<PoliticsCardDTO> askForPoliticsCards(List<PoliticsCardDTO> acceptablePoliticsCards) {
 		this.disableClickOnPoliticsCards(false);
 		List<PoliticsCardDTO> selectedCards=new ArrayList<>();
-		while (selectedCards.size()<4) {
+		while (selectedCards.size()<CouncilBalcony.getNumberofcouncillors()) {
 			synchronized (this.controllerGUI) {
 				try {
 					while (currentParameter==null)

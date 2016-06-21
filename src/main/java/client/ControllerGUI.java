@@ -26,7 +26,6 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -742,7 +741,7 @@ public class ControllerGUI {
 	}
 	
 	@FXML
-	public void startActionAcquirePermitTile() {
+	public void startActionAcquirePermitTile() throws RemoteException {
 		AcquirePermitTileDTO selectedAction=new AcquirePermitTileDTO();
 		for (ActionDTO action : this.clientGame.getAvailableActions())
 			if (action instanceof AcquirePermitTileDTO) {
@@ -752,11 +751,17 @@ public class ControllerGUI {
 					@Override
 					public void run() {
 						selectedAction.setParser().setParameters(view, clientGame);
+						try {
+							view.getConnection().sendAction(selectedAction);
+						} catch (RemoteException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
 				});
 				return;
 			}
-		this.view.displayError("Sorry, action not available!");
+			this.view.displayError("Sorry, action not available!");
 	}
 	
 	@FXML
