@@ -464,7 +464,14 @@ public class ControllerGUI {
 	@FXML
 	private Button descardPoliticsCards;
 	
+	@FXML
+	private VBox playersBonuses;
 	
+	
+	public VBox getPlayersBonuses() {
+		return playersBonuses;
+	}
+
 	public HBox getPermitTilesTurnedUpOwned() {
 		return permitTilesTurnedUpOwned;
 	}

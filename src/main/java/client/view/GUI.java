@@ -137,9 +137,9 @@ public class GUI extends ClientView{
 		imageMap.put(new BonusTileDTO("King", new ScoreBonus(7)), new Image(getClass().getResource("images/kingBonus/kingRewardTile4.png").toExternalForm()));
 		imageMap.put(new BonusTileDTO("King", new ScoreBonus(3)), new Image(getClass().getResource("images/kingBonus/kingRewardTile5.png").toExternalForm()));
 		imageMap.put(new BonusTileDTO("Blue", new ScoreBonus(5)), new Image(getClass().getResource("images/colourBonus/BlueBonus.png").toExternalForm()));
-		imageMap.put(new BonusTileDTO("Bronze", new ScoreBonus(8)), new Image(getClass().getResource("images/kingBonus/BronzeBonus.png").toExternalForm()));
-		imageMap.put(new BonusTileDTO("Gold", new ScoreBonus(20)), new Image(getClass().getResource("images/kingBonus/GoldBonus.png").toExternalForm()));
-		imageMap.put(new BonusTileDTO("Silver", new ScoreBonus(12)), new Image(getClass().getResource("images/kingBonus/SilverBonus.png").toExternalForm()));
+		imageMap.put(new BonusTileDTO("Bronze", new ScoreBonus(8)), new Image(getClass().getResource("images/colourBonus/BronzeBonus.png").toExternalForm()));
+		imageMap.put(new BonusTileDTO("Gold", new ScoreBonus(20)), new Image(getClass().getResource("images/colourBonus/GoldBonus.png").toExternalForm()));
+		imageMap.put(new BonusTileDTO("Silver", new ScoreBonus(12)), new Image(getClass().getResource("images/colourBonus/SilverBonus.png").toExternalForm()));
 	}
 
 	
@@ -315,6 +315,13 @@ public class GUI extends ClientView{
 				controllerGUI.getPlayerAssistants().setText(String.valueOf(player.getAssistants().size()));
 				controllerGUI.getPlayerNobility().setText(String.valueOf(player.getNobility()));
 				controllerGUI.getPlayerScore().setText(String.valueOf(player.getScore()));
+				controllerGUI.getPlayersBonuses().getChildren().clear();
+				for(BonusTileDTO bonusTileDTO : player.getFinalBonuses()){
+					ImageView imageView =new ImageView(imageMap.get(bonusTileDTO));
+					controllerGUI.getPlayersBonuses().getChildren().add(imageView);
+					imageView.setFitWidth(40);
+					imageView.setPreserveRatio(true);
+				}
 			}
 		});
 		
