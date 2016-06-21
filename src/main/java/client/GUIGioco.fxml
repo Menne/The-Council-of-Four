@@ -45,19 +45,36 @@
                                     </ScrollPane>
                                  </children>
                               </AnchorPane>
-                            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="306.0">
+                              <HBox>
                                  <children>
-                                    <ScrollPane layoutX="41.0" layoutY="-68.0" prefHeight="100.0" prefWidth="306.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                      <content>
-                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="81.0" prefWidth="404.0" styleClass="sfondo">
-                                             <children>
-                                                <HBox fx:id="permitTilesTurnedDownOwned" layoutX="26.0" layoutY="-25.0" prefHeight="81.0" prefWidth="404.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                             </children>
-                                          </AnchorPane>
-                                      </content>
-                                    </ScrollPane>
+                                  <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="223.0">
+                                       <children>
+                                          <ScrollPane layoutX="41.0" layoutY="-68.0" prefHeight="100.0" prefWidth="306.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="81.0" prefWidth="308.0" styleClass="sfondo">
+                                                   <children>
+                                                      <HBox fx:id="permitTilesTurnedDownOwned" layoutX="26.0" layoutY="-25.0" prefHeight="81.0" prefWidth="404.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                   </children>
+                                                </AnchorPane>
+                                            </content>
+                                          </ScrollPane>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                       <children>
+                                          <ScrollPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <content>
+                                                <AnchorPane prefHeight="201.0" prefWidth="66.0" styleClass="sfondo">
+                                                   <children>
+                                                      <VBox prefHeight="201.0" prefWidth="66.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </ScrollPane>
+                                       </children>
+                                    </AnchorPane>
                                  </children>
-                              </AnchorPane>
+                              </HBox>
                           </items>
                         </SplitPane>
                      </children></AnchorPane>
