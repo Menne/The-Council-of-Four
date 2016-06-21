@@ -200,6 +200,7 @@ public class GUI extends ClientView{
 	}
 	
 	private void displayPlayers(List<GenericPlayerDTO> players){
+		players.get(0).getAvailablePermitTiles().addAll(Arrays.asList(new PermitTileDTO(new HashSet<>(Arrays.asList(new CityDTO("Framek"), new CityDTO("Graden"))),new HashSet<>(Arrays.asList(new CoinsBonus(5)))), new PermitTileDTO(new HashSet<>(Arrays.asList(new CityDTO("Framek"), new CityDTO("Graden"))),new HashSet<>(Arrays.asList(new CoinsBonus(5)))), new PermitTileDTO(new HashSet<>(Arrays.asList(new CityDTO("Framek"), new CityDTO("Graden"))),new HashSet<>(Arrays.asList(new CoinsBonus(5)))), new PermitTileDTO(new HashSet<>(Arrays.asList(new CityDTO("Framek"), new CityDTO("Graden"))),new HashSet<>(Arrays.asList(new CoinsBonus(5)))), new PermitTileDTO(new HashSet<>(Arrays.asList(new CityDTO("Framek"), new CityDTO("Graden"))),new HashSet<>(Arrays.asList(new CoinsBonus(5)))), new PermitTileDTO(new HashSet<>(Arrays.asList(new CityDTO("Framek"), new CityDTO("Graden"))),new HashSet<>(Arrays.asList(new CoinsBonus(5)))), new PermitTileDTO(new HashSet<>(Arrays.asList(new CityDTO("Framek"), new CityDTO("Graden"))),new HashSet<>(Arrays.asList(new CoinsBonus(5)))), new PermitTileDTO(new HashSet<>(Arrays.asList(new CityDTO("Framek"), new CityDTO("Graden"))),new HashSet<>(Arrays.asList(new CoinsBonus(5)))), new PermitTileDTO(new HashSet<>(Arrays.asList(new CityDTO("Framek"), new CityDTO("Graden"))),new HashSet<>(Arrays.asList(new CoinsBonus(5))))));
 		List<GenericPlayerDTO> orderedPlayers = new ArrayList<>(players);
 		Collections.sort(orderedPlayers, new Comparator<GenericPlayerDTO>() {
 
@@ -224,7 +225,7 @@ public class GUI extends ClientView{
 			for(PermitTileDTO permitTileDTO : orderedPlayers.get(i).getAvailablePermitTiles()){
 				ImageView imageView=new ImageView(imageMap.get(permitTileDTO));
 				controllerGUI.getPermitTilesOtherPlayers().get(i).getChildren().add(imageView);
-				imageView.setFitHeight(50);
+				imageView.setFitHeight(60);
 				imageView.setPreserveRatio(true);
 			}
 		}
@@ -253,6 +254,7 @@ public class GUI extends ClientView{
 			@Override
 			public void run() {
 				controllerGUI.getHand().getChildren().clear();
+				controllerGUI.getPermitTilesTurnedUpOwned().getChildren().clear();
 				for (PoliticsCardDTO card : player.getHand()){
 					ImageView imageView=new ImageView(imageMap.get(card));
 					controllerGUI.getHand().getChildren().add(imageView);
@@ -267,7 +269,13 @@ public class GUI extends ClientView{
 						}
 					});
 					imageView.setDisable(true);
-				}			
+				}
+				for(PermitTileDTO permitTileDTO : player.getAvailablePermitTiles()){
+					ImageView imageView=new ImageView(imageMap.get(permitTileDTO));
+					controllerGUI.getPermitTilesTurnedUpOwned().getChildren().add(imageView);
+					imageView.setFitHeight(70);
+					imageView.setPreserveRatio(true);
+				}
 				controllerGUI.getPlayerCoins().setText(String.valueOf(player.getCoins()));
 				controllerGUI.getPlayerAssistants().setText(String.valueOf(player.getAssistants().size()));
 				controllerGUI.getPlayerNobility().setText(String.valueOf(player.getNobility()));
