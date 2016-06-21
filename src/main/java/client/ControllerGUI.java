@@ -460,6 +460,9 @@ public class ControllerGUI {
 	@FXML
 	private HBox permitTilesTurnedDownOwned;
 	
+	@FXML
+	private Button descardPoliticsCards;
+	
 	
 	public HBox getPermitTilesTurnedUpOwned() {
 		return permitTilesTurnedUpOwned;

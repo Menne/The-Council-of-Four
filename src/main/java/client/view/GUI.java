@@ -28,7 +28,6 @@ import client.modelDTO.gameTableDTO.RewardTokenDTO;
 import client.modelDTO.marketDTO.MarketDTO;
 import client.modelDTO.marketDTO.MarketableDTO;
 import client.modelDTO.marketDTO.OfferDTO;
-import client.modelDTO.playerDTO.BonusTile;
 import client.modelDTO.playerDTO.ClientPlayerDTO;
 import client.view.notifies.ClientViewNotify;
 import javafx.application.Platform;
@@ -128,18 +127,7 @@ public class GUI extends ClientView{
 		imageMap.put(new PermitTileDTO(new HashSet<>(Arrays.asList(new CityDTO("Kultos"), new CityDTO("Lyram"))),new HashSet<>(Arrays.asList(new PoliticsCardsBonus(1),new AssistantsBonus(1)))), new Image(getClass().getResource("images/mountainPermitTile/2.13.png").toExternalForm()));
 		imageMap.put(new PermitTileDTO(new HashSet<>(Arrays.asList(new CityDTO("Naris"), new CityDTO("Merkatim"))),new HashSet<>(Arrays.asList(new MainActionBonus()))), new Image(getClass().getResource("images/mountainPermitTile/2.14.png").toExternalForm()));
 		imageMap.put(new PermitTileDTO(new HashSet<>(Arrays.asList(new CityDTO("Naris"), new CityDTO("Osium"))),new HashSet<>(Arrays.asList(new ScoreBonus(2),new PoliticsCardsBonus(2)))), new Image(getClass().getResource("images/mountainPermitTile/2.15.png").toExternalForm()));
-		imageMap.put(new BonusTile("Sea", new ScoreBonus(5)), new Image(getClass().getResource("images/bonusTiles/bonusMare.png").toExternalForm()));
-		imageMap.put(new BonusTile("Hill", new ScoreBonus(5)), new Image(getClass().getResource("images/bonusTiles/bonusColline.png").toExternalForm()));
-		imageMap.put(new BonusTile("Mountain", new ScoreBonus(5)), new Image(getClass().getResource("images/bonusTiles/bonusMontagna.png").toExternalForm()));
-		imageMap.put(new BonusTile("King", new ScoreBonus(25)), new Image(getClass().getResource("images/kingBonus/kingRewardTile1.png").toExternalForm()));
-		imageMap.put(new BonusTile("King", new ScoreBonus(18)), new Image(getClass().getResource("images/kingBonus/kingRewardTile2.png").toExternalForm()));
-		imageMap.put(new BonusTile("King", new ScoreBonus(12)), new Image(getClass().getResource("images/kingBonus/kingRewardTile3.png").toExternalForm()));
-		imageMap.put(new BonusTile("King", new ScoreBonus(7)), new Image(getClass().getResource("images/kingBonus/kingRewardTile4.png").toExternalForm()));
-		imageMap.put(new BonusTile("King", new ScoreBonus(3)), new Image(getClass().getResource("images/kingBonus/kingRewardTile5.png").toExternalForm()));
-		imageMap.put(new BonusTile("Blue", new ScoreBonus(5)), new Image(getClass().getResource("images/colourBonus/BlueBonus.png").toExternalForm()));
-		imageMap.put(new BonusTile("Bronze", new ScoreBonus(8)), new Image(getClass().getResource("images/kingBonus/BronzeBonus.png").toExternalForm()));
-		imageMap.put(new BonusTile("Gold", new ScoreBonus(20)), new Image(getClass().getResource("images/kingBonus/GoldBonus.png").toExternalForm()));
-		imageMap.put(new BonusTile("Silver", new ScoreBonus(12)), new Image(getClass().getResource("images/kingBonus/SilverBonus.png").toExternalForm()));
+	//	imageMap.put(new BonusTile("Sea", new ScoreBonus(5)), new Image(getClass().getResource( )))
 	}
 
 	
@@ -198,13 +186,8 @@ public class GUI extends ClientView{
 				displayTokens(clientGame);
 				displayPlayers(clientGame.getClientPlayers());
 				displayPermitTiles(clientGame);
-				displayBonusTiles(clientGame);
 			}
 		});
-		
-	}
-	
-	private void displayBonusTiles(GameTableDTO clientGame){
 		
 	}
 	
@@ -587,6 +570,12 @@ public class GUI extends ClientView{
 			imageView.setDisable(disabled);
 		}
 	}
+	
+	private void disableClickOnDescardButton(boolean disabled) {
+		this.controllerGUI.getOsium().setDisable(disabled);
+	}
+	
+	
 	
 	private void disableClickOnPermitTilesInRegions(boolean disabled) {
 		
