@@ -31,15 +31,11 @@ import client.modelDTO.marketDTO.OfferDTO;
 import client.modelDTO.playerDTO.ClientPlayerDTO;
 import client.view.notifies.ClientViewNotify;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
+import javafx.scene.image.ImageView;
 import server.model.bonus.AssistantsBonus;
 import server.model.bonus.CoinsBonus;
 import server.model.bonus.MainActionBonus;
@@ -253,21 +249,19 @@ public class GUI extends ClientView{
 			public void run() {
 				controllerGUI.getHand().getChildren().clear();
 				for (PoliticsCardDTO card : player.getHand()){
-					BackgroundImage backgroundImage=new BackgroundImage(imageMap.get(card), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(50, 90, false, false, true, false));
-					Background background=new Background(backgroundImage);
-					Button cardButton=new Button();
-					controllerGUI.getHand().getChildren().add(cardButton);
-					cardButton.setMinSize(controllerGUI.getHand().getPrefWidth(),controllerGUI.getHand().getPrefHeight());
-					cardButton.setBackground(background);
-					cardButton.setOnAction(
-							new EventHandler<ActionEvent>() {
+					ImageView imageView=new ImageView(imageMap.get(card));
+					controllerGUI.getHand().getChildren().add(imageView);
+					imageView.setFitWidth(50);
+					imageView.setPreserveRatio(true);
+					imageView.setOnMouseClicked(new EventHandler<Event>() {
 
-								@Override
-								public void handle(ActionEvent event) {
-									controllerGUI.handlePoliticsCard(card);								
-								}					
+						@Override
+						public void handle(Event event) {
+							controllerGUI.handlePoliticsCard(card);	
+							
+						}
 					});
-					cardButton.setDisable(true);
+					imageView.setDisable(true);
 				}			
 				controllerGUI.getPlayerCoins().setText(String.valueOf(player.getCoins()));
 				controllerGUI.getPlayerAssistants().setText(String.valueOf(player.getAssistants().size()));
@@ -386,7 +380,7 @@ public class GUI extends ClientView{
 
 	@Override
 	public List<PoliticsCardDTO> askForPoliticsCards(List<PoliticsCardDTO> acceptablePoliticsCards) {
-		this.disableClickOnPoliticsCards(false);
+		this.disableClickOnPoliticsCards(true);
 		List<PoliticsCardDTO> selectedCards=new ArrayList<>();
 		while (selectedCards.size()<=4) {
 			synchronized (this.controllerGUI) {
@@ -545,8 +539,8 @@ public class GUI extends ClientView{
 	
 	private void disableClickOnPoliticsCards(boolean disabled) {
 		for (Object object : controllerGUI.getHand().getChildren()){
-			Button button=(Button) object;
-			button.setDisable(disabled);
+			ImageView imageView=(ImageView) object;
+			imageView.setDisable(disabled);
 		}
 	}
 	

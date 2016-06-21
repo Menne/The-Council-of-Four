@@ -442,6 +442,10 @@ public class ControllerGUI {
 	
 	@FXML
 	private TextArea messageBox;
+	
+	public List<Pane> getCities(){
+		return Arrays.asList(arkon,burgen,castrum,dorful,esti,framek,graden,hellar,indur,kultos,juvelar,lyram,merkatim,naris,osium);
+	}
 
 	public HBox getHand() {
 		return hand;
