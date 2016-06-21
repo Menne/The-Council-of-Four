@@ -28,7 +28,6 @@ import client.modelDTO.gameTableDTO.RewardTokenDTO;
 import client.modelDTO.marketDTO.MarketDTO;
 import client.modelDTO.marketDTO.MarketableDTO;
 import client.modelDTO.marketDTO.OfferDTO;
-import client.modelDTO.playerDTO.BonusTile;
 import client.modelDTO.playerDTO.ClientPlayerDTO;
 import client.view.notifies.ClientViewNotify;
 import javafx.application.Platform;
@@ -409,7 +408,12 @@ public class GUI extends ClientView{
 					e.printStackTrace();
 				}
 			}
-			selectedCards.add((PoliticsCardDTO) this.currentParameter);
+			if (this.currentParameter instanceof String) {
+				this.currentParameter=null;
+				break;
+			}
+			else
+				selectedCards.add((PoliticsCardDTO) this.currentParameter);
 			this.currentParameter=null;
 		}
 		this.disableClickOnPoliticsCards(true);
