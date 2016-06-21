@@ -719,10 +719,7 @@ public class ControllerGUI {
 	public Button getDescardPoliticsCards() {
 		return descardPoliticsCards;
 	}
-
-	public void setDescardPoliticsCards(Button descardPoliticsCards) {
-		this.descardPoliticsCards = descardPoliticsCards;
-	}
+	
 
 	@FXML
 	public void startActionPickPoliticsCard() throws RemoteException {
@@ -959,6 +956,13 @@ public class ControllerGUI {
 	}
 	
 	
+	@FXML
+	public void clickOnRegion() {
+		synchronized (this) {
+			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(0));
+			this.notify();
+		}
+	}
 	
 	@FXML
 	public void clickOnRegionSea() {
@@ -969,12 +973,13 @@ public class ControllerGUI {
 	}
 
 	@FXML
-	public void clickOnRegionHill() {
+	public void clickOnRegionHill(Event event) {
 		synchronized (this) {
-			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(1));
+			view.setCurrentParameter(((Pane) event.getSource()).getUserData());
 			this.notify();
 		}
 	}
+	
 
 	@FXML
 	public void clickOnRegionMountain() {

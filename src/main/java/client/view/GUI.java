@@ -198,9 +198,26 @@ public class GUI extends ClientView{
 				displayTokens(clientGame);
 				displayPlayers(clientGame.getClientPlayers());
 				displayPermitTiles(clientGame);
+				displayRegions(clientGame);
+				displayCities(clientGame);
+				diplayBalconies(clientGame);
 			}
 		});
 		
+	}
+	
+	private void displayRegions(GameTableDTO clientGame) {
+		controllerGUI.getSeaRegion().setUserData(clientGame.getClientRegions().get(0));
+		controllerGUI.getHillRegion().setUserData(clientGame.getClientRegions().get(1));
+		controllerGUI.getMountainRegion().setUserData(clientGame.getClientRegions().get(2));
+	}
+	
+	private void displayCities(GameTableDTO clientGame) {
+		
+	}
+
+	private void diplayBalconies(GameTableDTO clientGame) {
+	
 	}
 	
 	private void displayPermitTiles(GameTableDTO clientGame){
