@@ -387,9 +387,9 @@ public class GUI extends ClientView{
 
 	@Override
 	public List<PoliticsCardDTO> askForPoliticsCards(List<PoliticsCardDTO> acceptablePoliticsCards) {
-		this.disableClickOnPoliticsCards(true);
+		this.disableClickOnPoliticsCards(false);
 		List<PoliticsCardDTO> selectedCards=new ArrayList<>();
-		while (selectedCards.size()<=4) {
+		while (selectedCards.size()<4) {
 			synchronized (this.controllerGUI) {
 				try {
 					while (currentParameter==null)
@@ -400,7 +400,6 @@ public class GUI extends ClientView{
 				}
 			}
 			selectedCards.add((PoliticsCardDTO) this.currentParameter);
-			System.out.println(selectedCards);
 			this.currentParameter=null;
 		}
 		this.disableClickOnPoliticsCards(true);
