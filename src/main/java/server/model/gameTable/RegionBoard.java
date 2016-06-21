@@ -4,8 +4,6 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import server.model.bonus.ScoreBonus;
-
 /**
  * Models a region board
  * @author andreapasquali
@@ -18,7 +16,7 @@ public class RegionBoard {
 	private final String name;
 	private final PermitDeck regionPermitDeck;
 	private final CouncilBalcony regionBalcony;
-	private final ScoreBonus regionBonus;
+	private final RegionBonusTile regionBonus;
 	private boolean bonusAvailable;
 	private final Set<City> regionCities;
 	
@@ -34,7 +32,7 @@ public class RegionBoard {
 	 * @param regionBonus
 	 */
 	public RegionBoard(String name, PermitDeck regionPermitDeck, 
-			CouncilBalcony regionBalcony, ScoreBonus regionBonus){		
+			CouncilBalcony regionBalcony, RegionBonusTile regionBonus){		
 		this.name=name;		
 		this.regionPermitDeck=regionPermitDeck;
 		this.regionBalcony=regionBalcony;		
@@ -76,7 +74,7 @@ public class RegionBoard {
 
 
 
-	public ScoreBonus getRegionBonus() {
+	public RegionBonusTile getRegionBonus() {
 		return regionBonus;
 	}
 

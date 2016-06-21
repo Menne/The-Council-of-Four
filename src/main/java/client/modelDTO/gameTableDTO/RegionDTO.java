@@ -6,7 +6,6 @@ import java.util.Set;
 
 import client.modelDTO.ModelDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
-import server.model.bonus.ScoreBonus;
 
 public class RegionDTO implements ModelDTO{
 
@@ -18,7 +17,7 @@ public class RegionDTO implements ModelDTO{
 	private CouncillorDTO[] balcony;
 	private Set<CityDTO> cities;
 	private PermitTileDTO[] uncoveredPermitTiles;
-	private ScoreBonus regionBonus;
+	private BonusTileDTO regionBonus;
 	
 	public RegionDTO(){
 		
@@ -63,12 +62,12 @@ public class RegionDTO implements ModelDTO{
 		this.uncoveredPermitTiles = uncoveredPermitTiles;
 	}
 
-	public ScoreBonus getRegionBonus() {
+	public BonusTileDTO getRegionBonus() {
 		return regionBonus;
 	}
 
 
-	public void setRegionBonus(ScoreBonus regionBonus) {
+	public void setRegionBonus(BonusTileDTO regionBonus) {
 		this.regionBonus = regionBonus;
 	}
 

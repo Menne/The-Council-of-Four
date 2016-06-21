@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+import client.modelDTO.gameTableDTO.BonusTileDTO;
 import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
@@ -21,15 +22,19 @@ import client.modelDTO.playerDTO.ClientPlayerDTO;
 import server.model.Game;
 import server.model.bonus.Bonus;
 import server.model.gameTable.Assistant;
+import server.model.gameTable.BonusTile;
 import server.model.gameTable.CardColour;
 import server.model.gameTable.City;
 import server.model.gameTable.CityColour;
+import server.model.gameTable.ColourBonusTile;
 import server.model.gameTable.CouncilBalcony;
 import server.model.gameTable.Councillor;
 import server.model.gameTable.Emporium;
+import server.model.gameTable.KingBonusTile;
 import server.model.gameTable.PermitTile;
 import server.model.gameTable.PoliticsCard;
 import server.model.gameTable.RegionBoard;
+import server.model.gameTable.RegionBonusTile;
 import server.model.gameTable.RewardToken;
 import server.model.market.Market;
 import server.model.market.Offer;
@@ -65,16 +70,21 @@ public class GameDTOMapper implements GameMapperInterface {
 		gameTableDTO.setClientNobilityTrack((ArrayList<Set<Bonus>>) realObject.getGameTable().getNobilityTrack().getTrack());
 		gameTableDTO.setCurrentPlayer(realObject.getCurrentPlayer().getName());
 		gameTableDTO.setKing(realObject.getGameTable().getKing().getCity().getName());
-		gameTableDTO.setNextKingRewardTile(realObject.getGameTable().getKingRewardTiles().get(0));
+		gameTableDTO.setNextKingRewardTile(this.bonusTileMap(realObject.getGameTable().getKingRewardTiles().get(0)));
 		
 		Set<CityColour> colours=new HashSet<>();
 		for(City city : realObject.getGameTable().getMap().getGameMap().vertexSet())
 			colours.add(city.getColour());
-		for(CityColour cityColour: colours)
-			gameTableDTO.getColourBonuses().put(cityColourMap(cityColour), cityColour.getColorBonus());
+		gameTableDTO.getColourBonuses().clear();
+		for(CityColour cityColour: colours){
+			if(cityColour.isBonusAvailable()==true)
+				gameTableDTO.getColourBonuses().add(this.bonusTileMap(cityColour.getColorBonus()));
+		}
 		
 		return gameTableDTO;
 	}
+	
+	
 
 	/**
 	 * This method maps all the attributes that a client can see in a market DTO object
@@ -118,7 +128,9 @@ public class GameDTOMapper implements GameMapperInterface {
 		clientPlayerDTO.setScore(realObject.getScore());
 		clientPlayerDTO.setCoins(realObject.getCoins());
 		clientPlayerDTO.setNobility(realObject.getNobility());
-		clientPlayerDTO.setFinalBonuses(realObject.getPlayersFinalBonus());
+		clientPlayerDTO.getFinalBonuses().clear();
+		for(BonusTile bonusTile : realObject.getPlayersFinalBonus())
+			clientPlayerDTO.getFinalBonuses().add(this.bonusTileMap(bonusTile));
 		
 		return clientPlayerDTO;	
 	}
@@ -207,10 +219,13 @@ public class GameDTOMapper implements GameMapperInterface {
 		genericPlayerDTO.setCoins(realObject.getCoins());
 		genericPlayerDTO.setEmporiums(realObject.getRemainigEmporiums().size());
 		genericPlayerDTO.setHand(realObject.getHand().size());
+		genericPlayerDTO.getAvailablePermitTiles().clear();
 		for (PermitTile permitTile : realObject.getPlayersPermitTilesTurnedUp())
 			genericPlayerDTO.getAvailablePermitTiles().add
 					(this.permitTileMap(permitTile));
-		genericPlayerDTO.setPlayersFinalBonus(realObject.getPlayersFinalBonus());
+		genericPlayerDTO.getPlayersFinalBonus().clear();
+		for(BonusTile bonusTile : realObject.getPlayersFinalBonus())
+			genericPlayerDTO.getPlayersFinalBonus().add(this.bonusTileMap(bonusTile));
 		genericPlayerDTO.setNumberOfCoveredTiles(realObject.getPlayersPermitTilesTurnedDown().size());
 		
 		return genericPlayerDTO;
@@ -251,7 +266,9 @@ public class GameDTOMapper implements GameMapperInterface {
 			regionDTO.getUncoveredPermitTiles()[i]=this.permitTileMap
 					(realObject.getUncoveredPermitTiles()[i]);
 		if(realObject.isBonusAvailable())
-			regionDTO.setRegionBonus(realObject.getRegionBonus());
+			regionDTO.setRegionBonus(this.bonusTileMap(realObject.getRegionBonus()));
+		else
+			regionDTO.setRegionBonus(null);
 		
 		return regionDTO;
 	}
@@ -288,6 +305,19 @@ public class GameDTOMapper implements GameMapperInterface {
 	@Override
 	public RewardTokenDTO rewardTokenMap(RewardToken realToken) {
 		return new RewardTokenDTO(realToken.getRewardTokenBonus());
+	}
+
+
+
+	@Override
+	public BonusTileDTO bonusTileMap(BonusTile realObject) {
+		if(realObject instanceof KingBonusTile)
+			return new BonusTileDTO("King", realObject.getBonus());
+		if(realObject instanceof ColourBonusTile)
+			return new BonusTileDTO(((ColourBonusTile)realObject).getColour(), ((ColourBonusTile)realObject).getBonus());
+		else
+			return new BonusTileDTO(((RegionBonusTile)realObject).getRegion(), ((RegionBonusTile)realObject).getBonus());
+			
 	}
 	
 	

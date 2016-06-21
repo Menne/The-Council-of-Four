@@ -20,7 +20,7 @@ import server.model.gameTable.RewardToken;
 import server.model.player.Player;
 
 public class CityTest {
-
+/*
 	@Test
 	public void testIfIsKingPresentReturnFalse() throws IOException {
 		
@@ -176,6 +176,6 @@ public class CityTest {
 		Set<City> cities=new HashSet<>();
 		cities.add(nearCity);
 		assertEquals(cities, city.getNearCities());
-	}
+	}*/
 }
 

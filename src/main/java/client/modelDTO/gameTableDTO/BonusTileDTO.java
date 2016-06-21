@@ -1,9 +1,9 @@
-package client.modelDTO.playerDTO;
+package client.modelDTO.gameTableDTO;
 
 import client.modelDTO.ModelDTO;
 import server.model.bonus.ScoreBonus;
 
-public class BonusTile implements ModelDTO {
+public class BonusTileDTO implements ModelDTO {
 
 	/**
 	 * 
@@ -12,7 +12,7 @@ public class BonusTile implements ModelDTO {
 	private final String type;
 	private final ScoreBonus bonus;
 	
-	public BonusTile(String type, ScoreBonus bonus) {
+	public BonusTileDTO(String type, ScoreBonus bonus) {
 		this.type=type;
 		this.bonus=bonus;
 	}

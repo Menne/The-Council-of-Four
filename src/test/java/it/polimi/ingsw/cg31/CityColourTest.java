@@ -13,7 +13,7 @@ import server.model.gameTable.CityColour;
 import server.model.gameTable.RegionBoard;
 
 public class CityColourTest {
-
+/*
 	@Test
 	public void testBonusNotAvailable() {
 		ScoreBonus bonus= new ScoreBonus(1);
@@ -74,6 +74,6 @@ public class CityColourTest {
 		CityColour cityColour1= new CityColour(name, colorBonus);
 		cityColour1.addCityOfThisColour(c);
 		assertTrue(cityColour.equals(cityColour1));
-	}
+	}*/
 }
 

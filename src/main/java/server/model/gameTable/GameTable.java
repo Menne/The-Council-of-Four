@@ -12,13 +12,13 @@ public class GameTable {
 	private final CouncillorsReserve councilReserve;
 	private final PoliticsDeck politicsDeck;
 	private final NobilityTrack nobilityTrack;
-	private final List<ScoreBonus> kingRewardTiles;
+	private final List<KingBonusTile> kingRewardTiles;
 	private final King king;
                
 	
 	public GameTable(Map map, List<RegionBoard> regionBoards, CouncilBalcony councilOfKing,
 			CouncillorsReserve councilReserve, PoliticsDeck politicsDeck, NobilityTrack nobilityTrack,
-			List<ScoreBonus> kingRewardTiles){
+			List<KingBonusTile> kingRewardTiles){
 		this.map=map;
 		this.regionBoards= regionBoards;
 		this.councilOfKing=councilOfKing;
@@ -65,7 +65,7 @@ public class GameTable {
 		return king;
 	}
 
-	public List<ScoreBonus> getKingRewardTiles() {
+	public List<KingBonusTile> getKingRewardTiles() {
 		return kingRewardTiles;
 	}
 	
