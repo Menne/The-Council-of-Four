@@ -971,30 +971,6 @@ public class ControllerGUI {
 		}
 	}
 	
-	@FXML
-	public void clickOnRegionSea() {
-		synchronized (this) {
-			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(0));
-			this.notify();
-		}
-	}
-
-	@FXML
-	public void clickOnRegionHill(Event event) {
-		synchronized (this) {
-			view.setCurrentParameter(((Pane) event.getSource()).getUserData());
-			this.notify();
-		}
-	}
-	
-
-	@FXML
-	public void clickOnRegionMountain() {
-		synchronized (this) {
-			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(2));
-			this.notify();
-		}
-	}
 	
 	@FXML
 	public void clickOnPermitTileInRegion(Event event) {
@@ -1045,7 +1021,15 @@ public class ControllerGUI {
 			this.notify();
 		}
 	}
-
+	
+	@FXML
+	public void clickOnCouncillorsReserve() {
+		synchronized (this) {
+			view.setCurrentParameter(clientGame.getClientGameTable().getClientCouncillorReserve().get(0));
+			this.notify();
+		}
+	}
+	
 	@FXML
 	public void clickOnReserveCouncillor1() {
 		synchronized (this) {
@@ -1119,172 +1103,6 @@ public class ControllerGUI {
 		}
 	}
 	
-	
-	
-	@FXML
-	public void clickOnCityArkon() {
-		synchronized (this) {
-			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
-			for (CityDTO city : region.getCities())
-				if ("Arkon".equals(city.getName()))
-					view.setCurrentParameter(city);
-			this.notify();
-		}
-	}
-	
-	@FXML
-	public void clickOnCityBurgen() {
-		synchronized (this) {
-			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
-			for (CityDTO city : region.getCities())
-				if ("Burgen".equals(city.getName()))
-					view.setCurrentParameter(city);
-			this.notify();
-		}
-	}
-	
-	@FXML
-	public void clickOnCityCastrum() {
-		synchronized (this) {
-			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
-			for (CityDTO city : region.getCities())
-				if ("Castrum".equals(city.getName()))
-					view.setCurrentParameter(city);
-			this.notify();
-		}
-	}
-	
-	@FXML
-	public void clickOnCityDorful() {
-		synchronized (this) {
-			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
-			for (CityDTO city : region.getCities())
-				if ("Dorful".equals(city.getName()))
-					view.setCurrentParameter(city);
-			this.notify();
-		}
-	}
-	
-	@FXML
-	public void clickOnCityEsti() {
-		synchronized (this) {
-			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(0);
-			for (CityDTO city : region.getCities())
-				if ("Esti".equals(city.getName()))
-					view.setCurrentParameter(city);
-			this.notify();
-		}
-	}
-	
-	@FXML
-	public void clickOnCityFramek() {
-		synchronized (this) {
-			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(1);
-			for (CityDTO city : region.getCities())
-				if ("Framek".equals(city.getName()))
-					view.setCurrentParameter(city);
-			this.notify();
-		}
-	}
-	
-	@FXML
-	public void clickOnCityGraden() {
-		synchronized (this) {
-			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(1);
-			for (CityDTO city : region.getCities())
-				if ("Graden".equals(city.getName()))
-					view.setCurrentParameter(city);
-			this.notify();
-		}
-	}
-	
-	@FXML
-	public void clickOnCityHellar() {
-		synchronized (this) {
-			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(1);
-			for (CityDTO city : region.getCities())
-				if ("Hellar".equals(city.getName()))
-					view.setCurrentParameter(city);
-			this.notify();
-		}
-	}
-	
-	@FXML
-	public void clickOnCityIndur() {
-		synchronized (this) {
-			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(1);
-			for (CityDTO city : region.getCities())
-				if ("Indur".equals(city.getName()))
-					view.setCurrentParameter(city);
-			this.notify();
-		}
-	}
-	
-	@FXML
-	public void clickOnCityJuvelar() {
-		synchronized (this) {
-			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(1);
-			for (CityDTO city : region.getCities())
-				if ("Juvelar".equals(city.getName()))
-					view.setCurrentParameter(city);
-			this.notify();
-		}
-	}
-	
-	@FXML
-	public void clickOnCityKultos() {
-		synchronized (this) {
-			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(2);
-			for (CityDTO city : region.getCities())
-				if ("Kultos".equals(city.getName()))
-					view.setCurrentParameter(city);
-			this.notify();
-		}
-	}
-	
-	@FXML
-	public void clickOnCityLyram() {
-		synchronized (this) {
-			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(2);
-			for (CityDTO city : region.getCities())
-				if ("Lyram".equals(city.getName()))
-					view.setCurrentParameter(city);
-			this.notify();
-		}
-	}
-	
-	@FXML
-	public void clickOnCityMerkatim() {
-		synchronized (this) {
-			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(2);
-			for (CityDTO city : region.getCities())
-				if ("Merkatim".equals(city.getName()))
-					view.setCurrentParameter(city);
-			this.notify();
-		}
-	}
-	
-	@FXML
-	public void clickOnCityNaris() {
-		synchronized (this) {
-			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(2);
-			for (CityDTO city : region.getCities())
-				if ("Naris".equals(city.getName()))
-					view.setCurrentParameter(city);
-			this.notify();
-		}
-	}
-	
-	@FXML
-	public void clickOnCityOsium() {
-		synchronized (this) {
-			RegionDTO region=clientGame.getClientGameTable().getClientRegions().get(2);
-			for (CityDTO city : region.getCities())
-				if ("Osium".equals(city.getName()))
-					view.setCurrentParameter(city);
-			this.notify();
-		}
-	}
 
 	@FXML
 	public void stopDiscarding(){
