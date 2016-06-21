@@ -669,6 +669,5 @@ public class GUI extends ClientView{
 	private void disableClickOnPermitTilesInRegions(boolean disabled) {
 		
 	}
-
 	
 }

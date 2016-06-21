@@ -26,12 +26,16 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -466,7 +470,6 @@ public class ControllerGUI {
 	
 	@FXML
 	private VBox playersBonuses;
-	
 	
 	public VBox getPlayersBonuses() {
 		return playersBonuses;
@@ -1020,5 +1023,16 @@ public class ControllerGUI {
 		}
 	}
 
-	
+   
+    @FXML
+    public void changeMouseStyle(MouseEvent mouseEvent) {
+    	Platform.runLater(new Runnable() {
+	        
+	    	@Override
+	        public void run() {
+	    		((Node) mouseEvent.getSource()).setCursor(Cursor.HAND);
+	        }
+	    });
+    }
+
 }
