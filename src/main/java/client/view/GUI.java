@@ -198,23 +198,24 @@ public class GUI extends ClientView{
 				displayTokens(clientGame);
 				displayPlayers(clientGame.getClientPlayers());
 				displayPermitTiles(clientGame);
-				displayBonusTiles(clientGame);
 			}
 		});
 		
 	}
 	
-	private void displayBonusTiles(GameTableDTO clientGame){
-		
-	}
-	
 	private void displayPermitTiles(GameTableDTO clientGame){
 		controllerGUI.getSeaPermitTile()[0].setImage(imageMap.get(clientGame.getClientRegions().get(0).getUncoveredPermitTiles()[0]));
+		controllerGUI.getSeaPermitTile()[0].setUserData(new Integer(0));
 		controllerGUI.getSeaPermitTile()[1].setImage(imageMap.get(clientGame.getClientRegions().get(0).getUncoveredPermitTiles()[1]));
+		controllerGUI.getSeaPermitTile()[1].setUserData(new Integer(1));
 		controllerGUI.getHillPermitTile()[0].setImage(imageMap.get(clientGame.getClientRegions().get(1).getUncoveredPermitTiles()[0]));
+		controllerGUI.getHillPermitTile()[0].setUserData(new Integer(0));
 		controllerGUI.getHillPermitTile()[1].setImage(imageMap.get(clientGame.getClientRegions().get(1).getUncoveredPermitTiles()[1]));
+		controllerGUI.getHillPermitTile()[1].setUserData(new Integer(1));
 		controllerGUI.getMountainPermitTile()[0].setImage(imageMap.get(clientGame.getClientRegions().get(2).getUncoveredPermitTiles()[0]));
+		controllerGUI.getMountainPermitTile()[0].setUserData(new Integer(0));
 		controllerGUI.getMountainPermitTile()[1].setImage(imageMap.get(clientGame.getClientRegions().get(2).getUncoveredPermitTiles()[1]));
+		controllerGUI.getMountainPermitTile()[1].setUserData(new Integer(1));
 	}
 	
 	private void displayPlayers(List<GenericPlayerDTO> players){
@@ -432,8 +433,10 @@ public class GUI extends ClientView{
 			else
 				selectedCards.add((PoliticsCardDTO) this.currentParameter);
 			this.currentParameter=null;
+			this.disableClickOnDescardButton(false);
 		}
 		this.disableClickOnPoliticsCards(true);
+		this.disableClickOnDescardButton(true);
 		return selectedCards;
 	}
 
@@ -587,6 +590,12 @@ public class GUI extends ClientView{
 			imageView.setDisable(disabled);
 		}
 	}
+	
+	private void disableClickOnDescardButton(boolean disabled) {
+		this.controllerGUI.getDescardPoliticsCards().setDisable(disabled);
+	}
+	
+	
 	
 	private void disableClickOnPermitTilesInRegions(boolean disabled) {
 		

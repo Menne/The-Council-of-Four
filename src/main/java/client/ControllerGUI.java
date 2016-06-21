@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -460,6 +461,9 @@ public class ControllerGUI {
 	@FXML
 	private HBox permitTilesTurnedDownOwned;
 	
+	@FXML
+	private Button descardPoliticsCards;
+	
 	
 	public HBox getPermitTilesTurnedUpOwned() {
 		return permitTilesTurnedUpOwned;
@@ -712,6 +716,14 @@ public class ControllerGUI {
 		}
 	}
 	
+	public Button getDescardPoliticsCards() {
+		return descardPoliticsCards;
+	}
+
+	public void setDescardPoliticsCards(Button descardPoliticsCards) {
+		this.descardPoliticsCards = descardPoliticsCards;
+	}
+
 	@FXML
 	public void startActionPickPoliticsCard() throws RemoteException {
 		for (ActionDTO action : this.clientGame.getAvailableActions())
@@ -973,49 +985,9 @@ public class ControllerGUI {
 	}
 	
 	@FXML
-	public void clickOnPermitTileRegionSea1() {
+	public void clickOnPermitTileInRegion(Event event) {
 		synchronized (this) {
-			view.setCurrentParameter(new Integer(0));
-			this.notify();
-		}
-	}
-	
-	@FXML
-	public void clickOnPermitTileRegionSea2() {
-		synchronized (this) {
-			view.setCurrentParameter(new Integer(1));
-			this.notify();
-		}
-	}
-	
-	@FXML
-	public void clickOnPermitTileRegionHill1() {
-		synchronized (this) {
-			view.setCurrentParameter(new Integer(0));
-			this.notify();
-		}
-	}
-	
-	@FXML
-	public void clickOnPermitTileRegionHill2() {
-		synchronized (this) {
-			view.setCurrentParameter(new Integer(1));
-			this.notify();
-		}
-	}
-	
-	@FXML
-	public void clickOnPermitTileRegionMountain1() {
-		synchronized (this) {
-			view.setCurrentParameter(new Integer(0));
-			this.notify();
-		}
-	}
-	
-	@FXML
-	public void clickOnPermitTileRegionMountain2() {
-		synchronized (this) {
-			view.setCurrentParameter(new Integer(1));
+			view.setCurrentParameter(((ImageView) event.getSource()).getUserData());
 			this.notify();
 		}
 	}
