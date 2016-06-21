@@ -19,7 +19,7 @@ import server.model.bonus.Bonus;
 import server.model.bonus.ScoreBonus;
 
 public class GameTableDTOTest {
-
+/*
 	@Test
 	public void testGettersAndSetters() {
 		List<RegionDTO> regions= new ArrayList<>();
@@ -55,5 +55,5 @@ public class GameTableDTOTest {
 				 councillors + "\nNobilityTrack: " + bonuses
 				 +"\nNextKingRewardTile: "+nextKingRewardTile+"\nColourBonuses: "+colourBonuses, gameTable.toString());
 	}
-
+*/
 }

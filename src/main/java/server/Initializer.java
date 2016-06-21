@@ -65,7 +65,7 @@ public class Initializer {
 	while(!"STOPCITYCOLOUR".equals(s)){
 		s=b.readLine();
 		if(s!="KingColour")
-			cityColourList.add(new CityColour(s,new ScoreBonus(Integer.parseInt(b.readLine()))));
+			cityColourList.add(new CityColour(s,new ColourBonusTile(new ScoreBonus(Integer.parseInt(b.readLine())),s)));
 		s=b.readLine();
 	}
 	
@@ -108,12 +108,15 @@ public class Initializer {
 	/*
 	 * inizializzo le regioni
 	 */
+	String name1=b.readLine();
 	RegionBoard firstRegion=
-			new RegionBoard(b.readLine(), firstRegionPermitDeck, firstRegionBalcony, new ScoreBonus(Integer.parseInt(b.readLine())));
+			new RegionBoard(name1, firstRegionPermitDeck, firstRegionBalcony, new RegionBonusTile(new ScoreBonus(Integer.parseInt(b.readLine())), name1));
+	String name2=b.readLine();
 	RegionBoard secondRegion=
-			new RegionBoard(b.readLine(), secondRegionPermitDeck, secondRegionBalcony, new ScoreBonus(Integer.parseInt(b.readLine())));
+			new RegionBoard(name2, secondRegionPermitDeck, secondRegionBalcony,new RegionBonusTile(new ScoreBonus(Integer.parseInt(b.readLine())), name2));
+	String name3=b.readLine();
 	RegionBoard thirdRegion=
-			new RegionBoard(b.readLine(), thirdRegionPermitDeck, thirdRegionBalcony, new ScoreBonus(Integer.parseInt(b.readLine())));
+			new RegionBoard(name3, thirdRegionPermitDeck, thirdRegionBalcony, new RegionBonusTile(new ScoreBonus(Integer.parseInt(b.readLine())),name3));
 	
 	r=b.readLine();
 	/*
@@ -337,14 +340,14 @@ public class Initializer {
 		s=b.readLine();//NEXT or STOPNobilityTrack
 	}
 	
-	List<ScoreBonus> kingRewardTiles= new ArrayList<>();
+	List<KingBonusTile> kingRewardTiles= new ArrayList<>();
 	/*
 	 * inizializzo king reward tile
 	 */
 	s=b.readLine();
 	if("kingRewardTile".equals(s))
 		while(!"STOPKingRewardTile".equals(s)){
-			kingRewardTiles.add(new ScoreBonus(Integer.parseInt(b.readLine())));
+			kingRewardTiles.add(new KingBonusTile(new ScoreBonus(Integer.parseInt(b.readLine()))));
 			s=b.readLine();//NEXT or STOPKingRewardTile		
 		}
 	

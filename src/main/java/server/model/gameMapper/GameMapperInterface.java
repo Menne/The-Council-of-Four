@@ -1,5 +1,6 @@
 package server.model.gameMapper;
 
+import client.modelDTO.gameTableDTO.BonusTileDTO;
 import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
@@ -14,6 +15,7 @@ import client.modelDTO.marketDTO.MarketDTO;
 import client.modelDTO.marketDTO.OfferDTO;
 import client.modelDTO.playerDTO.ClientPlayerDTO;
 import server.model.Game;
+import server.model.gameTable.BonusTile;
 import server.model.gameTable.CardColour;
 import server.model.gameTable.City;
 import server.model.gameTable.CityColour;
@@ -41,5 +43,6 @@ public interface GameMapperInterface {
 	public RegionDTO regionMap(RegionBoard realObject);
 	public OfferDTO offerMap(Offer realObject);
 	public RewardTokenDTO rewardTokenMap(RewardToken realObject);
+	public BonusTileDTO bonusTileMap(BonusTile realObject);
 	
 }

@@ -3,8 +3,8 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import server.model.bonus.ScoreBonus;
 import server.model.gameTable.Assistant;
+import server.model.gameTable.BonusTile;
 import server.model.gameTable.Emporium;
 import server.model.gameTable.PermitTile;
 import server.model.gameTable.PoliticsCard;
@@ -27,7 +27,7 @@ public class Player {
 	private final List<PermitTile> playersPermitTilesTurnedUp;
 	private final List<PermitTile> playersPermitTilesTurnedDown;
 	private final List<Emporium> emporiums;
-	private final List<ScoreBonus> playersFinalBonus;
+	private final List<BonusTile> playersFinalBonus;
 	
 	
 	/**
@@ -91,7 +91,7 @@ public class Player {
 		return playersPermitTilesTurnedDown;
 	}
 
-	public List<ScoreBonus> getPlayersFinalBonus() {
+	public List<BonusTile> getPlayersFinalBonus() {
 		return playersFinalBonus;
 	}
 
@@ -178,7 +178,7 @@ public class Player {
 	 * adds a bonus to playersFinalBonus list
 	 * @param bonus
 	 */
-	public void addFinalBonus(ScoreBonus bonus){
+	public void addFinalBonus(BonusTile bonus){
 		playersFinalBonus.add(bonus);
 	}
 	

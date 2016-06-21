@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import client.modelDTO.ModelDTO;
+import client.modelDTO.gameTableDTO.BonusTileDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
 import client.modelDTO.gameTableDTO.PoliticsCardDTO;
-import server.model.bonus.ScoreBonus;
 
 public class ClientPlayerDTO implements ModelDTO{
 	
@@ -19,7 +19,7 @@ public class ClientPlayerDTO implements ModelDTO{
 	private List<PoliticsCardDTO> hand;
 	private List<PermitTileDTO> coveredPermitTiles;
 	private List<PermitTileDTO> availablePermitTiles;
-	private List<ScoreBonus> finalBonuses;
+	private List<BonusTileDTO> finalBonuses;
 	private List<AssistantDTO> assistants;
 	private int coins;
 	private int score;
@@ -33,12 +33,12 @@ public class ClientPlayerDTO implements ModelDTO{
 	}
 	
 
-	public List<ScoreBonus> getFinalBonuses() {
+	public List<BonusTileDTO> getFinalBonuses() {
 		return finalBonuses;
 	}
 
 
-	public void setFinalBonuses(List<ScoreBonus> finalBonuses) {
+	public void setFinalBonuses(List<BonusTileDTO> finalBonuses) {
 		this.finalBonuses = finalBonuses;
 	}
 
