@@ -5,7 +5,7 @@
 /* 	-fx-background-size: contain;*/
 }
 
-.bu { 
+.button {
     -fx-border-color: #6b4208;
     -fx-border-width: 1;
     -fx-border-curve: yes;
