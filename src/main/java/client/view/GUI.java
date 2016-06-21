@@ -220,6 +220,12 @@ public class GUI extends ClientView{
 			controllerGUI.getRemainingEmporiumsLabels().get(i).setText(String.valueOf(orderedPlayers.get(i).getEmporiums()));	
 			controllerGUI.getNumberOfPoliticsCards().get(i).setText(String.valueOf(orderedPlayers.get(i).getHand()));
 			controllerGUI.getNumberOfCoveredPermitTiles().get(i).setText(String.valueOf(orderedPlayers.get(i).getNumberOfCoveredTiles()));
+			for(PermitTileDTO permitTileDTO : orderedPlayers.get(i).getAvailablePermitTiles()){
+				ImageView imageView=new ImageView(imageMap.get(permitTileDTO));
+				controllerGUI.getPermitTilesOtherPlayers().get(i).getChildren().add(imageView);
+				imageView.setFitHeight(50);
+				imageView.setPreserveRatio(true);
+			}
 		}
 	}
 	

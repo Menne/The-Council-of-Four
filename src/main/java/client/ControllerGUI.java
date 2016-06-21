@@ -456,21 +456,8 @@ public class ControllerGUI {
 	private HBox permitTilesTurnedUpPlayer4;
 	
 	
-	
-	public HBox getPermitTilesTurnedUpPlayer1() {
-		return permitTilesTurnedUpPlayer1;
-	}
-
-	public HBox getPermitTilesTurnedUpPlayer2() {
-		return permitTilesTurnedUpPlayer2;
-	}
-
-	public HBox getPermitTilesTurnedUpPlayer3() {
-		return permitTilesTurnedUpPlayer3;
-	}
-
-	public HBox getPermitTilesTurnedUpPlayer4() {
-		return permitTilesTurnedUpPlayer4;
+	public List<HBox> getPermitTilesOtherPlayers(){
+		return Arrays.asList(permitTilesTurnedUpPlayer1,permitTilesTurnedUpPlayer2,permitTilesTurnedUpPlayer3,permitTilesTurnedUpPlayer4);
 	}
 
 	public List<Pane> getCities(){
