@@ -360,10 +360,11 @@ public class GUI extends ClientView{
 				e.printStackTrace();
 			}
 		}
-		CouncillorDTO[] councillBalcony=(CouncillorDTO[]) this.currentParameter;
+		CouncillorDTO[] councilBalcony=(CouncillorDTO[]) this.currentParameter;
+		System.out.println(councilBalcony);
 		this.currentParameter=null;
 		this.disableClickOnCouncilBalconies(true);
-		return councillBalcony;
+		return councilBalcony;
 	}
 
 	@Override
