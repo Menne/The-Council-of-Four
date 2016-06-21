@@ -131,11 +131,11 @@ public class GUI extends ClientView{
 		imageMap.put(new BonusTileDTO("Sea", new ScoreBonus(5)), new Image(getClass().getResource("images/bonusTiles/bonusMare.png").toExternalForm()));
 		imageMap.put(new BonusTileDTO("Hill", new ScoreBonus(5)), new Image(getClass().getResource("images/bonusTiles/bonusColline.png").toExternalForm()));
 		imageMap.put(new BonusTileDTO("Mountain", new ScoreBonus(5)), new Image(getClass().getResource("images/bonusTiles/bonusMontagna.png").toExternalForm()));
-		imageMap.put(new BonusTileDTO("King", new ScoreBonus(25)), new Image(getClass().getResource("images/kingBonus/kingRewardTile1.png").toExternalForm()));
-		imageMap.put(new BonusTileDTO("King", new ScoreBonus(18)), new Image(getClass().getResource("images/kingBonus/kingRewardTile2.png").toExternalForm()));
-		imageMap.put(new BonusTileDTO("King", new ScoreBonus(12)), new Image(getClass().getResource("images/kingBonus/kingRewardTile3.png").toExternalForm()));
-		imageMap.put(new BonusTileDTO("King", new ScoreBonus(7)), new Image(getClass().getResource("images/kingBonus/kingRewardTile4.png").toExternalForm()));
-		imageMap.put(new BonusTileDTO("King", new ScoreBonus(3)), new Image(getClass().getResource("images/kingBonus/kingRewardTile5.png").toExternalForm()));
+		imageMap.put(new BonusTileDTO("King", new ScoreBonus(25)), new Image(getClass().getResource("images/kingBonus/KingRewardTile1.png").toExternalForm()));
+		imageMap.put(new BonusTileDTO("King", new ScoreBonus(18)), new Image(getClass().getResource("images/kingBonus/KingRewardTile2.png").toExternalForm()));
+		imageMap.put(new BonusTileDTO("King", new ScoreBonus(12)), new Image(getClass().getResource("images/kingBonus/KingRewardTile3.png").toExternalForm()));
+		imageMap.put(new BonusTileDTO("King", new ScoreBonus(7)), new Image(getClass().getResource("images/kingBonus/KingRewardTile4.png").toExternalForm()));
+		imageMap.put(new BonusTileDTO("King", new ScoreBonus(3)), new Image(getClass().getResource("images/kingBonus/KingRewardTile5.png").toExternalForm()));
 		imageMap.put(new BonusTileDTO("Blue", new ScoreBonus(5)), new Image(getClass().getResource("images/colourBonus/BlueBonus.png").toExternalForm()));
 		imageMap.put(new BonusTileDTO("Bronze", new ScoreBonus(8)), new Image(getClass().getResource("images/colourBonus/BronzeBonus.png").toExternalForm()));
 		imageMap.put(new BonusTileDTO("Gold", new ScoreBonus(20)), new Image(getClass().getResource("images/colourBonus/GoldBonus.png").toExternalForm()));
@@ -323,6 +323,7 @@ public class GUI extends ClientView{
 			
 			@Override
 			public void run() {
+				System.out.println(player);
 				controllerGUI.getHand().getChildren().clear();
 				controllerGUI.getPermitTilesTurnedUpOwned().getChildren().clear();
 				for (PoliticsCardDTO card : player.getHand()){
@@ -354,7 +355,7 @@ public class GUI extends ClientView{
 				for(BonusTileDTO bonusTileDTO : player.getFinalBonuses()){
 					ImageView imageView =new ImageView(imageMap.get(bonusTileDTO));
 					controllerGUI.getPlayersBonuses().getChildren().add(imageView);
-					imageView.setFitWidth(40);
+					imageView.setFitWidth(60);
 					imageView.setPreserveRatio(true);
 				}
 			}
