@@ -803,7 +803,7 @@
                         </ImageView>
                         <AnchorPane fx:id="mountainRegion" layoutX="522.0" prefHeight="385.0" prefWidth="242.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="522.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                         <AnchorPane fx:id="hillRegion" layoutX="245.0" layoutY="-7.0" prefHeight="385.0" prefWidth="278.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="241.0" AnchorPane.topAnchor="0.0" />
-                        <AnchorPane fx:id="seaRegion" layoutX="-2.0" layoutY="-4.0" onMouseClicked="#clickOnRegionSea" prefHeight="385.0" prefWidth="245.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="519.0" AnchorPane.topAnchor="0.0" />
+                        <AnchorPane fx:id="seaRegion" layoutX="-2.0" layoutY="-4.0" onMouseClicked="#clickOnRegion" prefHeight="385.0" prefWidth="245.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="519.0" AnchorPane.topAnchor="0.0" />
                         <ImageView fx:id="permitTileSea0" fitHeight="66.0" fitWidth="58.0" layoutX="84.0" layoutY="393.0" onMouseClicked="#clickOnPermitTileInRegion" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="135.0" />
                         <ImageView fx:id="permitTileSea1" fitHeight="66.0" fitWidth="58.0" layoutX="146.0" layoutY="396.0" onMouseClicked="#clickOnPermitTileInRegion" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="135.0" AnchorPane.leftAnchor="146.0" AnchorPane.rightAnchor="559.0" />
                         <ImageView fx:id="permitTileHill0" fitHeight="66.0" fitWidth="58.0" layoutX="333.0" layoutY="394.0" onMouseClicked="#clickOnPermitTileInRegion" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="135.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="373.0" />
@@ -825,13 +825,13 @@
                               <Image url="@view/images/mountainPermitTile/mountainTile.png" />
                            </image>
                         </ImageView>
-                        <AnchorPane fx:id="seaRegion" layoutX="-2.0" layoutY="-4.0" onMouseClicked="#clickOnRegionSea" prefHeight="385.0" prefWidth="245.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="519.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="seaRegion" layoutX="-2.0" layoutY="-4.0" onMouseClicked="#clickOnRegion" prefHeight="385.0" prefWidth="245.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="519.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Pane fx:id="esti" layoutX="49.0" layoutY="252.0" onMouseClicked="#clickOnCityEsti" prefHeight="103.0" prefWidth="108.0" />
-                              <Pane fx:id="dorful" layoutX="130.0" layoutY="164.0" onMouseClicked="#clickOnCityDorful" prefHeight="106.0" prefWidth="110.0" />
-                              <Pane fx:id="burgen" layoutX="5.0" layoutY="131.0" onMouseClicked="#clickOnCityBurgen" prefHeight="114.0" prefWidth="108.0" />
-                              <Pane fx:id="castrum" layoutX="130.0" layoutY="38.0" onMouseClicked="#clickOnCityCastrum" prefHeight="114.0" prefWidth="110.0" />
-                              <Pane fx:id="arkon" layoutX="11.0" layoutY="1.0" onMouseClicked="#clickOnCityArkon" prefHeight="114.0" prefWidth="117.0" />
+                              <Pane fx:id="esti" layoutX="49.0" layoutY="252.0" onMouseClicked="#clickOnCity" prefHeight="103.0" prefWidth="108.0" />
+                              <Pane fx:id="dorful" layoutX="130.0" layoutY="164.0" onMouseClicked="#clickOnCity" prefHeight="106.0" prefWidth="110.0" />
+                              <Pane fx:id="burgen" layoutX="5.0" layoutY="131.0" onMouseClicked="#clickOnCity" prefHeight="114.0" prefWidth="108.0" />
+                              <Pane fx:id="castrum" layoutX="130.0" layoutY="38.0" onMouseClicked="#clickOnCity" prefHeight="114.0" prefWidth="110.0" />
+                              <Pane fx:id="arkon" layoutX="11.0" layoutY="1.0" onMouseClicked="#clickOnCity" prefHeight="114.0" prefWidth="117.0" />
                               <ImageView fx:id="regionBonusSea" fitHeight="34.0" fitWidth="56.0" layoutX="174.0" layoutY="338.0">
                                  <image>
                                     <Image url="@view/images/bonusTiles/bonusMare.png" />
@@ -843,12 +843,12 @@
                               <ImageView fx:id="rewardTokenE" fitHeight="45.0" fitWidth="45.0" layoutX="58.0" layoutY="251.0" pickOnBounds="true" preserveRatio="true" />
                               <ImageView fx:id="rewardTokenB" fitHeight="45.0" fitWidth="45.0" layoutX="14.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true" />
                            </children></AnchorPane>
-                        <AnchorPane fx:id="hillRegion" layoutX="245.0" layoutY="-7.0" onMouseClicked="#clickOnRegionHill" pickOnBounds="false" prefHeight="385.0" prefWidth="278.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="241.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="hillRegion" layoutX="245.0" layoutY="-7.0" onMouseClicked="#clickOnRegion" pickOnBounds="false" prefHeight="385.0" prefWidth="278.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="241.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Pane fx:id="juvelar" layoutX="159.0" layoutY="170.0" onMouseClicked="#clickOnCityJuvelar" prefHeight="114.0" prefWidth="110.0" />
-                              <Pane fx:id="indur" layoutX="159.0" layoutY="21.0" onMouseClicked="#clickOnCityIndur" prefHeight="114.0" prefWidth="110.0" />
-                              <Pane fx:id="hellar" layoutX="45.0" layoutY="242.0" onMouseClicked="#clickOnCityHellar" prefHeight="99.0" prefWidth="110.0" />
-                              <Pane fx:id="graden" layoutX="33.0" layoutY="136.0" onMouseClicked="#clickOnCityGraden" prefHeight="106.0" prefWidth="110.0" />
+                              <Pane fx:id="juvelar" layoutX="159.0" layoutY="170.0" onMouseClicked="#clickOnCity" prefHeight="114.0" prefWidth="110.0" />
+                              <Pane fx:id="indur" layoutX="159.0" layoutY="21.0" onMouseClicked="#clickOnCity" prefHeight="114.0" prefWidth="110.0" />
+                              <Pane fx:id="hellar" layoutX="45.0" layoutY="242.0" onMouseClicked="#clickOnCity" prefHeight="99.0" prefWidth="110.0" />
+                              <Pane fx:id="graden" layoutX="33.0" layoutY="136.0" onMouseClicked="#clickOnCity" prefHeight="106.0" prefWidth="110.0" />
                               <Pane fx:id="framek" layoutX="23.0" layoutY="21.0" prefHeight="114.0" prefWidth="110.0" />
                               <ImageView fx:id="regionBonusHill" fitHeight="34.0" fitWidth="56.0" layoutX="177.0" layoutY="340.0">
                                  <image>
@@ -861,13 +861,13 @@
                               <ImageView fx:id="rewardTokenJ" fitHeight="45.0" fitWidth="45.0" layoutX="169.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true" />
                               <ImageView fx:id="rewardTokenH" fitHeight="45.0" fitWidth="45.0" layoutX="55.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true" />
                            </children></AnchorPane>
-                        <AnchorPane fx:id="mountainRegion" layoutX="522.0" onMouseClicked="#clickOnRegionMountain" prefHeight="385.0" prefWidth="242.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="522.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="mountainRegion" layoutX="522.0" onMouseClicked="#clickOnRegion" prefHeight="385.0" prefWidth="242.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="522.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Pane fx:id="osium" layoutX="121.0" layoutY="211.0" onMouseClicked="#clickOnCityOsium" prefHeight="114.0" prefWidth="110.0" />
-                              <Pane fx:id="merkatim" layoutX="3.0" layoutY="268.0" onMouseClicked="#clickOnCityMerkatim" prefHeight="114.0" prefWidth="110.0" />
-                              <Pane fx:id="lyram" layoutX="3.0" layoutY="136.0" onMouseClicked="#clickOnCityLyram" prefHeight="114.0" prefWidth="110.0" />
-                              <Pane fx:id="naris" layoutX="121.0" layoutY="84.0" onMouseClicked="#clickOnCityNaris" prefHeight="114.0" prefWidth="110.0" />
-                              <Pane fx:id="kultos" layoutX="25.0" layoutY="14.0" onDragDone="#clickOnCityKultos" prefHeight="114.0" prefWidth="110.0" />
+                              <Pane fx:id="osium" layoutX="121.0" layoutY="211.0" onMouseClicked="#clickOnCity" prefHeight="114.0" prefWidth="110.0" />
+                              <Pane fx:id="merkatim" layoutX="3.0" layoutY="268.0" onMouseClicked="#clickOnCity" prefHeight="114.0" prefWidth="110.0" />
+                              <Pane fx:id="lyram" layoutX="3.0" layoutY="136.0" onMouseClicked="#clickOnCity" prefHeight="114.0" prefWidth="110.0" />
+                              <Pane fx:id="naris" layoutX="121.0" layoutY="84.0" onMouseClicked="#clickOnCity" prefHeight="114.0" prefWidth="110.0" />
+                              <Pane fx:id="kultos" layoutX="25.0" layoutY="14.0" onDragDone="#clickOnCity" prefHeight="114.0" prefWidth="110.0" />
                               <ImageView fx:id="regionBonusMountain" fitHeight="34.0" fitWidth="56.0" layoutX="176.0" layoutY="340.0">
                                  <image>
                                     <Image url="@view/images/bonusTiles/bonusMontagna.png" />
