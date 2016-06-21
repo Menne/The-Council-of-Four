@@ -194,6 +194,7 @@ public class GUI extends ClientView{
 			
 			@Override
 			public void run() {
+				System.out.println(clientGame);
 				displayCouncillors(clientGame);
 				displayTokens(clientGame);
 				displayPlayers(clientGame.getClientPlayers());
@@ -288,7 +289,6 @@ public class GUI extends ClientView{
 			
 			@Override
 			public void run() {
-				System.out.println(player);
 				controllerGUI.getHand().getChildren().clear();
 				controllerGUI.getPermitTilesTurnedUpOwned().getChildren().clear();
 				for (PoliticsCardDTO card : player.getHand()){
