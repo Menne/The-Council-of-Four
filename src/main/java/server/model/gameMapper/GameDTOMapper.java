@@ -118,6 +118,7 @@ public class GameDTOMapper implements GameMapperInterface {
 		clientPlayerDTO.setScore(realObject.getScore());
 		clientPlayerDTO.setCoins(realObject.getCoins());
 		clientPlayerDTO.setNobility(realObject.getNobility());
+		clientPlayerDTO.setFinalBonuses(realObject.getPlayersFinalBonus());
 		
 		return clientPlayerDTO;	
 	}

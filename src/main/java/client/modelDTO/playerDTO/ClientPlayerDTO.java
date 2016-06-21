@@ -6,6 +6,7 @@ import java.util.List;
 import client.modelDTO.ModelDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
 import client.modelDTO.gameTableDTO.PoliticsCardDTO;
+import server.model.bonus.ScoreBonus;
 
 public class ClientPlayerDTO implements ModelDTO{
 	
@@ -18,17 +19,29 @@ public class ClientPlayerDTO implements ModelDTO{
 	private List<PoliticsCardDTO> hand;
 	private List<PermitTileDTO> coveredPermitTiles;
 	private List<PermitTileDTO> availablePermitTiles;
+	private List<ScoreBonus> finalBonuses;
 	private List<AssistantDTO> assistants;
 	private int coins;
 	private int score;
 	private int nobility;
 	
 	public ClientPlayerDTO() {
-		this.hand=new ArrayList<PoliticsCardDTO>();
-		this.coveredPermitTiles=new ArrayList<PermitTileDTO>();
-		this.availablePermitTiles=new ArrayList<PermitTileDTO>();
+		this.hand=new ArrayList<>();
+		this.coveredPermitTiles=new ArrayList<>();
+		this.availablePermitTiles=new ArrayList<>();
+		this.finalBonuses=new ArrayList<>();
 	}
 	
+
+	public List<ScoreBonus> getFinalBonuses() {
+		return finalBonuses;
+	}
+
+
+	public void setFinalBonuses(List<ScoreBonus> finalBonuses) {
+		this.finalBonuses = finalBonuses;
+	}
+
 
 	public String getName() {
 		return this.name;
@@ -107,7 +120,8 @@ public class ClientPlayerDTO implements ModelDTO{
 	@Override
 	public String toString() {
 		return "\n" + this.getName() +", Here is your current status: [score=" + score + ", hand=" + hand + ", coveredPermitTiles=" + coveredPermitTiles
-				+ ", availablePermitTiles=" + availablePermitTiles + ", assistants=" + assistants + ", coins=" + coins + ", nobility=" + nobility + "]";
+				+ ", availablePermitTiles=" + availablePermitTiles + ", assistants=" + assistants + ", coins=" + coins + ", nobility=" + nobility + 
+				", finalBonuses: "+finalBonuses +"]";
 	}
 
 }

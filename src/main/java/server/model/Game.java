@@ -62,6 +62,7 @@ public class Game extends Observable<ViewNotify>{
 				player.getRemainigEmporiums().add(new Emporium(player));
 		}
 		this.currentPlayer=this.players.get(0);
+		this.players.get(0).getPlayersFinalBonus().add(new ScoreBonus(5)); 
 		this.state=new BeginState();
 		this.lastLap=false;
 		this.market=new Market();

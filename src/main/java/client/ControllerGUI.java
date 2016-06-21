@@ -1282,6 +1282,10 @@ public class ControllerGUI {
 		}
 	}
 
+	@FXML
+	public void stopDiscarding(){
+		//TODO
+	}
 	
 	public void handlePoliticsCard(PoliticsCardDTO selectedCard) {
 		synchronized (this) {
