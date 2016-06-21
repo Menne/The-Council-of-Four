@@ -25,6 +25,7 @@ public class GenericPlayerDTO implements ModelDTO{
 	
 	public GenericPlayerDTO(){
 		this.availablePermitTiles=new ArrayList<PermitTileDTO>();
+		this.playersFinalBonus=new ArrayList<>();
 	}
 
 	

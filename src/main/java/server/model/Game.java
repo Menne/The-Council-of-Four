@@ -10,11 +10,13 @@ import java.util.List;
 
 import observerPattern.Observable;
 import server.Initializer;
+import server.model.bonus.ScoreBonus;
 import server.model.gameMapper.GameDTOMapper;
 import server.model.gameMapper.GameMapperInterface;
 import server.model.gameTable.BonusTile;
 import server.model.gameTable.Emporium;
 import server.model.gameTable.GameTable;
+import server.model.gameTable.KingBonusTile;
 import server.model.market.Market;
 import server.model.player.Player;
 import server.model.stateMachine.BeginState;
@@ -61,6 +63,7 @@ public class Game extends Observable<ViewNotify>{
 			for(int i=0;i<getIntialnumberofemporiums();i++)
 				player.getRemainigEmporiums().add(new Emporium(player));
 		}
+		this.players.get(0).getPlayersFinalBonus().add(new KingBonusTile(new ScoreBonus(25)));
 		this.currentPlayer=this.players.get(0);
 		this.state=new BeginState();
 		this.lastLap=false;

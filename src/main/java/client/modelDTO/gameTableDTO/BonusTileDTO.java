@@ -24,6 +24,11 @@ public class BonusTileDTO implements ModelDTO {
 	public ScoreBonus getBonus() {
 		return bonus;
 	}
+
+	@Override
+	public String toString() {
+		return bonus.toString();
+	}
 	
 	
 
