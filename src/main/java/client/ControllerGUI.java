@@ -443,6 +443,36 @@ public class ControllerGUI {
 	@FXML
 	private TextArea messageBox;
 	
+	@FXML
+	private HBox permitTilesTurnedUpPlayer1;
+	
+	@FXML
+	private HBox permitTilesTurnedUpPlayer2;
+	
+	@FXML
+	private HBox permitTilesTurnedUpPlayer3;
+	
+	@FXML
+	private HBox permitTilesTurnedUpPlayer4;
+	
+	
+	
+	public HBox getPermitTilesTurnedUpPlayer1() {
+		return permitTilesTurnedUpPlayer1;
+	}
+
+	public HBox getPermitTilesTurnedUpPlayer2() {
+		return permitTilesTurnedUpPlayer2;
+	}
+
+	public HBox getPermitTilesTurnedUpPlayer3() {
+		return permitTilesTurnedUpPlayer3;
+	}
+
+	public HBox getPermitTilesTurnedUpPlayer4() {
+		return permitTilesTurnedUpPlayer4;
+	}
+
 	public List<Pane> getCities(){
 		return Arrays.asList(arkon,burgen,castrum,dorful,esti,framek,graden,hellar,indur,kultos,juvelar,lyram,merkatim,naris,osium);
 	}
@@ -566,6 +596,7 @@ public class ControllerGUI {
 	public Label getPlayerNobility() {
 		return playerNobility;
 	}
+	
 
 
 	public List<ImageView> getCouncillorReserve(){
