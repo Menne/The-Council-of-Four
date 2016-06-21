@@ -36,12 +36,28 @@
                                  <children>
                                     <ScrollPane layoutX="110.0" layoutY="-69.0" prefHeight="91.0" prefWidth="376.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                       <content>
-                                        <AnchorPane maxHeight="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="73.0" prefWidth="377.0" styleClass="sfondo" />
+                                        <AnchorPane maxHeight="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="73.0" prefWidth="425.0" styleClass="sfondo">
+                                             <children>
+                                                <HBox fx:id="permitTilesTurnedUpOwned" layoutX="36.0" layoutY="-13.0" prefHeight="73.0" prefWidth="425.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                             </children>
+                                          </AnchorPane>
                                       </content>
                                     </ScrollPane>
                                  </children>
                               </AnchorPane>
-                            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="376.0" />
+                            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="306.0">
+                                 <children>
+                                    <ScrollPane layoutX="41.0" layoutY="-68.0" prefHeight="100.0" prefWidth="306.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="81.0" prefWidth="404.0" styleClass="sfondo">
+                                             <children>
+                                                <HBox fx:id="permitTilesTurnedDownOwned" layoutX="26.0" layoutY="-25.0" prefHeight="81.0" prefWidth="404.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                             </children>
+                                          </AnchorPane>
+                                      </content>
+                                    </ScrollPane>
+                                 </children>
+                              </AnchorPane>
                           </items>
                         </SplitPane>
                      </children></AnchorPane>
