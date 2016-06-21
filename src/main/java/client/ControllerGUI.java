@@ -455,7 +455,21 @@ public class ControllerGUI {
 	@FXML
 	private HBox permitTilesTurnedUpPlayer4;
 	
+	@FXML
+	private HBox permitTilesTurnedUpOwned;
 	
+	@FXML
+	private HBox permitTilesTurnedDownOwned;
+	
+	
+	public HBox getPermitTilesTurnedUpOwned() {
+		return permitTilesTurnedUpOwned;
+	}
+
+	public HBox getPermitTilesTurnedDownOwned() {
+		return permitTilesTurnedDownOwned;
+	}
+
 	public List<HBox> getPermitTilesOtherPlayers(){
 		return Arrays.asList(permitTilesTurnedUpPlayer1,permitTilesTurnedUpPlayer2,permitTilesTurnedUpPlayer3,permitTilesTurnedUpPlayer4);
 	}
