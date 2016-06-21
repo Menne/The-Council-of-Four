@@ -727,7 +727,8 @@ public class ControllerGUI {
 		ElectCouncillorDTO selectedAction=new ElectCouncillorDTO();
 		for (ActionDTO action : this.clientGame.getAvailableActions())
 			if (action instanceof ElectCouncillorDTO) {
-				Platform.runLater(new Runnable() {
+				ExecutorService executor=Executors.newSingleThreadExecutor();
+				executor.submit(new Runnable() {
 					
 					@Override
 					public void run() {
@@ -1235,7 +1236,10 @@ public class ControllerGUI {
 
 	
 	public void handlePoliticsCard(PoliticsCardDTO selectedCard) {
-		this.view.setCurrentParameter(selectedCard);
+		synchronized (this) {
+			this.view.setCurrentParameter(selectedCard);
+			this.notify();
+		}
 	}
 
 	
