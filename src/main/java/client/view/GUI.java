@@ -415,8 +415,10 @@ public class GUI extends ClientView{
 			else
 				selectedCards.add((PoliticsCardDTO) this.currentParameter);
 			this.currentParameter=null;
+			this.disableClickOnDescardButton(false);
 		}
 		this.disableClickOnPoliticsCards(true);
+		this.disableClickOnDescardButton(true);
 		return selectedCards;
 	}
 
@@ -572,7 +574,7 @@ public class GUI extends ClientView{
 	}
 	
 	private void disableClickOnDescardButton(boolean disabled) {
-		this.controllerGUI.getOsium().setDisable(disabled);
+		this.controllerGUI.getDescardPoliticsCards().setDisable(disabled);
 	}
 	
 	

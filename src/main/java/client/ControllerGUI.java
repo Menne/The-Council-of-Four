@@ -715,6 +715,14 @@ public class ControllerGUI {
 		}
 	}
 	
+	public Button getDescardPoliticsCards() {
+		return descardPoliticsCards;
+	}
+
+	public void setDescardPoliticsCards(Button descardPoliticsCards) {
+		this.descardPoliticsCards = descardPoliticsCards;
+	}
+
 	@FXML
 	public void startActionPickPoliticsCard() throws RemoteException {
 		for (ActionDTO action : this.clientGame.getAvailableActions())
