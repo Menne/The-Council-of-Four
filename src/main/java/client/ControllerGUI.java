@@ -989,43 +989,10 @@ public class ControllerGUI {
 		}
 	}
 	
-	
 	@FXML
-	public void clickOnBalconyRegionSea() {
+	public void clickOnCouncillorsReserve(Event event) {
 		synchronized (this) {
-			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(0).getBalcony());
-			this.notify();
-		}
-	}
-	
-	@FXML
-	public void clickOnBalconyRegionHill() {
-		synchronized (this) {
-			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(1).getBalcony());
-			this.notify();
-		}
-	}
-	
-	@FXML
-	public void clickOnBalconyRegionMountain() {
-		synchronized (this) {
-			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(2).getBalcony());
-			this.notify();
-		}
-	}
-
-	@FXML
-	public void clickOnBalconyKing() {
-		synchronized (this) {
-			view.setCurrentParameter(clientGame.getClientGameTable().getClientKingBalcony());
-			this.notify();
-		}
-	}
-	
-	@FXML
-	public void clickOnCouncillorsReserve() {
-		synchronized (this) {
-			view.setCurrentParameter(clientGame.getClientGameTable().getClientCouncillorReserve().get(0));
+			view.setCurrentParameter(((ImageView) event.getSource()).getUserData());
 			this.notify();
 		}
 	}
