@@ -197,10 +197,10 @@ public class GUI extends ClientView{
 				displayCouncillors(clientGame);
 				displayTokens(clientGame);
 				displayPlayers(clientGame.getClientPlayers());
-				displayPermitTiles(clientGame);
 				displayRegions(clientGame);
 				displayCities(clientGame);
 				diplayBalconies(clientGame);
+				displayPermitTiles(clientGame);
 			}
 		});
 		
@@ -225,7 +225,7 @@ public class GUI extends ClientView{
 			if ("Esti".equals(city.getName()))
 				controllerGUI.getEsti().setUserData(city);
 		}
-		for (CityDTO city : clientGame.getClientRegions().get(0).getCities()) {
+		for (CityDTO city : clientGame.getClientRegions().get(1).getCities()) {
 			if ("Framek".equals(city.getName()))
 				controllerGUI.getFramek().setUserData(city);
 			if ("Graden".equals(city.getName()))
@@ -237,7 +237,7 @@ public class GUI extends ClientView{
 			if ("Juvelar".equals(city.getName()))
 				controllerGUI.getJuvelar().setUserData(city);
 		}
-		for (CityDTO city : clientGame.getClientRegions().get(0).getCities()) {
+		for (CityDTO city : clientGame.getClientRegions().get(2).getCities()) {
 			if ("Kultos".equals(city.getName()))
 				controllerGUI.getKultos().setUserData(city);
 			if ("Lyram".equals(city.getName()))
@@ -252,7 +252,10 @@ public class GUI extends ClientView{
 	}
 
 	private void diplayBalconies(GameTableDTO clientGame) {
-	
+		controllerGUI.getSeaBalcony().setUserData(clientGame.getClientRegions().get(0).getBalcony());
+		controllerGUI.getHillBalcony().setUserData(clientGame.getClientRegions().get(1).getBalcony());
+		controllerGUI.getMountainBalcony().setUserData(clientGame.getClientRegions().get(2).getBalcony());
+		controllerGUI.getKingBalcony().setUserData(clientGame.getClientKingBalcony());
 	}
 	
 	private void displayPermitTiles(GameTableDTO clientGame){

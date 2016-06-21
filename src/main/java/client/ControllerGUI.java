@@ -964,9 +964,9 @@ public class ControllerGUI {
 	
 	
 	@FXML
-	public void clickOnRegion() {
+	public void clickOnRegion(Event event) {
 		synchronized (this) {
-			view.setCurrentParameter(clientGame.getClientGameTable().getClientRegions().get(0));
+			view.setCurrentParameter(((Pane) event.getSource()).getUserData());
 			this.notify();
 		}
 	}
@@ -1000,6 +1000,15 @@ public class ControllerGUI {
 	public void clickOnPermitTileInRegion(Event event) {
 		synchronized (this) {
 			view.setCurrentParameter(((ImageView) event.getSource()).getUserData());
+			this.notify();
+		}
+	}
+	
+	
+	@FXML
+	public void clickOnBalcony(Event event) {
+		synchronized (this) {
+			view.setCurrentParameter(((Pane) event.getSource()).getUserData());
 			this.notify();
 		}
 	}
@@ -1100,6 +1109,17 @@ public class ControllerGUI {
 			this.notify();
 		}
 	}
+	
+	
+	@FXML
+	public void clickOnCity(Event event) {
+		synchronized (this) {
+			view.setCurrentParameter(((Pane) event.getSource()).getUserData());
+			this.notify();
+		}
+	}
+	
+	
 	
 	@FXML
 	public void clickOnCityArkon() {
