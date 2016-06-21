@@ -26,16 +26,32 @@
    <children>
       <BorderPane prefHeight="800.0" prefWidth="1280.0">
          <bottom>
-            <SplitPane dividerPositions="0.29797979797979796" prefHeight="204.0" prefWidth="1286.0" styleClass="splitPan" stylesheets="@resize.css" BorderPane.alignment="CENTER">
+            <SplitPane dividerPositions="0.24180967238689546" prefHeight="204.0" prefWidth="1286.0" styleClass="splitPan" stylesheets="@resize.css" BorderPane.alignment="CENTER">
               <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="sfondo" stylesheets="@resize.css" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="sfondo" stylesheets="@resize.css">
+                     <children>
+                        <SplitPane dividerPositions="0.4797979797979798" layoutX="-1.0" layoutY="-3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" pickOnBounds="false" prefHeight="200.0" prefWidth="381.0" scaleShape="false" styleClass="sfondo" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <items>
+                            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="91.0" prefWidth="309.0">
+                                 <children>
+                                    <ScrollPane layoutX="110.0" layoutY="-69.0" prefHeight="91.0" prefWidth="376.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <content>
+                                        <AnchorPane maxHeight="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="73.0" prefWidth="377.0" styleClass="sfondo" />
+                                      </content>
+                                    </ScrollPane>
+                                 </children>
+                              </AnchorPane>
+                            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="376.0" />
+                          </items>
+                        </SplitPane>
+                     </children></AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="98.0" prefWidth="100.0">
                      <children>
-                        <SplitPane dividerPositions="0.5564245810055866" layoutX="283.0" layoutY="-22.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="162.0" prefWidth="896.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <SplitPane dividerPositions="0.46502057613168724" layoutX="-6.0" layoutY="-22.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="162.0" prefWidth="902.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-6.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <items>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="328.0">
                                  <children>
-                                    <SplitPane cacheShape="false" centerShape="false" dividerPositions="0.26262626262626265" layoutX="85.0" layoutY="-47.0" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="160.0" prefWidth="498.0" scaleShape="false" styleClass="sfondo" stylesheets="@resize.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <SplitPane cacheShape="false" centerShape="false" dividerPositions="0.2857142857142857" layoutX="85.0" layoutY="-47.0" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="160.0" prefWidth="498.0" scaleShape="false" styleClass="sfondo" stylesheets="@resize.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                       <items>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="47.0" prefWidth="470.0">
                                              <children>
@@ -81,11 +97,11 @@
                                     </SplitPane>
                                  </children>
                               </AnchorPane>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="196.0" prefWidth="515.0">
                                  <children>
-                                    <VBox layoutX="111.0" prefHeight="160.0" prefWidth="349.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <VBox layoutX="111.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="349.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <TextArea fx:id="messageBox" editable="false" prefHeight="157.0" prefWidth="400.0">
+                                          <TextArea fx:id="messageBox" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="516.0">
                                              <font>
                                                 <Font name="Papyrus" size="13.0" />
                                              </font></TextArea>
@@ -239,7 +255,7 @@
                                                 </Label>
                                                 <ScrollPane layoutX="99.0" layoutY="1.0" prefHeight="75.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="99.0" AnchorPane.rightAnchor="99.0" AnchorPane.topAnchor="0.0">
                                                   <content>
-                                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="61.0" prefWidth="194.0">
+                                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="52.0" prefWidth="245.0">
                                                          <children>
                                                             <HBox fx:id="permitTilesTurnedUpPlayer1" prefHeight="61.0" prefWidth="193.0" styleClass="sfondo" stylesheets="@resize.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                                          </children>
@@ -384,7 +400,7 @@
                                                 </Label>
                                                 <ScrollPane layoutX="97.0" prefHeight="68.0" prefWidth="197.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="99.0" AnchorPane.rightAnchor="99.0">
                                                    <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="64.0" prefWidth="198.0">
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="49.0" prefWidth="248.0">
                                                          <children>
                                                             <HBox fx:id="permitTilesTurnedUpPlayer2" prefHeight="61.0" prefWidth="194.0" styleClass="sfondo" stylesheets="@resize.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                                          </children>
@@ -521,7 +537,7 @@
                                                 </Label>
                                                 <ScrollPane layoutX="99.0" layoutY="1.0" prefHeight="75.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="99.0" AnchorPane.rightAnchor="99.0" AnchorPane.topAnchor="0.0">
                                                    <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="61.0" prefWidth="194.0">
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="52.0" prefWidth="292.0">
                                                          <children>
                                                             <HBox fx:id="permitTilesTurnedUpPlayer3" prefHeight="61.0" prefWidth="194.0" styleClass="sfondo" stylesheets="@resize.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                                          </children>
@@ -657,11 +673,11 @@
                                                       <Font name="Papyrus" size="13.0" />
                                                    </font>
                                                 </Label>
-                                                <ScrollPane layoutX="99.0" layoutY="1.0" prefHeight="75.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="99.0" AnchorPane.rightAnchor="99.0" AnchorPane.topAnchor="0.0">
+                                                <ScrollPane layoutX="99.0" layoutY="1.0" prefHeight="70.0" prefWidth="196.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="99.0" AnchorPane.rightAnchor="99.0" AnchorPane.topAnchor="0.0">
                                                    <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="61.0" prefWidth="194.0">
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="51.0" prefWidth="236.0">
                                                          <children>
-                                                            <HBox fx:id="permitTilesTurnedUpPlayer4" prefHeight="61.0" prefWidth="194.0" styleClass="sfondo" stylesheets="@resize.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                            <HBox fx:id="permitTilesTurnedUpPlayer4" prefHeight="52.0" prefWidth="227.0" styleClass="sfondo" stylesheets="@resize.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                                          </children>
                                                       </AnchorPane>
                                                    </content>
@@ -784,7 +800,7 @@
                               <ImageView fx:id="rewardTokenE" fitHeight="45.0" fitWidth="45.0" layoutX="58.0" layoutY="251.0" pickOnBounds="true" preserveRatio="true" />
                               <ImageView fx:id="rewardTokenB" fitHeight="45.0" fitWidth="45.0" layoutX="14.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true" />
                            </children></AnchorPane>
-                        <AnchorPane fx:id="hillRegion" layoutX="245.0" layoutY="-7.0" onMouseClicked="#clickOnRegionHill" prefHeight="385.0" prefWidth="278.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="241.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="hillRegion" layoutX="245.0" layoutY="-7.0" onMouseClicked="#clickOnRegionHill" pickOnBounds="false" prefHeight="385.0" prefWidth="278.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="241.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <Pane fx:id="juvelar" layoutX="159.0" layoutY="170.0" onMouseClicked="#clickOnCityJuvelar" prefHeight="114.0" prefWidth="110.0" />
                               <Pane fx:id="indur" layoutX="159.0" layoutY="21.0" onMouseClicked="#clickOnCityIndur" prefHeight="114.0" prefWidth="110.0" />
