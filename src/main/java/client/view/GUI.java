@@ -44,7 +44,6 @@ import server.model.bonus.PoliticsCardsBonus;
 import server.model.bonus.ScoreBonus;
 import server.model.gameTable.CouncilBalcony;
 
-
 public class GUI extends ClientView{
 
 	private final ControllerGUI controllerGUI;
@@ -412,6 +411,7 @@ public class GUI extends ClientView{
 
 	@Override
 	public PermitTileDTO askForPermitTile(List<PermitTileDTO> acceptablePermitTiles) {
+		this.disableClickOnPermitTilesInHand(false);
 		synchronized (this.controllerGUI) {
 			try {
 				while (currentParameter==null)
@@ -423,6 +423,7 @@ public class GUI extends ClientView{
 		}
 		PermitTileDTO permitTile=(PermitTileDTO) this.currentParameter;
 		this.currentParameter=null;
+		this.disableClickOnPermitTilesInHand(true);
 		return permitTile;
 	}
 
@@ -511,6 +512,7 @@ public class GUI extends ClientView{
 
 	@Override
 	public int askForNumberOfPermitTile(List<Integer> acceptableNumberOfPermitTile) {
+		this.disableClickOnPermitTilesInRegions(false);
 		synchronized (this.controllerGUI) {
 			try {
 				while (currentParameter==null)
@@ -522,6 +524,7 @@ public class GUI extends ClientView{
 		}
 		int numberOfPermitTile=(int) this.currentParameter;
 		this.currentParameter=null;
+		this.disableClickOnPermitTilesInRegions(true);
 		return numberOfPermitTile;
 	}
 
@@ -614,7 +617,10 @@ public class GUI extends ClientView{
 	}
 	
 	private void disableClickOnPermitTilesInHand(boolean disabled) {
-		
+		for (Object object : controllerGUI.getPermitTilesTurnedUpOwned().getChildren()) {
+			ImageView imageView=(ImageView) object;
+			imageView.setDisable(disabled);
+		}
 	}
 
 	private void disableClickOnCouncillorsInReserve(boolean disabled) {
@@ -664,10 +670,12 @@ public class GUI extends ClientView{
 		this.controllerGUI.getDescardPoliticsCards().setDisable(disabled);
 	}
 	
-	
-	
 	private void disableClickOnPermitTilesInRegions(boolean disabled) {
-		
+		for (int i=0; i<=1; i++) {
+			controllerGUI.getSeaPermitTile()[i].setDisable(disabled);
+			controllerGUI.getHillPermitTile()[i].setDisable(disabled);
+			controllerGUI.getMountainPermitTile()[i].setDisable(disabled);
+		}
 	}
 	
 }
