@@ -534,7 +534,7 @@
                                     </AnchorPane>
                                  </content>
                               </Tab>
-                              <Tab fx:id="permitTilesTurnedUpPlayer4" text="Player4">
+                              <Tab text="Player4">
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="146.0" prefWidth="302.0" stylesheets="@resize.css">
                                        <children>
@@ -661,7 +661,7 @@
                                                    <content>
                                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="61.0" prefWidth="194.0">
                                                          <children>
-                                                            <HBox prefHeight="61.0" prefWidth="194.0" styleClass="sfondo" stylesheets="@resize.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                            <HBox fx:id="permitTilesTurnedUpPlayer4" prefHeight="61.0" prefWidth="194.0" styleClass="sfondo" stylesheets="@resize.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                                          </children>
                                                       </AnchorPane>
                                                    </content>
@@ -891,14 +891,14 @@
                      <children>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="380.0" prefWidth="122.0" styleClass="sfondo" stylesheets="@resize.css">
                            <children>
-                              <ImageView fx:id="reserveConcillor1" fitHeight="46.0" fitWidth="30.0" layoutX="62.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true" />
-                              <ImageView fx:id="reserveConcillor2" fitHeight="46.0" fitWidth="30.0" layoutX="21.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true" />
-                              <ImageView fx:id="reserveConcillor3" fitHeight="46.0" fitWidth="30.0" layoutX="62.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true" />
-                              <ImageView fx:id="reserveConcillor4" fitHeight="46.0" fitWidth="30.0" layoutX="21.0" layoutY="217.0" pickOnBounds="true" preserveRatio="true" />
-                              <ImageView fx:id="reserveConcillor5" fitHeight="46.0" fitWidth="30.0" layoutX="51.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true" />
-                              <ImageView fx:id="reserveConcillor6" fitHeight="46.0" fitWidth="30.0" layoutX="21.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true" />
-                              <ImageView fx:id="reserveConcillor7" fitHeight="46.0" fitWidth="30.0" layoutX="62.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true" />
-                              <ImageView fx:id="reserveConcillor8" fitHeight="46.0" fitWidth="30.0" layoutX="21.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="reserveConcillor1" fitHeight="46.0" fitWidth="30.0" layoutX="62.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="29.0" />
+                              <ImageView fx:id="reserveConcillor2" fitHeight="46.0" fitWidth="30.0" layoutX="21.0" layoutY="305.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="29.0" />
+                              <ImageView fx:id="reserveConcillor3" fitHeight="46.0" fitWidth="30.0" layoutX="62.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="94.0" />
+                              <ImageView fx:id="reserveConcillor4" fitHeight="46.0" fitWidth="30.0" layoutX="21.0" layoutY="217.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="94.0" />
+                              <ImageView fx:id="reserveConcillor5" fitHeight="46.0" fitWidth="30.0" layoutX="51.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="159.0" />
+                              <ImageView fx:id="reserveConcillor6" fitHeight="46.0" fitWidth="30.0" layoutX="21.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="159.0" />
+                              <ImageView fx:id="reserveConcillor7" fitHeight="46.0" fitWidth="30.0" layoutX="62.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="224.0" />
+                              <ImageView fx:id="reserveConcillor8" fitHeight="46.0" fitWidth="30.0" layoutX="21.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="224.0" />
                               <Label layoutX="4.0" prefHeight="75.0" prefWidth="124.0" text=" Councillor &#10;Reserve" textAlignment="CENTER">
                                  <font>
                                     <Font name="Papyrus" size="13.0" />

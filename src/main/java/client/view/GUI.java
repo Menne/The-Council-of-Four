@@ -236,7 +236,6 @@ public class GUI extends ClientView{
 				controllerGUI.getCouncillors(region).get(i).setImage(imageMap.get(region.getBalcony()[i]));
 		for(int i=0; i<4; i++)
 			controllerGUI.getKingCouncillors().get(i).setImage(imageMap.get(clientGame.getClientKingBalcony()[i]));
-	//	for(CouncillorDTO councillor : clientGame.getClientCouncillorReserve())
 			for(int i=0; i<8; i++)
 			controllerGUI.getCouncillorReserve().get(i).setImage(imageMap.get(clientGame.getClientCouncillorReserve().get(i)));			
 	}
