@@ -195,15 +195,15 @@ public class GUI extends ClientView{
 		controllerGUI.getSeaPermitTile()[0].setImage(imageMap.get(clientGame.getClientRegions().get(0).getUncoveredPermitTiles()[0]));
 		controllerGUI.getSeaPermitTile()[0].setUserData(new Integer(0));
 		controllerGUI.getSeaPermitTile()[1].setImage(imageMap.get(clientGame.getClientRegions().get(0).getUncoveredPermitTiles()[1]));
-		controllerGUI.getSeaPermitTile()[0].setUserData(new Integer(1));
+		controllerGUI.getSeaPermitTile()[1].setUserData(new Integer(1));
 		controllerGUI.getHillPermitTile()[0].setImage(imageMap.get(clientGame.getClientRegions().get(1).getUncoveredPermitTiles()[0]));
-		controllerGUI.getSeaPermitTile()[0].setUserData(new Integer(0));
+		controllerGUI.getHillPermitTile()[0].setUserData(new Integer(0));
 		controllerGUI.getHillPermitTile()[1].setImage(imageMap.get(clientGame.getClientRegions().get(1).getUncoveredPermitTiles()[1]));
-		controllerGUI.getSeaPermitTile()[0].setUserData(new Integer(1));
+		controllerGUI.getHillPermitTile()[1].setUserData(new Integer(1));
 		controllerGUI.getMountainPermitTile()[0].setImage(imageMap.get(clientGame.getClientRegions().get(2).getUncoveredPermitTiles()[0]));
-		controllerGUI.getSeaPermitTile()[0].setUserData(new Integer(0));
+		controllerGUI.getMountainPermitTile()[0].setUserData(new Integer(0));
 		controllerGUI.getMountainPermitTile()[1].setImage(imageMap.get(clientGame.getClientRegions().get(2).getUncoveredPermitTiles()[1]));
-		controllerGUI.getSeaPermitTile()[0].setUserData(new Integer(1));
+		controllerGUI.getMountainPermitTile()[1].setUserData(new Integer(1));
 	}
 	
 	private void displayPlayers(List<GenericPlayerDTO> players){
