@@ -14,7 +14,7 @@
    <children>
       <ImageView fitHeight="486.0" fitWidth="650.0" layoutX="-7.0" layoutY="-4.0" opacity="0.79">
          <image>
-            <Image url="@council-of-four.jpg" />
+            <Image url="@view/images/various/council-of-four.jpg" />
          </image>
       </ImageView>
       <Button layoutX="322.0" layoutY="393.0" mnemonicParsing="false" onAction="#play" prefHeight="58.0" prefWidth="225.0" text="Play!" />

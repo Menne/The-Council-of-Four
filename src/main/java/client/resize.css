@@ -1,6 +1,6 @@
 
 .sfondo{
-	-fx-background-image: url("sfondo.gif");  
+	-fx-background-image: url("view/images/various/sfondo.gif");  
 	-fx-background-repeat: repeat;
 /* 	-fx-background-size: contain;*/
 }

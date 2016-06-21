@@ -47,24 +47,24 @@
                                              <children>
                                                 <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="7.0" layoutY="7.0">
                                                    <image>
-                                                      <Image url="@Coins.png" />
+                                                      <Image url="@view/images/various/Coins.png" />
                                                    </image>
                                                 </ImageView>
                                                 <Label fx:id="playerCoins" layoutX="42.0" layoutY="10.0" text="Label" />
                                                 <ImageView fitHeight="45.0" fitWidth="20.0" layoutX="140.0" layoutY="2.0">
                                                    <image>
-                                                      <Image url="@Assistant.png" />
+                                                      <Image url="@view/images/various/Assistant.png" />
                                                    </image>
                                                 </ImageView>
                                                 <Label fx:id="playerAssistants" layoutX="160.0" layoutY="11.0" text="Label" />
                                                 <ImageView fitHeight="40.0" fitWidth="30.0" layoutX="245.0" layoutY="5.0">
                                                    <image>
-                                                      <Image url="@Point.png" />
+                                                      <Image url="@view/images/various/Point.png" />
                                                    </image>
                                                 </ImageView>
                                                 <ImageView fitHeight="45.0" fitWidth="46.0" layoutX="360.0" layoutY="2.0">
                                                    <image>
-                                                      <Image url="@Nobility.png" />
+                                                      <Image url="@view/images/various/Nobility.png" />
                                                    </image>
                                                 </ImageView>
                                                 <Label fx:id="playerScore" layoutX="282.0" layoutY="12.0" text="Label" />
@@ -132,7 +132,7 @@
                                                    <children>
                                                       <ImageView fitHeight="40.0" fitWidth="30.0" layoutX="39.0" layoutY="4.0">
                                                          <image>
-                                                            <Image url="@Point.png" />
+                                                            <Image url="@view/images/various/Point.png" />
                                                          </image>
                                                       </ImageView>
                                                    </children>
@@ -141,7 +141,7 @@
                                                    <children>
                                                       <ImageView fitHeight="45.0" fitWidth="20.0" layoutX="44.0" layoutY="2.0">
                                                          <image>
-                                                            <Image url="@Assistant.png" />
+                                                            <Image url="@view/images/various/Assistant.png" />
                                                          </image>
                                                       </ImageView>
                                                    </children>
@@ -150,7 +150,7 @@
                                                    <children>
                                                       <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="37.0" layoutY="7.0">
                                                          <image>
-                                                            <Image url="@Coins.png" />
+                                                            <Image url="@view/images/various/Coins.png" />
                                                          </image>
                                                       </ImageView>
                                                    </children>
@@ -189,13 +189,13 @@
                                                    <children>
                                                       <ImageView fitHeight="45.0" fitWidth="46.0" layoutX="33.0" layoutY="-1.0">
                                                          <image>
-                                                            <Image url="@Nobility.png" />
+                                                            <Image url="@view/images/various/Nobility.png" />
                                                          </image>
                                                       </ImageView>
                                                    </children></AnchorPane>
                                                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
                                                    <children>
-                                                      <ImageView fx:id="politicsDeck1" fitHeight="49.0" fitWidth="34.0" layoutX="41.0" layoutY="2.0" onMouseClicked="#startActionPickPoliticsCard" rotate="-90.0">
+                                                      <ImageView fx:id="politicsDeck" fitHeight="49.0" fitWidth="34.0" layoutX="41.0" layoutY="2.0" onMouseClicked="#startActionPickPoliticsCard" rotate="-90.0">
                                                          <image>
                                                             <Image url="@PoliticCard.png" />
                                                          </image>
@@ -275,7 +275,7 @@
                                                    <children>
                                                       <ImageView fitHeight="40.0" fitWidth="30.0" layoutX="39.0" layoutY="4.0">
                                                          <image>
-                                                            <Image url="@Point.png" />
+                                                            <Image url="@view/images/various/Point.png" />
                                                          </image>
                                                       </ImageView>
                                                    </children>
@@ -284,7 +284,7 @@
                                                    <children>
                                                       <ImageView fitHeight="45.0" fitWidth="20.0" layoutX="44.0" layoutY="2.0">
                                                          <image>
-                                                            <Image url="@Assistant.png" />
+                                                            <Image url="@view/images/various/Assistant.png" />
                                                          </image>
                                                       </ImageView>
                                                    </children>
@@ -293,7 +293,7 @@
                                                    <children>
                                                       <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="37.0" layoutY="7.0">
                                                          <image>
-                                                            <Image url="@Coins.png" />
+                                                            <Image url="@view/images/various/Coins.png" />
                                                          </image>
                                                       </ImageView>
                                                    </children>
@@ -337,7 +337,7 @@
                                                    <children>
                                                       <ImageView fitHeight="45.0" fitWidth="46.0" layoutX="33.0" layoutY="-1.0">
                                                          <image>
-                                                            <Image url="@Nobility.png" />
+                                                            <Image url="@view/images/various/Nobility.png" />
                                                          </image>
                                                       </ImageView>
                                                    </children>
@@ -420,7 +420,7 @@
                                                    <children>
                                                       <ImageView fitHeight="40.0" fitWidth="30.0" layoutX="39.0" layoutY="4.0">
                                                          <image>
-                                                            <Image url="@Point.png" />
+                                                            <Image url="@view/images/various/Point.png" />
                                                          </image>
                                                       </ImageView>
                                                    </children>
@@ -429,7 +429,7 @@
                                                    <children>
                                                       <ImageView fitHeight="45.0" fitWidth="20.0" layoutX="44.0" layoutY="2.0">
                                                          <image>
-                                                            <Image url="@Assistant.png" />
+                                                            <Image url="@view/images/various/Assistant.png" />
                                                          </image>
                                                       </ImageView>
                                                    </children>
@@ -438,7 +438,7 @@
                                                    <children>
                                                       <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="37.0" layoutY="7.0">
                                                          <image>
-                                                            <Image url="@Coins.png" />
+                                                            <Image url="@view/images/various/Coins.png" />
                                                          </image>
                                                       </ImageView>
                                                    </children>
@@ -482,7 +482,7 @@
                                                    <children>
                                                       <ImageView fitHeight="45.0" fitWidth="46.0" layoutX="33.0" layoutY="-1.0">
                                                          <image>
-                                                            <Image url="@Nobility.png" />
+                                                            <Image url="@view/images/various/Nobility.png" />
                                                          </image>
                                                       </ImageView>
                                                    </children>
@@ -558,7 +558,7 @@
                                                    <children>
                                                       <ImageView fitHeight="40.0" fitWidth="30.0" layoutX="39.0" layoutY="4.0">
                                                          <image>
-                                                            <Image url="@Point.png" />
+                                                            <Image url="@view/images/various/Point.png" />
                                                          </image>
                                                       </ImageView>
                                                    </children>
@@ -567,7 +567,7 @@
                                                    <children>
                                                       <ImageView fitHeight="45.0" fitWidth="20.0" layoutX="44.0" layoutY="2.0">
                                                          <image>
-                                                            <Image url="@Assistant.png" />
+                                                            <Image url="@view/images/various/Assistant.png" />
                                                          </image>
                                                       </ImageView>
                                                    </children>
@@ -576,7 +576,7 @@
                                                    <children>
                                                       <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="37.0" layoutY="7.0">
                                                          <image>
-                                                            <Image url="@Coins.png" />
+                                                            <Image url="@view/images/various/Coins.png" />
                                                          </image>
                                                       </ImageView>
                                                    </children>
@@ -620,7 +620,7 @@
                                                    <children>
                                                       <ImageView fitHeight="45.0" fitWidth="46.0" layoutX="33.0" layoutY="-1.0">
                                                          <image>
-                                                            <Image url="@Nobility.png" />
+                                                            <Image url="@view/images/various/Nobility.png" />
                                                          </image>
                                                       </ImageView>
                                                    </children>
@@ -741,7 +741,7 @@
                      <children>
                         <ImageView fitHeight="597.0" fitWidth="764.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <image>
-                              <Image url="@map_compressa.jpg" />
+                              <Image url="@view/images/various/map_compressa.jpg" />
                            </image>
                         </ImageView>
                         <AnchorPane fx:id="mountainRegion" layoutX="522.0" prefHeight="385.0" prefWidth="242.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="522.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
@@ -755,17 +755,17 @@
                         <ImageView fx:id="permitTileMountain1" fitHeight="59.0" fitWidth="56.0" layoutX="671.0" layoutY="398.0" onMouseClicked="#clickOnPermitTileRegionMountain2" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="179.0" AnchorPane.leftAnchor="671.0" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="398.0" />
                         <ImageView fx:id="permitDeckSeaRegion" fitHeight="64.0" fitWidth="56.0" layoutX="22.0" layoutY="395.0">
                            <image>
-                              <Image url="@seaTile.png" />
+                              <Image url="@view/images/seaPermitTile/seaTile.png" />
                            </image>
                         </ImageView>
                         <ImageView fx:id="permitDeckHillRegion" fitHeight="66.0" fitWidth="58.0" layoutX="270.0" layoutY="393.0">
                            <image>
-                              <Image url="@hillTile.png" />
+                              <Image url="@view/images/hillPermitTile/hillTile.png" />
                            </image>
                         </ImageView>
                         <ImageView fx:id="permitDeckMountainRegion" fitHeight="65.0" fitWidth="58.0" layoutX="545.0" layoutY="395.0">
                            <image>
-                              <Image url="@mountainTile.png" />
+                              <Image url="@view/images/mountainPermitTile/mountainTile.png" />
                            </image>
                         </ImageView>
                         <AnchorPane fx:id="seaRegion" layoutX="-2.0" layoutY="-4.0" onMouseClicked="#clickOnRegionSea" prefHeight="385.0" prefWidth="245.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="519.0" AnchorPane.topAnchor="0.0">
@@ -777,7 +777,7 @@
                               <Pane fx:id="arkon" layoutX="11.0" layoutY="1.0" onMouseClicked="#clickOnCityArkon" prefHeight="114.0" prefWidth="117.0" />
                               <ImageView fx:id="regionBonusSea" fitHeight="34.0" fitWidth="56.0" layoutX="174.0" layoutY="338.0">
                                  <image>
-                                    <Image url="@bonusMare.png" />
+                                    <Image url="@view/images/bonusTiles/bonusMare.png" />
                                  </image>
                               </ImageView>
                               <ImageView fx:id="rewardTokenA" fitHeight="45.0" fitWidth="45.0" layoutX="21.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
@@ -795,7 +795,7 @@
                               <Pane fx:id="framek" layoutX="23.0" layoutY="21.0" prefHeight="114.0" prefWidth="110.0" />
                               <ImageView fx:id="regionBonusHill" fitHeight="34.0" fitWidth="56.0" layoutX="177.0" layoutY="340.0">
                                  <image>
-                                    <Image url="@bonusColline.png" />
+                                    <Image url="@view/images/BonusTiles/bonusColline.png" />
                                  </image>
                               </ImageView>
                               <ImageView fx:id="rewardTokenF" fitHeight="45.0" fitWidth="45.0" layoutX="39.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
@@ -813,7 +813,7 @@
                               <Pane fx:id="kultos" layoutX="25.0" layoutY="14.0" onDragDone="#clickOnCityKultos" prefHeight="114.0" prefWidth="110.0" />
                               <ImageView fx:id="regionBonusMountain" fitHeight="34.0" fitWidth="56.0" layoutX="176.0" layoutY="340.0">
                                  <image>
-                                    <Image url="@bonusMontagna.png" />
+                                    <Image url="@view/images/bonusTiles/bonusMontagna.png" />
                                  </image>
                               </ImageView>
                               <ImageView fx:id="rewardTokenK" fitHeight="45.0" fitWidth="45.0" layoutX="35.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
@@ -923,7 +923,7 @@
                            <children>
                               <ImageView fx:id="politicsDeck" fitHeight="119.0" fitWidth="82.0" layoutX="21.0" layoutY="68.0" onMouseClicked="#startActionPickPoliticsCard">
                                  <image>
-                                    <Image url="@PoliticCard.png" />
+                                    <Image url="@view/images/cards/PoliticCard.png" />
                                  </image>
                               </ImageView>
                               <Label layoutX="11.0" layoutY="23.0" onMouseClicked="#startActionPickPoliticsCard" text="Pick Politic card" textAlignment="CENTER">
