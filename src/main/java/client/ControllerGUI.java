@@ -54,6 +54,50 @@ public class ControllerGUI {
 		this.view=view;
 	}
 
+	@FXML
+	private HBox emporiumsArkon;
+
+	@FXML
+	private HBox emporiumsBurgen;
+
+	@FXML
+	private HBox emporiumsCastrum;
+
+	@FXML
+	private HBox emporiumsDorful;
+
+	@FXML
+	private HBox emporiumsEsti;
+
+	@FXML
+	private HBox emporiumsFramek;
+
+	@FXML
+	private HBox emporiumsGraden;
+
+	@FXML
+	private HBox emporiumsHellar;
+
+	@FXML
+	private HBox emporiumsIndur;
+
+	@FXML
+	private HBox emporiumsJuvelar;
+
+	@FXML
+	private HBox emporiumsKultos;
+
+	@FXML
+	private HBox emporiumsLyram;
+
+	@FXML
+	private HBox emporiumsMerkatim;
+
+	@FXML
+	private HBox emporiumsNaris;
+
+	@FXML
+	private HBox emporiumsOsium;
 
 	@FXML
 	private Pane seaRegion;
@@ -702,8 +746,67 @@ public class ControllerGUI {
 	public List<Label> getNobilityLabels(){
 		return Arrays.asList(nobilityPlayer1,nobilityPlayer2,nobilityPlayer3,nobilityPlayer4);
 	}
-
 	
+	public HBox getEmporiumsArkon() {
+		return emporiumsArkon;
+	}
+
+	public HBox getEmporiumsBurgen() {
+		return emporiumsBurgen;
+	}
+
+	public HBox getEmporiumsCastrum() {
+		return emporiumsCastrum;
+	}
+
+	public HBox getEmporiumsDorful() {
+		return emporiumsDorful;
+	}
+
+	public HBox getEmporiumsEsti() {
+		return emporiumsEsti;
+	}
+
+	public HBox getEmporiumsFramek() {
+		return emporiumsFramek;
+	}
+
+	public HBox getEmporiumsGraden() {
+		return emporiumsGraden;
+	}
+
+	public HBox getEmporiumsHellar() {
+		return emporiumsHellar;
+	}
+
+	public HBox getEmporiumsIndur() {
+		return emporiumsIndur;
+	}
+
+	public HBox getEmporiumsJuvelar() {
+		return emporiumsJuvelar;
+	}
+
+	public HBox getEmporiumsKultos() {
+		return emporiumsKultos;
+	}
+
+	public HBox getEmporiumsLyram() {
+		return emporiumsLyram;
+	}
+
+	public HBox getEmporiumsMerkatim() {
+		return emporiumsMerkatim;
+	}
+
+	public HBox getEmporiumsNaris() {
+		return emporiumsNaris;
+	}
+
+	public HBox getEmporiumsOsium() {
+		return emporiumsOsium;
+	}
+
 	public ImageView getRewardToken(CityDTO city){
 		switch(city.getName()){
 			case "Arkon":
