@@ -534,48 +534,12 @@ public class ControllerGUI {
 	private HBox genericPlayerBonuses4;
 	
 	
-	public Button getM1() {
-		return m1;
-	}
-
-	public Button getM2() {
-		return m2;
-	}
-
-	public Button getM3() {
-		return m3;
-	}
-
-	public Button getM4() {
-		return m4;
-	}
-
-	public Button getQ1() {
-		return q1;
-	}
-
-	public Button getQ2() {
-		return q2;
-	}
-
-	public Button getQ3() {
-		return q3;
-	}
-
-	public Button getQ4() {
-		return q4;
-	}
-	
 	public List<Button> getActions() {
-		return Arrays.asList(m1, m2, m3, m4, q1, q2, q3, q4);
+		return Arrays.asList(m1, m2, m3, m4, q1, q2, q3, q4, skip);
 	}
 
 	public ImageView getPoliticsDeck() {
 		return politicsDeck;
-	}
-	
-	public Button getSkip() {
-		return skip;
 	}
 	
 	public List<HBox> getGenericPlayerBonuses(){
