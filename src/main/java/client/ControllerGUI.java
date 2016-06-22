@@ -533,6 +533,28 @@ public class ControllerGUI {
 	@FXML
 	private HBox genericPlayerBonuses4;
 	
+	@FXML
+	private List<ImageView> politicsCards;
+	
+	@FXML
+	private List<ImageView> permitTilesTurnedUp;
+	
+	@FXML
+	private List<ImageView> permitTilesTurnedDown;
+	
+	
+	public void setPoliticsCards(List<ImageView> politicsCards) {
+		this.politicsCards=politicsCards;
+	}
+	
+	public void setPermitTilesTurnedUp(List<ImageView> permitTilesTurnedUp) {
+		this.permitTilesTurnedUp=permitTilesTurnedUp;
+	}
+	
+	public void setPermitTilesTurnedDown(List<ImageView> permitTilesTurnedDown) {
+		this.permitTilesTurnedDown=permitTilesTurnedDown;
+	}
+	
 	
 	public List<Button> getActions() {
 		return Arrays.asList(m1, m2, m3, m4, q1, q2, q3, q4, skip);

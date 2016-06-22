@@ -48,7 +48,6 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.Dialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -425,6 +424,7 @@ public class GUI extends ClientView{
 			
 			@Override
 			public void run() {
+				List<ImageView> politicsCards=new ArrayList<>();
 				controllerGUI.getHand().getChildren().clear();
 				controllerGUI.getPermitTilesTurnedUpOwned().getChildren().clear();
 				for (PoliticsCardDTO card : player.getHand()){
@@ -441,6 +441,8 @@ public class GUI extends ClientView{
 						}
 					});
 					imageView.setDisable(true);
+					politicsCards.add(imageView);
+					controllerGUI.setPoliticsCards(politicsCards);
 				}
 				for (PermitTileDTO permitTileDTO : player.getAvailablePermitTiles()){
 					ImageView imageView=new ImageView(imageMap.get(permitTileDTO));
