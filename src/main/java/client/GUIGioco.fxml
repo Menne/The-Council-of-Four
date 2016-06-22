@@ -592,7 +592,7 @@
                                     </AnchorPane>
                                  </content>
                               </Tab>
-                              <Tab fx:id="colourPlayer4" text="Player4">
+                              <Tab text="Player4">
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="146.0" prefWidth="302.0" stylesheets="@resize.css">
                                        <children>
@@ -665,7 +665,7 @@
                                                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" />
                                                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                                    <children>
-                                                      <ImageView fitHeight="30.0" fitWidth="40.0" layoutX="38.0" layoutY="6.0">
+                                                      <ImageView fx:id="colourPlayer4" fitHeight="30.0" fitWidth="40.0" layoutX="38.0" layoutY="6.0">
                                                          <image>
                                                             <Image url="@view/images/EmporiumsColours/green.png" />
                                                          </image>

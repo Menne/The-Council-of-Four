@@ -591,7 +591,7 @@ public class ControllerGUI {
 	}
 
 	public List<Pane> getCities(){
-		return Arrays.asList(arkon,burgen,castrum,dorful,esti,framek,graden,hellar,indur,kultos,juvelar,lyram,merkatim,naris,osium);
+		return Arrays.asList(arkon,burgen,castrum,dorful,esti,framek,graden,hellar,indur,juvelar,kultos,lyram,merkatim,naris,osium);
 	}
 
 	public HBox getHand() {
