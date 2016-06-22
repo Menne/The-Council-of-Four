@@ -240,7 +240,6 @@ public class GUI extends ClientView{
 			
 			@Override
 			public void run() {
-				System.out.println(clientGame);
 				displayCouncillors(clientGame);
 				displayTokens(clientGame);
 				displayPlayers(clientGame.getClientPlayers());
@@ -261,7 +260,7 @@ public class GUI extends ClientView{
 	}
 	
 	private void displayCities(GameTableDTO clientGame) {
-		for(RegionDTO regionDTO : clientGame.getClientRegions())
+		for (RegionDTO regionDTO : clientGame.getClientRegions())
 			for (CityDTO city : regionDTO.getCities()) {
 				if ("Arkon".equals(city.getName())){
 					controllerGUI.getCities().get(0).setUserData(city);
@@ -348,18 +347,14 @@ public class GUI extends ClientView{
 	}
 	
 	private void displayPermitTiles(GameTableDTO clientGame) {
-		controllerGUI.getSeaPermitTile()[0].setImage(imageMap.get(clientGame.getClientRegions().get(0).getUncoveredPermitTiles()[0]));
-		controllerGUI.getSeaPermitTile()[0].setUserData(new Integer(0));
-		controllerGUI.getSeaPermitTile()[1].setImage(imageMap.get(clientGame.getClientRegions().get(0).getUncoveredPermitTiles()[1]));
-		controllerGUI.getSeaPermitTile()[1].setUserData(new Integer(1));
-		controllerGUI.getHillPermitTile()[0].setImage(imageMap.get(clientGame.getClientRegions().get(1).getUncoveredPermitTiles()[0]));
-		controllerGUI.getHillPermitTile()[0].setUserData(new Integer(0));
-		controllerGUI.getHillPermitTile()[1].setImage(imageMap.get(clientGame.getClientRegions().get(1).getUncoveredPermitTiles()[1]));
-		controllerGUI.getHillPermitTile()[1].setUserData(new Integer(1));
-		controllerGUI.getMountainPermitTile()[0].setImage(imageMap.get(clientGame.getClientRegions().get(2).getUncoveredPermitTiles()[0]));
-		controllerGUI.getMountainPermitTile()[0].setUserData(new Integer(0));
-		controllerGUI.getMountainPermitTile()[1].setImage(imageMap.get(clientGame.getClientRegions().get(2).getUncoveredPermitTiles()[1]));
-		controllerGUI.getMountainPermitTile()[1].setUserData(new Integer(1));
+		for (int i=0; i<2; i++) {
+			controllerGUI.getSeaPermitTile()[i].setImage(imageMap.get(clientGame.getClientRegions().get(0).getUncoveredPermitTiles()[i]));
+			controllerGUI.getSeaPermitTile()[i].setUserData(new Integer(i));
+			controllerGUI.getHillPermitTile()[i].setImage(imageMap.get(clientGame.getClientRegions().get(1).getUncoveredPermitTiles()[i]));
+			controllerGUI.getHillPermitTile()[i].setUserData(new Integer(i));
+			controllerGUI.getMountainPermitTile()[i].setImage(imageMap.get(clientGame.getClientRegions().get(2).getUncoveredPermitTiles()[i]));
+			controllerGUI.getMountainPermitTile()[i].setUserData(new Integer(i));
+		}
 	}
 	
 	private void displayPlayers(List<GenericPlayerDTO> players){
