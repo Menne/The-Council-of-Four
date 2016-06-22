@@ -557,6 +557,22 @@ public class ControllerGUI {
 		return skip;
 	}
 
+	@FXML
+	private HBox genericPlayerBonuses1;
+	
+	@FXML
+	private HBox genericPlayerBonuses2;
+	
+	@FXML
+	private HBox genericPlayerBonuses3;
+	
+	@FXML
+	private HBox genericPlayerBonuses4;
+	
+	public List<HBox> getGenericPlayerBonuses(){
+		return Arrays.asList(genericPlayerBonuses1,genericPlayerBonuses2,genericPlayerBonuses3,genericPlayerBonuses4);
+	}
+	
 	public VBox getPlayersBonuses() {
 		return playersBonuses;
 	}
