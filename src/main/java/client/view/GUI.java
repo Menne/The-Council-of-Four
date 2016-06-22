@@ -50,7 +50,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import server.model.bonus.AssistantsBonus;
 import server.model.bonus.CoinsBonus;
@@ -437,6 +437,14 @@ public class GUI extends ClientView{
 						@Override
 						public void handle(Event event) {
 							controllerGUI.handlePoliticsCard(card);	
+							
+						}
+					});
+					imageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+						@Override
+						public void handle(MouseEvent event) {
+							controllerGUI.changeMouseStyle(event);
 							
 						}
 					});
