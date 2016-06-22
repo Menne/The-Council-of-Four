@@ -221,16 +221,16 @@ public class GUI extends ClientView{
 	
 	@Override
 	public void displayAvailableActions(List<ActionDTO> availableActions) {
-		controllerGUI.getM1().setUserData(new ElectCouncillorDTO());
-		controllerGUI.getM2().setUserData(new AcquirePermitTileDTO());
-		controllerGUI.getM3().setUserData(new BuildByPermitTileDTO());
-		controllerGUI.getM4().setUserData(new BuildByKingDTO());
-		controllerGUI.getQ1().setUserData(new EngageAssistantDTO());
-		controllerGUI.getQ2().setUserData(new ChangePermitTilesDTO());
-		controllerGUI.getQ3().setUserData(new ElectCouncillorByAssistantDTO());
-		controllerGUI.getQ4().setUserData(new AddictionalMainActionDTO());
+		controllerGUI.getActions().get(0).setUserData(new ElectCouncillorDTO());
+		controllerGUI.getActions().get(1).setUserData(new AcquirePermitTileDTO());
+		controllerGUI.getActions().get(2).setUserData(new BuildByPermitTileDTO());
+		controllerGUI.getActions().get(3).setUserData(new BuildByKingDTO());
+		controllerGUI.getActions().get(4).setUserData(new EngageAssistantDTO());
+		controllerGUI.getActions().get(5).setUserData(new ChangePermitTilesDTO());
+		controllerGUI.getActions().get(6).setUserData(new ElectCouncillorByAssistantDTO());
+		controllerGUI.getActions().get(7).setUserData(new AddictionalMainActionDTO());
+		controllerGUI.getActions().get(8).setUserData(new MoveToNextDTO());
 		controllerGUI.getPoliticsDeck().setUserData(new PickPoliticsCardDTO());
-		controllerGUI.getSkip().setUserData(new MoveToNextDTO());			
 	}
 
 	@Override
