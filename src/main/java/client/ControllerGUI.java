@@ -850,6 +850,8 @@ public class ControllerGUI {
 			return;
 		}
 	}
+	
+	
 
 	@FXML
 	public void startActionPickPoliticsCard() throws RemoteException {
@@ -860,7 +862,25 @@ public class ControllerGUI {
 			}
 		this.view.displayError("You can't pick a politics card now");
 	}
-
+	
+	
+	@FXML
+	public void clickOnRegion(Event event) {
+		synchronized (this) {
+			view.setCurrentParameter(((Pane) event.getSource()).getUserData());
+			this.notify();
+		}
+	}
+	
+	
+	@FXML
+	public void clickOnPermitTileInRegion(Event event) {
+		synchronized (this) {
+			view.setCurrentParameter(((ImageView) event.getSource()).getUserData());
+			this.notify();
+		}
+	}
+	
 	
 	@FXML
 	public void clickOnBalcony(Event event) {

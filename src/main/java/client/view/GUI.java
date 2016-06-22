@@ -716,5 +716,11 @@ public class GUI extends ClientView{
 			controllerGUI.getMountainPermitTile()[i].setDisable(disabled);
 		}
 	}
+
+
+	public void disableActionButtons() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
