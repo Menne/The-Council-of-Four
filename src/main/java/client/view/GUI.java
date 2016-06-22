@@ -259,42 +259,57 @@ public class GUI extends ClientView{
 	for (CityDTO city : clientGame.getClientRegions().get(0).getCities()) {
 		if (city.getName().equals(clientGame.getKing())){
 			if(city.getName().equals("Arkon"))
+				controllerGUI.getArkon().getChildren().clear();
 				controllerGUI.getArkon().getChildren().add(imageView);
 			if(city.getName().equals("Burgen"))
+				controllerGUI.getBurgen().getChildren().clear();
 				controllerGUI.getBurgen().getChildren().add(imageView);
 			if(city.getName().equals("Castrum"))
+				controllerGUI.getCastrum().getChildren().clear();
 				controllerGUI.getCastrum().getChildren().add(imageView);
 			if(city.getName().equals("Dorful"))
+				controllerGUI.getDorful().getChildren().clear();
 				controllerGUI.getDorful().getChildren().add(imageView);
 			if(city.getName().equals("Esti"))
+				controllerGUI.getEsti().getChildren().clear();
 				controllerGUI.getEsti().getChildren().add(imageView);
 		}
 	}
 	for (CityDTO city : clientGame.getClientRegions().get(1).getCities()) {
 		if (city.getName().equals(clientGame.getKing())){
 			if(city.getName().equals("Framek"))
+				controllerGUI.getFramek().getChildren().clear();
 				controllerGUI.getFramek().getChildren().add(imageView);
 			if(city.getName().equals("Graden"))
+				controllerGUI.getGraden().getChildren().clear();
 				controllerGUI.getGraden().getChildren().add(imageView);
 			if(city.getName().equals("Hellar"))
+				controllerGUI.getHellar().getChildren().clear();
 				controllerGUI.getHellar().getChildren().add(imageView);
 			if(city.getName().equals("Indur"))
+				controllerGUI.getIndur().getChildren().clear();
 				controllerGUI.getIndur().getChildren().add(imageView);
 			if(city.getName().equals("Juvelar"))
+				controllerGUI.getJuvelar().getChildren().clear();
 				controllerGUI.getJuvelar().getChildren().add(imageView);
 		}
 	}
 	for (CityDTO city : clientGame.getClientRegions().get(2).getCities()) {
 		if (city.getName().equals(clientGame.getKing())){
 			if(city.getName().equals("Kultos"))
+				controllerGUI.getKultos().getChildren().clear();
 				controllerGUI.getKultos().getChildren().add(imageView);
 			if(city.getName().equals("Lyram"))
+				controllerGUI.getLyram().getChildren().clear();
 				controllerGUI.getLyram().getChildren().add(imageView);
 			if(city.getName().equals("Merkatim"))
+				controllerGUI.getMerkatim().getChildren().clear();
 				controllerGUI.getMerkatim().getChildren().add(imageView);
 			if(city.getName().equals("Naris"))
+				controllerGUI.getNaris().getChildren().clear();
 				controllerGUI.getNaris().getChildren().add(imageView);
 			if(city.getName().equals("Osium"))
+				controllerGUI.getOsium().getChildren().clear();
 				controllerGUI.getOsium().getChildren().add(imageView);
 		}
 	}
