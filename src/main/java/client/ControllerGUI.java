@@ -733,67 +733,7 @@ public class ControllerGUI {
 	public List<Label> getNobilityLabels(){
 		return Arrays.asList(nobilityPlayer1,nobilityPlayer2,nobilityPlayer3,nobilityPlayer4);
 	}
-	
-	public HBox getEmporiumsArkon() {
-		return emporiumsArkon;
-	}
 
-	public HBox getEmporiumsBurgen() {
-		return emporiumsBurgen;
-	}
-
-	public HBox getEmporiumsCastrum() {
-		return emporiumsCastrum;
-	}
-
-	public HBox getEmporiumsDorful() {
-		return emporiumsDorful;
-	}
-
-	public HBox getEmporiumsEsti() {
-		return emporiumsEsti;
-	}
-
-	public HBox getEmporiumsFramek() {
-		return emporiumsFramek;
-	}
-
-	public HBox getEmporiumsGraden() {
-		return emporiumsGraden;
-	}
-
-	public HBox getEmporiumsHellar() {
-		return emporiumsHellar;
-	}
-
-	public HBox getEmporiumsIndur() {
-		return emporiumsIndur;
-	}
-
-	public HBox getEmporiumsJuvelar() {
-		return emporiumsJuvelar;
-	}
-
-	public HBox getEmporiumsKultos() {
-		return emporiumsKultos;
-	}
-
-	public HBox getEmporiumsLyram() {
-		return emporiumsLyram;
-	}
-
-	public HBox getEmporiumsMerkatim() {
-		return emporiumsMerkatim;
-	}
-
-	public HBox getEmporiumsNaris() {
-		return emporiumsNaris;
-	}
-
-	public HBox getEmporiumsOsium() {
-		return emporiumsOsium;
-	}
-	
 	public ImageView getColourPlayer1() {
 		return colourPlayer1;
 	}
@@ -813,10 +753,6 @@ public class ControllerGUI {
 	public List<HBox> getCitysEmporiums() {
 		return Arrays.asList(emporiumsArkon, emporiumsBurgen, emporiumsCastrum, emporiumsDorful, emporiumsEsti, emporiumsFramek,
 				emporiumsGraden, emporiumsHellar, emporiumsIndur, emporiumsJuvelar, emporiumsKultos, emporiumsLyram, emporiumsMerkatim, emporiumsNaris, emporiumsOsium);
-	}
-	
-	public List<ImageView> getPlayersColours() {
-		return Arrays.asList(colourPlayer1, colourPlayer2, colourPlayer3, colourPlayer4);
 	}
 
 	public ImageView getRewardToken(CityDTO city){
