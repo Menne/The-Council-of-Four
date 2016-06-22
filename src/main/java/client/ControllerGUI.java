@@ -569,33 +569,13 @@ public class ControllerGUI {
 	public HBox getHand() {
 		return hand;
 	}
-
-	public Pane getSeaRegion() {
-		return seaRegion;
+	
+	public List<Pane> getRegions() {
+		return Arrays.asList(seaRegion, hillRegion, mountainRegion);
 	}
-
-	public Pane getHillRegion() {
-		return hillRegion;
-	}
-
-	public Pane getMountainRegion() {
-		return mountainRegion;
-	}
-
-	public Pane getSeaBalcony() {
-		return seaBalcony;
-	}
-
-	public Pane getHillBalcony() {
-		return hillBalcony;
-	}
-
-	public Pane getMountainBalcony() {
-		return mountainBalcony;
-	}
-
-	public Pane getKingBalcony() {
-		return kingBalcony;
+	
+	public List<Pane> getBalconies() {
+		return Arrays.asList(seaBalcony, hillBalcony, mountainBalcony, kingBalcony);
 	}
 
 	public TextArea getMessageBox() {
@@ -606,11 +586,9 @@ public class ControllerGUI {
 		return playerName;
 	}
 
-
 	public Label getPlayerScore() {
 		return playerScore;
 	}
-
 
 	public Label getPlayerCoins() {
 		return playerCoins;

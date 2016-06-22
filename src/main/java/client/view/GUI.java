@@ -256,9 +256,8 @@ public class GUI extends ClientView{
 	}
 	
 	private void displayRegions(GameTableDTO clientGame) {
-		controllerGUI.getSeaRegion().setUserData(clientGame.getClientRegions().get(0));
-		controllerGUI.getHillRegion().setUserData(clientGame.getClientRegions().get(1));
-		controllerGUI.getMountainRegion().setUserData(clientGame.getClientRegions().get(2));
+		for (int i=0; i<this.controllerGUI.getRegions().size(); i++)
+			this.controllerGUI.getRegions().get(i).setUserData(clientGame.getClientRegions().get(i));
 	}
 	
 	private void displayCities(GameTableDTO clientGame) {
@@ -343,10 +342,9 @@ public class GUI extends ClientView{
 	}
 	
 	private void diplayBalconies(GameTableDTO clientGame) {
-		controllerGUI.getSeaBalcony().setUserData(clientGame.getClientRegions().get(0).getBalcony());
-		controllerGUI.getHillBalcony().setUserData(clientGame.getClientRegions().get(1).getBalcony());
-		controllerGUI.getMountainBalcony().setUserData(clientGame.getClientRegions().get(2).getBalcony());
-		controllerGUI.getKingBalcony().setUserData(clientGame.getClientKingBalcony());
+		for (int i=1; i<this.controllerGUI.getBalconies().size()-1; i++)
+			controllerGUI.getBalconies().get(i).setUserData(clientGame.getClientRegions().get(i).getBalcony());
+		controllerGUI.getBalconies().get(controllerGUI.getBalconies().size()-1).setUserData(clientGame.getClientKingBalcony());
 	}
 	
 	private void displayPermitTiles(GameTableDTO clientGame) {
@@ -710,9 +708,8 @@ public class GUI extends ClientView{
 	
 	
 	private void disableClickOnRegions(boolean disabled) {
-		this.controllerGUI.getSeaRegion().setDisable(disabled);
-		this.controllerGUI.getHillRegion().setDisable(disabled);
-		this.controllerGUI.getMountainRegion().setDisable(disabled);
+		for (int i=0; i<this.controllerGUI.getRegions().size(); i++)
+			this.controllerGUI.getRegions().get(i).setDisable(disabled);
 	}
 	
 	private void disableClickOnPermitTilesInHand(boolean disabled) {
@@ -723,21 +720,14 @@ public class GUI extends ClientView{
 	}
 
 	private void disableClickOnCouncillorsInReserve(boolean disabled) {
-		this.controllerGUI.getCouncillorReserve().get(0).setDisable(disabled);
-		this.controllerGUI.getCouncillorReserve().get(1).setDisable(disabled);
-		this.controllerGUI.getCouncillorReserve().get(2).setDisable(disabled);
-		this.controllerGUI.getCouncillorReserve().get(3).setDisable(disabled);
-		this.controllerGUI.getCouncillorReserve().get(4).setDisable(disabled);
-		this.controllerGUI.getCouncillorReserve().get(5).setDisable(disabled);
-		this.controllerGUI.getCouncillorReserve().get(6).setDisable(disabled);
-		this.controllerGUI.getCouncillorReserve().get(7).setDisable(disabled);
+		for (int i=0; i<this.controllerGUI.getCouncillorReserve().size(); i++)
+			this.controllerGUI.getCouncillorReserve().get(i).setDisable(disabled);
 	}
 	
 	private void disableClickOnCouncilBalconies(boolean disabled) {
-		this.controllerGUI.getSeaBalcony().setDisable(disabled);
-		this.controllerGUI.getHillBalcony().setDisable(disabled);
-		this.controllerGUI.getMountainBalcony().setDisable(disabled);
-		this.controllerGUI.getKingBalcony().setDisable(disabled);
+		for (int i=1; i<this.controllerGUI.getBalconies().size()-1; i++)
+			controllerGUI.getBalconies().get(i).setDisable(disabled);
+		controllerGUI.getBalconies().get(controllerGUI.getBalconies().size()-1).setDisable(disabled);
 	}
 	
 	private void disableClickOnCities(boolean disabled) {
