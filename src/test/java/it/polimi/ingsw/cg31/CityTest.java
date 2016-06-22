@@ -15,12 +15,13 @@ import server.model.bonus.Bonus;
 import server.model.bonus.ScoreBonus;
 import server.model.gameTable.City;
 import server.model.gameTable.CityColour;
+import server.model.gameTable.ColourBonusTile;
 import server.model.gameTable.Emporium;
 import server.model.gameTable.RewardToken;
 import server.model.player.Player;
 
 public class CityTest {
-/*
+
 	@Test
 	public void testIfIsKingPresentReturnFalse() throws IOException {
 		
@@ -30,7 +31,7 @@ public class CityTest {
 		players.add(a);
 		game.start(players);
 		ScoreBonus bonus= new ScoreBonus(1);
-		CityColour colour= new CityColour("blu", bonus);
+		CityColour colour= new CityColour("Blue", new ColourBonusTile(bonus, "Blue"));
 		List<RewardToken> list= new ArrayList<>();
 		Set<Bonus> set= new HashSet<>();
 		Bonus bonus1= new ScoreBonus(1);
@@ -49,7 +50,7 @@ public class CityTest {
 		players.add(a);
 		game.start(players);
 		ScoreBonus bonus= new ScoreBonus(1);
-		CityColour colour= new CityColour("blu", bonus);
+		CityColour colour= new CityColour("Blue", new ColourBonusTile(bonus, "Blue"));
 		List<RewardToken> list= new ArrayList<>();
 		Set<Bonus> set= new HashSet<>();
 		Bonus bonus1= new ScoreBonus(1);
@@ -67,7 +68,7 @@ public class CityTest {
 		players.add(a);
 		game.start(players);
 		ScoreBonus bonus= new ScoreBonus(1);
-		CityColour colour= new CityColour("KingColour", bonus);
+		CityColour colour= new CityColour("KingColour", new ColourBonusTile(bonus, "KingColour"));
 		List<RewardToken> list= new ArrayList<>();
 		Set<Bonus> set= new HashSet<>();
 		Bonus bonus1= new ScoreBonus(1);
@@ -86,7 +87,7 @@ public class CityTest {
 		players.add(a);
 		game.start(players);
 		ScoreBonus bonus= new ScoreBonus(1);
-		CityColour colour= new CityColour("blu", bonus);
+		CityColour colour= new CityColour("Blue", new ColourBonusTile(bonus, "Blue"));
 		List<RewardToken> list= new ArrayList<>();
 		Set<Bonus> set= new HashSet<>();
 		Bonus bonus1= new ScoreBonus(1);
@@ -104,7 +105,7 @@ public class CityTest {
 		players.add(a);
 		game.start(players);
 		ScoreBonus bonus= new ScoreBonus(1);
-		CityColour colour= new CityColour("blu", bonus);
+		CityColour colour= new CityColour("Blue", new ColourBonusTile(bonus, "Blue"));
 		List<RewardToken> list= new ArrayList<>();
 		Set<Bonus> set= new HashSet<>();
 		Bonus bonus1= new ScoreBonus(1);
@@ -122,7 +123,7 @@ public class CityTest {
 		players.add(a);
 		game.start(players);
 		ScoreBonus bonus= new ScoreBonus(1);
-		CityColour colour= new CityColour("blu", bonus);
+		CityColour colour= new CityColour("Blue", new ColourBonusTile(bonus, "Blue"));
 		List<RewardToken> list= new ArrayList<>();
 		Set<Bonus> set= new HashSet<>();
 		Bonus bonus1= new ScoreBonus(1);
@@ -140,7 +141,7 @@ public class CityTest {
 		players.add(a);
 		game.start(players);
 		ScoreBonus bonus= new ScoreBonus(1);
-		CityColour colour= new CityColour("blu", bonus);
+		CityColour colour= new CityColour("Blue", new ColourBonusTile(bonus, "Blue"));
 		List<RewardToken> list= new ArrayList<>();
 		Set<Bonus> set= new HashSet<>();
 		Bonus bonus1= new ScoreBonus(1);
@@ -168,7 +169,7 @@ public class CityTest {
 		players.add(a);
 		game.start(players);
 		ScoreBonus bonus= new ScoreBonus(1);
-		CityColour colour= new CityColour("KingColour", bonus);
+		CityColour colour= new CityColour("KingColour", new ColourBonusTile(bonus, "KingColour"));
 		List<RewardToken> list= new ArrayList<>();
 		City city=new City("città1",game.getGameTable().getRegionBoards().get(0), colour, list);
 		City nearCity=new City("città2",game.getGameTable().getRegionBoards().get(0), colour, list);
@@ -176,6 +177,6 @@ public class CityTest {
 		Set<City> cities=new HashSet<>();
 		cities.add(nearCity);
 		assertEquals(cities, city.getNearCities());
-	}*/
+	}
 }
 

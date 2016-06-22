@@ -7,12 +7,12 @@ import java.util.List;
 
 import org.junit.Test;
 
+import client.modelDTO.gameTableDTO.BonusTileDTO;
 import client.modelDTO.gameTableDTO.GenericPlayerDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
-import server.model.bonus.ScoreBonus;
 
 public class GenericPlayerDTOTest {
-/*
+
 	@Test
 	public void testGettersAndSetters() {
 		String name="Andre";
@@ -25,7 +25,7 @@ public class GenericPlayerDTOTest {
 		int hand=2;
 		List<PermitTileDTO> availablePermitTiles= new ArrayList<>();
 		GenericPlayerDTO player= new GenericPlayerDTO();
-		List<ScoreBonus> playersFinalBonus= new ArrayList<>();
+		List<BonusTileDTO> playersFinalBonus= new ArrayList<>();
 		player.setPlayersFinalBonus(playersFinalBonus);
 		player.setAssistants(assistants);
 		player.setAvailablePermitTiles(availablePermitTiles);
@@ -49,5 +49,5 @@ public class GenericPlayerDTOTest {
 				+ score + "\tnobility=" + nobility + "\tcoins=" + coins + "\thand="+hand+"\tplayersPermitTilesTurnedUp=" + availablePermitTiles +
 				 "\temporiums=" + emporiums + "\tfinalBonus= " + playersFinalBonus+"]", player.toString());
 	}
-*/
+
 }

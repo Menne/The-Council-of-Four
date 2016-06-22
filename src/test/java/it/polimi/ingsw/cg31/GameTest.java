@@ -10,12 +10,13 @@ import org.junit.Test;
 
 import server.model.Game;
 import server.model.bonus.ScoreBonus;
+import server.model.gameTable.KingBonusTile;
 import server.model.market.Market;
 import server.model.player.Player;
 import server.model.stateMachine.BeginState;
 
 public class GameTest {
-/*
+
 	@Test
 	public void testStartMethod() throws IOException {
 		Game game=new Game();
@@ -73,7 +74,7 @@ public class GameTest {
 		assertTrue(game.getCurrentPlayer()==b);
 		assertTrue(game.getPlayers().size()==2);
 		ScoreBonus bonus= new ScoreBonus(3);
-		c.getPlayersFinalBonus().add(bonus);
+		c.getPlayersFinalBonus().add(new KingBonusTile(bonus));
 		game.nextPlayer();
 		game.nextPlayer();
 		assertEquals(11,c.getScore());
@@ -100,5 +101,5 @@ public class GameTest {
 		assertEquals(5,c.getScore());
 		assertEquals(5,b.getScore());
 		assertEquals(0,a.getScore());
-	}*/
+	}
 }

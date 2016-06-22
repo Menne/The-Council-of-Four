@@ -8,6 +8,7 @@ import java.util.Set;
 
 import org.junit.Test;
 
+import client.modelDTO.gameTableDTO.BonusTileDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.CouncillorDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
@@ -18,7 +19,7 @@ public class RegionDTOTest {
 
 	@Test
 	public void testGettersAndSetters() {
-/*		String name="Sea";
+		String name="Sea";
 		CouncillorDTO[] balcony=new CouncillorDTO[4];
 		Set<CityDTO> cities= new HashSet<>();
 		PermitTileDTO[] uncoveredPermitTiles= new PermitTileDTO[2];
@@ -27,10 +28,10 @@ public class RegionDTOTest {
 		region.setCities(cities);
 		region.setName(name);
 		ScoreBonus regionBonus= new ScoreBonus(5);
-		region.setRegionBonus(regionBonus);
+		region.setRegionBonus(new BonusTileDTO(region.getName(), regionBonus));
 		region.setUncoveredPermitTiles(uncoveredPermitTiles);
 		assertTrue(region.getBalcony()==balcony);
-		assertTrue(region.getRegionBonus()==regionBonus);
+		assertTrue(region.getRegionBonus().getBonus()==regionBonus);
 		assertTrue(region.getCities()==cities);
 		assertTrue(region.getName()==name);
 		assertTrue(region.getUncoveredPermitTiles()==uncoveredPermitTiles);
@@ -57,6 +58,6 @@ public class RegionDTOTest {
 		region2.setCities(cities2);
 		region2.setName(name2);
 		region2.setUncoveredPermitTiles(uncoveredPermitTiles2);
-		assertEquals(region1, region2);*/
+		assertEquals(region1, region2);
 	}
 }
