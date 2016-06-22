@@ -45,6 +45,7 @@ import client.view.notifies.ClientViewNotify;
 import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -445,7 +446,7 @@ public class GUI extends ClientView{
 
 	@Override
 	public RegionDTO askForRegionBoard(List<RegionDTO> acceptableRegions) {
-		this.disableClickOnRegions(false);
+		this.disableActionButtons(true);
 		synchronized (this.controllerGUI) {
 			try {
 				while (currentParameter==null)
@@ -718,9 +719,10 @@ public class GUI extends ClientView{
 	}
 
 
-	public void disableActionButtons() {
-		// TODO Auto-generated method stub
-		
+	public void disableActionButtons(boolean disabled) {
+		this.controllerGUI.getPoliticsDeck().setDisable(disabled);
+		for (Button button : this.controllerGUI.getActions())
+			button.setDisable(disabled);
 	}
 	
 }
