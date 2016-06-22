@@ -43,6 +43,18 @@ public class ControllerGUI {
 	public void setView(GUI view) {
 		this.view=view;
 	}
+	
+	@FXML
+	private ImageView colourPlayer1;
+	
+	@FXML
+	private ImageView colourPlayer2;
+	
+	@FXML
+	private ImageView colourPlayer3;
+	
+	@FXML
+	private ImageView colourPlayer4;
 
 	@FXML
 	private HBox emporiumsArkon;
@@ -445,12 +457,16 @@ public class ControllerGUI {
 	
 	@FXML
 	private Label playerScore;
+	
 	@FXML
 	private Label playerCoins;
+	
 	@FXML
 	private Label playerAssistants;
+	
 	@FXML
 	private Label playerNobility;
+	
 	@FXML
 	private HBox hand;
 	
@@ -505,6 +521,18 @@ public class ControllerGUI {
 	@FXML
 	private VBox playersBonuses;
 	
+	@FXML
+	private HBox genericPlayerBonuses1;
+	
+	@FXML
+	private HBox genericPlayerBonuses2;
+	
+	@FXML
+	private HBox genericPlayerBonuses3;
+	
+	@FXML
+	private HBox genericPlayerBonuses4;
+	
 	
 	public Button getM1() {
 		return m1;
@@ -537,6 +565,10 @@ public class ControllerGUI {
 	public Button getQ4() {
 		return q4;
 	}
+	
+	public List<Button> getActions() {
+		return Arrays.asList(m1, m2, m3, m4, q1, q2, q3, q4);
+	}
 
 	public ImageView getPoliticsDeck() {
 		return politicsDeck;
@@ -545,18 +577,6 @@ public class ControllerGUI {
 	public Button getSkip() {
 		return skip;
 	}
-
-	@FXML
-	private HBox genericPlayerBonuses1;
-	
-	@FXML
-	private HBox genericPlayerBonuses2;
-	
-	@FXML
-	private HBox genericPlayerBonuses3;
-	
-	@FXML
-	private HBox genericPlayerBonuses4;
 	
 	public List<HBox> getGenericPlayerBonuses(){
 		return Arrays.asList(genericPlayerBonuses1,genericPlayerBonuses2,genericPlayerBonuses3,genericPlayerBonuses4);
@@ -579,7 +599,7 @@ public class ControllerGUI {
 	}
 
 	public List<Pane> getCities(){
-		return Arrays.asList(arkon,burgen,castrum,dorful,esti,framek,graden,hellar,indur,kultos,juvelar,lyram,merkatim,naris,osium);
+		return Arrays.asList(arkon,burgen,castrum,dorful,esti,framek,graden,hellar,indur,juvelar,kultos,lyram,merkatim,naris,osium);
 	}
 
 	public HBox getHand() {
@@ -632,18 +652,14 @@ public class ControllerGUI {
 		return playerCoins;
 	}
 
-
 	public Label getPlayerAssistants() {
 		return playerAssistants;
 	}
-
 
 	public Label getPlayerNobility() {
 		return playerNobility;
 	}
 	
-
-
 	public List<ImageView> getCouncillorReserve(){
 		return Arrays.asList(reserveConcillor1,reserveConcillor2,reserveConcillor3,reserveConcillor4,reserveConcillor5,reserveConcillor6,reserveConcillor7,reserveConcillor8);
 	}
@@ -777,6 +793,26 @@ public class ControllerGUI {
 	public HBox getEmporiumsOsium() {
 		return emporiumsOsium;
 	}
+	
+	public ImageView getColourPlayer1() {
+		return colourPlayer1;
+	}
+
+	public ImageView getColourPlayer2() {
+		return colourPlayer2;
+	}
+
+	public ImageView getColourPlayer3() {
+		return colourPlayer3;
+	}
+
+	public ImageView getColourPlayer4() {
+		return colourPlayer4;
+	}
+	
+	public List<ImageView> getPlayersColours() {
+		return Arrays.asList(colourPlayer1, colourPlayer2, colourPlayer3, colourPlayer4);
+	}
 
 	public ImageView getRewardToken(CityDTO city){
 		switch(city.getName()){
@@ -826,29 +862,31 @@ public class ControllerGUI {
 	public void startAction(Event event) throws RemoteException {
 		ActionDTO selectedAction=(ActionDTO) ((Button) event.getSource()).getUserData();
 		for (ActionDTO action : this.clientGame.getAvailableActions())
-			if (this.clientGame.getAvailableActions().contains(action.getClass())) 
-				this.view.displayError("Sorry, action not available!");
-		if (!(selectedAction instanceof ActionWithParameters)) {
-			this.view.getConnection().sendAction(selectedAction);
-			return;
-		}
-		else if (selectedAction instanceof ActionWithParameters) {
-			ExecutorService executor=Executors.newSingleThreadExecutor();
-			executor.submit(new Runnable() {
-				
-				@Override
-				public void run() {
-					((ActionWithParameters) selectedAction).setParser().setParameters(view, clientGame);
-					try {
-						view.getConnection().sendAction(selectedAction);
-					} catch (RemoteException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+			if (action.getClass()==(selectedAction.getClass())) 
+				if (!(selectedAction instanceof ActionWithParameters)) {
+					this.view.getConnection().sendAction(selectedAction);
+					return;
 				}
-			});
-			return;
-		}
+				else if (selectedAction instanceof ActionWithParameters) {
+					this.view.disableActionButtons(true);
+					ExecutorService executor=Executors.newSingleThreadExecutor();
+					executor.submit(new Runnable() {
+						
+						@Override
+						public void run() {
+							((ActionWithParameters) selectedAction).setParser().setParameters(view, clientGame);
+							try {
+								view.getConnection().sendAction(selectedAction);
+								view.disableActionButtons(false);
+							} catch (RemoteException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+					});
+					return;
+				}
+		this.view.displayError("Sorry, action not available!");
 	}
 	
 	

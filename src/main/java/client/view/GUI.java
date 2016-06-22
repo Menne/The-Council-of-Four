@@ -47,6 +47,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -63,12 +64,16 @@ public class GUI extends ClientView{
 	private final ControllerGUI controllerGUI;
 	private final Map<ModelDTO, Image> imageMap;
 	private Object currentParameter;
+	private final ImageView king;
 	
 	public GUI(Connection connection, GameDTO clientGame, ControllerGUI controllerGUI) {
 		super(connection, clientGame);
 		this.controllerGUI=controllerGUI;
 		this.controllerGUI.setClientGame(clientGame);
 		this.controllerGUI.setView(this);
+		this.king=new ImageView(getClass().getResource("images/various/king.png").toExternalForm());
+		this.king.setFitHeight(70);
+		this.king.setPreserveRatio(true);
 		imageMap=new HashMap<>();
 		imageMap.put(new CouncillorDTO(new CardColourDTO("Black")),new Image(getClass().getResource("images/councillors/Black.png").toExternalForm()));
 		imageMap.put(new CouncillorDTO(new CardColourDTO("Blue")),new Image(getClass().getResource("images/councillors/Blue.png").toExternalForm()));
@@ -287,17 +292,20 @@ public class GUI extends ClientView{
 					controllerGUI.getCities().get(14).setUserData(city);
 		}
 	}
+	
 
 	private void displayKing(GameTableDTO clientGame){
-		ImageView imageView=new ImageView(getClass().getResource("images/various/king.png").toExternalForm());
-		imageView.setFitHeight(70);
-		imageView.setPreserveRatio(true);
-		for(Pane cityPane : controllerGUI.getCities())
-			if(((CityDTO)cityPane.getUserData()).getName().equals(clientGame.getKing())){
-				cityPane.getChildren().clear();
-				cityPane.getChildren().add(imageView);
-			}
+		for(Pane cityPane : controllerGUI.getCities()){
+				cityPane.getChildren().remove(king);
+			if(((CityDTO)cityPane.getUserData()).getName().equals(clientGame.getKing()))
+				cityPane.getChildren().add(king);			
+		}
 	}
+		
+		
+//	private void displayEmporiums(GameTableDTO clientGame){
+	//	for(Pane cityPane : controllerGUI.getCities())
+	//}
 	
 	private void diplayBalconies(GameTableDTO clientGame) {
 		controllerGUI.getSeaBalcony().setUserData(clientGame.getClientRegions().get(0).getBalcony());
@@ -449,7 +457,7 @@ public class GUI extends ClientView{
 
 	@Override
 	public RegionDTO askForRegionBoard(List<RegionDTO> acceptableRegions) {
-		this.disableClickOnRegions(false);
+		this.disableActionButtons(true);
 		synchronized (this.controllerGUI) {
 			try {
 				while (currentParameter==null)
@@ -720,5 +728,12 @@ public class GUI extends ClientView{
 			controllerGUI.getMountainPermitTile()[i].setDisable(disabled);
 		}
 	}
+
+
+	public void disableActionButtons(boolean disabled) {
+		this.controllerGUI.getPoliticsDeck().setDisable(disabled);
+		for (Button button : this.controllerGUI.getActions())
+			button.setDisable(disabled);
+		}
 	
 }
