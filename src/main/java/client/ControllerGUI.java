@@ -534,48 +534,12 @@ public class ControllerGUI {
 	private HBox genericPlayerBonuses4;
 	
 	
-	public Button getM1() {
-		return m1;
-	}
-
-	public Button getM2() {
-		return m2;
-	}
-
-	public Button getM3() {
-		return m3;
-	}
-
-	public Button getM4() {
-		return m4;
-	}
-
-	public Button getQ1() {
-		return q1;
-	}
-
-	public Button getQ2() {
-		return q2;
-	}
-
-	public Button getQ3() {
-		return q3;
-	}
-
-	public Button getQ4() {
-		return q4;
-	}
-	
 	public List<Button> getActions() {
-		return Arrays.asList(m1, m2, m3, m4, q1, q2, q3, q4);
+		return Arrays.asList(m1, m2, m3, m4, q1, q2, q3, q4, skip);
 	}
 
 	public ImageView getPoliticsDeck() {
 		return politicsDeck;
-	}
-	
-	public Button getSkip() {
-		return skip;
 	}
 	
 	public List<HBox> getGenericPlayerBonuses(){
@@ -605,33 +569,13 @@ public class ControllerGUI {
 	public HBox getHand() {
 		return hand;
 	}
-
-	public Pane getSeaRegion() {
-		return seaRegion;
+	
+	public List<Pane> getRegions() {
+		return Arrays.asList(seaRegion, hillRegion, mountainRegion);
 	}
-
-	public Pane getHillRegion() {
-		return hillRegion;
-	}
-
-	public Pane getMountainRegion() {
-		return mountainRegion;
-	}
-
-	public Pane getSeaBalcony() {
-		return seaBalcony;
-	}
-
-	public Pane getHillBalcony() {
-		return hillBalcony;
-	}
-
-	public Pane getMountainBalcony() {
-		return mountainBalcony;
-	}
-
-	public Pane getKingBalcony() {
-		return kingBalcony;
+	
+	public List<Pane> getBalconies() {
+		return Arrays.asList(seaBalcony, hillBalcony, mountainBalcony, kingBalcony);
 	}
 
 	public TextArea getMessageBox() {
@@ -642,11 +586,9 @@ public class ControllerGUI {
 		return playerName;
 	}
 
-
 	public Label getPlayerScore() {
 		return playerScore;
 	}
-
 
 	public Label getPlayerCoins() {
 		return playerCoins;
@@ -733,67 +675,7 @@ public class ControllerGUI {
 	public List<Label> getNobilityLabels(){
 		return Arrays.asList(nobilityPlayer1,nobilityPlayer2,nobilityPlayer3,nobilityPlayer4);
 	}
-	
-	public HBox getEmporiumsArkon() {
-		return emporiumsArkon;
-	}
 
-	public HBox getEmporiumsBurgen() {
-		return emporiumsBurgen;
-	}
-
-	public HBox getEmporiumsCastrum() {
-		return emporiumsCastrum;
-	}
-
-	public HBox getEmporiumsDorful() {
-		return emporiumsDorful;
-	}
-
-	public HBox getEmporiumsEsti() {
-		return emporiumsEsti;
-	}
-
-	public HBox getEmporiumsFramek() {
-		return emporiumsFramek;
-	}
-
-	public HBox getEmporiumsGraden() {
-		return emporiumsGraden;
-	}
-
-	public HBox getEmporiumsHellar() {
-		return emporiumsHellar;
-	}
-
-	public HBox getEmporiumsIndur() {
-		return emporiumsIndur;
-	}
-
-	public HBox getEmporiumsJuvelar() {
-		return emporiumsJuvelar;
-	}
-
-	public HBox getEmporiumsKultos() {
-		return emporiumsKultos;
-	}
-
-	public HBox getEmporiumsLyram() {
-		return emporiumsLyram;
-	}
-
-	public HBox getEmporiumsMerkatim() {
-		return emporiumsMerkatim;
-	}
-
-	public HBox getEmporiumsNaris() {
-		return emporiumsNaris;
-	}
-
-	public HBox getEmporiumsOsium() {
-		return emporiumsOsium;
-	}
-	
 	public ImageView getColourPlayer1() {
 		return colourPlayer1;
 	}
@@ -810,8 +692,9 @@ public class ControllerGUI {
 		return colourPlayer4;
 	}
 	
-	public List<ImageView> getPlayersColours() {
-		return Arrays.asList(colourPlayer1, colourPlayer2, colourPlayer3, colourPlayer4);
+	public List<HBox> getCitysEmporiums() {
+		return Arrays.asList(emporiumsArkon, emporiumsBurgen, emporiumsCastrum, emporiumsDorful, emporiumsEsti, emporiumsFramek,
+				emporiumsGraden, emporiumsHellar, emporiumsIndur, emporiumsJuvelar, emporiumsKultos, emporiumsLyram, emporiumsMerkatim, emporiumsNaris, emporiumsOsium);
 	}
 
 	public ImageView getRewardToken(CityDTO city){
@@ -868,22 +751,20 @@ public class ControllerGUI {
 					return;
 				}
 				else if (selectedAction instanceof ActionWithParameters) {
-					this.view.disableActionButtons(true);
 					ExecutorService executor=Executors.newSingleThreadExecutor();
 					executor.submit(new Runnable() {
 						
 						@Override
 						public void run() {
-							((ActionWithParameters) selectedAction).setParser().setParameters(view, clientGame);
 							try {
-								view.getConnection().sendAction(selectedAction);
-								view.disableActionButtons(false);
+								view.insertParametersAndSend((ActionWithParameters) selectedAction);
 							} catch (RemoteException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
 						}
 					});
+					this.view.disableActionButtons(false);
 					return;
 				}
 		this.view.displayError("Sorry, action not available!");

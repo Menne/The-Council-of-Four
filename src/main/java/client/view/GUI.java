@@ -51,6 +51,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Dialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import server.model.bonus.AssistantsBonus;
 import server.model.bonus.CoinsBonus;
@@ -199,9 +200,11 @@ public class GUI extends ClientView{
 	
 	
 	public void insertParametersAndSend(ActionWithParameters actionWithParameters) throws RemoteException {
+		this.disableActionButtons(true);
 		actionWithParameters.setParser().setParameters(this, this.clientGame);
 		if (actionWithParameters.checkIfParametersSetted())
 			connection.sendAction(actionWithParameters);
+		this.disableActionButtons(false);
 	}
 	
 	@Override
@@ -220,16 +223,16 @@ public class GUI extends ClientView{
 	
 	@Override
 	public void displayAvailableActions(List<ActionDTO> availableActions) {
-		controllerGUI.getM1().setUserData(new ElectCouncillorDTO());
-		controllerGUI.getM2().setUserData(new AcquirePermitTileDTO());
-		controllerGUI.getM3().setUserData(new BuildByPermitTileDTO());
-		controllerGUI.getM4().setUserData(new BuildByKingDTO());
-		controllerGUI.getQ1().setUserData(new EngageAssistantDTO());
-		controllerGUI.getQ2().setUserData(new ChangePermitTilesDTO());
-		controllerGUI.getQ3().setUserData(new ElectCouncillorByAssistantDTO());
-		controllerGUI.getQ4().setUserData(new AddictionalMainActionDTO());
+		controllerGUI.getActions().get(0).setUserData(new ElectCouncillorDTO());
+		controllerGUI.getActions().get(1).setUserData(new AcquirePermitTileDTO());
+		controllerGUI.getActions().get(2).setUserData(new BuildByPermitTileDTO());
+		controllerGUI.getActions().get(3).setUserData(new BuildByKingDTO());
+		controllerGUI.getActions().get(4).setUserData(new EngageAssistantDTO());
+		controllerGUI.getActions().get(5).setUserData(new ChangePermitTilesDTO());
+		controllerGUI.getActions().get(6).setUserData(new ElectCouncillorByAssistantDTO());
+		controllerGUI.getActions().get(7).setUserData(new AddictionalMainActionDTO());
+		controllerGUI.getActions().get(8).setUserData(new MoveToNextDTO());
 		controllerGUI.getPoliticsDeck().setUserData(new PickPoliticsCardDTO());
-		controllerGUI.getSkip().setUserData(new MoveToNextDTO());			
 	}
 
 	@Override
@@ -247,50 +250,65 @@ public class GUI extends ClientView{
 				diplayBalconies(clientGame);
 				displayPermitTiles(clientGame);
 				displayKing(clientGame);
+				displayEmporiums(clientGame);
 			}
 		});
 		
 	}
 	
 	private void displayRegions(GameTableDTO clientGame) {
-		controllerGUI.getSeaRegion().setUserData(clientGame.getClientRegions().get(0));
-		controllerGUI.getHillRegion().setUserData(clientGame.getClientRegions().get(1));
-		controllerGUI.getMountainRegion().setUserData(clientGame.getClientRegions().get(2));
+		for (int i=0; i<this.controllerGUI.getRegions().size(); i++)
+			this.controllerGUI.getRegions().get(i).setUserData(clientGame.getClientRegions().get(i));
 	}
 	
 	private void displayCities(GameTableDTO clientGame) {
 		for(RegionDTO regionDTO : clientGame.getClientRegions())
 			for (CityDTO city : regionDTO.getCities()) {
-				if ("Arkon".equals(city.getName()))
+				if ("Arkon".equals(city.getName())){
 					controllerGUI.getCities().get(0).setUserData(city);
-				if ("Burgen".equals(city.getName()))
+					controllerGUI.getCitysEmporiums().get(0).setUserData(city);}
+				if ("Burgen".equals(city.getName())){
 					controllerGUI.getCities().get(1).setUserData(city);
-				if ("Castrum".equals(city.getName()))
+					controllerGUI.getCitysEmporiums().get(1).setUserData(city);}
+				if ("Castrum".equals(city.getName())){
 					controllerGUI.getCities().get(2).setUserData(city);
-				if ("Dorful".equals(city.getName()))
+					controllerGUI.getCitysEmporiums().get(2).setUserData(city);}
+				if ("Dorful".equals(city.getName())){
 					controllerGUI.getCities().get(3).setUserData(city);
-				if ("Esti".equals(city.getName()))
+					controllerGUI.getCitysEmporiums().get(3).setUserData(city);}
+				if ("Esti".equals(city.getName())){
 					controllerGUI.getCities().get(4).setUserData(city);
-				if ("Framek".equals(city.getName()))
+					controllerGUI.getCitysEmporiums().get(4).setUserData(city);}
+				if ("Framek".equals(city.getName())){
 					controllerGUI.getCities().get(5).setUserData(city);
-				if ("Graden".equals(city.getName()))
+					controllerGUI.getCitysEmporiums().get(5).setUserData(city);}
+				if ("Graden".equals(city.getName())){
 					controllerGUI.getCities().get(6).setUserData(city);
-				if ("Hellar".equals(city.getName()))
+					controllerGUI.getCitysEmporiums().get(6).setUserData(city);}
+				if ("Hellar".equals(city.getName())){
 					controllerGUI.getCities().get(7).setUserData(city);
-				if ("Indur".equals(city.getName()))
+					controllerGUI.getCitysEmporiums().get(7).setUserData(city);}
+				if ("Indur".equals(city.getName())){
 					controllerGUI.getCities().get(8).setUserData(city);
-				if ("Juvelar".equals(city.getName()))
+					controllerGUI.getCitysEmporiums().get(8).setUserData(city);}
+				if ("Juvelar".equals(city.getName())){
 					controllerGUI.getCities().get(9).setUserData(city);
-				if ("Kultos".equals(city.getName()))
+					controllerGUI.getCitysEmporiums().get(9).setUserData(city);}
+				if ("Kultos".equals(city.getName())){
 					controllerGUI.getCities().get(10).setUserData(city);
-				if ("Lyram".equals(city.getName()))
+					controllerGUI.getCitysEmporiums().get(10).setUserData(city);}
+				if ("Lyram".equals(city.getName())){
 					controllerGUI.getCities().get(11).setUserData(city);
-				if ("Merkatim".equals(city.getName()))
+					controllerGUI.getCitysEmporiums().get(11).setUserData(city);}
+				if ("Merkatim".equals(city.getName())){
 					controllerGUI.getCities().get(12).setUserData(city);
-				if ("Naris".equals(city.getName()))
+					controllerGUI.getCitysEmporiums().get(12).setUserData(city);}
+				if ("Naris".equals(city.getName())){
 					controllerGUI.getCities().get(13).setUserData(city);
-				if ("Osium".equals(city.getName()))
+					controllerGUI.getCitysEmporiums().get(13).setUserData(city);}
+				if ("Osium".equals(city.getName())){
 					controllerGUI.getCities().get(14).setUserData(city);
+					controllerGUI.getCitysEmporiums().get(14).setUserData(city);}
 		}
 	}
 	
@@ -303,16 +321,31 @@ public class GUI extends ClientView{
 		}
 	}
 		
-		
-//	private void displayEmporiums(GameTableDTO clientGame){
-	//	for(Pane cityPane : controllerGUI.getCities())
-	//}
+	
+	private void displayEmporiums(GameTableDTO clientGame){
+	ImageView player1= new ImageView(getClass().getResource("images/emporiumsColours/blue.png").toExternalForm());
+	ImageView player2= new ImageView(getClass().getResource("images/emporiumsColours/red.png").toExternalForm());
+	ImageView player3= new ImageView(getClass().getResource("images/emporiumsColours/yellow.png").toExternalForm());
+	ImageView player4= new ImageView(getClass().getResource("images/emporiumsColours/green.png").toExternalForm());
+		for(HBox hBox: controllerGUI.getCitysEmporiums()){
+			hBox.getChildren().clear();
+			for(GenericPlayerDTO emporium: ((CityDTO)hBox.getUserData()).getBuildedEmporiums()){
+				if(emporium.equals(1))
+					hBox.getChildren().add(player1);
+				if(emporium.equals(2))
+					hBox.getChildren().add(player2);
+				if(emporium.equals(3))
+					hBox.getChildren().add(player3);
+				if(emporium.equals(4))
+					hBox.getChildren().add(player4);
+			}
+		}	
+	}
 	
 	private void diplayBalconies(GameTableDTO clientGame) {
-		controllerGUI.getSeaBalcony().setUserData(clientGame.getClientRegions().get(0).getBalcony());
-		controllerGUI.getHillBalcony().setUserData(clientGame.getClientRegions().get(1).getBalcony());
-		controllerGUI.getMountainBalcony().setUserData(clientGame.getClientRegions().get(2).getBalcony());
-		controllerGUI.getKingBalcony().setUserData(clientGame.getClientKingBalcony());
+		for (int i=1; i<this.controllerGUI.getBalconies().size()-1; i++)
+			controllerGUI.getBalconies().get(i).setUserData(clientGame.getClientRegions().get(i).getBalcony());
+		controllerGUI.getBalconies().get(controllerGUI.getBalconies().size()-1).setUserData(clientGame.getClientKingBalcony());
 	}
 	
 	private void displayPermitTiles(GameTableDTO clientGame) {
@@ -457,7 +490,7 @@ public class GUI extends ClientView{
 
 	@Override
 	public RegionDTO askForRegionBoard(List<RegionDTO> acceptableRegions) {
-		this.disableActionButtons(true);
+		this.disableClickOnRegions(false);
 		synchronized (this.controllerGUI) {
 			try {
 				while (currentParameter==null)
@@ -675,9 +708,8 @@ public class GUI extends ClientView{
 	
 	
 	private void disableClickOnRegions(boolean disabled) {
-		this.controllerGUI.getSeaRegion().setDisable(disabled);
-		this.controllerGUI.getHillRegion().setDisable(disabled);
-		this.controllerGUI.getMountainRegion().setDisable(disabled);
+		for (int i=0; i<this.controllerGUI.getRegions().size(); i++)
+			this.controllerGUI.getRegions().get(i).setDisable(disabled);
 	}
 	
 	private void disableClickOnPermitTilesInHand(boolean disabled) {
@@ -688,21 +720,14 @@ public class GUI extends ClientView{
 	}
 
 	private void disableClickOnCouncillorsInReserve(boolean disabled) {
-		this.controllerGUI.getCouncillorReserve().get(0).setDisable(disabled);
-		this.controllerGUI.getCouncillorReserve().get(1).setDisable(disabled);
-		this.controllerGUI.getCouncillorReserve().get(2).setDisable(disabled);
-		this.controllerGUI.getCouncillorReserve().get(3).setDisable(disabled);
-		this.controllerGUI.getCouncillorReserve().get(4).setDisable(disabled);
-		this.controllerGUI.getCouncillorReserve().get(5).setDisable(disabled);
-		this.controllerGUI.getCouncillorReserve().get(6).setDisable(disabled);
-		this.controllerGUI.getCouncillorReserve().get(7).setDisable(disabled);
+		for (int i=0; i<this.controllerGUI.getCouncillorReserve().size(); i++)
+			this.controllerGUI.getCouncillorReserve().get(i).setDisable(disabled);
 	}
 	
 	private void disableClickOnCouncilBalconies(boolean disabled) {
-		this.controllerGUI.getSeaBalcony().setDisable(disabled);
-		this.controllerGUI.getHillBalcony().setDisable(disabled);
-		this.controllerGUI.getMountainBalcony().setDisable(disabled);
-		this.controllerGUI.getKingBalcony().setDisable(disabled);
+		for (int i=1; i<this.controllerGUI.getBalconies().size()-1; i++)
+			controllerGUI.getBalconies().get(i).setDisable(disabled);
+		controllerGUI.getBalconies().get(controllerGUI.getBalconies().size()-1).setDisable(disabled);
 	}
 	
 	private void disableClickOnCities(boolean disabled) {
