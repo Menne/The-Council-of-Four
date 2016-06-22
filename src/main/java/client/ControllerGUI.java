@@ -806,6 +806,11 @@ public class ControllerGUI {
 		return colourPlayer4;
 	}
 	
+	public List<HBox> getCitysEmporiums() {
+		return Arrays.asList(emporiumsArkon, emporiumsBurgen, emporiumsCastrum, emporiumsDorful, emporiumsEsti, emporiumsFramek,
+				emporiumsGraden, emporiumsHellar, emporiumsIndur, emporiumsJuvelar, emporiumsKultos, emporiumsLyram, emporiumsMerkatim, emporiumsNaris, emporiumsOsium);
+	}
+	
 	public List<ImageView> getPlayersColours() {
 		return Arrays.asList(colourPlayer1, colourPlayer2, colourPlayer3, colourPlayer4);
 	}
