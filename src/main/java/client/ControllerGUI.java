@@ -895,13 +895,30 @@ public class ControllerGUI {
 	
 	@FXML
 	public void startAction(Event event) throws RemoteException {
-		synchronized (this) {
-			ActionDTO selectedAction=(ActionDTO) ((Button) event.getSource()).getUserData();
-			if (selectedAction instanceof ActionWithParameters) {
-				ActionWithParameters actionWithParameters=(ActionWithParameters) selectedAction;
-				this.view.insertParametersAndSend(actionWithParameters);
-			}
-			this.notify();
+		ActionDTO selectedAction=(ActionDTO) ((Button) event.getSource()).getUserData();
+		for (ActionDTO action : this.clientGame.getAvailableActions())
+			if (this.clientGame.getAvailableActions().contains(action.getClass())) 
+				this.view.displayError("Sorry, action not available!");
+		if (!(selectedAction instanceof ActionWithParameters)) {
+			this.view.getConnection().sendAction(selectedAction);
+			return;
+		}
+		else if (selectedAction instanceof ActionWithParameters) {
+			ExecutorService executor=Executors.newSingleThreadExecutor();
+			executor.submit(new Runnable() {
+				
+				@Override
+				public void run() {
+					((ActionWithParameters) selectedAction).setParser().setParameters(view, clientGame);
+					try {
+						view.getConnection().sendAction(selectedAction);
+					} catch (RemoteException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			});
+			return;
 		}
 	}
 	
