@@ -101,11 +101,16 @@
                                              <children>
                                                 <ScrollPane styleClass="sfondo" stylesheets="@resize.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <content>
-                                                      <HBox fx:id="hand" prefHeight="138.0" prefWidth="489.0" spacing="10.0" styleClass="sfondo">
-                                                         <padding>
-                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                         </padding>
-                                                      </HBox>
+                                                      <AnchorPane prefHeight="118.0" prefWidth="717.0" styleClass="sfondo">
+                                                         <children>
+                                                            <HBox fx:id="hand" prefHeight="78.0" prefWidth="717.0" spacing="10.0" styleClass="sfondo">
+                                                               <padding>
+                                                                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                               </padding>
+                                                            </HBox>
+                                                            <Button layoutX="105.0" layoutY="78.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="244.0" text="stop card selection" />
+                                                         </children>
+                                                      </AnchorPane>
                                                    </content>
                                                 </ScrollPane>
                                              </children></AnchorPane>
