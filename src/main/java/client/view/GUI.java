@@ -45,6 +45,8 @@ import client.view.notifies.ClientViewNotify;
 import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -202,8 +204,10 @@ public class GUI extends ClientView{
 			
 			@Override
 			public void run() {
-				controllerGUI.getMessageBox().appendText("ERROR: "+string+"\n");
-				
+				Alert alert=new Alert(AlertType.ERROR);
+				alert.setTitle("WARNING");
+				alert.setHeaderText(string);
+				alert.showAndWait();
 			}
 		});		
 	}

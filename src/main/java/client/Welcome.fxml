@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.ControllerLogin">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.ControllerLogin">
    <children>
       <ImageView fitHeight="486.0" fitWidth="650.0" layoutX="-7.0" layoutY="-4.0" opacity="0.79">
          <image>
@@ -34,7 +34,6 @@
             <ToggleGroup fx:id="connection" />
          </toggleGroup></RadioButton>
       <RadioButton fx:id="rmi" layoutX="50.0" layoutY="330.0" mnemonicParsing="false" text="RMI" toggleGroup="$connection" />
-      <TextArea fx:id="error" layoutX="25.0" layoutY="401.0" prefHeight="51.0" prefWidth="165.0" />
       <TextField fx:id="address" layoutX="214.0" layoutY="302.0" prefHeight="45.0" prefWidth="354.0" promptText="0 for localhost" />
    </children>
 </AnchorPane>
