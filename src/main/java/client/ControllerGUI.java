@@ -816,6 +816,10 @@ public class ControllerGUI {
 	public ImageView getColourPlayer4() {
 		return colourPlayer4;
 	}
+	
+	public List<ImageView> getPlayersColours() {
+		return Arrays.asList(colourPlayer1, colourPlayer2, colourPlayer3, colourPlayer4);
+	}
 
 	public ImageView getRewardToken(CityDTO city){
 		switch(city.getName()){
