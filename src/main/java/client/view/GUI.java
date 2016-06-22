@@ -185,17 +185,6 @@ public class GUI extends ClientView{
 	public void input() throws RemoteException {
 		return;
 	}
-
-	@Override
-	public void displayMessage(String string) {
-		Platform.runLater(new Runnable() {
-			
-			@Override
-			public void run() {
-				controllerGUI.getMessageBox().appendText(string+"\n");	
-			}
-		});
-	}
 	
 	
 	public void insertParametersAndSend(ActionWithParameters actionWithParameters) throws RemoteException {
@@ -206,19 +195,8 @@ public class GUI extends ClientView{
 		this.disableActionButtons(false);
 	}
 	
-	@Override
-	public void displayError(String string) {
-		Platform.runLater(new Runnable() {
-			
-			@Override
-			public void run() {
-				Alert alert=new Alert(AlertType.ERROR);
-				alert.setTitle("WARNING");
-				alert.setHeaderText(string);
-				alert.showAndWait();
-			}
-		});		
-	}
+	
+	
 	
 	@Override
 	public void displayAvailableActions(List<ActionDTO> availableActions) {
@@ -500,6 +478,31 @@ public class GUI extends ClientView{
 	}
 	
 	@Override
+	public void displayMessage(String string) {
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				controllerGUI.getMessageBox().appendText(string+"\n");	
+			}
+		});
+	}
+	
+	@Override
+	public void displayError(String string) {
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				Alert alert=new Alert(AlertType.ERROR);
+				alert.setTitle("WARNING");
+				alert.setHeaderText(string);
+				alert.showAndWait();
+			}
+		});		
+	}
+	
+	@Override
 	public void displayFinalRanking(ArrayList<GenericPlayerDTO> finalRankingTable) {
 		// TODO Auto-generated method stub
 		
@@ -507,7 +510,13 @@ public class GUI extends ClientView{
 	
 	@Override
 	public void displayChatMessage(String message) {
-		// TODO Auto-generated method stub
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				controllerGUI.getMessageBox().appendText(message+"\n");	
+			}
+		});
 		
 	}
 	
@@ -733,8 +742,8 @@ public class GUI extends ClientView{
 	
 	
 	private void disableClickOnRegions(boolean disabled) {
-		for (int i=0; i<this.controllerGUI.getRegions().size(); i++)
-			this.controllerGUI.getRegions().get(i).setDisable(disabled);
+		for (Pane regionPane : this.controllerGUI.getRegions())
+			regionPane.setDisable(disabled);
 	}
 	
 	private void disableClickOnPermitTilesInHand(boolean disabled) {
@@ -756,8 +765,8 @@ public class GUI extends ClientView{
 	}
 	
 	private void disableClickOnCities(boolean disabled) {
-		for (Pane citiPane : controllerGUI.getCities())
-			citiPane.setDisable(disabled);
+		for (Pane cityPane : controllerGUI.getCities())
+			cityPane.setDisable(disabled);
 	}
 	
 	private void disableClickOnPoliticsCards(boolean disabled) {
@@ -784,6 +793,6 @@ public class GUI extends ClientView{
 		this.controllerGUI.getPoliticsDeck().setDisable(disabled);
 		for (Button button : this.controllerGUI.getActions())
 			button.setDisable(disabled);
-		}
+	}
 	
 }

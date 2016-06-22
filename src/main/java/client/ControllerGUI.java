@@ -5,6 +5,7 @@ import java.rmi.RemoteException;
 import client.modelDTO.GameDTO;
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.ActionWithParameters;
+import client.modelDTO.actionsDTO.ChatMessageDTO;
 import client.modelDTO.actionsDTO.PickPoliticsCardDTO;
 import client.modelDTO.actionsDTO.QuitDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
@@ -887,16 +888,21 @@ public class ControllerGUI {
     }
     
     @FXML
-    public void clickOnQuitGame() throws RemoteException{
+    public void clickOnQuitGame() throws RemoteException {
     	Alert alert=new Alert(AlertType.CONFIRMATION);
     	alert.setTitle("Quit Game");
     	alert.setHeaderText("Do you really want to leave the game?");
     	Optional<ButtonType> result=alert.showAndWait();
-    	if(result.get()==ButtonType.OK){
+    	if (result.get()==ButtonType.OK){
     		view.getConnection().sendAction(new QuitDTO());
     	}
     	else
     		return;
+    }
+    
+    @FXML
+    public void sendMessage() throws RemoteException {
+    	this.view.getConnection().sendAction(new ChatMessageDTO(this.messageBox.getText()));
     }
 
 }
