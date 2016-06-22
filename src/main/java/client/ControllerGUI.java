@@ -583,66 +583,6 @@ public class ControllerGUI {
 		return kingBalcony;
 	}
 
-	public Pane getArkon() {
-		return arkon;
-	}
-
-	public Pane getBurgen() {
-		return burgen;
-	}
-
-	public Pane getCastrum() {
-		return castrum;
-	}
-
-	public Pane getDorful() {
-		return dorful;
-	}
-
-	public Pane getEsti() {
-		return esti;
-	}
-
-	public Pane getFramek() {
-		return framek;
-	}
-
-	public Pane getGraden() {
-		return graden;
-	}
-
-	public Pane getHellar() {
-		return hellar;
-	}
-
-	public Pane getIndur() {
-		return indur;
-	}
-
-	public Pane getJuvelar() {
-		return juvelar;
-	}
-
-	public Pane getKultos() {
-		return kultos;
-	}
-
-	public Pane getLyram() {
-		return lyram;
-	}
-
-	public Pane getMerkatim() {
-		return merkatim;
-	}
-
-	public Pane getNaris() {
-		return naris;
-	}
-
-	public Pane getOsium() {
-		return osium;
-	}
-
 	public TextArea getMessageBox() {
 		return messageBox;
 	}
