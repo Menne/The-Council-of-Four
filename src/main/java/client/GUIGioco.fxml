@@ -237,7 +237,7 @@
                                                    <children>
                                                       <ImageView fx:id="colourPlayer1" fitHeight="30.0" fitWidth="40.0" layoutX="37.0" layoutY="9.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="37.0">
                                                          <image>
-                                                            <Image url="@view/images/EmporiumsColours/blue.png" />
+                                                            <Image url="@view/images/emporiumsColours/blue.png" />
                                                          </image>
                                                       </ImageView>
                                                    </children>
@@ -382,7 +382,7 @@
                                                    <children>
                                                       <ImageView fx:id="colourPlayer2" fitHeight="30.0" fitWidth="40.0" layoutX="35.0" layoutY="6.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="35.0">
                                                          <image>
-                                                            <Image url="@view/images/EmporiumsColours/red.png" />
+                                                            <Image url="@view/images/emporiumsColours/red.png" />
                                                          </image>
                                                       </ImageView>
                                                    </children>
@@ -524,7 +524,7 @@
                                                    <children>
                                                       <ImageView fx:id="colourPlayer3" fitHeight="30.0" fitWidth="40.0" layoutX="38.0" layoutY="6.0">
                                                          <image>
-                                                            <Image url="@view/images/EmporiumsColours/yellow.png" />
+                                                            <Image url="@view/images/emporiumsColours/yellow.png" />
                                                          </image>
                                                       </ImageView>
                                                    </children>
@@ -667,7 +667,7 @@
                                                    <children>
                                                       <ImageView fx:id="colourPlayer4" fitHeight="30.0" fitWidth="40.0" layoutX="38.0" layoutY="6.0">
                                                          <image>
-                                                            <Image url="@view/images/EmporiumsColours/green.png" />
+                                                            <Image url="@view/images/emporiumsColours/green.png" />
                                                          </image>
                                                       </ImageView>
                                                    </children>
