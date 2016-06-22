@@ -14,6 +14,7 @@ import server.model.bonus.ScoreBonus;
 import server.model.gameMapper.GameDTOMapper;
 import server.model.gameMapper.GameMapperInterface;
 import server.model.gameTable.BonusTile;
+import server.model.gameTable.City;
 import server.model.gameTable.Emporium;
 import server.model.gameTable.GameTable;
 import server.model.gameTable.KingBonusTile;
@@ -64,6 +65,11 @@ public class Game extends Observable<ViewNotify>{
 				player.getRemainigEmporiums().add(new Emporium(player));
 		}
 		this.players.get(0).getPlayersFinalBonus().add(new KingBonusTile(new ScoreBonus(25)));
+		for(City city: gameTable.getRegionBoards().get(0).getRegionCities())
+			if(city.getName().equals("Arkon")){
+			city.addEmporium(new Emporium(playerList.get(0)));
+			city.addEmporium(new Emporium(playerList.get(1)));
+			}
 		this.currentPlayer=this.players.get(0);
 		this.state=new BeginState();
 		this.lastLap=false;
