@@ -201,6 +201,7 @@ public class GUI extends ClientView{
 				displayCities(clientGame);
 				diplayBalconies(clientGame);
 				displayPermitTiles(clientGame);
+				displayKing(clientGame);
 			}
 		});
 		
@@ -251,6 +252,54 @@ public class GUI extends ClientView{
 		}
 	}
 
+	private void displayKing(GameTableDTO clientGame){
+		ImageView imageView=new ImageView(getClass().getResource("images/various/king.png").toExternalForm());
+		imageView.setFitHeight(70);
+		imageView.setPreserveRatio(true);
+	for (CityDTO city : clientGame.getClientRegions().get(0).getCities()) {
+		if (city.getName().equals(clientGame.getKing())){
+			if(city.getName().equals("Arkon"))
+				controllerGUI.getArkon().getChildren().add(imageView);
+			if(city.getName().equals("Burgen"))
+				controllerGUI.getBurgen().getChildren().add(imageView);
+			if(city.getName().equals("Castrum"))
+				controllerGUI.getCastrum().getChildren().add(imageView);
+			if(city.getName().equals("Dorful"))
+				controllerGUI.getDorful().getChildren().add(imageView);
+			if(city.getName().equals("Esti"))
+				controllerGUI.getEsti().getChildren().add(imageView);
+		}
+	}
+	for (CityDTO city : clientGame.getClientRegions().get(1).getCities()) {
+		if (city.getName().equals(clientGame.getKing())){
+			if(city.getName().equals("Framek"))
+				controllerGUI.getFramek().getChildren().add(imageView);
+			if(city.getName().equals("Graden"))
+				controllerGUI.getGraden().getChildren().add(imageView);
+			if(city.getName().equals("Hellar"))
+				controllerGUI.getHellar().getChildren().add(imageView);
+			if(city.getName().equals("Indur"))
+				controllerGUI.getIndur().getChildren().add(imageView);
+			if(city.getName().equals("Juvelar"))
+				controllerGUI.getJuvelar().getChildren().add(imageView);
+		}
+	}
+	for (CityDTO city : clientGame.getClientRegions().get(2).getCities()) {
+		if (city.getName().equals(clientGame.getKing())){
+			if(city.getName().equals("Kultos"))
+				controllerGUI.getKultos().getChildren().add(imageView);
+			if(city.getName().equals("Lyram"))
+				controllerGUI.getLyram().getChildren().add(imageView);
+			if(city.getName().equals("Merkatim"))
+				controllerGUI.getMerkatim().getChildren().add(imageView);
+			if(city.getName().equals("Naris"))
+				controllerGUI.getNaris().getChildren().add(imageView);
+			if(city.getName().equals("Osium"))
+				controllerGUI.getOsium().getChildren().add(imageView);
+		}
+	}
+	}
+	
 	private void diplayBalconies(GameTableDTO clientGame) {
 		controllerGUI.getSeaBalcony().setUserData(clientGame.getClientRegions().get(0).getBalcony());
 		controllerGUI.getHillBalcony().setUserData(clientGame.getClientRegions().get(1).getBalcony());
