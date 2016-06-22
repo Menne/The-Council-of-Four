@@ -179,7 +179,14 @@ public class GUI extends ClientView{
 	
 	@Override
 	public void displayError(String string) {
-		this.controllerGUI.getMessageBox().appendText("ERROR: "+string);		
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				controllerGUI.getMessageBox().appendText("ERROR: "+string+"\n");
+				
+			}
+		});		
 	}
 	
 	@Override
@@ -300,6 +307,12 @@ public class GUI extends ClientView{
 				controllerGUI.getPermitTilesOtherPlayers().get(i).getChildren().add(imageView);
 				imageView.setFitHeight(60);
 				imageView.setPreserveRatio(true);
+			}
+			for(BonusTileDTO bonusTileDTO : orderedPlayers.get(i).getPlayersFinalBonus()){
+				ImageView imageView =new ImageView(imageMap.get(bonusTileDTO));
+				controllerGUI.getGenericPlayerBonuses().get(i).getChildren().add(imageView);
+				imageView.setFitWidth(50);
+				imageView.setPreserveRatio(true);			
 			}
 		}
 	}
