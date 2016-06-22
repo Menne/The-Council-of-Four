@@ -263,51 +263,51 @@ public class GUI extends ClientView{
 	private void displayCities(GameTableDTO clientGame) {
 		for(RegionDTO regionDTO : clientGame.getClientRegions())
 			for (CityDTO city : regionDTO.getCities()) {
-				if ("Arkon".equals(city.getName()))
+				if ("Arkon".equals(city.getName())){
 					controllerGUI.getCities().get(0).setUserData(city);
-					controllerGUI.getCitysEmporiums().get(0).setUserData(city);
-				if ("Burgen".equals(city.getName()))
+					controllerGUI.getCitysEmporiums().get(0).setUserData(city);}
+				if ("Burgen".equals(city.getName())){
 					controllerGUI.getCities().get(1).setUserData(city);
-					controllerGUI.getCitysEmporiums().get(1).setUserData(city);
-				if ("Castrum".equals(city.getName()))
+					controllerGUI.getCitysEmporiums().get(1).setUserData(city);}
+				if ("Castrum".equals(city.getName())){
 					controllerGUI.getCities().get(2).setUserData(city);
-					controllerGUI.getCitysEmporiums().get(2).setUserData(city);
-				if ("Dorful".equals(city.getName()))
+					controllerGUI.getCitysEmporiums().get(2).setUserData(city);}
+				if ("Dorful".equals(city.getName())){
 					controllerGUI.getCities().get(3).setUserData(city);
-					controllerGUI.getCitysEmporiums().get(3).setUserData(city);
-				if ("Esti".equals(city.getName()))
+					controllerGUI.getCitysEmporiums().get(3).setUserData(city);}
+				if ("Esti".equals(city.getName())){
 					controllerGUI.getCities().get(4).setUserData(city);
-					controllerGUI.getCitysEmporiums().get(4).setUserData(city);
-				if ("Framek".equals(city.getName()))
+					controllerGUI.getCitysEmporiums().get(4).setUserData(city);}
+				if ("Framek".equals(city.getName())){
 					controllerGUI.getCities().get(5).setUserData(city);
-					controllerGUI.getCitysEmporiums().get(5).setUserData(city);
-				if ("Graden".equals(city.getName()))
+					controllerGUI.getCitysEmporiums().get(5).setUserData(city);}
+				if ("Graden".equals(city.getName())){
 					controllerGUI.getCities().get(6).setUserData(city);
-					controllerGUI.getCitysEmporiums().get(6).setUserData(city);
-				if ("Hellar".equals(city.getName()))
+					controllerGUI.getCitysEmporiums().get(6).setUserData(city);}
+				if ("Hellar".equals(city.getName())){
 					controllerGUI.getCities().get(7).setUserData(city);
-					controllerGUI.getCitysEmporiums().get(7).setUserData(city);
-				if ("Indur".equals(city.getName()))
+					controllerGUI.getCitysEmporiums().get(7).setUserData(city);}
+				if ("Indur".equals(city.getName())){
 					controllerGUI.getCities().get(8).setUserData(city);
-					controllerGUI.getCitysEmporiums().get(8).setUserData(city);
-				if ("Juvelar".equals(city.getName()))
+					controllerGUI.getCitysEmporiums().get(8).setUserData(city);}
+				if ("Juvelar".equals(city.getName())){
 					controllerGUI.getCities().get(9).setUserData(city);
-					controllerGUI.getCitysEmporiums().get(9).setUserData(city);
-				if ("Kultos".equals(city.getName()))
+					controllerGUI.getCitysEmporiums().get(9).setUserData(city);}
+				if ("Kultos".equals(city.getName())){
 					controllerGUI.getCities().get(10).setUserData(city);
-					controllerGUI.getCitysEmporiums().get(10).setUserData(city);
-				if ("Lyram".equals(city.getName()))
+					controllerGUI.getCitysEmporiums().get(10).setUserData(city);}
+				if ("Lyram".equals(city.getName())){
 					controllerGUI.getCities().get(11).setUserData(city);
-					controllerGUI.getCitysEmporiums().get(11).setUserData(city);
-				if ("Merkatim".equals(city.getName()))
+					controllerGUI.getCitysEmporiums().get(11).setUserData(city);}
+				if ("Merkatim".equals(city.getName())){
 					controllerGUI.getCities().get(12).setUserData(city);
-					controllerGUI.getCitysEmporiums().get(12).setUserData(city);
-				if ("Naris".equals(city.getName()))
+					controllerGUI.getCitysEmporiums().get(12).setUserData(city);}
+				if ("Naris".equals(city.getName())){
 					controllerGUI.getCities().get(13).setUserData(city);
-					controllerGUI.getCitysEmporiums().get(13).setUserData(city);
-				if ("Osium".equals(city.getName()))
+					controllerGUI.getCitysEmporiums().get(13).setUserData(city);}
+				if ("Osium".equals(city.getName())){
 					controllerGUI.getCities().get(14).setUserData(city);
-					controllerGUI.getCitysEmporiums().get(14).setUserData(city);
+					controllerGUI.getCitysEmporiums().get(14).setUserData(city);}
 		}
 	}
 	
