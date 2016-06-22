@@ -323,7 +323,7 @@ public class GUI extends ClientView{
 		
 	
 	private void displayEmporiums(GameTableDTO clientGame){
-	ImageView player1= new ImageView(getClass().getResource("images/emporiumsColours/blue.png").toExternalForm());
+/*	ImageView player1= new ImageView(getClass().getResource("images/emporiumsColours/blue.png").toExternalForm());
 	ImageView player2= new ImageView(getClass().getResource("images/emporiumsColours/red.png").toExternalForm());
 	ImageView player3= new ImageView(getClass().getResource("images/emporiumsColours/yellow.png").toExternalForm());
 	ImageView player4= new ImageView(getClass().getResource("images/emporiumsColours/green.png").toExternalForm());
@@ -339,7 +339,7 @@ public class GUI extends ClientView{
 				if(emporium.equals(4))
 					hBox.getChildren().add(player4);
 			}
-		}	
+		}	*/
 	}
 	
 	private void diplayBalconies(GameTableDTO clientGame) {

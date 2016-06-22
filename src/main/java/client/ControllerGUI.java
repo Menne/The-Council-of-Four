@@ -6,6 +6,7 @@ import client.modelDTO.GameDTO;
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.ActionWithParameters;
 import client.modelDTO.actionsDTO.PickPoliticsCardDTO;
+import client.modelDTO.actionsDTO.QuitDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.PoliticsCardDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
@@ -13,6 +14,7 @@ import client.view.GUI;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -21,7 +23,10 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
@@ -850,6 +855,19 @@ public class ControllerGUI {
 	    		((Node) mouseEvent.getSource()).setCursor(Cursor.HAND);
 	        }
 	    });
+    }
+    
+    @FXML
+    public void clickOnQuitGame() throws RemoteException{
+    	Alert alert=new Alert(AlertType.CONFIRMATION);
+    	alert.setTitle("Quit Game");
+    	alert.setHeaderText("Do you really want to leave the game?");
+    	Optional<ButtonType> result=alert.showAndWait();
+    	if(result.get()==ButtonType.OK){
+    		view.getConnection().sendAction(new QuitDTO());
+    	}
+    	else
+    		return;
     }
 
 }
