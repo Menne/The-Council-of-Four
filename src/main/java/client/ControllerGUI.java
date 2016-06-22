@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 
 import client.modelDTO.GameDTO;
 import client.modelDTO.actionsDTO.ActionDTO;
+import client.modelDTO.actionsDTO.ActionWithParameters;
 import client.modelDTO.actionsDTO.MoveToNextDTO;
 import client.modelDTO.actionsDTO.PickPoliticsCardDTO;
 import client.modelDTO.actionsDTO.marketActions.AcceptAnOfferDTO;
@@ -515,6 +516,47 @@ public class ControllerGUI {
 	@FXML
 	private VBox playersBonuses;
 	
+	
+	public Button getM1() {
+		return m1;
+	}
+
+	public Button getM2() {
+		return m2;
+	}
+
+	public Button getM3() {
+		return m3;
+	}
+
+	public Button getM4() {
+		return m4;
+	}
+
+	public Button getQ1() {
+		return q1;
+	}
+
+	public Button getQ2() {
+		return q2;
+	}
+
+	public Button getQ3() {
+		return q3;
+	}
+
+	public Button getQ4() {
+		return q4;
+	}
+
+	public ImageView getPoliticsDeck() {
+		return politicsDeck;
+	}
+	
+	public Button getSkip() {
+		return skip;
+	}
+
 	@FXML
 	private HBox genericPlayerBonuses1;
 	
@@ -788,6 +830,21 @@ public class ControllerGUI {
 	public Button getDescardPoliticsCards() {
 		return descardPoliticsCards;
 	}
+	
+	
+	
+	@FXML
+	public void startAction(Event event) throws RemoteException {
+		synchronized (this) {
+			ActionDTO selectedAction=(ActionDTO) ((Button) event.getSource()).getUserData();
+			if (selectedAction instanceof ActionWithParameters) {
+				ActionWithParameters actionWithParameters=(ActionWithParameters) selectedAction;
+				this.view.insertParametersAndSend(actionWithParameters);
+			}
+			this.notify();
+		}
+	}
+	
 	
 
 	@FXML

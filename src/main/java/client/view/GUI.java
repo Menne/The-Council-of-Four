@@ -16,6 +16,17 @@ import client.connections.Connection;
 import client.modelDTO.GameDTO;
 import client.modelDTO.ModelDTO;
 import client.modelDTO.actionsDTO.ActionDTO;
+import client.modelDTO.actionsDTO.ActionWithParameters;
+import client.modelDTO.actionsDTO.MoveToNextDTO;
+import client.modelDTO.actionsDTO.PickPoliticsCardDTO;
+import client.modelDTO.actionsDTO.standardActions.AcquirePermitTileDTO;
+import client.modelDTO.actionsDTO.standardActions.AddictionalMainActionDTO;
+import client.modelDTO.actionsDTO.standardActions.BuildByKingDTO;
+import client.modelDTO.actionsDTO.standardActions.BuildByPermitTileDTO;
+import client.modelDTO.actionsDTO.standardActions.ChangePermitTilesDTO;
+import client.modelDTO.actionsDTO.standardActions.ElectCouncillorByAssistantDTO;
+import client.modelDTO.actionsDTO.standardActions.ElectCouncillorDTO;
+import client.modelDTO.actionsDTO.standardActions.EngageAssistantDTO;
 import client.modelDTO.gameTableDTO.BonusTileDTO;
 import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
@@ -178,6 +189,13 @@ public class GUI extends ClientView{
 		});
 	}
 	
+	
+	public void insertParametersAndSend(ActionWithParameters actionWithParameters) throws RemoteException {
+		actionWithParameters.setParser().setParameters(this, this.clientGame);
+		if (actionWithParameters.checkIfParametersSetted())
+			connection.sendAction(actionWithParameters);
+	}
+	
 	@Override
 	public void displayError(String string) {
 		Platform.runLater(new Runnable() {
@@ -192,7 +210,16 @@ public class GUI extends ClientView{
 	
 	@Override
 	public void displayAvailableActions(List<ActionDTO> availableActions) {
-		return;
+		controllerGUI.getM1().setUserData(new ElectCouncillorDTO());
+		controllerGUI.getM2().setUserData(new AcquirePermitTileDTO());
+		controllerGUI.getM3().setUserData(new BuildByPermitTileDTO());
+		controllerGUI.getM4().setUserData(new BuildByKingDTO());
+		controllerGUI.getQ1().setUserData(new EngageAssistantDTO());
+		controllerGUI.getQ2().setUserData(new ChangePermitTilesDTO());
+		controllerGUI.getQ3().setUserData(new ElectCouncillorByAssistantDTO());
+		controllerGUI.getQ4().setUserData(new AddictionalMainActionDTO());
+		controllerGUI.getPoliticsDeck().setUserData(new PickPoliticsCardDTO());
+		controllerGUI.getSkip().setUserData(new MoveToNextDTO());			
 	}
 
 	@Override
