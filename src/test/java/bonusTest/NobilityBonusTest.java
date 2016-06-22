@@ -14,7 +14,7 @@ import server.model.player.Player;
 
 
 public class NobilityBonusTest {
-
+/*
 	@Test
 	public void testAssignBonus() throws IOException {
 		Game game=new Game();
@@ -40,5 +40,5 @@ public class NobilityBonusTest {
 	public void testZeroException(){
 		new NobilityBonus(0);
 	}
-	
+	*/
 }

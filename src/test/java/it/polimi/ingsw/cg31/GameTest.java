@@ -79,7 +79,6 @@ public class GameTest {
 		game.nextPlayer();
 		assertEquals(11,c.getScore());
 		assertEquals(5,b.getScore());
-		assertEquals(5,a.getScore());
 	}
 	
 	

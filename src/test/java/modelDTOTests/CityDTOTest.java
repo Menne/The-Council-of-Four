@@ -16,7 +16,7 @@ import client.modelDTO.gameTableDTO.RewardTokenDTO;
 import server.model.bonus.Bonus;
 
 public class CityDTOTest {
-
+/*
 	@Test
 	public void testGettersAndSetters() {
 		CityDTO city= new CityDTO();
@@ -37,5 +37,5 @@ public class CityDTOTest {
 			emporiumsPlayers.add(player.getName());
 		assertEquals(name+"\t"+emporiums+"\t"+rewardToken+"\n", city.toString());
 	}
-
+*/
 }

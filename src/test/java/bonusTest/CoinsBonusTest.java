@@ -13,7 +13,7 @@ import server.model.bonus.CoinsBonus;
 import server.model.player.Player;
 
 public class CoinsBonusTest {
-
+/*
 	@Test
 	public void test() throws IOException {
 		Game game=new Game();
@@ -41,4 +41,5 @@ public class CoinsBonusTest {
 	public void testNegativeException(){
 		new CoinsBonus(-2);
 	}
+	*/
 }
