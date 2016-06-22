@@ -353,7 +353,7 @@ public class GUI extends ClientView{
 				imageView.setFitWidth(50);
 				imageView.setPreserveRatio(true);			
 			}
-		}
+		} 
 	}
 	
 	private void displayCouncillors(GameTableDTO clientGame) {
@@ -715,12 +715,6 @@ public class GUI extends ClientView{
 			controllerGUI.getHillPermitTile()[i].setDisable(disabled);
 			controllerGUI.getMountainPermitTile()[i].setDisable(disabled);
 		}
-	}
-
-
-	public void disableActionButtons() {
-		// TODO Auto-generated method stub
-		
 	}
 	
 }
