@@ -361,7 +361,7 @@ public class GUI extends ClientView{
 				imageView.setFitWidth(50);
 				imageView.setPreserveRatio(true);			
 			}
-		}
+		} 
 	}
 	
 	private void displayCouncillors(GameTableDTO clientGame) {
