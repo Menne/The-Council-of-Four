@@ -8,6 +8,7 @@ import client.modelDTO.actionsDTO.ActionWithParameters;
 import client.modelDTO.actionsDTO.PickPoliticsCardDTO;
 import client.modelDTO.actionsDTO.QuitDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
+import client.modelDTO.gameTableDTO.PermitTileDTO;
 import client.modelDTO.gameTableDTO.PoliticsCardDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
 import client.view.GUI;
@@ -867,6 +868,12 @@ public class ControllerGUI {
 		}
 	}
 
+	public void handlePermitTilesTurnedUp(PermitTileDTO selectedPermitTile) {
+		synchronized (this) {
+			this.view.setCurrentParameter(selectedPermitTile);
+			this.notify();
+		}
+	}
    
     @FXML
     public void changeMouseStyle(MouseEvent mouseEvent) {

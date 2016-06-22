@@ -385,13 +385,15 @@ public class GUI extends ClientView{
 				controllerGUI.getPermitTilesOtherPlayers().get(i).getChildren().add(imageView);
 				imageView.setFitHeight(60);
 				imageView.setPreserveRatio(true);
+				imageView.setDisable(true);
 			}
 			controllerGUI.getGenericPlayerBonuses().get(i).getChildren().clear();
 			for(BonusTileDTO bonusTileDTO : orderedPlayers.get(i).getPlayersFinalBonus()){
 				ImageView imageView =new ImageView(imageMap.get(bonusTileDTO));
 				controllerGUI.getGenericPlayerBonuses().get(i).getChildren().add(imageView);
 				imageView.setFitWidth(50);
-				imageView.setPreserveRatio(true);			
+				imageView.setPreserveRatio(true);
+				imageView.setDisable(true);
 			}
 		} 
 	}
@@ -432,6 +434,7 @@ public class GUI extends ClientView{
 					controllerGUI.getHand().getChildren().add(imageView);
 					imageView.setFitWidth(50);
 					imageView.setPreserveRatio(true);
+					imageView.setDisable(true);
 					imageView.setOnMouseClicked(new EventHandler<Event>() {
 
 						@Override
@@ -448,7 +451,6 @@ public class GUI extends ClientView{
 							
 						}
 					});
-					imageView.setDisable(true);
 					politicsCards.add(imageView);
 					controllerGUI.setPoliticsCards(politicsCards);
 				}
@@ -457,6 +459,23 @@ public class GUI extends ClientView{
 					controllerGUI.getPermitTilesTurnedUpOwned().getChildren().add(imageView);
 					imageView.setFitHeight(70);
 					imageView.setPreserveRatio(true);
+					imageView.setDisable(true);
+					imageView.setOnMouseClicked(new EventHandler<Event>() {
+
+						@Override
+						public void handle(Event event) {
+							controllerGUI.handlePermitTilesTurnedUp(permitTileDTO);	
+							
+						}
+					});
+					imageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+						@Override
+						public void handle(MouseEvent event) {
+							controllerGUI.changeMouseStyle(event);
+							
+						}
+					});
 				}
 				controllerGUI.getPlayerCoins().setText(String.valueOf(player.getCoins()));
 				controllerGUI.getPlayerAssistants().setText(String.valueOf(player.getAssistants().size()));
@@ -468,6 +487,7 @@ public class GUI extends ClientView{
 					controllerGUI.getPlayersBonuses().getChildren().add(imageView);
 					imageView.setFitWidth(60);
 					imageView.setPreserveRatio(true);
+					imageView.setDisable(true);
 				}
 			}
 		});
@@ -736,7 +756,7 @@ public class GUI extends ClientView{
 	}
 	
 	private void disableClickOnCities(boolean disabled) {
-		for(Pane citiPane : controllerGUI.getCities())
+		for (Pane citiPane : controllerGUI.getCities())
 			citiPane.setDisable(disabled);
 	}
 	
