@@ -16,6 +16,17 @@ import client.connections.Connection;
 import client.modelDTO.GameDTO;
 import client.modelDTO.ModelDTO;
 import client.modelDTO.actionsDTO.ActionDTO;
+import client.modelDTO.actionsDTO.ActionWithParameters;
+import client.modelDTO.actionsDTO.MoveToNextDTO;
+import client.modelDTO.actionsDTO.PickPoliticsCardDTO;
+import client.modelDTO.actionsDTO.standardActions.AcquirePermitTileDTO;
+import client.modelDTO.actionsDTO.standardActions.AddictionalMainActionDTO;
+import client.modelDTO.actionsDTO.standardActions.BuildByKingDTO;
+import client.modelDTO.actionsDTO.standardActions.BuildByPermitTileDTO;
+import client.modelDTO.actionsDTO.standardActions.ChangePermitTilesDTO;
+import client.modelDTO.actionsDTO.standardActions.ElectCouncillorByAssistantDTO;
+import client.modelDTO.actionsDTO.standardActions.ElectCouncillorDTO;
+import client.modelDTO.actionsDTO.standardActions.EngageAssistantDTO;
 import client.modelDTO.gameTableDTO.BonusTileDTO;
 import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
@@ -36,6 +47,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import server.model.bonus.AssistantsBonus;
 import server.model.bonus.CoinsBonus;
 import server.model.bonus.MainActionBonus;
@@ -177,6 +189,13 @@ public class GUI extends ClientView{
 		});
 	}
 	
+	
+	public void insertParametersAndSend(ActionWithParameters actionWithParameters) throws RemoteException {
+		actionWithParameters.setParser().setParameters(this, this.clientGame);
+		if (actionWithParameters.checkIfParametersSetted())
+			connection.sendAction(actionWithParameters);
+	}
+	
 	@Override
 	public void displayError(String string) {
 		Platform.runLater(new Runnable() {
@@ -191,7 +210,16 @@ public class GUI extends ClientView{
 	
 	@Override
 	public void displayAvailableActions(List<ActionDTO> availableActions) {
-		return;
+		controllerGUI.getM1().setUserData(new ElectCouncillorDTO());
+		controllerGUI.getM2().setUserData(new AcquirePermitTileDTO());
+		controllerGUI.getM3().setUserData(new BuildByPermitTileDTO());
+		controllerGUI.getM4().setUserData(new BuildByKingDTO());
+		controllerGUI.getQ1().setUserData(new EngageAssistantDTO());
+		controllerGUI.getQ2().setUserData(new ChangePermitTilesDTO());
+		controllerGUI.getQ3().setUserData(new ElectCouncillorByAssistantDTO());
+		controllerGUI.getQ4().setUserData(new AddictionalMainActionDTO());
+		controllerGUI.getPoliticsDeck().setUserData(new PickPoliticsCardDTO());
+		controllerGUI.getSkip().setUserData(new MoveToNextDTO());			
 	}
 
 	@Override
@@ -221,41 +249,38 @@ public class GUI extends ClientView{
 	}
 	
 	private void displayCities(GameTableDTO clientGame) {
-		for (CityDTO city : clientGame.getClientRegions().get(0).getCities()) {
-			if ("Arkon".equals(city.getName()))
-				controllerGUI.getArkon().setUserData(city);
-			if ("Burgen".equals(city.getName()))
-				controllerGUI.getBurgen().setUserData(city);
-			if ("Castrum".equals(city.getName()))
-				controllerGUI.getCastrum().setUserData(city);
-			if ("Dorful".equals(city.getName()))
-				controllerGUI.getDorful().setUserData(city);
-			if ("Esti".equals(city.getName()))
-				controllerGUI.getEsti().setUserData(city);
-		}
-		for (CityDTO city : clientGame.getClientRegions().get(1).getCities()) {
-			if ("Framek".equals(city.getName()))
-				controllerGUI.getFramek().setUserData(city);
-			if ("Graden".equals(city.getName()))
-				controllerGUI.getGraden().setUserData(city);
-			if ("Hellar".equals(city.getName()))
-				controllerGUI.getHellar().setUserData(city);
-			if ("Indur".equals(city.getName()))
-				controllerGUI.getIndur().setUserData(city);
-			if ("Juvelar".equals(city.getName()))
-				controllerGUI.getJuvelar().setUserData(city);
-		}
-		for (CityDTO city : clientGame.getClientRegions().get(2).getCities()) {
-			if ("Kultos".equals(city.getName()))
-				controllerGUI.getKultos().setUserData(city);
-			if ("Lyram".equals(city.getName()))
-				controllerGUI.getLyram().setUserData(city);
-			if ("Merkatim".equals(city.getName()))
-				controllerGUI.getMerkatim().setUserData(city);
-			if ("Naris".equals(city.getName()))
-				controllerGUI.getNaris().setUserData(city);
-			if ("Osium".equals(city.getName()))
-				controllerGUI.getOsium().setUserData(city);
+		for(RegionDTO regionDTO : clientGame.getClientRegions())
+			for (CityDTO city : regionDTO.getCities()) {
+				if ("Arkon".equals(city.getName()))
+					controllerGUI.getCities().get(0).setUserData(city);
+				if ("Burgen".equals(city.getName()))
+					controllerGUI.getCities().get(1).setUserData(city);
+				if ("Castrum".equals(city.getName()))
+					controllerGUI.getCities().get(2).setUserData(city);
+				if ("Dorful".equals(city.getName()))
+					controllerGUI.getCities().get(3).setUserData(city);
+				if ("Esti".equals(city.getName()))
+					controllerGUI.getCities().get(4).setUserData(city);
+				if ("Framek".equals(city.getName()))
+					controllerGUI.getCities().get(5).setUserData(city);
+				if ("Graden".equals(city.getName()))
+					controllerGUI.getCities().get(6).setUserData(city);
+				if ("Hellar".equals(city.getName()))
+					controllerGUI.getCities().get(7).setUserData(city);
+				if ("Indur".equals(city.getName()))
+					controllerGUI.getCities().get(8).setUserData(city);
+				if ("Juvelar".equals(city.getName()))
+					controllerGUI.getCities().get(9).setUserData(city);
+				if ("Kultos".equals(city.getName()))
+					controllerGUI.getCities().get(10).setUserData(city);
+				if ("Lyram".equals(city.getName()))
+					controllerGUI.getCities().get(11).setUserData(city);
+				if ("Merkatim".equals(city.getName()))
+					controllerGUI.getCities().get(12).setUserData(city);
+				if ("Naris".equals(city.getName()))
+					controllerGUI.getCities().get(13).setUserData(city);
+				if ("Osium".equals(city.getName()))
+					controllerGUI.getCities().get(14).setUserData(city);
 		}
 	}
 
@@ -263,63 +288,11 @@ public class GUI extends ClientView{
 		ImageView imageView=new ImageView(getClass().getResource("images/various/king.png").toExternalForm());
 		imageView.setFitHeight(70);
 		imageView.setPreserveRatio(true);
-	for (CityDTO city : clientGame.getClientRegions().get(0).getCities()) {
-		if (city.getName().equals(clientGame.getKing())){
-			if(city.getName().equals("Arkon"))
-				controllerGUI.getArkon().getChildren().clear();
-				controllerGUI.getArkon().getChildren().add(imageView);
-			if(city.getName().equals("Burgen"))
-				controllerGUI.getBurgen().getChildren().clear();
-				controllerGUI.getBurgen().getChildren().add(imageView);
-			if(city.getName().equals("Castrum"))
-				controllerGUI.getCastrum().getChildren().clear();
-				controllerGUI.getCastrum().getChildren().add(imageView);
-			if(city.getName().equals("Dorful"))
-				controllerGUI.getDorful().getChildren().clear();
-				controllerGUI.getDorful().getChildren().add(imageView);
-			if(city.getName().equals("Esti"))
-				controllerGUI.getEsti().getChildren().clear();
-				controllerGUI.getEsti().getChildren().add(imageView);
-		}
-	}
-	for (CityDTO city : clientGame.getClientRegions().get(1).getCities()) {
-		if (city.getName().equals(clientGame.getKing())){
-			if(city.getName().equals("Framek"))
-				controllerGUI.getFramek().getChildren().clear();
-				controllerGUI.getFramek().getChildren().add(imageView);
-			if(city.getName().equals("Graden"))
-				controllerGUI.getGraden().getChildren().clear();
-				controllerGUI.getGraden().getChildren().add(imageView);
-			if(city.getName().equals("Hellar"))
-				controllerGUI.getHellar().getChildren().clear();
-				controllerGUI.getHellar().getChildren().add(imageView);
-			if(city.getName().equals("Indur"))
-				controllerGUI.getIndur().getChildren().clear();
-				controllerGUI.getIndur().getChildren().add(imageView);
-			if(city.getName().equals("Juvelar"))
-				controllerGUI.getJuvelar().getChildren().clear();
-				controllerGUI.getJuvelar().getChildren().add(imageView);
-		}
-	}
-	for (CityDTO city : clientGame.getClientRegions().get(2).getCities()) {
-		if (city.getName().equals(clientGame.getKing())){
-			if(city.getName().equals("Kultos"))
-				controllerGUI.getKultos().getChildren().clear();
-				controllerGUI.getKultos().getChildren().add(imageView);
-			if(city.getName().equals("Lyram"))
-				controllerGUI.getLyram().getChildren().clear();
-				controllerGUI.getLyram().getChildren().add(imageView);
-			if(city.getName().equals("Merkatim"))
-				controllerGUI.getMerkatim().getChildren().clear();
-				controllerGUI.getMerkatim().getChildren().add(imageView);
-			if(city.getName().equals("Naris"))
-				controllerGUI.getNaris().getChildren().clear();
-				controllerGUI.getNaris().getChildren().add(imageView);
-			if(city.getName().equals("Osium"))
-				controllerGUI.getOsium().getChildren().clear();
-				controllerGUI.getOsium().getChildren().add(imageView);
-		}
-	}
+		for(Pane cityPane : controllerGUI.getCities())
+			if(((CityDTO)cityPane.getUserData()).getName().equals(clientGame.getKing())){
+				cityPane.getChildren().clear();
+				cityPane.getChildren().add(imageView);
+			}
 	}
 	
 	private void diplayBalconies(GameTableDTO clientGame) {
@@ -366,12 +339,14 @@ public class GUI extends ClientView{
 			controllerGUI.getRemainingEmporiumsLabels().get(i).setText(String.valueOf(orderedPlayers.get(i).getEmporiums()));	
 			controllerGUI.getNumberOfPoliticsCards().get(i).setText(String.valueOf(orderedPlayers.get(i).getHand()));
 			controllerGUI.getNumberOfCoveredPermitTiles().get(i).setText(String.valueOf(orderedPlayers.get(i).getNumberOfCoveredTiles()));
+			controllerGUI.getPermitTilesOtherPlayers().get(i).getChildren().clear();
 			for(PermitTileDTO permitTileDTO : orderedPlayers.get(i).getAvailablePermitTiles()){
 				ImageView imageView=new ImageView(imageMap.get(permitTileDTO));
 				controllerGUI.getPermitTilesOtherPlayers().get(i).getChildren().add(imageView);
 				imageView.setFitHeight(60);
 				imageView.setPreserveRatio(true);
 			}
+			controllerGUI.getGenericPlayerBonuses().get(i).getChildren().clear();
 			for(BonusTileDTO bonusTileDTO : orderedPlayers.get(i).getPlayersFinalBonus()){
 				ImageView imageView =new ImageView(imageMap.get(bonusTileDTO));
 				controllerGUI.getGenericPlayerBonuses().get(i).getChildren().add(imageView);
@@ -719,21 +694,8 @@ public class GUI extends ClientView{
 	}
 	
 	private void disableClickOnCities(boolean disabled) {
-		this.controllerGUI.getArkon().setDisable(disabled);
-		this.controllerGUI.getBurgen().setDisable(disabled);
-		this.controllerGUI.getCastrum().setDisable(disabled);
-		this.controllerGUI.getDorful().setDisable(disabled);
-		this.controllerGUI.getEsti().setDisable(disabled);
-		this.controllerGUI.getFramek().setDisable(disabled);
-		this.controllerGUI.getGraden().setDisable(disabled);
-		this.controllerGUI.getHellar().setDisable(disabled);
-		this.controllerGUI.getIndur().setDisable(disabled);
-		this.controllerGUI.getJuvelar().setDisable(disabled);
-		this.controllerGUI.getKultos().setDisable(disabled);
-		this.controllerGUI.getLyram().setDisable(disabled);
-		this.controllerGUI.getMerkatim().setDisable(disabled);
-		this.controllerGUI.getNaris().setDisable(disabled);
-		this.controllerGUI.getOsium().setDisable(disabled);
+		for(Pane citiPane : controllerGUI.getCities())
+			citiPane.setDisable(disabled);
 	}
 	
 	private void disableClickOnPoliticsCards(boolean disabled) {
