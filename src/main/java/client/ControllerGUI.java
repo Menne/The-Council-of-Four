@@ -53,6 +53,18 @@ public class ControllerGUI {
 	public void setView(GUI view) {
 		this.view=view;
 	}
+	
+	@FXML
+	private ImageView colourPlayer1;
+	
+	@FXML
+	private ImageView colourPlayer2;
+	
+	@FXML
+	private ImageView colourPlayer3;
+	
+	@FXML
+	private ImageView colourPlayer4;
 
 	@FXML
 	private HBox emporiumsArkon;
@@ -805,6 +817,22 @@ public class ControllerGUI {
 
 	public HBox getEmporiumsOsium() {
 		return emporiumsOsium;
+	}
+	
+	public ImageView getColourPlayer1() {
+		return colourPlayer1;
+	}
+
+	public ImageView getColourPlayer2() {
+		return colourPlayer2;
+	}
+
+	public ImageView getColourPlayer3() {
+		return colourPlayer3;
+	}
+
+	public ImageView getColourPlayer4() {
+		return colourPlayer4;
 	}
 
 	public ImageView getRewardToken(CityDTO city){
