@@ -868,22 +868,20 @@ public class ControllerGUI {
 					return;
 				}
 				else if (selectedAction instanceof ActionWithParameters) {
-					this.view.disableActionButtons(true);
 					ExecutorService executor=Executors.newSingleThreadExecutor();
 					executor.submit(new Runnable() {
 						
 						@Override
 						public void run() {
-							((ActionWithParameters) selectedAction).setParser().setParameters(view, clientGame);
 							try {
-								view.getConnection().sendAction(selectedAction);
-								view.disableActionButtons(false);
+								view.insertParametersAndSend((ActionWithParameters) selectedAction);
 							} catch (RemoteException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
 						}
 					});
+					this.view.disableActionButtons(false);
 					return;
 				}
 		this.view.displayError("Sorry, action not available!");

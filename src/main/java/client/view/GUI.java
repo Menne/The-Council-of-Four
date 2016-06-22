@@ -198,9 +198,11 @@ public class GUI extends ClientView{
 	
 	
 	public void insertParametersAndSend(ActionWithParameters actionWithParameters) throws RemoteException {
+		this.disableActionButtons(true);
 		actionWithParameters.setParser().setParameters(this, this.clientGame);
 		if (actionWithParameters.checkIfParametersSetted())
 			connection.sendAction(actionWithParameters);
+		this.disableActionButtons(false);
 	}
 	
 	@Override
@@ -457,7 +459,7 @@ public class GUI extends ClientView{
 
 	@Override
 	public RegionDTO askForRegionBoard(List<RegionDTO> acceptableRegions) {
-		this.disableActionButtons(true);
+		this.disableClickOnRegions(false);
 		synchronized (this.controllerGUI) {
 			try {
 				while (currentParameter==null)
