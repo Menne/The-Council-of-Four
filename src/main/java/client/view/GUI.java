@@ -16,6 +16,7 @@ import client.connections.Connection;
 import client.modelDTO.GameDTO;
 import client.modelDTO.ModelDTO;
 import client.modelDTO.actionsDTO.ActionDTO;
+import client.modelDTO.gameTableDTO.BonusTileDTO;
 import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.CouncillorDTO;
@@ -33,7 +34,6 @@ import client.view.notifies.ClientViewNotify;
 import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.event.EventHandler;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import server.model.bonus.AssistantsBonus;
@@ -42,7 +42,7 @@ import server.model.bonus.MainActionBonus;
 import server.model.bonus.NobilityBonus;
 import server.model.bonus.PoliticsCardsBonus;
 import server.model.bonus.ScoreBonus;
-
+import server.model.gameTable.CouncilBalcony;
 
 public class GUI extends ClientView{
 
@@ -126,7 +126,19 @@ public class GUI extends ClientView{
 		imageMap.put(new PermitTileDTO(new HashSet<>(Arrays.asList(new CityDTO("Kultos"), new CityDTO("Naris"), new CityDTO("Osium"))),new HashSet<>(Arrays.asList(new PoliticsCardsBonus(1),new ScoreBonus(1)))), new Image(getClass().getResource("images/mountainPermitTile/2.12.png").toExternalForm()));
 		imageMap.put(new PermitTileDTO(new HashSet<>(Arrays.asList(new CityDTO("Kultos"), new CityDTO("Lyram"))),new HashSet<>(Arrays.asList(new PoliticsCardsBonus(1),new AssistantsBonus(1)))), new Image(getClass().getResource("images/mountainPermitTile/2.13.png").toExternalForm()));
 		imageMap.put(new PermitTileDTO(new HashSet<>(Arrays.asList(new CityDTO("Naris"), new CityDTO("Merkatim"))),new HashSet<>(Arrays.asList(new MainActionBonus()))), new Image(getClass().getResource("images/mountainPermitTile/2.14.png").toExternalForm()));
-		imageMap.put(new PermitTileDTO(new HashSet<>(Arrays.asList(new CityDTO("Naris"), new CityDTO("Osium"))),new HashSet<>(Arrays.asList(new ScoreBonus(2),new PoliticsCardsBonus(2)))), new Image(getClass().getResource("images/mountainPermitTile/2.15.png").toExternalForm()));	
+		imageMap.put(new PermitTileDTO(new HashSet<>(Arrays.asList(new CityDTO("Naris"), new CityDTO("Osium"))),new HashSet<>(Arrays.asList(new ScoreBonus(2),new PoliticsCardsBonus(2)))), new Image(getClass().getResource("images/mountainPermitTile/2.15.png").toExternalForm()));
+		imageMap.put(new BonusTileDTO("Sea", new ScoreBonus(5)), new Image(getClass().getResource("images/bonusTiles/bonusMare.png").toExternalForm()));
+		imageMap.put(new BonusTileDTO("Hill", new ScoreBonus(5)), new Image(getClass().getResource("images/bonusTiles/bonusColline.png").toExternalForm()));
+		imageMap.put(new BonusTileDTO("Mountain", new ScoreBonus(5)), new Image(getClass().getResource("images/bonusTiles/bonusMontagna.png").toExternalForm()));
+		imageMap.put(new BonusTileDTO("King", new ScoreBonus(25)), new Image(getClass().getResource("images/kingBonus/KingRewardTile1.png").toExternalForm()));
+		imageMap.put(new BonusTileDTO("King", new ScoreBonus(18)), new Image(getClass().getResource("images/kingBonus/KingRewardTile2.png").toExternalForm()));
+		imageMap.put(new BonusTileDTO("King", new ScoreBonus(12)), new Image(getClass().getResource("images/kingBonus/KingRewardTile3.png").toExternalForm()));
+		imageMap.put(new BonusTileDTO("King", new ScoreBonus(7)), new Image(getClass().getResource("images/kingBonus/KingRewardTile4.png").toExternalForm()));
+		imageMap.put(new BonusTileDTO("King", new ScoreBonus(3)), new Image(getClass().getResource("images/kingBonus/KingRewardTile5.png").toExternalForm()));
+		imageMap.put(new BonusTileDTO("Blue", new ScoreBonus(5)), new Image(getClass().getResource("images/colourBonus/BlueBonus.png").toExternalForm()));
+		imageMap.put(new BonusTileDTO("Bronze", new ScoreBonus(8)), new Image(getClass().getResource("images/colourBonus/BronzeBonus.png").toExternalForm()));
+		imageMap.put(new BonusTileDTO("Gold", new ScoreBonus(20)), new Image(getClass().getResource("images/colourBonus/GoldBonus.png").toExternalForm()));
+		imageMap.put(new BonusTileDTO("Silver", new ScoreBonus(12)), new Image(getClass().getResource("images/colourBonus/SilverBonus.png").toExternalForm()));
 	}
 
 	
@@ -181,22 +193,84 @@ public class GUI extends ClientView{
 			
 			@Override
 			public void run() {
+				System.out.println(clientGame);
 				displayCouncillors(clientGame);
 				displayTokens(clientGame);
 				displayPlayers(clientGame.getClientPlayers());
+				displayRegions(clientGame);
+				displayCities(clientGame);
+				diplayBalconies(clientGame);
 				displayPermitTiles(clientGame);
 			}
 		});
 		
 	}
 	
-	private void displayPermitTiles(GameTableDTO clientGame){
+	private void displayRegions(GameTableDTO clientGame) {
+		controllerGUI.getSeaRegion().setUserData(clientGame.getClientRegions().get(0));
+		controllerGUI.getHillRegion().setUserData(clientGame.getClientRegions().get(1));
+		controllerGUI.getMountainRegion().setUserData(clientGame.getClientRegions().get(2));
+	}
+	
+	private void displayCities(GameTableDTO clientGame) {
+		for (CityDTO city : clientGame.getClientRegions().get(0).getCities()) {
+			if ("Arkon".equals(city.getName()))
+				controllerGUI.getArkon().setUserData(city);
+			if ("Burgen".equals(city.getName()))
+				controllerGUI.getBurgen().setUserData(city);
+			if ("Castrum".equals(city.getName()))
+				controllerGUI.getCastrum().setUserData(city);
+			if ("Dorful".equals(city.getName()))
+				controllerGUI.getDorful().setUserData(city);
+			if ("Esti".equals(city.getName()))
+				controllerGUI.getEsti().setUserData(city);
+		}
+		for (CityDTO city : clientGame.getClientRegions().get(1).getCities()) {
+			if ("Framek".equals(city.getName()))
+				controllerGUI.getFramek().setUserData(city);
+			if ("Graden".equals(city.getName()))
+				controllerGUI.getGraden().setUserData(city);
+			if ("Hellar".equals(city.getName()))
+				controllerGUI.getHellar().setUserData(city);
+			if ("Indur".equals(city.getName()))
+				controllerGUI.getIndur().setUserData(city);
+			if ("Juvelar".equals(city.getName()))
+				controllerGUI.getJuvelar().setUserData(city);
+		}
+		for (CityDTO city : clientGame.getClientRegions().get(2).getCities()) {
+			if ("Kultos".equals(city.getName()))
+				controllerGUI.getKultos().setUserData(city);
+			if ("Lyram".equals(city.getName()))
+				controllerGUI.getLyram().setUserData(city);
+			if ("Merkatim".equals(city.getName()))
+				controllerGUI.getMerkatim().setUserData(city);
+			if ("Naris".equals(city.getName()))
+				controllerGUI.getNaris().setUserData(city);
+			if ("Osium".equals(city.getName()))
+				controllerGUI.getOsium().setUserData(city);
+		}
+	}
+
+	private void diplayBalconies(GameTableDTO clientGame) {
+		controllerGUI.getSeaBalcony().setUserData(clientGame.getClientRegions().get(0).getBalcony());
+		controllerGUI.getHillBalcony().setUserData(clientGame.getClientRegions().get(1).getBalcony());
+		controllerGUI.getMountainBalcony().setUserData(clientGame.getClientRegions().get(2).getBalcony());
+		controllerGUI.getKingBalcony().setUserData(clientGame.getClientKingBalcony());
+	}
+	
+	private void displayPermitTiles(GameTableDTO clientGame) {
 		controllerGUI.getSeaPermitTile()[0].setImage(imageMap.get(clientGame.getClientRegions().get(0).getUncoveredPermitTiles()[0]));
+		controllerGUI.getSeaPermitTile()[0].setUserData(new Integer(0));
 		controllerGUI.getSeaPermitTile()[1].setImage(imageMap.get(clientGame.getClientRegions().get(0).getUncoveredPermitTiles()[1]));
+		controllerGUI.getSeaPermitTile()[1].setUserData(new Integer(1));
 		controllerGUI.getHillPermitTile()[0].setImage(imageMap.get(clientGame.getClientRegions().get(1).getUncoveredPermitTiles()[0]));
+		controllerGUI.getHillPermitTile()[0].setUserData(new Integer(0));
 		controllerGUI.getHillPermitTile()[1].setImage(imageMap.get(clientGame.getClientRegions().get(1).getUncoveredPermitTiles()[1]));
+		controllerGUI.getHillPermitTile()[1].setUserData(new Integer(1));
 		controllerGUI.getMountainPermitTile()[0].setImage(imageMap.get(clientGame.getClientRegions().get(2).getUncoveredPermitTiles()[0]));
+		controllerGUI.getMountainPermitTile()[0].setUserData(new Integer(0));
 		controllerGUI.getMountainPermitTile()[1].setImage(imageMap.get(clientGame.getClientRegions().get(2).getUncoveredPermitTiles()[1]));
+		controllerGUI.getMountainPermitTile()[1].setUserData(new Integer(1));
 	}
 	
 	private void displayPlayers(List<GenericPlayerDTO> players){
@@ -224,25 +298,31 @@ public class GUI extends ClientView{
 			for(PermitTileDTO permitTileDTO : orderedPlayers.get(i).getAvailablePermitTiles()){
 				ImageView imageView=new ImageView(imageMap.get(permitTileDTO));
 				controllerGUI.getPermitTilesOtherPlayers().get(i).getChildren().add(imageView);
-				imageView.setFitHeight(50);
+				imageView.setFitHeight(60);
 				imageView.setPreserveRatio(true);
 			}
 		}
 	}
 	
-	private void displayCouncillors(GameTableDTO clientGame){
-		for(RegionDTO region : clientGame.getClientRegions())
-			for(int i=0; i<4; i++)
+	private void displayCouncillors(GameTableDTO clientGame) {
+		for (RegionDTO region : clientGame.getClientRegions())
+			for (int i=0; i<4; i++) {
 				controllerGUI.getCouncillors(region).get(i).setImage(imageMap.get(region.getBalcony()[i]));
-		for(int i=0; i<4; i++)
+				controllerGUI.getCouncillors(region).get(i).setUserData(region.getBalcony()[i]);
+			}
+		for (int i=0; i<4; i++) {
 			controllerGUI.getKingCouncillors().get(i).setImage(imageMap.get(clientGame.getClientKingBalcony()[i]));
-			for(int i=0; i<8; i++)
-			controllerGUI.getCouncillorReserve().get(i).setImage(imageMap.get(clientGame.getClientCouncillorReserve().get(i)));			
+			controllerGUI.getKingCouncillors().get(i).setUserData(clientGame.getClientKingBalcony()[i]);
+		}
+		for (int i=0; i<8; i++) {
+			controllerGUI.getCouncillorReserve().get(i).setImage(imageMap.get(clientGame.getClientCouncillorReserve().get(i)));
+			controllerGUI.getCouncillorReserve().get(i).setUserData(clientGame.getClientCouncillorReserve().get(i));
+		}
 	}
 	
 	private void displayTokens(GameTableDTO clientGame){
-		for(RegionDTO region : clientGame.getClientRegions())
-			for(CityDTO city : region.getCities())
+		for (RegionDTO region : clientGame.getClientRegions())
+			for (CityDTO city : region.getCities())
 				controllerGUI.getRewardToken(city).setImage(imageMap.get(city.getRewardToken()));
 	}
 
@@ -253,6 +333,7 @@ public class GUI extends ClientView{
 			@Override
 			public void run() {
 				controllerGUI.getHand().getChildren().clear();
+				controllerGUI.getPermitTilesTurnedUpOwned().getChildren().clear();
 				for (PoliticsCardDTO card : player.getHand()){
 					ImageView imageView=new ImageView(imageMap.get(card));
 					controllerGUI.getHand().getChildren().add(imageView);
@@ -267,11 +348,24 @@ public class GUI extends ClientView{
 						}
 					});
 					imageView.setDisable(true);
-				}			
+				}
+				for (PermitTileDTO permitTileDTO : player.getAvailablePermitTiles()){
+					ImageView imageView=new ImageView(imageMap.get(permitTileDTO));
+					controllerGUI.getPermitTilesTurnedUpOwned().getChildren().add(imageView);
+					imageView.setFitHeight(70);
+					imageView.setPreserveRatio(true);
+				}
 				controllerGUI.getPlayerCoins().setText(String.valueOf(player.getCoins()));
 				controllerGUI.getPlayerAssistants().setText(String.valueOf(player.getAssistants().size()));
 				controllerGUI.getPlayerNobility().setText(String.valueOf(player.getNobility()));
 				controllerGUI.getPlayerScore().setText(String.valueOf(player.getScore()));
+				controllerGUI.getPlayersBonuses().getChildren().clear();
+				for(BonusTileDTO bonusTileDTO : player.getFinalBonuses()){
+					ImageView imageView =new ImageView(imageMap.get(bonusTileDTO));
+					controllerGUI.getPlayersBonuses().getChildren().add(imageView);
+					imageView.setFitWidth(60);
+					imageView.setPreserveRatio(true);
+				}
 			}
 		});
 		
@@ -317,6 +411,7 @@ public class GUI extends ClientView{
 
 	@Override
 	public PermitTileDTO askForPermitTile(List<PermitTileDTO> acceptablePermitTiles) {
+		this.disableClickOnPermitTilesInHand(false);
 		synchronized (this.controllerGUI) {
 			try {
 				while (currentParameter==null)
@@ -328,11 +423,13 @@ public class GUI extends ClientView{
 		}
 		PermitTileDTO permitTile=(PermitTileDTO) this.currentParameter;
 		this.currentParameter=null;
+		this.disableClickOnPermitTilesInHand(true);
 		return permitTile;
 	}
 
 	@Override
 	public CouncillorDTO askForCouncillor(List<CouncillorDTO> acceptableCouncillors) {
+		this.disableClickOnCouncillorsInReserve(false);
 		synchronized (this.controllerGUI) {
 			try {
 				while (currentParameter==null)
@@ -344,6 +441,7 @@ public class GUI extends ClientView{
 		}
 		CouncillorDTO councillor=(CouncillorDTO) this.currentParameter;
 		this.currentParameter=null;
+		this.disableClickOnCouncillorsInReserve(true);
 		return councillor;
 	}
 	
@@ -359,10 +457,11 @@ public class GUI extends ClientView{
 				e.printStackTrace();
 			}
 		}
-		CouncillorDTO[] councillBalcony=(CouncillorDTO[]) this.currentParameter;
+		CouncillorDTO[] councilBalcony=(CouncillorDTO[]) this.currentParameter;
+		System.out.println(councilBalcony);
 		this.currentParameter=null;
 		this.disableClickOnCouncilBalconies(true);
-		return councillBalcony;
+		return councilBalcony;
 	}
 
 	@Override
@@ -385,9 +484,9 @@ public class GUI extends ClientView{
 
 	@Override
 	public List<PoliticsCardDTO> askForPoliticsCards(List<PoliticsCardDTO> acceptablePoliticsCards) {
-		this.disableClickOnPoliticsCards(true);
+		this.disableClickOnPoliticsCards(false);
 		List<PoliticsCardDTO> selectedCards=new ArrayList<>();
-		while (selectedCards.size()<=4) {
+		while (selectedCards.size()<CouncilBalcony.getNumberofcouncillors()) {
 			synchronized (this.controllerGUI) {
 				try {
 					while (currentParameter==null)
@@ -397,16 +496,23 @@ public class GUI extends ClientView{
 					e.printStackTrace();
 				}
 			}
-			selectedCards.add((PoliticsCardDTO) this.currentParameter);
-			System.out.println(selectedCards);
+			if (this.currentParameter instanceof String) {
+				this.currentParameter=null;
+				break;
+			}
+			else
+				selectedCards.add((PoliticsCardDTO) this.currentParameter);
 			this.currentParameter=null;
+			this.disableClickOnDescardButton(false);
 		}
 		this.disableClickOnPoliticsCards(true);
+		this.disableClickOnDescardButton(true);
 		return selectedCards;
 	}
 
 	@Override
 	public int askForNumberOfPermitTile(List<Integer> acceptableNumberOfPermitTile) {
+		this.disableClickOnPermitTilesInRegions(false);
 		synchronized (this.controllerGUI) {
 			try {
 				while (currentParameter==null)
@@ -418,6 +524,7 @@ public class GUI extends ClientView{
 		}
 		int numberOfPermitTile=(int) this.currentParameter;
 		this.currentParameter=null;
+		this.disableClickOnPermitTilesInRegions(true);
 		return numberOfPermitTile;
 	}
 
@@ -510,11 +617,21 @@ public class GUI extends ClientView{
 	}
 	
 	private void disableClickOnPermitTilesInHand(boolean disabled) {
-		
+		for (Object object : controllerGUI.getPermitTilesTurnedUpOwned().getChildren()) {
+			ImageView imageView=(ImageView) object;
+			imageView.setDisable(disabled);
+		}
 	}
 
 	private void disableClickOnCouncillorsInReserve(boolean disabled) {
-	
+		this.controllerGUI.getCouncillorReserve().get(0).setDisable(disabled);
+		this.controllerGUI.getCouncillorReserve().get(1).setDisable(disabled);
+		this.controllerGUI.getCouncillorReserve().get(2).setDisable(disabled);
+		this.controllerGUI.getCouncillorReserve().get(3).setDisable(disabled);
+		this.controllerGUI.getCouncillorReserve().get(4).setDisable(disabled);
+		this.controllerGUI.getCouncillorReserve().get(5).setDisable(disabled);
+		this.controllerGUI.getCouncillorReserve().get(6).setDisable(disabled);
+		this.controllerGUI.getCouncillorReserve().get(7).setDisable(disabled);
 	}
 	
 	private void disableClickOnCouncilBalconies(boolean disabled) {
@@ -549,9 +666,16 @@ public class GUI extends ClientView{
 		}
 	}
 	
-	private void disableClickOnPermitTilesInRegions(boolean disabled) {
-		
+	private void disableClickOnDescardButton(boolean disabled) {
+		this.controllerGUI.getDescardPoliticsCards().setDisable(disabled);
 	}
-
+	
+	private void disableClickOnPermitTilesInRegions(boolean disabled) {
+		for (int i=0; i<=1; i++) {
+			controllerGUI.getSeaPermitTile()[i].setDisable(disabled);
+			controllerGUI.getHillPermitTile()[i].setDisable(disabled);
+			controllerGUI.getMountainPermitTile()[i].setDisable(disabled);
+		}
+	}
 	
 }

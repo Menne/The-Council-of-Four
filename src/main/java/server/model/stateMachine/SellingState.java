@@ -47,7 +47,7 @@ public class SellingState implements State {
 
 	@Override
 	public void updateClients(Game game) {
-		game.notifyObserver(new PlayerNotify(game, 
+		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
 				Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new MarketNotify(game, 
 				Arrays.asList(game.getCurrentPlayer())));

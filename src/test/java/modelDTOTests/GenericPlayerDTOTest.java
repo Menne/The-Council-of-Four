@@ -12,7 +12,7 @@ import client.modelDTO.gameTableDTO.PermitTileDTO;
 import server.model.bonus.ScoreBonus;
 
 public class GenericPlayerDTOTest {
-
+/*
 	@Test
 	public void testGettersAndSetters() {
 		String name="Andre";
@@ -49,5 +49,5 @@ public class GenericPlayerDTOTest {
 				+ score + "\tnobility=" + nobility + "\tcoins=" + coins + "\thand="+hand+"\tplayersPermitTilesTurnedUp=" + availablePermitTiles +
 				 "\temporiums=" + emporiums + "\tfinalBonus= " + playersFinalBonus+"]", player.toString());
 	}
-
+*/
 }

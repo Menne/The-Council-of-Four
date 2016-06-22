@@ -2,9 +2,8 @@ package client.modelDTO.gameTableDTO;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import client.modelDTO.ModelDTO;
@@ -12,7 +11,7 @@ import client.modelDTO.gameTableDTO.RegionDTO;
 import client.view.notifies.ClientViewNotify;
 import observerPattern.Observable;
 import server.model.bonus.Bonus;
-import server.model.bonus.ScoreBonus;
+
 
 public class GameTableDTO extends Observable<ClientViewNotify> implements ModelDTO {
 	
@@ -27,8 +26,8 @@ public class GameTableDTO extends Observable<ClientViewNotify> implements ModelD
 	private ArrayList<GenericPlayerDTO> players;
 	private String currentPlayer;
 	private String king;
-	private ScoreBonus nextKingRewardTile;
-	private Map<CityColourDTO, ScoreBonus> colourBonuses;
+	private BonusTileDTO nextKingRewardTile;
+	private Set<BonusTileDTO> colourBonuses;
 	
 	public GameTableDTO() {
 		this.clientRegions=new ArrayList<RegionDTO>();
@@ -36,7 +35,7 @@ public class GameTableDTO extends Observable<ClientViewNotify> implements ModelD
 		this.clientCouncillorReserve=new ArrayList<CouncillorDTO>();
 		this.clientNobilityTrack=new ArrayList<Set<Bonus>>();
 		this.players=new ArrayList<GenericPlayerDTO>();
-		this.colourBonuses=new HashMap<>();
+		this.colourBonuses=new HashSet<>();
 	}
 
 	
@@ -100,22 +99,22 @@ public class GameTableDTO extends Observable<ClientViewNotify> implements ModelD
 		this.king = king;
 	}
 
-	public ScoreBonus getNextKingRewardTile() {
+	public BonusTileDTO getNextKingRewardTile() {
 		return nextKingRewardTile;
 	}
 
 
-	public void setNextKingRewardTile(ScoreBonus nextKingRewardTile) {
+	public void setNextKingRewardTile(BonusTileDTO nextKingRewardTile) {
 		this.nextKingRewardTile = nextKingRewardTile;
 	}
 
 
-	public Map<CityColourDTO, ScoreBonus> getColourBonuses() {
+	public Set<BonusTileDTO> getColourBonuses() {
 		return colourBonuses;
 	}
 
 
-	public void setColourBonuses(Map<CityColourDTO, ScoreBonus> colourBonuses) {
+	public void setColourBonuses(Set<BonusTileDTO> colourBonuses) {
 		this.colourBonuses = colourBonuses;
 	}
 

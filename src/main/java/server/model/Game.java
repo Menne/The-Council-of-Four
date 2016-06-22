@@ -13,8 +13,10 @@ import server.Initializer;
 import server.model.bonus.ScoreBonus;
 import server.model.gameMapper.GameDTOMapper;
 import server.model.gameMapper.GameMapperInterface;
+import server.model.gameTable.BonusTile;
 import server.model.gameTable.Emporium;
 import server.model.gameTable.GameTable;
+import server.model.gameTable.KingBonusTile;
 import server.model.market.Market;
 import server.model.player.Player;
 import server.model.stateMachine.BeginState;
@@ -61,14 +63,17 @@ public class Game extends Observable<ViewNotify>{
 			for(int i=0;i<getIntialnumberofemporiums();i++)
 				player.getRemainigEmporiums().add(new Emporium(player));
 		}
+		this.players.get(0).getPlayersFinalBonus().add(new KingBonusTile(new ScoreBonus(25)));
 		this.currentPlayer=this.players.get(0);
 		this.state=new BeginState();
 		this.lastLap=false;
 		this.market=new Market();
 		
-		for (Player player : this.players)
+		for (Player player : this.players) {
 			if (!player.equals(this.currentPlayer))
-				this.notifyObserver(new PlayerNotify(this, Arrays.asList(player)));
+				this.notifyObserver(new PlayerNotify(this, player, Arrays.asList(player)));
+		}
+		
 		
 		this.state.updateClients(this);
 		
@@ -222,8 +227,8 @@ public class Game extends Observable<ViewNotify>{
 	 */
 	public void assignFinalBonus(){
 		for(Player player : this.quittedPlayers){
-			for(ScoreBonus scoreBonus: player.getPlayersFinalBonus())
-				scoreBonus.assignBonusToPlayer(player);
+			for(BonusTile bonusTileonus: player.getPlayersFinalBonus())
+				bonusTileonus.getBonus().assignBonusToPlayer(player);
 		}
 	}
 	

@@ -3,7 +3,6 @@ package server.model.gameTable;
 import java.util.HashSet;
 import java.util.Set;
 
-import server.model.bonus.ScoreBonus;
 
 /**
  * Models a possible color of a city.  
@@ -14,7 +13,7 @@ import server.model.bonus.ScoreBonus;
 public class CityColour {
 	
 	private final String name;
-	private final ScoreBonus colorBonus;
+	private final ColourBonusTile colorBonus;
 	private boolean bonusAvailable;
 	private final Set<City> citiesOfThisColour;
 	
@@ -23,7 +22,7 @@ public class CityColour {
 	 * The city's constructor will add the cities to the set.
 	 * @param name of the color.
 	 */
-	public CityColour(String name, ScoreBonus colorBonus){
+	public CityColour(String name, ColourBonusTile colorBonus){
 		this.name=name;
 		this.colorBonus=colorBonus;
 		this.bonusAvailable=true;
@@ -50,7 +49,7 @@ public class CityColour {
 
 
 
-	public ScoreBonus getColorBonus() {
+	public ColourBonusTile getColorBonus() {
 		return colorBonus;
 	}
 
