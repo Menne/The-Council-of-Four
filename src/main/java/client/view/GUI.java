@@ -45,6 +45,9 @@ import client.view.notifies.ClientViewNotify;
 import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -196,9 +199,11 @@ public class GUI extends ClientView{
 	
 	
 	public void insertParametersAndSend(ActionWithParameters actionWithParameters) throws RemoteException {
+		this.disableActionButtons(true);
 		actionWithParameters.setParser().setParameters(this, this.clientGame);
 		if (actionWithParameters.checkIfParametersSetted())
 			connection.sendAction(actionWithParameters);
+		this.disableActionButtons(false);
 	}
 	
 	@Override
@@ -207,8 +212,10 @@ public class GUI extends ClientView{
 			
 			@Override
 			public void run() {
-				controllerGUI.getMessageBox().appendText("ERROR: "+string+"\n");
-				
+				Alert alert=new Alert(AlertType.ERROR);
+				alert.setTitle("WARNING");
+				alert.setHeaderText(string);
+				alert.showAndWait();
 			}
 		});		
 	}
@@ -756,5 +763,12 @@ public class GUI extends ClientView{
 			controllerGUI.getMountainPermitTile()[i].setDisable(disabled);
 		}
 	}
+
+
+	public void disableActionButtons(boolean disabled) {
+		this.controllerGUI.getPoliticsDeck().setDisable(disabled);
+		for (Button button : this.controllerGUI.getActions())
+			button.setDisable(disabled);
+		}
 	
 }

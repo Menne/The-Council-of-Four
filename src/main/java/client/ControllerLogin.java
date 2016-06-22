@@ -7,7 +7,8 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
@@ -28,9 +29,7 @@ public class ControllerLogin {
 	
 	@FXML
 	private TextField address;
-	
-	@FXML
-	private TextArea error;
+
 	
 	private ClientGUI clientGUI;
 	
@@ -43,8 +42,11 @@ public class ControllerLogin {
 
 
 	public void play() throws UnknownHostException, IOException, NotBoundException{
+		Alert alert=new Alert(AlertType.ERROR);
+		alert.setTitle("ERROR");
 		if(name.getText().isEmpty() || address.getText().isEmpty()){
-			error.appendText("Error, try again!");
+			alert.setHeaderText("Error, you must complete all the fields!");
+			alert.showAndWait();
 			return;
 		}
 		while(true){
@@ -60,7 +62,8 @@ public class ControllerLogin {
 					break;
 				}
 			} catch (SocketException | RemoteException e) {
-					error.setText("Wrong address, try again!");
+					alert.setHeaderText("Wrong address, try again!");
+					alert.showAndWait();
 				}
 			}
 		}
