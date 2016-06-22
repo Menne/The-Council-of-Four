@@ -43,6 +43,18 @@ public class ControllerGUI {
 	public void setView(GUI view) {
 		this.view=view;
 	}
+	
+	@FXML
+	private ImageView colourPlayer1;
+	
+	@FXML
+	private ImageView colourPlayer2;
+	
+	@FXML
+	private ImageView colourPlayer3;
+	
+	@FXML
+	private ImageView colourPlayer4;
 
 	@FXML
 	private HBox emporiumsArkon;
@@ -587,7 +599,7 @@ public class ControllerGUI {
 	}
 
 	public List<Pane> getCities(){
-		return Arrays.asList(arkon,burgen,castrum,dorful,esti,framek,graden,hellar,indur,kultos,juvelar,lyram,merkatim,naris,osium);
+		return Arrays.asList(arkon,burgen,castrum,dorful,esti,framek,graden,hellar,indur,juvelar,kultos,lyram,merkatim,naris,osium);
 	}
 
 	public HBox getHand() {
@@ -780,6 +792,26 @@ public class ControllerGUI {
 
 	public HBox getEmporiumsOsium() {
 		return emporiumsOsium;
+	}
+	
+	public ImageView getColourPlayer1() {
+		return colourPlayer1;
+	}
+
+	public ImageView getColourPlayer2() {
+		return colourPlayer2;
+	}
+
+	public ImageView getColourPlayer3() {
+		return colourPlayer3;
+	}
+
+	public ImageView getColourPlayer4() {
+		return colourPlayer4;
+	}
+	
+	public List<ImageView> getPlayersColours() {
+		return Arrays.asList(colourPlayer1, colourPlayer2, colourPlayer3, colourPlayer4);
 	}
 
 	public ImageView getRewardToken(CityDTO city){
