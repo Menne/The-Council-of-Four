@@ -884,7 +884,7 @@
                               <HBox fx:id="emporiumsDorful" disable="true" layoutX="147.0" layoutY="266.0" prefHeight="27.0" prefWidth="75.0" AnchorPane.topAnchor="240.0" />
                               <HBox fx:id="emporiumsEsti" disable="true" layoutX="62.0" layoutY="219.0" prefHeight="27.0" prefWidth="75.0" AnchorPane.topAnchor="331.0" />
                            </children></AnchorPane>
-                        <AnchorPane fx:id="hillRegion" disable="true" layoutX="245.0" layoutY="-7.0" onMouseClicked="#clickOnRegion" onMouseEntered="#changeMouseStyle" pickOnBounds="false" prefHeight="385.0" prefWidth="278.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="241.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="hillRegion" disable="true" layoutX="245.0" layoutY="-7.0" onMouseClicked="#clickOnRegion" onMouseEntered="#changeMouseStyle" prefHeight="385.0" prefWidth="278.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="241.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <Pane fx:id="juvelar" disable="true" layoutX="159.0" layoutY="170.0" onMouseClicked="#clickOnCity" onMouseEntered="#changeMouseStyle" prefHeight="114.0" prefWidth="110.0" />
                               <Pane fx:id="indur" disable="true" layoutX="159.0" layoutY="21.0" onMouseClicked="#clickOnCity" onMouseEntered="#changeMouseStyle" prefHeight="114.0" prefWidth="110.0" />
