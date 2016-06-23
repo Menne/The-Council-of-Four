@@ -421,7 +421,8 @@ public class GUI extends ClientView{
 						@Override
 						public void handle(Event event) {
 							controllerGUI.handlePoliticsCard(card);	
-							
+							imageView.setDisable(true);
+							imageView.setOpacity(0.4);
 						}
 					});
 					imageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
@@ -635,7 +636,7 @@ public class GUI extends ClientView{
 
 	@Override
 	public List<PoliticsCardDTO> askForPoliticsCards() {
-		this.disableClickOnPoliticsCards(false);
+		this.disableClickOnPoliticsCards(false, 1);
 		List<PoliticsCardDTO> selectedCards=new ArrayList<>();
 		while (selectedCards.size()<CouncilBalcony.getNumberofcouncillors()) {
 			synchronized (this.controllerGUI) {
@@ -656,7 +657,7 @@ public class GUI extends ClientView{
 			this.currentParameter=null;
 			this.disableClickOnDescardButton(false);
 		}
-		this.disableClickOnPoliticsCards(true);
+		this.disableClickOnPoliticsCards(true, 1);
 		this.disableClickOnDescardButton(true);
 		return selectedCards;
 	}
@@ -811,10 +812,11 @@ public class GUI extends ClientView{
 					cityPane.setDisable(disabled);
 	}
 	
-	private void disableClickOnPoliticsCards(boolean disabled) {
+	private void disableClickOnPoliticsCards(boolean disabled, int opacity) {
 		for (Object object : controllerGUI.getHand().getChildren()){
 			ImageView imageView=(ImageView) object;
 			imageView.setDisable(disabled);
+			imageView.setOpacity(opacity);
 		}
 	}
 	
