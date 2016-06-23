@@ -51,7 +51,8 @@ public class SocketConnection extends Connection implements Runnable{
 				try {
 					
 					socket.close();
-					break;
+					System.out.println("Connection closed!");
+					return;
 					
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block

@@ -315,7 +315,7 @@ public class GUI extends ClientView{
 				if(emporium.equals(4))
 					hBox.getChildren().add(player4);
 			}
-		}	*/
+		}	*/ 
 	}
 	
 	private void diplayBalconies(GameTableDTO clientGame) {
@@ -504,7 +504,22 @@ public class GUI extends ClientView{
 	
 	@Override
 	public void displayFinalRanking(ArrayList<GenericPlayerDTO> finalRankingTable) {
-		// TODO Auto-generated method stub
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				Alert alert=new Alert(AlertType.INFORMATION);
+				String string="";
+				for(int i=0; i<finalRankingTable.size();i++){
+					string=string+String.valueOf(i+1)+"\t"+finalRankingTable.get(i).getName()+
+							"\tscore: "+finalRankingTable.get(i).getScore()+"\tassistants: "+
+							finalRankingTable.get(i).getAssistants()+"\tcards: "+finalRankingTable.get(i).getHand()+"\n";
+				}
+				alert.setContentText(string);
+				alert.showAndWait();
+				Platform.exit();
+			}
+		});
 		
 	}
 	
