@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 import client.ControllerGUI;
+import client.ControllerMarketGUI;
 import client.connections.Connection;
 import client.modelDTO.GameDTO;
 import client.modelDTO.ModelDTO;
@@ -51,6 +52,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import server.model.bonus.AssistantsBonus;
 import server.model.bonus.CoinsBonus;
@@ -62,6 +64,7 @@ import server.model.gameTable.CouncilBalcony;
 
 public class GUI extends ClientView{
 
+//	private final ControllerMarketGUI controllerMarketGUI;
 	private final ControllerGUI controllerGUI;
 	private final Map<ModelDTO, Image> imageMap;
 	private Object currentParameter;
@@ -299,7 +302,7 @@ public class GUI extends ClientView{
 		
 	
 	private void displayEmporiums(GameTableDTO clientGame){
-/*	ImageView player1= new ImageView(getClass().getResource("images/emporiumsColours/blue.png").toExternalForm());
+	ImageView player1= new ImageView(getClass().getResource("images/emporiumsColours/blue.png").toExternalForm());
 	ImageView player2= new ImageView(getClass().getResource("images/emporiumsColours/red.png").toExternalForm());
 	ImageView player3= new ImageView(getClass().getResource("images/emporiumsColours/yellow.png").toExternalForm());
 	ImageView player4= new ImageView(getClass().getResource("images/emporiumsColours/green.png").toExternalForm());
@@ -315,7 +318,7 @@ public class GUI extends ClientView{
 				if(emporium.equals(4))
 					hBox.getChildren().add(player4);
 			}
-		}	*/
+		}	
 	}
 	
 	private void diplayBalconies(GameTableDTO clientGame) {
