@@ -540,6 +540,8 @@ public class GUI extends ClientView{
 	
 	
 
+	
+	
 	@Override
 	public RegionDTO askForRegionBoard() {
 		this.disableClickOnRegions(false);
@@ -615,7 +617,7 @@ public class GUI extends ClientView{
 
 	@Override
 	public CityDTO askForCity(List<CityDTO> acceptableCities) {
-		this.disableClickOnCities(false);
+		this.disableClickOnCities(false, acceptableCities);
 		synchronized (this.controllerGUI) {
 			try {
 				while (currentParameter==null)
@@ -627,7 +629,7 @@ public class GUI extends ClientView{
 		}
 		CityDTO city=(CityDTO) this.currentParameter;
 		this.currentParameter=null;
-		this.disableClickOnCities(true);
+		this.disableClickOnCities(true, acceptableCities);
 		return city;
 	}
 
@@ -802,9 +804,11 @@ public class GUI extends ClientView{
 		controllerGUI.getBalconies().get(controllerGUI.getBalconies().size()-1).setDisable(disabled);
 	}
 	
-	private void disableClickOnCities(boolean disabled) {
-		for (Pane cityPane : controllerGUI.getCities())
-			cityPane.setDisable(disabled);
+	private void disableClickOnCities(boolean disabled, List<CityDTO> acceptableCities) {
+		for (CityDTO city : acceptableCities)
+			for (Pane cityPane : controllerGUI.getCities())
+				if (city.getName().equals(((CityDTO) cityPane.getUserData()).getName()))
+					cityPane.setDisable(disabled);
 	}
 	
 	private void disableClickOnPoliticsCards(boolean disabled) {
