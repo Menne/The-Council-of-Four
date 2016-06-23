@@ -7,9 +7,8 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="564.0" prefWidth="752.0" styleClass="sfondo" stylesheets="@resize.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
@@ -18,16 +17,19 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="sfondo">
                <children>
-                  <SplitPane dividerPositions="0.36185383244206776, 0.6951871657754011" layoutX="-1.0" layoutY="2.0" orientation="VERTICAL" prefHeight="563.0" prefWidth="307.0">
+                  <SplitPane dividerPositions="0.36185383244206776, 0.6951871657754011" layoutX="-3.0" layoutY="-3.0" orientation="VERTICAL" prefHeight="560.0" prefWidth="301.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <items>
-                        <AnchorPane prefHeight="204.0" prefWidth="305.0">
+                        <AnchorPane prefHeight="212.0" prefWidth="307.0">
                            <children>
-                              <ScrollPane layoutY="40.0" prefHeight="103.0" prefWidth="302.0">
+                              <ScrollPane layoutY="40.0" prefHeight="105.0" prefWidth="298.0">
                                 <content>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="101.0" prefWidth="299.0" styleClass="sfondo" />
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="103.0" prefWidth="296.0" styleClass="sfondo">
+                                       <children>
+                                          <HBox layoutX="12.0" layoutY="-15.0" prefHeight="103.0" prefWidth="296.0" styleClass="scroll-bar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       </children></AnchorPane>
                                 </content>
                               </ScrollPane>
-                              <Label layoutX="8.0" layoutY="13.0" text="Select one of your permit tiles to sell:" />
+                              <Label layoutX="3.0" layoutY="13.0" text="Select one of your permit tiles to sell:" />
                               <Label layoutX="7.0" layoutY="163.0" text="Price:" />
                               <TextField layoutX="54.0" layoutY="163.0" prefHeight="27.0" prefWidth="58.0" />
                               <Button layoutX="121.0" layoutY="157.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="68.0" text="Sell" />
@@ -35,12 +37,15 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="193.0" prefWidth="306.0">
                            <children>
-                              <ScrollPane layoutX="-2.0" layoutY="38.0" prefHeight="87.0" prefWidth="308.0">
+                              <ScrollPane layoutX="1.0" layoutY="38.0" prefHeight="83.0" prefWidth="298.0">
                                  <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="85.0" prefWidth="303.0" styleClass="sfondo" />
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="81.0" prefWidth="295.0" styleClass="sfondo">
+                                       <children>
+                                          <HBox layoutX="41.0" layoutY="-7.0" prefHeight="81.0" prefWidth="295.0" styleClass="scroll-bar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       </children></AnchorPane>
                                  </content>
                               </ScrollPane>
-                              <Label layoutX="12.0" layoutY="13.0" text="Select one of your politic cards to sell:" />
+                              <Label layoutX="3.0" layoutY="12.0" text="Select one of your politic cards to sell:" />
                               <Label layoutX="4.0" layoutY="140.0" text="Price:" />
                               <TextField layoutX="52.0" layoutY="140.0" prefHeight="27.0" prefWidth="58.0" />
                               <Button layoutX="118.0" layoutY="134.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="68.0" text="Sell" />
@@ -48,16 +53,19 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="78.0" prefWidth="305.0">
                            <children>
-                              <Label layoutX="4.0" layoutY="58.0" text="If you want to sell one of yours assistants, &#10;select the price:" />
-                              <Label layoutX="11.0" layoutY="120.0" text="Price:" />
-                              <TextField layoutX="60.0" layoutY="122.0" prefHeight="27.0" prefWidth="58.0" />
-                              <Button layoutX="125.0" layoutY="115.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="68.0" text="Sell" />
-                              <ImageView fitHeight="49.0" fitWidth="21.0" layoutX="10.0" layoutY="5.0">
-                                 <image>
-                                    <Image url="@view/images/various/Assistant.png" />
-                                 </image>
-                              </ImageView>
-                              <Label layoutX="50.0" layoutY="21.0" text="4" />
+                              <Label layoutX="8.0" layoutY="125.0" text="Price:" />
+                              <TextField layoutX="57.0" layoutY="127.0" prefHeight="27.0" prefWidth="58.0" />
+                              <Button layoutX="122.0" layoutY="120.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="68.0" text="Sell" />
+                              <Label layoutX="5.0" layoutY="9.0" text="Select an assistant to sell it:" />
+                              <ScrollPane layoutX="-1.0" layoutY="36.0" prefHeight="83.0" prefWidth="298.0">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="81.0" prefWidth="296.0" styleClass="sfondo">
+                                       <children>
+                                          <HBox layoutX="-11.0" layoutY="-32.0" prefHeight="81.0" prefWidth="296.0" styleClass="scroll-bar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
                            </children>
                         </AnchorPane>
                      </items>
@@ -70,7 +78,7 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="sfondo" stylesheets="@resize.css">
                <children>
-                  <TextArea layoutX="-4.0" layoutY="430.0" prefHeight="135.0" prefWidth="444.0" />
+                  <TextArea layoutX="-4.0" layoutY="424.0" prefHeight="141.0" prefWidth="444.0" />
                   <ScrollPane AnchorPane.bottomAnchor="132.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <content>
                         <AnchorPane prefHeight="426.0" prefWidth="437.0">
