@@ -28,8 +28,7 @@ public class BuildByPermitTileParser implements ActionParserVisitor {
 			view.displayMessage("Now I need some other infos, like:");
 		
 			view.displayMessage("the permit tile you want to use");
-			PermitTileDTO permitTileTranslated=view.askForPermitTile
-					(game.getClientPlayer().getAvailablePermitTiles());
+			PermitTileDTO permitTileTranslated=view.askForPermitTile();
 			this.selectedAction.setSelectedPermitTile(permitTileTranslated);
 			
 			view.displayMessage("the name of the city in which you want to build");

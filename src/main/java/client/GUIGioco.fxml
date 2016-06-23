@@ -911,7 +911,6 @@
                         <AnchorPane fx:id="mountainRegion" disable="true" layoutX="522.0" onMouseClicked="#clickOnRegion" onMouseEntered="#changeMouseStyle" prefHeight="385.0" prefWidth="242.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="522.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <Pane fx:id="osium" disable="true" layoutX="121.0" layoutY="211.0" onMouseClicked="#clickOnCity" onMouseEntered="#changeMouseStyle" prefHeight="114.0" prefWidth="110.0" />
-                              <Pane fx:id="merkatim" disable="true" layoutX="3.0" layoutY="268.0" onMouseClicked="#clickOnCity" onMouseEntered="#changeMouseStyle" prefHeight="114.0" prefWidth="110.0" />
                               <Pane fx:id="lyram" disable="true" layoutX="3.0" layoutY="136.0" onMouseClicked="#clickOnCity" onMouseEntered="#changeMouseStyle" prefHeight="114.0" prefWidth="110.0">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
@@ -933,6 +932,7 @@
                               <HBox fx:id="emporiumsLyram" disable="true" layoutX="27.0" layoutY="243.0" prefHeight="27.0" prefWidth="75.0" AnchorPane.topAnchor="217.0" />
                               <HBox fx:id="emporiumsOsium" disable="true" layoutX="148.0" layoutY="327.0" prefHeight="27.0" prefWidth="75.0" AnchorPane.topAnchor="293.0" />
                               <HBox fx:id="emporiumsMerkatim" disable="true" layoutX="20.0" layoutY="243.0" prefHeight="27.0" prefWidth="75.0" AnchorPane.topAnchor="340.0" />
+                              <Pane fx:id="merkatim" disable="true" layoutX="3.0" layoutY="268.0" onMouseClicked="#clickOnCity" onMouseEntered="#changeMouseStyle" prefHeight="114.0" prefWidth="110.0" />
                            </children></AnchorPane>
                         <ImageView fx:id="kingConcillor2" disable="true" fitHeight="46.0" fitWidth="30.0" layoutX="516.0" layoutY="501.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="59.0" AnchorPane.leftAnchor="516.0" />
                         <ImageView fx:id="kingConcillor3" disable="true" fitHeight="46.0" fitWidth="30.0" layoutX="541.0" layoutY="505.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="59.0" AnchorPane.leftAnchor="537.0" />

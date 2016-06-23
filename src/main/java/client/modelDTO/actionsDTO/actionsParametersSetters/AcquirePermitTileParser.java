@@ -1,8 +1,5 @@
 package client.modelDTO.actionsDTO.actionsParametersSetters;
 
-import java.util.Arrays;
-import java.util.List;
-
 import client.modelDTO.GameDTO;
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.standardActions.AcquirePermitTileDTO;
@@ -26,17 +23,14 @@ public class AcquirePermitTileParser implements ActionParserVisitor {
 			view.displayMessage("Now I need some other infos, like:");
 			
 			view.displayMessage("the name of the region in which you want to pick");
-			this.selectedAction.setChosenRegion(view.askForRegionBoard
-					(game.getClientGameTable().getClientRegions()));
+			this.selectedAction.setChosenRegion(view.askForRegionBoard());
 	
 			view.displayMessage("the number of permit tile you want to pick");
-			List<Integer> acceptableNumbersOfPermitTiles=Arrays.asList(0,1);
 			this.selectedAction.setNumberOfPermitTile(view.askForNumberOfPermitTile
-					(acceptableNumbersOfPermitTiles));
+					(this.selectedAction.getChoosenRegion()));
 			
 			view.displayMessage("the colours of the cards in your hand you want to descard");
-			this.selectedAction.setCardsToDescard(view.askForPoliticsCards
-					(game.getClientPlayer().getHand()));
+			this.selectedAction.setCardsToDescard(view.askForPoliticsCards());
 			
 			this.selectedAction.parametersSetted();
 			

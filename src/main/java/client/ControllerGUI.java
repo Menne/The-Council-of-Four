@@ -550,6 +550,7 @@ public class ControllerGUI {
 	private List<ImageView> permitTilesTurnedDown;
 	
 	
+
 	public void setPoliticsCards(List<ImageView> politicsCards) {
 		this.politicsCards=politicsCards;
 	}

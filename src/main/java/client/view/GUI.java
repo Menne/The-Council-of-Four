@@ -564,7 +564,7 @@ public class GUI extends ClientView{
 	
 
 	@Override
-	public RegionDTO askForRegionBoard(List<RegionDTO> acceptableRegions) {
+	public RegionDTO askForRegionBoard() {
 		this.disableClickOnRegions(false);
 		synchronized (this.controllerGUI) {
 			try {
@@ -582,7 +582,7 @@ public class GUI extends ClientView{
 	}
 
 	@Override
-	public PermitTileDTO askForPermitTile(List<PermitTileDTO> acceptablePermitTiles) {
+	public PermitTileDTO askForPermitTile() {
 		this.disableClickOnPermitTilesInHand(false);
 		synchronized (this.controllerGUI) {
 			try {
@@ -600,7 +600,7 @@ public class GUI extends ClientView{
 	}
 
 	@Override
-	public CouncillorDTO askForCouncillor(List<CouncillorDTO> acceptableCouncillors) {
+	public CouncillorDTO askForCouncillor() {
 		this.disableClickOnCouncillorsInReserve(false);
 		synchronized (this.controllerGUI) {
 			try {
@@ -618,7 +618,7 @@ public class GUI extends ClientView{
 	}
 	
 	@Override
-	public CouncillorDTO[] askForCouncilBalcony(List<CouncillorDTO[]> acceptableCouncillors) {
+	public CouncillorDTO[] askForCouncilBalcony() {
 		this.disableClickOnCouncilBalconies(false);
 		synchronized (this.controllerGUI) {
 			try {
@@ -655,7 +655,7 @@ public class GUI extends ClientView{
 	}
 
 	@Override
-	public List<PoliticsCardDTO> askForPoliticsCards(List<PoliticsCardDTO> acceptablePoliticsCards) {
+	public List<PoliticsCardDTO> askForPoliticsCards() {
 		this.disableClickOnPoliticsCards(false);
 		List<PoliticsCardDTO> selectedCards=new ArrayList<>();
 		while (selectedCards.size()<CouncilBalcony.getNumberofcouncillors()) {
@@ -683,7 +683,7 @@ public class GUI extends ClientView{
 	}
 
 	@Override
-	public int askForNumberOfPermitTile(List<Integer> acceptableNumberOfPermitTile) {
+	public int askForNumberOfPermitTile(RegionDTO selectedRegion) {
 		this.disableClickOnPermitTilesInRegions(false);
 		synchronized (this.controllerGUI) {
 			try {
@@ -701,7 +701,7 @@ public class GUI extends ClientView{
 	}
 
 	@Override
-	public MarketableDTO askForMakingAnOffer(List<MarketableDTO> acceptableObjectsToOffer) {
+	public MarketableDTO askForMakingAnOffer() {
 		synchronized (this.controllerGUI) {
 			try {
 				while (currentParameter==null)
@@ -749,7 +749,7 @@ public class GUI extends ClientView{
 	}
 	
 	@Override
-	public OfferDTO askForAcceptingAnOffer(List<OfferDTO> acceptableOffers) {
+	public OfferDTO askForAcceptingAnOffer() {
 		synchronized (this.controllerGUI) {
 			try {
 				while (currentParameter==null)
@@ -763,10 +763,30 @@ public class GUI extends ClientView{
 		this.currentParameter=null;
 		return offer;
 	}
+	
+	@Override
+	public PermitTileDTO askForPermitTileUncoveredAndCovered() {
+		this.disableClickOnPermitTilesInHand(false);
+		this.disableClickOnPermitTilesCovered(false);
+		synchronized (this.controllerGUI) {
+			try {
+				while (currentParameter==null)
+					this.controllerGUI.wait();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		PermitTileDTO permitTile=(PermitTileDTO) this.currentParameter;
+		this.currentParameter=null;
+		this.disableClickOnPermitTilesInHand(true);
+		this.disableClickOnPermitTilesCovered(true);
+		return permitTile;
+	}
 
 	
 	
-	
+
 	@Override
 	public void ChooseCityBonus(int numberOfCities) {
 		// TODO Auto-generated method stub
@@ -835,5 +855,14 @@ public class GUI extends ClientView{
 		for (Button button : this.controllerGUI.getActions())
 			button.setDisable(disabled);
 	}
+	
+
+	private void disableClickOnPermitTilesCovered(boolean disabled) {
+		for (Object object : controllerGUI.getPermitTilesTurnedDownOwned().getChildren()) {
+			ImageView imageView=(ImageView) object;
+			imageView.setDisable(disabled);
+		}
+	}
+
 	
 }

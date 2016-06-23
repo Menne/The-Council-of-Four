@@ -24,16 +24,14 @@ public class ElectCouncillorParser implements ActionParserVisitor {
 		view.displayMessage("Ok! you have chosen to elect a councillor. Now I need some other infos, like:");
 		
 		view.displayMessage("the colour of the councillor you want to elect");
-		this.selectedAction.setNewCouncillor(view.askForCouncillor
-				(game.getClientGameTable().getClientCouncillorReserve()));
+		this.selectedAction.setNewCouncillor(view.askForCouncillor());
 		
 		view.displayMessage("the name of the region in which you want to change the councillor");
 		List<CouncillorDTO[]> acceptableCouncilBalconies=new ArrayList<>();
 		for (RegionDTO region : game.getClientGameTable().getClientRegions())
 			acceptableCouncilBalconies.add(region.getBalcony());
 		acceptableCouncilBalconies.add(game.getClientGameTable().getClientKingBalcony());
-		this.selectedAction.setCouncilBalcony(view.askForCouncilBalcony
-				(acceptableCouncilBalconies));
+		this.selectedAction.setCouncilBalcony(view.askForCouncilBalcony());
 		
 		this.selectedAction.parametersSetted();
 		

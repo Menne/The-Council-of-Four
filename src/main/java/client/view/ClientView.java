@@ -61,27 +61,29 @@ public abstract class ClientView implements Observer<ClientViewNotify> {
 	public abstract void displayChatMessage(String message);
 	
 	
-	public abstract RegionDTO askForRegionBoard(List<RegionDTO> acceptableRegions);
+	public abstract RegionDTO askForRegionBoard();
 	
-	public abstract PermitTileDTO askForPermitTile(List<PermitTileDTO> acceptablePermitTiles);
+	public abstract PermitTileDTO askForPermitTile();
 	
-	public abstract CouncillorDTO askForCouncillor(List<CouncillorDTO> acceptableCouncillors);
+	public abstract CouncillorDTO askForCouncillor();
 	
-	public abstract CouncillorDTO[] askForCouncilBalcony(List<CouncillorDTO[]> acceptableCouncilBalconies);
+	public abstract CouncillorDTO[] askForCouncilBalcony();
 	
 	public abstract CityDTO askForCity(List<CityDTO> acceptableCities);
 	
-	public abstract List<PoliticsCardDTO> askForPoliticsCards(List<PoliticsCardDTO> acceptablePoliticsCards);
+	public abstract List<PoliticsCardDTO> askForPoliticsCards();
 	
-	public abstract int askForNumberOfPermitTile(List<Integer> acceptableNumberOfPermitTile);
+	public abstract int askForNumberOfPermitTile(RegionDTO SelectedRegion);
 	
-	public abstract MarketableDTO askForMakingAnOffer(List<MarketableDTO> acceptableObjectsToOffer);
+	public abstract MarketableDTO askForMakingAnOffer();
 	
 	public abstract int askForPrice();
 	
 	public abstract boolean askForOtherSelling();
 	
-	public abstract OfferDTO askForAcceptingAnOffer(List<OfferDTO> acceptableOffers);
+	public abstract OfferDTO askForAcceptingAnOffer();
+	
+	public abstract PermitTileDTO askForPermitTileUncoveredAndCovered();
 	
 	
 	public abstract void ChooseCityBonus(int numberOfCities);
