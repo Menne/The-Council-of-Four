@@ -153,8 +153,8 @@ public class CLI extends ClientView {
 	
 	
 	@Override
-	public RegionDTO askForRegionBoard(List<RegionDTO> acceptableRegions) {
-		List<String> acceptableRegionNames=acceptableRegions.stream()
+	public RegionDTO askForRegionBoard() {
+		List<String> acceptableRegionNames=this.clientGame.getClientGameTable().getClientRegions().stream()
                 .map(RegionDTO::getName)
                 .collect(Collectors.toCollection(ArrayList::new));
 		System.out.println(acceptableRegionNames);
@@ -163,18 +163,18 @@ public class CLI extends ClientView {
 			System.out.println("Wrong parameter. Try again");
 			regionToTranslate=scanner.nextLine();
 		}
-		for (RegionDTO region : acceptableRegions)
+		for (RegionDTO region : clientGame.getClientGameTable().getClientRegions())
 			if (regionToTranslate.equals(region.getName()))
 				return region;
 		throw new IllegalArgumentException("regionToTranslate is not a colour name");
 	}
 
 	@Override
-	public PermitTileDTO askForPermitTile(List<PermitTileDTO> acceptablePermitTiles) {
+	public PermitTileDTO askForPermitTile() {
 		List<String> indexes=new ArrayList<>();
 		List<String> permitTilesWithIndex=new ArrayList<>();
 		int i=1;
-		for (PermitTileDTO permitTile : acceptablePermitTiles) {
+		for (PermitTileDTO permitTile : this.clientGame.getClientPlayer().getAvailablePermitTiles()) {
 			indexes.add(""+i);
 			permitTilesWithIndex.add(i+": "+permitTile.toString());
 			i++;
@@ -185,12 +185,13 @@ public class CLI extends ClientView {
 			System.out.println("Wrong parameter. Try again");
 			permitTileToTranslate=scanner.nextLine();
 		}
-		return acceptablePermitTiles.get(Integer.parseInt(permitTileToTranslate)-1);
+		return this.clientGame.getClientPlayer().getAvailablePermitTiles().get
+				(Integer.parseInt(permitTileToTranslate)-1);
 	}
 
 	@Override
-	public CouncillorDTO askForCouncillor(List<CouncillorDTO> acceptableCouncillors) {
-		List<String> acceptableCouncillorsColours=acceptableCouncillors.stream()
+	public CouncillorDTO askForCouncillor() {
+		List<String> acceptableCouncillorsColours=this.clientGame.getClientGameTable().getClientCouncillorReserve().stream()
             .map(CouncillorDTO::getColour).map(CardColourDTO::getName)
             .collect(Collectors.toCollection(ArrayList::new));
 		System.out.println(acceptableCouncillorsColours);
@@ -199,14 +200,14 @@ public class CLI extends ClientView {
 			System.out.println("Wrong parameter. Try again");
 			newCouncillorToTranslate=scanner.nextLine();
 		}
-		for (CouncillorDTO councillor : acceptableCouncillors)
+		for (CouncillorDTO councillor : this.clientGame.getClientGameTable().getClientCouncillorReserve())
 			if (newCouncillorToTranslate.equals(councillor.getColour().getName()))
 				return councillor;
 		throw new IllegalArgumentException("newCouncillorToTranslate is not a colour name");
 	}
 	
 	@Override
-	public CouncillorDTO[] askForCouncilBalcony(List<CouncillorDTO[]> acceptableCounilBalconies) {
+	public CouncillorDTO[] askForCouncilBalcony() {
 		List<String> acceptableCouncilBalconiyNames=Arrays.asList("Sea", "Hill", "Mountain", "King balcony");
 		System.out.println(acceptableCouncilBalconiyNames);
 		String councilBalconyToTranslate=this.scanner.nextLine();
@@ -215,13 +216,13 @@ public class CLI extends ClientView {
 			councilBalconyToTranslate=scanner.nextLine();
 		}
 		if (councilBalconyToTranslate.equals(acceptableCouncilBalconiyNames.get(0)))
-			return acceptableCounilBalconies.get(0);
+			return this.clientGame.getClientGameTable().getClientRegions().get(0).getBalcony();
 		if (councilBalconyToTranslate.equals(acceptableCouncilBalconiyNames.get(1)))
-			return acceptableCounilBalconies.get(1);
+			return this.clientGame.getClientGameTable().getClientRegions().get(1).getBalcony();
 		if (councilBalconyToTranslate.equals(acceptableCouncilBalconiyNames.get(2)))
-			return acceptableCounilBalconies.get(2);
+			return this.clientGame.getClientGameTable().getClientRegions().get(2).getBalcony();
 		if (councilBalconyToTranslate.equals(acceptableCouncilBalconiyNames.get(3)))
-			return acceptableCounilBalconies.get(3);
+			return this.clientGame.getClientGameTable().getClientKingBalcony();
 		throw new IllegalArgumentException("councilBalconyToTranslate is not a valid balcony");
 	}
 
@@ -243,8 +244,8 @@ public class CLI extends ClientView {
 	}
 
 	@Override
-	public List<PoliticsCardDTO> askForPoliticsCards(List<PoliticsCardDTO> acceptablePoliticsCards) {
-		List<String> acceptableCardsColours=acceptablePoliticsCards.stream()
+	public List<PoliticsCardDTO> askForPoliticsCards() {
+		List<String> acceptableCardsColours=this.clientGame.getClientPlayer().getHand().stream()
                 .map(PoliticsCardDTO::getColour).map(CardColourDTO::getName)
                 .collect(Collectors.toCollection(ArrayList::new));
 		System.out.println(acceptableCardsColours);
@@ -257,7 +258,7 @@ public class CLI extends ClientView {
 		List<PoliticsCardDTO> cardsTranslated=new ArrayList<>();
 		while (cardsToTranslateTokenized.hasMoreTokens()) {
 			String currentCard=cardsToTranslateTokenized.nextToken();
-			for (PoliticsCardDTO cardTranslated : acceptablePoliticsCards)
+			for (PoliticsCardDTO cardTranslated : this.clientGame.getClientPlayer().getHand())
 				if (cardTranslated.getColour().getName().equals(currentCard)) {
 					cardsTranslated.add(cardTranslated);
 					break;
@@ -286,10 +287,10 @@ public class CLI extends ClientView {
 	}
 
 	@Override
-	public int askForNumberOfPermitTile(List<Integer> acceptableNumberOfPermitTile) {
-		System.out.println(acceptableNumberOfPermitTile.toString());
+	public int askForNumberOfPermitTile(RegionDTO selectedRegion) {
+		System.out.println("[0, 1]");
 		String numberOfPermitTileToTranslate=this.scanner.nextLine();
-		while (!acceptableNumberOfPermitTile.toString().contains(numberOfPermitTileToTranslate)) {
+		while (!"0".equals(numberOfPermitTileToTranslate) || !"1".equals(numberOfPermitTileToTranslate)) {
 			System.out.println("Wrong parameter. Try again");
 			numberOfPermitTileToTranslate=scanner.nextLine();
 		}
@@ -297,7 +298,11 @@ public class CLI extends ClientView {
 	}
 
 	@Override
-	public MarketableDTO askForMakingAnOffer(List<MarketableDTO> acceptableObjectsToOffer) {
+	public MarketableDTO askForMakingAnOffer() {
+		List<MarketableDTO> acceptableObjectsToOffer=new ArrayList<>();
+		acceptableObjectsToOffer.addAll(this.clientGame.getClientPlayer().getHand());
+		acceptableObjectsToOffer.addAll(this.clientGame.getClientPlayer().getAvailablePermitTiles());
+		acceptableObjectsToOffer.addAll(this.clientGame.getClientPlayer().getAssistants());
 		List<String> indexes=new ArrayList<>();
 		List<String> offersWithIndex=new ArrayList<>();
 		int i=1;
@@ -329,11 +334,11 @@ public class CLI extends ClientView {
 	}
 
 	@Override
-	public OfferDTO askForAcceptingAnOffer(List<OfferDTO> acceptableOffers) {
+	public OfferDTO askForAcceptingAnOffer() {
 		List<String> indexes=new ArrayList<>();
 		List<String> offersWithIndex=new ArrayList<>();
 		int i=1;
-		for (OfferDTO offer : acceptableOffers) {
+		for (OfferDTO offer : this.clientGame.getMarket().getOffersList()) {
 			indexes.add(""+i);
 			offersWithIndex.add(i+": "+offer.toString());
 			i++;
@@ -344,7 +349,29 @@ public class CLI extends ClientView {
 			System.out.println("Wrong parameter. Try again");
 			offerToTranslate=scanner.nextLine();
 		}
-		return acceptableOffers.get(Integer.parseInt(offerToTranslate)-1);
+		return this.clientGame.getMarket().getOffersList().get(Integer.parseInt(offerToTranslate)-1);
+	}
+	
+	@Override
+	public PermitTileDTO askForPermitTileUncoveredAndCovered() {
+		List<PermitTileDTO> availablePermitTiles=new ArrayList<>();
+		availablePermitTiles.addAll(this.clientGame.getClientPlayer().getAvailablePermitTiles());
+		availablePermitTiles.addAll(this.clientGame.getClientPlayer().getCoveredPermitTiles());
+		List<String> indexes=new ArrayList<>();
+		List<String> permitTilesWithIndex=new ArrayList<>();
+		int i=1;
+		for (PermitTileDTO permitTile : availablePermitTiles) {
+			indexes.add(""+i);
+			permitTilesWithIndex.add(i+": "+permitTile.toString());
+			i++;
+		}
+		System.out.println(permitTilesWithIndex);
+		String permitTileToTranslate=scanner.nextLine();
+		while (!indexes.contains(permitTileToTranslate)) {
+			System.out.println("Wrong parameter. Try again");
+			permitTileToTranslate=scanner.nextLine();
+		}
+		return availablePermitTiles.get(Integer.parseInt(permitTileToTranslate)-1);
 	}
 
 

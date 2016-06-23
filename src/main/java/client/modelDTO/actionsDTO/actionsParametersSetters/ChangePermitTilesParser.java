@@ -19,8 +19,7 @@ public class ChangePermitTilesParser implements ActionParserVisitor {
 		view.displayMessage("Ok! you have chosen to change the permit tiles of a region. Now I need some other infos, like:");
 		
 		view.displayMessage("the name of the region in which you want to pick");
-		this.selectedAction.setSelectedRegion(view.askForRegionBoard
-				(game.getClientGameTable().getClientRegions()));
+		this.selectedAction.setSelectedRegion(view.askForRegionBoard());
 		
 		this.selectedAction.parametersSetted();
 		

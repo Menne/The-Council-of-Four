@@ -36,8 +36,7 @@ public class BuildByKingParser implements ActionParserVisitor {
 			this.selectedAction.setSelectedCity(view.askForCity(acceptableCities));
 			
 			view.displayMessage("the colour of the cards you want to descard");
-			this.selectedAction.setCardsToDescard(view.askForPoliticsCards
-					(game.getClientPlayer().getHand()));
+			this.selectedAction.setCardsToDescard(view.askForPoliticsCards());
 			
 			this.selectedAction.parametersSetted();
 		
