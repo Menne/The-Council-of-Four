@@ -1,3 +1,5 @@
 BUG NOTI:
 -additional main action non funziona
--quando uno sbaglia a scartare le carte le volte successive nel server l'azione DTO nel client viene mappata correttamente ma nel server non viene aggiornata
+-in generale se uno manda al server un'azione coi parametri sbagliati, il server si blocca
+-città nella gui non danno segni di vita
+-non si possono pescare permit tile dalla prima regione
