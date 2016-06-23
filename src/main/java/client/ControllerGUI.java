@@ -770,7 +770,7 @@ public class ControllerGUI {
 			case "Osium":
 				return rewardTokenO;
 			default:
-				throw new IllegalArgumentException("City " + city + " does not exist!");
+				throw new IllegalArgumentException("City "+city+"does not exist!");
 			
 		}
 	}

@@ -63,8 +63,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
+import javafx.stage.PopupWindow;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.Window;
 import server.model.bonus.AssistantsBonus;
 import server.model.bonus.CoinsBonus;
 import server.model.bonus.MainActionBonus;
@@ -225,9 +227,10 @@ public class GUI extends ClientView{
 		controllerGUI.getActions().get(7).setUserData(new AddictionalMainActionDTO());
 		controllerGUI.getActions().get(8).setUserData(new MoveToNextDTO());
 		controllerGUI.getPoliticsDeck().setUserData(new PickPoliticsCardDTO());
-		controllerMarketGUI.getActions().get(0).setUserData(new MakeAnOfferDTO());
-		controllerMarketGUI.getActions().get(1).setUserData(new AcceptAnOfferDTO());
-		controllerMarketGUI.getActions().get(2).setUserData(new MoveToNextDTO());
+	//	controllerMarketGUI.getActions().get(0).setUserData(new MakeAnOfferDTO());
+	//	controllerMarketGUI.getActions().get(1).setUserData(new AcceptAnOfferDTO());
+	//	controllerMarketGUI.getActions().get(2).setUserData(new MoveToNextDTO());
+		
 	}
 
 	@Override
@@ -742,7 +745,7 @@ public class GUI extends ClientView{
 
 	@Override
 	public MarketableDTO askForMakingAnOffer() {
-		synchronized (this.controllerMarketGUI) {
+		synchronized (this.controllerGUI) {
 			try {
 				while (currentParameter==null)
 					this.controllerGUI.wait();
@@ -758,7 +761,7 @@ public class GUI extends ClientView{
 
 	@Override
 	public int askForPrice() {
-		synchronized (this.controllerMarketGUI) {
+		synchronized (this.controllerGUI) {
 			try {
 				while (currentParameter==null)
 					this.controllerGUI.wait();
@@ -774,7 +777,7 @@ public class GUI extends ClientView{
 	
 	@Override
 	public boolean askForOtherSelling() {
-		synchronized (this.controllerMarketGUI) {
+		synchronized (this.controllerGUI) {
 			try {
 				while (currentParameter==null)
 					this.controllerGUI.wait();
@@ -790,7 +793,7 @@ public class GUI extends ClientView{
 	
 	@Override
 	public OfferDTO askForAcceptingAnOffer() {
-		synchronized (this.controllerMarketGUI) {
+		synchronized (this.controllerGUI) {
 			try {
 				while (currentParameter==null)
 					this.controllerGUI.wait();

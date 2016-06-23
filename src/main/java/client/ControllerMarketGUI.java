@@ -34,16 +34,6 @@ public class ControllerMarketGUI {
 		this.view=view;
 	}
 	
-	
-	@FXML
-	private Button makeAnOffer;
-	
-	@FXML
-	private Button acceptAnOffer;
-	
-	@FXML
-	private Button skip;
-	
 	@FXML
 	private HBox availablePermitTiles;
 	
@@ -77,6 +67,17 @@ public class ControllerMarketGUI {
 	@FXML
 	private TextArea messageBox;
 	
+	private Button makeAnOffer;
+	
+	private Button acceptAnOffer;
+	
+	private Button skip;
+	
+	
+	
+	public List<Button> getActions() {
+		return Arrays.asList(makeAnOffer, acceptAnOffer, skip);
+	}
 
 	public HBox getAvailablePermitTiles() {
 		return availablePermitTiles;
@@ -122,9 +123,7 @@ public class ControllerMarketGUI {
 		return messageBox;
 	}
 	
-	public List<Button> getActions() {
-		return Arrays.asList(makeAnOffer, acceptAnOffer, skip);
-	}
+	
 	
 	
 	@FXML
@@ -156,13 +155,14 @@ public class ControllerMarketGUI {
 		this.view.displayError("Sorry, action not available!");
 	}
 	
+	
 	public void handlePoliticsCard(PoliticsCardDTO selectedCard) {
 		synchronized (this) {
 			this.view.setCurrentParameter(selectedCard);
 			this.notify();
 		}
 	}
-	
+
 	public void handlePermitTilesTurnedUp(PermitTileDTO selectedPermitTile) {
 		synchronized (this) {
 			this.view.setCurrentParameter(selectedPermitTile);
@@ -177,18 +177,6 @@ public class ControllerMarketGUI {
 		}
 	}
 	
-	public void handleOfferSetted(int price) {
-		synchronized (this) {
-			this.view.setCurrentParameter(price);
-			this.notify();
-		}
-	}
 	
-	public void handleOtherOffer(boolean choice) {
-		synchronized (this) {
-			this.view.setCurrentParameter(choice);
-			this.notify();
-		}
-	}
 	
 }
