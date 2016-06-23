@@ -661,7 +661,7 @@ public class GUI extends ClientView{
 
 	@Override
 	public int askForNumberOfPermitTile(RegionDTO selectedRegion) {
-		this.disableClickOnPermitTilesInRegions(false);
+		this.disableClickOnPermitTilesInRegions(false, selectedRegion);
 		synchronized (this.controllerGUI) {
 			try {
 				while (currentParameter==null)
@@ -673,7 +673,7 @@ public class GUI extends ClientView{
 		}
 		int numberOfPermitTile=(int) this.currentParameter;
 		this.currentParameter=null;
-		this.disableClickOnPermitTilesInRegions(true);
+		this.disableClickOnPermitTilesInRegions(true, selectedRegion);
 		return numberOfPermitTile;
 	}
 
@@ -818,12 +818,16 @@ public class GUI extends ClientView{
 		this.controllerGUI.getDescardPoliticsCards().setDisable(disabled);
 	}
 	
-	private void disableClickOnPermitTilesInRegions(boolean disabled) {
-		for (int i=0; i<=1; i++) {
-			controllerGUI.getSeaPermitTile()[i].setDisable(disabled);
-			controllerGUI.getHillPermitTile()[i].setDisable(disabled);
-			controllerGUI.getMountainPermitTile()[i].setDisable(disabled);
-		}
+	private void disableClickOnPermitTilesInRegions(boolean disabled, RegionDTO selectedRegion) {
+		if ("Sea".equals(selectedRegion.getName()))
+			for (int i=0; i<=1; i++) 
+				controllerGUI.getSeaPermitTile()[i].setDisable(disabled);
+		if ("Hill".equals(selectedRegion.getName()))
+			for (int i=0; i<=1; i++) 
+				controllerGUI.getHillPermitTile()[i].setDisable(disabled);
+		if ("Mountain".equals(selectedRegion.getName()))
+			for (int i=0; i<=1; i++) 
+				controllerGUI.getMountainPermitTile()[i].setDisable(disabled);
 	}
 
 
