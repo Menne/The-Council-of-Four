@@ -74,4 +74,9 @@ public class ClientGUI extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
+
+	public ControllerMarketGUI showMarket() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
