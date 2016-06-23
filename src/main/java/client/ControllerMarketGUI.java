@@ -1,7 +1,19 @@
 package client;
 
+import java.rmi.RemoteException;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 import client.modelDTO.GameDTO;
+import client.modelDTO.actionsDTO.ActionDTO;
+import client.modelDTO.actionsDTO.ActionWithParameters;
+import client.modelDTO.gameTableDTO.PermitTileDTO;
+import client.modelDTO.gameTableDTO.PoliticsCardDTO;
+import client.modelDTO.playerDTO.AssistantDTO;
 import client.view.GUI;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -21,6 +33,16 @@ public class ControllerMarketGUI {
 	public void setView(GUI view) {
 		this.view=view;
 	}
+	
+	
+	@FXML
+	private Button makeAnOffer;
+	
+	@FXML
+	private Button acceptAnOffer;
+	
+	@FXML
+	private Button skip;
 	
 	@FXML
 	private HBox availablePermitTiles;
@@ -54,6 +76,7 @@ public class ControllerMarketGUI {
 	
 	@FXML
 	private TextArea messageBox;
+	
 
 	public HBox getAvailablePermitTiles() {
 		return availablePermitTiles;
@@ -99,5 +122,73 @@ public class ControllerMarketGUI {
 		return messageBox;
 	}
 	
+	public List<Button> getActions() {
+		return Arrays.asList(makeAnOffer, acceptAnOffer, skip);
+	}
+	
+	
+	@FXML
+	public void startAction(Event event) throws RemoteException {
+		ActionDTO selectedAction=(ActionDTO) ((Button) event.getSource()).getUserData();
+		for (ActionDTO action : this.clientGame.getAvailableActions())
+			if (action.getClass()==(selectedAction.getClass())) 
+				if (!(selectedAction instanceof ActionWithParameters)) {
+					this.view.getConnection().sendAction(selectedAction);
+					return;
+				}
+				else if (selectedAction instanceof ActionWithParameters) {
+					ExecutorService executor=Executors.newSingleThreadExecutor();
+					executor.submit(new Runnable() {
+						
+						@Override
+						public void run() {
+							try {
+								view.insertParametersAndSend((ActionWithParameters) selectedAction);
+							} catch (RemoteException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+					});
+					this.view.disableActionButtons(false);
+					return;
+				}
+		this.view.displayError("Sorry, action not available!");
+	}
+	
+	public void handlePoliticsCard(PoliticsCardDTO selectedCard) {
+		synchronized (this) {
+			this.view.setCurrentParameter(selectedCard);
+			this.notify();
+		}
+	}
+	
+	public void handlePermitTilesTurnedUp(PermitTileDTO selectedPermitTile) {
+		synchronized (this) {
+			this.view.setCurrentParameter(selectedPermitTile);
+			this.notify();
+		}
+	}
+	
+	public void handleAssistants(AssistantDTO selectedAssistant) {
+		synchronized (this) {
+			this.view.setCurrentParameter(selectedAssistant);
+			this.notify();
+		}
+	}
+	
+	public void handleOfferSetted(int price) {
+		synchronized (this) {
+			this.view.setCurrentParameter(price);
+			this.notify();
+		}
+	}
+	
+	public void handleOtherOffer(boolean choice) {
+		synchronized (this) {
+			this.view.setCurrentParameter(choice);
+			this.notify();
+		}
+	}
 	
 }
