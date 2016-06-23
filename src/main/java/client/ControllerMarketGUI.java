@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -43,13 +44,13 @@ public class ControllerMarketGUI {
 	private Button sellAssistant;
 	
 	@FXML
-	private Label pricePermitTile;
+	private TextField pricePermitTile;
 	
 	@FXML
-	private Label pricePoliticCard;
+	private TextField pricePoliticCard;
 	
 	@FXML
-	private Label priceAssistant;
+	private TextField priceAssistant;
 	
 	@FXML
 	private TextArea messageBox;
@@ -82,15 +83,15 @@ public class ControllerMarketGUI {
 		return sellAssistant;
 	}
 
-	public Label getPricePermitTile() {
+	public TextField getPricePermitTile() {
 		return pricePermitTile;
 	}
 
-	public Label getPricePoliticCard() {
+	public TextField getPricePoliticCard() {
 		return pricePoliticCard;
 	}
 
-	public Label getPriceAssistant() {
+	public TextField getPriceAssistant() {
 		return priceAssistant;
 	}
 

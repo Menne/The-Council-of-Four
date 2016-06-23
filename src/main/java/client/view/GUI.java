@@ -12,9 +12,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
+import client.ClientGUI;
 import client.ControllerGUI;
 import client.ControllerMarketGUI;
-import client.MarketGUI;
 import client.connections.Connection;
 import client.modelDTO.GameDTO;
 import client.modelDTO.ModelDTO;
@@ -45,7 +45,6 @@ import client.modelDTO.marketDTO.MarketableDTO;
 import client.modelDTO.marketDTO.OfferDTO;
 import client.modelDTO.playerDTO.ClientPlayerDTO;
 import client.view.notifies.ClientViewNotify;
-import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -57,11 +56,14 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
+import javafx.stage.PopupWindow;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.Window;
 import server.model.bonus.AssistantsBonus;
 import server.model.bonus.CoinsBonus;
 import server.model.bonus.MainActionBonus;
@@ -490,11 +492,18 @@ public class GUI extends ClientView{
 			@Override
 			public void run() {
 				FXMLLoader loader = new FXMLLoader();
-				loader.setLocation(getClass().getResource("MarketView.fxml"));
-				controllerMarketGUI=loader.getController();
-				
+				loader.setLocation(ClientGUI.class.getResource("MarketView.fxml"));
+				AnchorPane root=new AnchorPane();
+				loader.setRoot(root);
 				try {
-					Scene scene=new Scene(loader.load());
+					root=(AnchorPane)loader.load();
+					Stage marketStage=new Stage();
+					marketStage.initModality(Modality.APPLICATION_MODAL);
+					marketStage.initStyle(StageStyle.UNDECORATED);
+					marketStage.setTitle("Market");
+					marketStage.setScene(new Scene(root));
+					marketStage.show();
+					controllerMarketGUI=loader.getController();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

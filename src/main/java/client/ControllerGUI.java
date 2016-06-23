@@ -33,6 +33,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -51,6 +52,15 @@ public class ControllerGUI {
 		this.view=view;
 	}
 	
+	@FXML
+	private AnchorPane root;
+	
+	
+	
+	public AnchorPane getRoot() {
+		return root;
+	}
+
 	@FXML
 	private ImageView colourPlayer1;
 	
