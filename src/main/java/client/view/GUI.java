@@ -1,6 +1,7 @@
 package client.view;
 
 
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,6 +14,7 @@ import java.util.Map;
 
 import client.ControllerGUI;
 import client.ControllerMarketGUI;
+import client.MarketGUI;
 import client.connections.Connection;
 import client.modelDTO.GameDTO;
 import client.modelDTO.ModelDTO;
@@ -43,9 +45,12 @@ import client.modelDTO.marketDTO.MarketableDTO;
 import client.modelDTO.marketDTO.OfferDTO;
 import client.modelDTO.playerDTO.ClientPlayerDTO;
 import client.view.notifies.ClientViewNotify;
+import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -54,6 +59,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import server.model.bonus.AssistantsBonus;
 import server.model.bonus.CoinsBonus;
 import server.model.bonus.MainActionBonus;
@@ -64,7 +72,7 @@ import server.model.gameTable.CouncilBalcony;
 
 public class GUI extends ClientView{
 
-//	private final ControllerMarketGUI controllerMarketGUI;
+	private ControllerMarketGUI controllerMarketGUI;
 	private final ControllerGUI controllerGUI;
 	private final Map<ModelDTO, Image> imageMap;
 	private Object currentParameter;
@@ -477,7 +485,22 @@ public class GUI extends ClientView{
 
 	@Override
 	public void displayMarket(MarketDTO market) {
-		
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(getClass().getResource("MarketView.fxml"));
+				controllerMarketGUI=loader.getController();
+				
+				try {
+					Scene scene=new Scene(loader.load());
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 	
 	@Override
