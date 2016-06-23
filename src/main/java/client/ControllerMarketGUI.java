@@ -11,6 +11,7 @@ import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.ActionWithParameters;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
 import client.modelDTO.gameTableDTO.PoliticsCardDTO;
+import client.modelDTO.marketDTO.OfferDTO;
 import client.modelDTO.playerDTO.AssistantDTO;
 import client.view.GUI;
 import javafx.event.Event;
@@ -67,10 +68,13 @@ public class ControllerMarketGUI {
 	@FXML
 	private TextArea messageBox;
 	
+	@FXML
 	private Button makeAnOffer;
 	
+	@FXML
 	private Button acceptAnOffer;
 	
+	@FXML
 	private Button skip;
 	
 	
@@ -95,28 +99,12 @@ public class ControllerMarketGUI {
 		return offers;
 	}
 
-	public Button getSellPermitTile() {
-		return sellPermitTile;
+	public List<Button> getOfferSettedButtons() {
+		return Arrays.asList(sellPoliticCard, sellPermitTile, sellAssistant);
 	}
-
-	public Button getSellPoliticCard() {
-		return sellPoliticCard;
-	}
-
-	public Button getSellAssistant() {
-		return sellAssistant;
-	}
-
-	public TextField getPricePermitTile() {
-		return pricePermitTile;
-	}
-
-	public TextField getPricePoliticCard() {
-		return pricePoliticCard;
-	}
-
-	public TextField getPriceAssistant() {
-		return priceAssistant;
+	
+	public List<TextField> getPriceFields() {
+		return Arrays.asList(pricePermitTile, pricePoliticCard, priceAssistant);
 	}
 
 	public TextArea getMessageBox() {
@@ -173,6 +161,27 @@ public class ControllerMarketGUI {
 	public void handleAssistants(AssistantDTO selectedAssistant) {
 		synchronized (this) {
 			this.view.setCurrentParameter(selectedAssistant);
+			this.notify();
+		}
+	}
+	
+	public void handlePriceForm(int price) {
+		synchronized (this) {
+			this.view.setCurrentParameter(price);
+			this.notify();
+		}
+	}
+	
+	public void handleOfferSetted(boolean offerSubmitted) {
+		synchronized (this) {
+			this.view.setCurrentParameter(offerSubmitted);
+			this.notify();
+		}
+	}
+	
+	public void handleOffers(OfferDTO selectedOffer) {
+		synchronized (this) {
+			this.view.setCurrentParameter(selectedOffer);
 			this.notify();
 		}
 	}

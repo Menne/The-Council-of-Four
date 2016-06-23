@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import client.ClientGUI;
 import client.ControllerGUI;
@@ -22,8 +23,6 @@ import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.ActionWithParameters;
 import client.modelDTO.actionsDTO.MoveToNextDTO;
 import client.modelDTO.actionsDTO.PickPoliticsCardDTO;
-import client.modelDTO.actionsDTO.marketActions.AcceptAnOfferDTO;
-import client.modelDTO.actionsDTO.marketActions.MakeAnOfferDTO;
 import client.modelDTO.actionsDTO.standardActions.AcquirePermitTileDTO;
 import client.modelDTO.actionsDTO.standardActions.AddictionalMainActionDTO;
 import client.modelDTO.actionsDTO.standardActions.BuildByKingDTO;
@@ -56,6 +55,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -63,10 +64,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
-import javafx.stage.PopupWindow;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.stage.Window;
 import server.model.bonus.AssistantsBonus;
 import server.model.bonus.CoinsBonus;
 import server.model.bonus.MainActionBonus;
@@ -745,9 +744,10 @@ public class GUI extends ClientView{
 
 	@Override
 	public MarketableDTO askForMakingAnOffer() {
-		synchronized (this.controllerGUI) {
+		this.disableClickOnObjectsToSell(false);
+		synchronized (this.controllerMarketGUI) {
 			try {
-				while (currentParameter==null)
+				while (controllerMarketGUI==null)
 					this.controllerGUI.wait();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -756,15 +756,18 @@ public class GUI extends ClientView{
 		}
 		MarketableDTO offeringObject=(MarketableDTO) this.currentParameter;
 		this.currentParameter=null;
+		this.disableClickOnObjectsToSell(true);
 		return offeringObject;
 	}
 
 	@Override
 	public int askForPrice() {
-		synchronized (this.controllerGUI) {
+		this.disablePriceInsertion(false);
+		this.disableClickOnOfferSettedButtons(false);
+		synchronized (this.controllerMarketGUI) {
 			try {
 				while (currentParameter==null)
-					this.controllerGUI.wait();
+					this.controllerMarketGUI.wait();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -772,31 +775,41 @@ public class GUI extends ClientView{
 		}
 		int price=(int) this.currentParameter;
 		this.currentParameter=null;
+		this.disablePriceInsertion(true);
+		this.disableClickOnOfferSettedButtons(true);
 		return price;
 	}
 	
 	@Override
 	public boolean askForOtherSelling() {
-		synchronized (this.controllerGUI) {
-			try {
-				while (currentParameter==null)
-					this.controllerGUI.wait();
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				Alert alert = new Alert(AlertType.CONFIRMATION);
+				alert.setTitle("messaggio prova mercato");
+				alert.setHeaderText("messaggio prova mercato");
+				alert.setContentText("messaggio prova mercato");
+				Optional<ButtonType> result=alert.showAndWait();
+				if (result.get()==ButtonType.OK)
+					currentParameter=true;
+				else
+					currentParameter=false;
 			}
-		}
-		boolean choice=(boolean) this.currentParameter;
+		});
+		Boolean choice=(boolean) this.currentParameter;
 		this.currentParameter=null;
+		this.disableClickOnOffers(true);
 		return choice;
 	}
 	
 	@Override
 	public OfferDTO askForAcceptingAnOffer() {
-		synchronized (this.controllerGUI) {
+		this.disableClickOnOffers(false);
+		synchronized (this.controllerMarketGUI) {
 			try {
 				while (currentParameter==null)
-					this.controllerGUI.wait();
+					this.controllerMarketGUI.wait();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -804,6 +817,7 @@ public class GUI extends ClientView{
 		}
 		OfferDTO offer=(OfferDTO) this.currentParameter;
 		this.currentParameter=null;
+		this.disableClickOnOffers(true);
 		return offer;
 	}
 	
@@ -914,5 +928,36 @@ public class GUI extends ClientView{
 		}
 	}
 
+	private void disableClickOnObjectsToSell(boolean disabled) {
+		for (Object object : controllerMarketGUI.getAvailablePoliticCards().getChildren()) {
+			ImageView imageView=(ImageView) object;
+			imageView.setDisable(disabled);
+		}
+		for (Object object : controllerMarketGUI.getAvailablePermitTiles().getChildren()) {
+			ImageView imageView=(ImageView) object;
+			imageView.setDisable(disabled);
+		}
+		for (Object object : controllerMarketGUI.getAvailableAssistants().getChildren()) {
+			ImageView imageView=(ImageView) object;
+			imageView.setDisable(disabled);
+		}
+	}
+	
+	private void disablePriceInsertion(boolean disabled) {
+		for (TextField textField : controllerMarketGUI.getPriceFields())
+			textField.setDisable(disabled);
+	}
+	
+	private void disableClickOnOfferSettedButtons(boolean disabled) {
+		for (Button button : controllerMarketGUI.getOfferSettedButtons())
+			button.setDisable(disabled);
+	}
+	
+	private void disableClickOnOffers(boolean disabled) {
+		for (Object object : controllerMarketGUI.getOffers().getChildren()) {
+			ImageView imageView=(ImageView) object;
+			imageView.setDisable(disabled);
+		}
+	}
 	
 }
