@@ -233,7 +233,7 @@ public class GUI extends ClientView{
 	}
 	
 	private void displayRegions(GameTableDTO clientGame) {
-		for (int i=0; i<this.controllerGUI.getRegions().size(); i++)
+		for (int i=0; i<clientGame.getClientRegions().size(); i++)
 			this.controllerGUI.getRegions().get(i).setUserData(clientGame.getClientRegions().get(i));
 	}
 	
