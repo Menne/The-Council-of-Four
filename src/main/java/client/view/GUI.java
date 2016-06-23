@@ -43,6 +43,7 @@ import client.modelDTO.gameTableDTO.RewardTokenDTO;
 import client.modelDTO.marketDTO.MarketDTO;
 import client.modelDTO.marketDTO.MarketableDTO;
 import client.modelDTO.marketDTO.OfferDTO;
+import client.modelDTO.playerDTO.AssistantDTO;
 import client.modelDTO.playerDTO.ClientPlayerDTO;
 import client.view.notifies.ClientViewNotify;
 import javafx.application.Platform;
@@ -172,6 +173,7 @@ public class GUI extends ClientView{
 		imageMap.put(new BonusTileDTO("Bronze", new ScoreBonus(8)), new Image(getClass().getResource("images/colourBonus/BronzeBonus.png").toExternalForm()));
 		imageMap.put(new BonusTileDTO("Gold", new ScoreBonus(20)), new Image(getClass().getResource("images/colourBonus/GoldBonus.png").toExternalForm()));
 		imageMap.put(new BonusTileDTO("Silver", new ScoreBonus(12)), new Image(getClass().getResource("images/colourBonus/SilverBonus.png").toExternalForm()));
+		imageMap.put(new AssistantDTO(), new Image(getClass().getResource("images/various/Assistant.png").toExternalForm()));
 	}
 
 	
@@ -502,8 +504,32 @@ public class GUI extends ClientView{
 					marketStage.initStyle(StageStyle.UNDECORATED);
 					marketStage.setTitle("Market");
 					marketStage.setScene(new Scene(root));
-					marketStage.show();
 					controllerMarketGUI=loader.getController();
+					controllerMarketGUI.setClientGame(clientGame);
+					controllerMarketGUI.setView(GUI.this);
+					for(PoliticsCardDTO card : clientGame.getClientPlayer().getHand()){
+						ImageView imageView=new ImageView(imageMap.get(card));
+						controllerMarketGUI.getAvailablePoliticCards().getChildren().add(imageView);
+						imageView.setUserData(card);	
+						imageView.setFitWidth(50);
+						imageView.setPreserveRatio(true);
+					}
+					for(PermitTileDTO permitTileDTO : clientGame.getClientPlayer().getAvailablePermitTiles()){
+						ImageView imageView=new ImageView(imageMap.get(permitTileDTO));
+						controllerMarketGUI.getAvailablePermitTiles().getChildren().add(imageView);
+						imageView.setUserData(permitTileDTO);
+						imageView.setFitWidth(50);
+						imageView.setPreserveRatio(true);
+					}
+					ImageView imageView=new ImageView(new Image(getClass().getResource("images/various/Assistant.png").toExternalForm()));
+					imageView.setFitWidth(50);
+					imageView.setPreserveRatio(true);
+					for(AssistantDTO assistantDTO : clientGame.getClientPlayer().getAssistants()){
+						imageView.setUserData(assistantDTO);
+						controllerMarketGUI.getAvailableAssistants().getChildren().add(imageView);
+					}
+						
+					marketStage.show();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

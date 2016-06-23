@@ -1,8 +1,9 @@
 package client.modelDTO.playerDTO;
 
+import client.modelDTO.ModelDTO;
 import client.modelDTO.marketDTO.MarketableDTO;
 
-public class AssistantDTO implements MarketableDTO {
+public class AssistantDTO implements MarketableDTO, ModelDTO {
 
 	/**
 	 * 
