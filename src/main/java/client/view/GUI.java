@@ -431,7 +431,8 @@ public class GUI extends ClientView{
 						@Override
 						public void handle(Event event) {
 							controllerGUI.handlePoliticsCard(card);	
-							
+							imageView.setDisable(true);
+							imageView.setOpacity(0.4);
 						}
 					});
 					imageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
@@ -572,6 +573,8 @@ public class GUI extends ClientView{
 	
 	
 
+	
+	
 	@Override
 	public RegionDTO askForRegionBoard() {
 		this.disableClickOnRegions(false);
@@ -647,7 +650,7 @@ public class GUI extends ClientView{
 
 	@Override
 	public CityDTO askForCity(List<CityDTO> acceptableCities) {
-		this.disableClickOnCities(false);
+		this.disableClickOnCities(false, acceptableCities);
 		synchronized (this.controllerGUI) {
 			try {
 				while (currentParameter==null)
@@ -659,13 +662,13 @@ public class GUI extends ClientView{
 		}
 		CityDTO city=(CityDTO) this.currentParameter;
 		this.currentParameter=null;
-		this.disableClickOnCities(true);
+		this.disableClickOnCities(true, acceptableCities);
 		return city;
 	}
 
 	@Override
 	public List<PoliticsCardDTO> askForPoliticsCards() {
-		this.disableClickOnPoliticsCards(false);
+		this.disableClickOnPoliticsCards(false, 1);
 		List<PoliticsCardDTO> selectedCards=new ArrayList<>();
 		while (selectedCards.size()<CouncilBalcony.getNumberofcouncillors()) {
 			synchronized (this.controllerGUI) {
@@ -686,14 +689,14 @@ public class GUI extends ClientView{
 			this.currentParameter=null;
 			this.disableClickOnDescardButton(false);
 		}
-		this.disableClickOnPoliticsCards(true);
+		this.disableClickOnPoliticsCards(true, 1);
 		this.disableClickOnDescardButton(true);
 		return selectedCards;
 	}
 
 	@Override
 	public int askForNumberOfPermitTile(RegionDTO selectedRegion) {
-		this.disableClickOnPermitTilesInRegions(false);
+		this.disableClickOnPermitTilesInRegions(false, selectedRegion);
 		synchronized (this.controllerGUI) {
 			try {
 				while (currentParameter==null)
@@ -705,7 +708,7 @@ public class GUI extends ClientView{
 		}
 		int numberOfPermitTile=(int) this.currentParameter;
 		this.currentParameter=null;
-		this.disableClickOnPermitTilesInRegions(true);
+		this.disableClickOnPermitTilesInRegions(true, selectedRegion);
 		return numberOfPermitTile;
 	}
 
@@ -834,15 +837,18 @@ public class GUI extends ClientView{
 		controllerGUI.getBalconies().get(controllerGUI.getBalconies().size()-1).setDisable(disabled);
 	}
 	
-	private void disableClickOnCities(boolean disabled) {
-		for (Pane cityPane : controllerGUI.getCities())
-			cityPane.setDisable(disabled);
+	private void disableClickOnCities(boolean disabled, List<CityDTO> acceptableCities) {
+		for (CityDTO city : acceptableCities)
+			for (Pane cityPane : controllerGUI.getCities())
+				if (city.getName().equals(((CityDTO) cityPane.getUserData()).getName()))
+					cityPane.setDisable(disabled);
 	}
 	
-	private void disableClickOnPoliticsCards(boolean disabled) {
+	private void disableClickOnPoliticsCards(boolean disabled, int opacity) {
 		for (Object object : controllerGUI.getHand().getChildren()){
 			ImageView imageView=(ImageView) object;
 			imageView.setDisable(disabled);
+			imageView.setOpacity(opacity);
 		}
 	}
 	
@@ -850,12 +856,16 @@ public class GUI extends ClientView{
 		this.controllerGUI.getDescardPoliticsCards().setDisable(disabled);
 	}
 	
-	private void disableClickOnPermitTilesInRegions(boolean disabled) {
-		for (int i=0; i<=1; i++) {
-			controllerGUI.getSeaPermitTile()[i].setDisable(disabled);
-			controllerGUI.getHillPermitTile()[i].setDisable(disabled);
-			controllerGUI.getMountainPermitTile()[i].setDisable(disabled);
-		}
+	private void disableClickOnPermitTilesInRegions(boolean disabled, RegionDTO selectedRegion) {
+		if ("Sea".equals(selectedRegion.getName()))
+			for (int i=0; i<=1; i++) 
+				controllerGUI.getSeaPermitTile()[i].setDisable(disabled);
+		if ("Hill".equals(selectedRegion.getName()))
+			for (int i=0; i<=1; i++) 
+				controllerGUI.getHillPermitTile()[i].setDisable(disabled);
+		if ("Mountain".equals(selectedRegion.getName()))
+			for (int i=0; i<=1; i++) 
+				controllerGUI.getMountainPermitTile()[i].setDisable(disabled);
 	}
 
 
