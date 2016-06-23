@@ -896,6 +896,7 @@ public class ControllerGUI {
     	Optional<ButtonType> result=alert.showAndWait();
     	if (result.get()==ButtonType.OK){
     		view.getConnection().sendAction(new QuitDTO());
+    		Platform.exit();
     	}
     	else
     		return;

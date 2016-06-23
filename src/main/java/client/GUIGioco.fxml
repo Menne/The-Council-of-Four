@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
@@ -30,7 +23,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.ControllerGUI">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.ControllerGUI">
    <children>
       <BorderPane prefHeight="800.0" prefWidth="1280.0">
          <bottom>
@@ -789,41 +782,49 @@
                         </TabPane>
                      </children>
                   </AnchorPane>
-                  <TitledPane animated="false" collapsible="false" prefHeight="137.0" prefWidth="393.0" styleClass="submit" stylesheets="@resize.css" text="Quick Actions" textFill="#6b4208">
-                    <content>
-                      <AnchorPane minHeight="140.0" minWidth="240.0" prefHeight="143.0" prefWidth="396.0" styleClass="sfondo">
-                           <children>
-                              <Button fx:id="q1" layoutX="32.0" layoutY="13.0" mnemonicParsing="false" onMouseClicked="#startAction" onMouseEntered="#changeMouseStyle" text="Engage assistant" textFill="#d1ca85" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="-5.0" />
-                              <Button fx:id="q4" layoutX="210.0" layoutY="50.0" mnemonicParsing="false" onMouseClicked="#startAction" onMouseEntered="#changeMouseStyle" text="Change permit tiles" textFill="#6b4208" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="42.0" />
-                              <Button fx:id="q2" layoutX="209.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#startAction" onMouseEntered="#changeMouseStyle" text="Additional main action" textFill="#6b4208" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="-5.0" />
-                              <Button fx:id="q3" layoutX="32.0" layoutY="62.0" mnemonicParsing="false" onMouseClicked="#startAction" onMouseEntered="#changeMouseStyle" text="Elect a councillor" textFill="#6b4208" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="42.0" />
-                              <Button fx:id="skip" layoutX="88.0" layoutY="96.0" mnemonicParsing="false" onMouseClicked="#startAction" onMouseEntered="#changeMouseStyle" text="Skip quick action" textFill="#6b4208" AnchorPane.leftAnchor="140.0" AnchorPane.topAnchor="89.0" />
-                           </children>
-                        </AnchorPane>
-                    </content>
-                     <font>
-                        <Font name="Papyrus" size="13.0" />
-                     </font>
-                  </TitledPane>
-                  <TitledPane animated="false" collapsible="false" prefHeight="185.0" prefWidth="400.0" stylesheets="@resize.css" text="Main Actions" textFill="#6b4208">
-                    <content>
-                      <AnchorPane minHeight="90.0" minWidth="240.0" prefHeight="112.0" prefWidth="422.0" styleClass="sfondo" stylesheets="@resize.css">
-                           <children>
-                              <Button fx:id="m1" layoutX="11.0" layoutY="6.0" minHeight="-Infinity" minWidth="0.0" mnemonicParsing="false" onMouseClicked="#startAction" onMouseEntered="#changeMouseStyle" prefHeight="37.0" prefWidth="177.0" text="Elect a councillor" textAlignment="CENTER" textFill="#6b4208" AnchorPane.leftAnchor="-7.0" AnchorPane.topAnchor="-5.0" />
-                              <Button fx:id="m4" layoutX="62.0" layoutY="52.0" minWidth="30.0" mnemonicParsing="false" onMouseClicked="#startAction" onMouseEntered="#changeMouseStyle" text="Build by king" textAlignment="CENTER" textFill="#6b4208" AnchorPane.bottomAnchor="-5.0" AnchorPane.leftAnchor="40.0" />
-                              <Button fx:id="m3" layoutX="241.0" layoutY="50.0" mnemonicParsing="false" onMouseClicked="#startAction" onMouseEntered="#changeMouseStyle" text="Build by permit tile" textAlignment="CENTER" textFill="#6b4208" AnchorPane.bottomAnchor="-5.0" AnchorPane.rightAnchor="18.0" />
-                              <Button fx:id="m2" layoutX="206.0" layoutY="5.0" minWidth="30.0" mnemonicParsing="false" onMouseClicked="#startAction" onMouseEntered="#changeMouseStyle" prefHeight="31.0" prefWidth="177.0" stylesheets="@resize.css" text="Acquire permit tile" textAlignment="CENTER" textFill="#6b4208" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="-5.0" />
-                           </children>
-                        </AnchorPane>
-                    </content>
-                     <font>
-                        <Font name="Papyrus" size="13.0" />
-                     </font>
-                     <styleClass>
-                        <String fx:value="label" />
-                        <String fx:value="submit" />
-                     </styleClass>
-                  </TitledPane>
+                  <AnchorPane prefHeight="312.0" prefWidth="392.0">
+                     <children>
+                        <TitledPane animated="false" collapsible="false" layoutX="201.0" layoutY="1.0" prefHeight="311.0" prefWidth="197.0" stylesheets="@resize.css" text="Quick Actions" textFill="#6b4208" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <content>
+                            <AnchorPane minHeight="140.0" minWidth="161.0" prefHeight="272.0" prefWidth="161.0" styleClass="sfondo">
+                                 <children>
+                                    <Button fx:id="q1" layoutX="20.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#startAction" onMouseEntered="#changeMouseStyle" prefHeight="37.0" prefWidth="155.0" text="Engage assistant" textFill="#d1ca85" AnchorPane.topAnchor="5.0" />
+                                    <Button fx:id="q4" layoutX="20.0" layoutY="67.0" mnemonicParsing="false" onMouseClicked="#startAction" onMouseEntered="#changeMouseStyle" prefHeight="37.0" prefWidth="155.0" text="Change permit tiles" textFill="#6b4208" AnchorPane.topAnchor="50.0" />
+                                    <Button fx:id="q2" layoutX="20.0" layoutY="109.0" mnemonicParsing="false" onMouseClicked="#startAction" onMouseEntered="#changeMouseStyle" prefHeight="37.0" prefWidth="155.0" text="Additional main action" textFill="#6b4208" AnchorPane.topAnchor="95.0" />
+                                    <Button fx:id="q3" layoutX="20.0" layoutY="157.0" mnemonicParsing="false" onMouseClicked="#startAction" onMouseEntered="#changeMouseStyle" prefHeight="37.0" prefWidth="155.0" text="Elect a councillor" textFill="#6b4208" AnchorPane.topAnchor="140.0" />
+                                    <Button fx:id="skip" layoutX="20.0" layoutY="200.0" mnemonicParsing="false" onMouseClicked="#startAction" onMouseEntered="#changeMouseStyle" prefHeight="37.0" prefWidth="155.0" text="Skip quick action" textFill="#6b4208" AnchorPane.topAnchor="185.0" />
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                           <font>
+                              <Font name="Papyrus" size="13.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="submit" />
+                              <String fx:value="label" />
+                           </styleClass>
+                        </TitledPane>
+                        <TitledPane animated="false" collapsible="false" layoutX="2.0" prefHeight="312.0" prefWidth="197.0" stylesheets="@resize.css" text="Main Actions" textFill="#6b4208" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <content>
+                            <AnchorPane minHeight="90.0" minWidth="0.0" prefHeight="273.0" prefWidth="0.0" styleClass="sfondo" stylesheets="@resize.css">
+                                 <children>
+                                    <Button fx:id="m1" layoutX="20.0" layoutY="22.0" minHeight="-Infinity" minWidth="0.0" mnemonicParsing="false" onMouseClicked="#startAction" onMouseEntered="#changeMouseStyle" prefHeight="37.0" prefWidth="155.0" text="Elect a councillor" textAlignment="CENTER" textFill="#6b4208" AnchorPane.topAnchor="22.0" />
+                                    <Button fx:id="m4" layoutX="20.0" layoutY="67.0" minWidth="30.0" mnemonicParsing="false" onMouseClicked="#startAction" onMouseEntered="#changeMouseStyle" prefHeight="37.0" prefWidth="155.0" text="Build by king" textAlignment="CENTER" textFill="#6b4208" AnchorPane.topAnchor="67.0" />
+                                    <Button fx:id="m3" layoutX="20.0" layoutY="157.0" mnemonicParsing="false" onMouseClicked="#startAction" onMouseEntered="#changeMouseStyle" prefHeight="37.0" prefWidth="155.0" text="Build by permit tile" textAlignment="CENTER" textFill="#6b4208" AnchorPane.topAnchor="157.0" />
+                                    <Button fx:id="m2" layoutX="20.0" layoutY="112.0" minWidth="30.0" mnemonicParsing="false" onMouseClicked="#startAction" onMouseEntered="#changeMouseStyle" prefHeight="37.0" prefWidth="155.0" stylesheets="@resize.css" text="Acquire permit tile" textAlignment="CENTER" textFill="#6b4208" AnchorPane.topAnchor="112.0" />
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                           <font>
+                              <Font name="Papyrus" size="13.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="label" />
+                              <String fx:value="submit" />
+                           </styleClass>
+                        </TitledPane>
+                     </children>
+                  </AnchorPane>
                </children>
             </VBox>
          </right>

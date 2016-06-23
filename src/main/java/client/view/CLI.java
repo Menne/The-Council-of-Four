@@ -75,7 +75,7 @@ public class CLI extends ClientView {
 			try {
 				input=this.scanner.nextLine();
 			} catch (IllegalStateException e){
-				break;
+				return;
 			}
 			if (this.availableActions().contains(input)) {
 				ActionDTO selectedAction=this.actionParser(input);

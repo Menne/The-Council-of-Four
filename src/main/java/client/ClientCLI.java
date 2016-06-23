@@ -61,7 +61,8 @@ public class ClientCLI {
 					connection.registerObserver(clientController);
 					view.welcome(name);
 					view.input();
-					break;
+					scanner.close();
+					return;
 				}
 				else{
 					Socket socket=new Socket(ip, PORT_SOCKET);
@@ -77,13 +78,15 @@ public class ClientCLI {
 					executor.submit(connection);
 					view.welcome(name);
 					view.input();
-					break;
+					executor.shutdown();
+					scanner.close();
+					return;
 				}
 			}catch(SocketException | RemoteException e){
 				System.out.println("Server Unreachable. Try again");
 			}
 		}
-		scanner.close();
+		
 	}
 
 }
