@@ -494,10 +494,9 @@ public class GUI extends ClientView{
 			public void run() {
 				FXMLLoader loader = new FXMLLoader();
 				loader.setLocation(ClientGUI.class.getResource("MarketView.fxml"));
-				AnchorPane root=new AnchorPane();
-				loader.setRoot(root);
+
 				try {
-					root=(AnchorPane)loader.load();
+					AnchorPane root=(AnchorPane)loader.load();
 					Stage marketStage=new Stage();
 					marketStage.initModality(Modality.APPLICATION_MODAL);
 					marketStage.initStyle(StageStyle.UNDECORATED);
