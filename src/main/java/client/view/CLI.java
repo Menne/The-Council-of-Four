@@ -151,6 +151,11 @@ public class CLI extends ClientView {
 		System.out.println(message);
 	}
 	
+	@Override
+	public void startMarket() {
+		System.out.println("Market is started!");
+	}
+	
 	
 	@Override
 	public RegionDTO askForRegionBoard() {

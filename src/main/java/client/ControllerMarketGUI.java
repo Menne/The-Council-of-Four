@@ -47,22 +47,10 @@ public class ControllerMarketGUI {
 	private VBox offers;
 	
 	@FXML
-	private Button sellPermitTile;
+	private Button sell;
 	
 	@FXML
-	private Button sellPoliticCard;
-	
-	@FXML
-	private Button sellAssistant;
-	
-	@FXML
-	private TextField pricePermitTile;
-	
-	@FXML
-	private TextField pricePoliticCard;
-	
-	@FXML
-	private TextField priceAssistant;
+	private TextField price;
 	
 	@FXML
 	private TextArea messageBox;
@@ -77,7 +65,20 @@ public class ControllerMarketGUI {
 	private Button skip;
 	
 	
+	public Button getSkip() {
+		return skip;
+	}
+
+	public Button getMakeAnOffer() {
+		return makeAnOffer;
+	}
 	
+	
+
+	public Button getAcceptAnOffer() {
+		return acceptAnOffer;
+	}
+
 	public List<Button> getActions() {
 		return Arrays.asList(makeAnOffer, acceptAnOffer, skip);
 	}
@@ -98,21 +99,18 @@ public class ControllerMarketGUI {
 		return offers;
 	}
 
-	public List<Button> getOfferSettedButtons() {
-		return Arrays.asList(sellPoliticCard, sellPermitTile, sellAssistant);
-	}
-	
-	public List<TextField> getPriceFields() {
-		return Arrays.asList(pricePermitTile, pricePoliticCard, priceAssistant);
-	}
-
 	public TextArea getMessageBox() {
 		return messageBox;
 	}
 	
-	
-	
-	
+	public Button getSell() {
+		return sell;
+	}
+
+	public TextField getPrice() {
+		return price;
+	}
+
 	@FXML
 	public void startAction(Event event) throws RemoteException {
 		ActionDTO selectedAction=(ActionDTO) ((Button) event.getSource()).getUserData();
@@ -171,9 +169,9 @@ public class ControllerMarketGUI {
 		}
 	}
 	
-	public void handleOfferSetted(boolean offerSubmitted) {
+	public void handleOfferSetted() {
 		synchronized (this) {
-			this.view.setCurrentParameter(offerSubmitted);
+			this.view.setCurrentParameter(Integer.parseInt(price.getText()));
 			this.notify();
 		}
 	}

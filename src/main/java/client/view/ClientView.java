@@ -60,6 +60,8 @@ public abstract class ClientView implements Observer<ClientViewNotify> {
 	
 	public abstract void displayChatMessage(String message);
 	
+	public abstract void startMarket();
+	
 	
 	public abstract RegionDTO askForRegionBoard();
 	
