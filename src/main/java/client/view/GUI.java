@@ -23,6 +23,8 @@ import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.ActionWithParameters;
 import client.modelDTO.actionsDTO.MoveToNextDTO;
 import client.modelDTO.actionsDTO.PickPoliticsCardDTO;
+import client.modelDTO.actionsDTO.marketActions.AcceptAnOfferDTO;
+import client.modelDTO.actionsDTO.marketActions.MakeAnOfferDTO;
 import client.modelDTO.actionsDTO.standardActions.AcquirePermitTileDTO;
 import client.modelDTO.actionsDTO.standardActions.AddictionalMainActionDTO;
 import client.modelDTO.actionsDTO.standardActions.BuildByKingDTO;
@@ -48,6 +50,7 @@ import client.modelDTO.playerDTO.AssistantDTO;
 import client.modelDTO.playerDTO.ClientPlayerDTO;
 import client.view.notifies.ClientViewNotify;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -55,17 +58,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import server.model.bonus.AssistantsBonus;
 import server.model.bonus.CoinsBonus;
 import server.model.bonus.MainActionBonus;
@@ -226,9 +226,6 @@ public class GUI extends ClientView{
 		controllerGUI.getActions().get(7).setUserData(new AddictionalMainActionDTO());
 		controllerGUI.getActions().get(8).setUserData(new MoveToNextDTO());
 		controllerGUI.getPoliticsDeck().setUserData(new PickPoliticsCardDTO());
-	//	controllerMarketGUI.getActions().get(0).setUserData(new MakeAnOfferDTO());
-	//	controllerMarketGUI.getActions().get(1).setUserData(new AcceptAnOfferDTO());
-	//	controllerMarketGUI.getActions().get(2).setUserData(new MoveToNextDTO());
 		
 	}
 
@@ -505,19 +502,27 @@ public class GUI extends ClientView{
 				try {
 					AnchorPane root=(AnchorPane)loader.load();
 					Stage marketStage=new Stage();
-					marketStage.initModality(Modality.APPLICATION_MODAL);
-					marketStage.initStyle(StageStyle.UNDECORATED);
 					marketStage.setTitle("Market");
 					marketStage.setScene(new Scene(root));
 					controllerMarketGUI=loader.getController();
 					controllerMarketGUI.setClientGame(clientGame);
 					controllerMarketGUI.setView(GUI.this);
+					controllerMarketGUI.getMakeAnOffer().setUserData(new MakeAnOfferDTO());
+					controllerMarketGUI.getSkip().setUserData(new MoveToNextDTO());
+					controllerMarketGUI.getAcceptAnOffer().setUserData(new AcceptAnOfferDTO());
 					for(PoliticsCardDTO card : clientGame.getClientPlayer().getHand()){
 						ImageView imageView=new ImageView(imageMap.get(card));
 						controllerMarketGUI.getAvailablePoliticCards().getChildren().add(imageView);
 						imageView.setUserData(card);	
 						imageView.setFitWidth(50);
 						imageView.setPreserveRatio(true);
+						imageView.setOnMouseClicked(new EventHandler<Event>() {
+
+							@Override
+							public void handle(Event event) {
+								controllerMarketGUI.handlePoliticsCard(card);							
+							}
+						});
 					}
 					for(PermitTileDTO permitTileDTO : clientGame.getClientPlayer().getAvailablePermitTiles()){
 						ImageView imageView=new ImageView(imageMap.get(permitTileDTO));
@@ -525,15 +530,60 @@ public class GUI extends ClientView{
 						imageView.setUserData(permitTileDTO);
 						imageView.setFitWidth(50);
 						imageView.setPreserveRatio(true);
+						imageView.setOnMouseClicked(new EventHandler<Event>() {
+
+							@Override
+							public void handle(Event event) {
+								controllerMarketGUI.handlePermitTilesTurnedUp(permitTileDTO);						
+							}
+						});
 					}
-					ImageView imageView=new ImageView(new Image(getClass().getResource("images/various/Assistant.png").toExternalForm()));
-					imageView.setFitWidth(50);
-					imageView.setPreserveRatio(true);
+					Image image=new Image(getClass().getResource("images/various/Assistant.png").toExternalForm());
+					
 					for(AssistantDTO assistantDTO : clientGame.getClientPlayer().getAssistants()){
+						ImageView imageView=new ImageView(image);
+						imageView.setFitWidth(50);
+						imageView.setPreserveRatio(true);
 						imageView.setUserData(assistantDTO);
 						controllerMarketGUI.getAvailableAssistants().getChildren().add(imageView);
+						imageView.setOnMouseClicked(new EventHandler<Event>() {
+
+							@Override
+							public void handle(Event event) {
+								controllerMarketGUI.handleAssistants(assistantDTO);
+								
+							}
+						});
 					}
-						
+				
+					controllerMarketGUI.getMakeAnOffer().setOnAction(new EventHandler<ActionEvent>() {
+
+						@Override
+						public void handle(ActionEvent event) {
+							try {
+								controllerMarketGUI.startAction(event);
+							} catch (RemoteException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							
+						}
+					});
+					controllerMarketGUI.getSkip().setOnAction(new EventHandler<ActionEvent>() {
+
+						@Override
+						public void handle(ActionEvent event) {
+							try {
+								
+								controllerMarketGUI.startAction(event);
+								
+							} catch (RemoteException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							
+						}
+					});
 					marketStage.show();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
@@ -542,6 +592,8 @@ public class GUI extends ClientView{
 			}
 		});
 	}
+	
+	
 	
 	@Override
 	public void displayMessage(String string) {
@@ -601,10 +653,13 @@ public class GUI extends ClientView{
 		
 	}
 	
+	@Override
+	public void startMarket() {
+		// TODO Auto-generated method stub
+		
+	}
 	
-
-	
-	
+		
 	@Override
 	public RegionDTO askForRegionBoard() {
 		this.disableClickOnRegions(false);
@@ -745,16 +800,25 @@ public class GUI extends ClientView{
 	@Override
 	public MarketableDTO askForMakingAnOffer() {
 		this.disableClickOnObjectsToSell(false);
+/*		HBox offerBox=new HBox();
+		controllerMarketGUI.getOffers().getChildren().add(offerBox);
+		offerBox.setSpacing(90);
+		offerBox.getChildren().add(new Label(clientGame.getClientPlayer().getName()));
+		offerBox.setVisible(false);*/
 		synchronized (this.controllerMarketGUI) {
 			try {
-				while (controllerMarketGUI==null)
-					this.controllerGUI.wait();
+				while (currentParameter==null)
+					this.controllerMarketGUI.wait();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		MarketableDTO offeringObject=(MarketableDTO) this.currentParameter;
+/*		ImageView imageView=new ImageView(imageMap.get(offeringObject));
+		imageView.setFitHeight(50);
+		imageView.setPreserveRatio(true);
+		offerBox.getChildren().add(imageView);*/
 		this.currentParameter=null;
 		this.disableClickOnObjectsToSell(true);
 		return offeringObject;
@@ -774,6 +838,7 @@ public class GUI extends ClientView{
 			}
 		}
 		int price=(int) this.currentParameter;
+//		((HBox)controllerMarketGUI.getOffers().getChildren().get(controllerMarketGUI.getOffers().getChildren().size()-1)).getChildren().add(new Label(String.valueOf(price)));
 		this.currentParameter=null;
 		this.disablePriceInsertion(true);
 		this.disableClickOnOfferSettedButtons(true);
@@ -782,21 +847,40 @@ public class GUI extends ClientView{
 	
 	@Override
 	public boolean askForOtherSelling() {
-		Platform.runLater(new Runnable() {
-			
+		controllerMarketGUI.getMakeAnOffer().setOnAction(new EventHandler<ActionEvent>() {
+
 			@Override
-			public void run() {
-				Alert alert = new Alert(AlertType.CONFIRMATION);
-				alert.setTitle("messaggio prova mercato");
-				alert.setHeaderText("messaggio prova mercato");
-				alert.setContentText("messaggio prova mercato");
-				Optional<ButtonType> result=alert.showAndWait();
-				if (result.get()==ButtonType.OK)
+			public void handle(ActionEvent event) {				
+				synchronized(controllerMarketGUI){
 					currentParameter=true;
-				else
-					currentParameter=false;
+					controllerMarketGUI.notify();
+				}
 			}
 		});
+		controllerMarketGUI.getSkip().setOnAction(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(ActionEvent event) {
+				
+				synchronized(controllerMarketGUI){					
+					currentParameter=false;	
+					controllerMarketGUI.notify();
+				}
+			}
+		});
+		controllerMarketGUI.getMakeAnOffer().setDisable(false);
+		controllerMarketGUI.getSkip().setDisable(false);
+		synchronized(controllerMarketGUI){
+			try {
+				
+				while(currentParameter==null)
+					controllerMarketGUI.wait();
+				
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		Boolean choice=(boolean) this.currentParameter;
 		this.currentParameter=null;
 		this.disableClickOnOffers(true);
@@ -944,13 +1028,11 @@ public class GUI extends ClientView{
 	}
 	
 	private void disablePriceInsertion(boolean disabled) {
-		for (TextField textField : controllerMarketGUI.getPriceFields())
-			textField.setDisable(disabled);
+		controllerMarketGUI.getPrice().setDisable(disabled);
 	}
 	
 	private void disableClickOnOfferSettedButtons(boolean disabled) {
-		for (Button button : controllerMarketGUI.getOfferSettedButtons())
-			button.setDisable(disabled);
+		controllerMarketGUI.getSell().setDisable(disabled);
 	}
 	
 	private void disableClickOnOffers(boolean disabled) {

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -13,81 +12,95 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="564.0" prefWidth="752.0" styleClass="sfondo" stylesheets="@resize.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.ControllerMarketGUI">
    <children>
-      <SplitPane dividerPositions="0.408" layoutX="290.0" layoutY="155.0" prefHeight="564.0" prefWidth="752.0" styleClass="splitPan" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.23035714285714284" orientation="VERTICAL" prefHeight="564.0" prefWidth="752.0" styleClass="splitPan" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="sfondo">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" styleClass="sfondo" stylesheets="@resize.css">
                <children>
-                  <SplitPane dividerPositions="0.36185383244206776, 0.6951871657754011" layoutX="-3.0" layoutY="-3.0" orientation="VERTICAL" prefHeight="560.0" prefWidth="301.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <items>
-                        <AnchorPane prefHeight="212.0" prefWidth="307.0">
-                           <children>
-                              <ScrollPane layoutY="40.0" prefHeight="105.0" prefWidth="298.0">
-                                <content>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="103.0" prefWidth="296.0" styleClass="sfondo">
-                                       <children>
-                                          <HBox fx:id="availablePermitTiles" layoutX="12.0" layoutY="-15.0" prefHeight="103.0" prefWidth="296.0" styleClass="scroll-bar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                       </children></AnchorPane>
-                                </content>
-                              </ScrollPane>
-                              <Label layoutX="3.0" layoutY="13.0" text="Select one of your permit tiles to sell:" />
-                              <Label layoutX="7.0" layoutY="163.0" text="Price:" />
-                              <TextField fx:id="pricePermitTile" layoutX="54.0" layoutY="163.0" prefHeight="27.0" prefWidth="58.0" />
-                              <Button fx:id="sellPermitTile" layoutX="121.0" layoutY="157.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="68.0" text="Sell" />
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="193.0" prefWidth="306.0">
-                           <children>
-                              <ScrollPane layoutX="1.0" layoutY="38.0" prefHeight="83.0" prefWidth="298.0">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="81.0" prefWidth="295.0" styleClass="sfondo">
-                                       <children>
-                                          <HBox fx:id="availablePoliticCards" layoutX="41.0" layoutY="-7.0" prefHeight="81.0" prefWidth="295.0" styleClass="scroll-bar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                       </children></AnchorPane>
-                                 </content>
-                              </ScrollPane>
-                              <Label layoutX="3.0" layoutY="12.0" text="Select one of your politic cards to sell:" />
-                              <Label layoutX="4.0" layoutY="140.0" text="Price:" />
-                              <TextField fx:id="pricePoliticCard" layoutX="52.0" layoutY="140.0" prefHeight="27.0" prefWidth="58.0" />
-                              <Button fx:id="sellPoliticCard" layoutX="118.0" layoutY="134.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="68.0" text="Sell" />
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="78.0" prefWidth="305.0">
-                           <children>
-                              <Label layoutX="8.0" layoutY="125.0" text="Price:" />
-                              <TextField fx:id="priceAssistant" layoutX="57.0" layoutY="127.0" prefHeight="27.0" prefWidth="58.0" />
-                              <Button fx:id="sellAssistant" layoutX="122.0" layoutY="120.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="68.0" text="Sell" />
-                              <Label layoutX="5.0" layoutY="9.0" text="Select an assistant to sell it:" />
-                              <ScrollPane layoutX="-1.0" layoutY="36.0" prefHeight="83.0" prefWidth="298.0">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="81.0" prefWidth="296.0" styleClass="sfondo">
-                                       <children>
-                                          <HBox fx:id="availableAssistants" layoutX="-11.0" layoutY="-32.0" prefHeight="81.0" prefWidth="296.0" styleClass="scroll-bar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                       </children>
-                                    </AnchorPane>
-                                 </content>
-                              </ScrollPane>
-                           </children>
-                        </AnchorPane>
-                     </items>
-                     <styleClass>
-                        <String fx:value="sfondo" />
-                        <String fx:value="splitPan" />
-                     </styleClass>
-                  </SplitPane>
+                  <Label layoutX="14.0" layoutY="14.0" text="Welcome to the market of the Concil of Four, choose your action" />
+                  <Button fx:id="acceptAnOffer" layoutX="543.0" layoutY="53.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="148.0" text="Accept an offer" />
+                  <Button fx:id="skip" layoutX="313.0" layoutY="53.0" mnemonicParsing="false" onAction="#startAction" prefHeight="41.0" prefWidth="128.0" text="Skip" />
+                  <Button fx:id="makeAnOffer" layoutX="83.0" layoutY="53.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="148.0" text="Make an Offer" />
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="sfondo" stylesheets="@resize.css">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" styleClass="sfondo">
                <children>
-                  <TextArea fx:id="messageBox" layoutX="-4.0" layoutY="424.0" prefHeight="141.0" prefWidth="444.0" />
-                  <ScrollPane AnchorPane.bottomAnchor="132.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <content>
-                        <AnchorPane prefHeight="426.0" prefWidth="437.0">
+                  <SplitPane dividerPositions="0.467828418230563" prefHeight="409.0" prefWidth="748.0" styleClass="sfondo" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
-                              <VBox fx:id="offers" prefHeight="428.0" prefWidth="438.0" styleClass="sfondo" stylesheets="@resize.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <VBox prefHeight="407.0" prefWidth="346.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                       <children>
+                                          <Label text="Available cards" />
+                                          <ScrollPane layoutY="28.0" prefHeight="85.0" prefWidth="346.0" styleClass="sfondo">
+                                            <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="82.0" prefWidth="344.0" styleClass="sfondo">
+                                                   <children>
+                                                      <HBox fx:id="availablePoliticCards" prefHeight="85.0" prefWidth="344.0" AnchorPane.bottomAnchor="-11.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                   </children>
+                                                </AnchorPane>
+                                            </content>
+                                          </ScrollPane>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                       <children>
+                                          <Label text="Available permit tiles" />
+                                          <ScrollPane layoutY="31.0" prefHeight="85.0" prefWidth="346.0">
+                                            <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="83.0" prefWidth="344.0">
+                                                   <children>
+                                                      <HBox fx:id="availablePermitTiles" layoutY="-5.0" prefHeight="67.0" prefWidth="340.0" styleClass="sfondo" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-5.0" />
+                                                   </children>
+                                                </AnchorPane>
+                                            </content>
+                                          </ScrollPane>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                       <children>
+                                          <Label text="Available assistants" />
+                                          <ScrollPane layoutY="32.0" prefHeight="85.0" prefWidth="346.0">
+                                            <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="81.0" prefWidth="343.0" styleClass="sfondo">
+                                                   <children>
+                                                      <HBox fx:id="availableAssistants" prefHeight="81.0" prefWidth="343.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                   </children></AnchorPane>
+                                            </content>
+                                          </ScrollPane>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane prefHeight="160.0" prefWidth="346.0">
+                                       <children>
+                                          <TextField fx:id="price" layoutX="70.0" layoutY="29.0" prefHeight="25.0" prefWidth="85.0" />
+                                          <Label layoutX="24.0" layoutY="23.0" text="Price" />
+                                          <Button fx:id="sell" layoutX="198.0" layoutY="18.0" mnemonicParsing="false" onAction="#handleOfferSetted" prefHeight="41.0" prefWidth="128.0" text="Sell" />
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </VBox>
                            </children>
                         </AnchorPane>
-                     </content>
-                  </ScrollPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <ScrollPane layoutY="41.0" styleClass="sfondo" AnchorPane.bottomAnchor="109.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="41.0">
+                                 <content>
+                                    <VBox fx:id="offers" prefHeight="272.0" prefWidth="392.0" styleClass="sfondo" />
+                                 </content>
+                              </ScrollPane>
+                              <HBox prefHeight="46.0" prefWidth="394.0" spacing="90.0">
+                                 <children>
+                                    <Label text="Player" />
+                                    <Label text="Selling Object" />
+                                    <Label text="Price" />
+                                 </children>
+                              </HBox>
+                              <TextArea fx:id="messageBox" layoutX="-4.0" layoutY="317.0" prefHeight="178.0" prefWidth="402.0" />
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
                </children>
             </AnchorPane>
         </items>
