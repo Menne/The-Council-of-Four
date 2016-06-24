@@ -11,7 +11,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import client.ClientGUI;
 import client.ControllerGUI;
@@ -58,7 +57,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -489,16 +487,15 @@ public class GUI extends ClientView{
 		});
 		
 	}
-
+	
 	@Override
-	public void displayMarket(MarketDTO market) {
+	public void startMarket() {
 		Platform.runLater(new Runnable() {
 			
 			@Override
 			public void run() {
 				FXMLLoader loader = new FXMLLoader();
 				loader.setLocation(ClientGUI.class.getResource("MarketView.fxml"));
-
 				try {
 					AnchorPane root=(AnchorPane)loader.load();
 					Stage marketStage=new Stage();
@@ -510,90 +507,114 @@ public class GUI extends ClientView{
 					controllerMarketGUI.getMakeAnOffer().setUserData(new MakeAnOfferDTO());
 					controllerMarketGUI.getSkip().setUserData(new MoveToNextDTO());
 					controllerMarketGUI.getAcceptAnOffer().setUserData(new AcceptAnOfferDTO());
-					for(PoliticsCardDTO card : clientGame.getClientPlayer().getHand()){
-						ImageView imageView=new ImageView(imageMap.get(card));
-						controllerMarketGUI.getAvailablePoliticCards().getChildren().add(imageView);
-						imageView.setUserData(card);	
-						imageView.setFitWidth(50);
-						imageView.setPreserveRatio(true);
-						imageView.setOnMouseClicked(new EventHandler<Event>() {
-
-							@Override
-							public void handle(Event event) {
-								controllerMarketGUI.handlePoliticsCard(card);							
-							}
-						});
-					}
-					for(PermitTileDTO permitTileDTO : clientGame.getClientPlayer().getAvailablePermitTiles()){
-						ImageView imageView=new ImageView(imageMap.get(permitTileDTO));
-						controllerMarketGUI.getAvailablePermitTiles().getChildren().add(imageView);
-						imageView.setUserData(permitTileDTO);
-						imageView.setFitWidth(50);
-						imageView.setPreserveRatio(true);
-						imageView.setOnMouseClicked(new EventHandler<Event>() {
-
-							@Override
-							public void handle(Event event) {
-								controllerMarketGUI.handlePermitTilesTurnedUp(permitTileDTO);						
-							}
-						});
-					}
-					Image image=new Image(getClass().getResource("images/various/Assistant.png").toExternalForm());
-					
-					for(AssistantDTO assistantDTO : clientGame.getClientPlayer().getAssistants()){
-						ImageView imageView=new ImageView(image);
-						imageView.setFitWidth(50);
-						imageView.setPreserveRatio(true);
-						imageView.setUserData(assistantDTO);
-						controllerMarketGUI.getAvailableAssistants().getChildren().add(imageView);
-						imageView.setOnMouseClicked(new EventHandler<Event>() {
-
-							@Override
-							public void handle(Event event) {
-								controllerMarketGUI.handleAssistants(assistantDTO);
-								
-							}
-						});
-					}
-				
-					controllerMarketGUI.getMakeAnOffer().setOnAction(new EventHandler<ActionEvent>() {
-
-						@Override
-						public void handle(ActionEvent event) {
-							try {
-								controllerMarketGUI.startAction(event);
-							} catch (RemoteException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-							
-						}
-					});
-					controllerMarketGUI.getSkip().setOnAction(new EventHandler<ActionEvent>() {
-
-						@Override
-						public void handle(ActionEvent event) {
-							try {
-								
-								controllerMarketGUI.startAction(event);
-								
-							} catch (RemoteException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-							
-						}
-					});
+					displayMarketStuff();
 					marketStage.show();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}
+				}				
+			}
+		});
+		
+	}
+
+	@Override
+	public void displayMarket(MarketDTO market) {
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+
+				displayMarketStuff();				
+				controllerMarketGUI.getMakeAnOffer().setOnAction(new EventHandler<ActionEvent>() {
+
+					@Override
+					public void handle(ActionEvent event) {
+						try {
+							controllerMarketGUI.startAction(event);
+						} catch (RemoteException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+							
+					}
+				});
+				controllerMarketGUI.getSkip().setOnAction(new EventHandler<ActionEvent>() {
+
+					@Override
+					public void handle(ActionEvent event) {
+						try {								
+							controllerMarketGUI.startAction(event);	
+						} catch (RemoteException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+							
+					}
+				});
+				controllerMarketGUI.getAcceptAnOffer().setOnAction(new EventHandler<ActionEvent>() {
+
+					@Override
+					public void handle(ActionEvent event) {
+						try {
+							controllerMarketGUI.startAction(event);
+						} catch (RemoteException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}					
+					}
+				});
 			}
 		});
 	}
 	
-	
+	private void displayMarketStuff(){
+		for(PoliticsCardDTO card : clientGame.getClientPlayer().getHand()){
+			ImageView imageView=new ImageView(imageMap.get(card));
+			controllerMarketGUI.getAvailablePoliticCards().getChildren().add(imageView);
+			imageView.setUserData(card);	
+			imageView.setFitWidth(50);
+			imageView.setPreserveRatio(true);
+			imageView.setOnMouseClicked(new EventHandler<Event>() {
+
+				@Override
+				public void handle(Event event) {
+					controllerMarketGUI.handlePoliticsCard(card);							
+				}
+			});
+		}
+		for(PermitTileDTO permitTileDTO : clientGame.getClientPlayer().getAvailablePermitTiles()){
+			ImageView imageView=new ImageView(imageMap.get(permitTileDTO));
+			controllerMarketGUI.getAvailablePermitTiles().getChildren().add(imageView);
+			imageView.setUserData(permitTileDTO);
+			imageView.setFitWidth(50);
+			imageView.setPreserveRatio(true);
+			imageView.setOnMouseClicked(new EventHandler<Event>() {
+
+				@Override
+				public void handle(Event event) {
+					controllerMarketGUI.handlePermitTilesTurnedUp(permitTileDTO);						
+				}
+			});
+		}
+		Image image=new Image(getClass().getResource("images/various/Assistant.png").toExternalForm());
+		
+		for(AssistantDTO assistantDTO : clientGame.getClientPlayer().getAssistants()){
+			ImageView imageView=new ImageView(image);
+			imageView.setFitWidth(50);
+			imageView.setPreserveRatio(true);
+			imageView.setUserData(assistantDTO);
+			controllerMarketGUI.getAvailableAssistants().getChildren().add(imageView);
+			imageView.setOnMouseClicked(new EventHandler<Event>() {
+
+				@Override
+				public void handle(Event event) {
+					controllerMarketGUI.handleAssistants(assistantDTO);
+					
+				}
+			});
+		}
+	}
 	
 	@Override
 	public void displayMessage(String string) {
@@ -650,12 +671,6 @@ public class GUI extends ClientView{
 				controllerGUI.getMessageBox().appendText(message+"\n");	
 			}
 		});
-		
-	}
-	
-	@Override
-	public void startMarket() {
-		// TODO Auto-generated method stub
 		
 	}
 	
