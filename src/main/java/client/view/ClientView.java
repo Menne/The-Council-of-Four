@@ -62,6 +62,8 @@ public abstract class ClientView implements Observer<ClientViewNotify> {
 	
 	public abstract void startMarket();
 	
+	public abstract void closeMarket();
+	
 	
 	public abstract RegionDTO askForRegionBoard();
 	

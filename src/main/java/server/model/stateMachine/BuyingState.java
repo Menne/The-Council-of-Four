@@ -1,5 +1,6 @@
 package server.model.stateMachine;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -7,6 +8,7 @@ import server.model.Game;
 import server.model.actions.Action;
 import server.model.actions.MoveToNext;
 import server.model.actions.marketActions.AcceptAnOffer;
+import server.model.player.Player;
 import server.view.notifies.AvailableActionsNotify;
 import server.view.notifies.MarketNotify;
 import server.view.notifies.PlayerNotify;
@@ -20,6 +22,8 @@ public class BuyingState implements State {
 			return this;
 		}
 		else {
+			game.notifyObserver(new MarketNotify(game, 
+					new ArrayList<Player>(game.getPlayers()), false, true));
 			game.nextPlayer();
 			return new BeginState();
 		}
@@ -35,6 +39,8 @@ public class BuyingState implements State {
 			return this;
 		}
 		else {
+			game.notifyObserver(new MarketNotify(game, 
+					new ArrayList<Player>(game.getPlayers()), false, true));
 			game.nextPlayer();
 			return new BeginState();
 		}
@@ -50,7 +56,7 @@ public class BuyingState implements State {
 		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
 				Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new MarketNotify(game, 
-				Arrays.asList(game.getCurrentPlayer())));
+				new ArrayList<Player>(game.getPlayers()), false, false));
 		game.notifyObserver(new AvailableActionsNotify(game.getState().getAcceptableActions(game), 
 				Arrays.asList(game.getCurrentPlayer()), game.getCurrentPlayer().getName() +
 				", do you want to buy something from the market?"));

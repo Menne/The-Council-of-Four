@@ -1,5 +1,6 @@
 package server.model.stateMachine;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -7,6 +8,7 @@ import server.model.Game;
 import server.model.actions.Action;
 import server.model.actions.MoveToNext;
 import server.model.actions.marketActions.MakeAnOffer;
+import server.model.player.Player;
 import server.view.notifies.AvailableActionsNotify;
 import server.view.notifies.MarketNotify;
 import server.view.notifies.PlayerNotify;
@@ -47,10 +49,13 @@ public class SellingState implements State {
 
 	@Override
 	public void updateClients(Game game) {
+		if (game.getCurrentPlayer().getPlayerNumber()==1)
+			game.notifyObserver(new MarketNotify(game, 
+					new ArrayList<Player>(game.getPlayers()), true, false));
 		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
-				Arrays.asList(game.getCurrentPlayer())));
+					Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new MarketNotify(game, 
-				Arrays.asList(game.getCurrentPlayer())));
+				new ArrayList<Player>(game.getPlayers()), false, false));
 		game.notifyObserver(new AvailableActionsNotify(game.getState().getAcceptableActions(game), 
 				Arrays.asList(game.getCurrentPlayer()), game.getCurrentPlayer().getName() +
 				", you are in the market phase now. Do you want to sell something to other players?"));

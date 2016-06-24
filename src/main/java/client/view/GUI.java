@@ -659,6 +659,11 @@ public class GUI extends ClientView{
 		
 	}
 	
+	@Override
+	public void closeMarket() {
+		System.out.println("Market is finished!");
+	}
+	
 		
 	@Override
 	public RegionDTO askForRegionBoard() {
