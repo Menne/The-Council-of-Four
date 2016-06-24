@@ -1,3 +1,4 @@
+
 package client.modelDTO.gameTableDTO;
 
 import java.util.ArrayList;

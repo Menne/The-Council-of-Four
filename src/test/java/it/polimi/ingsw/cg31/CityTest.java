@@ -55,9 +55,10 @@ public class CityTest {
 		Set<Bonus> set= new HashSet<>();
 		Bonus bonus1= new ScoreBonus(1);
 		set.add(bonus1);
-		list.add(new RewardToken(set));
+		RewardToken token= new RewardToken(set);
+		list.add(token);
 		City city=new City("città1",game.getGameTable().getRegionBoards().get(0), colour, list);
-		assertEquals(set,city.getRewardToken());
+		assertEquals(token,city.getRewardToken());
 	}
 	
 	@Test
@@ -76,7 +77,8 @@ public class CityTest {
 		list.add(new RewardToken(set));
 		City city=new City("città1",game.getGameTable().getRegionBoards().get(0), colour, list);
 		Set<Bonus> set1= new HashSet<>();
-		assertEquals(set1, city.getRewardToken());
+		RewardToken token= new RewardToken(set1);
+		assertEquals(token.getRewardTokenBonus(), city.getRewardToken().getRewardTokenBonus());
 	}
 	
 	@Test

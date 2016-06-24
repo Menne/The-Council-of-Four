@@ -13,7 +13,7 @@ import server.model.bonus.PoliticsCardsBonus;
 import server.model.player.Player;
 
 public class PoliticsCardsBonusTest {
-	/*
+
 
 	@Test(expected=IllegalArgumentException.class)
 	public void testZeroException() {
@@ -38,8 +38,8 @@ public class PoliticsCardsBonusTest {
 		PoliticsCardsBonus bonus1= new PoliticsCardsBonus(3);
 		bonus.assignBonus(game);
 		assertEquals(temp+3, game.getCurrentPlayer().getHand().size());
-		assertEquals("PoliticsCards+" + 3, bonus.toString());
+		assertEquals("politics+" + 3, bonus.toString());
 		assertEquals(34, bonus.hashCode());
 		assertEquals(bonus, bonus1);
-	}*/
+	}
 }

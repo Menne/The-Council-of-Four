@@ -34,7 +34,7 @@ public class CityColourTest {
 	public void testGetName() {
 		ScoreBonus bonus= new ScoreBonus(1);
 		CityColour colour= new CityColour("Blue", new ColourBonusTile(bonus, "Blue"));
-		assertTrue("blu"== colour.getName());
+		assertTrue("Blue"== colour.getName());
 	}
 	
 	@Test
@@ -71,7 +71,7 @@ public class CityColourTest {
 		assertTrue(cityColour.isBonusAvailable());
 		cityColour.notBonusAvailable();
 		assertFalse(cityColour.isBonusAvailable());
-		assertEquals(97674, cityColour.hashCode());
+		assertEquals(2073753, cityColour.hashCode());
 		CityColour cityColour1= new CityColour(name, new ColourBonusTile(colorBonus, name));
 		cityColour1.addCityOfThisColour(c);
 		assertTrue(cityColour.equals(cityColour1));

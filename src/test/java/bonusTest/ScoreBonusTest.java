@@ -13,7 +13,6 @@ import server.model.bonus.ScoreBonus;
 import server.model.player.Player;
 
 public class ScoreBonusTest {
-	/*
 
 	@Test
 	public void testAssignBonus() throws IOException {
@@ -27,7 +26,7 @@ public class ScoreBonusTest {
 		ScoreBonus bonus1=new ScoreBonus(1);
 		bonus.assignBonus(game);
 		assertEquals(1, game.getCurrentPlayer().getScore());
-		assertEquals("Score+" + 1, bonus.toString());
+		assertEquals("score+" + 1, bonus.toString());
 		assertEquals(32, bonus.hashCode());
 		assertEquals(bonus, bonus1);
 	}
@@ -47,5 +46,5 @@ public class ScoreBonusTest {
 	@Test(expected=IllegalArgumentException.class)
 	public void testNegativeException(){
 		new ScoreBonus(-2);
-	}*/
+	}
 }

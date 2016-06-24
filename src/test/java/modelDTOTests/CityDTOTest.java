@@ -16,7 +16,7 @@ import client.modelDTO.gameTableDTO.RewardTokenDTO;
 import server.model.bonus.Bonus;
 
 public class CityDTOTest {
-/*
+
 	@Test
 	public void testGettersAndSetters() {
 		CityDTO city= new CityDTO();
@@ -31,11 +31,10 @@ public class CityDTOTest {
 		assertTrue(city.getBuildedEmporiums()==emporiums);
 		assertTrue(city.getColour()==colour);
 		assertTrue(city.getName()==name);
-		assertTrue(city.getRewardToken()==rewardToken);
+		assertTrue(city.getRewardToken().getBonuses()==rewardToken);
 		List<String> emporiumsPlayers=new ArrayList<>();
 		for(GenericPlayerDTO player : emporiums)
 			emporiumsPlayers.add(player.getName());
 		assertEquals(name+"\t"+emporiums+"\t"+rewardToken+"\n", city.toString());
 	}
-*/
 }

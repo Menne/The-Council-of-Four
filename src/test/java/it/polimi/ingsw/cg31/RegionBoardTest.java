@@ -19,7 +19,7 @@ import server.model.player.Player;
 
 public class RegionBoardTest {
 
-/*
+
 	@Test
 	public void testGetName() throws IOException {
 		Game game=new Game();
@@ -78,7 +78,7 @@ public class RegionBoardTest {
 		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
-		assertEquals(ScoreBonus.class, game.getGameTable().getRegionBoards().get(0).getRegionBonus().getClass());
+		assertEquals(ScoreBonus.class, game.getGameTable().getRegionBoards().get(0).getRegionBonus().getBonus().getClass());
 	}
 	
 	@Test
@@ -187,5 +187,5 @@ public class RegionBoardTest {
 		i=game.getGameTable().getRegionBoards().get(0).getRegionPermitDeck().getPermitTiles().size();
 		assertEquals(t, game.getGameTable().getRegionBoards().get(0).getRegionPermitDeck().getPermitTiles().get(i-3));
 	}
-	*/
+	
 }

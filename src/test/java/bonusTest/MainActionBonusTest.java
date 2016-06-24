@@ -15,7 +15,7 @@ import server.model.stateMachine.State10;
 import server.model.stateMachine.State11;
 import server.model.stateMachine.bonusStates.AdditionalMainActionBonusState;
 public class MainActionBonusTest {
-/*
+
 	@Test
 	public void mainActionBonusTestFrom10() throws IOException {
 		Game game=new Game();
@@ -28,7 +28,7 @@ public class MainActionBonusTest {
 		MainActionBonus bonus= new MainActionBonus();
 		bonus.assignBonus(game);
 		assertEquals(AdditionalMainActionBonusState.class, game.getState().getClass());
-		assertEquals("MainAction+1", bonus.toString());
+		assertEquals("mainAction+1", bonus.toString());
 	}
 
 	@Test
@@ -44,5 +44,4 @@ public class MainActionBonusTest {
 		bonus.assignBonus(game);
 		assertEquals(AdditionalMainActionBonusState.class, game.getState().getClass());
 	}
-	*/
 }

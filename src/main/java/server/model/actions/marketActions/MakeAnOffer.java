@@ -23,7 +23,7 @@ public class MakeAnOffer implements Action{
 	
 	@Override
 	public boolean executeAction(Game game) throws NullPointerException {
-		if ((this.offeringObjects==null))
+		if ((this.offeringObjects.size()==0))
 			throw new NullPointerException("Paramters not setted");
 		
 		for (Offer offer : this.offeringObjects)
