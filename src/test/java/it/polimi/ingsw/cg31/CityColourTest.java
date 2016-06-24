@@ -57,7 +57,7 @@ public class CityColourTest {
 	} 
 	
 	@Test
-	public void testGettersAndSetters(){
+	public void testGettersAndSettersHashCodeAndEquals(){
 		String name="Blue";
 		ScoreBonus colorBonus= new ScoreBonus(5);
 		Set<City> citiesOfThisColour= new HashSet<>();

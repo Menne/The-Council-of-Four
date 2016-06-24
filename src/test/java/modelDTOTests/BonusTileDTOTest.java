@@ -1,4 +1,4 @@
-package it.polimi.ingsw.cg31;
+package modelDTOTests;
 
 import static org.junit.Assert.*;
 
