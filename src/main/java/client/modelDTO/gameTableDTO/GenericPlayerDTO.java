@@ -28,6 +28,12 @@ public class GenericPlayerDTO implements ModelDTO{
 		this.availablePermitTiles=new ArrayList<PermitTileDTO>();
 		this.playersFinalBonus=new ArrayList<>();
 	}
+	
+	public GenericPlayerDTO(int playerNumber){
+		this.playerNumber=playerNumber;
+		this.availablePermitTiles=new ArrayList<PermitTileDTO>();
+		this.playersFinalBonus=new ArrayList<>();
+	}
 
 	
 	public int getNumberOfCoveredTiles() {

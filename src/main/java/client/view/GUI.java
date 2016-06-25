@@ -173,6 +173,11 @@ public class GUI extends ClientView{
 		imageMap.put(new BonusTileDTO("Gold", new ScoreBonus(20)), new Image(getClass().getResource("images/colourBonus/GoldBonus.png").toExternalForm()));
 		imageMap.put(new BonusTileDTO("Silver", new ScoreBonus(12)), new Image(getClass().getResource("images/colourBonus/SilverBonus.png").toExternalForm()));
 		imageMap.put(new AssistantDTO(), new Image(getClass().getResource("images/various/Assistant.png").toExternalForm()));
+		imageMap.put(new GenericPlayerDTO(1), new Image(getClass().getResource("images/emporiumsColours/blue.png").toExternalForm()));
+		imageMap.put(new GenericPlayerDTO(2), new Image(getClass().getResource("images/emporiumsColours/red.png").toExternalForm()));
+		imageMap.put(new GenericPlayerDTO(3), new Image(getClass().getResource("images/emporiumsColours/yellow.png").toExternalForm()));
+		imageMap.put(new GenericPlayerDTO(4), new Image(getClass().getResource("images/emporiumsColours/green.png").toExternalForm()));
+		
 	}
 
 	
@@ -257,49 +262,64 @@ public class GUI extends ClientView{
 			for (CityDTO city : regionDTO.getCities()) {
 				if ("Arkon".equals(city.getName())){
 					controllerGUI.getCities().get(0).setUserData(city);
-					controllerGUI.getCitysEmporiums().get(0).setUserData(city);}
+					controllerGUI.getCitysEmporiums().get(0).setUserData(city);
+					}
 				if ("Burgen".equals(city.getName())){
 					controllerGUI.getCities().get(1).setUserData(city);
-					controllerGUI.getCitysEmporiums().get(1).setUserData(city);}
+					controllerGUI.getCitysEmporiums().get(1).setUserData(city);
+					}
 				if ("Castrum".equals(city.getName())){
 					controllerGUI.getCities().get(2).setUserData(city);
-					controllerGUI.getCitysEmporiums().get(2).setUserData(city);}
+					controllerGUI.getCitysEmporiums().get(2).setUserData(city);
+					}
 				if ("Dorful".equals(city.getName())){
 					controllerGUI.getCities().get(3).setUserData(city);
-					controllerGUI.getCitysEmporiums().get(3).setUserData(city);}
+					controllerGUI.getCitysEmporiums().get(3).setUserData(city);
+					}
 				if ("Esti".equals(city.getName())){
 					controllerGUI.getCities().get(4).setUserData(city);
-					controllerGUI.getCitysEmporiums().get(4).setUserData(city);}
+					controllerGUI.getCitysEmporiums().get(4).setUserData(city);
+					}
 				if ("Framek".equals(city.getName())){
 					controllerGUI.getCities().get(5).setUserData(city);
-					controllerGUI.getCitysEmporiums().get(5).setUserData(city);}
+					controllerGUI.getCitysEmporiums().get(5).setUserData(city);
+					}
 				if ("Graden".equals(city.getName())){
 					controllerGUI.getCities().get(6).setUserData(city);
-					controllerGUI.getCitysEmporiums().get(6).setUserData(city);}
+					controllerGUI.getCitysEmporiums().get(6).setUserData(city);
+					}
 				if ("Hellar".equals(city.getName())){
 					controllerGUI.getCities().get(7).setUserData(city);
-					controllerGUI.getCitysEmporiums().get(7).setUserData(city);}
+					controllerGUI.getCitysEmporiums().get(7).setUserData(city);
+					}
 				if ("Indur".equals(city.getName())){
 					controllerGUI.getCities().get(8).setUserData(city);
-					controllerGUI.getCitysEmporiums().get(8).setUserData(city);}
+					controllerGUI.getCitysEmporiums().get(8).setUserData(city);
+					}
 				if ("Juvelar".equals(city.getName())){
 					controllerGUI.getCities().get(9).setUserData(city);
-					controllerGUI.getCitysEmporiums().get(9).setUserData(city);}
+					controllerGUI.getCitysEmporiums().get(9).setUserData(city);
+					}
 				if ("Kultos".equals(city.getName())){
 					controllerGUI.getCities().get(10).setUserData(city);
-					controllerGUI.getCitysEmporiums().get(10).setUserData(city);}
+					controllerGUI.getCitysEmporiums().get(10).setUserData(city);
+					}
 				if ("Lyram".equals(city.getName())){
 					controllerGUI.getCities().get(11).setUserData(city);
-					controllerGUI.getCitysEmporiums().get(11).setUserData(city);}
+					controllerGUI.getCitysEmporiums().get(11).setUserData(city);
+					}
 				if ("Merkatim".equals(city.getName())){
 					controllerGUI.getCities().get(12).setUserData(city);
-					controllerGUI.getCitysEmporiums().get(12).setUserData(city);}
+					controllerGUI.getCitysEmporiums().get(12).setUserData(city);
+					}
 				if ("Naris".equals(city.getName())){
 					controllerGUI.getCities().get(13).setUserData(city);
-					controllerGUI.getCitysEmporiums().get(13).setUserData(city);}
+					controllerGUI.getCitysEmporiums().get(13).setUserData(city);
+					}
 				if ("Osium".equals(city.getName())){
 					controllerGUI.getCities().get(14).setUserData(city);
-					controllerGUI.getCitysEmporiums().get(14).setUserData(city);}
+					controllerGUI.getCitysEmporiums().get(14).setUserData(city);
+					}
 		}
 	}
 	
@@ -314,21 +334,13 @@ public class GUI extends ClientView{
 		
 	
 	private void displayEmporiums(GameTableDTO clientGame){
-	ImageView player1= new ImageView(getClass().getResource("images/emporiumsColours/blue.png").toExternalForm());
-	ImageView player2= new ImageView(getClass().getResource("images/emporiumsColours/red.png").toExternalForm());
-	ImageView player3= new ImageView(getClass().getResource("images/emporiumsColours/yellow.png").toExternalForm());
-	ImageView player4= new ImageView(getClass().getResource("images/emporiumsColours/green.png").toExternalForm());
 		for(HBox hBox: controllerGUI.getCitysEmporiums()){
 			hBox.getChildren().clear();
 			for(GenericPlayerDTO emporium: ((CityDTO)hBox.getUserData()).getBuildedEmporiums()){
-				if(emporium.equals(1))
-					hBox.getChildren().add(player1);
-				if(emporium.equals(2))
-					hBox.getChildren().add(player2);
-				if(emporium.equals(3))
-					hBox.getChildren().add(player3);
-				if(emporium.equals(4))
-					hBox.getChildren().add(player4);
+				ImageView imageView=new ImageView(imageMap.get(emporium));
+				imageView.setFitHeight(80);
+				imageView.setPreserveRatio(true);
+				hBox.getChildren().add(imageView);
 			}
 		}
 	}
