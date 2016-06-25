@@ -39,7 +39,10 @@ public class Market {
 				break;
 			}
 	}
-	
+	/**
+	 * add player to buying player list
+	 * @param player
+	 */
 	public void addPlayer(Player player){
 		this.buyingPlayerList.add(player);
 	}

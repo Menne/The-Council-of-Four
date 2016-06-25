@@ -15,7 +15,6 @@ import client.modelDTO.actionsDTO.standardActions.BuildByPermitTileDTO;
 import client.modelDTO.actionsDTO.standardActions.ChangePermitTilesDTO;
 import client.modelDTO.actionsDTO.standardActions.ElectCouncillorByAssistantDTO;
 import client.modelDTO.actionsDTO.standardActions.ElectCouncillorDTO;
-import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
 import client.modelDTO.gameTableDTO.PoliticsCardDTO;
