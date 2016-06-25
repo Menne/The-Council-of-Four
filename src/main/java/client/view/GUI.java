@@ -338,7 +338,7 @@ public class GUI extends ClientView{
 			hBox.getChildren().clear();
 			for(GenericPlayerDTO emporium: ((CityDTO)hBox.getUserData()).getBuildedEmporiums()){
 				ImageView imageView=new ImageView(imageMap.get(emporium));
-				imageView.setFitHeight(80);
+				imageView.setFitHeight(18);
 				imageView.setPreserveRatio(true);
 				hBox.getChildren().add(imageView);
 			}
