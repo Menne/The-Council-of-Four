@@ -636,15 +636,23 @@ public class GUI extends ClientView{
 		controllerMarketGUI.getOffers().getChildren().clear();
 		for(OfferDTO offerDTO : clientGame.getMarket().getOffersList()){
 			HBox offer=new HBox();
-			offer.setSpacing(90);
+			offer.setSpacing(120);
 			Label name=new Label(offerDTO.getOfferingPlayer());
 			ImageView sellingObject=new ImageView(imageMap.get(offerDTO.getOfferedObjectDTO()));
-			sellingObject.setFitHeight(50);
+			sellingObject.setFitWidth(30);
 			sellingObject.setPreserveRatio(true);
 			Label price=new Label(String.valueOf(offerDTO.getPrice()));
 			offer.getChildren().add(name);
 			offer.getChildren().add(sellingObject);
 			offer.getChildren().add(price);
+			offer.setOnMouseClicked(new EventHandler<Event>() {
+
+				@Override
+				public void handle(Event event) {
+					controllerMarketGUI.handleOffers(offerDTO);					
+				}
+				
+			});
 			controllerMarketGUI.getOffers().getChildren().add(offer);
 		}
 	}
