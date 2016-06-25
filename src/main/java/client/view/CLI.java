@@ -339,13 +339,18 @@ public class CLI extends ClientView {
 	
 	@Override
 	public boolean askForOtherSelling() {
+		System.out.println("[yes, no])");
 		String input=this.scanner.nextLine();
+		while (!("yes".equals(input) || "no".equals(input))) {
+			System.out.println("I didn't understand...");
+			input=this.scanner.nextLine();
+		}
 		if ("yes".equals(input))
 			return true;
 		else if ("no".equals(input))
 			return false;
 		else
-			throw new NullPointerException("Errore");
+			throw new NullPointerException("Wrong input");
 	}
 
 	@Override

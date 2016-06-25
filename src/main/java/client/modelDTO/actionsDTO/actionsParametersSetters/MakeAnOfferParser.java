@@ -42,7 +42,7 @@ public class MakeAnOfferParser implements ActionParserVisitor {
 			
 			this.selectedAction.addOfferToList(offerDTO);
 			
-			view.displayMessage("Do you want to sell more? (yes/no)");
+			view.displayMessage("Do you want make another offer?");
 			this.otherSelling=view.askForOtherSelling();
 		
 			this.selectedAction.parametersSetted();
