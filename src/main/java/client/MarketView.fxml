@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -17,9 +18,18 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" styleClass="sfondo" stylesheets="@resize.css">
                <children>
                   <Label layoutX="14.0" layoutY="14.0" text="Welcome to the market of the Concil of Four, choose your action" />
-                  <Button fx:id="acceptAnOffer" layoutX="543.0" layoutY="53.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="148.0" text="Accept an offer" />
-                  <Button fx:id="skip" layoutX="313.0" layoutY="53.0" mnemonicParsing="false" onAction="#startAction" prefHeight="41.0" prefWidth="128.0" text="Stop Offering" />
-                  <Button fx:id="makeAnOffer" layoutX="83.0" layoutY="53.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="148.0" text="Make an Offer" />
+                  <Button fx:id="acceptAnOffer" layoutX="543.0" layoutY="53.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="148.0" text="Accept an offer">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button fx:id="skip" layoutX="313.0" layoutY="53.0" mnemonicParsing="false" onAction="#startAction" prefHeight="41.0" prefWidth="128.0" text="Stop Offering">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button fx:id="makeAnOffer" layoutX="83.0" layoutY="53.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="148.0" text="Make an Offer">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" styleClass="sfondo">
@@ -73,9 +83,15 @@
                                     </AnchorPane>
                                     <AnchorPane prefHeight="160.0" prefWidth="346.0">
                                        <children>
-                                          <TextField fx:id="price" layoutX="70.0" layoutY="29.0" prefHeight="25.0" prefWidth="85.0" />
+                                          <TextField fx:id="price" layoutX="70.0" layoutY="29.0" prefHeight="25.0" prefWidth="85.0">
+                                             <cursor>
+                                                <Cursor fx:constant="TEXT" />
+                                             </cursor></TextField>
                                           <Label layoutX="24.0" layoutY="23.0" text="Price" />
-                                          <Button fx:id="sell" layoutX="198.0" layoutY="18.0" mnemonicParsing="false" onAction="#handleOfferSetted" prefHeight="41.0" prefWidth="128.0" text="Sell" />
+                                          <Button fx:id="sell" layoutX="198.0" layoutY="18.0" mnemonicParsing="false" onAction="#handleOfferSetted" prefHeight="41.0" prefWidth="128.0" text="Sell">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor></Button>
                                        </children>
                                     </AnchorPane>
                                  </children>

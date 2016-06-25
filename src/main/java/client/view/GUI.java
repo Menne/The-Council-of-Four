@@ -1063,9 +1063,6 @@ public class GUI extends ClientView{
 		this.controllerGUI.getPoliticsDeck().setDisable(disabled);
 		for (Button button : this.controllerGUI.getActions())
 			button.setDisable(disabled);
-		this.controllerMarketGUI.getMakeAnOffer().setDisable(disabled);
-		this.controllerMarketGUI.getAcceptAnOffer().setDisable(disabled);
-		this.controllerMarketGUI.getSkip().setDisable(disabled);
 	}
 	
 
