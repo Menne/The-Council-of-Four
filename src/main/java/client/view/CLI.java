@@ -301,7 +301,7 @@ public class CLI extends ClientView {
 	public int askForNumberOfPermitTile(RegionDTO selectedRegion) {
 		System.out.println("[0, 1]");
 		String numberOfPermitTileToTranslate=this.scanner.nextLine();
-		while (!"0".equals(numberOfPermitTileToTranslate) || !"1".equals(numberOfPermitTileToTranslate)) {
+		while (!("0".equals(numberOfPermitTileToTranslate) || "1".equals(numberOfPermitTileToTranslate))) {
 			System.out.println("Wrong parameter. Try again");
 			numberOfPermitTileToTranslate=scanner.nextLine();
 		}
@@ -333,18 +333,24 @@ public class CLI extends ClientView {
 	
 	@Override
 	public int askForPrice() {
-		return this.scanner.nextInt();
+		String price=this.scanner.nextLine();
+		return Integer.parseInt(price);
 	}
 	
 	@Override
 	public boolean askForOtherSelling() {
+		System.out.println("[yes, no])");
 		String input=this.scanner.nextLine();
+		while (!("yes".equals(input) || "no".equals(input))) {
+			System.out.println("I didn't understand...");
+			input=this.scanner.nextLine();
+		}
 		if ("yes".equals(input))
 			return true;
-		else if("no".equals(input))
+		else if ("no".equals(input))
 			return false;
 		else
-			throw new NullPointerException("Errore");
+			throw new NullPointerException("Wrong input");
 	}
 
 	@Override

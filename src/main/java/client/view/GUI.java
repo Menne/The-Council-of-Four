@@ -519,7 +519,6 @@ public class GUI extends ClientView{
 					controllerMarketGUI.getMakeAnOffer().setUserData(new MakeAnOfferDTO());
 					controllerMarketGUI.getSkip().setUserData(new MoveToNextDTO());
 					controllerMarketGUI.getAcceptAnOffer().setUserData(new AcceptAnOfferDTO());
-					displayMarketStuff();
 					marketStage.show();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block

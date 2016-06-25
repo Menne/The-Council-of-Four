@@ -20,11 +20,6 @@ public class MakeAnOfferParser implements ActionParserVisitor {
 		this.otherSelling=true;
 	}
 
-	
-	public void setOtherSelling(boolean otherSelling) {
-		this.otherSelling=otherSelling;
-	}
-
 	@Override
 	public ActionDTO setParameters(ClientView view, GameDTO game) {
 		view.displayMessage("Ok, you decided to sell something to the other players");
@@ -47,7 +42,7 @@ public class MakeAnOfferParser implements ActionParserVisitor {
 			
 			this.selectedAction.addOfferToList(offerDTO);
 			
-			view.displayMessage("Do you want to sell more? (yes/no)");
+			view.displayMessage("Do you want make another offer?");
 			this.otherSelling=view.askForOtherSelling();
 		
 			this.selectedAction.parametersSetted();

@@ -202,10 +202,10 @@ public class ActionDTOMapper implements ActionMapperVisitor{
 			Player offeringPlayer=this.game.getCurrentPlayer();
 			int price=currentOfferDTO.getPrice();
 			
-			if (currentOfferDTO.getOfferedObjectDTO() instanceof CardColourDTO) {
-				CardColourDTO offeringCardDTO=(CardColourDTO) currentOfferDTO.getOfferedObjectDTO();
+			if (currentOfferDTO.getOfferedObjectDTO() instanceof PoliticsCardDTO) {
+				PoliticsCardDTO offeringCardDTO=(PoliticsCardDTO) currentOfferDTO.getOfferedObjectDTO();
 				action.addOfferToList(new Offer(offeringPlayer, 
-						new PoliticsCard(new CardColour(offeringCardDTO.getName())), price));
+						new PoliticsCard(new CardColour(offeringCardDTO.getColour().getName())), price));
 			}
 			if (currentOfferDTO.getOfferedObjectDTO() instanceof PermitTileDTO) {
 				PermitTileDTO offeringPermitTileDTO=(PermitTileDTO) currentOfferDTO.getOfferedObjectDTO();
