@@ -45,7 +45,6 @@ public class ServerSocketView extends View implements Runnable {
 		while(!socket.isClosed()){
 			
 			try {
-
 				Object object = this.socketIn.readObject();
 				if(object instanceof AddPlayerDTO){
 					AddPlayerDTO notify=(AddPlayerDTO) object;
@@ -65,7 +64,7 @@ public class ServerSocketView extends View implements Runnable {
 				
 				else{
 					ActionDTO actionDTO=(ActionDTO) object;
-					this.notifyObserver(actionDTO.startMapper(this.actionMapper));				
+					this.notifyObserver(actionDTO.startMapper(this.actionMapper));
 				}
 				
 			} catch (ClassNotFoundException | IOException e) {

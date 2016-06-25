@@ -32,6 +32,8 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -515,6 +517,9 @@ public class ControllerGUI {
 	private TextArea messageBox;
 	
 	@FXML
+	private TextArea chatInputBox;
+	
+	@FXML
 	private HBox permitTilesTurnedUpPlayer1;
 	
 	@FXML
@@ -856,7 +861,7 @@ public class ControllerGUI {
 			this.notify();
 		}
 	}
-		
+	
 	@FXML
 	public void clickOnCity(Event event) {
 		synchronized (this) {
@@ -864,7 +869,7 @@ public class ControllerGUI {
 			this.notify();
 		}
 	}
-
+	
 	@FXML
 	public void stopDiscarding(){
 		synchronized (this) {
@@ -879,14 +884,14 @@ public class ControllerGUI {
 			this.notify();
 		}
 	}
-
+	
 	public void handlePermitTilesTurnedUp(PermitTileDTO selectedPermitTile) {
 		synchronized (this) {
 			this.view.setCurrentParameter(selectedPermitTile);
 			this.notify();
 		}
 	}
-   
+	
     @FXML
     public void changeMouseStyle(MouseEvent mouseEvent) {
     	Platform.runLater(new Runnable() {
@@ -913,8 +918,9 @@ public class ControllerGUI {
     }
     
     @FXML
-    public void sendMessage() throws RemoteException {
-    	this.view.getConnection().sendAction(new ChatMessageDTO(this.messageBox.getText()));
+    public void sendMessage(KeyEvent key) throws RemoteException {
+    	if (key.getCode().equals(KeyCode.ENTER))
+    		this.view.getConnection().sendAction(new ChatMessageDTO(this.chatInputBox.getText()));
     }
 
 }

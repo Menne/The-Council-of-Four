@@ -57,6 +57,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -536,7 +537,8 @@ public class GUI extends ClientView{
 			@Override
 			public void run() {
 
-				displayMarketStuff();				
+				displayMarketStuff();	
+				displayOffers();
 				controllerMarketGUI.getMakeAnOffer().setOnAction(new EventHandler<ActionEvent>() {
 
 					@Override
@@ -580,6 +582,7 @@ public class GUI extends ClientView{
 	}
 	
 	private void displayMarketStuff(){
+		controllerMarketGUI.getAvailablePoliticCards().getChildren().clear();
 		for(PoliticsCardDTO card : clientGame.getClientPlayer().getHand()){
 			ImageView imageView=new ImageView(imageMap.get(card));
 			controllerMarketGUI.getAvailablePoliticCards().getChildren().add(imageView);
@@ -594,6 +597,7 @@ public class GUI extends ClientView{
 				}
 			});
 		}
+		controllerMarketGUI.getAvailablePermitTiles().getChildren().clear();
 		for(PermitTileDTO permitTileDTO : clientGame.getClientPlayer().getAvailablePermitTiles()){
 			ImageView imageView=new ImageView(imageMap.get(permitTileDTO));
 			controllerMarketGUI.getAvailablePermitTiles().getChildren().add(imageView);
@@ -610,6 +614,7 @@ public class GUI extends ClientView{
 		}
 		Image image=new Image(getClass().getResource("images/various/Assistant.png").toExternalForm());
 		
+		controllerMarketGUI.getAvailableAssistants().getChildren().clear();
 		for(AssistantDTO assistantDTO : clientGame.getClientPlayer().getAssistants()){
 			ImageView imageView=new ImageView(image);
 			imageView.setFitWidth(50);
@@ -624,6 +629,31 @@ public class GUI extends ClientView{
 					
 				}
 			});
+		}
+	}
+	
+	private void displayOffers(){
+		controllerMarketGUI.getOffers().getChildren().clear();
+		for(OfferDTO offerDTO : clientGame.getMarket().getOffersList()){
+			HBox offer=new HBox();
+			offer.setSpacing(120);
+			Label name=new Label(offerDTO.getOfferingPlayer());
+			ImageView sellingObject=new ImageView(imageMap.get(offerDTO.getOfferedObjectDTO()));
+			sellingObject.setFitWidth(30);
+			sellingObject.setPreserveRatio(true);
+			Label price=new Label(String.valueOf(offerDTO.getPrice()));
+			offer.getChildren().add(name);
+			offer.getChildren().add(sellingObject);
+			offer.getChildren().add(price);
+			offer.setOnMouseClicked(new EventHandler<Event>() {
+
+				@Override
+				public void handle(Event event) {
+					controllerMarketGUI.handleOffers(offerDTO);					
+				}
+				
+			});
+			controllerMarketGUI.getOffers().getChildren().add(offer);
 		}
 	}
 	
