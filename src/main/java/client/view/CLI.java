@@ -1,5 +1,6 @@
  package client.view;
 
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -337,10 +338,13 @@ public class CLI extends ClientView {
 	
 	@Override
 	public boolean askForOtherSelling() {
-		if ("yes".equals(this.scanner.nextLine()))
+		String input=this.scanner.nextLine();
+		if ("yes".equals(input))
 			return true;
-		else
+		else if("no".equals(input))
 			return false;
+		else
+			throw new NullPointerException("Errore");
 	}
 
 	@Override

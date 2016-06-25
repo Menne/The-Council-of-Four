@@ -26,6 +26,8 @@ public class MakeAnOffer implements Action{
 		if ((this.offeringObjects.size()==0))
 			throw new NullPointerException("Paramters not setted");
 		
+		System.out.println("sono l'azione make an offer arrivata al server");
+		
 		for (Offer offer : this.offeringObjects)
 			game.getMarket().addOffer(offer);
 			
