@@ -590,6 +590,7 @@ public class GUI extends ClientView{
 			imageView.setUserData(card);	
 			imageView.setFitWidth(50);
 			imageView.setPreserveRatio(true);
+			imageView.setDisable(true);
 			imageView.setOnMouseClicked(new EventHandler<Event>() {
 
 				@Override
@@ -597,14 +598,25 @@ public class GUI extends ClientView{
 					controllerMarketGUI.handlePoliticsCard(card);							
 				}
 			});
+			imageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+				@Override
+				public void handle(MouseEvent event) {
+					controllerMarketGUI.changeMouseStyle(event);
+					
+				}
+			});
 		}
 		controllerMarketGUI.getAvailablePermitTiles().getChildren().clear();
+		
+		
 		for(PermitTileDTO permitTileDTO : clientGame.getClientPlayer().getAvailablePermitTiles()){
 			ImageView imageView=new ImageView(imageMap.get(permitTileDTO));
 			controllerMarketGUI.getAvailablePermitTiles().getChildren().add(imageView);
 			imageView.setUserData(permitTileDTO);
 			imageView.setFitWidth(50);
 			imageView.setPreserveRatio(true);
+			imageView.setDisable(true);
 			imageView.setOnMouseClicked(new EventHandler<Event>() {
 
 				@Override
@@ -612,9 +624,18 @@ public class GUI extends ClientView{
 					controllerMarketGUI.handlePermitTilesTurnedUp(permitTileDTO);						
 				}
 			});
+			imageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+				@Override
+				public void handle(MouseEvent event) {
+					controllerMarketGUI.changeMouseStyle(event);
+					
+				}
+			});
 		}
-		Image image=new Image(getClass().getResource("images/various/Assistant.png").toExternalForm());
 		
+		
+		Image image=new Image(getClass().getResource("images/various/Assistant.png").toExternalForm());
 		controllerMarketGUI.getAvailableAssistants().getChildren().clear();
 		for(AssistantDTO assistantDTO : clientGame.getClientPlayer().getAssistants()){
 			ImageView imageView=new ImageView(image);
@@ -622,11 +643,20 @@ public class GUI extends ClientView{
 			imageView.setPreserveRatio(true);
 			imageView.setUserData(assistantDTO);
 			controllerMarketGUI.getAvailableAssistants().getChildren().add(imageView);
+			imageView.setDisable(true);
 			imageView.setOnMouseClicked(new EventHandler<Event>() {
 
 				@Override
 				public void handle(Event event) {
 					controllerMarketGUI.handleAssistants(assistantDTO);
+					
+				}
+			});
+			imageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+				@Override
+				public void handle(MouseEvent event) {
+					controllerMarketGUI.changeMouseStyle(event);
 					
 				}
 			});
@@ -866,6 +896,9 @@ public class GUI extends ClientView{
 
 	@Override
 	public MarketableDTO askForMakingAnOffer() {
+		this.controllerMarketGUI.getMakeAnOffer().setDisable(true);
+		this.controllerMarketGUI.getAcceptAnOffer().setDisable(true);
+		this.controllerMarketGUI.getSkip().setDisable(true);
 		this.disableClickOnObjectsToSell(false);
 /*		HBox offerBox=new HBox();
 		controllerMarketGUI.getOffers().getChildren().add(offerBox);
@@ -950,12 +983,15 @@ public class GUI extends ClientView{
 		}
 		Boolean choice=(boolean) this.currentParameter;
 		this.currentParameter=null;
-		this.disableClickOnOffers(true);
+		this.controllerMarketGUI.getAcceptAnOffer().setDisable(false);
 		return choice;
 	}
 	
 	@Override
 	public OfferDTO askForAcceptingAnOffer() {
+		this.controllerMarketGUI.getMakeAnOffer().setDisable(true);
+		this.controllerMarketGUI.getAcceptAnOffer().setDisable(true);
+		this.controllerMarketGUI.getSkip().setDisable(true);
 		this.disableClickOnOffers(false);
 		synchronized (this.controllerMarketGUI) {
 			try {
