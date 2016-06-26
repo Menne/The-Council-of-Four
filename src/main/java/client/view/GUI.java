@@ -712,7 +712,7 @@ public class GUI extends ClientView{
 			
 			@Override
 			public void run() {
-				currentTextArea.appendText("SYSTEM:\n"+string+"\n\n");	
+				currentTextArea.appendText("SYSTEM: "+string+"\n");	
 			}
 		});
 	}
