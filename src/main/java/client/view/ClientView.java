@@ -89,6 +89,8 @@ public abstract class ClientView implements Observer<ClientViewNotify> {
 	
 	public abstract PermitTileDTO askForPermitTileUncoveredAndCovered();
 	
+	public abstract void askForMap() throws RemoteException;
+	
 	
 	public abstract void ChooseCityBonus(int numberOfCities);
 	

@@ -7,6 +7,7 @@ import java.util.Map;
 
 import client.connections.ClientRMIViewRemote;
 import client.modelDTO.actionsDTO.ActionDTO;
+import client.modelDTO.actionsDTO.ChooseMapDTO;
 import client.modelDTO.actionsDTO.QuitDTORMI;
 import client.modelDTO.clientNotifies.PlayerAcceptedDTONotify;
 import server.Server;
@@ -74,6 +75,10 @@ public class ServerRMIView extends View implements RMIViewRemote {
 			this.clientsMap.remove(quittingConnection);
 			if(clientsMap.isEmpty())
 				game.unregisterObserver(this);
+		}
+		else if(actionDTO instanceof ChooseMapDTO){
+			ChooseMapDTO chooseMapDTO=(ChooseMapDTO)actionDTO;
+			server.setMap(this, chooseMapDTO.getMapNumber());
 		}
 		else
 			this.notifyObserver(actionDTO.startMapper(this.actionMapper));

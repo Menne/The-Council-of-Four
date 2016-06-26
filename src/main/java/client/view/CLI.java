@@ -1,6 +1,5 @@
  package client.view;
 
-import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,6 +13,7 @@ import client.modelDTO.GameDTO;
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.ActionWithParameters;
 import client.modelDTO.actionsDTO.ChatMessageDTO;
+import client.modelDTO.actionsDTO.ChooseMapDTO;
 import client.modelDTO.actionsDTO.QuitDTO;
 import client.modelDTO.actionsDTO.bonusActions.ChooseCityActionDTO;
 import client.modelDTO.actionsDTO.bonusActions.PurchasedPermitTileActionDTO;
@@ -421,6 +421,13 @@ public class CLI extends ClientView {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+
+	@Override
+	public void askForMap() throws RemoteException {
+		this.displayMessage("Choosing a random map...");
+		this.connection.sendAction(new ChooseMapDTO(3));
 	}
 
 

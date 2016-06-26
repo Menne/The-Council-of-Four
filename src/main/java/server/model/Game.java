@@ -35,10 +35,12 @@ public class Game extends Observable<ViewNotify>{
 	private static final int intialNumberOfEmporiums=10;
 	private final List<Player> quittedPlayers;
 	private GameDTOMapper gameMapper;
+	private int mapNumber;
 	
 	public Game() {
 		this.quittedPlayers=new ArrayList<>();
 		this.gameMapper=new GameDTOMapper();
+		this.mapNumber=1;
 	}
 	
 	/**
@@ -49,6 +51,7 @@ public class Game extends Observable<ViewNotify>{
 	 */
 	public void start(List<Player> playerList) throws IOException{
 		Initializer init= new Initializer();
+		init.setMapNumber(mapNumber);
 		this.gameTable=init.initialize();
 		this.players=playerList;
 		for(Player player : players){
@@ -190,6 +193,14 @@ public class Game extends Observable<ViewNotify>{
 	}
 
 	
+	public int getMapNumber() {
+		return mapNumber;
+	}
+
+	public void setMapNumber(int mapNumber) {
+		this.mapNumber = mapNumber;
+	}
+
 	/**
 	 * assigns 5 point to first players and 2 to seconds
 	 */
