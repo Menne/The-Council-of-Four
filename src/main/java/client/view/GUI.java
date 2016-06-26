@@ -58,13 +58,16 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.effect.BlurType;
 import javafx.scene.effect.Glow;
+import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import server.model.bonus.AssistantsBonus;
 import server.model.bonus.CoinsBonus;
@@ -1139,11 +1142,23 @@ public class GUI extends ClientView{
 			ImageView imageView=(ImageView) object;
 			imageView.setDisable(disabled);
 			imageView.setOpacity(opacity);
+			if(!disabled)
+				imageView.setEffect(new Glow(0.7));
+			else
+				imageView.setEffect(null);
 		}
 	}
 	
 	private void disableClickOnDescardButton(boolean disabled) {
 		this.controllerGUI.getDescardPoliticsCards().setDisable(disabled);
+		InnerShadow innerShadow= new InnerShadow();
+		innerShadow.setChoke(0.9);
+		innerShadow.setBlurType(BlurType.GAUSSIAN);
+		innerShadow.setColor(Color.web("7c6d6d"));
+		if(!disabled)
+			this.controllerGUI.getDescardPoliticsCards().setEffect(innerShadow);
+		else
+			this.controllerGUI.getDescardPoliticsCards().setEffect(null);
 	}
 	
 	private void disableClickOnPermitTilesInRegions(boolean disabled, RegionDTO selectedRegion) {
