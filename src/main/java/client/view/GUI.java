@@ -511,16 +511,17 @@ public class GUI extends ClientView{
 				loader.setLocation(ClientGUI.class.getResource("MarketView.fxml"));
 				try {
 					AnchorPane root=(AnchorPane)loader.load();
+					controllerMarketGUI=loader.getController();
 					Stage marketStage=new Stage();
 					marketStage.setTitle("Market");
 					marketStage.setScene(new Scene(root));
-					controllerMarketGUI=loader.getController();
+					controllerMarketGUI.setMerketStage(marketStage);
 					controllerMarketGUI.setClientGame(clientGame);
 					controllerMarketGUI.setView(GUI.this);
 					controllerMarketGUI.getMakeAnOffer().setUserData(new MakeAnOfferDTO());
 					controllerMarketGUI.getSkip().setUserData(new MoveToNextDTO());
 					controllerMarketGUI.getAcceptAnOffer().setUserData(new AcceptAnOfferDTO());
-					marketStage.show();
+					controllerMarketGUI.getMerketStage().show();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -756,7 +757,11 @@ public class GUI extends ClientView{
 	
 	@Override
 	public void closeMarket() {
-		System.out.println("Market is finished!");
+		Alert alert=new Alert(AlertType.INFORMATION);
+		alert.setTitle("MARKET FINISHED!");
+		alert.setHeaderText("Market phase is over, click ok to continue the game.");
+		alert.showAndWait();
+		controllerMarketGUI.getMerketStage().close();
 	}
 	
 		
