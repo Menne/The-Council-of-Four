@@ -845,12 +845,12 @@
                               <Image url="@view/images/various/map_compressa.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="permitTileSea0" disable="true" fitHeight="66.0" fitWidth="58.0" layoutX="84.0" layoutY="393.0" onMouseClicked="#clickOnPermitTileInRegion" onMouseEntered="#changeMouseStyle" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="135.0" />
-                        <ImageView fx:id="permitTileSea1" disable="true" fitHeight="66.0" fitWidth="58.0" layoutX="146.0" layoutY="396.0" onMouseClicked="#clickOnPermitTileInRegion" onMouseEntered="#changeMouseStyle" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="135.0" AnchorPane.leftAnchor="146.0" AnchorPane.rightAnchor="559.0" />
-                        <ImageView fx:id="permitTileHill0" disable="true" fitHeight="66.0" fitWidth="58.0" layoutX="333.0" layoutY="394.0" onMouseClicked="#clickOnPermitTileInRegion" onMouseEntered="#changeMouseStyle" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="135.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="373.0" />
-                        <ImageView fx:id="permitTileHill1" disable="true" fitHeight="66.0" fitWidth="58.0" layoutX="394.0" layoutY="394.0" onMouseClicked="#clickOnPermitTileInRegion" onMouseEntered="#changeMouseStyle" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="135.0" AnchorPane.leftAnchor="394.0" AnchorPane.rightAnchor="311.0" />
-                        <ImageView fx:id="permitTileMountain0" disable="true" fitHeight="66.0" fitWidth="58.0" layoutX="610.0" layoutY="396.0" onMouseClicked="#clickOnPermitTileInRegion" onMouseEntered="#changeMouseStyle" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="135.0" AnchorPane.leftAnchor="610.0" AnchorPane.rightAnchor="96.0" />
-                        <ImageView fx:id="permitTileMountain1" disable="true" fitHeight="66.0" fitWidth="58.0" layoutX="671.0" layoutY="395.0" onMouseClicked="#clickOnPermitTileInRegion" onMouseEntered="#changeMouseStyle" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="135.0" AnchorPane.leftAnchor="671.0" AnchorPane.rightAnchor="35.0" />
+                        <ImageView fx:id="permitTileSea0" disable="true" fitHeight="80.0" fitWidth="74.0" layoutX="77.0" layoutY="392.0" onMouseClicked="#clickOnPermitTileInRegion" onMouseEntered="#changeMouseStyle" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="130.0" />
+                        <ImageView fx:id="permitTileSea1" disable="true" fitHeight="80.0" fitWidth="74.0" layoutX="142.0" layoutY="392.0" onMouseClicked="#clickOnPermitTileInRegion" onMouseEntered="#changeMouseStyle" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="142.0" AnchorPane.rightAnchor="554.0" />
+                        <ImageView fx:id="permitTileHill0" disable="true" fitHeight="80.0" fitWidth="74.0" layoutX="328.0" layoutY="386.0" onMouseClicked="#clickOnPermitTileInRegion" onMouseEntered="#changeMouseStyle" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="328.0" AnchorPane.rightAnchor="362.0" />
+                        <ImageView fx:id="permitTileHill1" disable="true" fitHeight="80.0" fitWidth="74.0" layoutX="386.0" layoutY="380.0" onMouseClicked="#clickOnPermitTileInRegion" onMouseEntered="#changeMouseStyle" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="386.0" AnchorPane.rightAnchor="304.0" />
+                        <ImageView fx:id="permitTileMountain0" disable="true" fitHeight="80.0" fitWidth="74.0" layoutX="602.0" layoutY="383.0" onMouseClicked="#clickOnPermitTileInRegion" onMouseEntered="#changeMouseStyle" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="602.0" AnchorPane.rightAnchor="88.0" />
+                        <ImageView fx:id="permitTileMountain1" disable="true" fitHeight="80.0" fitWidth="74.0" layoutX="665.0" layoutY="381.0" onMouseClicked="#clickOnPermitTileInRegion" onMouseEntered="#changeMouseStyle" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="665.0" AnchorPane.rightAnchor="25.0" />
                         <ImageView fx:id="seaRegion" fitHeight="64.0" fitWidth="56.0" layoutX="22.0" layoutY="399.0" onMouseClicked="#clickOnRegion" onMouseEntered="#changeMouseStyle" AnchorPane.bottomAnchor="135.0" AnchorPane.leftAnchor="22.0">
                            <image>
                               <Image url="@view/images/seaPermitTile/seaTile.png" />
@@ -868,21 +868,27 @@
                         </ImageView>
                         <AnchorPane layoutX="-2.0" layoutY="-4.0" prefHeight="385.0" prefWidth="245.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="519.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Pane fx:id="esti" disable="true" layoutX="49.0" layoutY="252.0" onMouseClicked="#clickOnCity" onMouseEntered="#changeMouseStyle" prefHeight="103.0" prefWidth="108.0" />
-                              <Pane fx:id="dorful" disable="true" layoutX="130.0" layoutY="164.0" onMouseClicked="#clickOnCity" onMouseEntered="#changeMouseStyle" prefHeight="106.0" prefWidth="110.0" />
+                              <Pane fx:id="esti" disable="true" layoutX="49.0" layoutY="252.0" onMouseClicked="#clickOnCity" onMouseEntered="#changeMouseStyle" prefHeight="103.0" prefWidth="108.0">
+                                 <children>
+                                    <ImageView fx:id="rewardTokenE" disable="true" fitHeight="50.0" fitWidth="50.0" layoutX="4.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children></Pane>
+                              <Pane fx:id="dorful" disable="true" layoutX="130.0" layoutY="164.0" onMouseClicked="#clickOnCity" onMouseEntered="#changeMouseStyle" prefHeight="106.0" prefWidth="110.0">
+                                 <children>
+                                    <ImageView fx:id="rewardTokenD" disable="true" fitHeight="50.0" fitWidth="50.0" layoutX="3.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children></Pane>
                               <Pane fx:id="burgen" disable="true" layoutX="5.0" layoutY="131.0" onMouseClicked="#clickOnCity" onMouseEntered="#changeMouseStyle" prefHeight="114.0" prefWidth="108.0" />
-                              <Pane fx:id="castrum" disable="true" layoutX="130.0" layoutY="38.0" onMouseClicked="#clickOnCity" onMouseEntered="#changeMouseStyle" prefHeight="114.0" prefWidth="110.0" />
+                              <Pane fx:id="castrum" disable="true" layoutX="130.0" layoutY="38.0" onMouseClicked="#clickOnCity" onMouseEntered="#changeMouseStyle" prefHeight="114.0" prefWidth="110.0">
+                                 <children>
+                                    <ImageView fx:id="rewardTokenC" disable="true" fitHeight="50.0" fitWidth="50.0" layoutX="11.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children></Pane>
                               <Pane fx:id="arkon" disable="true" layoutX="11.0" layoutY="1.0" onMouseClicked="#clickOnCity" onMouseEntered="#changeMouseStyle" prefHeight="114.0" prefWidth="117.0" />
                               <ImageView fx:id="regionBonusSea" disable="true" fitHeight="34.0" fitWidth="56.0" layoutX="174.0" layoutY="338.0">
                                  <image>
                                     <Image url="@view/images/bonusTiles/bonusMare.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fx:id="rewardTokenA" disable="true" fitHeight="45.0" fitWidth="45.0" layoutX="21.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
-                              <ImageView fx:id="rewardTokenD" disable="true" fitHeight="45.0" fitWidth="45.0" layoutX="130.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true" />
-                              <ImageView fx:id="rewardTokenC" disable="true" fitHeight="45.0" fitWidth="45.0" layoutX="141.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true" />
-                              <ImageView fx:id="rewardTokenE" disable="true" fitHeight="45.0" fitWidth="45.0" layoutX="58.0" layoutY="251.0" pickOnBounds="true" preserveRatio="true" />
-                              <ImageView fx:id="rewardTokenB" disable="true" fitHeight="45.0" fitWidth="45.0" layoutX="14.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="rewardTokenA" disable="true" fitHeight="50.0" fitWidth="50.0" layoutX="21.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="rewardTokenB" disable="true" fitHeight="50.0" fitWidth="50.0" layoutX="14.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true" />
                               <HBox fx:id="emporiumsArkon" disable="true" layoutX="29.0" layoutY="85.0" prefHeight="27.0" prefWidth="75.0" />
                               <HBox fx:id="emporiumsCastrum" disable="true" layoutX="149.0" layoutY="137.0" prefHeight="27.0" prefWidth="75.0" AnchorPane.topAnchor="125.0" />
                               <HBox fx:id="emporiumsBurgen" disable="true" layoutX="20.0" layoutY="237.0" prefHeight="27.0" prefWidth="75.0" AnchorPane.topAnchor="215.0" />
@@ -900,11 +906,11 @@
                                     <Image url="@view/images/BonusTiles/bonusColline.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fx:id="rewardTokenF" disable="true" fitHeight="45.0" fitWidth="45.0" layoutX="39.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
-                              <ImageView fx:id="rewardTokenG" disable="true" fitHeight="45.0" fitWidth="45.0" layoutX="46.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true" />
-                              <ImageView fx:id="rewardTokenI" disable="true" fitHeight="45.0" fitWidth="45.0" layoutX="169.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
-                              <ImageView fx:id="rewardTokenJ" disable="true" fitHeight="45.0" fitWidth="45.0" layoutX="169.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true" />
-                              <ImageView fx:id="rewardTokenH" disable="true" fitHeight="45.0" fitWidth="45.0" layoutX="55.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="rewardTokenF" disable="true" fitHeight="50.0" fitWidth="50.0" layoutX="39.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="rewardTokenG" disable="true" fitHeight="50.0" fitWidth="50.0" layoutX="46.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="rewardTokenI" disable="true" fitHeight="50.0" fitWidth="50.0" layoutX="169.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="rewardTokenJ" disable="true" fitHeight="50.0" fitWidth="50.0" layoutX="169.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="rewardTokenH" disable="true" fitHeight="50.0" fitWidth="50.0" layoutX="55.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true" />
                               <HBox fx:id="emporiumsFramek" disable="true" layoutX="46.0" layoutY="122.0" prefHeight="27.0" prefWidth="75.0" AnchorPane.topAnchor="102.0" />
                               <HBox fx:id="emporiumsIndur" disable="true" layoutX="179.0" layoutY="137.0" prefHeight="27.0" prefWidth="75.0" AnchorPane.topAnchor="100.0" />
                               <HBox fx:id="emporiumsGraden" disable="true" layoutX="51.0" layoutY="239.0" prefHeight="27.0" prefWidth="75.0" AnchorPane.topAnchor="215.0" />
@@ -914,7 +920,11 @@
                            </children></AnchorPane>
                         <AnchorPane layoutX="522.0" prefHeight="385.0" prefWidth="242.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="522.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Pane fx:id="osium" disable="true" layoutX="121.0" layoutY="211.0" onMouseClicked="#clickOnCity" onMouseEntered="#changeMouseStyle" prefHeight="114.0" prefWidth="110.0" />
+                              <Pane fx:id="merkatim" disable="true" layoutX="3.0" layoutY="268.0" onMouseClicked="#clickOnCity" onMouseEntered="#changeMouseStyle" prefHeight="114.0" prefWidth="110.0" />
+                              <Pane fx:id="osium" disable="true" layoutX="121.0" layoutY="211.0" onMouseClicked="#clickOnCity" onMouseEntered="#changeMouseStyle" prefHeight="114.0" prefWidth="110.0">
+                                 <children>
+                                    <ImageView fx:id="rewardTokenO" disable="true" fitHeight="50.0" fitWidth="50.0" layoutX="25.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children></Pane>
                               <Pane fx:id="lyram" disable="true" layoutX="3.0" layoutY="136.0" onMouseClicked="#clickOnCity" onMouseEntered="#changeMouseStyle" prefHeight="114.0" prefWidth="110.0">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
@@ -926,17 +936,15 @@
                                     <Image url="@view/images/bonusTiles/bonusMontagna.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fx:id="rewardTokenK" disable="true" fitHeight="45.0" fitWidth="45.0" layoutX="35.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-                              <ImageView fx:id="rewardTokenN" disable="true" fitHeight="45.0" fitWidth="45.0" layoutX="141.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" />
-                              <ImageView fx:id="rewardTokenL" disable="true" fitHeight="45.0" fitWidth="45.0" layoutX="13.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true" />
-                              <ImageView fx:id="rewardTokenO" disable="true" fitHeight="45.0" fitWidth="45.0" layoutX="141.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true" />
-                              <ImageView fx:id="rewardTokenM" disable="true" fitHeight="45.0" fitWidth="45.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="rewardTokenK" disable="true" fitHeight="50.0" fitWidth="50.0" layoutX="35.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="rewardTokenN" disable="true" fitHeight="50.0" fitWidth="50.0" layoutX="141.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="rewardTokenL" disable="true" fitHeight="50.0" fitWidth="50.0" layoutX="13.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="rewardTokenM" disable="true" fitHeight="50.0" fitWidth="50.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true" />
                               <HBox fx:id="emporiumsKultos" disable="true" layoutX="45.0" layoutY="113.0" prefHeight="27.0" prefWidth="75.0" AnchorPane.topAnchor="95.0" />
                               <HBox fx:id="emporiumsNaris" disable="true" layoutX="143.0" layoutY="184.0" prefHeight="27.0" prefWidth="75.0" AnchorPane.topAnchor="162.0" />
                               <HBox fx:id="emporiumsLyram" disable="true" layoutX="27.0" layoutY="243.0" prefHeight="27.0" prefWidth="75.0" AnchorPane.topAnchor="217.0" />
                               <HBox fx:id="emporiumsOsium" disable="true" layoutX="148.0" layoutY="327.0" prefHeight="27.0" prefWidth="75.0" AnchorPane.topAnchor="293.0" />
                               <HBox fx:id="emporiumsMerkatim" disable="true" layoutX="20.0" layoutY="243.0" prefHeight="27.0" prefWidth="75.0" AnchorPane.topAnchor="340.0" />
-                              <Pane fx:id="merkatim" disable="true" layoutX="3.0" layoutY="268.0" onMouseClicked="#clickOnCity" onMouseEntered="#changeMouseStyle" prefHeight="114.0" prefWidth="110.0" />
                            </children></AnchorPane>
                         <ImageView fx:id="kingConcillor2" disable="true" fitHeight="46.0" fitWidth="30.0" layoutX="516.0" layoutY="501.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="59.0" AnchorPane.leftAnchor="516.0" />
                         <ImageView fx:id="kingConcillor3" disable="true" fitHeight="46.0" fitWidth="30.0" layoutX="541.0" layoutY="505.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="59.0" AnchorPane.leftAnchor="537.0" />
@@ -954,10 +962,6 @@
                         <ImageView fx:id="mountainConcillor4" disable="true" fitHeight="46.0" fitWidth="30.0" layoutX="684.0" layoutY="473.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="93.0" AnchorPane.leftAnchor="675.0" />
                         <ImageView fx:id="mountainConcillor3" disable="true" fitHeight="46.0" fitWidth="30.0" layoutX="662.0" layoutY="473.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="93.0" AnchorPane.leftAnchor="654.0" />
                         <ImageView fx:id="mountainConcillor2" disable="true" fitHeight="46.0" fitWidth="30.0" layoutX="637.0" layoutY="469.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="93.0" AnchorPane.leftAnchor="633.0" />
-                        <Pane fx:id="mountainBalcony" disable="true" layoutX="553.0" layoutY="474.0" onMouseClicked="#clickOnBalcony" onMouseEntered="#changeMouseStyle" prefHeight="41.0" prefWidth="164.0" />
-                        <Pane fx:id="kingBalcony" disable="true" layoutX="422.0" layoutY="503.0" onMouseClicked="#clickOnBalcony" onMouseEntered="#changeMouseStyle" prefHeight="41.0" prefWidth="164.0" />
-                        <Pane fx:id="hillBalcony" disable="true" layoutX="274.0" layoutY="474.0" onMouseClicked="#clickOnBalcony" onMouseEntered="#changeMouseStyle" prefHeight="41.0" prefWidth="164.0" />
-                        <Pane fx:id="seaBalcony" disable="true" layoutX="21.0" layoutY="474.0" onMouseClicked="#clickOnBalcony" onMouseEntered="#changeMouseStyle" prefHeight="41.0" prefWidth="164.0" />
                         <ImageView fx:id="colorBonusBronze" disable="true" fitHeight="34.0" fitWidth="57.0" layoutX="627.0" layoutY="548.0" rotate="45.0">
                            <image>
                               <Image url="@view/images/colourBonus/BronzeBonus.png" />
@@ -1003,20 +1007,40 @@
                               <Image url="@view/images/kingBonus/KingRewardTile1.png" />
                            </image>
                         </ImageView>
+                        <ImageView fx:id="seaBalcony" fitHeight="35.0" fitWidth="36.0" layoutX="45.0" layoutY="476.0" onMouseClicked="#clickOnBalcony" onMouseEntered="#changeMouseStyle" AnchorPane.bottomAnchor="85.0">
+                           <image>
+                              <Image url="@view/images/various/Nobility.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="hillBalcony" fitHeight="35.0" fitWidth="36.0" layoutX="295.0" layoutY="476.0" onMouseClicked="#clickOnBalcony" onMouseEntered="#changeMouseStyle" AnchorPane.bottomAnchor="85.0">
+                           <image>
+                              <Image url="@view/images/various/Nobility.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="mountainBalcony" fitHeight="35.0" fitWidth="36.0" layoutX="571.0" layoutY="475.0" onMouseClicked="#clickOnBalcony" onMouseEntered="#changeMouseStyle" AnchorPane.bottomAnchor="85.0">
+                           <image>
+                              <Image url="@view/images/various/Nobility.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="kingBalcony" fitHeight="35.0" fitWidth="34.0" layoutX="459.0" layoutY="509.0" onMouseClicked="#clickOnBalcony" onMouseEntered="#changeMouseStyle">
+                           <image>
+                              <Image url="@view/images/various/Nobility.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
                   <VBox prefHeight="596.0" prefWidth="124.0">
                      <children>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="380.0" prefWidth="122.0" stylesheets="@resize.css">
                            <children>
-                              <ImageView fx:id="reserveConcillor1" disable="true" fitHeight="46.0" fitWidth="30.0" layoutX="62.0" layoutY="272.0" onMouseClicked="#clickOnCouncillorsReserve" onMouseEntered="#changeMouseStyle" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="29.0" />
-                              <ImageView fx:id="reserveConcillor2" disable="true" fitHeight="46.0" fitWidth="30.0" layoutX="21.0" layoutY="305.0" onMouseClicked="#clickOnCouncillorsReserve" onMouseEntered="#changeMouseStyle" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="29.0" />
-                              <ImageView fx:id="reserveConcillor3" disable="true" fitHeight="46.0" fitWidth="30.0" layoutX="62.0" layoutY="194.0" onMouseClicked="#clickOnCouncillorsReserve" onMouseEntered="#changeMouseStyle" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="94.0" />
-                              <ImageView fx:id="reserveConcillor4" disable="true" fitHeight="46.0" fitWidth="30.0" layoutX="21.0" layoutY="217.0" onMouseClicked="#clickOnCouncillorsReserve" onMouseEntered="#changeMouseStyle" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="94.0" />
-                              <ImageView fx:id="reserveConcillor5" disable="true" fitHeight="46.0" fitWidth="30.0" layoutX="62.0" layoutY="175.0" onMouseClicked="#clickOnCouncillorsReserve" onMouseEntered="#changeMouseStyle" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="159.0" />
-                              <ImageView fx:id="reserveConcillor6" fitHeight="46.0" fitWidth="30.0" layoutX="21.0" layoutY="136.0" onMouseClicked="#clickOnCouncillorsReserve" onMouseEntered="#changeMouseStyle" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="159.0" />
-                              <ImageView fx:id="reserveConcillor7" disable="true" fitHeight="46.0" fitWidth="30.0" layoutX="62.0" layoutY="78.0" onMouseClicked="#clickOnCouncillorsReserve" onMouseEntered="#changeMouseStyle" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="224.0" />
-                              <ImageView fx:id="reserveConcillor8" disable="true" fitHeight="46.0" fitWidth="30.0" layoutX="21.0" layoutY="78.0" onMouseClicked="#clickOnCouncillorsReserve" onMouseEntered="#changeMouseStyle" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="224.0" />
+                              <ImageView fx:id="reserveConcillor1" disable="true" fitHeight="63.0" fitWidth="41.0" layoutX="62.0" layoutY="272.0" onMouseClicked="#clickOnCouncillorsReserve" onMouseEntered="#changeMouseStyle" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="29.0" />
+                              <ImageView fx:id="reserveConcillor2" disable="true" fitHeight="63.0" fitWidth="41.0" layoutX="21.0" layoutY="305.0" onMouseClicked="#clickOnCouncillorsReserve" onMouseEntered="#changeMouseStyle" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="29.0" />
+                              <ImageView fx:id="reserveConcillor3" disable="true" fitHeight="63.0" fitWidth="41.0" layoutX="62.0" layoutY="194.0" onMouseClicked="#clickOnCouncillorsReserve" onMouseEntered="#changeMouseStyle" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="94.0" />
+                              <ImageView fx:id="reserveConcillor4" disable="true" fitHeight="63.0" fitWidth="41.0" layoutX="21.0" layoutY="217.0" onMouseClicked="#clickOnCouncillorsReserve" onMouseEntered="#changeMouseStyle" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="94.0" />
+                              <ImageView fx:id="reserveConcillor5" disable="true" fitHeight="63.0" fitWidth="41.0" layoutX="62.0" layoutY="175.0" onMouseClicked="#clickOnCouncillorsReserve" onMouseEntered="#changeMouseStyle" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="159.0" />
+                              <ImageView fx:id="reserveConcillor6" fitHeight="63.0" fitWidth="41.0" layoutX="21.0" layoutY="136.0" onMouseClicked="#clickOnCouncillorsReserve" onMouseEntered="#changeMouseStyle" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="159.0" />
+                              <ImageView fx:id="reserveConcillor7" disable="true" fitHeight="63.0" fitWidth="41.0" layoutX="62.0" layoutY="78.0" onMouseClicked="#clickOnCouncillorsReserve" onMouseEntered="#changeMouseStyle" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="224.0" />
+                              <ImageView fx:id="reserveConcillor8" disable="true" fitHeight="63.0" fitWidth="41.0" layoutX="21.0" layoutY="78.0" onMouseClicked="#clickOnCouncillorsReserve" onMouseEntered="#changeMouseStyle" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="224.0" />
                               <Label layoutX="4.0" prefHeight="75.0" prefWidth="124.0" text=" Councillor &#10;Reserve" textAlignment="CENTER">
                                  <font>
                                     <Font name="Papyrus" size="13.0" />
