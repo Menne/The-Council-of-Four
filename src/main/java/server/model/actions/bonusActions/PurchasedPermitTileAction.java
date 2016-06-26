@@ -35,7 +35,7 @@ public class PurchasedPermitTileAction implements Action {
 
 	@Override
 	public ActionDTO map() {
-		throw new IllegalStateException("PurchasePermitTileActions doesn't require mapping");
+		throw new IllegalStateException("PurchasePermitTileAction doesn't require mapping");
 	}
 	
 }

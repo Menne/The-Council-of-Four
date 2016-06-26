@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import client.modelDTO.actionsDTO.PickPermitTileActionDTO;
 import client.modelDTO.actionsDTO.bonusActions.ChooseCityActionDTO;
 import client.modelDTO.actionsDTO.bonusActions.PurchasedPermitTileActionDTO;
 import client.modelDTO.actionsDTO.marketActions.AcceptAnOfferDTO;
@@ -22,6 +23,7 @@ import client.modelDTO.marketDTO.OfferDTO;
 import client.modelDTO.playerDTO.AssistantDTO;
 import server.model.Game;
 import server.model.actions.bonusActions.ChooseCityBonusAction;
+import server.model.actions.bonusActions.PickPermitTileBonusAction;
 import server.model.actions.bonusActions.PurchasedPermitTileAction;
 import server.model.actions.marketActions.AcceptAnOffer;
 import server.model.actions.marketActions.MakeAnOffer;
@@ -68,8 +70,8 @@ public class ActionDTOMapper implements ActionMapperVisitor{
 		
 		action.setNumberOfPermitTile(selectedActionDTO.getNumberOfPermitTiles());
 		
-		for(RegionBoard region : this.game.getGameTable().getRegionBoards())
-			if(region.getName().equals(selectedActionDTO.getChoosenRegion().getName()))
+		for (RegionBoard region : this.game.getGameTable().getRegionBoards())
+			if (region.getName().equals(selectedActionDTO.getChoosenRegion().getName()))
 				action.setChosenRegion(region);
 		
 		List<PoliticsCard> convertedCards =new ArrayList<>();
@@ -280,6 +282,25 @@ public class ActionDTOMapper implements ActionMapperVisitor{
 			if (permitTile.getBonuses().equals(selectedActionDTO.getSelectedPermitTile().getBonuses())&&
 					checkBuildableCities(permitTile.getBuildableCities(), selectedActionDTO.getSelectedPermitTile()))
 				action.setSelectedPermitTile(permitTile);
+		
+		return action;
+	}
+	
+	/**
+	 * This method creates a new PickPermitTileBonusAction action according to the PickPermitTileBonusActionDTO received,
+	 * then maps all the parameters DTO into their corresponding real objects, setting them to the real action created
+	 * @param selectedActionDTO is the action selected by the client whose parameters need to be translated
+	 * @return an PickPermitTileBonusAction action with all the parameters set
+	 */
+	@Override
+	public PickPermitTileBonusAction map(PickPermitTileActionDTO selectedActionDTO) {
+		PickPermitTileBonusAction action=new PickPermitTileBonusAction();
+		
+		action.setNumberOfPermitTile(selectedActionDTO.getNumberOfPermitTiles());
+		
+		for (RegionBoard region : this.game.getGameTable().getRegionBoards())
+			if (region.getName().equals(selectedActionDTO.getSelectedRegion().getName()))
+				action.setChosenRegion(region);
 		
 		return action;
 	}

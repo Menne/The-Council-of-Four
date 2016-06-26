@@ -1,5 +1,6 @@
 package server.view.actionMapperVisitor;
 
+import client.modelDTO.actionsDTO.PickPermitTileActionDTO;
 import client.modelDTO.actionsDTO.bonusActions.ChooseCityActionDTO;
 import client.modelDTO.actionsDTO.bonusActions.PurchasedPermitTileActionDTO;
 import client.modelDTO.actionsDTO.marketActions.AcceptAnOfferDTO;
@@ -11,6 +12,7 @@ import client.modelDTO.actionsDTO.standardActions.ChangePermitTilesDTO;
 import client.modelDTO.actionsDTO.standardActions.ElectCouncillorByAssistantDTO;
 import client.modelDTO.actionsDTO.standardActions.ElectCouncillorDTO;
 import server.model.actions.bonusActions.ChooseCityBonusAction;
+import server.model.actions.bonusActions.PickPermitTileBonusAction;
 import server.model.actions.bonusActions.PurchasedPermitTileAction;
 import server.model.actions.marketActions.AcceptAnOffer;
 import server.model.actions.marketActions.MakeAnOffer;
@@ -33,5 +35,6 @@ public interface ActionMapperVisitor {
 	public AcceptAnOffer map(AcceptAnOfferDTO selectedActionDTO);
 	public ChooseCityBonusAction map(ChooseCityActionDTO selectedActionDTO);
 	public PurchasedPermitTileAction map(PurchasedPermitTileActionDTO selectedActionDTO);
+	public PickPermitTileBonusAction map(PickPermitTileActionDTO pickPermitTileActionDTO);
 	
 }

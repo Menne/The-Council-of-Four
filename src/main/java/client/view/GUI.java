@@ -665,7 +665,7 @@ public class GUI extends ClientView{
 	
 	private void displayOffers(){
 		controllerMarketGUI.getOffers().getChildren().clear();
-		for(OfferDTO offerDTO : clientGame.getMarket().getOffersList()){
+		for (OfferDTO offerDTO : clientGame.getMarket().getOffersList()){
 			HBox offer=new HBox();
 			offer.setSpacing(120);
 			Label name=new Label(offerDTO.getOfferingPlayer());
@@ -676,6 +676,7 @@ public class GUI extends ClientView{
 			offer.getChildren().add(name);
 			offer.getChildren().add(sellingObject);
 			offer.getChildren().add(price);
+			offer.setDisable(true);
 			offer.setOnMouseClicked(new EventHandler<Event>() {
 
 				@Override
@@ -685,6 +686,14 @@ public class GUI extends ClientView{
 				
 			});
 			controllerMarketGUI.getOffers().getChildren().add(offer);
+			offer.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+				@Override
+				public void handle(MouseEvent event) {
+					controllerMarketGUI.changeMouseStyle(event);
+					
+				}
+			});
 		}
 	}
 	
@@ -1051,6 +1060,11 @@ public class GUI extends ClientView{
 		
 	}
 	
+	@Override
+	public void PickPermitTileBonus() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 	
