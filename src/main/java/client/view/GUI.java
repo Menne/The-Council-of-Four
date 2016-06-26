@@ -797,6 +797,7 @@ public class GUI extends ClientView{
 	@Override
 	public CityDTO askForCity(List<CityDTO> acceptableCities) {
 		this.disableClickOnCities(false, acceptableCities);
+		
 		synchronized (this.controllerGUI) {
 			try {
 				while (currentParameter==null)
@@ -1005,8 +1006,8 @@ public class GUI extends ClientView{
 	
 	
 	private void disableClickOnRegions(boolean disabled) {
-		for (Pane regionPane : this.controllerGUI.getRegions())
-			regionPane.setDisable(disabled);
+		for (ImageView regionImageView : this.controllerGUI.getRegions())
+			regionImageView.setDisable(disabled);
 	}
 	
 	private void disableClickOnPermitTilesInHand(boolean disabled) {
@@ -1028,10 +1029,16 @@ public class GUI extends ClientView{
 	}
 	
 	private void disableClickOnCities(boolean disabled, List<CityDTO> acceptableCities) {
-		for (CityDTO city : acceptableCities)
-			for (Pane cityPane : controllerGUI.getCities())
-				if (city.getName().equals(((CityDTO) cityPane.getUserData()).getName()))
-					cityPane.setDisable(disabled);
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				for (CityDTO city : acceptableCities)
+					for (Pane cityPane : controllerGUI.getCities())
+						if (city.equals((CityDTO) cityPane.getUserData()))
+							cityPane.setDisable(disabled);				
+			}
+		});
 	}
 	
 	private void disableClickOnPoliticsCards(boolean disabled, int opacity) {
