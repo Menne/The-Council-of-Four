@@ -30,9 +30,7 @@ public class BuildByKingParser implements ActionParserVisitor {
 			view.displayMessage("the name of the city in which you want to build");
 			List<CityDTO> acceptableCities=new ArrayList<>();
 			for (RegionDTO region : game.getClientGameTable().getClientRegions())
-				for (CityDTO city : region.getCities())
-					if (city.getBuildedEmporiums().isEmpty())
-						acceptableCities.add(city);
+				acceptableCities.addAll(region.getCities());
 			this.selectedAction.setSelectedCity(view.askForCity(acceptableCities));
 			
 			view.displayMessage("the colour of the cards you want to descard");

@@ -13,7 +13,6 @@ import server.Initializer;
 import server.model.gameMapper.GameDTOMapper;
 import server.model.gameMapper.GameMapperInterface;
 import server.model.gameTable.BonusTile;
-import server.model.gameTable.City;
 import server.model.gameTable.Emporium;
 import server.model.gameTable.GameTable;
 import server.model.market.Market;
@@ -61,8 +60,6 @@ public class Game extends Observable<ViewNotify>{
 				player.addCardToHand(this.gameTable.getPoliticsDeck().pickCard());
 			for(int i=0;i<getIntialnumberofemporiums();i++)
 				player.getRemainigEmporiums().add(new Emporium(player));
-			for(City city : gameTable.getRegionBoards().get(0).getRegionCities())
-				city.addEmporium(new Emporium(player));
 		}
 		this.currentPlayer=this.players.get(0);
 		this.state=new BeginState();

@@ -121,13 +121,13 @@ public class ControllerGUI {
 	private HBox emporiumsOsium;
 
 	@FXML
-	private Pane seaRegion;
+	private ImageView seaRegion;
 	
 	@FXML
-	private Pane hillRegion;
+	private ImageView hillRegion;
 	  
 	@FXML
-	private Pane mountainRegion;
+	private ImageView mountainRegion;
 	
 	@FXML
 	private Pane kingBalcony;
@@ -284,15 +284,6 @@ public class ControllerGUI {
 	
 	@FXML
 	private ImageView rewardTokenO;
-	
-	@FXML
-	private ImageView permitDeckSeaRegion;
-	
-	@FXML
-	private ImageView permitDeckHillRegion;
-	
-	@FXML
-	private ImageView permitDeckMountainRegion;
 	
 	@FXML
 	private ImageView permitTileSea0;
@@ -610,12 +601,22 @@ public class ControllerGUI {
 	public List<Pane> getCities(){
 		return Arrays.asList(arkon,burgen,castrum,dorful,esti,framek,graden,hellar,indur,juvelar,kultos,lyram,merkatim,naris,osium);
 	}
+	
+	
+
+	public Pane getFramek() {
+		return framek;
+	}
+
+	public Pane getArkon() {
+		return arkon;
+	}
 
 	public HBox getHand() {
 		return hand;
 	}
 	
-	public List<Pane> getRegions() {
+	public List<ImageView> getRegions() {
 		return Arrays.asList(seaRegion, hillRegion, mountainRegion);
 	}
 	
