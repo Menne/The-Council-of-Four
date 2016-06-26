@@ -1052,6 +1052,11 @@ public class GUI extends ClientView{
 		
 	}
 	
+	@Override
+	public void PickPermitTileBonus() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 	
@@ -1157,13 +1162,6 @@ public class GUI extends ClientView{
 		for (Object offer : controllerMarketGUI.getOffers().getChildren()){
 			((HBox) offer).setDisable(disabled);
 		}
-	}
-
-
-	@Override
-	public void PickPermitTileBonus() {
-		// TODO Auto-generated method stub
-		
 	}
 	
 }

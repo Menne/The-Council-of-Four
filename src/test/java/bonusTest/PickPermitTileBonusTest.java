@@ -16,7 +16,7 @@ import server.model.stateMachine.State11;
 
 public class PickPermitTileBonusTest {
 
-	@Test(expected=IllegalArgumentException.class)
+/*	@Test(expected=IllegalArgumentException.class)
 	public void testExceptionNumberTooBig() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<Player>();
@@ -55,7 +55,7 @@ public class PickPermitTileBonusTest {
 		assertEquals(tile, game.getCurrentPlayer().getPlayersPermitTilesTurnedUp().get(0));
 		assertEquals(bonus, bonus1);
 		assertEquals(2574644, bonus.hashCode());
-	}
+	}*/
 
 	
 }

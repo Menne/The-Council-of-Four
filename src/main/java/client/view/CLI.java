@@ -423,12 +423,17 @@ public class CLI extends ClientView {
 		}
 	}
 
-
 	@Override
 	public void PickPermitTileBonus() {
 		PickPermitTileActionDTO action=new PickPermitTileActionDTO();
 		action.setParser().setParameters(this, this.clientGame);
-		
+		if (action.checkIfParametersSetted());
+		try {
+			connection.sendAction(action);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 
