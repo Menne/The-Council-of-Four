@@ -540,6 +540,7 @@ public class GUI extends ClientView{
 
 				displayMarketStuff();	
 				displayOffers();
+				controllerMarketGUI.getMakeAnOffer().setText("Start Offering");
 				controllerMarketGUI.getMakeAnOffer().setOnAction(new EventHandler<ActionEvent>() {
 
 					@Override
@@ -553,12 +554,13 @@ public class GUI extends ClientView{
 							
 					}
 				});
+				controllerMarketGUI.getSkip().setText("Skip Action");
 				controllerMarketGUI.getSkip().setOnAction(new EventHandler<ActionEvent>() {
 
 					@Override
 					public void handle(ActionEvent event) {
 						try {								
-							controllerMarketGUI.startAction(event);	
+							controllerMarketGUI.startAction(event);
 						} catch (RemoteException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -757,11 +759,18 @@ public class GUI extends ClientView{
 	
 	@Override
 	public void closeMarket() {
-		Alert alert=new Alert(AlertType.INFORMATION);
-		alert.setTitle("MARKET FINISHED!");
-		alert.setHeaderText("Market phase is over, click ok to continue the game.");
-		alert.showAndWait();
-		controllerMarketGUI.getMerketStage().close();
+		System.out.println("Market finished");
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				Alert alert=new Alert(AlertType.INFORMATION);
+				alert.setTitle("MARKET FINISHED!");
+				alert.setHeaderText("Market phase is over, click ok to continue the game.");
+				alert.showAndWait();
+				controllerMarketGUI.getMerketStage().close();			
+			}
+		});
 	}
 	
 		
@@ -964,29 +973,39 @@ public class GUI extends ClientView{
 	
 	@Override
 	public boolean askForOtherSelling() {
-		controllerMarketGUI.getMakeAnOffer().setOnAction(new EventHandler<ActionEvent>() {
-
-			@Override
-			public void handle(ActionEvent event) {				
-				synchronized(controllerMarketGUI){
-					currentParameter=true;
-					controllerMarketGUI.notify();
-				}
-			}
-		});
-		controllerMarketGUI.getSkip().setOnAction(new EventHandler<ActionEvent>() {
+		Platform.runLater(new Runnable() {
 			
 			@Override
-			public void handle(ActionEvent event) {
+			public void run() {
+				controllerMarketGUI.getMakeAnOffer().setOnAction(new EventHandler<ActionEvent>() {
+
+					@Override
+					public void handle(ActionEvent event) {				
+						synchronized(controllerMarketGUI){
+							currentParameter=true;
+							controllerMarketGUI.notify();
+						}
+					}
+				});
+				controllerMarketGUI.getMakeAnOffer().setText("Next Offer");
+				controllerMarketGUI.getSkip().setOnAction(new EventHandler<ActionEvent>() {
+					
+					@Override
+					public void handle(ActionEvent event) {
+						
+						synchronized(controllerMarketGUI){					
+							currentParameter=false;	
+							controllerMarketGUI.notify();
+						}
+					}
+				});
+				controllerMarketGUI.getSkip().setText("Stop Offering");
+				controllerMarketGUI.getMakeAnOffer().setDisable(false);
+				controllerMarketGUI.getSkip().setDisable(false);
 				
-				synchronized(controllerMarketGUI){					
-					currentParameter=false;	
-					controllerMarketGUI.notify();
-				}
 			}
 		});
-		controllerMarketGUI.getMakeAnOffer().setDisable(false);
-		controllerMarketGUI.getSkip().setDisable(false);
+		
 		synchronized(controllerMarketGUI){
 			try {
 				
@@ -1225,6 +1244,12 @@ public class GUI extends ClientView{
 		for (Object offer : controllerMarketGUI.getOffers().getChildren()){
 			((HBox) offer).setDisable(disabled);
 		}
+	}
+
+
+	@Override
+	public void askForMap() {
+		// TODO Auto-generated method stub
 	}
 	
 }

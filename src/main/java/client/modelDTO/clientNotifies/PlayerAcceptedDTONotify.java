@@ -12,9 +12,14 @@ public class PlayerAcceptedDTONotify implements ClientNotify {
 	private static final long serialVersionUID = 2394921097870988146L;
 	private final ClientPlayerDTO playerDTOtoupdate;
 	private final String message;
+	private final boolean firstPlayer;
 	
 	public PlayerAcceptedDTONotify(ClientPlayerDTO clientPlayerDTO) {
 		this.playerDTOtoupdate=clientPlayerDTO;
+		if(clientPlayerDTO.getPlayerNumber()==1)
+			firstPlayer=true;
+		else
+			firstPlayer=false;
 		this.message="Hi, " + clientPlayerDTO.getName() + ", you are the player number: " + clientPlayerDTO.getPlayerNumber() +
 				"\nWe are waiting for more players...";
 	}
@@ -22,7 +27,7 @@ public class PlayerAcceptedDTONotify implements ClientNotify {
 	@Override
 	public void updateModel(GameDTO gameDTOtoupdate) {
 		gameDTOtoupdate.getClientPlayer().setPlayerNumber(this.playerDTOtoupdate.getPlayerNumber());
-		gameDTOtoupdate.notifyObserver(new PlayerAcceptedNotify(this.message));
+		gameDTOtoupdate.notifyObserver(new PlayerAcceptedNotify(this.message, firstPlayer));
 	}
 
 }

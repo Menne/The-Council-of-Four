@@ -7,6 +7,7 @@ import java.net.Socket;
 
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.AddPlayerDTO;
+import client.modelDTO.actionsDTO.ChooseMapDTO;
 import client.modelDTO.actionsDTO.QuitDTO;
 import client.modelDTO.clientNotifies.PlayerAcceptedDTONotify;
 import client.modelDTO.clientNotifies.QuitNotify;
@@ -54,7 +55,10 @@ public class ServerSocketView extends View implements Runnable {
 					this.socketOut.writeObject(new PlayerAcceptedDTONotify
 							(this.game.getGameMapper().clientPlayerMap(player)));
 				}
-				
+				else if(object instanceof ChooseMapDTO){
+					ChooseMapDTO chooseMapDTO=(ChooseMapDTO)object;
+					server.setMap(this, chooseMapDTO.getMapNumber());
+				}
 				else if(object instanceof QuitDTO){
 					this.game.unregisterObserver(this);
 					this.socketOut.writeObject(new QuitNotify());

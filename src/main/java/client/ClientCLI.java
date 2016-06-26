@@ -29,7 +29,7 @@ public class ClientCLI {
 	private final static int PORT_SOCKET = 29999;
 	private static final String NAME = "CoF";
 
-	public static void main(String[] args) throws NotBoundException, UnknownHostException, IOException {
+	public static void main(String[] args) throws NotBoundException, UnknownHostException, IOException, InterruptedException {
 		String stringConnection="";
 		String name="";
 	

@@ -18,9 +18,9 @@ public class Initializer {
 	private String s;
 	@SuppressWarnings("unused")
 	private String r;
-	private String mapNumber= null;
+	private int mapNumber=1;
 	
-	public void setMapNumber(String mapNumber) {
+	public void setMapNumber(int mapNumber) {
 		this.mapNumber = mapNumber;
 	}
 
@@ -29,10 +29,7 @@ public class Initializer {
 	
 	
 	FileReader f;
-	if(mapNumber!=null)
-		f=new FileReader("src/main/file"+mapNumber+".txt");
-	else
-		f=new FileReader("src/main/file1.txt");
+	f=new FileReader("src/main/file"+String.valueOf(mapNumber)+".txt");
     BufferedReader b;
     b=new BufferedReader(f);
 	

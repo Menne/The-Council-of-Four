@@ -104,6 +104,19 @@ public class Server {
 		registry.rebind(NAME, currentRMIView);
 	}
 	
+	public void setMap(View view, int mapNumber){
+		if(gamesMap.get(currentGame).contains(view))
+			currentGame.setMapNumber(mapNumber);
+	}
+	
+	/**
+	 * Server wait for a Socket connection. When he receive a new connection request 
+	 * from a client, he simply create the new Server Socket View thread dedicated to
+	 * that client
+	 * @throws IOException
+	 * @throws InterruptedException
+	 */
+	
 	public void startSocket() throws IOException, InterruptedException{
 		
 		ExecutorService executor=Executors.newCachedThreadPool();
