@@ -1,7 +1,8 @@
-package client.modelDTO.actionsDTO.actionsParametersSetters;
+package client.modelDTO.actionsDTO.actionsParametersSetters.bonusActionsSetters;
 
 import client.modelDTO.GameDTO;
-import client.modelDTO.actionsDTO.PickPermitTileActionDTO;
+import client.modelDTO.actionsDTO.actionsParametersSetters.ActionParserVisitor;
+import client.modelDTO.actionsDTO.bonusActions.PickPermitTileActionDTO;
 import client.view.ClientView;
 
 public class PickPermitTileBonusParser implements ActionParserVisitor {
@@ -22,7 +23,6 @@ public class PickPermitTileBonusParser implements ActionParserVisitor {
 				(this.selectedAction.getSelectedRegion()));
 		
 		this.selectedAction.parametersSetted();
-		
 		return this.selectedAction;
 	}
 

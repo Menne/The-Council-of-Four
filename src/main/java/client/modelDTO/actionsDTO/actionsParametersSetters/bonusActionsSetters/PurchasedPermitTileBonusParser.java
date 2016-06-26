@@ -1,7 +1,8 @@
-package client.modelDTO.actionsDTO.actionsParametersSetters;
+package client.modelDTO.actionsDTO.actionsParametersSetters.bonusActionsSetters;
 
 import client.modelDTO.GameDTO;
 import client.modelDTO.actionsDTO.ActionDTO;
+import client.modelDTO.actionsDTO.actionsParametersSetters.ActionParserVisitor;
 import client.modelDTO.actionsDTO.bonusActions.PurchasedPermitTileActionDTO;
 import client.view.ClientView;
 
@@ -24,8 +25,6 @@ public class PurchasedPermitTileBonusParser implements ActionParserVisitor {
 				&& game.getClientPlayer().getCoveredPermitTiles().isEmpty())) {
 			
 			this.selectedAction.setPermitTile(view.askForPermitTileUncoveredAndCovered());
-			
-			this.selectedAction.parametersSetted();
 		}
 		
 		else 

@@ -27,13 +27,13 @@ public class ChooseCityBonusActionTest {
 		players.add(a);
 		game.start(players);
 		ChooseCityBonusAction action= new ChooseCityBonusAction();
-		City city= null;
+		List<City> cities=new ArrayList<>();
 		for(City c: game.getGameTable().getRegionBoards().get(1).getRegionCities())
 			if(c.getName().equals("Juvelar"))
-				city=c;
-		action.setSelectedCity(city);
+				cities.add(c);
+		action.setSelectedCity(cities);
 		game.setState(new InteractiveBonusState(new State11()));
-		assertEquals("Juvelar", city.getName());
+		assertEquals("Juvelar", cities.get(0).getName());
 		assertTrue(action.executeAction(game));
 		assertEquals(State01.class, game.getState().getClass());
 	}

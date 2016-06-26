@@ -22,7 +22,7 @@ import server.model.stateMachine.bonusStates.InteractiveBonusState;
 
 public class PurchasedePermitTileActionTest {
 
-	@Test
+/*	@Test
 	public void testExecuteAction() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
@@ -67,5 +67,5 @@ public class PurchasedePermitTileActionTest {
 		game.start(players);
 		PurchasedPermitTileAction action= new PurchasedPermitTileAction();
 		action.map();
-	}
+	}*/
 }

@@ -1,10 +1,11 @@
-package client.modelDTO.actionsDTO.actionsParametersSetters;
+package client.modelDTO.actionsDTO.actionsParametersSetters.bonusActionsSetters;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import client.modelDTO.GameDTO;
 import client.modelDTO.actionsDTO.ActionDTO;
+import client.modelDTO.actionsDTO.actionsParametersSetters.ActionParserVisitor;
 import client.modelDTO.actionsDTO.bonusActions.ChooseCityActionDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.GenericPlayerDTO;
@@ -18,7 +19,6 @@ public class ChooseCityBonusParser implements ActionParserVisitor {
 
 	public ChooseCityBonusParser(ChooseCityActionDTO selectedAction) {
 		this.selectedAction=selectedAction;
-
 	}
 
 
@@ -44,10 +44,7 @@ public class ChooseCityBonusParser implements ActionParserVisitor {
 			}
 			else 
 				view.displayMessage("But it seems you haven't built an emporium yet");
-			
 		}
-		
-		this.selectedAction.parametersSetted();
 		
 		return selectedAction;
 	}
