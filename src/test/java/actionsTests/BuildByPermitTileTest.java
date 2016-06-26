@@ -23,6 +23,7 @@ import server.model.stateMachine.State11;
 
 public class BuildByPermitTileTest {
 
+/*	
 	@Test
 	public void testExecuteAction() throws IOException {
 		Game game=new Game();
@@ -69,13 +70,8 @@ public class BuildByPermitTileTest {
 		Iterator<Emporium> itEmp= selectedCity.getCityEmporiums().iterator();
 		Emporium e=itEmp.next();
 		assertEquals(game.getCurrentPlayer(), e.getEmporiumsPlayer());
-	/*	for(Bonus bonus: bonuses){
-			if(bonus.getClass()==CoinsBonus.class)
-				assertEquals(,game.getCurrentPlayer().getCoins());
-		}
-		*/	
-	}
-
+	}	
+*/
 	
 	@Test(expected=NullPointerException.class)
 	public void testExceptionIfSelectedPermitTileIsNull() throws IOException {
@@ -208,6 +204,7 @@ public class BuildByPermitTileTest {
 		assertFalse(action.executeAction(game));
 	}
 	
+
 	@Test
 	public void testIfExecuteActionReturnsFalseIfTileDoesntContainsSelectedCity() throws IOException {
 		Game game=new Game();
