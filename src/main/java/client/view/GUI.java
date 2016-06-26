@@ -58,6 +58,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -81,12 +82,14 @@ public class GUI extends ClientView{
 	private final Map<ModelDTO, Image> imageMap;
 	private Object currentParameter;
 	private final ImageView king;
+	private TextArea currentTextArea;
 	
 	public GUI(Connection connection, GameDTO clientGame, ControllerGUI controllerGUI) {
 		super(connection, clientGame);
 		this.controllerGUI=controllerGUI;
 		this.controllerGUI.setClientGame(clientGame);
 		this.controllerGUI.setView(this);
+		this.currentTextArea=controllerGUI.getMessageBox();
 		this.king=new ImageView(getClass().getResource("images/various/king.png").toExternalForm());
 		this.king.setFitHeight(70);
 		this.king.setPreserveRatio(true);
@@ -521,6 +524,7 @@ public class GUI extends ClientView{
 					controllerMarketGUI.getMakeAnOffer().setUserData(new MakeAnOfferDTO());
 					controllerMarketGUI.getSkip().setUserData(new MoveToNextDTO());
 					controllerMarketGUI.getAcceptAnOffer().setUserData(new AcceptAnOfferDTO());
+					currentTextArea=controllerMarketGUI.getMessageBox();
 					controllerMarketGUI.getMerketStage().show();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
@@ -705,7 +709,7 @@ public class GUI extends ClientView{
 			
 			@Override
 			public void run() {
-				controllerGUI.getMessageBox().appendText(string+"\n");	
+				currentTextArea.appendText("SYSTEM:\n"+string+"\n\n");	
 			}
 		});
 	}
@@ -768,6 +772,7 @@ public class GUI extends ClientView{
 				alert.setTitle("MARKET FINISHED!");
 				alert.setHeaderText("Market phase is over, click ok to continue the game.");
 				alert.showAndWait();
+				currentTextArea=controllerGUI.getMessageBox();
 				controllerMarketGUI.getMerketStage().close();			
 			}
 		});
