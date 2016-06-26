@@ -1097,9 +1097,8 @@ public class GUI extends ClientView{
 	}
 	
 	private void disableClickOnOffers(boolean disabled) {
-		for (Object object : controllerMarketGUI.getOffers().getChildren()) {
-			ImageView imageView=(ImageView) object;
-			imageView.setDisable(disabled);
+		for (Object offer : controllerMarketGUI.getOffers().getChildren()){
+			((HBox) offer).setDisable(disabled);
 		}
 	}
 	

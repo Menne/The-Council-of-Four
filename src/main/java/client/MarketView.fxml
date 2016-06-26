@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -11,7 +15,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="564.0" prefWidth="752.0" styleClass="sfondo" stylesheets="@resize.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.ControllerMarketGUI">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="564.0" prefWidth="752.0" styleClass="sfondo" stylesheets="@resize.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.ControllerMarketGUI">
    <children>
       <SplitPane dividerPositions="0.23035714285714284" orientation="VERTICAL" prefHeight="564.0" prefWidth="752.0" styleClass="splitPan" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -83,12 +87,12 @@
                                     </AnchorPane>
                                     <AnchorPane prefHeight="160.0" prefWidth="346.0">
                                        <children>
-                                          <TextField fx:id="price" layoutX="70.0" layoutY="29.0" prefHeight="25.0" prefWidth="85.0">
+                                          <TextField fx:id="price" disable="true" layoutX="70.0" layoutY="29.0" prefHeight="25.0" prefWidth="85.0">
                                              <cursor>
                                                 <Cursor fx:constant="TEXT" />
                                              </cursor></TextField>
                                           <Label layoutX="24.0" layoutY="23.0" text="Price" />
-                                          <Button fx:id="sell" layoutX="198.0" layoutY="18.0" mnemonicParsing="false" onAction="#handleOfferSetted" prefHeight="41.0" prefWidth="128.0" text="Sell">
+                                          <Button fx:id="sell" disable="true" layoutX="198.0" layoutY="18.0" mnemonicParsing="false" onAction="#handleOfferSetted" prefHeight="41.0" prefWidth="128.0" text="Sell">
                                              <cursor>
                                                 <Cursor fx:constant="HAND" />
                                              </cursor></Button>
