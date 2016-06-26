@@ -891,6 +891,9 @@ public class GUI extends ClientView{
 
 	@Override
 	public MarketableDTO askForMakingAnOffer() {
+		this.controllerMarketGUI.getMakeAnOffer().setDisable(true);
+		this.controllerMarketGUI.getAcceptAnOffer().setDisable(true);
+		this.controllerMarketGUI.getSkip().setDisable(true);
 		this.disableClickOnObjectsToSell(false);
 /*		HBox offerBox=new HBox();
 		controllerMarketGUI.getOffers().getChildren().add(offerBox);
@@ -975,12 +978,15 @@ public class GUI extends ClientView{
 		}
 		Boolean choice=(boolean) this.currentParameter;
 		this.currentParameter=null;
-		this.disableClickOnOffers(true);
+		this.controllerMarketGUI.getAcceptAnOffer().setDisable(false);
 		return choice;
 	}
 	
 	@Override
 	public OfferDTO askForAcceptingAnOffer() {
+		this.controllerMarketGUI.getMakeAnOffer().setDisable(true);
+		this.controllerMarketGUI.getAcceptAnOffer().setDisable(true);
+		this.controllerMarketGUI.getSkip().setDisable(true);
 		this.disableClickOnOffers(false);
 		synchronized (this.controllerMarketGUI) {
 			try {
