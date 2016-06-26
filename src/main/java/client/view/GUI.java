@@ -1158,5 +1158,12 @@ public class GUI extends ClientView{
 			((HBox) offer).setDisable(disabled);
 		}
 	}
+
+
+	@Override
+	public void PickPermitTileBonus() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

@@ -94,4 +94,6 @@ public abstract class ClientView implements Observer<ClientViewNotify> {
 	
 	public abstract void PurchasedPermitTileBonus();
 
+	public abstract void PickPermitTileBonus();
+
 }

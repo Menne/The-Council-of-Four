@@ -9,7 +9,7 @@ import java.util.List;
 import org.junit.Test;
 
 import server.model.Game;
-import server.model.bonus.PickPermitTileBonus;
+import server.model.bonus.interactiveBonus.PickPermitTileBonus;
 import server.model.gameTable.PermitTile;
 import server.model.player.Player;
 import server.model.stateMachine.State11;
@@ -23,7 +23,7 @@ public class PickPermitTileBonusTest {
 		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
-		new PickPermitTileBonus(game.getGameTable().getRegionBoards().get(0), 3);
+		new PickPermitTileBonus();
 	}
 
 	@Test(expected=IllegalArgumentException.class)
@@ -33,7 +33,7 @@ public class PickPermitTileBonusTest {
 		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
-		new PickPermitTileBonus(game.getGameTable().getRegionBoards().get(0), -1);
+		new PickPermitTileBonus();
 	}
 	
 	@Test
@@ -48,8 +48,8 @@ public class PickPermitTileBonusTest {
 		game.getGameTable().getRegionBoards().get(0).uncoverPermitTiles();
 		int temp= game.getCurrentPlayer().getPlayersPermitTilesTurnedUp().size();
 		PermitTile tile= game.getGameTable().getRegionBoards().get(0).getUncoveredPermitTiles()[1];
-		PickPermitTileBonus bonus= new PickPermitTileBonus(game.getGameTable().getRegionBoards().get(0), 1);
-		PickPermitTileBonus bonus1= new PickPermitTileBonus(game.getGameTable().getRegionBoards().get(0), 1);
+		PickPermitTileBonus bonus= new PickPermitTileBonus();
+		PickPermitTileBonus bonus1= new PickPermitTileBonus();
 		bonus.assignBonus(game);
 		assertEquals(temp+1, game.getCurrentPlayer().getPlayersPermitTilesTurnedUp().size());
 		assertEquals(tile, game.getCurrentPlayer().getPlayersPermitTilesTurnedUp().get(0));
