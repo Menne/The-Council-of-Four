@@ -871,7 +871,7 @@ public class ControllerGUI {
 	}
 	
 	@FXML
-	public void stopDiscarding(){
+	public void stopDiscarding() {
 		synchronized (this) {
 			this.view.setCurrentParameter("stop");
 			this.notify();
@@ -919,8 +919,22 @@ public class ControllerGUI {
     
     @FXML
     public void sendMessage(KeyEvent key) throws RemoteException {
-    	if (key.getCode().equals(KeyCode.ENTER))
-    		this.view.getConnection().sendAction(new ChatMessageDTO(this.chatInputBox.getText()));
+        Platform.runLater(new Runnable() {
+    	        
+    	    @Override
+    	    public void run() {
+    	    	if (key.getCode().equals(KeyCode.ENTER)) {
+    	    		try {
+						view.getConnection().sendAction(new ChatMessageDTO(clientGame.getClientPlayer().getName()
+								+ ": " + chatInputBox.getText()));
+					} catch (RemoteException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+    	    		chatInputBox.clear();
+    	    	}
+    	    }
+    	 });
     }
 
 }

@@ -1078,7 +1078,7 @@ public class GUI extends ClientView{
 	}
 	
 	private void disableClickOnCouncilBalconies(boolean disabled) {
-		for (int i=1; i<this.controllerGUI.getBalconies().size()-1; i++)
+		for (int i=0; i<this.controllerGUI.getBalconies().size()-1; i++)
 			controllerGUI.getBalconies().get(i).setDisable(disabled);
 		controllerGUI.getBalconies().get(controllerGUI.getBalconies().size()-1).setDisable(disabled);
 	}
