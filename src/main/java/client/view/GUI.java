@@ -58,6 +58,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -724,6 +725,7 @@ public class GUI extends ClientView{
 	@Override
 	public RegionDTO askForRegionBoard() {
 		this.disableClickOnRegions(false);
+		this.disableGlowRegions(false);
 		synchronized (this.controllerGUI) {
 			try {
 				while (currentParameter==null)
@@ -735,6 +737,7 @@ public class GUI extends ClientView{
 		}
 		RegionDTO region=(RegionDTO) this.currentParameter;
 		this.currentParameter=null;
+		this.disableGlowRegions(true);
 		this.disableClickOnRegions(true);
 		return region;
 	}
@@ -1008,6 +1011,15 @@ public class GUI extends ClientView{
 	private void disableClickOnRegions(boolean disabled) {
 		for (ImageView regionImageView : this.controllerGUI.getRegions())
 			regionImageView.setDisable(disabled);
+	}
+	
+	private void disableGlowRegions(boolean disabled){
+		for (ImageView regionImageView : this.controllerGUI.getRegions()){
+			if(disabled==false)
+				regionImageView.setEffect(new Glow(0.8));
+			else
+				regionImageView.setEffect(null);
+		}
 	}
 	
 	private void disableClickOnPermitTilesInHand(boolean disabled) {
