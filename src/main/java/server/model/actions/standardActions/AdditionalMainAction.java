@@ -43,6 +43,8 @@ public class AdditionalMainAction extends QuickAction {
 		
 		game.setState(game.getState().additionalMainActionTransition());
 		
+		game.getState().updateClients(game);
+		
 		return true;
 	}
 	
