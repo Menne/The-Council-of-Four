@@ -14,6 +14,7 @@ import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.ActionWithParameters;
 import client.modelDTO.actionsDTO.ChatMessageDTO;
 import client.modelDTO.actionsDTO.ChooseMapDTO;
+import client.modelDTO.actionsDTO.PickPermitTileActionDTO;
 import client.modelDTO.actionsDTO.QuitDTO;
 import client.modelDTO.actionsDTO.bonusActions.ChooseCityActionDTO;
 import client.modelDTO.actionsDTO.bonusActions.PurchasedPermitTileActionDTO;
@@ -413,6 +414,19 @@ public class CLI extends ClientView {
 	@Override
 	public void PurchasedPermitTileBonus() {
 		PurchasedPermitTileActionDTO action=new PurchasedPermitTileActionDTO();
+		action.setParser().setParameters(this, this.clientGame);
+		if (action.checkIfParametersSetted());
+		try {
+			connection.sendAction(action);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void PickPermitTileBonus() {
+		PickPermitTileActionDTO action=new PickPermitTileActionDTO();
 		action.setParser().setParameters(this, this.clientGame);
 		if (action.checkIfParametersSetted());
 		try {

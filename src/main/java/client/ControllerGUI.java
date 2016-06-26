@@ -130,16 +130,16 @@ public class ControllerGUI {
 	private ImageView mountainRegion;
 	
 	@FXML
-	private Pane kingBalcony;
+	private ImageView kingBalcony;
 	
 	@FXML
-	private Pane seaBalcony;
+	private ImageView seaBalcony;
 	
 	@FXML
-	private Pane hillBalcony;
+	private ImageView hillBalcony;
 	
 	@FXML
-	private Pane mountainBalcony;
+	private ImageView mountainBalcony;
 	
 	@FXML
 	private ImageView seaConcillor1;
@@ -620,7 +620,7 @@ public class ControllerGUI {
 		return Arrays.asList(seaRegion, hillRegion, mountainRegion);
 	}
 	
-	public List<Pane> getBalconies() {
+	public List<ImageView> getBalconies() {
 		return Arrays.asList(seaBalcony, hillBalcony, mountainBalcony, kingBalcony);
 	}
 
@@ -849,7 +849,7 @@ public class ControllerGUI {
 	@FXML
 	public void clickOnBalcony(Event event) {
 		synchronized (this) {
-			view.setCurrentParameter(((Pane) event.getSource()).getUserData());
+			view.setCurrentParameter(((ImageView) event.getSource()).getUserData());
 			this.notify();
 		}
 	}

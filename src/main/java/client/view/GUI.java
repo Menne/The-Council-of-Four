@@ -58,6 +58,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -230,7 +231,6 @@ public class GUI extends ClientView{
 		controllerGUI.getActions().get(7).setUserData(new AddictionalMainActionDTO());
 		controllerGUI.getActions().get(8).setUserData(new MoveToNextDTO());
 		controllerGUI.getPoliticsDeck().setUserData(new PickPoliticsCardDTO());
-		
 	}
 
 	@Override
@@ -667,7 +667,7 @@ public class GUI extends ClientView{
 	
 	private void displayOffers(){
 		controllerMarketGUI.getOffers().getChildren().clear();
-		for(OfferDTO offerDTO : clientGame.getMarket().getOffersList()){
+		for (OfferDTO offerDTO : clientGame.getMarket().getOffersList()){
 			HBox offer=new HBox();
 			offer.setSpacing(120);
 			Label name=new Label(offerDTO.getOfferingPlayer());
@@ -678,6 +678,7 @@ public class GUI extends ClientView{
 			offer.getChildren().add(name);
 			offer.getChildren().add(sellingObject);
 			offer.getChildren().add(price);
+			offer.setDisable(true);
 			offer.setOnMouseClicked(new EventHandler<Event>() {
 
 				@Override
@@ -687,6 +688,14 @@ public class GUI extends ClientView{
 				
 			});
 			controllerMarketGUI.getOffers().getChildren().add(offer);
+			offer.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+				@Override
+				public void handle(MouseEvent event) {
+					controllerMarketGUI.changeMouseStyle(event);
+					
+				}
+			});
 		}
 	}
 	
@@ -768,6 +777,7 @@ public class GUI extends ClientView{
 	@Override
 	public RegionDTO askForRegionBoard() {
 		this.disableClickOnRegions(false);
+		this.disableGlowRegions(false);
 		synchronized (this.controllerGUI) {
 			try {
 				while (currentParameter==null)
@@ -779,6 +789,7 @@ public class GUI extends ClientView{
 		}
 		RegionDTO region=(RegionDTO) this.currentParameter;
 		this.currentParameter=null;
+		this.disableGlowRegions(true);
 		this.disableClickOnRegions(true);
 		return region;
 	}
@@ -803,6 +814,7 @@ public class GUI extends ClientView{
 
 	@Override
 	public CouncillorDTO askForCouncillor() {
+		this.disableGlowCoucillorsInReserve(false);
 		this.disableClickOnCouncillorsInReserve(false);
 		synchronized (this.controllerGUI) {
 			try {
@@ -815,12 +827,14 @@ public class GUI extends ClientView{
 		}
 		CouncillorDTO councillor=(CouncillorDTO) this.currentParameter;
 		this.currentParameter=null;
+		this.disableGlowCoucillorsInReserve(true);
 		this.disableClickOnCouncillorsInReserve(true);
 		return councillor;
 	}
 	
 	@Override
 	public CouncillorDTO[] askForCouncilBalcony() {
+		this.disableGlowOnCouncilBalconies(false);
 		this.disableClickOnCouncilBalconies(false);
 		synchronized (this.controllerGUI) {
 			try {
@@ -834,6 +848,7 @@ public class GUI extends ClientView{
 		CouncillorDTO[] councilBalcony=(CouncillorDTO[]) this.currentParameter;
 		System.out.println(councilBalcony);
 		this.currentParameter=null;
+		this.disableGlowOnCouncilBalconies(true);
 		this.disableClickOnCouncilBalconies(true);
 		return councilBalcony;
 	}
@@ -888,6 +903,7 @@ public class GUI extends ClientView{
 	@Override
 	public int askForNumberOfPermitTile(RegionDTO selectedRegion) {
 		this.disableClickOnPermitTilesInRegions(false, selectedRegion);
+		this.disableGlowOnPermitTilesInRegions(false, selectedRegion);
 		synchronized (this.controllerGUI) {
 			try {
 				while (currentParameter==null)
@@ -899,6 +915,7 @@ public class GUI extends ClientView{
 		}
 		int numberOfPermitTile=(int) this.currentParameter;
 		this.currentParameter=null;
+		this.disableGlowOnPermitTilesInRegions(true, selectedRegion);
 		this.disableClickOnPermitTilesInRegions(true, selectedRegion);
 		return numberOfPermitTile;
 	}
@@ -1062,12 +1079,26 @@ public class GUI extends ClientView{
 		
 	}
 	
+	@Override
+	public void PickPermitTileBonus() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 	
 	private void disableClickOnRegions(boolean disabled) {
 		for (ImageView regionImageView : this.controllerGUI.getRegions())
 			regionImageView.setDisable(disabled);
+	}
+	
+	private void disableGlowRegions(boolean disabled){
+		for (ImageView regionImageView : this.controllerGUI.getRegions()){
+			if(disabled==false)
+				regionImageView.setEffect(new Glow(0.6));
+			else
+				regionImageView.setEffect(null);
+		}
 	}
 	
 	private void disableClickOnPermitTilesInHand(boolean disabled) {
@@ -1082,10 +1113,32 @@ public class GUI extends ClientView{
 			this.controllerGUI.getCouncillorReserve().get(i).setDisable(disabled);
 	}
 	
+	public void disableGlowCoucillorsInReserve(boolean disabled){
+		for (int i=0; i<this.controllerGUI.getCouncillorReserve().size(); i++){
+			if(!disabled)
+				this.controllerGUI.getCouncillorReserve().get(i).setEffect(new Glow(0.6));
+			else
+				this.controllerGUI.getCouncillorReserve().get(i).setEffect(null);
+		}
+	}
+	
 	private void disableClickOnCouncilBalconies(boolean disabled) {
-		for (int i=1; i<this.controllerGUI.getBalconies().size()-1; i++)
+		for (int i=0; i<this.controllerGUI.getBalconies().size()-1; i++)
 			controllerGUI.getBalconies().get(i).setDisable(disabled);
 		controllerGUI.getBalconies().get(controllerGUI.getBalconies().size()-1).setDisable(disabled);
+	}
+	
+	private void disableGlowOnCouncilBalconies(boolean disabled){
+		for (int i=0; i<this.controllerGUI.getBalconies().size()-1; i++){	
+			if(!disabled)
+				controllerGUI.getBalconies().get(i).setEffect(new Glow(1));
+			else
+				controllerGUI.getBalconies().get(i).setEffect(null);	
+		}
+		if(!disabled)
+			controllerGUI.getBalconies().get(controllerGUI.getBalconies().size()-1).setEffect(new Glow(0.7));
+		else
+			controllerGUI.getBalconies().get(controllerGUI.getBalconies().size()-1).setEffect(null);;
 	}
 	
 	private void disableClickOnCities(boolean disabled, List<CityDTO> acceptableCities) {
@@ -1123,6 +1176,30 @@ public class GUI extends ClientView{
 		if ("Mountain".equals(selectedRegion.getName()))
 			for (int i=0; i<=1; i++) 
 				controllerGUI.getMountainPermitTile()[i].setDisable(disabled);
+	}
+	
+	private void disableGlowOnPermitTilesInRegions(boolean disabled, RegionDTO selectedRegion) {
+		if ("Sea".equals(selectedRegion.getName()))
+			for (int i=0; i<=1; i++) {
+				if(!disabled)
+					controllerGUI.getSeaPermitTile()[i].setEffect(new Glow(0.5));
+				else
+					controllerGUI.getSeaPermitTile()[i].setEffect(null);
+			}
+		if ("Hill".equals(selectedRegion.getName()))
+			for (int i=0; i<=1; i++) {
+				if(!disabled)
+					controllerGUI.getHillPermitTile()[i].setEffect(new Glow(0.5));
+				else
+					controllerGUI.getHillPermitTile()[i].setEffect(null);
+			}
+		if ("Mountain".equals(selectedRegion.getName()))
+			for (int i=0; i<=1; i++) {
+				if(!disabled)
+					controllerGUI.getMountainPermitTile()[i].setEffect(new Glow(0.5));
+				else
+					controllerGUI.getMountainPermitTile()[i].setEffect(null);
+			}
 	}
 
 
