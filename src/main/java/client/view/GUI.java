@@ -589,6 +589,7 @@ public class GUI extends ClientView{
 			imageView.setUserData(card);	
 			imageView.setFitWidth(50);
 			imageView.setPreserveRatio(true);
+			imageView.setDisable(true);
 			imageView.setOnMouseClicked(new EventHandler<Event>() {
 
 				@Override
@@ -596,14 +597,25 @@ public class GUI extends ClientView{
 					controllerMarketGUI.handlePoliticsCard(card);							
 				}
 			});
+			imageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+				@Override
+				public void handle(MouseEvent event) {
+					controllerMarketGUI.changeMouseStyle(event);
+					
+				}
+			});
 		}
 		controllerMarketGUI.getAvailablePermitTiles().getChildren().clear();
+		
+		
 		for(PermitTileDTO permitTileDTO : clientGame.getClientPlayer().getAvailablePermitTiles()){
 			ImageView imageView=new ImageView(imageMap.get(permitTileDTO));
 			controllerMarketGUI.getAvailablePermitTiles().getChildren().add(imageView);
 			imageView.setUserData(permitTileDTO);
 			imageView.setFitWidth(50);
 			imageView.setPreserveRatio(true);
+			imageView.setDisable(true);
 			imageView.setOnMouseClicked(new EventHandler<Event>() {
 
 				@Override
@@ -611,9 +623,18 @@ public class GUI extends ClientView{
 					controllerMarketGUI.handlePermitTilesTurnedUp(permitTileDTO);						
 				}
 			});
+			imageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+				@Override
+				public void handle(MouseEvent event) {
+					controllerMarketGUI.changeMouseStyle(event);
+					
+				}
+			});
 		}
-		Image image=new Image(getClass().getResource("images/various/Assistant.png").toExternalForm());
 		
+		
+		Image image=new Image(getClass().getResource("images/various/Assistant.png").toExternalForm());
 		controllerMarketGUI.getAvailableAssistants().getChildren().clear();
 		for(AssistantDTO assistantDTO : clientGame.getClientPlayer().getAssistants()){
 			ImageView imageView=new ImageView(image);
@@ -621,11 +642,20 @@ public class GUI extends ClientView{
 			imageView.setPreserveRatio(true);
 			imageView.setUserData(assistantDTO);
 			controllerMarketGUI.getAvailableAssistants().getChildren().add(imageView);
+			imageView.setDisable(true);
 			imageView.setOnMouseClicked(new EventHandler<Event>() {
 
 				@Override
 				public void handle(Event event) {
 					controllerMarketGUI.handleAssistants(assistantDTO);
+					
+				}
+			});
+			imageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+				@Override
+				public void handle(MouseEvent event) {
+					controllerMarketGUI.changeMouseStyle(event);
 					
 				}
 			});

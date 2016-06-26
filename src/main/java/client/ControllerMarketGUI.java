@@ -14,11 +14,15 @@ import client.modelDTO.gameTableDTO.PoliticsCardDTO;
 import client.modelDTO.marketDTO.OfferDTO;
 import client.modelDTO.playerDTO.AssistantDTO;
 import client.view.GUI;
+import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -180,6 +184,17 @@ public class ControllerMarketGUI {
 			this.view.setCurrentParameter(selectedOffer);
 			this.notify();
 		}
+	}
+	
+	@FXML
+	public void changeMouseStyle(MouseEvent mouseEvent) {
+		Platform.runLater(new Runnable() {
+		        
+			@Override
+			public void run() {
+				((Node) mouseEvent.getSource()).setCursor(Cursor.HAND);
+			}
+		});
 	}
 	
 	
