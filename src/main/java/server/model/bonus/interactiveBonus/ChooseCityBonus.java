@@ -5,7 +5,9 @@ import java.util.Arrays;
 import server.model.Game;
 import server.model.bonus.Bonus;
 import server.view.notifies.CityBonusNotify;
+import server.view.notifies.GameTableNotify;
 import server.view.notifies.MessageNotify;
+import server.view.notifies.PlayerNotify;
 
 /**
  * This bonus allows the current player to choose from a city in which he has already built,
@@ -37,6 +39,9 @@ public class ChooseCityBonus implements Bonus {
 	public void assignBonus(Game game) {
 		if (game.getCurrentPlayer().getRemainigEmporiums().size() < Game.getIntialnumberofemporiums()) {
 			game.setState(game.getState().interactiveBonusTransition());
+			game.notifyObserver(new GameTableNotify(game, Arrays.asList(game.getCurrentPlayer())));
+			game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
+					Arrays.asList(game.getCurrentPlayer())));
 			game.notifyObserver(new CityBonusNotify(Arrays.asList(game.getCurrentPlayer()), this.numberOfCities));
 		}
 		else

@@ -4,8 +4,10 @@ import java.util.Arrays;
 
 import server.model.Game;
 import server.model.bonus.Bonus;
+import server.view.notifies.GameTableNotify;
 import server.view.notifies.MessageNotify;
 import server.view.notifies.PermitTileBonusNotify;
+import server.view.notifies.PlayerNotify;
 
 /**
  * This bonus allows the current player to choose from a permit tile he has already picked
@@ -32,6 +34,9 @@ public class PurchasedPermitTileBonus implements Bonus {
 	public void assignBonus(Game game) {
 		if (!game.getCurrentPlayer().getPlayersPermitTilesTurnedUp().isEmpty()) {
 			game.setState(game.getState().interactiveBonusTransition());
+			game.notifyObserver(new GameTableNotify(game, Arrays.asList(game.getCurrentPlayer())));
+			game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
+					Arrays.asList(game.getCurrentPlayer())));
 			game.notifyObserver(new PermitTileBonusNotify(Arrays.asList(game.getCurrentPlayer())));
 		}
 		else
