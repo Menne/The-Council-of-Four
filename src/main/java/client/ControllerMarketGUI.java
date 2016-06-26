@@ -134,7 +134,6 @@ public class ControllerMarketGUI {
 							}
 						}
 					});
-					this.view.disableActionButtons(false);
 					return;
 				}
 		this.view.displayError("Sorry, action not available!");
