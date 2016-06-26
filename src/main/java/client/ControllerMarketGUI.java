@@ -16,16 +16,30 @@ import client.modelDTO.playerDTO.AssistantDTO;
 import client.view.GUI;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class ControllerMarketGUI {
 	private GUI view;
 	private GameDTO clientGame;
+	private Stage merketStage;
 	
+	
+	
+	public Stage getMerketStage() {
+		return merketStage;
+	}
+
+	public void setMerketStage(Stage merketStage) {
+		this.merketStage = merketStage;
+	}
+
 	public void setClientGame(GameDTO clientGame) {
 		this.clientGame=clientGame;
 	}
@@ -169,8 +183,21 @@ public class ControllerMarketGUI {
 	}
 	
 	public void handleOfferSetted() {
+		
 		synchronized (this) {
-			this.view.setCurrentParameter(Integer.parseInt(price.getText()));
+			while(true){
+				try{
+					int priceInt=Integer.parseInt(price.getText());
+					this.view.setCurrentParameter(priceInt);
+					break;
+				}catch(NumberFormatException e){
+					Alert alert=new Alert(AlertType.ERROR);
+					alert.setTitle("ERROR");
+					alert.setHeaderText("Wrong price. Try again");
+					alert.showAndWait();
+					return;
+				}
+			}
 			this.notify();
 		}
 	}

@@ -831,7 +831,7 @@ public class ControllerGUI {
 	@FXML
 	public void clickOnRegion(Event event) {
 		synchronized (this) {
-			view.setCurrentParameter(((Pane) event.getSource()).getUserData());
+			view.setCurrentParameter(((ImageView) event.getSource()).getUserData());
 			this.notify();
 		}
 	}
@@ -844,7 +844,7 @@ public class ControllerGUI {
 			this.notify();
 		}
 	}
-	
+	 
 	
 	@FXML
 	public void clickOnBalcony(Event event) {
