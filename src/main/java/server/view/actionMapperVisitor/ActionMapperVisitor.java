@@ -1,7 +1,7 @@
 package server.view.actionMapperVisitor;
 
-import client.modelDTO.actionsDTO.PickPermitTileActionDTO;
 import client.modelDTO.actionsDTO.bonusActions.ChooseCityActionDTO;
+import client.modelDTO.actionsDTO.bonusActions.PickPermitTileActionDTO;
 import client.modelDTO.actionsDTO.bonusActions.PurchasedPermitTileActionDTO;
 import client.modelDTO.actionsDTO.marketActions.AcceptAnOfferDTO;
 import client.modelDTO.actionsDTO.marketActions.MakeAnOfferDTO;

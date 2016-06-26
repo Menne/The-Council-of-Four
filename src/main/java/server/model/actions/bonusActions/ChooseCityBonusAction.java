@@ -1,5 +1,7 @@
 package server.model.actions.bonusActions;
 
+import java.util.List;
+
 import client.modelDTO.actionsDTO.ActionDTO;
 import server.model.Game;
 import server.model.actions.Action;
@@ -14,10 +16,10 @@ import server.model.gameTable.City;
 
 public class ChooseCityBonusAction implements Action {
 
-	private City selectedCity;
+	private List<City> selectedCities;
 	
-	public void setSelectedCity(City selectedCity) {
-		this.selectedCity=selectedCity;
+	public void setSelectedCity(List<City> selectedCities) {
+		this.selectedCities=selectedCities;
 	}
 		
 	/**
@@ -25,11 +27,14 @@ public class ChooseCityBonusAction implements Action {
 	 */
 	@Override
 	public boolean executeAction(Game game) {
-			
-		if(this.selectedCity==null)
-			throw new NullPointerException("you have to select a city for this action");
-		for (Bonus bonusToAssign : this.selectedCity.getRewardToken().getRewardTokenBonus())
-			bonusToAssign.assignBonus(game);
+		if (this.selectedCities.isEmpty()) {
+			game.setState(game.getState().moveToNextTransition(game));
+			return false;
+		}
+		
+		for (City city : this.selectedCities)
+			for (Bonus bonusToAssign : city.getRewardToken().getRewardTokenBonus())
+				bonusToAssign.assignBonus(game);
 		
 		game.setState(game.getState().moveToNextTransition(game));
 		return true;

@@ -1,7 +1,8 @@
-package client.modelDTO.actionsDTO;
+package client.modelDTO.actionsDTO.bonusActions;
 
+import client.modelDTO.actionsDTO.ActionWithParameters;
 import client.modelDTO.actionsDTO.actionsParametersSetters.ActionParserVisitor;
-import client.modelDTO.actionsDTO.actionsParametersSetters.PickPermitTileBonusParser;
+import client.modelDTO.actionsDTO.actionsParametersSetters.bonusActionsSetters.PickPermitTileBonusParser;
 import client.modelDTO.gameTableDTO.RegionDTO;
 import server.model.actions.Action;
 import server.view.actionMapperVisitor.ActionMapperVisitor;

@@ -920,13 +920,13 @@ public class ControllerGUI {
     @FXML
     public void sendMessage(KeyEvent key) throws RemoteException {
         Platform.runLater(new Runnable() {
-    	        
+    	    
     	    @Override
     	    public void run() {
     	    	if (key.getCode().equals(KeyCode.ENTER)) {
     	    		try {
 						view.getConnection().sendAction(new ChatMessageDTO(clientGame.getClientPlayer().getName()
-								+ ": " + chatInputBox.getText()));
+								+ ": " + chatInputBox.getText().substring(0, chatInputBox.getText().length()-1)));
 					} catch (RemoteException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

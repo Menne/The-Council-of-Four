@@ -5,8 +5,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import client.modelDTO.actionsDTO.PickPermitTileActionDTO;
 import client.modelDTO.actionsDTO.bonusActions.ChooseCityActionDTO;
+import client.modelDTO.actionsDTO.bonusActions.PickPermitTileActionDTO;
 import client.modelDTO.actionsDTO.bonusActions.PurchasedPermitTileActionDTO;
 import client.modelDTO.actionsDTO.marketActions.AcceptAnOfferDTO;
 import client.modelDTO.actionsDTO.marketActions.MakeAnOfferDTO;
@@ -259,11 +259,17 @@ public class ActionDTOMapper implements ActionMapperVisitor{
 	@Override
 	public ChooseCityBonusAction map(ChooseCityActionDTO selectedActionDTO) {
 		ChooseCityBonusAction action=new ChooseCityBonusAction();
+		List<City> selectedCities=new ArrayList<>();
+		
+		if (selectedActionDTO.getSelectedCities().isEmpty()) {
+			action.setSelectedCity(selectedCities);
+			return action;
+		}
 		
 		for (City city : this.game.getGameTable().getMap().getGameMap().vertexSet())
 			for (CityDTO selectedCity : selectedActionDTO.getSelectedCities())
 				if (city.getName().equals(selectedCity.getName()))
-					action.setSelectedCity(city);
+					selectedCities.add(city);
 		
 		return action;
 	}
@@ -277,6 +283,9 @@ public class ActionDTOMapper implements ActionMapperVisitor{
 	@Override
 	public PurchasedPermitTileAction map(PurchasedPermitTileActionDTO selectedActionDTO) {
 		PurchasedPermitTileAction action=new PurchasedPermitTileAction();
+		
+		if (selectedActionDTO.getSelectedPermitTile()==null)
+			return action;
 		
 		for (PermitTile permitTile : this.game.getCurrentPlayer().getPlayersPermitTilesTurnedUp())
 			if (permitTile.getBonuses().equals(selectedActionDTO.getSelectedPermitTile().getBonuses())&&

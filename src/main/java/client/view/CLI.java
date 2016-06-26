@@ -14,9 +14,9 @@ import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.ActionWithParameters;
 import client.modelDTO.actionsDTO.ChatMessageDTO;
 import client.modelDTO.actionsDTO.ChooseMapDTO;
-import client.modelDTO.actionsDTO.PickPermitTileActionDTO;
 import client.modelDTO.actionsDTO.QuitDTO;
 import client.modelDTO.actionsDTO.bonusActions.ChooseCityActionDTO;
+import client.modelDTO.actionsDTO.bonusActions.PickPermitTileActionDTO;
 import client.modelDTO.actionsDTO.bonusActions.PurchasedPermitTileActionDTO;
 import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
@@ -441,7 +441,7 @@ public class CLI extends ClientView {
 	@Override
 	public void askForMap() throws RemoteException {
 		this.displayMessage("Choosing a random map...");
-		this.connection.sendAction(new ChooseMapDTO(3));
+		this.connection.sendAction(new ChooseMapDTO(1));
 	}
 
 
