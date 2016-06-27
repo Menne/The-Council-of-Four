@@ -201,12 +201,6 @@ public class GUI extends ClientView{
 		this.currentParameter = currentParameter;
 	}
 	
-	
-	public Connection getConnection() {
-		return this.connection;
-	}
-	
-	
 	@Override
 	public void update(ClientViewNotify notify) {
 		notify.updateView(this);	

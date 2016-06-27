@@ -37,6 +37,11 @@ public abstract class ClientView implements Observer<ClientViewNotify> {
 		AddPlayerDTO actionDTO=new AddPlayerDTO(name);
 		this.connection.sendAction(actionDTO);
 	}
+	
+
+	public Connection getConnection() {
+		return connection;
+	}
 
 	@Override
 	public abstract void update(ClientViewNotify notify);

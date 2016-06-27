@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.AddPlayerDTO;
+import client.modelDTO.actionsDTO.ChooseMapDTO;
 import client.modelDTO.actionsDTO.QuitDTO;
 import client.modelDTO.actionsDTO.QuitDTORMI;
 import client.modelDTO.clientNotifies.ClientNotify;
@@ -26,6 +27,8 @@ public class RMIConnection extends Connection implements ClientRMIViewRemote{
 	
 	@Override
 	public void sendAction(ActionDTO action) throws RemoteException{
+		if(!(action instanceof AddPlayerDTO)&&!(action instanceof ChooseMapDTO))
+			this.getTimerTask().cancel();
 		if(action instanceof QuitDTO)
 			this.serverStub.receiveAction(new QuitDTORMI(this));
 		else if(action instanceof AddPlayerDTO)

@@ -6,6 +6,8 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 import client.modelDTO.actionsDTO.ActionDTO;
+import client.modelDTO.actionsDTO.AddPlayerDTO;
+import client.modelDTO.actionsDTO.ChooseMapDTO;
 import client.modelDTO.clientNotifies.ClientNotify;
 
 
@@ -29,7 +31,8 @@ public class SocketConnection extends Connection implements Runnable{
 	@Override
 	public void sendAction(ActionDTO action){
 		try {
-			
+			if(!(action instanceof AddPlayerDTO)&&!(action instanceof ChooseMapDTO))
+				this.getTimerTask().cancel();
 			socketOut.writeObject(action);
 			socketOut.flush();
 			
