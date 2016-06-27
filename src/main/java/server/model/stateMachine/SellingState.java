@@ -10,6 +10,7 @@ import server.model.actions.MoveToNext;
 import server.model.actions.marketActions.MakeAnOffer;
 import server.model.player.Player;
 import server.view.notifies.AvailableActionsNotify;
+import server.view.notifies.GameTableNotify;
 import server.view.notifies.MarketNotify;
 import server.view.notifies.PlayerNotify;
 
@@ -49,9 +50,12 @@ public class SellingState implements State {
 
 	@Override
 	public void updateClients(Game game) {
-		if (game.getCurrentPlayer().getPlayerNumber()==1)
+		if (game.getCurrentPlayer().getPlayerNumber()==1) {
+			game.notifyObserver(new GameTableNotify
+					(game, new ArrayList<Player>(game.getPlayers()), false));
 			game.notifyObserver(new MarketNotify(game, 
 					new ArrayList<Player>(game.getPlayers()), true, false));
+		}
 		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
 					Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new MarketNotify(game, 
