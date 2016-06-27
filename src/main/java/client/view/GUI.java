@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 import client.ClientGUI;
+import client.ControllerChooseMap;
 import client.ControllerGUI;
 import client.ControllerMarketGUI;
 import client.connections.Connection;
@@ -84,6 +85,7 @@ import server.model.gameTable.CouncilBalcony;
 public class GUI extends ClientView{
 
 	private ControllerMarketGUI controllerMarketGUI;
+	private ControllerChooseMap controllerChooseMap;
 	private final ControllerGUI controllerGUI;
 	private final Map<ModelDTO, Image> imageMap;
 	private Object currentParameter;
@@ -240,6 +242,44 @@ public class GUI extends ClientView{
 		controllerGUI.getActions().get(7).setUserData(new AddictionalMainActionDTO());
 		controllerGUI.getActions().get(8).setUserData(new MoveToNextDTO());
 		controllerGUI.getPoliticsDeck().setUserData(new PickPoliticsCardDTO());
+		for(int i=0; i<9; i++){
+			controllerGUI.getActions().get(i).setEffect(null);
+			}
+		InnerShadow innerShadow= new InnerShadow();
+		innerShadow.setChoke(0.71);
+		innerShadow.setBlurType(BlurType.GAUSSIAN);
+		innerShadow.setColor(Color.web("a84b00"));
+		controllerGUI.getPoliticsDeck().setEffect(null);
+		for(ActionDTO action: availableActions){
+			if(action.getClass()==PickPoliticsCardDTO.class){
+				controllerGUI.getPoliticsDeck().setEffect(new Glow(0.8));
+				sleepForEffects();
+				controllerGUI.getPoliticsDeck().setEffect(null);
+				sleepForEffects();
+				controllerGUI.getPoliticsDeck().setEffect(new Glow(0.8));
+				sleepForEffects();
+				controllerGUI.getPoliticsDeck().setEffect(null);
+				sleepForEffects();
+				controllerGUI.getPoliticsDeck().setEffect(new Glow(0.8));
+			}
+			if(action.getClass()==ElectCouncillorDTO.class)
+				for(int i=0; i<4; i++){
+				controllerGUI.getActions().get(i).setEffect(innerShadow);
+				}
+			if(action.getClass()==EngageAssistantDTO.class)
+				for(int i=4; i<9; i++){
+				controllerGUI.getActions().get(i).setEffect(innerShadow);
+				}
+		}
+	}
+	
+	private void sleepForEffects() {
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -248,6 +288,14 @@ public class GUI extends ClientView{
 			
 			@Override
 			public void run() {
+				if((controllerChooseMap!=null)&&(controllerChooseMap.getChooseMapStage().isShowing())){
+					Alert alert=new Alert(AlertType.INFORMATION);
+			    	alert.setTitle("Map Not Chosen");
+			    	alert.setHeaderText("You did not choose the map.\n"
+			    			+ "The system has choose for you the map numeber "+clientGame.getMapNumber());
+			    	alert.showAndWait();
+			    	controllerChooseMap.getChooseMapStage().close();
+				}
 				displayCouncillors(clientGame);
 				displayTokens(clientGame);
 				displayPlayers(clientGame.getClientPlayers());
@@ -257,6 +305,7 @@ public class GUI extends ClientView{
 				displayPermitTiles(clientGame);
 				displayKing(clientGame);
 				displayEmporiums(clientGame);
+				System.out.println(clientGame.getMapNumber());
 			}
 		});
 		
@@ -444,6 +493,7 @@ public class GUI extends ClientView{
 				List<ImageView> politicsCards=new ArrayList<>();
 				controllerGUI.getHand().getChildren().clear();
 				controllerGUI.getPermitTilesTurnedUpOwned().getChildren().clear();
+				controllerGUI.getPermitTilesTurnedDownOwned().getChildren().clear();
 				for (PoliticsCardDTO card : player.getHand()){
 					ImageView imageView=new ImageView(imageMap.get(card));
 					controllerGUI.getHand().getChildren().add(imageView);
@@ -478,6 +528,29 @@ public class GUI extends ClientView{
 					imageView.setDisable(true);
 					imageView.setOnMouseClicked(new EventHandler<Event>() {
 
+						@Override
+						public void handle(Event event) {
+							controllerGUI.handlePermitTilesTurnedUp(permitTileDTO);	
+							
+						}
+					});
+					imageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+						@Override
+						public void handle(MouseEvent event) {
+							controllerGUI.changeMouseStyle(event);
+							
+						}
+					});
+				}
+				for (PermitTileDTO permitTileDTO : player.getCoveredPermitTiles()){
+					ImageView imageView=new ImageView(imageMap.get(permitTileDTO));
+					controllerGUI.getPermitTilesTurnedDownOwned().getChildren().add(imageView);
+					imageView.setFitHeight(70);
+					imageView.setPreserveRatio(true);
+					imageView.setDisable(true);
+					imageView.setOpacity(0.6);
+					imageView.setOnMouseClicked(new EventHandler<Event>() {	
 						@Override
 						public void handle(Event event) {
 							controllerGUI.handlePermitTilesTurnedUp(permitTileDTO);	
@@ -1103,8 +1176,6 @@ public class GUI extends ClientView{
 		}
 	}
 	
-	
-	
 	private void disableClickOnRegions(boolean disabled) {
 		for (ImageView regionImageView : this.controllerGUI.getRegions()){
 			regionImageView.setDisable(disabled);
@@ -1119,6 +1190,10 @@ public class GUI extends ClientView{
 		for (Object object : controllerGUI.getPermitTilesTurnedUpOwned().getChildren()) {
 			ImageView imageView=(ImageView) object;
 			imageView.setDisable(disabled);
+			if(disabled==false)
+				imageView.setEffect(new Glow(0.6));
+			else
+				imageView.setEffect(null);
 		}
 	}
 
@@ -1223,6 +1298,11 @@ public class GUI extends ClientView{
 		for (Object object : controllerGUI.getPermitTilesTurnedDownOwned().getChildren()) {
 			ImageView imageView=(ImageView) object;
 			imageView.setDisable(disabled);
+			imageView.setOpacity(1);
+			if(!disabled)
+				imageView.setEffect(new Glow(0.6));
+			else
+				imageView.setEffect(null);
 		}
 	}
 
@@ -1258,7 +1338,36 @@ public class GUI extends ClientView{
 
 	@Override
 	public void askForMap() {
-		// TODO Auto-generated method stub
-	}
-	
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(ClientGUI.class.getResource("ChooseMap.fxml"));
+					AnchorPane root=null;
+					try {
+						root = (AnchorPane)loader.load();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					controllerChooseMap=loader.getController();
+					controllerChooseMap.getMap1().setUserData(1);
+					controllerChooseMap.getMap2().setUserData(2);
+					controllerChooseMap.getMap3().setUserData(3);
+					controllerChooseMap.getMap4().setUserData(4);
+					controllerChooseMap.getMap5().setUserData(5);
+					controllerChooseMap.getMap6().setUserData(6);
+					controllerChooseMap.getMap7().setUserData(7);
+					controllerChooseMap.getMap8().setUserData(8);
+					controllerChooseMap.setView(GUI.this);
+					Stage chooseMapStage=new Stage();
+					chooseMapStage.setTitle("Choose Map");
+					chooseMapStage.setScene(new Scene(root));
+					controllerChooseMap.setChooseMapStage(chooseMapStage);
+					chooseMapStage.show();				
+			}
+		});
+		
+	}	
 }

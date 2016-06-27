@@ -28,6 +28,7 @@ public class GameTableDTO extends Observable<ClientViewNotify> implements ModelD
 	private String king;
 	private BonusTileDTO nextKingRewardTile;
 	private Set<BonusTileDTO> colourBonuses;
+	private int mapNumber;
 	
 	public GameTableDTO() {
 		this.clientRegions=new ArrayList<RegionDTO>();
@@ -116,6 +117,16 @@ public class GameTableDTO extends Observable<ClientViewNotify> implements ModelD
 
 	public void setColourBonuses(Set<BonusTileDTO> colourBonuses) {
 		this.colourBonuses = colourBonuses;
+	}
+	
+	
+	public int getMapNumber() {
+		return mapNumber;
+	}
+
+
+	public void setMapNumber(int mapNumber) {
+		this.mapNumber = mapNumber;
 	}
 
 
