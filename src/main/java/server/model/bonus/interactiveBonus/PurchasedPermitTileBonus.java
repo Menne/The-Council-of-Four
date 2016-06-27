@@ -3,10 +3,11 @@ package server.model.bonus.interactiveBonus;
 import java.util.Arrays;
 
 import server.model.Game;
+import server.model.actions.bonusActions.PurchasedPermitTileAction;
 import server.model.bonus.Bonus;
+import server.view.notifies.AvailableActionsNotify;
 import server.view.notifies.GameTableNotify;
 import server.view.notifies.MessageNotify;
-import server.view.notifies.PermitTileBonusNotify;
 import server.view.notifies.PlayerNotify;
 
 /**
@@ -37,7 +38,8 @@ public class PurchasedPermitTileBonus implements Bonus {
 			game.notifyObserver(new GameTableNotify(game, Arrays.asList(game.getCurrentPlayer())));
 			game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
 					Arrays.asList(game.getCurrentPlayer())));
-			game.notifyObserver(new PermitTileBonusNotify(Arrays.asList(game.getCurrentPlayer())));
+			game.notifyObserver(new AvailableActionsNotify(Arrays.asList(new PurchasedPermitTileAction()), Arrays.asList(game.getCurrentPlayer()),
+					"Congratulations! You got a special bonus"));
 		}
 		else
 			game.notifyObserver(new MessageNotify("Unable to get bonus because you don't have any permit tile!", 

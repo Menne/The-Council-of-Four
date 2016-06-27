@@ -26,7 +26,7 @@ public class ChooseCityBonusActionTest {
 		a.setPlayerNumber(1);
 		players.add(a);
 		game.start(players);
-		ChooseCityBonusAction action= new ChooseCityBonusAction();
+		ChooseCityBonusAction action= new ChooseCityBonusAction(1);
 		List<City> cities=new ArrayList<>();
 		for(City c: game.getGameTable().getRegionBoards().get(1).getRegionCities())
 			if(c.getName().equals("Juvelar"))
@@ -46,7 +46,7 @@ public class ChooseCityBonusActionTest {
 		a.setPlayerNumber(1);
 		players.add(a);
 		game.start(players);
-		ChooseCityBonusAction action= new ChooseCityBonusAction();
+		ChooseCityBonusAction action= new ChooseCityBonusAction(1);
 		action.executeAction(game);
 		assertTrue(false);
 	}
@@ -59,7 +59,7 @@ public class ChooseCityBonusActionTest {
 		a.setPlayerNumber(1);
 		players.add(a);
 		game.start(players);
-		ChooseCityBonusAction action= new ChooseCityBonusAction();
+		ChooseCityBonusAction action= new ChooseCityBonusAction(1);
 		action.map();
 		assertTrue(false);
 	}

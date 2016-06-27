@@ -3,6 +3,7 @@ package server.model.actions.bonusActions;
 import java.util.List;
 
 import client.modelDTO.actionsDTO.ActionDTO;
+import client.modelDTO.actionsDTO.bonusActions.ChooseCityActionDTO;
 import server.model.Game;
 import server.model.actions.Action;
 import server.model.bonus.Bonus;
@@ -17,7 +18,17 @@ import server.model.gameTable.City;
 public class ChooseCityBonusAction implements Action {
 
 	private List<City> selectedCities;
+	private final int numberOfCities;
 	
+	public ChooseCityBonusAction(int numberOfCities) {
+		this.numberOfCities=numberOfCities;
+	}
+	
+	
+	public int getNumberOfCities() {
+		return this.numberOfCities;
+	}
+
 	public void setSelectedCity(List<City> selectedCities) {
 		this.selectedCities=selectedCities;
 	}
@@ -27,7 +38,7 @@ public class ChooseCityBonusAction implements Action {
 	 */
 	@Override
 	public boolean executeAction(Game game) {
-		if (this.selectedCities.isEmpty()) {
+		if (this.selectedCities==null) {
 			game.setState(game.getState().moveToNextTransition(game));
 			return false;
 		}
@@ -37,12 +48,14 @@ public class ChooseCityBonusAction implements Action {
 				bonusToAssign.assignBonus(game);
 		
 		game.setState(game.getState().moveToNextTransition(game));
+		game.getState().updateClients(game);
+		
 		return true;
 	}
 
 	@Override
 	public ActionDTO map() {
-		throw new IllegalStateException("ChooseCityBonusAction doesn't require mapping");
+		return new ChooseCityActionDTO(this.numberOfCities);
 	}
 	
 }

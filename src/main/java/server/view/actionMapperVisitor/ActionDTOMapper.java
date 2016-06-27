@@ -258,18 +258,15 @@ public class ActionDTOMapper implements ActionMapperVisitor{
 	 */
 	@Override
 	public ChooseCityBonusAction map(ChooseCityActionDTO selectedActionDTO) {
-		ChooseCityBonusAction action=new ChooseCityBonusAction();
+		ChooseCityBonusAction action=new ChooseCityBonusAction(selectedActionDTO.getNumberOfCities());
 		List<City> selectedCities=new ArrayList<>();
-		
-		if (selectedActionDTO.getSelectedCities().isEmpty()) {
-			action.setSelectedCity(selectedCities);
-			return action;
-		}
 		
 		for (City city : this.game.getGameTable().getMap().getGameMap().vertexSet())
 			for (CityDTO selectedCity : selectedActionDTO.getSelectedCities())
 				if (city.getName().equals(selectedCity.getName()))
 					selectedCities.add(city);
+		action.setSelectedCity(selectedCities);
+		
 		
 		return action;
 	}
@@ -283,9 +280,6 @@ public class ActionDTOMapper implements ActionMapperVisitor{
 	@Override
 	public PurchasedPermitTileAction map(PurchasedPermitTileActionDTO selectedActionDTO) {
 		PurchasedPermitTileAction action=new PurchasedPermitTileAction();
-		
-		if (selectedActionDTO.getSelectedPermitTile()==null)
-			return action;
 		
 		for (PermitTile permitTile : this.game.getCurrentPlayer().getPlayersPermitTilesTurnedUp())
 			if (permitTile.getBonuses().equals(selectedActionDTO.getSelectedPermitTile().getBonuses())&&

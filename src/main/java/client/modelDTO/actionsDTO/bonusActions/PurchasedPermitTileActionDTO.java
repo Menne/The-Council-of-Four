@@ -15,7 +15,7 @@ public class PurchasedPermitTileActionDTO implements ActionDTO, ActionWithParame
 	 */
 	private static final long serialVersionUID = 893810260862447362L;
 	private PermitTileDTO selectedPermitTile;
-	private boolean parametersSetted=true;
+	private boolean parametersSetted=false;
 	
 	public void setPermitTile(PermitTileDTO selectedPermitTile) {
 		this.selectedPermitTile=selectedPermitTile;
@@ -44,4 +44,10 @@ public class PurchasedPermitTileActionDTO implements ActionDTO, ActionWithParame
 	public Action startMapper(ActionMapperVisitor mapper) {
 		return mapper.map(this);
 	}
+	
+	@Override
+	public String toString() {
+		return "b3: get bonus!";
+	}
+	
 }
