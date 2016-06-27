@@ -833,9 +833,9 @@
                <children>
                   <AnchorPane minHeight="595.0" minWidth="761.0" prefHeight="632.0" prefWidth="764.0" stylesheets="@resize.css">
                      <children>
-                        <ImageView fitHeight="597.0" fitWidth="766.0" layoutX="-1.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0">
+                        <ImageView fitHeight="597.0" fitWidth="766.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <image>
-                              <Image url="@view/images/various/map_compressa.jpg" />
+                              <Image url="@view/images/various/mapVuota.jpg" />
                            </image>
                         </ImageView>
                         <ImageView fx:id="permitTileSea0" disable="true" fitHeight="80.0" fitWidth="74.0" layoutX="77.0" layoutY="392.0" onMouseClicked="#clickOnPermitTileInRegion" onMouseEntered="#changeMouseStyle" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="130.0" />
