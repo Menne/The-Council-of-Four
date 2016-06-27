@@ -23,7 +23,7 @@ import server.model.stateMachine.State11;
 
 public class BuildByPermitTileTest {
 
-/*	
+	
 	@Test
 	public void testExecuteAction() throws IOException {
 		Game game=new Game();
@@ -71,7 +71,7 @@ public class BuildByPermitTileTest {
 		Emporium e=itEmp.next();
 		assertEquals(game.getCurrentPlayer(), e.getEmporiumsPlayer());
 	}	
-*/
+
 	
 	@Test(expected=NullPointerException.class)
 	public void testExceptionIfSelectedPermitTileIsNull() throws IOException {

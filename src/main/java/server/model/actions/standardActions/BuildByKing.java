@@ -15,7 +15,9 @@ import server.model.gameTable.CouncilBalcony;
 import server.model.gameTable.Councillor;
 import server.model.gameTable.Emporium;
 import server.model.gameTable.PoliticsCard;
+import server.model.player.Player;
 import server.view.notifies.ErrorNotify;
+import server.view.notifies.MessageNotify;
 
 /**
  * This class models the build an emporium with king's help action
@@ -99,7 +101,9 @@ public class BuildByKing extends MainAction {
 			game.getCurrentPlayer().incrementScore(3);
 		}
 		
+		this.notifyPlayers(game);
 		this.nextState(game);
+		
 		return true;
 	}
 	
@@ -224,6 +228,17 @@ public class BuildByKing extends MainAction {
 	private void assignKingRewardTile(Game game) {
 		game.getCurrentPlayer().getPlayersFinalBonus().add(
 				game.getGameTable().getKingRewardTiles().remove(0));
+	}
+	
+	private void notifyPlayers(Game game) {
+		game.notifyObserver(new MessageNotify("Action completed succesfully!", 
+				Arrays.asList(game.getCurrentPlayer())));
+		List<Player> otherPlayers=new ArrayList<>();
+		for (Player player : game.getPlayers())
+			if (!player.equals(game.getCurrentPlayer()))
+				otherPlayers.add(player);
+		game.notifyObserver(new MessageNotify(game.getCurrentPlayer().getName()
+				+ " built an emporium in " + this.selectedCity.getName() + " with the help of the King", otherPlayers));
 	}
 
 

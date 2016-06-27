@@ -13,7 +13,9 @@ import server.model.gameTable.CouncilBalcony;
 import server.model.gameTable.Councillor;
 import server.model.gameTable.PoliticsCard;
 import server.model.gameTable.RegionBoard;
+import server.model.player.Player;
 import server.view.notifies.ErrorNotify;
+import server.view.notifies.MessageNotify;
 
 /**
  * This class is the main action "acquire permit tile", it operates on the 
@@ -81,6 +83,7 @@ public class AcquirePermitTile extends MainAction {
 		game.getCurrentPlayer().addTile(this.chosenRegion.pickUncoveredPermitTile(this.numberOfPermitTile));
 		this.chosenRegion.uncoverPermitTiles();
 		
+		this.notifyPlayers(game);
 		this.nextState(game);
 		
 		return true;
@@ -137,6 +140,17 @@ public class AcquirePermitTile extends MainAction {
 				} 
 		}
 		return satisfyCounter==this.cardsToDescard.size();
+	}
+	
+	private void notifyPlayers(Game game) {
+		game.notifyObserver(new MessageNotify("Action completed succesfully!", 
+				Arrays.asList(game.getCurrentPlayer())));
+		List<Player> otherPlayers=new ArrayList<>();
+		for (Player player : game.getPlayers())
+			if (!player.equals(game.getCurrentPlayer()))
+				otherPlayers.add(player);
+		game.notifyObserver(new MessageNotify(game.getCurrentPlayer().getName()
+				+ " acquired the "+ (this.numberOfPermitTile+1) + " permit tile of " + this.chosenRegion.getName() + " region", otherPlayers));
 	}
 
 	
