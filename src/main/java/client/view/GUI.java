@@ -482,6 +482,7 @@ public class GUI extends ClientView{
 				List<ImageView> politicsCards=new ArrayList<>();
 				controllerGUI.getHand().getChildren().clear();
 				controllerGUI.getPermitTilesTurnedUpOwned().getChildren().clear();
+				controllerGUI.getPermitTilesTurnedDownOwned().getChildren().clear();
 				for (PoliticsCardDTO card : player.getHand()){
 					ImageView imageView=new ImageView(imageMap.get(card));
 					controllerGUI.getHand().getChildren().add(imageView);
@@ -516,6 +517,29 @@ public class GUI extends ClientView{
 					imageView.setDisable(true);
 					imageView.setOnMouseClicked(new EventHandler<Event>() {
 
+						@Override
+						public void handle(Event event) {
+							controllerGUI.handlePermitTilesTurnedUp(permitTileDTO);	
+							
+						}
+					});
+					imageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+						@Override
+						public void handle(MouseEvent event) {
+							controllerGUI.changeMouseStyle(event);
+							
+						}
+					});
+				}
+				for (PermitTileDTO permitTileDTO : player.getCoveredPermitTiles()){
+					ImageView imageView=new ImageView(imageMap.get(permitTileDTO));
+					controllerGUI.getPermitTilesTurnedDownOwned().getChildren().add(imageView);
+					imageView.setFitHeight(70);
+					imageView.setPreserveRatio(true);
+					imageView.setDisable(true);
+					imageView.setOpacity(0.6);
+					imageView.setOnMouseClicked(new EventHandler<Event>() {	
 						@Override
 						public void handle(Event event) {
 							controllerGUI.handlePermitTilesTurnedUp(permitTileDTO);	
@@ -1263,6 +1287,7 @@ public class GUI extends ClientView{
 		for (Object object : controllerGUI.getPermitTilesTurnedDownOwned().getChildren()) {
 			ImageView imageView=(ImageView) object;
 			imageView.setDisable(disabled);
+			imageView.setOpacity(1);
 			if(!disabled)
 				imageView.setEffect(new Glow(0.6));
 			else
