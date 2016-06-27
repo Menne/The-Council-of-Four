@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.ControllerChooseMap">
    <children>
       <SplitPane layoutX="-88.0" layoutY="-80.0" orientation="VERTICAL" prefHeight="284.0" prefWidth="389.0" styleClass="sfondo" stylesheets="@resize.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
@@ -42,7 +42,7 @@
                <children>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="99.0" fitWidth="167.0" layoutX="70.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="map1" fitHeight="99.0" fitWidth="167.0" layoutX="70.0" layoutY="7.0" onMouseClicked="#clickOnMap" pickOnBounds="true" preserveRatio="true" />
                         <Label layoutX="14.0" layoutY="2.0" text="Map 1">
                            <font>
                               <Font name="Papyrus" size="13.0" />
@@ -52,7 +52,7 @@
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                      <children>
-                        <ImageView fitHeight="99.0" fitWidth="167.0" layoutX="76.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="map3" fitHeight="99.0" fitWidth="167.0" layoutX="76.0" layoutY="2.0" onMouseClicked="#clickOnMap" pickOnBounds="true" preserveRatio="true" />
                         <Label layoutX="14.0" layoutY="6.0" text="Map 3">
                            <font>
                               <Font name="Papyrus" size="13.0" />
@@ -62,7 +62,7 @@
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                      <children>
-                        <ImageView fitHeight="99.0" fitWidth="167.0" layoutX="62.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="map5" fitHeight="99.0" fitWidth="167.0" layoutX="62.0" layoutY="-3.0" onMouseClicked="#clickOnMap" pickOnBounds="true" preserveRatio="true" />
                         <Label layoutX="14.0" layoutY="2.0" text="Map 5">
                            <font>
                               <Font name="Papyrus" size="13.0" />
@@ -72,7 +72,7 @@
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
                      <children>
-                        <ImageView fitHeight="99.0" fitWidth="167.0" layoutX="58.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="map7" fitHeight="99.0" fitWidth="167.0" layoutX="58.0" onMouseClicked="#clickOnMap" pickOnBounds="true" preserveRatio="true" />
                         <Label layoutX="14.0" layoutY="2.0" text="Map 7">
                            <font>
                               <Font name="Papyrus" size="13.0" />
@@ -82,7 +82,7 @@
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                      <children>
-                        <ImageView fitHeight="99.0" fitWidth="167.0" layoutX="76.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="map2" fitHeight="99.0" fitWidth="167.0" layoutX="76.0" onMouseClicked="#clickOnMap" pickOnBounds="true" preserveRatio="true" />
                         <Label layoutX="14.0" layoutY="2.0" text="Map 2">
                            <font>
                               <Font name="Papyrus" size="13.0" />
@@ -94,7 +94,7 @@
                      <children>
                         <AnchorPane layoutX="71.0" layoutY="-39.0" prefHeight="161.0" prefWidth="319.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <ImageView fitHeight="99.0" fitWidth="167.0" layoutX="70.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="map4" fitHeight="99.0" fitWidth="167.0" layoutX="70.0" layoutY="-2.0" onMouseClicked="#clickOnMap" pickOnBounds="true" preserveRatio="true" />
                               <Label layoutX="14.0" layoutY="2.0" text="Map 4">
                                  <font>
                                     <Font name="Papyrus" size="13.0" />
@@ -106,7 +106,7 @@
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <children>
-                        <ImageView fitHeight="99.0" fitWidth="167.0" layoutX="76.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="map6" fitHeight="99.0" fitWidth="167.0" layoutX="76.0" onMouseClicked="#clickOnMap" pickOnBounds="true" preserveRatio="true" />
                         <Label layoutX="14.0" layoutY="2.0" text="Map 6">
                            <font>
                               <Font name="Papyrus" size="13.0" />
@@ -116,7 +116,7 @@
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <children>
-                        <ImageView fitHeight="99.0" fitWidth="167.0" layoutX="76.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="map8" fitHeight="99.0" fitWidth="167.0" layoutX="76.0" onMouseClicked="#clickOnMap" pickOnBounds="true" preserveRatio="true" />
                         <Label layoutX="14.0" layoutY="2.0" text="Map 8">
                            <font>
                               <Font name="Papyrus" size="13.0" />

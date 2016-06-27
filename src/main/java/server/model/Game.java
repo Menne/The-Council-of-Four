@@ -76,7 +76,6 @@ public class Game extends Observable<ViewNotify>{
 		
 		
 		this.state.updateClients(this);
-		
 	}
 
 	/**

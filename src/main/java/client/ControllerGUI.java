@@ -553,9 +553,7 @@ public class ControllerGUI {
 	private List<ImageView> permitTilesTurnedUp;
 	
 	@FXML
-	private List<ImageView> permitTilesTurnedDown;
-	
-	
+	private List<ImageView> permitTilesTurnedDown;	
 
 	public void setPoliticsCards(List<ImageView> politicsCards) {
 		this.politicsCards=politicsCards;
@@ -916,6 +914,8 @@ public class ControllerGUI {
     	else
     		return;
     }
+    
+
     
     @FXML
     public void sendMessage(KeyEvent key) throws RemoteException {
