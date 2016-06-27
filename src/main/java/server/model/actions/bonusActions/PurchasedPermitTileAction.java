@@ -1,6 +1,7 @@
 package server.model.actions.bonusActions;
 
 import client.modelDTO.actionsDTO.ActionDTO;
+import client.modelDTO.actionsDTO.bonusActions.PurchasedPermitTileActionDTO;
 import server.model.Game;
 import server.model.actions.Action;
 import server.model.bonus.Bonus;
@@ -32,13 +33,15 @@ public class PurchasedPermitTileAction implements Action {
 			bonusToAssign.assignBonus(game);
 		
 		game.setState(game.getState().moveToNextTransition(game));
+		game.getState().updateClients(game);
+		
 		return true;
 	}
 
 
 	@Override
 	public ActionDTO map() {
-		throw new IllegalStateException("PurchasePermitTileAction doesn't require mapping");
+		return new PurchasedPermitTileActionDTO();
 	}
 	
 }

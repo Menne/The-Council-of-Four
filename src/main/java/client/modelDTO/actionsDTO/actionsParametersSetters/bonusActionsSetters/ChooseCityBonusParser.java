@@ -35,17 +35,12 @@ public class ChooseCityBonusParser implements ActionParserVisitor {
 						acceptableCities.add(city);
 		
 		for (int i=1; i<=this.selectedAction.getNumberOfCities(); i++) {
-		
-			if (!acceptableCities.isEmpty()) {
-		
-				CityDTO selectedCity=view.askForCity(acceptableCities);
-				this.selectedAction.getSelectedCities().add(selectedCity);
-				acceptableCities.remove(selectedCity);
-			}
-			else 
-				view.displayMessage("But it seems you haven't built an emporium yet");
+			CityDTO selectedCity=view.askForCity(acceptableCities);
+			this.selectedAction.getSelectedCities().add(selectedCity);
+			acceptableCities.remove(selectedCity);
 		}
 		
+		this.selectedAction.parametersSetted();
 		return selectedAction;
 	}
 

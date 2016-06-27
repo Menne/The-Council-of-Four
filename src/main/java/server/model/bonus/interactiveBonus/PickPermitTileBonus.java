@@ -4,9 +4,10 @@ package server.model.bonus.interactiveBonus;
 import java.util.Arrays;
 
 import server.model.Game;
+import server.model.actions.bonusActions.PickPermitTileBonusAction;
 import server.model.bonus.Bonus;
+import server.view.notifies.AvailableActionsNotify;
 import server.view.notifies.GameTableNotify;
-import server.view.notifies.PickPermitTileBonusNotify;
 import server.view.notifies.PlayerNotify;
 
 /**
@@ -32,7 +33,8 @@ public class PickPermitTileBonus implements Bonus {
 		game.notifyObserver(new GameTableNotify(game, Arrays.asList(game.getCurrentPlayer()),false));
 		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
 				Arrays.asList(game.getCurrentPlayer())));
-		game.notifyObserver(new PickPermitTileBonusNotify(Arrays.asList(game.getCurrentPlayer())));
+		game.notifyObserver(new AvailableActionsNotify(Arrays.asList(new PickPermitTileBonusAction()), Arrays.asList(game.getCurrentPlayer()),
+				"Congratulations! You got a special bonus"));
 	}
 
 }

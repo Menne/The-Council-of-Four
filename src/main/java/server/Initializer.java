@@ -10,6 +10,7 @@ import java.util.Set;
 
 import server.model.bonus.*;
 import server.model.bonus.interactiveBonus.ChooseCityBonus;
+import server.model.bonus.interactiveBonus.PickPermitTileBonus;
 import server.model.bonus.interactiveBonus.PurchasedPermitTileBonus;
 import server.model.gameTable.*;
 
@@ -323,8 +324,8 @@ public class Initializer {
 			nobilityTrack.addBonus(Integer.parseInt(b.readLine()), new CoinsBonus(Integer.parseInt(b.readLine())));
 		if("ChooseCityBonus".equals(s))
 			nobilityTrack.addBonus(Integer.parseInt(b.readLine()), new ChooseCityBonus(Integer.parseInt(b.readLine())));
-//		if(b.readLine()=="PickPermitTileBonus")
-//			nobilityTrack.addBonus(Integer.parseInt(b.readLine()), new PickPermitTileBonus());
+		if("PickPermitTileBonus".equals(s))
+			nobilityTrack.addBonus(Integer.parseInt(b.readLine()), new PickPermitTileBonus());
 		if("PurchasedPermitTileBonus".equals(s))
 			nobilityTrack.addBonus(Integer.parseInt(b.readLine()), new PurchasedPermitTileBonus());
 		if("PoliticsCardsBonus".equals(s))

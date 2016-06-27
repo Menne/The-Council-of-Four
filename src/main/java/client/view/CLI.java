@@ -244,7 +244,12 @@ public class CLI extends ClientView {
                 .map(CityDTO::getName)
                 .collect(Collectors.toCollection(ArrayList::new));
 		System.out.println(acceptableCityNames);
-		String cityToTranslate=this.scanner.nextLine();
+		String cityToTranslate="";
+		try{
+			cityToTranslate=this.scanner.nextLine();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		System.out.println("arrivato qui");
 			while (!acceptableCityNames.toString().contains(cityToTranslate)) {
 				System.out.println("Wrong parameter. Try again");

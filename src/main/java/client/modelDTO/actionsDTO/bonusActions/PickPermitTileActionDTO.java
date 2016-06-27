@@ -1,5 +1,6 @@
 package client.modelDTO.actionsDTO.bonusActions;
 
+import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.ActionWithParameters;
 import client.modelDTO.actionsDTO.actionsParametersSetters.ActionParserVisitor;
 import client.modelDTO.actionsDTO.actionsParametersSetters.bonusActionsSetters.PickPermitTileBonusParser;
@@ -7,7 +8,7 @@ import client.modelDTO.gameTableDTO.RegionDTO;
 import server.model.actions.Action;
 import server.view.actionMapperVisitor.ActionMapperVisitor;
 
-public class PickPermitTileActionDTO implements ActionWithParameters {
+public class PickPermitTileActionDTO implements ActionDTO, ActionWithParameters {
 	
 	/**
 	 * 
@@ -53,6 +54,11 @@ public class PickPermitTileActionDTO implements ActionWithParameters {
 	@Override
 	public Action startMapper(ActionMapperVisitor mapper) {
 		return mapper.map(this);
+	}
+	
+	@Override
+	public String toString() {
+		return "b2: get bonus!";
 	}
 
 }

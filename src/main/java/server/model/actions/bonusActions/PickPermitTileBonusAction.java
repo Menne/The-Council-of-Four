@@ -1,6 +1,7 @@
 package server.model.actions.bonusActions;
 
 import client.modelDTO.actionsDTO.ActionDTO;
+import client.modelDTO.actionsDTO.bonusActions.PickPermitTileActionDTO;
 import server.model.Game;
 import server.model.actions.Action;
 import server.model.gameTable.RegionBoard;
@@ -28,12 +29,14 @@ public class PickPermitTileBonusAction implements Action {
 		this.selectedRegion.uncoverPermitTiles();
 		
 		game.setState(game.getState().moveToNextTransition(game));
+		game.getState().updateClients(game);
+		
 		return true;
 	}
 
 	@Override
 	public ActionDTO map() {
-		throw new IllegalStateException("PickPermitTileAction doesn't require mapping");
+		return new PickPermitTileActionDTO();
 	}
 
 }
