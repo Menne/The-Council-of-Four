@@ -1,6 +1,9 @@
 package server.model.bonus;
 
+import java.util.Arrays;
+
 import server.model.Game;
+import server.view.notifies.MessageNotify;
 
 /**
  * AssistantsBonus implements the Bonus Class
@@ -34,6 +37,8 @@ public class AssistantsBonus implements Bonus{
 	@Override
 	public void assignBonus(Game game) {
 		game.getCurrentPlayer().incrementAssistants(assistantsIcreasement);
+		game.notifyObserver(new MessageNotify("Congratulations! You got a bonus and your assistants are increased of " 
+				+ this.assistantsIcreasement, Arrays.asList(game.getCurrentPlayer())));
 	}
 
 	@Override

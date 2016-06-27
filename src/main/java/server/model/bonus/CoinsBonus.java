@@ -1,6 +1,9 @@
 package server.model.bonus;
 
+import java.util.Arrays;
+
 import server.model.Game;
+import server.view.notifies.MessageNotify;
 
 /**
  * CoinsBonus class
@@ -34,6 +37,8 @@ public class CoinsBonus implements Bonus{
 	@Override
 	public void assignBonus(Game game) {
 		game.getCurrentPlayer().incrementCoins(coinsIncreasement);
+		game.notifyObserver(new MessageNotify("Congratulations! You got a bonus and your coins are increased of " 
+				+ this.coinsIncreasement, Arrays.asList(game.getCurrentPlayer())));
 	}
 
 	@Override

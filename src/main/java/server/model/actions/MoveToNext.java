@@ -1,7 +1,6 @@
 package server.model.actions;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import client.modelDTO.actionsDTO.ActionDTO;

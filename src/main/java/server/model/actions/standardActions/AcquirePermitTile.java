@@ -150,7 +150,7 @@ public class AcquirePermitTile extends MainAction {
 			if (!player.equals(game.getCurrentPlayer()))
 				otherPlayers.add(player);
 		game.notifyObserver(new MessageNotify(game.getCurrentPlayer().getName()
-				+ " acquired the "+ (this.numberOfPermitTile+1) + " permit tile of " + this.chosenRegion.getName() + " region", otherPlayers));
+				+ " acquired the permit tile number " + (this.numberOfPermitTile+1) + " of " + this.chosenRegion.getName() + " region", otherPlayers));
 	}
 
 	
