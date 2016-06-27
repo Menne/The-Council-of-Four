@@ -245,6 +245,7 @@ public class CLI extends ClientView {
                 .collect(Collectors.toCollection(ArrayList::new));
 		System.out.println(acceptableCityNames);
 		String cityToTranslate=this.scanner.nextLine();
+		System.out.println("arrivato qui");
 			while (!acceptableCityNames.toString().contains(cityToTranslate)) {
 				System.out.println("Wrong parameter. Try again");
 				cityToTranslate=scanner.nextLine();
@@ -401,10 +402,8 @@ public class CLI extends ClientView {
 	@Override
 	public void ChooseCityBonus(int numberOfCities) {
 		ChooseCityActionDTO action=new ChooseCityActionDTO(numberOfCities);
-		action.setParser().setParameters(this, this.clientGame);
-		if (action.checkIfParametersSetted());
 		try {
-			connection.sendAction(action);
+			this.insertParametersAndSend(action);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -414,10 +413,8 @@ public class CLI extends ClientView {
 	@Override
 	public void PurchasedPermitTileBonus() {
 		PurchasedPermitTileActionDTO action=new PurchasedPermitTileActionDTO();
-		action.setParser().setParameters(this, this.clientGame);
-		if (action.checkIfParametersSetted());
 		try {
-			connection.sendAction(action);
+			this.insertParametersAndSend(action);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -427,10 +424,8 @@ public class CLI extends ClientView {
 	@Override
 	public void PickPermitTileBonus() {
 		PickPermitTileActionDTO action=new PickPermitTileActionDTO();
-		action.setParser().setParameters(this, this.clientGame);
-		if (action.checkIfParametersSetted());
 		try {
-			connection.sendAction(action);
+			this.insertParametersAndSend(action);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
