@@ -4,6 +4,7 @@ import client.modelDTO.actionsDTO.ActionDTO;
 import server.model.Game;
 import server.model.player.Player;
 import server.view.notifies.GameTableNotify;
+import server.view.notifies.MessageNotify;
 
 public class Quit implements Action {
 
@@ -45,6 +46,8 @@ public class Quit implements Action {
 			else
 				game.notifyObserver(new GameTableNotify(game, game.getPlayers(),false));
 		}
+		game.notifyObserver(new MessageNotify(game.getCurrentPlayer().getName()
+				+ " has left the game", game.getPlayers()));
 		return true;
 	}
 
