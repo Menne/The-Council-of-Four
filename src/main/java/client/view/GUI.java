@@ -190,7 +190,6 @@ public class GUI extends ClientView{
 		imageMap.put(new GenericPlayerDTO(2), new Image(getClass().getResource("images/emporiumsColours/red.png").toExternalForm()));
 		imageMap.put(new GenericPlayerDTO(3), new Image(getClass().getResource("images/emporiumsColours/yellow.png").toExternalForm()));
 		imageMap.put(new GenericPlayerDTO(4), new Image(getClass().getResource("images/emporiumsColours/green.png").toExternalForm()));
-		
 	}
 
 	
@@ -1344,5 +1343,11 @@ public class GUI extends ClientView{
 			}
 		});
 		
+	}
+
+
+	@Override
+	public void startGame(GameTableDTO gameTableDTO) {
+		controllerGUI.getMapImage().setImage(new Image(getClass().getResource("images/various/map1.png").toExternalForm()));		
 	}	
 }

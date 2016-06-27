@@ -43,7 +43,7 @@ public class Quit implements Action {
 				game.endGame();
 			}
 			else
-				game.notifyObserver(new GameTableNotify(game, game.getPlayers()));
+				game.notifyObserver(new GameTableNotify(game, game.getPlayers(),false));
 		}
 		return true;
 	}

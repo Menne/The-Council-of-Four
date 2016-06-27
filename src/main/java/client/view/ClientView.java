@@ -47,6 +47,8 @@ public abstract class ClientView implements Observer<ClientViewNotify> {
 	public abstract void displayMessage(String string);
 	
 	public abstract void displayError(String message);
+	
+	public abstract void startGame(GameTableDTO gameTableDTO);
 
 	public abstract void displayAvailableActions(List<ActionDTO> availableActions);
 	

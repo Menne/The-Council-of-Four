@@ -62,6 +62,9 @@ public class ControllerGUI {
 	public AnchorPane getRoot() {
 		return root;
 	}
+	
+	@FXML
+	private ImageView mapImage;
 
 	@FXML
 	private ImageView colourPlayer1;
@@ -567,7 +570,10 @@ public class ControllerGUI {
 		this.permitTilesTurnedDown=permitTilesTurnedDown;
 	}
 	
-	
+	public ImageView getMapImage() {
+		return mapImage;
+	}
+
 	public List<Button> getActions() {
 		return Arrays.asList(m1, m2, m3, m4, q1, q2, q3, q4, skip);
 	}

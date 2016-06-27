@@ -39,7 +39,7 @@ public class ChooseCityBonus implements Bonus {
 	public void assignBonus(Game game) {
 		if (game.getCurrentPlayer().getRemainigEmporiums().size() < Game.getIntialnumberofemporiums()) {
 			game.setState(game.getState().interactiveBonusTransition());
-			game.notifyObserver(new GameTableNotify(game, Arrays.asList(game.getCurrentPlayer())));
+			game.notifyObserver(new GameTableNotify(game, Arrays.asList(game.getCurrentPlayer()),false));
 			game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
 					Arrays.asList(game.getCurrentPlayer())));
 			game.notifyObserver(new CityBonusNotify(Arrays.asList(game.getCurrentPlayer()), this.numberOfCities));

@@ -440,4 +440,11 @@ public class CLI extends ClientView {
 	}
 
 
+	@Override
+	public void startGame(GameTableDTO gameTableDTO) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 }

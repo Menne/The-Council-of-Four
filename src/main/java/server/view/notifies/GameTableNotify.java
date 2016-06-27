@@ -11,15 +11,17 @@ public class GameTableNotify implements ViewNotify {
 	
 	private final Game game;
 	private final List<Player> interestedPlayers;
+	private final boolean startGame;
 	
-	public GameTableNotify(Game game, List<Player> interestedPlayers) {
+	public GameTableNotify(Game game, List<Player> interestedPlayers, boolean startGame) {
 		this.game=game;
 		this.interestedPlayers=interestedPlayers;
+		this.startGame=startGame;
 	}
 	
 	@Override
 	public ClientNotify toClientNotify() {
-		return new GameTableDTONotify(this.game.getGameMapper().gameTableMap(this.game));
+		return new GameTableDTONotify(this.game.getGameMapper().gameTableMap(this.game),startGame);
 	}
 
 	@Override

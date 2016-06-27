@@ -29,7 +29,7 @@ public class PickPermitTileBonus implements Bonus {
 	@Override
 	public void assignBonus(Game game) {
 		game.setState(game.getState().interactiveBonusTransition());
-		game.notifyObserver(new GameTableNotify(game, Arrays.asList(game.getCurrentPlayer())));
+		game.notifyObserver(new GameTableNotify(game, Arrays.asList(game.getCurrentPlayer()),false));
 		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
 				Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new PickPermitTileBonusNotify(Arrays.asList(game.getCurrentPlayer())));

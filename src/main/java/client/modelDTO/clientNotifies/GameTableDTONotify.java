@@ -10,10 +10,12 @@ public class GameTableDTONotify implements ClientNotify{
 	 * 
 	 */
 	private static final long serialVersionUID = -912988632170214482L;
-	private GameTableDTO updatedGame;
+	private final GameTableDTO updatedGame;
+	private final boolean startGame;
 	
-	public GameTableDTONotify(GameTableDTO gameTableDTO) {
+	public GameTableDTONotify(GameTableDTO gameTableDTO, boolean startGame) {
 		this.updatedGame=gameTableDTO;
+		this.startGame=startGame;
 	}
 
 	@Override
@@ -29,7 +31,7 @@ public class GameTableDTONotify implements ClientNotify{
 		gameDTOtoupdate.getClientGameTable().setColourBonuses(this.updatedGame.getColourBonuses());
 		gameDTOtoupdate.getClientGameTable().setMapNumber(this.updatedGame.getMapNumber());
 
-		gameDTOtoupdate.notifyObserver(new ClientGameTableNotify(gameDTOtoupdate.getClientGameTable()));
+		gameDTOtoupdate.notifyObserver(new ClientGameTableNotify(gameDTOtoupdate.getClientGameTable(),startGame));
 	}
 
 

@@ -25,7 +25,7 @@ public class GameTableNotifyTest {
 		List<Player> interestedPlayers= new ArrayList<>();
 		interestedPlayers.add(a);
 		game.setCurrentPlayer(a);
-		GameTableNotify notify= new GameTableNotify(game, interestedPlayers);
+		GameTableNotify notify= new GameTableNotify(game, interestedPlayers,false);
 		assertEquals(notify.toClientNotify().getClass(), GameTableDTONotify.class);
 		assertTrue(interestedPlayers==notify.sendTo());
 		assertTrue(a==notify.getCurrentPlayer());
