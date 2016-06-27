@@ -242,6 +242,17 @@ public class GUI extends ClientView{
 		controllerGUI.getActions().get(7).setUserData(new AddictionalMainActionDTO());
 		controllerGUI.getActions().get(8).setUserData(new MoveToNextDTO());
 		controllerGUI.getPoliticsDeck().setUserData(new PickPoliticsCardDTO());
+		
+		for (ActionDTO action : availableActions)
+			if ((action instanceof ChooseCityActionDTO || action instanceof PickPermitTileActionDTO
+					|| action instanceof PurchasedPermitTileActionDTO))
+				try {
+					this.insertParametersAndSend((ActionWithParameters) action);
+				} catch (RemoteException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		
 		for(int i=0; i<9; i++){
 			controllerGUI.getActions().get(i).setEffect(null);
 			}
