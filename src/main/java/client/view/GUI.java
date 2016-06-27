@@ -23,6 +23,9 @@ import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.ActionWithParameters;
 import client.modelDTO.actionsDTO.MoveToNextDTO;
 import client.modelDTO.actionsDTO.PickPoliticsCardDTO;
+import client.modelDTO.actionsDTO.bonusActions.ChooseCityActionDTO;
+import client.modelDTO.actionsDTO.bonusActions.PickPermitTileActionDTO;
+import client.modelDTO.actionsDTO.bonusActions.PurchasedPermitTileActionDTO;
 import client.modelDTO.actionsDTO.marketActions.AcceptAnOfferDTO;
 import client.modelDTO.actionsDTO.marketActions.MakeAnOfferDTO;
 import client.modelDTO.actionsDTO.standardActions.AcquirePermitTileDTO;
@@ -239,6 +242,44 @@ public class GUI extends ClientView{
 		controllerGUI.getActions().get(7).setUserData(new AddictionalMainActionDTO());
 		controllerGUI.getActions().get(8).setUserData(new MoveToNextDTO());
 		controllerGUI.getPoliticsDeck().setUserData(new PickPoliticsCardDTO());
+		for(int i=0; i<9; i++){
+			controllerGUI.getActions().get(i).setEffect(null);
+			}
+		InnerShadow innerShadow= new InnerShadow();
+		innerShadow.setChoke(0.71);
+		innerShadow.setBlurType(BlurType.GAUSSIAN);
+		innerShadow.setColor(Color.web("a84b00"));
+		controllerGUI.getPoliticsDeck().setEffect(null);
+		for(ActionDTO action: availableActions){
+			if(action.getClass()==PickPoliticsCardDTO.class){
+				controllerGUI.getPoliticsDeck().setEffect(new Glow(0.8));
+				sleepForEffects();
+				controllerGUI.getPoliticsDeck().setEffect(null);
+				sleepForEffects();
+				controllerGUI.getPoliticsDeck().setEffect(new Glow(0.8));
+				sleepForEffects();
+				controllerGUI.getPoliticsDeck().setEffect(null);
+				sleepForEffects();
+				controllerGUI.getPoliticsDeck().setEffect(new Glow(0.8));
+			}
+			if(action.getClass()==ElectCouncillorDTO.class)
+				for(int i=0; i<4; i++){
+				controllerGUI.getActions().get(i).setEffect(innerShadow);
+				}
+			if(action.getClass()==EngageAssistantDTO.class)
+				for(int i=4; i<9; i++){
+				controllerGUI.getActions().get(i).setEffect(innerShadow);
+				}
+		}
+	}
+	
+	private void sleepForEffects() {
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -1080,23 +1121,36 @@ public class GUI extends ClientView{
 
 	@Override
 	public void ChooseCityBonus(int numberOfCities) {
-		// TODO Auto-generated method stub
-		
+		ChooseCityActionDTO action=new ChooseCityActionDTO(numberOfCities);
+		try {
+			this.insertParametersAndSend(action);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public void PurchasedPermitTileBonus() {
-		// TODO Auto-generated method stub
-		
+		PurchasedPermitTileActionDTO action=new PurchasedPermitTileActionDTO();
+		try {
+			this.insertParametersAndSend(action);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	@Override
 	public void PickPermitTileBonus() {
-		// TODO Auto-generated method stub
-		
+		PickPermitTileActionDTO action=new PickPermitTileActionDTO();
+		try {
+			this.insertParametersAndSend(action);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-	
-	
 	
 	private void disableClickOnRegions(boolean disabled) {
 		for (ImageView regionImageView : this.controllerGUI.getRegions()){
@@ -1112,6 +1166,10 @@ public class GUI extends ClientView{
 		for (Object object : controllerGUI.getPermitTilesTurnedUpOwned().getChildren()) {
 			ImageView imageView=(ImageView) object;
 			imageView.setDisable(disabled);
+			if(disabled==false)
+				imageView.setEffect(new Glow(0.6));
+			else
+				imageView.setEffect(null);
 		}
 	}
 
@@ -1216,6 +1274,10 @@ public class GUI extends ClientView{
 		for (Object object : controllerGUI.getPermitTilesTurnedDownOwned().getChildren()) {
 			ImageView imageView=(ImageView) object;
 			imageView.setDisable(disabled);
+			if(!disabled)
+				imageView.setEffect(new Glow(0.6));
+			else
+				imageView.setEffect(null);
 		}
 	}
 
