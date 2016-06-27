@@ -1,6 +1,7 @@
 package client.modelDTO.clientNotifies;
 
 import client.modelDTO.GameDTO;
+import client.view.notifies.ClientMessageNotify;
 
 public class MessageDTONotify implements ClientNotify{
 
@@ -16,8 +17,7 @@ public class MessageDTONotify implements ClientNotify{
 
 	@Override
 	public void updateModel(GameDTO gameDTOtoupdate) {
-		System.out.println(this.message);
-		
+		gameDTOtoupdate.notifyObserver(new ClientMessageNotify(this.message));
 	}
 
 	

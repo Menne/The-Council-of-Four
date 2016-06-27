@@ -1,6 +1,9 @@
 package server.model.bonus;
 
+import java.util.Arrays;
+
 import server.model.Game;
+import server.view.notifies.MessageNotify;
 
 /**
  * NobilityBonus Class
@@ -35,9 +38,11 @@ public class NobilityBonus implements Bonus{
 	@Override
 	public void assignBonus(Game game) {
 		game.getCurrentPlayer().incrementNobility(nobilityAdvancement, game.getGameTable().getNobilityTrack().getTrack().size());
+		game.notifyObserver(new MessageNotify("Congratulations! You got a bonus and your nobility is increased of " 
+				+ this.nobilityAdvancement, Arrays.asList(game.getCurrentPlayer())));
 		int currentNobility=game.getCurrentPlayer().getNobility();
-		if(!game.getGameTable().getNobilityTrack().getTrack().get(currentNobility).isEmpty())
-			for(Bonus bonus : game.getGameTable().getNobilityTrack().getTrack().get(currentNobility))
+		if (!game.getGameTable().getNobilityTrack().getTrack().get(currentNobility).isEmpty())
+			for (Bonus bonus : game.getGameTable().getNobilityTrack().getTrack().get(currentNobility))
 				bonus.assignBonus(game);			
 	}
 

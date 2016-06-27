@@ -1,12 +1,16 @@
 package server.model.actions.standardActions;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.standardActions.EngageAssistantDTO;
 import server.model.Game;
 import server.model.actions.QuickAction;
+import server.model.player.Player;
 import server.view.notifies.ErrorNotify;
+import server.view.notifies.MessageNotify;
 /**
  * It's the quick action "engage assistants" it operates on the 
  * protected attribute game through the method executeAction.
@@ -38,9 +42,21 @@ public class EngageAssistant extends QuickAction {
 		game.getCurrentPlayer().decrementCoins(necessaryCoins);
 		game.getCurrentPlayer().incrementAssistants(1);
 		
+		this.notifyPlayers(game);
 		this.nextState(game);
 		
 		return true;
+	}
+	
+	private void notifyPlayers(Game game) {
+		game.notifyObserver(new MessageNotify("Action completed succesfully!", 
+				Arrays.asList(game.getCurrentPlayer())));
+		List<Player> otherPlayers=new ArrayList<>();
+		for (Player player : game.getPlayers())
+			if (!player.equals(game.getCurrentPlayer()))
+				otherPlayers.add(player);
+		game.notifyObserver(new MessageNotify(game.getCurrentPlayer().getName()
+				+ " engaged an assistant", otherPlayers));
 	}
 	
 	

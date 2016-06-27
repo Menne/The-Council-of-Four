@@ -1,7 +1,10 @@
 package server.model.bonus;
 
+import java.util.Arrays;
+
 import server.model.Game;
 import server.model.player.Player;
+import server.view.notifies.MessageNotify;
 
 /**
  * ScoreBonus implements assignBonus method
@@ -33,6 +36,9 @@ public class ScoreBonus implements Bonus{
 	@Override
 	public void assignBonus(Game game){
 		game.getCurrentPlayer().incrementScore(scoreAdvancement);
+		game.notifyObserver(new MessageNotify("Congratulations! You got a bonus and your socre is increased of " 
+				+ this.scoreAdvancement, Arrays.asList(game.getCurrentPlayer())));
+		
 	}
 	
 	public void assignBonusToPlayer(Player player){

@@ -1,6 +1,9 @@
 package server.model.bonus;
 
+import java.util.Arrays;
+
 import server.model.Game;
+import server.view.notifies.MessageNotify;
 
 /**
  * This bonus lets you pick one or more politics cards
@@ -35,6 +38,9 @@ public class PoliticsCardsBonus implements Bonus{
 	public void assignBonus(Game game) {
 		for (int i=0; i<this.numberOfCards; i++)
 			game.getCurrentPlayer().getHand().add(game.getGameTable().getPoliticsDeck().pickCard());
+		game.notifyObserver(new MessageNotify("Congratulations! You got a bonus and you got " 
+				+ this.numberOfCards + " more politics cards", Arrays.asList(game.getCurrentPlayer())));
+		
 	}
 
 	@Override

@@ -1,11 +1,17 @@
 package server.model.actions.standardActions;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.standardActions.ElectCouncillorDTO;
 import server.model.Game;
 import server.model.actions.MainAction;
 import server.model.gameTable.CouncilBalcony;
 import server.model.gameTable.Councillor;
+import server.model.player.Player;
+import server.view.notifies.MessageNotify;
 
 /**
  * It's the main action "elect councillor" it operates on the 
@@ -50,9 +56,21 @@ public class ElectCouncillor extends MainAction {
 			}
 		game.getCurrentPlayer().incrementCoins(givenCoins);
 		
+		this.notifyPlayers(game);
 		this.nextState(game);
 		
 		return true;
+	}
+	
+	private void notifyPlayers(Game game) {
+		game.notifyObserver(new MessageNotify("Action completed succesfully!", 
+				Arrays.asList(game.getCurrentPlayer())));
+		List<Player> otherPlayers=new ArrayList<>();
+		for (Player player : game.getPlayers())
+			if (!player.equals(game.getCurrentPlayer()))
+				otherPlayers.add(player);
+		game.notifyObserver(new MessageNotify(game.getCurrentPlayer().getName()
+				+ " elected a " + this.newCouncillor.getColour() +" councillor in the " + this.councilBalcony.toString(), otherPlayers));
 	}
 
 	

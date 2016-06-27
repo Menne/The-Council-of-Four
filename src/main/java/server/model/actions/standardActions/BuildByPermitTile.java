@@ -1,6 +1,8 @@
 package server.model.actions.standardActions;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.standardActions.BuildByPermitTileDTO;
@@ -11,7 +13,9 @@ import server.model.gameTable.City;
 import server.model.gameTable.ConnectedBuiltCityDiscover;
 import server.model.gameTable.Emporium;
 import server.model.gameTable.PermitTile;
+import server.model.player.Player;
 import server.view.notifies.ErrorNotify;
+import server.view.notifies.MessageNotify;
 
 /**
  * This action allows the current player to build in one city from those which
@@ -86,6 +90,7 @@ public class BuildByPermitTile extends MainAction {
 			game.getCurrentPlayer().incrementScore(3);
 		}
 		
+		this.notifyPlayers(game);
 		this.nextState(game);
 		
 		return true;
@@ -174,6 +179,16 @@ public class BuildByPermitTile extends MainAction {
 		game.getGameTable().getKingRewardTiles().remove(0));
 	}
 	
+	private void notifyPlayers(Game game) {
+		game.notifyObserver(new MessageNotify("Action completed succesfully!", 
+				Arrays.asList(game.getCurrentPlayer())));
+		List<Player> otherPlayers=new ArrayList<>();
+		for (Player player : game.getPlayers())
+			if (!player.equals(game.getCurrentPlayer()))
+				otherPlayers.add(player);
+		game.notifyObserver(new MessageNotify(game.getCurrentPlayer().getName()
+				+ " built an emporium in " + this.selectedCity.getName(), otherPlayers));
+	}
 
 	@Override
 	public ActionDTO map() {
