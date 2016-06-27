@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 import client.ClientGUI;
+import client.ControllerChooseMap;
 import client.ControllerGUI;
 import client.ControllerMarketGUI;
 import client.connections.Connection;
@@ -81,6 +82,7 @@ import server.model.gameTable.CouncilBalcony;
 public class GUI extends ClientView{
 
 	private ControllerMarketGUI controllerMarketGUI;
+	private ControllerChooseMap controllerChooseMap;
 	private final ControllerGUI controllerGUI;
 	private final Map<ModelDTO, Image> imageMap;
 	private Object currentParameter;
@@ -245,6 +247,14 @@ public class GUI extends ClientView{
 			
 			@Override
 			public void run() {
+				if((controllerChooseMap!=null)&&(controllerChooseMap.getChooseMapStage().isShowing())){
+					Alert alert=new Alert(AlertType.INFORMATION);
+			    	alert.setTitle("Map Not Chosen");
+			    	alert.setHeaderText("You did not choose the map.\n"
+			    			+ "The system has choose for you the map numeber "+clientGame.getMapNumber());
+			    	alert.showAndWait();
+			    	controllerChooseMap.getChooseMapStage().close();
+				}
 				displayCouncillors(clientGame);
 				displayTokens(clientGame);
 				displayPlayers(clientGame.getClientPlayers());
@@ -254,6 +264,7 @@ public class GUI extends ClientView{
 				displayPermitTiles(clientGame);
 				displayKing(clientGame);
 				displayEmporiums(clientGame);
+				System.out.println(clientGame.getMapNumber());
 			}
 		});
 		
@@ -1240,7 +1251,36 @@ public class GUI extends ClientView{
 
 	@Override
 	public void askForMap() {
-		// TODO Auto-generated method stub
-	}
-	
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(ClientGUI.class.getResource("ChooseMap.fxml"));
+					AnchorPane root=null;
+					try {
+						root = (AnchorPane)loader.load();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					controllerChooseMap=loader.getController();
+					controllerChooseMap.getMap1().setUserData(1);
+					controllerChooseMap.getMap2().setUserData(2);
+					controllerChooseMap.getMap3().setUserData(3);
+					controllerChooseMap.getMap4().setUserData(4);
+					controllerChooseMap.getMap5().setUserData(5);
+					controllerChooseMap.getMap6().setUserData(6);
+					controllerChooseMap.getMap7().setUserData(7);
+					controllerChooseMap.getMap8().setUserData(8);
+					controllerChooseMap.setView(GUI.this);
+					Stage chooseMapStage=new Stage();
+					chooseMapStage.setTitle("Choose Map");
+					chooseMapStage.setScene(new Scene(root));
+					controllerChooseMap.setChooseMapStage(chooseMapStage);
+					chooseMapStage.show();				
+			}
+		});
+		
+	}	
 }

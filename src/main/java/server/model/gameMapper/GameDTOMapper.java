@@ -80,6 +80,7 @@ public class GameDTOMapper implements GameMapperInterface {
 			if(cityColour.isBonusAvailable()==true)
 				gameTableDTO.getColourBonuses().add(this.bonusTileMap(cityColour.getColorBonus()));
 		}
+		gameTableDTO.setMapNumber(realObject.getMapNumber());
 		
 		return gameTableDTO;
 	}
