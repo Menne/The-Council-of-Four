@@ -681,8 +681,7 @@ STOPthirdRegionPermitTileList
 
 NobilityTrack
 21
-ChooseCityBonus
-1
+PickPermitTileBonus
 1
 NEXT
 ScoreBonus
