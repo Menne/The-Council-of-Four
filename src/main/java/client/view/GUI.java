@@ -1384,6 +1384,12 @@ public class GUI extends ClientView{
 
 	@Override
 	public void startGame(GameTableDTO gameTableDTO) {
-		controllerGUI.getMapImage().setImage(new Image(getClass().getResource("images/various/map1.png").toExternalForm()));		
+		System.out.println(controllerGUI.getMapImage());
+		try{
+			controllerGUI.getMapImage().setImage(new Image(getClass().getResource("images/various/map"+String.valueOf(gameTableDTO.getMapNumber())+".jpg").toExternalForm()));
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+				
 	}	
 }
