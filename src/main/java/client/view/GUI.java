@@ -22,6 +22,9 @@ import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.ActionWithParameters;
 import client.modelDTO.actionsDTO.MoveToNextDTO;
 import client.modelDTO.actionsDTO.PickPoliticsCardDTO;
+import client.modelDTO.actionsDTO.bonusActions.ChooseCityActionDTO;
+import client.modelDTO.actionsDTO.bonusActions.PickPermitTileActionDTO;
+import client.modelDTO.actionsDTO.bonusActions.PurchasedPermitTileActionDTO;
 import client.modelDTO.actionsDTO.marketActions.AcceptAnOfferDTO;
 import client.modelDTO.actionsDTO.marketActions.MakeAnOfferDTO;
 import client.modelDTO.actionsDTO.standardActions.AcquirePermitTileDTO;
@@ -1069,20 +1072,35 @@ public class GUI extends ClientView{
 
 	@Override
 	public void ChooseCityBonus(int numberOfCities) {
-		// TODO Auto-generated method stub
-		
+		ChooseCityActionDTO action=new ChooseCityActionDTO(numberOfCities);
+		try {
+			this.insertParametersAndSend(action);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public void PurchasedPermitTileBonus() {
-		// TODO Auto-generated method stub
-		
+		PurchasedPermitTileActionDTO action=new PurchasedPermitTileActionDTO();
+		try {
+			this.insertParametersAndSend(action);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	@Override
 	public void PickPermitTileBonus() {
-		// TODO Auto-generated method stub
-		
+		PickPermitTileActionDTO action=new PickPermitTileActionDTO();
+		try {
+			this.insertParametersAndSend(action);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	
