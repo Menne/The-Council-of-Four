@@ -37,30 +37,4 @@ public class ChooseCityBonusActionTest {
 		assertTrue(action.executeAction(game));
 		assertEquals(State01.class, game.getState().getClass());
 	}
-
-	@Test(expected=NullPointerException.class)
-	public void testNullException() throws IOException {
-		Game game=new Game();
-		List<Player> players = new ArrayList<>();
-		Player a = new Player("Andre");
-		a.setPlayerNumber(1);
-		players.add(a);
-		game.start(players);
-		ChooseCityBonusAction action= new ChooseCityBonusAction(1);
-		action.executeAction(game);
-		assertTrue(false);
-	}
-	
-	@Test(expected=IllegalStateException.class)
-	public void testIllegalException() throws IOException {
-		Game game=new Game();
-		List<Player> players = new ArrayList<>();
-		Player a = new Player("Andre");
-		a.setPlayerNumber(1);
-		players.add(a);
-		game.start(players);
-		ChooseCityBonusAction action= new ChooseCityBonusAction(1);
-		action.map();
-		assertTrue(false);
-	}
 }
