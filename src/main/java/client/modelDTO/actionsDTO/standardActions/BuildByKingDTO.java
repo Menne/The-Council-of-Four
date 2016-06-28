@@ -38,10 +38,12 @@ public class BuildByKingDTO implements ActionDTO, ActionWithParameters {
 		this.cardsToDescard=cardsToDescard;
 	}
 	
+	@Override
 	public boolean checkIfParametersSetted() {
 		return parametersSetted;
 	}
 
+	@Override
 	public void parametersSetted() {
 		this.parametersSetted=true;
 	}

@@ -47,10 +47,12 @@ public class AcquirePermitTileDTO implements ActionDTO, ActionWithParameters {
 		this.chosenRegion=chosenRegion;
 	}
 	
+	@Override
 	public boolean checkIfParametersSetted() {
 		return parametersSetted;
 	}
-
+	
+	@Override
 	public void parametersSetted() {
 		this.parametersSetted=true;
 	}

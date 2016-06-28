@@ -34,16 +34,16 @@ public class ControllerLogin {
 	private static final String NAME = "CoF";
 
 	@FXML
-	private TextField name;
+	private TextField playerName;
 	
 	@FXML
-	private ToggleGroup connection;
+	private ToggleGroup connections;
 	
 	@FXML
-	private Toggle socket;
+	private Toggle socketToggle;
 	
 	@FXML
-	private Toggle rmi;
+	private Toggle rmiToggle;
 	
 	@FXML
 	private TextField address;
@@ -60,14 +60,14 @@ public class ControllerLogin {
 	public void play() throws UnknownHostException, IOException, NotBoundException{
 		Alert alert=new Alert(AlertType.ERROR);
 		alert.setTitle("ERROR");
-		if(name.getText().isEmpty() || address.getText().isEmpty()){
+		if(playerName.getText().isEmpty() || address.getText().isEmpty()){
 			alert.setHeaderText("Error, you must complete all the fields!");
 			alert.showAndWait();
 			return;
 		}
 		while(true){
 			try {
-				if(connection.getSelectedToggle().equals(socket)){
+				if(connections.getSelectedToggle().equals(socketToggle)){
 
 					Socket socket=new Socket(address.getText(), PORT_SOCKET);
 					System.out.println("Connection created");
@@ -81,7 +81,7 @@ public class ControllerLogin {
 					connection.registerObserver(clientController);
 					ExecutorService executor=Executors.newSingleThreadExecutor();
 					executor.submit(connection);
-					view.welcome(name.getText());
+					view.welcome(playerName.getText());
 					view.input();				
 					break;
 				}
@@ -97,7 +97,7 @@ public class ControllerLogin {
 					ClientView view=new GUI(connection, clientGame, controllerGUI);
 					clientGame.registerObserver(view);
 					connection.registerObserver(clientController);
-					view.welcome(name.getText());
+					view.welcome(playerName.getText());
 					view.input();
 					break;
 				}
