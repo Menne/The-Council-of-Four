@@ -2,10 +2,21 @@ package server.model.gameTable;
 
 import server.model.bonus.ScoreBonus;
 
+/**
+ * models the bonus tiles of the regions
+ * its attributes are the region and the ScoreBonus(super)
+ * @author andreapasquali
+ *
+ */
 public class RegionBonusTile extends BonusTile{
 
 	private final String region;
 	
+	/**
+	 * constructor of the RegionBonusTile
+	 * @param bonus is the Score Bonus of the tile
+	 * @param region is the RegionBoard of the tile
+	 */
 	public RegionBonusTile(ScoreBonus bonus, String region) {
 		super(bonus);
 		this.region=region;

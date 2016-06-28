@@ -93,7 +93,10 @@ public class City {
 		this.nearCities.add(c);
 	}
 	
-
+	/**
+	 * Adds emporium to the set of Emporium of the city
+	 * @param emporium is the emporium to add
+	 */
 	public void addEmporium(Emporium emporium) {
 		this.cityEmporiums.add(emporium);
 	}

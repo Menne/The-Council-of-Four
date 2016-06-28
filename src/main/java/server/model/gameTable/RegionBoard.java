@@ -6,6 +6,8 @@ import java.util.Set;
 
 /**
  * Models a region board
+ * attributes: name, regionPermitDeck, regionBalcony, regionBonus, bonusAvailable, regionCitites,
+ * uncoveredPermitTiles
  * @author andreapasquali
  *
  */
@@ -24,12 +26,13 @@ public class RegionBoard {
 	private static final int numberOfUncoveredPermitTiles=2;
 	
 	/**
-	 * Initially the bonus is available and the set of the cities of the region is empty
+	 * Constructor of RegionBoard.
+	 * initializes the bonus is available and the set of the cities of the region empty
 	 * The city's constructor will add the city to the set. 
-	 * @param name
-	 * @param regionPermitDeck
-	 * @param regionBalcony
-	 * @param regionBonus
+	 * @param name of the region
+	 * @param regionPermitDeck of the region
+	 * @param regionBalcony balcony of the region
+	 * @param regionBonus RegionBonusTile of the region
 	 */
 	public RegionBoard(String name, PermitDeck regionPermitDeck, 
 			CouncilBalcony regionBalcony, RegionBonusTile regionBonus){		
@@ -49,7 +52,9 @@ public class RegionBoard {
 	}
 
 
-
+	/**
+	 * change the boolean value of bonusAvailable to false
+	 */
 	public void notBonusAvailable() {
 		this.bonusAvailable = false;
 	}
@@ -90,7 +95,10 @@ public class RegionBoard {
 		return uncoveredPermitTiles;
 	}
 	
-	
+	/**
+	 * adds a City to the list of cities of the region
+	 * @param city is the city to add
+	 */
 	public void addCityOfThisRegion(City city){
 		this.regionCities.add(city);
 	}

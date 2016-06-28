@@ -36,7 +36,9 @@ public class CityColour {
 	}
 
 
-
+	/**
+	 * change the status of Bonus available to false
+	 */
 	public void notBonusAvailable() {
 		this.bonusAvailable = false;
 	}
@@ -60,7 +62,10 @@ public class CityColour {
 	}
 
 
-
+	/**
+	 * Adds City c to the list of cities of this colour
+	 * @param c is the city to add
+	 */
 	public void addCityOfThisColour(City c){
 		this.citiesOfThisColour.add(c);
 	}

@@ -1,11 +1,20 @@
 package server.model.gameTable;
 
 import server.model.bonus.ScoreBonus;
-
+/**
+ * Models colour bonus tiles and has an attribute String that rappresent the colour of the tile
+ * @author andreapasquali
+ *
+ */
 public class ColourBonusTile extends BonusTile {
 	
 	public final String colour;
 	
+	/**
+	 * constructor of the ColourBonusTile
+	 * @param bonus ScoreBonus of the tile
+	 * @param colour of the tile
+	 */
 	public ColourBonusTile(ScoreBonus bonus, String colour) {
 		super(bonus);
 		this.colour=colour;

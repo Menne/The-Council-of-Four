@@ -13,6 +13,10 @@ public class RewardToken {
 
 	private final Set<Bonus> rewardToken;
 	
+	/**
+	 * constructor of RewardToken
+	 * @param rewardTokenBonus is the set of bonuses of the rewardToken
+	 */
 	public RewardToken(Set<Bonus> rewardTokenBonus){
 		this.rewardToken=rewardTokenBonus;
 	}

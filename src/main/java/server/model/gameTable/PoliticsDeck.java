@@ -10,11 +10,14 @@ import java.util.Set;
 	 * @author Emanuele
 	 *
 	 */
-
 public class PoliticsDeck{
 
 	private final Set<CardColour> cardColours;
 	
+	/**
+	 * constructor of politicsDeck 
+	 * @param cardColours is the set of all the colours of cards in the deck
+	 */
 	public PoliticsDeck(Set<CardColour> cardColours) {
 		this.cardColours=cardColours;
 	}

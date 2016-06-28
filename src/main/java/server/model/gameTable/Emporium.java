@@ -2,7 +2,7 @@ package server.model.gameTable;
 import server.model.player.Player;
 
 /**
- * modelizes the emporium object and has only the emporium's handler(player) as attribute
+ * models the emporium object and has only the emporium's handler(player) as attribute
  * @author andreapasquali
  *
  */
@@ -10,6 +10,10 @@ public class Emporium {
 	
 	private final Player emporiumsPlayer;
 	
+	/**
+	 * constructor of Emporium
+	 * @param emporiumsPlayer is the Player handler of the emporium
+	 */
 	public Emporium(Player emporiumsPlayer){
 		this.emporiumsPlayer=emporiumsPlayer;
 	}

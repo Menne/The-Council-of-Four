@@ -1,7 +1,7 @@
 package server.model.gameTable;
 
 /**
- * modelizes the king.
+ * models the king.
  * its attribute is only the city where the king is
  * @author andreapasquali
  *
@@ -10,7 +10,10 @@ public class King {
 
 	private City kingCity;
 	
-
+	/**
+	 * constructor of the king
+	 * @param kingCity is the city where the king is
+	 */
 	public King(City kingCity){
 		this.kingCity=kingCity;
 	}

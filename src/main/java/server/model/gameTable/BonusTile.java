@@ -1,11 +1,19 @@
 package server.model.gameTable;
 
 import server.model.bonus.ScoreBonus;
-
+/**
+ * modelizes bonus tiles and has an attribute of type Score Bonus  
+ * @author andreapasquali
+ *
+ */
 public abstract class BonusTile {
 
 	protected final ScoreBonus bonus;
 	
+	/**
+	 * Constructor of bonus tile 
+	 * @param bonus is the Score Bonus of the tile
+	 */
 	public BonusTile(ScoreBonus bonus) {
 		this.bonus=bonus;
 	}

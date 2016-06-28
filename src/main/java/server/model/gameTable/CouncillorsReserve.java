@@ -13,6 +13,10 @@ public class CouncillorsReserve {
 
 	private final List<Councillor> councillors;
 	
+	/**
+	 * constructor of CouncillorsRserve; initializes a List of Councillor and shuffles it)
+	 * @param councillors is the list of councillors to add to the councillor reserve
+	 */
 	public CouncillorsReserve(List<Councillor> councillors){
 		this.councillors=councillors;
 		Collections.shuffle(this.councillors);

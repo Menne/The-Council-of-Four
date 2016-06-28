@@ -2,6 +2,12 @@ package server.model.gameTable;
  
 import java.util.List;
 
+/**
+ * models the game table of the game and its attributes are: Map, regionBoard, councilOfKing, politicsDeck, 
+ * nobilityTrack, kingRewardTiles, king
+ * @author andreapasquali
+ *
+ */
 public class GameTable {
 	
 	private final Map map;
@@ -13,7 +19,18 @@ public class GameTable {
 	private final List<KingBonusTile> kingRewardTiles;
 	private final King king;
                
-	
+	/**
+	 * is the constructor of the GameTable.
+	 * initializes the king searching for the "KingColour" in the cities of the regions
+	 * throws illegal argument exception if there is no king or there are too many
+	 * @param map map the cities
+	 * @param regionBoards of the game
+	 * @param councilOfKing is the balcony of the king
+	 * @param councilReserve is the list of councillors available
+	 * @param politicsDeck is the deck of politics cards
+	 * @param nobilityTrack is the list of bonuses of the nobilityTrack
+	 * @param kingRewardTiles is the list of bonus tiles
+	 */
 	public GameTable(Map map, List<RegionBoard> regionBoards, CouncilBalcony councilOfKing,
 			CouncillorsReserve councilReserve, PoliticsDeck politicsDeck, NobilityTrack nobilityTrack,
 			List<KingBonusTile> kingRewardTiles){
