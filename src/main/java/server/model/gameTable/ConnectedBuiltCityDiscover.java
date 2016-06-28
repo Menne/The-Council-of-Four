@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.UndirectedGraph;
-import org.jgrapht.alg.ConnectivityInspector;
 
 /**
  * Allows to find all the cities connected (directly and indirectly)
@@ -24,14 +23,13 @@ public class ConnectedBuiltCityDiscover {
 		this.connectedBonusCities=new HashSet<>();
 		this.checkedCities=new HashSet<>();
 	}
+	
 	/**
-	 * Adds to the set "connectedBonusCities" all the city of the map 
-	 * connected (directly and indirectly) to the cityToCheck and where 
-	 * there is the buildedEmporium.
-	 * It's used locally from only public method of the class
-	 * @param map to consider in the search
-	 * @param cityToCheck is the given city
-	 * @param builedEmporium is the given emporium
+	 *It's a recursive private method that adds all the connected cities
+	 *with the same emporium to the private field connectedBonsCities
+	 * @param map
+	 * @param cityToCheck
+	 * @param builedEmporium
 	 */
 	private void addCities(UndirectedGraph<City,DefaultEdge> map, 
 			City cityToCheck, Emporium builedEmporium){
@@ -41,9 +39,7 @@ public class ConnectedBuiltCityDiscover {
 			return;
 		else{
 			this.connectedBonusCities.add(cityToCheck);
-			ConnectivityInspector<City,DefaultEdge> inspector=
-					new ConnectivityInspector<City,DefaultEdge>(map);
-			for(City nearCity : inspector.connectedSetOf(cityToCheck))
+			for(City nearCity : cityToCheck.getNearCities())
 				if(!this.checkedCities.contains(nearCity))
 					this.addCities(map, nearCity, builedEmporium);			
 		}			
@@ -59,7 +55,7 @@ public class ConnectedBuiltCityDiscover {
 	}
 	
 	/**
-	 * Returns the set of cities found out from the private method addCities
+	 * Returns the set of cities connected with the same builded emporium
 	 * @param map is the map to pass to addCities
 	 * @param cityToCheck is the city to pass to addCities
 	 * @param builedEmporium is the emporium to pass to addCities

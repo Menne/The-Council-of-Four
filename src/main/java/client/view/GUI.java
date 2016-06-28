@@ -292,7 +292,6 @@ public class GUI extends ClientView{
 				displayPermitTiles(clientGame);
 				displayKing(clientGame);
 				displayEmporiums(clientGame);
-				System.out.println(clientGame.getMapNumber());
 			}
 		});
 		
