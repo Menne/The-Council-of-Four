@@ -1384,7 +1384,7 @@ public class GUI extends ClientView{
 	public void startGame(GameTableDTO gameTableDTO) {
 		System.out.println(controllerGUI.getMapImage());
 		try{
-			controllerGUI.getMapImage().setImage(new Image(getClass().getResource("images/various/map"+String.valueOf(gameTableDTO.getMapNumber())+".jpg").toExternalForm()));
+			controllerGUI.getMapImage().setImage(new Image(getClass().getResource("images/maps/map"+String.valueOf(gameTableDTO.getMapNumber())+".jpg").toExternalForm()));
 		}catch(Exception e){
 			e.printStackTrace();
 		}
