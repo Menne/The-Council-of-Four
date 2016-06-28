@@ -17,6 +17,11 @@ import server.model.stateMachine.bonusStates.InteractiveBonusState;
 import server.view.notifies.AvailableActionsNotify;
 import server.view.notifies.PlayerNotify;
 
+/**
+ * Models the state in which the current player has the possibility to do a main action or a quick action
+ * @author andreapasquali
+ *
+ */
 public class State11 implements State {
 
 	@Override
@@ -39,7 +44,9 @@ public class State11 implements State {
 		return new InteractiveBonusState(this);
 	}
 	
-	
+	/**
+	 * returns a list of acceptable actions of this state
+	 */
 	@Override
 	public List<Action> getAcceptableActions(Game game) {
 		return Arrays.asList(
@@ -52,6 +59,9 @@ public class State11 implements State {
 				new ElectCouncillorByAssistant());
 	}
 
+	/**
+	 * sends GameTableNotify, PlayerNotify, AvailableActionNotify to the clients
+	 */
 	@Override
 	public void updateClients(Game game) {
 		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
@@ -61,6 +71,10 @@ public class State11 implements State {
 				", you have the following available actions. Choose one of them"));
 	}
 
+	/**
+	 *if current player is the last one, it returns a new BeginState,
+	 *else it returns a new SellingState
+	 */
 	@Override
 	public State moveToNextTransition(Game game) {
 		if (!game.getCurrentPlayer().equals(game.lastPlayer())){

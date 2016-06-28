@@ -36,7 +36,7 @@ public class ClientAvailableActionsNotify implements ClientViewNotify {
 					}			
 				}
 			});
-			view.getConnection().getTimer().schedule(view.getConnection().getTimerTask(), 20*1000);
+			view.getConnection().getTimer().schedule(view.getConnection().getTimerTask(), 300*1000);
 		}
 		
 	}
