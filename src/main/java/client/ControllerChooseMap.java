@@ -4,11 +4,17 @@ import java.rmi.RemoteException;
 
 import client.modelDTO.actionsDTO.ChooseMapDTO;
 import client.view.GUI;
+import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.effect.Glow;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class ControllerChooseMap {
@@ -31,6 +37,8 @@ public class ControllerChooseMap {
 	private ImageView map7;
 	@FXML
 	private ImageView map8;
+	@FXML
+	private ImageView preview;
 	
 
 	public ImageView getMap1() {
@@ -77,6 +85,10 @@ public class ControllerChooseMap {
 		this.chooseMapStage = chooseMapStage;
 	}
 
+	public ImageView getPreview() {
+		return preview;
+	}
+
 	@FXML
     public void clickOnMap(Event event){
 		int mapNumber=(int)((ImageView) event.getSource()).getUserData();
@@ -92,4 +104,112 @@ public class ControllerChooseMap {
     	alert.showAndWait();
     	chooseMapStage.close();
     }
+	
+	@FXML
+    public void changeMouseStyleMap1(MouseEvent mouseEvent) {
+    	Platform.runLater(new Runnable() {
+	        
+	    	@Override
+	        public void run() {
+	    		preview.setImage(new Image(getClass().getResource("view/images/various/map1copia.jpg").toExternalForm()));
+	    		((Node) mouseEvent.getSource()).setCursor(Cursor.HAND);
+	        }
+	    });
+    }
+	
+	@FXML
+    public void changeMouseStyleMap2(MouseEvent mouseEvent) {
+    	Platform.runLater(new Runnable() {
+	        
+	    	@Override
+	        public void run() {
+	    		preview.setImage(new Image(getClass().getResource("view/images/various/map3copia.png").toExternalForm()));
+	    		((Node) mouseEvent.getSource()).setCursor(Cursor.HAND);
+	        }
+	    });
+    }
+	
+	@FXML
+    public void changeMouseStyleMap3(MouseEvent mouseEvent) {
+    	Platform.runLater(new Runnable() {
+	        
+	    	@Override
+	        public void run() {
+	    		preview.setImage(new Image(getClass().getResource("view/images/various/map3copia.png").toExternalForm()));
+	    		((Node) mouseEvent.getSource()).setCursor(Cursor.HAND);
+	        }
+	    });
+    }
+	
+	@FXML
+    public void changeMouseStyleMap4(MouseEvent mouseEvent) {
+    	Platform.runLater(new Runnable() {
+	        
+	    	@Override
+	        public void run() {
+	    		preview.setImage(new Image(getClass().getResource("view/images/various/map4copia.png").toExternalForm()));
+	    		((Node) mouseEvent.getSource()).setCursor(Cursor.HAND);
+	        }
+	    });
+    }
+	
+	@FXML
+    public void changeMouseStyleMap5(MouseEvent mouseEvent) {
+    	Platform.runLater(new Runnable() {
+	        
+	    	@Override
+	        public void run() {
+	    		preview.setImage(new Image(getClass().getResource("view/images/various/map5copia.png").toExternalForm()));
+	    		((Node) mouseEvent.getSource()).setCursor(Cursor.HAND);
+	        }
+	    });
+    }
+	
+	@FXML
+    public void changeMouseStyleMap6(MouseEvent mouseEvent) {
+    	Platform.runLater(new Runnable() {
+	        
+	    	@Override
+	        public void run() {
+	    		preview.setImage(new Image(getClass().getResource("view/images/various/map6copia.png").toExternalForm()));
+	    		((Node) mouseEvent.getSource()).setCursor(Cursor.HAND);
+	        }
+	    });
+    }
+	
+	@FXML
+    public void changeMouseStyleMap7(MouseEvent mouseEvent) {
+    	Platform.runLater(new Runnable() {
+	        
+	    	@Override
+	        public void run() {
+	    		preview.setImage(new Image(getClass().getResource("view/images/various/map7copia.png").toExternalForm()));
+	    		((Node) mouseEvent.getSource()).setCursor(Cursor.HAND);
+	        }
+	    });
+    }
+	
+	@FXML
+    public void changeMouseStyleMap8(MouseEvent mouseEvent) {
+    	Platform.runLater(new Runnable() {
+	        
+	    	@Override
+	        public void run() {
+	    		preview.setImage(new Image(getClass().getResource("view/images/various/map8copia.png").toExternalForm()));
+	    		((Node) mouseEvent.getSource()).setCursor(Cursor.HAND);
+	        }
+	    });
+    }
+
+	@FXML
+    public void removeImageOnMouseExited(MouseEvent mouseEvent) {
+    	Platform.runLater(new Runnable() {
+	        
+	    	@Override
+	        public void run() {
+	    		preview.setImage(null);
+	        }
+	    });
+    }
 }
+
