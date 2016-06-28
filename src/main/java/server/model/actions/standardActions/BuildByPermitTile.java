@@ -16,6 +16,7 @@ import server.model.gameTable.PermitTile;
 import server.model.player.Player;
 import server.view.notifies.ErrorNotify;
 import server.view.notifies.MessageNotify;
+import server.view.notifies.PlayerNotify;
 
 /**
  * This action allows the current player to build in one city from those which
@@ -89,6 +90,9 @@ public class BuildByPermitTile extends MainAction {
 			game.setLastLap(true);
 			game.getCurrentPlayer().incrementScore(3);
 		}
+		
+		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
+				Arrays.asList(game.getCurrentPlayer())));
 		
 		this.notifyPlayers(game);
 		this.nextState(game);

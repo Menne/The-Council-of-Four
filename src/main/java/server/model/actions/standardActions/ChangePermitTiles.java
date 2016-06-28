@@ -12,6 +12,7 @@ import server.model.gameTable.RegionBoard;
 import server.model.player.Player;
 import server.view.notifies.ErrorNotify;
 import server.view.notifies.MessageNotify;
+import server.view.notifies.PlayerNotify;
 
 /**
  * It's the quick action "change permit tiles" it operates on the 
@@ -56,6 +57,9 @@ public class ChangePermitTiles extends QuickAction {
 			if(region.equals(selectedRegion))
 				region.substitutePermitTiles();
 		game.getCurrentPlayer().decrementAssistants(necessaryAssistants);
+		
+		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
+				Arrays.asList(game.getCurrentPlayer())));
 		
 		this.notifyPlayers(game);
 		this.nextState(game);

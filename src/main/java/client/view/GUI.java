@@ -423,7 +423,7 @@ public class GUI extends ClientView{
 	}
 	
 	private void diplayBalconies(GameTableDTO clientGame) {
-		for (int i=1; i<this.controllerGUI.getBalconies().size()-1; i++)
+		for (int i=0; i<this.controllerGUI.getBalconies().size()-1; i++)
 			controllerGUI.getBalconies().get(i).setUserData(clientGame.getClientRegions().get(i).getBalcony());
 		controllerGUI.getBalconies().get(controllerGUI.getBalconies().size()-1).setUserData(clientGame.getClientKingBalcony());
 	}

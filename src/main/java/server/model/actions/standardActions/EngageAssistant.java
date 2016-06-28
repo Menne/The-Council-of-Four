@@ -11,6 +11,7 @@ import server.model.actions.QuickAction;
 import server.model.player.Player;
 import server.view.notifies.ErrorNotify;
 import server.view.notifies.MessageNotify;
+import server.view.notifies.PlayerNotify;
 /**
  * It's the quick action "engage assistants" it operates on the 
  * protected attribute game through the method executeAction.
@@ -41,6 +42,9 @@ public class EngageAssistant extends QuickAction {
 		
 		game.getCurrentPlayer().decrementCoins(necessaryCoins);
 		game.getCurrentPlayer().incrementAssistants(1);
+		
+		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
+				Arrays.asList(game.getCurrentPlayer())));
 		
 		this.notifyPlayers(game);
 		this.nextState(game);

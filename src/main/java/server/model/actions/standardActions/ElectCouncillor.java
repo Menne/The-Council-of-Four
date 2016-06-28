@@ -12,6 +12,7 @@ import server.model.gameTable.CouncilBalcony;
 import server.model.gameTable.Councillor;
 import server.model.player.Player;
 import server.view.notifies.MessageNotify;
+import server.view.notifies.PlayerNotify;
 
 /**
  * It's the main action "elect councillor" it operates on the 
@@ -55,6 +56,9 @@ public class ElectCouncillor extends MainAction {
 				break;
 			}
 		game.getCurrentPlayer().incrementCoins(givenCoins);
+		
+		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
+				Arrays.asList(game.getCurrentPlayer())));
 		
 		this.notifyPlayers(game);
 		this.nextState(game);
