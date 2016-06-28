@@ -28,10 +28,13 @@ public class ClientCLI {
 	private final static int PORT_RMI = 52365;
 	private final static int PORT_SOCKET = 29999;
 	private static final String NAME = "CoF";
+	
+	private ClientCLI() {
+	}
 
 	public static void main(String[] args) throws NotBoundException, UnknownHostException, IOException, InterruptedException {
 		String stringConnection="";
-		String name="";
+		String name;
 	
 		Scanner scanner=new Scanner(System.in);
 		System.out.println("Welcome to CoF, please enter your name!");

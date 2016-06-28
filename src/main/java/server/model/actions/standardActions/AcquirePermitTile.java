@@ -16,6 +16,7 @@ import server.model.gameTable.RegionBoard;
 import server.model.player.Player;
 import server.view.notifies.ErrorNotify;
 import server.view.notifies.MessageNotify;
+import server.view.notifies.PlayerNotify;
 
 /**
  * This class is the main action "acquire permit tile", it operates on the 
@@ -82,7 +83,8 @@ public class AcquirePermitTile extends MainAction {
 		
 		game.getCurrentPlayer().addTile(this.chosenRegion.pickUncoveredPermitTile(this.numberOfPermitTile));
 		this.chosenRegion.uncoverPermitTiles();
-		
+		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
+				Arrays.asList(game.getCurrentPlayer())));
 		this.notifyPlayers(game);
 		this.nextState(game);
 		

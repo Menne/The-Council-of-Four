@@ -8,6 +8,7 @@ import server.model.Game;
 import server.model.actions.Action;
 import server.model.market.Offer;
 import server.view.notifies.MessageNotify;
+import server.view.notifies.PlayerNotify;
 
 public class AcceptAnOffer implements Action {
 
@@ -38,6 +39,9 @@ public class AcceptAnOffer implements Action {
 		offer.getOfferedObject().removeObjectFromPlayer(offer.getOfferingPlayer());
 		
 		game.getMarket().removeOffer(this.offer);
+		
+		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
+				Arrays.asList(game.getCurrentPlayer())));
 		
 		game.setState(game.getState().buyActionTransition(game));
 		game.getState().updateClients(game);

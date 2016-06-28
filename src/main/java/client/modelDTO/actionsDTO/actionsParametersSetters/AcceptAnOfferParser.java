@@ -19,7 +19,7 @@ public class AcceptAnOfferParser implements ActionParserVisitor {
 		
 		if (!game.getMarket().getOffersList().isEmpty()) {
 		
-			view.displayMessage("Do you want to buy one of these objects?");
+			view.displayMessage("Choose the object you want to buy.");
 			this.selectedAction.setOffer(view.askForAcceptingAnOffer());
 			
 			this.selectedAction.parametersSetted();

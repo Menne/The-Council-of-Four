@@ -43,6 +43,7 @@ public class MakeAnOfferDTO implements ActionDTO, ActionWithParameters {
 		return this.parametersSetted;
 	}
 
+	@Override
 	public void parametersSetted() {
 		this.parametersSetted=true;
 	}

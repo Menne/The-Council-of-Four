@@ -1,6 +1,7 @@
 package server.model.actions.marketActions;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import client.modelDTO.actionsDTO.ActionDTO;
@@ -8,6 +9,7 @@ import client.modelDTO.actionsDTO.marketActions.MakeAnOfferDTO;
 import server.model.Game;
 import server.model.actions.Action;
 import server.model.market.Offer;
+import server.view.notifies.PlayerNotify;
 
 public class MakeAnOffer implements Action{
 
@@ -30,6 +32,9 @@ public class MakeAnOffer implements Action{
 		
 		for (Offer offer : this.offeringObjects)
 			game.getMarket().addOffer(offer);
+		
+		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
+				Arrays.asList(game.getCurrentPlayer())));
 			
 		game.setState(game.getState().sellActionTransition(game));
 		game.getState().updateClients(game);

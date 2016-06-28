@@ -34,11 +34,11 @@ public class ElectCouncillorByAssistantDTO implements ActionDTO, ActionWithParam
 	public void setCouncilBalcony(CouncillorDTO[] councilBalcony) {
 		this.councilBalcony = councilBalcony;
 	}
-
+	@Override
 	public boolean checkIfParametersSetted() {
 		return parametersSetted;
 	}
-
+	@Override
 	public void parametersSetted() {
 		this.parametersSetted=true;
 	}

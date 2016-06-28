@@ -32,10 +32,12 @@ public class AcceptAnOfferDTO implements ActionDTO, ActionWithParameters {
 		this.offerDTO=offerDTO;
 	}
 	
+	@Override
 	public boolean checkIfParametersSetted() {
 		return parametersSetted;
 	}
 
+	@Override
 	public void parametersSetted() {
 		this.parametersSetted=true;
 	}

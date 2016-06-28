@@ -13,6 +13,7 @@ import server.model.gameTable.Councillor;
 import server.model.player.Player;
 import server.view.notifies.ErrorNotify;
 import server.view.notifies.MessageNotify;
+import server.view.notifies.PlayerNotify;
 
 /**
  * It's the quick action "elect councillor" it operates on the 
@@ -66,6 +67,9 @@ public class ElectCouncillorByAssistant extends QuickAction {
 			}
 		
 		game.getCurrentPlayer().decrementAssistants(necessaryAssistants);
+		
+		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
+				Arrays.asList(game.getCurrentPlayer())));
 		
 		this.notifyPlayers(game);
 		this.nextState(game);

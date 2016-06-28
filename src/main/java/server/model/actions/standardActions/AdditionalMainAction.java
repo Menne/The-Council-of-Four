@@ -11,6 +11,7 @@ import server.model.actions.QuickAction;
 import server.model.player.Player;
 import server.view.notifies.ErrorNotify;
 import server.view.notifies.MessageNotify;
+import server.view.notifies.PlayerNotify;
 
 /**
  * It's the quick action "additional main action" it operates
@@ -44,6 +45,9 @@ public class AdditionalMainAction extends QuickAction {
 		}
 		
 		game.getCurrentPlayer().decrementAssistants(necessaryAssistants);
+		
+		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
+				Arrays.asList(game.getCurrentPlayer())));
 		
 		this.notifyPlayers(game);
 		game.setState(game.getState().additionalMainActionTransition());

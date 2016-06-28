@@ -18,6 +18,7 @@ import server.model.gameTable.PoliticsCard;
 import server.model.player.Player;
 import server.view.notifies.ErrorNotify;
 import server.view.notifies.MessageNotify;
+import server.view.notifies.PlayerNotify;
 
 /**
  * This class models the build an emporium with king's help action
@@ -100,6 +101,9 @@ public class BuildByKing extends MainAction {
 			game.setLastLap(true);
 			game.getCurrentPlayer().incrementScore(3);
 		}
+		
+		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
+				Arrays.asList(game.getCurrentPlayer())));
 		
 		this.notifyPlayers(game);
 		this.nextState(game);
