@@ -2,6 +2,11 @@ package server.model.market;
 
 import server.model.player.Player;
 
+/**
+ * is an interface thet is implemented by every object that can be offered in the market
+ * @author andreapasquali
+ *
+ */
 public interface Marketable {
 
 	/**

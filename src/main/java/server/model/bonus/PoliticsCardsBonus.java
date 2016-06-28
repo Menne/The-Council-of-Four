@@ -13,9 +13,6 @@ import server.view.notifies.MessageNotify;
 
 public class PoliticsCardsBonus implements Bonus{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 6544835437746891576L;
 	private final int numberOfCards;
 	

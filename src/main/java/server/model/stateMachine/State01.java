@@ -16,8 +16,18 @@ import server.view.notifies.AvailableActionsNotify;
 import server.view.notifies.GameTableNotify;
 import server.view.notifies.PlayerNotify;
 
+/**
+ * Models the state in which the current player has only the possibility to do a quick action 
+ * @author andreapasquali
+ *
+ */
 public class State01 implements State {
 
+	/**
+	 * coordinates the transition caused by a quick action
+	 * if the current player is not the last one, it returns a new Begin State changing the current player
+	 * else it returns a new Selling State
+	 */
 	@Override
 	public State quickActionTransition(Game game) {
 		game.notifyObserver(new AvailableActionsNotify(Arrays.asList(), 
@@ -33,13 +43,18 @@ public class State01 implements State {
 		}
 	}
 
-
+	/**
+	 *returns a new State10 after an additional main action bonus.
+	 */
 	@Override
 	public State additionalMainActionTransition() {
 		return new State10();
 	}
 
-
+	/**
+	 *if current player is the last one, it returns a new BeginState,
+	 *else it returns a new SellingState
+	 */
 	@Override
 	public State moveToNextTransition(Game game) {
 		game.notifyObserver(new AvailableActionsNotify(Arrays.asList(), 
@@ -57,7 +72,9 @@ public class State01 implements State {
 		
 	}
 	
-	
+	/**
+	 * returns a list of acceptable actions of this state
+	 */
 	@Override
 	public List<Action> getAcceptableActions(Game game) {
 		return Arrays.asList(
@@ -67,7 +84,6 @@ public class State01 implements State {
 				new AdditionalMainAction(),
 				new MoveToNext());
 	}
-
 
 	@Override
 	public void updateClients(Game game) {

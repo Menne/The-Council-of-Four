@@ -13,9 +13,6 @@ import server.view.notifies.MessageNotify;
 
 public class ScoreBonus implements Bonus{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -2084023448270909822L;
 	private final int scoreAdvancement;
 	

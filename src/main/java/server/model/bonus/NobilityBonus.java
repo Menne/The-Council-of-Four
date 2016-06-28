@@ -13,9 +13,6 @@ import server.view.notifies.MessageNotify;
 
 public class NobilityBonus implements Bonus{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 3774296693320586611L;
 	private final int nobilityAdvancement;
 	

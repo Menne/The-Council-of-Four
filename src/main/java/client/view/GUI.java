@@ -257,14 +257,6 @@ public class GUI extends ClientView{
 		for(ActionDTO action: availableActions){
 			if(action.getClass()==PickPoliticsCardDTO.class){
 				controllerGUI.getPoliticsDeck().setEffect(new Glow(0.8));
-				sleepForEffects();
-				controllerGUI.getPoliticsDeck().setEffect(null);
-				sleepForEffects();
-				controllerGUI.getPoliticsDeck().setEffect(new Glow(0.8));
-				sleepForEffects();
-				controllerGUI.getPoliticsDeck().setEffect(null);
-				sleepForEffects();
-				controllerGUI.getPoliticsDeck().setEffect(new Glow(0.8));
 			}
 			if(action.getClass()==ElectCouncillorDTO.class)
 				for(int i=0; i<4; i++){
@@ -274,15 +266,6 @@ public class GUI extends ClientView{
 				for(int i=4; i<9; i++){
 				controllerGUI.getActions().get(i).setEffect(innerShadow);
 				}
-		}
-	}
-	
-	private void sleepForEffects() {
-		try {
-			Thread.sleep(500);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 

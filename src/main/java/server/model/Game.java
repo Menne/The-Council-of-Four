@@ -23,7 +23,12 @@ import server.view.notifies.EndGameNotify;
 import server.view.notifies.GameTableNotify;
 import server.view.notifies.PlayerNotify;
 import server.view.notifies.ViewNotify;
- 
+
+/**
+ * contains all the informations of the game
+ * @author andreapasquali
+ *
+ */
 public class Game extends Observable<ViewNotify>{
 	
 	private List<Player> players;
@@ -38,6 +43,10 @@ public class Game extends Observable<ViewNotify>{
 	private GameDTOMapper gameMapper;
 	private int mapNumber;
 	
+	/**
+	 * constructor of the class Game;
+	 * initializes only the empty list of quitted players, the map number and creates a new GameDTOMapper
+	 */
 	public Game() {
 		this.quittedPlayers=new ArrayList<>();
 		this.gameMapper=new GameDTOMapper();
@@ -160,7 +169,6 @@ public class Game extends Observable<ViewNotify>{
 		return this.state;
 	}
 
-
 	public List<Player> getQuittedPlayers() {
 		return quittedPlayers;
 	}
@@ -169,16 +177,13 @@ public class Game extends Observable<ViewNotify>{
 		return this.market;
 	}
 
-
 	public void setState(State state) {
 		this.state = state;
 	}
 
-
 	public boolean isLastLap() {
 		return this.lastLap;
 	}
-
 
 	public void setLastLap(boolean lastLap) {
 		this.lastLap = lastLap;
@@ -192,7 +197,6 @@ public class Game extends Observable<ViewNotify>{
 		return this.gameMapper;
 	}
 
-	
 	public int getMapNumber() {
 		return mapNumber;
 	}
@@ -254,7 +258,9 @@ public class Game extends Observable<ViewNotify>{
 				player.incrementScore(3);
 	}
 	
-	
+	/**
+	 * orders the players comparing them by their score.
+	 */
 	public void sortFinalRankingTable(){
 		Collections.sort(this.quittedPlayers, new Comparator<Player>() {
 

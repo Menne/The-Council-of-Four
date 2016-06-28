@@ -8,20 +8,31 @@ import java.util.List;
 import server.model.Game;
 import server.model.player.Player;
 
+/**
+ * models the Market: its attributes are the selling players, the buying players and the list of offers
+ * @author andreapasquali
+ *
+ */
 public class Market {
 	
 	private final List<Offer> offersList;
 	private final List<Player> sellingPlayerList;
 	private final List<Player> buyingPlayerList;
 	
+	/**
+	 * constructor of the Market;
+	 * it initializes the offering players list, the buying players list and the offers list empty 
+	 */
 	public Market(){
-
 		this.offersList=new ArrayList<>();
 		this.sellingPlayerList=new ArrayList<>();
 		this.buyingPlayerList=new ArrayList<>();
 	}
 
-
+	/**
+	 * adds an offer to the offerrsList
+	 * @param offer is the offer to add
+	 */
 	public void addOffer(Offer offer){
 		this.offersList.add(offer);
 	}
@@ -47,6 +58,10 @@ public class Market {
 		this.buyingPlayerList.add(player);
 	}
 	
+	/**
+	 * orders the Selling player list using the player number
+	 * (it keeps the order of the game)
+	 */
 	public void sortSellingPlayerList(){
 		Collections.sort(this.sellingPlayerList, new Comparator<Player>(){
 
@@ -60,20 +75,34 @@ public class Market {
 		});
 	}
 	
+	/**
+	 * shuffles the buyngPlayerList
+	 */
 	public void shuffleBuyingPlayerList(){
 		Collections.shuffle(this.buyingPlayerList);
 	}
 	
+	/**
+	 * clears the offers list, the selling player list and the buying player list
+	 */
 	public void clearMarket(){
 		this.offersList.clear();
 		this.buyingPlayerList.clear();
 		this.sellingPlayerList.clear();
 	}
 	
+	/**
+	 * removes the current player of the game form the selling player list
+	 * @param game
+	 */
 	public void sellingNextPlayer(Game game){
 		game.setCurrentPlayer(this.sellingPlayerList.remove(0));
 	}
 	
+	/**
+	 * removes the current player of the game form the buying player list
+	 * @param game
+	 */
 	public void buyingNextPlayer(Game game){
 		game.setCurrentPlayer(this.buyingPlayerList.remove(0));
 	}

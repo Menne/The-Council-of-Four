@@ -10,9 +10,6 @@ import server.model.Game;
 
 public class MainActionBonus implements Bonus {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -5913736619122310756L;
 	private final int id;
 	
