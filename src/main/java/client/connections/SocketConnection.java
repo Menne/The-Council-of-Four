@@ -35,7 +35,7 @@ public class SocketConnection extends Connection implements Runnable{
 				this.getTimerTask().cancel();
 			socketOut.writeObject(action);
 			socketOut.flush();
-			
+			socketOut.reset();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

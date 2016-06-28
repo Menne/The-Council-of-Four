@@ -988,11 +988,6 @@ public class GUI extends ClientView{
 		this.controllerMarketGUI.getAcceptAnOffer().setDisable(true);
 		this.controllerMarketGUI.getSkip().setDisable(true);
 		this.disableClickOnObjectsToSell(false);
-/*		HBox offerBox=new HBox();
-		controllerMarketGUI.getOffers().getChildren().add(offerBox);
-		offerBox.setSpacing(90);
-		offerBox.getChildren().add(new Label(clientGame.getClientPlayer().getName()));
-		offerBox.setVisible(false);*/
 		synchronized (this.controllerMarketGUI) {
 			try {
 				while (currentParameter==null)
@@ -1003,10 +998,6 @@ public class GUI extends ClientView{
 			}
 		}
 		MarketableDTO offeringObject=(MarketableDTO) this.currentParameter;
-/*		ImageView imageView=new ImageView(imageMap.get(offeringObject));
-		imageView.setFitHeight(50);
-		imageView.setPreserveRatio(true);
-		offerBox.getChildren().add(imageView);*/
 		this.currentParameter=null;
 		this.disableClickOnObjectsToSell(true);
 		return offeringObject;
@@ -1026,7 +1017,6 @@ public class GUI extends ClientView{
 			}
 		}
 		int price=(int) this.currentParameter;
-//		((HBox)controllerMarketGUI.getOffers().getChildren().get(controllerMarketGUI.getOffers().getChildren().size()-1)).getChildren().add(new Label(String.valueOf(price)));
 		this.currentParameter=null;
 		this.disablePriceInsertion(true);
 		this.disableClickOnOfferSettedButtons(true);
