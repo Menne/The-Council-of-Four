@@ -17,7 +17,7 @@ public class ConnectedBuiltCityDiscover {
 	private final Set<City> checkedCities;
 	
 	/**
-	 * constructor of ConnectedBuildCityDiscover thet initializes two empty Set of cities
+	 * constructor of ConnectedBuildCityDiscover that initializes two empty Set of cities
 	 */
 	public ConnectedBuiltCityDiscover(){
 		this.connectedBonusCities=new HashSet<>();

@@ -85,6 +85,9 @@ public class State01 implements State {
 				new MoveToNext());
 	}
 
+	/**
+	 * sends GameTableNotify, PlayerNotify, AvailableActionNotify to the clients
+	 */
 	@Override
 	public void updateClients(Game game) {
 		game.notifyObserver(new GameTableNotify(game, new ArrayList<Player>(game.getPlayers()),false));

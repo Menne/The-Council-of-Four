@@ -37,7 +37,10 @@ public class ScoreBonus implements Bonus{
 				+ this.scoreAdvancement, Arrays.asList(game.getCurrentPlayer())));
 		
 	}
-	
+
+	public int getScoreAdvancement() {
+		return scoreAdvancement;
+	}
 	public void assignBonusToPlayer(Player player){
 		player.incrementScore(this.scoreAdvancement);
 	}

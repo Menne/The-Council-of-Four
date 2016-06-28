@@ -292,14 +292,47 @@ public class GUI extends ClientView{
 				displayPermitTiles(clientGame);
 				displayKing(clientGame);
 				displayEmporiums(clientGame);
+				displayBonusTiles(clientGame);
 			}
 		});
 		
 	}
 	
+	private void displayBonusTiles(GameTableDTO clientGame) {
+		controllerGUI.getColorBonusBlue().setOpacity(0);
+		controllerGUI.getColorBonusBronze().setOpacity(0);
+		controllerGUI.getColorBonusGold().setOpacity(0);
+		controllerGUI.getColorBonusSilver().setOpacity(0);;
+		for(BonusTileDTO bonusTile : clientGame.getColourBonuses()){
+			if(bonusTile.getType().equals("Blue"))
+				controllerGUI.getColorBonusBlue().setOpacity(1);
+			if(bonusTile.getType().equals("Silver"))
+				controllerGUI.getColorBonusSilver().setOpacity(1);
+			if(bonusTile.getType().equals("Gold"))
+				controllerGUI.getColorBonusGold().setOpacity(1);
+			if(bonusTile.getType().equals("Bronze"))
+				controllerGUI.getColorBonusBronze().setOpacity(1);
+		}
+		
+		if(clientGame.getNextKingRewardTile().getBonus().getScoreAdvancement()==18)
+			controllerGUI.getKingBonusTiles().get(0).setImage(null);
+		if(clientGame.getNextKingRewardTile().getBonus().getScoreAdvancement()==12)
+			controllerGUI.getKingBonusTiles().get(1).setImage(null);
+		if(clientGame.getNextKingRewardTile().getBonus().getScoreAdvancement()==7)
+			controllerGUI.getKingBonusTiles().get(2).setImage(null);
+		if(clientGame.getNextKingRewardTile().getBonus().getScoreAdvancement()==3)
+			controllerGUI.getKingBonusTiles().get(3).setImage(null);
+		if(clientGame.getNextKingRewardTile()==null)
+			controllerGUI.getKingBonusTiles().get(4).setImage(null);	
+	}
+
+
 	private void displayRegions(GameTableDTO clientGame) {
-		for (int i=0; i<clientGame.getClientRegions().size(); i++)
+		for (int i=0; i<clientGame.getClientRegions().size(); i++){
+			if(clientGame.getClientRegions().get(i).getRegionBonus()==null)
+				controllerGUI.getRegionBonusTiles().get(i).setImage(null);
 			this.controllerGUI.getRegions().get(i).setUserData(clientGame.getClientRegions().get(i));
+		}
 	}
 	
 	private void displayCities(GameTableDTO clientGame) {
@@ -376,7 +409,6 @@ public class GUI extends ClientView{
 				cityPane.getChildren().add(king);			
 		}
 	}
-		
 	
 	private void displayEmporiums(GameTableDTO clientGame){
 		for(HBox hBox: controllerGUI.getCitysEmporiums()){
@@ -1193,7 +1225,7 @@ public class GUI extends ClientView{
 		}
 		controllerGUI.getBalconies().get(controllerGUI.getBalconies().size()-1).setDisable(disabled);
 		if(!disabled)
-			controllerGUI.getBalconies().get(controllerGUI.getBalconies().size()-1).setEffect(new Glow(0.7));
+			controllerGUI.getBalconies().get(controllerGUI.getBalconies().size()-1).setEffect(new Glow(1));
 		else
 			controllerGUI.getBalconies().get(controllerGUI.getBalconies().size()-1).setEffect(null);;
 	}

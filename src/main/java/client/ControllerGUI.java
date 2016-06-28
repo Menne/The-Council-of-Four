@@ -586,6 +586,30 @@ public class ControllerGUI {
 		return Arrays.asList(genericPlayerBonuses1,genericPlayerBonuses2,genericPlayerBonuses3,genericPlayerBonuses4);
 	}
 	
+	public List<ImageView> getRegionBonusTiles(){
+		return Arrays.asList(regionBonusSea,regionBonusHill,regionBonusMountain);
+	}
+	
+	public List<ImageView> getKingBonusTiles(){
+		return Arrays.asList(kingRewardTile1,kingRewardTile2, kingRewardTile3, kingRewardTile4, kingRewardTile5);
+	}
+	
+	public ImageView getColorBonusBlue() {
+		return colorBonusBlue;
+	}
+
+	public ImageView getColorBonusGold() {
+		return colorBonusGold;
+	}
+
+	public ImageView getColorBonusSilver() {
+		return colorBonusSilver;
+	}
+
+	public ImageView getColorBonusBronze() {
+		return colorBonusBronze;
+	}
+
 	public VBox getPlayersBonuses() {
 		return playersBonuses;
 	}

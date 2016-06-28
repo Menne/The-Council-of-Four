@@ -70,8 +70,10 @@ public class GameDTOMapper implements GameMapperInterface {
 		gameTableDTO.setClientNobilityTrack((ArrayList<Set<Bonus>>) realObject.getGameTable().getNobilityTrack().getTrack());
 		gameTableDTO.setCurrentPlayer(realObject.getCurrentPlayer().getName());
 		gameTableDTO.setKing(realObject.getGameTable().getKing().getCity().getName());
+		if(realObject.getGameTable().getKingRewardTiles().get(0)==null)
+			gameTableDTO.setNextKingRewardTile(null);
+		else
 		gameTableDTO.setNextKingRewardTile(this.bonusTileMap(realObject.getGameTable().getKingRewardTiles().get(0)));
-		
 		Set<CityColour> colours=new HashSet<>();
 		for(City city : realObject.getGameTable().getMap().getGameMap().vertexSet())
 			colours.add(city.getColour());
