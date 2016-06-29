@@ -36,6 +36,7 @@ import client.modelDTO.actionsDTO.standardActions.ChangePermitTilesDTO;
 import client.modelDTO.actionsDTO.standardActions.ElectCouncillorByAssistantDTO;
 import client.modelDTO.actionsDTO.standardActions.ElectCouncillorDTO;
 import client.modelDTO.actionsDTO.standardActions.EngageAssistantDTO;
+import client.modelDTO.clientNotifies.PlayerAcceptedDTONotify;
 import client.modelDTO.gameTableDTO.BonusTileDTO;
 import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
@@ -247,26 +248,29 @@ public class GUI extends ClientView{
 					e.printStackTrace();
 				}
 		
-		for(int i=0; i<9; i++){
-			controllerGUI.getActions().get(i).setEffect(null);
-			}
+		controllerGUI.getActions().get(0).getParent().setEffect(null);
+		controllerGUI.getActions().get(4).getParent().setEffect(null);
 		InnerShadow innerShadow= new InnerShadow();
-		innerShadow.setChoke(0.71);
+		innerShadow.setChoke(0.5);
+		innerShadow.setHeight(150);
+		innerShadow.setWidth(150);
 		innerShadow.setBlurType(BlurType.GAUSSIAN);
-		innerShadow.setColor(Color.web("a84b00"));
+		innerShadow.setColor(Color.web("ffffff"));
 		controllerGUI.getPoliticsDeck().setEffect(null);
 		for(ActionDTO action: availableActions){
 			if(action.getClass()==PickPoliticsCardDTO.class){
 				controllerGUI.getPoliticsDeck().setEffect(new Glow(0.8));
 			}
 			if(action.getClass()==ElectCouncillorDTO.class)
-				for(int i=0; i<4; i++){
-				controllerGUI.getActions().get(i).setEffect(innerShadow);
-				}
+				controllerGUI.getActions().get(0).getParent().setEffect(innerShadow);
+				//for(int i=0; i<4; i++){
+				//controllerGUI.getActions().get(i).setEffect(innerShadow);
+				//}
 			if(action.getClass()==EngageAssistantDTO.class)
-				for(int i=4; i<9; i++){
-				controllerGUI.getActions().get(i).setEffect(innerShadow);
-				}
+				controllerGUI.getActions().get(4).getParent().setEffect(innerShadow);
+				//for(int i=4; i<9; i++){
+				//controllerGUI.getActions().get(i).setEffect(innerShadow);
+				//}
 		}
 	}
 
@@ -284,6 +288,7 @@ public class GUI extends ClientView{
 			    	alert.showAndWait();
 			    	controllerChooseMap.getChooseMapStage().close();
 				}
+				unlockPlayersTabs(clientGame);
 				displayCouncillors(clientGame);
 				displayTokens(clientGame);
 				displayPlayers(clientGame.getClientPlayers());
@@ -297,6 +302,11 @@ public class GUI extends ClientView{
 			}
 		});
 		
+	}
+	
+	private void unlockPlayersTabs(GameTableDTO clientGame){
+		for(GenericPlayerDTO player: clientGame.getClientPlayers())
+			this.controllerGUI.getPlayersTabs().get(player.getPlayerNumber()-1).setDisable(false);
 	}
 	
 	private void displayBonusTiles(GameTableDTO clientGame) {
@@ -1388,6 +1398,7 @@ public class GUI extends ClientView{
 		System.out.println(controllerGUI.getMapImage());
 		try{
 			controllerGUI.getMapImage().setImage(new Image(getClass().getResource("images/maps/map"+String.valueOf(gameTableDTO.getMapNumber())+".jpg").toExternalForm()));
+			
 		}catch(Exception e){
 			e.printStackTrace();
 		}

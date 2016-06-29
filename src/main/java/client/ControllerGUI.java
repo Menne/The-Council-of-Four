@@ -32,6 +32,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -70,6 +71,18 @@ public class ControllerGUI {
 	public AnchorPane getRoot() {
 		return root;
 	}
+	
+	@FXML
+	private Tab tabPlayer1;
+	
+	@FXML
+	private Tab tabPlayer2;
+	
+	@FXML
+	private Tab tabPlayer3;
+	
+	@FXML
+	private Tab tabPlayer4;
 	
 	@FXML
 	private ImageView mapImage;
@@ -565,7 +578,7 @@ public class ControllerGUI {
 	
 	@FXML
 	private List<ImageView> permitTilesTurnedDown;	
-
+	
 	public void setPoliticsCards(List<ImageView> politicsCards) {
 		this.politicsCards=politicsCards;
 	}
@@ -578,6 +591,10 @@ public class ControllerGUI {
 		this.permitTilesTurnedDown=permitTilesTurnedDown;
 	}
 	
+	public List<Tab> getPlayersTabs(){
+		return Arrays.asList(tabPlayer1, tabPlayer2, tabPlayer3, tabPlayer4);
+	}
+
 	public ImageView getMapImage() {
 		return mapImage;
 	}
