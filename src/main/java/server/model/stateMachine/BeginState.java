@@ -12,6 +12,11 @@ import server.view.notifies.AvailableActionsNotify;
 import server.view.notifies.GameTableNotify;
 import server.view.notifies.PlayerNotify;
 
+/**
+ * In this state the player can just pick a politics card
+ * @author Luca Scannapieco
+ *
+ */
 public class BeginState implements State {
 	
 	@Override
