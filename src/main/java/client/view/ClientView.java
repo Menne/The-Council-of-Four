@@ -72,7 +72,7 @@ public abstract class ClientView implements Observer<ClientViewNotify> {
 	public abstract void closeMarket();
 	
 	
-	public abstract RegionDTO askForRegionBoard();
+	public abstract RegionDTO askForRegionBoard() throws InterruptedException;
 	
 	public abstract PermitTileDTO askForPermitTile();
 	
@@ -90,7 +90,7 @@ public abstract class ClientView implements Observer<ClientViewNotify> {
 	
 	public abstract int askForPrice();
 	
-	public abstract boolean askForOtherSelling();
+	public abstract boolean askForOtherSelling() throws InterruptedException;
 	
 	public abstract OfferDTO askForAcceptingAnOffer();
 	

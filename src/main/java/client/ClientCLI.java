@@ -12,6 +12,8 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import client.connections.ClientRMIViewRemote;
 import client.connections.RMIConnection;
@@ -128,6 +130,8 @@ public class ClientCLI {
 				}
 			}catch(SocketException | RemoteException e){
 				System.out.println("Server Unreachable. Try again");
+				Logger logger=Logger.getAnonymousLogger();
+				logger.log(Level.INFO, "Server Unreachable", e);
 			} 
 		}
 	}

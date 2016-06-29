@@ -1,6 +1,8 @@
 package client;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -43,8 +45,8 @@ public class ClientGUI extends Application {
 			rootLayout=(ScrollPane) loader.load();
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Logger logger=Logger.getAnonymousLogger();
+			logger.log(Level.SEVERE, "Loading root layout failed", e);
 		}
 		 
 		 Scene scene = new Scene(rootLayout);
@@ -69,8 +71,8 @@ public class ClientGUI extends Application {
 			controllerLogin.setClientGUI(this);
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Logger logger=Logger.getAnonymousLogger();
+			logger.log(Level.SEVERE, "Failed to load login screen", e);
 		};
 	}
 	
@@ -87,8 +89,8 @@ public class ClientGUI extends Application {
 			rootLayout.setContent(gameOverwiew);
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Logger logger=Logger.getAnonymousLogger();
+			logger.log(Level.SEVERE, "Failed to load game screen", e);
 		}
 		return loader.getController();
 	}

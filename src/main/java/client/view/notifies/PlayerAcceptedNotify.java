@@ -1,6 +1,8 @@
 package client.view.notifies;
 
 import java.rmi.RemoteException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import client.view.ClientView;
 
@@ -21,8 +23,8 @@ public class PlayerAcceptedNotify implements ClientViewNotify {
 			try {
 				view.askForMap();
 			} catch (RemoteException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Logger logger=Logger.getAnonymousLogger();
+				logger.log(Level.SEVERE, "Failed to send action with RMI", e);
 			}
 	}
 

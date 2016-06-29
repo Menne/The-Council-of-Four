@@ -11,6 +11,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import client.ClientGUI;
 import client.ControllerChooseMap;
@@ -57,7 +59,6 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -243,8 +244,8 @@ public class GUI extends ClientView{
 				try {
 					this.insertParametersAndSend((ActionWithParameters) action);
 				} catch (RemoteException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					Logger logger=Logger.getAnonymousLogger();
+					logger.log(Level.SEVERE, "Failed to send action with RMI", e);
 				}
 		
 		for(int i=0; i<9; i++){
@@ -625,8 +626,8 @@ public class GUI extends ClientView{
 					currentTextArea=controllerMarketGUI.getMessageBox();
 					controllerMarketGUI.getMerketStage().show();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					Logger logger=Logger.getAnonymousLogger();
+					logger.log(Level.SEVERE, "Failed to load market screen", e);
 				}				
 			}
 		});
@@ -650,8 +651,8 @@ public class GUI extends ClientView{
 						try {
 							controllerMarketGUI.startAction(event);
 						} catch (RemoteException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
+							Logger logger=Logger.getAnonymousLogger();
+							logger.log(Level.SEVERE, "Failed to send action with RMI", e);
 						}
 							
 					}
@@ -664,8 +665,8 @@ public class GUI extends ClientView{
 						try {								
 							controllerMarketGUI.startAction(event);
 						} catch (RemoteException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
+							Logger logger=Logger.getAnonymousLogger();
+							logger.log(Level.SEVERE, "Failed to send action with RMI", e);
 						}
 							
 					}
@@ -677,8 +678,8 @@ public class GUI extends ClientView{
 						try {
 							controllerMarketGUI.startAction(event);
 						} catch (RemoteException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
+							Logger logger=Logger.getAnonymousLogger();
+							logger.log(Level.SEVERE, "Failed to send action with RMI", e);
 						}					
 					}
 				});
@@ -878,16 +879,17 @@ public class GUI extends ClientView{
 	
 		
 	@Override
-	public RegionDTO askForRegionBoard() {
+	public RegionDTO askForRegionBoard() throws InterruptedException {
 		this.disableClickOnRegions(false);
 		synchronized (this.controllerGUI) {
-			try {
 				while (currentParameter==null)
-					this.controllerGUI.wait();
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+					try {
+						this.controllerGUI.wait();
+					} catch (InterruptedException e) {
+						Logger logger=Logger.getAnonymousLogger();
+						logger.log(Level.SEVERE, "wait interrupted", e);
+						throw e;
+					}
 		}
 		RegionDTO region=(RegionDTO) this.currentParameter;
 		this.currentParameter=null;
@@ -903,8 +905,8 @@ public class GUI extends ClientView{
 				while (currentParameter==null)
 					this.controllerGUI.wait();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Logger logger=Logger.getAnonymousLogger();
+				logger.log(Level.SEVERE, "wait interrupted", e);
 			}
 		}
 		PermitTileDTO permitTile=(PermitTileDTO) this.currentParameter;
@@ -921,8 +923,8 @@ public class GUI extends ClientView{
 				while (currentParameter==null)
 					this.controllerGUI.wait();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Logger logger=Logger.getAnonymousLogger();
+				logger.log(Level.SEVERE, "wait interrupted", e);
 			}
 		}
 		CouncillorDTO councillor=(CouncillorDTO) this.currentParameter;
@@ -939,8 +941,8 @@ public class GUI extends ClientView{
 				while (currentParameter==null)
 					this.controllerGUI.wait();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Logger logger=Logger.getAnonymousLogger();
+				logger.log(Level.SEVERE, "wait interrupted", e);
 			}
 		}
 		CouncillorDTO[] councilBalcony=(CouncillorDTO[]) this.currentParameter;
@@ -959,8 +961,8 @@ public class GUI extends ClientView{
 				while (currentParameter==null)
 					this.controllerGUI.wait();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Logger logger=Logger.getAnonymousLogger();
+				logger.log(Level.SEVERE, "wait interrupted", e);
 			}
 		}
 		CityDTO city=(CityDTO) this.currentParameter;
@@ -979,8 +981,8 @@ public class GUI extends ClientView{
 					while (currentParameter==null)
 						this.controllerGUI.wait();
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					Logger logger=Logger.getAnonymousLogger();
+					logger.log(Level.SEVERE, "wait interrupted", e);
 				}
 			}
 			if (this.currentParameter instanceof String) {
@@ -1005,8 +1007,8 @@ public class GUI extends ClientView{
 				while (currentParameter==null)
 					this.controllerGUI.wait();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Logger logger=Logger.getAnonymousLogger();
+				logger.log(Level.SEVERE, "wait interrupted", e);
 			}
 		}
 		int numberOfPermitTile=(int) this.currentParameter;
@@ -1026,8 +1028,8 @@ public class GUI extends ClientView{
 				while (currentParameter==null)
 					this.controllerMarketGUI.wait();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Logger logger=Logger.getAnonymousLogger();
+				logger.log(Level.SEVERE, "wait interrupted", e);
 			}
 		}
 		MarketableDTO offeringObject=(MarketableDTO) this.currentParameter;
@@ -1045,8 +1047,8 @@ public class GUI extends ClientView{
 				while (currentParameter==null)
 					this.controllerMarketGUI.wait();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Logger logger=Logger.getAnonymousLogger();
+				logger.log(Level.SEVERE, "wait interrupted", e);
 			}
 		}
 		int price=(int) this.currentParameter;
@@ -1057,7 +1059,7 @@ public class GUI extends ClientView{
 	}
 	
 	@Override
-	public boolean askForOtherSelling() {
+	public boolean askForOtherSelling() throws InterruptedException {
 		Platform.runLater(new Runnable() {
 			
 			@Override
@@ -1098,8 +1100,9 @@ public class GUI extends ClientView{
 					controllerMarketGUI.wait();
 				
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Logger logger=Logger.getAnonymousLogger();
+				logger.log(Level.SEVERE, "wait interrupted", e);
+				throw e;
 			}
 		}
 		Boolean choice=(boolean) this.currentParameter;
@@ -1119,8 +1122,8 @@ public class GUI extends ClientView{
 				while (currentParameter==null)
 					this.controllerMarketGUI.wait();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Logger logger=Logger.getAnonymousLogger();
+				logger.log(Level.SEVERE, "wait interrupted", e);
 			}
 		}
 		OfferDTO offer=(OfferDTO) this.currentParameter;
@@ -1138,8 +1141,8 @@ public class GUI extends ClientView{
 				while (currentParameter==null)
 					this.controllerGUI.wait();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Logger logger=Logger.getAnonymousLogger();
+				logger.log(Level.SEVERE, "wait interrupted", e);
 			}
 		}
 		PermitTileDTO permitTile=(PermitTileDTO) this.currentParameter;
@@ -1158,8 +1161,8 @@ public class GUI extends ClientView{
 		try {
 			this.insertParametersAndSend(action);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Logger logger=Logger.getAnonymousLogger();
+			logger.log(Level.SEVERE, "Failed to send action with RMI", e);
 		}
 	}
 
@@ -1169,8 +1172,8 @@ public class GUI extends ClientView{
 		try {
 			this.insertParametersAndSend(action);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Logger logger=Logger.getAnonymousLogger();
+			logger.log(Level.SEVERE, "Failed to send action with RMI", e);
 		}
 	}
 	
@@ -1180,8 +1183,8 @@ public class GUI extends ClientView{
 		try {
 			this.insertParametersAndSend(action);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Logger logger=Logger.getAnonymousLogger();
+			logger.log(Level.SEVERE, "Failed to send action with RMI", e);
 		}
 	}
 	
@@ -1357,8 +1360,8 @@ public class GUI extends ClientView{
 					try {
 						root = (AnchorPane)loader.load();
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+						Logger logger=Logger.getAnonymousLogger();
+						logger.log(Level.SEVERE, "Failed to load chooseMap screen", e);
 					}
 					controllerChooseMap=loader.getController();
 					controllerChooseMap.getMap1().setUserData(1);
@@ -1386,11 +1389,6 @@ public class GUI extends ClientView{
 	@Override
 	public void startGame(GameTableDTO gameTableDTO) {
 		System.out.println(controllerGUI.getMapImage());
-		try{
-			controllerGUI.getMapImage().setImage(new Image(getClass().getResource("images/maps/map"+String.valueOf(gameTableDTO.getMapNumber())+".jpg").toExternalForm()));
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-				
+		controllerGUI.getMapImage().setImage(new Image(getClass().getResource("images/maps/map"+String.valueOf(gameTableDTO.getMapNumber())+".jpg").toExternalForm()));			
 	}	
 }

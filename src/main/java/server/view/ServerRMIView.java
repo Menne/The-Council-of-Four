@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import client.connections.ClientRMIViewRemote;
 import client.modelDTO.actionsDTO.ActionDTO;
@@ -53,8 +55,8 @@ public class ServerRMIView extends ServerView implements RMIViewRemote {
 						entry.getKey().updateClient(notify.toClientNotify());
 						
 					} catch (RemoteException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+						Logger logger=Logger.getAnonymousLogger();
+						logger.log(Level.SEVERE, "Failed to send notify with RMI", e);
 					}
 	}
 
@@ -78,8 +80,8 @@ public class ServerRMIView extends ServerView implements RMIViewRemote {
 					(this.game.getGameMapper().clientPlayerMap(player)));
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Logger logger=Logger.getAnonymousLogger();
+			logger.log(Level.SEVERE, "Failed", e);
 		}				
 	}
 

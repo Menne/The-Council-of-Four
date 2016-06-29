@@ -19,13 +19,13 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
-import javafx.scene.ImageCursor;
-import javafx.scene.ImageCursorBuilder;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -33,7 +33,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -841,8 +840,8 @@ public class ControllerGUI {
 							try {
 								view.insertParametersAndSend((ActionWithParameters) selectedAction);
 							} catch (RemoteException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
+								Logger logger=Logger.getAnonymousLogger();
+								logger.log(Level.SEVERE, "Failed to send action with RMI", e);
 							}
 						}
 					});
@@ -966,8 +965,8 @@ public class ControllerGUI {
 						view.getConnection().sendAction(new ChatMessageDTO(clientGame.getClientPlayer().getName()
 								+ ": " + chatInputBox.getText().substring(0, chatInputBox.getText().length()-1)));
 					} catch (RemoteException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+						Logger logger=Logger.getAnonymousLogger();
+						logger.log(Level.SEVERE, "Failed to send message with RMI", e);
 					}
     	    		chatInputBox.clear();
     	    	}

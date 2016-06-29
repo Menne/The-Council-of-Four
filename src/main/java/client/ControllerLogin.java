@@ -11,6 +11,8 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import client.connections.ClientRMIViewRemote;
 import client.connections.RMIConnection;
@@ -109,6 +111,8 @@ public class ControllerLogin {
 			} catch (SocketException | RemoteException e) {
 					alert.setHeaderText("Wrong address, try again!");
 					alert.showAndWait();
+					Logger logger=Logger.getAnonymousLogger();
+					logger.log(Level.INFO, "Server unreacheable", e);
 					return;
 				}
 			}

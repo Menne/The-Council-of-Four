@@ -1,6 +1,8 @@
 package client;
 
 import java.rmi.RemoteException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import client.modelDTO.actionsDTO.ChooseMapDTO;
 import client.view.GUI;
@@ -114,8 +116,8 @@ public class ControllerChooseMap {
     	try {
 			view.getConnection().sendAction(new ChooseMapDTO(mapNumber));
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Logger logger=Logger.getAnonymousLogger();
+			logger.log(Level.SEVERE, "Send action RMI failes", e);
 		}
     	Alert alert=new Alert(AlertType.INFORMATION);
     	alert.setTitle("Map Chosen");

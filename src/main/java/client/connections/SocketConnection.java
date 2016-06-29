@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.AddPlayerDTO;
@@ -47,8 +49,8 @@ public class SocketConnection extends Connection implements Runnable{
 			socketOut.flush();
 			socketOut.reset();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Logger logger=Logger.getAnonymousLogger();
+			logger.log(Level.SEVERE, "Failed to send action with socket", e);
 		}
 	}
 
@@ -68,11 +70,13 @@ public class SocketConnection extends Connection implements Runnable{
 					
 					socket.close();
 					System.out.println("Connection closed!");
+					Logger logger=Logger.getAnonymousLogger();
+					logger.log(Level.INFO, "Socket Connection closed", e);
 					return;
 					
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					Logger logger=Logger.getAnonymousLogger();
+					logger.log(Level.SEVERE, "Failed to close the socket", e1);
 				}
 			}	
 			ClientNotify clientNotify=(ClientNotify) object;

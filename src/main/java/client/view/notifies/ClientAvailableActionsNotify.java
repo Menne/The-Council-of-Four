@@ -3,6 +3,8 @@ package client.view.notifies;
 import java.rmi.RemoteException;
 import java.util.List;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.QuitDTO;
@@ -31,8 +33,8 @@ public class ClientAvailableActionsNotify implements ClientViewNotify {
 					try {
 						view.getConnection().sendAction(new QuitDTO());
 					} catch (RemoteException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+						Logger logger=Logger.getAnonymousLogger();
+						logger.log(Level.SEVERE, "Failed to send action with RMI", e);
 					}			
 				}
 			});

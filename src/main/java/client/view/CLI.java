@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import client.connections.Connection;
@@ -77,6 +79,8 @@ public class CLI extends ClientView {
 			try {
 				input=this.scanner.nextLine();
 			} catch (IllegalStateException e){
+				Logger logger=Logger.getAnonymousLogger();
+				logger.log(Level.INFO, "Scanner closed", e);
 				return;
 			}
 			if (this.availableActions().contains(input)) {
@@ -245,11 +249,7 @@ public class CLI extends ClientView {
                 .collect(Collectors.toCollection(ArrayList::new));
 		System.out.println(acceptableCityNames);
 		String cityToTranslate="";
-		try{
-			cityToTranslate=this.scanner.nextLine();
-		}catch(Exception e){
-			e.printStackTrace();
-		}
+		cityToTranslate=this.scanner.nextLine();
 		System.out.println("arrivato qui");
 			while (!acceptableCityNames.toString().contains(cityToTranslate)) {
 				System.out.println("Wrong parameter. Try again");
@@ -410,8 +410,8 @@ public class CLI extends ClientView {
 		try {
 			this.insertParametersAndSend(action);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Logger logger=Logger.getAnonymousLogger();
+			logger.log(Level.SEVERE, "Failed to send action with RMI", e);
 		}
 	}
 
@@ -421,8 +421,8 @@ public class CLI extends ClientView {
 		try {
 			this.insertParametersAndSend(action);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Logger logger=Logger.getAnonymousLogger();
+			logger.log(Level.SEVERE, "Failed to send action with RMI", e);
 		}
 	}
 
@@ -432,8 +432,8 @@ public class CLI extends ClientView {
 		try {
 			this.insertParametersAndSend(action);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Logger logger=Logger.getAnonymousLogger();
+			logger.log(Level.SEVERE, "Failed to send action with RMI", e);
 		}
 	}
 

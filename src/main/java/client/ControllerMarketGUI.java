@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import client.modelDTO.GameDTO;
 import client.modelDTO.actionsDTO.ActionDTO;
@@ -152,8 +154,8 @@ public class ControllerMarketGUI {
 							try {
 								view.insertParametersAndSend((ActionWithParameters) selectedAction);
 							} catch (RemoteException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
+								Logger logger=Logger.getAnonymousLogger();
+								logger.log(Level.SEVERE, "Failed to send action with RMI", e);
 							}
 						}
 					});
