@@ -879,7 +879,7 @@ public class GUI extends ClientView{
 	
 		
 	@Override
-	public RegionDTO askForRegionBoard() throws InterruptedException {
+	public RegionDTO askForRegionBoard() {
 		this.disableClickOnRegions(false);
 		synchronized (this.controllerGUI) {
 				while (currentParameter==null)
@@ -888,7 +888,6 @@ public class GUI extends ClientView{
 					} catch (InterruptedException e) {
 						Logger logger=Logger.getAnonymousLogger();
 						logger.log(Level.SEVERE, "wait interrupted", e);
-						throw e;
 					}
 		}
 		RegionDTO region=(RegionDTO) this.currentParameter;
@@ -1059,7 +1058,7 @@ public class GUI extends ClientView{
 	}
 	
 	@Override
-	public boolean askForOtherSelling() throws InterruptedException {
+	public boolean askForOtherSelling() {
 		Platform.runLater(new Runnable() {
 			
 			@Override
@@ -1102,7 +1101,6 @@ public class GUI extends ClientView{
 			} catch (InterruptedException e) {
 				Logger logger=Logger.getAnonymousLogger();
 				logger.log(Level.SEVERE, "wait interrupted", e);
-				throw e;
 			}
 		}
 		Boolean choice=(boolean) this.currentParameter;
