@@ -57,6 +57,7 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -1371,9 +1372,11 @@ public class GUI extends ClientView{
 					controllerChooseMap.setView(GUI.this);
 					Stage chooseMapStage=new Stage();
 					chooseMapStage.setTitle("Choose Map");
-					chooseMapStage.setScene(new Scene(root));
+					Scene scene=new Scene(root);
+					chooseMapStage.setScene(scene);
 					controllerChooseMap.setChooseMapStage(chooseMapStage);
-					chooseMapStage.show();				
+					chooseMapStage.show();
+					controllerChooseMap.changeMouseStyle();
 			}
 		});
 		

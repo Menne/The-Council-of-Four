@@ -8,12 +8,14 @@ import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
+import javafx.scene.ImageCursor;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
@@ -43,7 +45,8 @@ public class ControllerChooseMap {
 	private ImageView map8;
 	@FXML
 	private ImageView preview;
-	
+	@FXML
+	private AnchorPane backGround;
 
 	public ImageView getMap1() {
 		return map1;
@@ -93,6 +96,18 @@ public class ControllerChooseMap {
 		return preview;
 	}
 
+	@FXML
+	public void changeMouseStyle(){
+	Platform.runLater(new Runnable() {
+	        
+	    	@Override
+	        public void run() {
+	    		Image image = new Image(getClass().getResource("view/images/cursor/glowing1.png").toExternalForm());
+				backGround.setCursor(new ImageCursor(image));
+	        }
+	    });
+    }
+	
 	@FXML
     public void clickOnMap(Event event){
 		int mapNumber=(int)((ImageView) event.getSource()).getUserData();
