@@ -25,7 +25,7 @@ import server.model.player.Player;
 import server.view.ServerRMIView;
 import server.view.RMIViewRemote;
 import server.view.ServerSocketView;
-import server.view.View;
+import server.view.ServerView;
 /**
  * 
  * @author Luca Scannapieco
@@ -42,7 +42,7 @@ public class Server {
 	private Registry registry;
 	private ServerRMIView currentRMIView;
 	
-	private final Map<Game, Set<View>> gamesMap;
+	private final Map<Game, Set<ServerView>> gamesMap;
 	private Game currentGame;
 	private final List<Player> playerList;
 
@@ -74,7 +74,7 @@ public class Server {
 	 * @param view is the ServerView used from the ready player
 	 * @param player is the ready player
 	 */
-	public void newReadyPlayer(View view, Player player){
+	public void newReadyPlayer(ServerView view, Player player){
 		
 		this.gamesMap.get(currentGame).add(view);
 		if(view instanceof ServerSocketView){
@@ -114,7 +114,7 @@ public class Server {
 	 */
 	public void startGame() throws IOException{
 		Controller controller=new Controller(currentGame);
-		for(View gameView : this.gamesMap.get(currentGame)){
+		for(ServerView gameView : this.gamesMap.get(currentGame)){
 			currentGame.registerObserver(gameView);
 			gameView.registerObserver(controller);
 		}
@@ -128,7 +128,7 @@ public class Server {
 		registry.rebind(NAME, currentRMIView);
 	}
 	
-	public void setMap(View view, int mapNumber){
+	public void setMap(ServerView view, int mapNumber){
 		if(gamesMap.get(currentGame).contains(view))
 			currentGame.setMapNumber(mapNumber);
 	}
