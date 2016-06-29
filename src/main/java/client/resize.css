@@ -16,9 +16,16 @@
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-opacity: 1;
+    -fx-background-image: url("view/images/various/sfondo.gif");  
+    -fx-effect: null;
+}
+
 .label {
 	 -fx-font: 15 Papyrus;
     -fx-text-fill: #6b4208;
+    -fx-hoover-color:#d1ca85;
    /*  -fx-font-weight: bold; */
 }
 
