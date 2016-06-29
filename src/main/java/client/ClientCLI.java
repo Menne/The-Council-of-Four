@@ -130,8 +130,6 @@ public class ClientCLI {
 				}
 			}catch(SocketException | RemoteException e){
 				System.out.println("Server Unreachable. Try again");
-				Logger logger=Logger.getAnonymousLogger();
-				logger.log(Level.INFO, "Server Unreachable", e);
 			} 
 		}
 	}

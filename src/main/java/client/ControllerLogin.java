@@ -111,8 +111,6 @@ public class ControllerLogin {
 			} catch (SocketException | RemoteException e) {
 					alert.setHeaderText("Wrong address, try again!");
 					alert.showAndWait();
-					Logger logger=Logger.getAnonymousLogger();
-					logger.log(Level.INFO, "Server unreacheable", e);
 					return;
 				}
 			}
