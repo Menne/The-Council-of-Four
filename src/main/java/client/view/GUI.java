@@ -263,14 +263,8 @@ public class GUI extends ClientView{
 			}
 			if(action.getClass()==ElectCouncillorDTO.class)
 				controllerGUI.getActions().get(0).getParent().setEffect(innerShadow);
-				//for(int i=0; i<4; i++){
-				//controllerGUI.getActions().get(i).setEffect(innerShadow);
-				//}
 			if(action.getClass()==EngageAssistantDTO.class)
 				controllerGUI.getActions().get(4).getParent().setEffect(innerShadow);
-				//for(int i=4; i<9; i++){
-				//controllerGUI.getActions().get(i).setEffect(innerShadow);
-				//}
 		}
 	}
 
