@@ -40,6 +40,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
+/**
+ * It's the controller class for the game screen.
+ * @author Luca Scannapieco
+ *
+ */
 public class ControllerGUI {
 	
 	private GameDTO clientGame;

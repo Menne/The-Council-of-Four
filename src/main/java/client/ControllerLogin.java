@@ -27,6 +27,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 
+/**
+ * Controller class for the login screen.
+ * @author Luca Scannapieco
+ *
+ */
 public class ControllerLogin {
 	
 	private final static int PORT_RMI = 52365;

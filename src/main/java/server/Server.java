@@ -26,7 +26,12 @@ import server.view.ServerRMIView;
 import server.view.RMIViewRemote;
 import server.view.ServerSocketView;
 import server.view.View;
-
+/**
+ * 
+ * @author Luca Scannapieco
+ *It's the main class to launch on the server side. 
+ *It support Socket and RMI connection.
+ */
 
 public class Server {
 
@@ -42,7 +47,12 @@ public class Server {
 	private final List<Player> playerList;
 
 	
-	
+	/**
+	 * Instantiates the first game, and create a new entry in the games map (that associates to a game the views of that game)
+	 * Creates the registry for RMI connections and exports on it the first game.
+	 * @throws RemoteException if something goes wrong exporting or creating registry  
+	 * @throws AlreadyBoundException if something goes wrong binding the view with the NAME.
+	 */
 	public Server() throws RemoteException, AlreadyBoundException{
 		this.gamesMap=new HashMap<>();
 		this.currentGame=new Game();
@@ -56,8 +66,15 @@ public class Server {
 		registry.bind(NAME, rmiViewRemote);
 	}
 	
-	
-	public void newReadyPlayer(View view, Player player) throws IOException{
+	/**
+	 * When a new player has done the login (inserting his name), this method is called from the ServerView.
+	 * It adds the view in the entry of the gamesMap having currentGame as key.
+	 * If there are two readyPlayers, a timer of 20 second will start.
+	 * When time's up the current game will start.
+	 * @param view is the ServerView used from the ready player
+	 * @param player is the ready player
+	 */
+	public void newReadyPlayer(View view, Player player){
 		
 		this.gamesMap.get(currentGame).add(view);
 		if(view instanceof ServerSocketView){
@@ -88,6 +105,13 @@ public class Server {
 		}
 	}
 	
+	/**
+	 * Creates the controller for the game.
+	 * Registers the views as observer of the game, and the controller as observer of the views.
+	 * Start the current game.
+	 * Creates the new current game and its relative entry in the games map.
+	 * @throws IOException if something goes wrong initializing the game
+	 */
 	public void startGame() throws IOException{
 		Controller controller=new Controller(currentGame);
 		for(View gameView : this.gamesMap.get(currentGame)){

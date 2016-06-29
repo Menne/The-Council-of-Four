@@ -10,7 +10,11 @@ import client.modelDTO.actionsDTO.AddPlayerDTO;
 import client.modelDTO.actionsDTO.ChooseMapDTO;
 import client.modelDTO.clientNotifies.ClientNotify;
 
-
+/**
+ * Class that handle the socket connection on the client side
+ * @author Luca Scannapieco
+ *
+ */
 public class SocketConnection extends Connection implements Runnable{
 	
 	private final Socket socket;
@@ -24,10 +28,16 @@ public class SocketConnection extends Connection implements Runnable{
 		this.socketIn=new ObjectInputStream(socket.getInputStream());
 	} 
 
+	/**
+	 * @return the ObjectOutputStream that this class uses to send action to the server
+	 */
 	public ObjectOutputStream getSocketOut() {
 		return socketOut;
 	}
 	
+	/**
+	 * Sends action to the server using the ObjectOutputStream of the Socket.
+	 */
 	@Override
 	public void sendAction(ActionDTO action){
 		try {
@@ -42,6 +52,9 @@ public class SocketConnection extends Connection implements Runnable{
 		}
 	}
 
+	/**
+	 * This method runs on a different thread and listens for notifies sent from the server 
+	 */
 	@Override
 	public void run() {
 		Object object=null;

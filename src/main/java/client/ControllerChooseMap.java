@@ -11,12 +11,16 @@ import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+/**
+ * Is the controller class for the screen where the first player chooses tha map.
+ * @author Luca Scannapieco
+ *
+ */
 public class ControllerChooseMap {
 	private GUI view;
 	private Stage chooseMapStage;

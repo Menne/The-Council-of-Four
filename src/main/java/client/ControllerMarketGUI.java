@@ -29,6 +29,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/**
+ * Controller class for the market screen
+ * @author Luca Scannapieco
+ *
+ */
 public class ControllerMarketGUI {
 	private GUI view;
 	private GameDTO clientGame;
