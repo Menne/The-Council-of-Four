@@ -11,11 +11,19 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+/**
+ * The main class to launch if the user wants to play from a GUI.
+ * @author Luca Scannapieco
+ *
+ */
 public class ClientGUI extends Application {
 
 	private Stage primaryStage;
     private ScrollPane rootLayout;
-     	
+    
+    /**
+     * Sets the primary stage
+     */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		this.primaryStage=primaryStage;
@@ -24,6 +32,9 @@ public class ClientGUI extends Application {
 		welcome();
  	}
 	
+	/**
+	 * Loads and shows the root layout of our application.
+	 */
 	public void initRootLayout(){
 		 FXMLLoader loader = new FXMLLoader();
 		 loader.setLocation(getClass().getResource("RootLayout.fxml"));
@@ -43,6 +54,9 @@ public class ClientGUI extends Application {
 		 scene.setCursor(new ImageCursor(image));
 	}
 	
+	/**
+	 * Loads and shows the login screen of our application.
+	 */
 	public void welcome(){
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("Welcome.fxml"));
@@ -60,6 +74,10 @@ public class ClientGUI extends Application {
 		};
 	}
 	
+	/**
+	 * Loads the screen of the game.
+	 * @return the controller of the screen, got from the fxmlLoader.
+	 */
 	public ControllerGUI showGame(){
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("GUIGioco.fxml"));

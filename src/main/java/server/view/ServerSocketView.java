@@ -19,7 +19,12 @@ import server.view.actionMapperVisitor.ActionDTOMapper;
 import server.view.notifies.EndGameNotify;
 import server.view.notifies.ViewNotify;
 
-public class ServerSocketView extends View implements Runnable {
+/**
+ * The Socket implementation of Server View
+ * @author Luca Scannapieco
+ *
+ */
+public class ServerSocketView extends ServerView implements Runnable {
 
 	private final Socket socket;
 	private final ObjectInputStream socketIn;
@@ -28,6 +33,12 @@ public class ServerSocketView extends View implements Runnable {
 	private Player player;
 	private ActionDTOMapper actionMapper;
 	
+	/**
+	 * 
+	 * @param socket The Socket used for the connection.
+	 * @param server The server that is creating the view.
+	 * @throws IOException if something goes wrong creating the Objects Stream
+	 */
 	public ServerSocketView(Socket socket, Server server) throws IOException{
 		super(server);
 		this.socket=socket;
@@ -36,11 +47,22 @@ public class ServerSocketView extends View implements Runnable {
 	}
 
 
+	/**
+	 * Sets the instance of the game for this view.
+	 * @param game The instance of the game to set.
+	 */
 	public void setGame(Game game) {
 		this.game=game;
 		this.actionMapper=new ActionDTOMapper(this.game);
 	}
 
+	/**
+	 * This method is executed on a different thread.
+	 * It listens for DTO actions on the socket connection.
+	 * It receive DTO actions, translate the using a visitor pattern and notifies them to the controller.
+	 * In case of AddPlayer action it instantiates the new player, informs the server that a new player is ready and informs the player that he has been accepted.
+	 * In case of a Quit action it informs the model the the player has left the game and unregister itself as observer of the model.
+	 */
 	@Override
 	public void run() {
 		while(!socket.isClosed()){
@@ -77,7 +99,11 @@ public class ServerSocketView extends View implements Runnable {
 		}
 	}
 
-
+	/**
+	 * This method receives notifies from the model, 
+	 * translate them in client notifies and send the to the client through the socket connection.
+	 * 
+	 */
 	@Override
 	public void update(ViewNotify notify) {
 		try {

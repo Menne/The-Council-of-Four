@@ -10,6 +10,11 @@ import client.modelDTO.actionsDTO.QuitDTORMI;
 import client.modelDTO.clientNotifies.ClientNotify;
 import server.view.RMIViewRemote;
 
+/**
+ * The class that handle the RMI connection on the client side.
+ * @author Media
+ *
+ */
 public class RMIConnection extends Connection implements ClientRMIViewRemote{
 	
 
@@ -23,12 +28,17 @@ public class RMIConnection extends Connection implements ClientRMIViewRemote{
 		this.serverStub=serverStub;
 	}
 
-	
+	/**
+	 * Remote method called from the server the send notifies to the clients
+	 */
 	@Override
 	public void updateClient(ClientNotify clientNotify) throws RemoteException {
 		this.notifyObserver(clientNotify);		
 	}
 	
+	/**
+	 * Sends the action to the server using the server stub.
+	 */
 	@Override
 	public void sendAction(ActionDTO action) throws RemoteException{
 		if(!(action instanceof AddPlayerDTO)&&!(action instanceof ChooseMapDTO))

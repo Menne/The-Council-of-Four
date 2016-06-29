@@ -18,6 +18,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+/**
+ * Is the controller class for the screen where the first player chooses tha map.
+ * @author Luca Scannapieco
+ *
+ */
 public class ControllerChooseMap {
 	private GUI view;
 	private Stage chooseMapStage;

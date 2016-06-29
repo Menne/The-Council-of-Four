@@ -17,13 +17,21 @@ import server.model.player.Player;
 import server.view.actionMapperVisitor.ActionDTOMapper;
 import server.view.notifies.ViewNotify;
 
-public class ServerRMIView extends View implements RMIViewRemote {
+/**
+ * The RMI implementation of the Server view
+ * @author Luca Scannapieco
+ *
+ */
+public class ServerRMIView extends ServerView implements RMIViewRemote {
 	
 	private final Map<ClientRMIViewRemote, Player> clientsMap;
 	private final Game game;
 	private ActionDTOMapper actionMapper;
 	
-	
+	/**
+	 * @param server The server that is creating the view
+	 * @param game The instance of the game model.
+	 */
 	public ServerRMIView(Server server, Game game){
 		super(server);
 		this.game=game;
@@ -31,7 +39,10 @@ public class ServerRMIView extends View implements RMIViewRemote {
 		this.actionMapper=new ActionDTOMapper(this.game);
 	}
 	
-	
+	/**
+	 * This method receive the notifies from the model, 
+	 * translate them in client notifies and send the translated notifies to the client.
+	 */
 	@Override
 	public void update(ViewNotify notify){
 		for(Player player : notify.sendTo())
@@ -47,6 +58,12 @@ public class ServerRMIView extends View implements RMIViewRemote {
 					}
 	}
 
+	/**
+	 * Remote method called from the client when a new player is ready.
+	 * It creates a new entry in the clientsMap that associates the client stub to the player.
+	 * Informs the server that a new player is ready.
+	 * Informs the client that he has been accepted.
+	 */
 	@Override
 	public void registerClient(ClientRMIViewRemote clientStub, String playerName) throws RemoteException {
 		
@@ -66,6 +83,11 @@ public class ServerRMIView extends View implements RMIViewRemote {
 		}				
 	}
 
+	/**
+	 * Remote method called from the client when he wants to do an action.
+	 * It translates the DTO action using the visitor pattern and notifies the action to the controller.
+	 * In case of QuitActon it also remove the entry from the clientMap, and unregister the view as observer of the game if there are no more RMI players in this game. 
+	 */
 	@Override
 	public void receiveAction(ActionDTO actionDTO) throws RemoteException {
 		if(actionDTO instanceof QuitDTORMI){
