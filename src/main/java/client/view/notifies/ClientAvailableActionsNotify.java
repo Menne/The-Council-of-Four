@@ -10,11 +10,21 @@ import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.QuitDTO;
 import client.view.ClientView;
 
+/**
+ * This class contains the logic for notifying a ClientView which actions the user can do
+ * @author cg31
+ *
+ */
 public class ClientAvailableActionsNotify implements ClientViewNotify {
 
 	private List<ActionDTO> availableActions;
 	private String message;
 
+	/**
+	 * Constructor of ClientAvailableActionsNotify
+	 * @param availableActions are the available actions in the current game state
+	 * @param message is a notification the system offers to the player to explain in which phase of the game he is
+	 */
 	public ClientAvailableActionsNotify(List<ActionDTO> availableActions, String message) {
 		this.availableActions=availableActions;
 		this.message=message;

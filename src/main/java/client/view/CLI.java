@@ -169,7 +169,7 @@ public class CLI extends ClientView {
 		System.out.println(acceptableRegionNames);
 		String regionToTranslate=this.scanner.nextLine();
 		while (!acceptableRegionNames.contains(regionToTranslate)) {
-			System.out.println("Wrong parameter. Try again");
+			this.displayError("Wrong parameter. Try again");
 			regionToTranslate=scanner.nextLine();
 		}
 		for (RegionDTO region : clientGame.getClientGameTable().getClientRegions())
@@ -191,7 +191,7 @@ public class CLI extends ClientView {
 		System.out.println(permitTilesWithIndex);
 		String permitTileToTranslate=scanner.nextLine();
 		while (!indexes.contains(permitTileToTranslate)) {
-			System.out.println("Wrong parameter. Try again");
+			this.displayError("Wrong parameter. Try again");
 			permitTileToTranslate=scanner.nextLine();
 		}
 		return this.clientGame.getClientPlayer().getAvailablePermitTiles().get
@@ -206,7 +206,7 @@ public class CLI extends ClientView {
 		System.out.println(acceptableCouncillorsColours);
 		String newCouncillorToTranslate=this.scanner.nextLine();
 		while (!acceptableCouncillorsColours.contains(newCouncillorToTranslate)) {
-			System.out.println("Wrong parameter. Try again");
+			this.displayError("Wrong parameter. Try again");
 			newCouncillorToTranslate=scanner.nextLine();
 		}
 		for (CouncillorDTO councillor : this.clientGame.getClientGameTable().getClientCouncillorReserve())
@@ -221,7 +221,7 @@ public class CLI extends ClientView {
 		System.out.println(acceptableCouncilBalconiyNames);
 		String councilBalconyToTranslate=this.scanner.nextLine();
 		while (!acceptableCouncilBalconiyNames.contains(councilBalconyToTranslate)) {
-			System.out.println("Wrong parameter. Try again");
+			this.displayError("Wrong parameter. Try again");
 			councilBalconyToTranslate=scanner.nextLine();
 		}
 		if (councilBalconyToTranslate.equals(acceptableCouncilBalconiyNames.get(0)))
@@ -243,9 +243,8 @@ public class CLI extends ClientView {
 		System.out.println(acceptableCityNames);
 		String cityToTranslate="";
 		cityToTranslate=this.scanner.nextLine();
-		System.out.println("arrivato qui");
 			while (!acceptableCityNames.toString().contains(cityToTranslate)) {
-				System.out.println("Wrong parameter. Try again");
+				this.displayError("Wrong parameter. Try again");
 				cityToTranslate=scanner.nextLine();
 			}
 		for (CityDTO city : acceptableCities)
@@ -282,7 +281,7 @@ public class CLI extends ClientView {
 		List<String> temporaryAcceptablePoliticsCards=new ArrayList<>(acceptableCardsColours);
 		StringTokenizer cardsToCheckTokenized=new StringTokenizer(cardsToTranslate);
 		if (!(cardsToCheckTokenized.countTokens()>0 && cardsToCheckTokenized.countTokens()<=CouncilBalcony.getNumberofcouncillors())) {
-			System.out.println("Remember: you must descard at least 1 card and a maximum of "+ CouncilBalcony.getNumberofcouncillors() +" cards");
+			this.displayError("Remember: you must descard at least 1 card and a maximum of "+ CouncilBalcony.getNumberofcouncillors() +" cards");
 			return false;
 		}
 		while (cardsToCheckTokenized.hasMoreTokens()) {
@@ -290,7 +289,7 @@ public class CLI extends ClientView {
 			if (temporaryAcceptablePoliticsCards.contains(currentCard))
 				temporaryAcceptablePoliticsCards.remove(currentCard);
 			else {
-				System.out.println("Wrong cards. Try again");
+				this.displayError("Wrong cards. Try again");
 				return false;
 			}
 		}
@@ -302,7 +301,7 @@ public class CLI extends ClientView {
 		System.out.println("[0, 1]");
 		String numberOfPermitTileToTranslate=this.scanner.nextLine();
 		while (!("0".equals(numberOfPermitTileToTranslate) || "1".equals(numberOfPermitTileToTranslate))) {
-			System.out.println("Wrong parameter. Try again");
+			this.displayError("Wrong parameter. Try again");
 			numberOfPermitTileToTranslate=scanner.nextLine();
 		}
 		return Integer.parseInt(numberOfPermitTileToTranslate);
@@ -325,7 +324,7 @@ public class CLI extends ClientView {
 		System.out.println(offersWithIndex);
 		String offeringObjectToTranslate=scanner.nextLine();
 		while (!indexes.contains(offeringObjectToTranslate)) {
-			System.out.println("Wrong parameter. Try again");
+			this.displayError("Wrong parameter. Try again");
 			offeringObjectToTranslate=scanner.nextLine();
 		}
 		return acceptableObjectsToOffer.get(Integer.parseInt(offeringObjectToTranslate)-1);
@@ -342,7 +341,7 @@ public class CLI extends ClientView {
 		System.out.println("[yes, no])");
 		String input=this.scanner.nextLine();
 		while (!("yes".equals(input) || "no".equals(input))) {
-			System.out.println("I didn't understand...");
+			this.displayError("I didn't understand...");
 			input=this.scanner.nextLine();
 		}
 		if ("yes".equals(input))
@@ -366,7 +365,7 @@ public class CLI extends ClientView {
 		System.out.println(offersWithIndex);
 		String offerToTranslate=scanner.nextLine();
 		while (!indexes.contains(offerToTranslate)) {
-			System.out.println("Wrong parameter. Try again");
+			this.displayError("Wrong parameter. Try again");
 			offerToTranslate=scanner.nextLine();
 		}
 		return this.clientGame.getMarket().getOffersList().get(Integer.parseInt(offerToTranslate)-1);
@@ -388,7 +387,7 @@ public class CLI extends ClientView {
 		System.out.println(permitTilesWithIndex);
 		String permitTileToTranslate=scanner.nextLine();
 		while (!indexes.contains(permitTileToTranslate)) {
-			System.out.println("Wrong parameter. Try again");
+			this.displayError("Wrong parameter. Try again");
 			permitTileToTranslate=scanner.nextLine();
 		}
 		return availablePermitTiles.get(Integer.parseInt(permitTileToTranslate)-1);

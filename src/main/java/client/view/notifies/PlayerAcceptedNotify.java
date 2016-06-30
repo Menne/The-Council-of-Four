@@ -6,11 +6,22 @@ import java.util.logging.Logger;
 
 import client.view.ClientView;
 
+/**
+ * This class modelizes a notify which is sent after a client puts itself waiting for a new game.
+ * It contains the logic to notify the ClientView that the player has registered successfully
+ * @author cg31
+ *
+ */
 public class PlayerAcceptedNotify implements ClientViewNotify {
 
 	private final String message;
 	private final boolean firstPlayer;
 	
+	/**
+	 * Constructor of PlayerAcceptedNotify
+	 * @param message is a welcome message
+	 * @param isFirstPlayer is a flag that indicates if the client registered is the first player
+	 */
 	public PlayerAcceptedNotify(String message, boolean isFirstPlayer) {
 		this.message=message;
 		this.firstPlayer=isFirstPlayer;
