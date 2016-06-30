@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import client.modelDTO.GameDTO;
-import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.standardActions.ElectCouncillorDTO;
 import client.modelDTO.gameTableDTO.CouncillorDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
@@ -20,7 +19,7 @@ public class ElectCouncillorParser implements ActionParserVisitor {
 	
 	
 	@Override
-	public ActionDTO setParameters(ClientView view, GameDTO game) {
+	public void setParameters(ClientView view, GameDTO game) {
 		view.displayMessage("Ok! you have chosen to elect a councillor. Now I need some other infos, like:");
 		
 		view.displayMessage("the colour of the councillor you want to elect");
@@ -34,8 +33,6 @@ public class ElectCouncillorParser implements ActionParserVisitor {
 		this.selectedAction.setCouncilBalcony(view.askForCouncilBalcony());
 		
 		this.selectedAction.parametersSetted();
-		
-		return this.selectedAction;
 	}
 
 }

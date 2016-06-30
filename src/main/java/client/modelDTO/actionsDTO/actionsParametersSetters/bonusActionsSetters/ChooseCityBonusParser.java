@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import client.modelDTO.GameDTO;
-import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.actionsParametersSetters.ActionParserVisitor;
 import client.modelDTO.actionsDTO.bonusActions.ChooseCityActionDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
@@ -23,7 +22,7 @@ public class ChooseCityBonusParser implements ActionParserVisitor {
 
 
 	@Override
-	public ActionDTO setParameters(ClientView view, GameDTO game) {
+	public void setParameters(ClientView view, GameDTO game) {
 		view.displayMessage("City bonus earned! You have the possibility to choose from the cities in which you have built"
 						+ "an emporium, and get the bonuses associated to that");
 		
@@ -41,7 +40,6 @@ public class ChooseCityBonusParser implements ActionParserVisitor {
 		}
 		
 		this.selectedAction.parametersSetted();
-		return selectedAction;
 	}
 
 }

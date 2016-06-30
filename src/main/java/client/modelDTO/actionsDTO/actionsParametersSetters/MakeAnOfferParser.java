@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import client.modelDTO.GameDTO;
-import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.marketActions.MakeAnOfferDTO;
 import client.modelDTO.marketDTO.MarketableDTO;
 import client.modelDTO.marketDTO.OfferDTO;
@@ -21,7 +20,7 @@ public class MakeAnOfferParser implements ActionParserVisitor {
 	}
 
 	@Override
-	public ActionDTO setParameters(ClientView view, GameDTO game) {
+	public void setParameters(ClientView view, GameDTO game) {
 		view.displayMessage("Ok, you decided to sell something to the other players");
 		List<MarketableDTO> acceptableObjectsToOffer=new ArrayList<>();
 		acceptableObjectsToOffer.addAll(game.getClientPlayer().getHand());
@@ -50,8 +49,6 @@ public class MakeAnOfferParser implements ActionParserVisitor {
 
 		if (this.otherSelling && acceptableObjectsToOffer.isEmpty())
 			view.displayMessage("but it seems that you haven't anything to offer!");
-		
-		return selectedAction;
 	}
 	
 }

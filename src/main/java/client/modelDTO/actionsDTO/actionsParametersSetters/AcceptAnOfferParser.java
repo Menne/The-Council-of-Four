@@ -1,7 +1,6 @@
 package client.modelDTO.actionsDTO.actionsParametersSetters;
 
 import client.modelDTO.GameDTO;
-import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.marketActions.AcceptAnOfferDTO;
 import client.view.ClientView;
 
@@ -15,7 +14,7 @@ public class AcceptAnOfferParser implements ActionParserVisitor {
 	
 
 	@Override
-	public ActionDTO setParameters(ClientView view, GameDTO game) {
+	public void setParameters(ClientView view, GameDTO game) {
 		
 		if (!game.getMarket().getOffersList().isEmpty()) {
 		
@@ -27,8 +26,6 @@ public class AcceptAnOfferParser implements ActionParserVisitor {
 		}
 		else 
 			view.displayMessage("There is nothing to buy from other players");
-		
-		return selectedAction;
 	}
 
 }

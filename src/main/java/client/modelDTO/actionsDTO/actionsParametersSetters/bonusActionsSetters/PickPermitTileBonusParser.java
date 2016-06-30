@@ -14,7 +14,7 @@ public class PickPermitTileBonusParser implements ActionParserVisitor {
 	}
 
 	@Override
-	public PickPermitTileActionDTO setParameters(ClientView view, GameDTO game) {
+	public void setParameters(ClientView view, GameDTO game) {
 		view.displayMessage("the name of the region in which you want to pick");
 		this.selectedAction.setSelectedRegion(view.askForRegionBoard());
 
@@ -23,7 +23,6 @@ public class PickPermitTileBonusParser implements ActionParserVisitor {
 				(this.selectedAction.getSelectedRegion()));
 		
 		this.selectedAction.parametersSetted();
-		return this.selectedAction;
 	}
 
 }

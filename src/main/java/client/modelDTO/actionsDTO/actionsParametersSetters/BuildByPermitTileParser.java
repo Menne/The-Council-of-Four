@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import client.modelDTO.GameDTO;
-import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.standardActions.BuildByPermitTileDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
@@ -20,7 +19,7 @@ public class BuildByPermitTileParser implements ActionParserVisitor {
 
 	
 	@Override
-	public ActionDTO setParameters(ClientView view, GameDTO game) {
+	public void setParameters(ClientView view, GameDTO game) {
 		view.displayMessage("Ok! you have chosen to build an emporium with a permit tile.");
 			
 		if (!game.getClientPlayer().getAvailablePermitTiles().isEmpty()) {
@@ -42,8 +41,6 @@ public class BuildByPermitTileParser implements ActionParserVisitor {
 		}
 		else 
 			view.displayMessage("but it seems that you haven't any permit tile turned up! Select another action please");
-		
-		return this.selectedAction;
 	}
 
 }
