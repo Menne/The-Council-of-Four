@@ -703,7 +703,8 @@ public class GUI extends ClientView{
 
 				@Override
 				public void handle(Event event) {
-					controllerMarketGUI.handlePoliticsCard(card);							
+					controllerMarketGUI.handlePoliticsCard(card);
+					imageView.setOpacity(0.4);
 				}
 			});
 			imageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
@@ -711,7 +712,6 @@ public class GUI extends ClientView{
 				@Override
 				public void handle(MouseEvent event) {
 					controllerMarketGUI.changeMouseStyle(event);
-					
 				}
 			});
 		}
@@ -729,7 +729,8 @@ public class GUI extends ClientView{
 
 				@Override
 				public void handle(Event event) {
-					controllerMarketGUI.handlePermitTilesTurnedUp(permitTileDTO);						
+					controllerMarketGUI.handlePermitTilesTurnedUp(permitTileDTO);		
+					imageView.setOpacity(0.4);
 				}
 			});
 			imageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
@@ -737,7 +738,6 @@ public class GUI extends ClientView{
 				@Override
 				public void handle(MouseEvent event) {
 					controllerMarketGUI.changeMouseStyle(event);
-					
 				}
 			});
 		}
@@ -757,7 +757,7 @@ public class GUI extends ClientView{
 				@Override
 				public void handle(Event event) {
 					controllerMarketGUI.handleAssistants(assistantDTO);
-					
+					imageView.setOpacity(0.4);
 				}
 			});
 			imageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
@@ -765,7 +765,6 @@ public class GUI extends ClientView{
 				@Override
 				public void handle(MouseEvent event) {
 					controllerMarketGUI.changeMouseStyle(event);
-					
 				}
 			});
 		}
