@@ -45,10 +45,7 @@ public class AdditionalMainAction extends QuickAction {
 		}
 		
 		game.getCurrentPlayer().decrementAssistants(necessaryAssistants);
-		
-		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
-				Arrays.asList(game.getCurrentPlayer())));
-		
+	
 		this.notifyPlayers(game);
 		game.setState(game.getState().additionalMainActionTransition());
 		game.getState().updateClients(game);
@@ -58,6 +55,8 @@ public class AdditionalMainAction extends QuickAction {
 	
 	
 	private void notifyPlayers(Game game) {
+		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
+				Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new MessageNotify("Action completed succesfully!", 
 				Arrays.asList(game.getCurrentPlayer())));
 		List<Player> otherPlayers=new ArrayList<>();

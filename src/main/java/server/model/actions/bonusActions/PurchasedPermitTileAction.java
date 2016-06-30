@@ -1,11 +1,15 @@
 package server.model.actions.bonusActions;
 
+import java.util.Arrays;
+
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.bonusActions.PurchasedPermitTileActionDTO;
 import server.model.Game;
 import server.model.actions.Action;
 import server.model.bonus.Bonus;
 import server.model.gameTable.PermitTile;
+import server.view.notifies.MessageNotify;
+import server.view.notifies.PlayerNotify;
 
 /**
  * It's the class that models the action associated to the choice of the PurchasedPermitTile.
@@ -32,12 +36,20 @@ public class PurchasedPermitTileAction implements Action {
 		for (Bonus bonusToAssign : this.selectedPermitTile.getBonuses())
 			bonusToAssign.assignBonus(game);
 		
+		this.notifyPlayers(game);
 		game.setState(game.getState().moveToNextTransition(game));
 		game.getState().updateClients(game);
 		
 		return true;
 	}
 
+	
+	private void notifyPlayers(Game game) {
+		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
+				Arrays.asList(game.getCurrentPlayer())));
+		game.notifyObserver(new MessageNotify("Bonus earned successfully!", 
+				Arrays.asList(game.getCurrentPlayer())));
+	}
 
 	@Override
 	public ActionDTO map() {

@@ -14,7 +14,6 @@ import server.model.actions.standardActions.EngageAssistant;
 import server.model.player.Player;
 import server.view.notifies.AvailableActionsNotify;
 import server.view.notifies.GameTableNotify;
-import server.view.notifies.PlayerNotify;
 
 /**
  * Models the state in which the current player has only the possibility to do a quick action 
@@ -91,8 +90,6 @@ public class State01 implements State {
 	@Override
 	public void updateClients(Game game) {
 		game.notifyObserver(new GameTableNotify(game, new ArrayList<Player>(game.getPlayers()),false));
-		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
-				Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new AvailableActionsNotify(game.getState().getAcceptableActions(game), 
 				Arrays.asList(game.getCurrentPlayer()), game.getCurrentPlayer().getName() +
 				", you have the following available actions. Choose one of them, or, if you want to finish the turn, press sk"));

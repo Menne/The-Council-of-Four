@@ -11,12 +11,14 @@ import server.model.actions.marketActions.AcceptAnOffer;
 import server.model.player.Player;
 import server.view.notifies.AvailableActionsNotify;
 import server.view.notifies.MarketNotify;
-import server.view.notifies.PlayerNotify;
 
 public class BuyingState implements State {
 
 	@Override
 	public State buyActionTransition(Game game) {
+		game.notifyObserver(new AvailableActionsNotify(Arrays.asList(), 
+				Arrays.asList(game.getCurrentPlayer()), 
+				"Ok, your turn is over now. I will notify you when it will be your turn again"));
 		if (!game.getMarket().getBuyingPlayerList().isEmpty()){
 			game.getMarket().buyingNextPlayer(game);
 			return this;
@@ -48,13 +50,11 @@ public class BuyingState implements State {
 
 	@Override
 	public List<Action> getAcceptableActions(Game game) {
-		return Arrays.asList(new AcceptAnOffer(),new MoveToNext());
+		return Arrays.asList(new AcceptAnOffer(), new MoveToNext());
 	}
 
 	@Override
 	public void updateClients(Game game) {
-		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
-				Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new MarketNotify(game, 
 				new ArrayList<Player>(game.getPlayers()), false, false));
 		game.notifyObserver(new AvailableActionsNotify(game.getState().getAcceptableActions(game), 

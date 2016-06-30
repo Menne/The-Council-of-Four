@@ -79,11 +79,8 @@ public class Game extends Observable<ViewNotify>{
 		this.lastLap=false;
 		this.market=new Market();
 		
-		for (Player player : this.players) {
-			if (!player.equals(this.currentPlayer))
-				this.notifyObserver(new PlayerNotify(this, player, Arrays.asList(player)));
-		}
-		
+		for (Player player : this.players) 
+			this.notifyObserver(new PlayerNotify(this, player, Arrays.asList(player)));
 		this.notifyObserver(new GameTableNotify(this, players, true));
 		this.state.updateClients(this);
 	}

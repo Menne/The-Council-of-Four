@@ -58,9 +58,6 @@ public class ChangePermitTiles extends QuickAction {
 				region.substitutePermitTiles();
 		game.getCurrentPlayer().decrementAssistants(necessaryAssistants);
 		
-		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
-				Arrays.asList(game.getCurrentPlayer())));
-		
 		this.notifyPlayers(game);
 		this.nextState(game);
 		
@@ -69,6 +66,8 @@ public class ChangePermitTiles extends QuickAction {
 
 	
 	private void notifyPlayers(Game game) {
+		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
+				Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new MessageNotify("Action completed succesfully!", 
 				Arrays.asList(game.getCurrentPlayer())));
 		List<Player> otherPlayers=new ArrayList<>();

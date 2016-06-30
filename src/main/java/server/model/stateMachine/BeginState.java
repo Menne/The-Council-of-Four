@@ -10,7 +10,6 @@ import server.model.actions.PickPoliticsCard;
 import server.model.player.Player;
 import server.view.notifies.AvailableActionsNotify;
 import server.view.notifies.GameTableNotify;
-import server.view.notifies.PlayerNotify;
 
 /**
  * In this state the player can just pick a politics card
@@ -34,8 +33,6 @@ public class BeginState implements State {
 	@Override
 	public void updateClients(Game game) {
 		game.notifyObserver(new GameTableNotify(game, new ArrayList<Player>(game.getPlayers()),false));
-		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
-				Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new AvailableActionsNotify(game.getState().getAcceptableActions(game), 
 				Arrays.asList(game.getCurrentPlayer()), game.getCurrentPlayer().getName() +
 				", it's your turn! Pick a politics card pressing pc"));

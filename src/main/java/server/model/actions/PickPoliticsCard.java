@@ -9,6 +9,7 @@ import client.modelDTO.actionsDTO.PickPoliticsCardDTO;
 import server.model.Game;
 import server.model.player.Player;
 import server.view.notifies.MessageNotify;
+import server.view.notifies.PlayerNotify;
 
 public class PickPoliticsCard implements Action {
 
@@ -25,6 +26,8 @@ public class PickPoliticsCard implements Action {
 	
 	
 	private void notifyPlayers(Game game) {
+		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
+				Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new MessageNotify("Card picked!", 
 				Arrays.asList(game.getCurrentPlayer())));
 		List<Player> otherPlayers=new ArrayList<>();

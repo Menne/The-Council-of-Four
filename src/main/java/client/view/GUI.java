@@ -38,7 +38,6 @@ import client.modelDTO.actionsDTO.standardActions.ChangePermitTilesDTO;
 import client.modelDTO.actionsDTO.standardActions.ElectCouncillorByAssistantDTO;
 import client.modelDTO.actionsDTO.standardActions.ElectCouncillorDTO;
 import client.modelDTO.actionsDTO.standardActions.EngageAssistantDTO;
-import client.modelDTO.clientNotifies.PlayerAcceptedDTONotify;
 import client.modelDTO.gameTableDTO.BonusTileDTO;
 import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;

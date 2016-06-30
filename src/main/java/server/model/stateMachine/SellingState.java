@@ -18,6 +18,9 @@ public class SellingState implements State {
 
 	@Override
 	public State sellActionTransition(Game game) {
+		game.notifyObserver(new AvailableActionsNotify(Arrays.asList(), 
+				Arrays.asList(game.getCurrentPlayer()), 
+				"Ok, your turn is over now. I will notify you when it will be your turn again"));
 		if (!game.getMarket().getSellingPlayerList().isEmpty()){
 			game.getMarket().sellingNextPlayer(game);
 			return this;
@@ -55,9 +58,9 @@ public class SellingState implements State {
 					(game, new ArrayList<Player>(game.getPlayers()), false));
 			game.notifyObserver(new MarketNotify(game, 
 					new ArrayList<Player>(game.getPlayers()), true, false));
-		}
-		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
+			game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
 					Arrays.asList(game.getCurrentPlayer())));
+		}
 		game.notifyObserver(new MarketNotify(game, 
 				new ArrayList<Player>(game.getPlayers()), false, false));
 		game.notifyObserver(new AvailableActionsNotify(game.getState().getAcceptableActions(game), 

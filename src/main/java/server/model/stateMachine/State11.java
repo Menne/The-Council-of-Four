@@ -15,7 +15,6 @@ import server.model.actions.standardActions.EngageAssistant;
 import server.model.stateMachine.bonusStates.AdditionalMainActionBonusState;
 import server.model.stateMachine.bonusStates.InteractiveBonusState;
 import server.view.notifies.AvailableActionsNotify;
-import server.view.notifies.PlayerNotify;
 
 /**
  * Models the state in which the current player has the possibility to do a main action or a quick action
@@ -64,8 +63,6 @@ public class State11 implements State {
 	 */
 	@Override
 	public void updateClients(Game game) {
-		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
-				Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new AvailableActionsNotify(game.getState().getAcceptableActions(game), 
 				Arrays.asList(game.getCurrentPlayer()), game.getCurrentPlayer().getName() +
 				", you have the following available actions. Choose one of them"));
