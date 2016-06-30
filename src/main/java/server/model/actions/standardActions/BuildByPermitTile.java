@@ -86,7 +86,7 @@ public class BuildByPermitTile extends MainAction {
 		if (this.selectedCity.getColour().isBonusAvailable())
 			assignColourBonus(game);
 		
-		if(game.getCurrentPlayer().getRemainigEmporiums().size()==0){
+		if(game.getCurrentPlayer().getRemainigEmporiums().isEmpty()){
 			game.setLastLap(true);
 			game.getCurrentPlayer().incrementScore(3);
 		}

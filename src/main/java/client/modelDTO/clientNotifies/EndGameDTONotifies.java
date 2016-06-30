@@ -1,6 +1,6 @@
 package client.modelDTO.clientNotifies;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import client.modelDTO.GameDTO;
 import client.modelDTO.gameTableDTO.GenericPlayerDTO;
@@ -12,9 +12,9 @@ public class EndGameDTONotifies implements ClientNotify {
 	 * 
 	 */
 	private static final long serialVersionUID = 3067799541565058885L;
-	private final ArrayList<GenericPlayerDTO> finalRankingTable;
+	private final List<GenericPlayerDTO> finalRankingTable;
 	
-	public EndGameDTONotifies(ArrayList<GenericPlayerDTO> players) {
+	public EndGameDTONotifies(List<GenericPlayerDTO> players) {
 		this.finalRankingTable=players;
 	}
 

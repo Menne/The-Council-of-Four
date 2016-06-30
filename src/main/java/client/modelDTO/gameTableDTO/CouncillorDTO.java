@@ -10,7 +10,7 @@ public class CouncillorDTO implements ModelDTO {
 	private static final long serialVersionUID = 3297590450164485862L;
 	private CardColourDTO colour;
 	
-	public CouncillorDTO() {	
+	public CouncillorDTO() {
 	}
 	
 	public CouncillorDTO(CardColourDTO cardColourDTO) {

@@ -23,7 +23,7 @@ public class AvailableActionsNotify implements ViewNotify {
 
 	@Override
 	public ClientNotify toClientNotify() {
-		List<ActionDTO> availableActionsDTO=new ArrayList<ActionDTO>();
+		List<ActionDTO> availableActionsDTO=new ArrayList<>();
 		for (Action action : this.availableActions)
 			availableActionsDTO.add(action.map());
 		return new AvailableActionsDTONotify(availableActionsDTO, this.message);

@@ -11,23 +11,23 @@ import server.model.bonus.Bonus;
  */
 public class RewardToken {
 
-	private final Set<Bonus> rewardToken;
+	private final Set<Bonus> rewardTokenBonus;
 	
 	/**
 	 * constructor of RewardToken
 	 * @param rewardTokenBonus is the set of bonuses of the rewardToken
 	 */
 	public RewardToken(Set<Bonus> rewardTokenBonus){
-		this.rewardToken=rewardTokenBonus;
+		this.rewardTokenBonus=rewardTokenBonus;
 	}
 	
 	public Set<Bonus> getRewardTokenBonus() {
-		return rewardToken;
+		return this.rewardTokenBonus;
 	}
 
 	@Override
 	public String toString() {
-		return rewardToken.toString();
+		return rewardTokenBonus.toString();
 	}
 	
 	

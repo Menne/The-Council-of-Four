@@ -49,7 +49,7 @@ public class CLI extends ClientView {
 	 * @return the list of strings of initials
 	 */
 	public List<String> availableActions() {
-		List<String> acceptableStrings=new ArrayList<String>();
+		List<String> acceptableStrings=new ArrayList<>();
 		for (ActionDTO action : this.clientGame.getAvailableActions())
 			acceptableStrings.add(action.toString().substring(0,2));
 		return acceptableStrings;
@@ -141,7 +141,7 @@ public class CLI extends ClientView {
 	}
 	
 	@Override
-	public void displayFinalRanking(ArrayList<GenericPlayerDTO> finalRankingTable) {
+	public void displayFinalRanking(List<GenericPlayerDTO> finalRankingTable) {
 		System.out.println("GAME OVER\n FINAL RANKING TABLE: \n"+finalRankingTable);
 	}
 	
@@ -184,7 +184,7 @@ public class CLI extends ClientView {
 		List<String> permitTilesWithIndex=new ArrayList<>();
 		int i=1;
 		for (PermitTileDTO permitTile : this.clientGame.getClientPlayer().getAvailablePermitTiles()) {
-			indexes.add(""+i);
+			indexes.add(Integer.toString(i));
 			permitTilesWithIndex.add(i+": "+permitTile.toString());
 			i++;
 		}
@@ -317,7 +317,7 @@ public class CLI extends ClientView {
 		List<String> offersWithIndex=new ArrayList<>();
 		int i=1;
 		for (MarketableDTO offeringObject : acceptableObjectsToOffer) {
-			indexes.add(""+i);
+			indexes.add(Integer.toString(i));
 			offersWithIndex.add(i+": "+offeringObject.toString());
 			i++;
 		}
@@ -380,7 +380,7 @@ public class CLI extends ClientView {
 		List<String> permitTilesWithIndex=new ArrayList<>();
 		int i=1;
 		for (PermitTileDTO permitTile : availablePermitTiles) {
-			indexes.add(""+i);
+			indexes.add(Integer.toString(i));
 			permitTilesWithIndex.add(i+": "+permitTile.toString());
 			i++;
 		}

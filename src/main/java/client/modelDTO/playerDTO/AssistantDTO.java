@@ -12,7 +12,7 @@ public class AssistantDTO implements MarketableDTO, ModelDTO {
 	private final int id;
 	
 	public AssistantDTO() {
-		id=0;
+		this.id=0;
 	}
 
 	@Override

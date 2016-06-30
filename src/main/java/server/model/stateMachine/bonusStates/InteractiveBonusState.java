@@ -27,7 +27,7 @@ public class InteractiveBonusState implements State {
 
 	@Override
 	public List<Action> getAcceptableActions(Game game) {
-		return new ArrayList<Action>();
+		return new ArrayList<>();
 	}
 
 	@Override

@@ -31,11 +31,11 @@ public class GameTableDTO extends Observable<ClientViewNotify> implements ModelD
 	private int mapNumber;
 	
 	public GameTableDTO() {
-		this.clientRegions=new ArrayList<RegionDTO>();
+		this.clientRegions=new ArrayList<>();
 		this.clientKingBalcony=new CouncillorDTO[4];
-		this.clientCouncillorReserve=new ArrayList<CouncillorDTO>();
-		this.clientNobilityTrack=new ArrayList<Set<Bonus>>();
-		this.players=new ArrayList<GenericPlayerDTO>();
+		this.clientCouncillorReserve=new ArrayList<>();
+		this.clientNobilityTrack=new ArrayList<>();
+		this.players=new ArrayList<>();
 		this.colourBonuses=new HashSet<>();
 	}
 

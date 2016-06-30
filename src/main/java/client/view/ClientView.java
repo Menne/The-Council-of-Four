@@ -117,7 +117,7 @@ public abstract class ClientView implements Observer<ClientViewNotify> {
 	 * This method displays to the view the final ranking of the game which has just terminated
 	 * @param finalRankingTable is the list of players with the relative informations
 	 */
-	public abstract void displayFinalRanking(ArrayList<GenericPlayerDTO> finalRankingTable);
+	public abstract void displayFinalRanking(List<GenericPlayerDTO> finalRankingTable);
 	
 	/**
 	 * This method displays a chat message form another player in a proper way according to the selected view

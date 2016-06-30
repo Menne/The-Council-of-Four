@@ -131,7 +131,7 @@ public class AcquirePermitTile extends MainAction {
 			temporaryBalcony.add(chosenRegion.getRegionBalcony().getCouncillors()[i]);		
 		
 		for (PoliticsCard politicsCardInHand: this.cardsToDescard) {
-			if (politicsCardInHand.getColour().getColour().equals("Rainbow"))
+			if ("Rainbow".equals(politicsCardInHand.getColour().getColour()))
 				satisfyCounter++;		
 			for (Councillor councillorToSatisfy : temporaryBalcony)
 				if (councillorToSatisfy.getColour().getColour().equals(politicsCardInHand.getColour().getColour())) {

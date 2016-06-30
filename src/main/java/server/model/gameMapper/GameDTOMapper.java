@@ -287,7 +287,7 @@ public class GameDTOMapper implements GameMapperInterface {
 		
 		if (realOffer.getOfferedObject() instanceof PoliticsCard)
 			offerDTO.setOfferedObjectDTO(this.politicsCardMap
-					(((PoliticsCard) realOffer.getOfferedObject())));
+					((PoliticsCard) realOffer.getOfferedObject()));
 		if (realOffer.getOfferedObject() instanceof PermitTile)
 			offerDTO.setOfferedObjectDTO(this.permitTileMap
 					((PermitTile) realOffer.getOfferedObject()));

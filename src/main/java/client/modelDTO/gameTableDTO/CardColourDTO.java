@@ -10,9 +10,9 @@ public class CardColourDTO implements ModelDTO {
 	private static final long serialVersionUID = 8929965571917578063L;
 	private String name;
 	
-	public CardColourDTO(){
+	public CardColourDTO() {
 	}
-
+	
 	public CardColourDTO(String name) {
 		this.name=name;
 	}

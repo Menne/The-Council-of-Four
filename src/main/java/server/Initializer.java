@@ -115,7 +115,7 @@ public class Initializer {
 		s=b.readLine();// numero di consiglieri di ogni colore
 		List<Councillor> councillorsList=new ArrayList<>();
 		for(CardColour cardColour : cardColourList)
-			if(!cardColour.getColour().equals("Rainbow"))
+			if(!"Rainbow".equals(cardColour.getColour()))
 				for(int i=0;i<Integer.parseInt(s);i++)
 					councillorsList.add(new Councillor(cardColour));
 		Collections.shuffle(councillorsList);
@@ -164,7 +164,7 @@ public class Initializer {
 		r=b.readLine(); //rewardTokenList
 		List<RewardToken> rewardTokenList= new ArrayList<>();
 		while(!"STOPRewardTokenList".equals(s)) {
-			Set<Bonus> bonuses=new HashSet<Bonus>();
+			Set<Bonus> bonuses=new HashSet<>();
 			while(!"NextRewardToken".equals(s)){
 				s=b.readLine();
 				if("AssistantsBonus".equals(s)){

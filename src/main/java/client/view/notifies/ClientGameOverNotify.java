@@ -1,6 +1,6 @@
 package client.view.notifies;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import client.modelDTO.gameTableDTO.GenericPlayerDTO;
 import client.view.ClientView;
@@ -12,13 +12,13 @@ import client.view.ClientView;
  */
 public class ClientGameOverNotify implements ClientViewNotify {
 
-	private final ArrayList<GenericPlayerDTO> finalRankingTable;
+	private final List<GenericPlayerDTO> finalRankingTable;
 	
 	/**
 	 * Constructor of ClientGameOverNotify
 	 * @param finalRankingTable is the list of players of the game just ended, with all their informations
 	 */
-	public ClientGameOverNotify(ArrayList<GenericPlayerDTO> finalRankingTable) {
+	public ClientGameOverNotify(List<GenericPlayerDTO> finalRankingTable) {
 		this.finalRankingTable=finalRankingTable;
 	}
 	

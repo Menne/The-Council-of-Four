@@ -11,7 +11,7 @@ public class PoliticsCardDTO implements ModelDTO, MarketableDTO {
 	private static final long serialVersionUID = -6403924785270201186L;
 	private CardColourDTO colour;
 	
-	public PoliticsCardDTO() {	
+	public PoliticsCardDTO() {
 	}
 	
 	public PoliticsCardDTO(CardColourDTO cardColourDTO) {

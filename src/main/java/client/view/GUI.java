@@ -239,8 +239,8 @@ public class GUI extends ClientView{
 		controllerGUI.getPoliticsDeck().setUserData(new PickPoliticsCardDTO());
 		
 		for (ActionDTO action : availableActions)
-			if ((action instanceof ChooseCityActionDTO || action instanceof PickPermitTileActionDTO
-					|| action instanceof PurchasedPermitTileActionDTO))
+			if (action instanceof ChooseCityActionDTO || action instanceof PickPermitTileActionDTO
+					|| action instanceof PurchasedPermitTileActionDTO)
 				try {
 					this.insertParametersAndSend((ActionWithParameters) action);
 				} catch (RemoteException e) {
@@ -314,26 +314,26 @@ public class GUI extends ClientView{
 		controllerGUI.getColorBonusBronze().setOpacity(0);
 		controllerGUI.getColorBonusGold().setOpacity(0);
 		controllerGUI.getColorBonusSilver().setOpacity(0);;
-		for(BonusTileDTO bonusTile : clientGame.getColourBonuses()){
-			if(bonusTile.getType().equals("Blue"))
+		for (BonusTileDTO bonusTile : clientGame.getColourBonuses()){
+			if ("Blue".equals(bonusTile.getType()))
 				controllerGUI.getColorBonusBlue().setOpacity(1);
-			if(bonusTile.getType().equals("Silver"))
+			if ("Silver".equals(bonusTile.getType()))
 				controllerGUI.getColorBonusSilver().setOpacity(1);
-			if(bonusTile.getType().equals("Gold"))
+			if ("Gold".equals(bonusTile.getType()))
 				controllerGUI.getColorBonusGold().setOpacity(1);
-			if(bonusTile.getType().equals("Bronze"))
+			if ("Bronze".equals(bonusTile.getType()))
 				controllerGUI.getColorBonusBronze().setOpacity(1);
 		}
 		
-		if(clientGame.getNextKingRewardTile().getBonus().getScoreAdvancement()==18)
+		if (clientGame.getNextKingRewardTile().getBonus().getScoreAdvancement()==18)
 			controllerGUI.getKingBonusTiles().get(0).setImage(null);
-		if(clientGame.getNextKingRewardTile().getBonus().getScoreAdvancement()==12)
+		if (clientGame.getNextKingRewardTile().getBonus().getScoreAdvancement()==12)
 			controllerGUI.getKingBonusTiles().get(1).setImage(null);
-		if(clientGame.getNextKingRewardTile().getBonus().getScoreAdvancement()==7)
+		if (clientGame.getNextKingRewardTile().getBonus().getScoreAdvancement()==7)
 			controllerGUI.getKingBonusTiles().get(2).setImage(null);
-		if(clientGame.getNextKingRewardTile().getBonus().getScoreAdvancement()==3)
+		if (clientGame.getNextKingRewardTile().getBonus().getScoreAdvancement()==3)
 			controllerGUI.getKingBonusTiles().get(3).setImage(null);
-		if(clientGame.getNextKingRewardTile()==null)
+		if (clientGame.getNextKingRewardTile()==null)
 			controllerGUI.getKingBonusTiles().get(4).setImage(null);	
 	}
 
@@ -836,7 +836,7 @@ public class GUI extends ClientView{
 	}
 	
 	@Override
-	public void displayFinalRanking(ArrayList<GenericPlayerDTO> finalRankingTable) {
+	public void displayFinalRanking(List<GenericPlayerDTO> finalRankingTable) {
 		Platform.runLater(new Runnable() {
 			
 			@Override

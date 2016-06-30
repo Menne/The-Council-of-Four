@@ -11,7 +11,6 @@ public class RewardTokenDTO implements ModelDTO {
 	 * 
 	 */
 	private static final long serialVersionUID = 8196968018708236782L;
-	
 	private Set<Bonus> bonuses;
 	
 	public RewardTokenDTO() {

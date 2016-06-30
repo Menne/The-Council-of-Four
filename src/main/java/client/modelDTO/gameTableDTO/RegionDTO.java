@@ -6,6 +6,7 @@ import java.util.Set;
 
 import client.modelDTO.ModelDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
+import server.model.gameTable.CouncilBalcony;
 
 public class RegionDTO implements ModelDTO{
 
@@ -19,9 +20,8 @@ public class RegionDTO implements ModelDTO{
 	private PermitTileDTO[] uncoveredPermitTiles;
 	private BonusTileDTO regionBonus;
 	
-	public RegionDTO(){
-		
-		this.balcony=new CouncillorDTO[4]; 
+	public RegionDTO() {
+		this.balcony=new CouncillorDTO[CouncilBalcony.getNumberofcouncillors()]; 
 		this.cities=new HashSet<>();		
 		this.uncoveredPermitTiles=new PermitTileDTO[2];
 	}
