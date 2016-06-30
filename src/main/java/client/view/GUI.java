@@ -248,24 +248,30 @@ public class GUI extends ClientView{
 					logger.log(Level.SEVERE, "Failed to send action with RMI", e);
 				}
 		
-		controllerGUI.getActions().get(0).getParent().setEffect(null);
-		controllerGUI.getActions().get(4).getParent().setEffect(null);
-		InnerShadow innerShadow= new InnerShadow();
-		innerShadow.setChoke(0.5);
-		innerShadow.setHeight(150);
-		innerShadow.setWidth(150);
-		innerShadow.setBlurType(BlurType.GAUSSIAN);
-		innerShadow.setColor(Color.web("ffffff"));
-		controllerGUI.getPoliticsDeck().setEffect(null);
-		for(ActionDTO action: availableActions){
-			if(action.getClass()==PickPoliticsCardDTO.class){
-				controllerGUI.getPoliticsDeck().setEffect(new Glow(0.8));
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				controllerGUI.getActions().get(0).getParent().setEffect(null);
+				controllerGUI.getActions().get(4).getParent().setEffect(null);
+				InnerShadow innerShadow= new InnerShadow();
+				innerShadow.setChoke(0.5);
+				innerShadow.setHeight(150);
+				innerShadow.setWidth(150);
+				innerShadow.setBlurType(BlurType.GAUSSIAN);
+				innerShadow.setColor(Color.web("ffffff"));
+				controllerGUI.getPoliticsDeck().setEffect(null);
+				for(ActionDTO action: availableActions){
+					if(action.getClass()==PickPoliticsCardDTO.class){
+						controllerGUI.getPoliticsDeck().setEffect(new Glow(0.8));
+					}
+					if(action.getClass()==ElectCouncillorDTO.class)
+						controllerGUI.getActions().get(0).getParent().setEffect(innerShadow);
+					if(action.getClass()==EngageAssistantDTO.class)
+						controllerGUI.getActions().get(4).getParent().setEffect(innerShadow);
+				}
 			}
-			if(action.getClass()==ElectCouncillorDTO.class)
-				controllerGUI.getActions().get(0).getParent().setEffect(innerShadow);
-			if(action.getClass()==EngageAssistantDTO.class)
-				controllerGUI.getActions().get(4).getParent().setEffect(innerShadow);
-		}
+		});		
 	}
 
 	@Override
@@ -1155,49 +1161,73 @@ public class GUI extends ClientView{
 	
 	
 	private void disableClickOnRegions(boolean disabled) {
-		for (ImageView regionImageView : this.controllerGUI.getRegions()){
-			regionImageView.setDisable(disabled);
-			if(disabled==false)
-				regionImageView.setEffect(new Glow(0.6));
-			else
-				regionImageView.setEffect(null);
-		}
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				for (ImageView regionImageView : controllerGUI.getRegions()){
+					regionImageView.setDisable(disabled);
+					if(disabled==false)
+						regionImageView.setEffect(new Glow(0.6));
+					else
+						regionImageView.setEffect(null);
+				}
+			}
+		});
 	}
 	
 	private void disableClickOnPermitTilesInHand(boolean disabled) {
-		for (Object object : controllerGUI.getPermitTilesTurnedUpOwned().getChildren()) {
-			ImageView imageView=(ImageView) object;
-			imageView.setDisable(disabled);
-			if(disabled==false)
-				imageView.setEffect(new Glow(0.6));
-			else
-				imageView.setEffect(null);
-		}
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				for (Object object : controllerGUI.getPermitTilesTurnedUpOwned().getChildren()) {
+					ImageView imageView=(ImageView) object;
+					imageView.setDisable(disabled);
+					if(disabled==false)
+						imageView.setEffect(new Glow(0.6));
+					else
+						imageView.setEffect(null);
+				}
+			}
+		});
 	}
 
 	private void disableClickOnCouncillorsInReserve(boolean disabled) {
-		for (int i=0; i<this.controllerGUI.getCouncillorReserve().size(); i++){
-			this.controllerGUI.getCouncillorReserve().get(i).setDisable(disabled);
-			if(!disabled)
-				this.controllerGUI.getCouncillorReserve().get(i).setEffect(new Glow(0.6));
-			else
-				this.controllerGUI.getCouncillorReserve().get(i).setEffect(null);
-		}
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				for (int i=0; i<controllerGUI.getCouncillorReserve().size(); i++){
+					controllerGUI.getCouncillorReserve().get(i).setDisable(disabled);
+					if(!disabled)
+						controllerGUI.getCouncillorReserve().get(i).setEffect(new Glow(0.6));
+					else
+						controllerGUI.getCouncillorReserve().get(i).setEffect(null);
+				}
+			}
+		});		
 	}
 	
 	private void disableClickOnCouncilBalconies(boolean disabled) {
-		for (int i=0; i<this.controllerGUI.getBalconies().size()-1; i++){
-			controllerGUI.getBalconies().get(i).setDisable(disabled);
-			if(!disabled)
-				controllerGUI.getBalconies().get(i).setEffect(new Glow(1));
-			else
-				controllerGUI.getBalconies().get(i).setEffect(null);	
-		}
-		controllerGUI.getBalconies().get(controllerGUI.getBalconies().size()-1).setDisable(disabled);
-		if(!disabled)
-			controllerGUI.getBalconies().get(controllerGUI.getBalconies().size()-1).setEffect(new Glow(1));
-		else
-			controllerGUI.getBalconies().get(controllerGUI.getBalconies().size()-1).setEffect(null);;
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				for (int i=0; i<controllerGUI.getBalconies().size()-1; i++){
+					controllerGUI.getBalconies().get(i).setDisable(disabled);
+					if(!disabled)
+						controllerGUI.getBalconies().get(i).setEffect(new Glow(1));
+					else
+						controllerGUI.getBalconies().get(i).setEffect(null);	
+				}
+				controllerGUI.getBalconies().get(controllerGUI.getBalconies().size()-1).setDisable(disabled);
+				if(!disabled)
+					controllerGUI.getBalconies().get(controllerGUI.getBalconies().size()-1).setEffect(new Glow(1));
+				else
+					controllerGUI.getBalconies().get(controllerGUI.getBalconies().size()-1).setEffect(null);
+			}
+		});		
 	}
 	
 	private void disableClickOnCities(boolean disabled, List<CityDTO> acceptableCities) {
@@ -1214,103 +1244,158 @@ public class GUI extends ClientView{
 	}
 	
 	private void disableClickOnPoliticsCards(boolean disabled, int opacity) {
-		for (Object object : controllerGUI.getHand().getChildren()){
-			ImageView imageView=(ImageView) object;
-			imageView.setDisable(disabled);
-			imageView.setOpacity(opacity);
-			if(!disabled)
-				imageView.setEffect(new Glow(0.7));
-			else
-				imageView.setEffect(null);
-		}
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				for (Object object : controllerGUI.getHand().getChildren()){
+					ImageView imageView=(ImageView) object;
+					imageView.setDisable(disabled);
+					imageView.setOpacity(opacity);
+					if(!disabled)
+						imageView.setEffect(new Glow(0.7));
+					else
+						imageView.setEffect(null);
+				}
+			}
+		});		
+		
 	}
 	
 	private void disableClickOnDescardButton(boolean disabled) {
-		this.controllerGUI.getDescardPoliticsCards().setDisable(disabled);
-		InnerShadow innerShadow= new InnerShadow();
-		innerShadow.setChoke(0.9);
-		innerShadow.setBlurType(BlurType.GAUSSIAN);
-		innerShadow.setColor(Color.web("7c6d6d"));
-		if(!disabled)
-			this.controllerGUI.getDescardPoliticsCards().setEffect(innerShadow);
-		else
-			this.controllerGUI.getDescardPoliticsCards().setEffect(null);
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				controllerGUI.getDescardPoliticsCards().setDisable(disabled);
+				InnerShadow innerShadow= new InnerShadow();
+				innerShadow.setChoke(0.9);
+				innerShadow.setBlurType(BlurType.GAUSSIAN);
+				innerShadow.setColor(Color.web("7c6d6d"));
+				if(!disabled)
+					controllerGUI.getDescardPoliticsCards().setEffect(innerShadow);
+				else
+					controllerGUI.getDescardPoliticsCards().setEffect(null);
+			}
+		});		
 	}
 	
 	private void disableClickOnPermitTilesInRegions(boolean disabled, RegionDTO selectedRegion) {
-		if ("Sea".equals(selectedRegion.getName()))
-			for (int i=0; i<=1; i++) {
-				controllerGUI.getSeaPermitTile()[i].setDisable(disabled);
-				if(!disabled)
-					controllerGUI.getSeaPermitTile()[i].setEffect(new Glow(0.5));
-				else
-					controllerGUI.getSeaPermitTile()[i].setEffect(null);
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				if ("Sea".equals(selectedRegion.getName()))
+					for (int i=0; i<=1; i++) {
+						controllerGUI.getSeaPermitTile()[i].setDisable(disabled);
+						if(!disabled)
+							controllerGUI.getSeaPermitTile()[i].setEffect(new Glow(0.5));
+						else
+							controllerGUI.getSeaPermitTile()[i].setEffect(null);
+					}
+				if ("Hill".equals(selectedRegion.getName()))
+					for (int i=0; i<=1; i++) {
+						controllerGUI.getHillPermitTile()[i].setDisable(disabled);
+						if(!disabled)
+							controllerGUI.getHillPermitTile()[i].setEffect(new Glow(0.5));
+						else
+							controllerGUI.getHillPermitTile()[i].setEffect(null);
+					}
+				if ("Mountain".equals(selectedRegion.getName()))
+					for (int i=0; i<=1; i++) {
+						controllerGUI.getMountainPermitTile()[i].setDisable(disabled);
+						if(!disabled)
+							controllerGUI.getMountainPermitTile()[i].setEffect(new Glow(0.5));
+						else
+							controllerGUI.getMountainPermitTile()[i].setEffect(null);
+					}
 			}
-		if ("Hill".equals(selectedRegion.getName()))
-			for (int i=0; i<=1; i++) {
-				controllerGUI.getHillPermitTile()[i].setDisable(disabled);
-				if(!disabled)
-					controllerGUI.getHillPermitTile()[i].setEffect(new Glow(0.5));
-				else
-					controllerGUI.getHillPermitTile()[i].setEffect(null);
-			}
-		if ("Mountain".equals(selectedRegion.getName()))
-			for (int i=0; i<=1; i++) {
-				controllerGUI.getMountainPermitTile()[i].setDisable(disabled);
-				if(!disabled)
-					controllerGUI.getMountainPermitTile()[i].setEffect(new Glow(0.5));
-				else
-					controllerGUI.getMountainPermitTile()[i].setEffect(null);
-			}
+		});		
 	}
 
 
 	public void disableActionButtons(boolean disabled) {
-		this.controllerGUI.getPoliticsDeck().setDisable(disabled);
-		for (Button button : this.controllerGUI.getActions())
-			button.setDisable(disabled);
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				controllerGUI.getPoliticsDeck().setDisable(disabled);
+				for (Button button : controllerGUI.getActions())
+					button.setDisable(disabled);
+			}
+		});		
 	}
 	
 
 	private void disableClickOnPermitTilesCovered(boolean disabled) {
-		for (Object object : controllerGUI.getPermitTilesTurnedDownOwned().getChildren()) {
-			ImageView imageView=(ImageView) object;
-			imageView.setDisable(disabled);
-			imageView.setOpacity(1);
-			if(!disabled)
-				imageView.setEffect(new Glow(0.6));
-			else
-				imageView.setEffect(null);
-		}
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				for (Object object : controllerGUI.getPermitTilesTurnedDownOwned().getChildren()) {
+					ImageView imageView=(ImageView) object;
+					imageView.setDisable(disabled);
+					imageView.setOpacity(1);
+					if(!disabled)
+						imageView.setEffect(new Glow(0.6));
+					else
+						imageView.setEffect(null);
+				}
+			}
+		});
 	}
 
 	private void disableClickOnObjectsToSell(boolean disabled) {
-		for (Object object : controllerMarketGUI.getAvailablePoliticCards().getChildren()) {
-			ImageView imageView=(ImageView) object;
-			imageView.setDisable(disabled);
-		}
-		for (Object object : controllerMarketGUI.getAvailablePermitTiles().getChildren()) {
-			ImageView imageView=(ImageView) object;
-			imageView.setDisable(disabled);
-		}
-		for (Object object : controllerMarketGUI.getAvailableAssistants().getChildren()) {
-			ImageView imageView=(ImageView) object;
-			imageView.setDisable(disabled);
-		}
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				for (Object object : controllerMarketGUI.getAvailablePoliticCards().getChildren()) {
+					ImageView imageView=(ImageView) object;
+					imageView.setDisable(disabled);
+				}
+				for (Object object : controllerMarketGUI.getAvailablePermitTiles().getChildren()) {
+					ImageView imageView=(ImageView) object;
+					imageView.setDisable(disabled);
+				}
+				for (Object object : controllerMarketGUI.getAvailableAssistants().getChildren()) {
+					ImageView imageView=(ImageView) object;
+					imageView.setDisable(disabled);
+				}
+			}
+		});
 	}
 	
 	private void disablePriceInsertion(boolean disabled) {
-		controllerMarketGUI.getPrice().setDisable(disabled);
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				controllerMarketGUI.getPrice().setDisable(disabled);
+			}
+		});
 	}
 	
 	private void disableClickOnOfferSettedButtons(boolean disabled) {
-		controllerMarketGUI.getSell().setDisable(disabled);
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				controllerMarketGUI.getSell().setDisable(disabled);
+			}
+		});
 	}
 	
 	private void disableClickOnOffers(boolean disabled) {
-		for (Object offer : controllerMarketGUI.getOffers().getChildren()){
-			((HBox) offer).setDisable(disabled);
-		}
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				for (Object offer : controllerMarketGUI.getOffers().getChildren()){
+					((HBox) offer).setDisable(disabled);
+				}
+			}
+		});		
 	}
 
 
