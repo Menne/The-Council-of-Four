@@ -19,7 +19,7 @@ import server.view.notifies.PlayerNotify;
  * @author Luca
  *
  */
-public class AdditionalMainAction extends QuickAction {
+public class AdditionalMainAction implements QuickAction {
 
 	private static final int necessaryAssistants=3;
 	

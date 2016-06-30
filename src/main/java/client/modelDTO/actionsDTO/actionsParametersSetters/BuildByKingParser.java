@@ -9,10 +9,19 @@ import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
 import client.view.ClientView;
 
+/**
+ * This class provides the logic to set the needed parameters of a BuildByKingDTO
+ * @author cg31
+ *
+ */
 public class BuildByKingParser implements ActionParserVisitor {
 
 	private BuildByKingDTO selectedAction;
 	
+	/**
+	 * Constructor of BuildByKingDTO
+	 * @param selectedAction is the action selected by the user
+	 */
 	public BuildByKingParser(BuildByKingDTO selectedAction) {
 		this.selectedAction=selectedAction;
 	}

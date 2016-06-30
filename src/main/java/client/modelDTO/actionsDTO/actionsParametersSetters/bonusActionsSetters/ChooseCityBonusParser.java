@@ -11,11 +11,19 @@ import client.modelDTO.gameTableDTO.GenericPlayerDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
 import client.view.ClientView;
 
+/**
+ * This class provides the logic to set the needed parameters of a ChooseCityActionDTO
+ * @author cg31
+ *
+ */
 public class ChooseCityBonusParser implements ActionParserVisitor {
 
 	private ChooseCityActionDTO selectedAction;
 
-
+	/**
+	 * Constructor of ChooseCityActionDTO
+	 * @param selectedAction is the action selected by the user
+	 */
 	public ChooseCityBonusParser(ChooseCityActionDTO selectedAction) {
 		this.selectedAction=selectedAction;
 	}

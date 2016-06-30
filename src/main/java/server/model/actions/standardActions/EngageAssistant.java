@@ -18,7 +18,7 @@ import server.view.notifies.PlayerNotify;
  * @author Luca
  *
  */
-public class EngageAssistant extends QuickAction {
+public class EngageAssistant implements QuickAction {
 
 	private static final int necessaryCoins=3;
 

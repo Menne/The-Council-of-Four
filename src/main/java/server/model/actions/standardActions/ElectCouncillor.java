@@ -22,7 +22,7 @@ import server.view.notifies.PlayerNotify;
  * @author Luca
  *
  */
-public class ElectCouncillor extends MainAction {
+public class ElectCouncillor implements MainAction {
 
 	private Councillor newCouncillor;
 	private CouncilBalcony councilBalcony;

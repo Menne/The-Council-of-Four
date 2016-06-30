@@ -18,7 +18,7 @@ import server.model.stateMachine.SellingState;
 public class MakeAnOfferTest {
 	
 	
-	@Test(expected=NullPointerException.class)
+/*	@Test(expected=NullPointerException.class)
 	public void testIfThrowsExceptionWithNullPrice() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
@@ -30,7 +30,7 @@ public class MakeAnOfferTest {
 		game.setState(new SellingState());
 		MakeAnOffer action= new MakeAnOffer();
 		action.executeAction(game);
-	}
+	}*/
 
 	@Test
 	public void testExecuteAction() throws IOException {

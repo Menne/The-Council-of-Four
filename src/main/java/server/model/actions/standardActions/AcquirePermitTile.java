@@ -25,7 +25,7 @@ import server.view.notifies.PlayerNotify;
  *
  */
 
-public class AcquirePermitTile extends MainAction {
+public class AcquirePermitTile implements MainAction {
 
 
 	private Integer numberOfPermitTile;

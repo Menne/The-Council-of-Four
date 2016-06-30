@@ -23,7 +23,7 @@ import server.view.notifies.PlayerNotify;
  * @author Luca
  *
  */
-public class ElectCouncillorByAssistant extends QuickAction {
+public class ElectCouncillorByAssistant implements QuickAction {
 
 	private Councillor newCouncillor;
 	private CouncilBalcony councilBalcony;

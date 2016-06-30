@@ -26,7 +26,7 @@ public class AcceptAnOffer implements Action {
 	}
 	
 	@Override
-	public boolean executeAction(Game game) throws NullPointerException {
+	public boolean executeAction(Game game) {
 		if (this.offer==null)
 			throw new NullPointerException("Paramters not setted");
 		

@@ -4,10 +4,19 @@ import client.modelDTO.GameDTO;
 import client.modelDTO.actionsDTO.standardActions.AcquirePermitTileDTO;
 import client.view.ClientView;
 
+/**
+ * This class provides the logic to set the needed parameters of a AcquirePermitTileDTO
+ * @author cg31
+ *
+ */
 public class AcquirePermitTileParser implements ActionParserVisitor {
 	
 	private AcquirePermitTileDTO selectedAction;
 	
+	/**
+	 * Constructor of AcquirePermitTileDTO
+	 * @param selectedAction is the action selected by the user
+	 */
 	public AcquirePermitTileParser(AcquirePermitTileDTO selectedAction) {
 		this.selectedAction=selectedAction;
 	}

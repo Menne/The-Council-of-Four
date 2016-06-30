@@ -26,7 +26,7 @@ import server.view.notifies.PlayerNotify;
  *
  */
 
-public class BuildByKing extends MainAction {
+public class BuildByKing implements MainAction {
 
 	private City selectedCity;
 	private List<PoliticsCard> cardsToDescard;

@@ -21,7 +21,7 @@ import server.view.notifies.PlayerNotify;
  * @author Luca
  *
  */
-public class ChangePermitTiles extends QuickAction {
+public class ChangePermitTiles implements QuickAction {
 	
 	private RegionBoard selectedRegion;
 	private static final int necessaryAssistants=1;

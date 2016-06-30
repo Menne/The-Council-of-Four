@@ -5,10 +5,19 @@ import client.modelDTO.actionsDTO.actionsParametersSetters.ActionParserVisitor;
 import client.modelDTO.actionsDTO.bonusActions.PickPermitTileActionDTO;
 import client.view.ClientView;
 
+/**
+ * This class provides the logic to set the needed parameters of a PickPermitTileActionDTO
+ * @author cg31
+ *
+ */
 public class PickPermitTileBonusParser implements ActionParserVisitor {
 
 	private PickPermitTileActionDTO selectedAction;
 
+	/**
+	 * Constructor of AcceptAnOfferDTO
+	 * @param selectedAction is the action selected by the user
+	 */
 	public PickPermitTileBonusParser(PickPermitTileActionDTO selectedAction) {
 		this.selectedAction=selectedAction;
 	}

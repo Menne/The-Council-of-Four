@@ -4,10 +4,19 @@ import client.modelDTO.GameDTO;
 import client.modelDTO.actionsDTO.marketActions.AcceptAnOfferDTO;
 import client.view.ClientView;
 
+/**
+ * This class provides the logic to set the needed parameters of a AcceptAnOfferDTO
+ * @author cg31
+ *
+ */
 public class AcceptAnOfferParser implements ActionParserVisitor {
 
 	private AcceptAnOfferDTO selectedAction;
 	
+	/**
+	 * Constructor of AcceptAnOfferDTO
+	 * @param selectedAction is the action selected by the user
+	 */
 	public AcceptAnOfferParser(AcceptAnOfferDTO selectedAction) {
 		this.selectedAction=selectedAction;
 	}

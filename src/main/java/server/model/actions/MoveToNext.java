@@ -9,7 +9,7 @@ import server.model.Game;
 import server.model.player.Player;
 import server.view.notifies.MessageNotify;
 
-public class MoveToNext extends QuickAction {
+public class MoveToNext implements QuickAction {
 	
 	/**
 	 * If the lap is finished starts the market phase, otherwise sets the next player.

@@ -9,10 +9,19 @@ import client.modelDTO.gameTableDTO.CouncillorDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
 import client.view.ClientView;
 
+/**
+ * This class provides the logic to set the needed parameters of ElectCouncillorByAssistantDTO
+ * @author cg31
+ *
+ */
 public class ElectCouncillorByAssistantParser implements ActionParserVisitor {
 
 	private ElectCouncillorByAssistantDTO selectedAction;
 	
+	/**
+	 * Constructor of ElectCouncillorByAssistantDTO
+	 * @param selectedAction is the action selected by the user
+	 */
 	public ElectCouncillorByAssistantParser(ElectCouncillorByAssistantDTO selectedAction) {
 		this.selectedAction=selectedAction;
 

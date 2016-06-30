@@ -4,6 +4,7 @@ BUG NOTI E TODO:
 -nel market non si leggono i messaggi quando diventano troppi
 -timeout scelta della mappa lancia due finsetre di messaggio
 -oggetti del mercato non vengono rimossi dalla mano una volta messi in offerta
+-permit tiles delle regioni finiscono!!
 
 Passi per testare l'applicazione:
 1) Lanciare la classe Server (main/java/server/Server.java)

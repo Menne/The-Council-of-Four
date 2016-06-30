@@ -26,7 +26,7 @@ import server.view.notifies.PlayerNotify;
  *
  */
 
-public class BuildByPermitTile extends MainAction {
+public class BuildByPermitTile implements MainAction {
 
 	private PermitTile selectedPermitTile;
 	private City selectedCity;

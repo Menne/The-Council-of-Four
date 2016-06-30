@@ -9,10 +9,19 @@ import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
 import client.view.ClientView;
 
+/**
+ * This class provides the logic to set the needed parameters of a BuildByPermitTileDTO
+ * @author cg31
+ *
+ */
 public class BuildByPermitTileParser implements ActionParserVisitor {
 
 	private BuildByPermitTileDTO selectedAction;
 
+	/**
+	 * Constructor of BuildByPermitTileDTO
+	 * @param selectedAction is the action selected by the user
+	 */
 	public BuildByPermitTileParser(BuildByPermitTileDTO selectedAction) {
 		this.selectedAction=selectedAction;
 	}

@@ -4,10 +4,19 @@ import client.modelDTO.GameDTO;
 import client.modelDTO.actionsDTO.standardActions.ChangePermitTilesDTO;
 import client.view.ClientView;
 
+/**
+ * This class provides the logic to set the needed parameters of a ChangePermitTilesDTO
+ * @author cg31
+ *
+ */
 public class ChangePermitTilesParser implements ActionParserVisitor {
 
 	private ChangePermitTilesDTO selectedAction;
 
+	/**
+	 * Constructor of ChangePermitTilesDTO
+	 * @param selectedAction is the action selected by the user
+	 */
 	public ChangePermitTilesParser(ChangePermitTilesDTO selectedAction) {
 		this.selectedAction=selectedAction;
 	}

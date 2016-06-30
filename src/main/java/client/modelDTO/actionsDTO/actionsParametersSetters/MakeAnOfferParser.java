@@ -9,11 +9,20 @@ import client.modelDTO.marketDTO.MarketableDTO;
 import client.modelDTO.marketDTO.OfferDTO;
 import client.view.ClientView;
 
+/**
+ * This class provides the logic to set the needed parameters of a MakeAnOfferDTO
+ * @author cg31
+ *
+ */
 public class MakeAnOfferParser implements ActionParserVisitor {
 
 	private MakeAnOfferDTO selectedAction;
 	private boolean otherSelling;
 	
+	/**
+	 * Constructor of MakeAnOfferDTO
+	 * @param selectedAction is the action selected by the user
+	 */
 	public MakeAnOfferParser(MakeAnOfferDTO selectedAction) {
 		this.selectedAction=selectedAction;
 		this.otherSelling=true;
