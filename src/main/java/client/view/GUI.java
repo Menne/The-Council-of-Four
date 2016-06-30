@@ -1154,40 +1154,6 @@ public class GUI extends ClientView{
 
 	
 	
-
-	@Override
-	public void ChooseCityBonus(int numberOfCities) {
-		ChooseCityActionDTO action=new ChooseCityActionDTO(numberOfCities);
-		try {
-			this.insertParametersAndSend(action);
-		} catch (RemoteException e) {
-			Logger logger=Logger.getAnonymousLogger();
-			logger.log(Level.SEVERE, "Failed to send action with RMI", e);
-		}
-	}
-
-	@Override
-	public void PurchasedPermitTileBonus() {
-		PurchasedPermitTileActionDTO action=new PurchasedPermitTileActionDTO();
-		try {
-			this.insertParametersAndSend(action);
-		} catch (RemoteException e) {
-			Logger logger=Logger.getAnonymousLogger();
-			logger.log(Level.SEVERE, "Failed to send action with RMI", e);
-		}
-	}
-	
-	@Override
-	public void PickPermitTileBonus() {
-		PickPermitTileActionDTO action=new PickPermitTileActionDTO();
-		try {
-			this.insertParametersAndSend(action);
-		} catch (RemoteException e) {
-			Logger logger=Logger.getAnonymousLogger();
-			logger.log(Level.SEVERE, "Failed to send action with RMI", e);
-		}
-	}
-	
 	private void disableClickOnRegions(boolean disabled) {
 		for (ImageView regionImageView : this.controllerGUI.getRegions()){
 			regionImageView.setDisable(disabled);

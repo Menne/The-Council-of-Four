@@ -6,8 +6,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.StringTokenizer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import client.connections.Connection;
@@ -17,9 +15,6 @@ import client.modelDTO.actionsDTO.ActionWithParameters;
 import client.modelDTO.actionsDTO.ChatMessageDTO;
 import client.modelDTO.actionsDTO.ChooseMapDTO;
 import client.modelDTO.actionsDTO.QuitDTO;
-import client.modelDTO.actionsDTO.bonusActions.ChooseCityActionDTO;
-import client.modelDTO.actionsDTO.bonusActions.PickPermitTileActionDTO;
-import client.modelDTO.actionsDTO.bonusActions.PurchasedPermitTileActionDTO;
 import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.CouncillorDTO;
@@ -397,42 +392,6 @@ public class CLI extends ClientView {
 			permitTileToTranslate=scanner.nextLine();
 		}
 		return availablePermitTiles.get(Integer.parseInt(permitTileToTranslate)-1);
-	}
-
-
-	
-	
-	@Override
-	public void ChooseCityBonus(int numberOfCities) {
-		ChooseCityActionDTO action=new ChooseCityActionDTO(numberOfCities);
-		try {
-			this.insertParametersAndSend(action);
-		} catch (RemoteException e) {
-			Logger logger=Logger.getAnonymousLogger();
-			logger.log(Level.SEVERE, "Failed to send action with RMI", e);
-		}
-	}
-
-	@Override
-	public void PurchasedPermitTileBonus() {
-		PurchasedPermitTileActionDTO action=new PurchasedPermitTileActionDTO();
-		try {
-			this.insertParametersAndSend(action);
-		} catch (RemoteException e) {
-			Logger logger=Logger.getAnonymousLogger();
-			logger.log(Level.SEVERE, "Failed to send action with RMI", e);
-		}
-	}
-
-	@Override
-	public void PickPermitTileBonus() {
-		PickPermitTileActionDTO action=new PickPermitTileActionDTO();
-		try {
-			this.insertParametersAndSend(action);
-		} catch (RemoteException e) {
-			Logger logger=Logger.getAnonymousLogger();
-			logger.log(Level.SEVERE, "Failed to send action with RMI", e);
-		}
 	}
 
 
