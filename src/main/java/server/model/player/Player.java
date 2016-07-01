@@ -13,7 +13,6 @@ import server.model.gameTable.PoliticsCard;
 	 * @author Emanuele, Luca
 	 *
 	 */
-
 public class Player {
 
 	private int playerNumber;

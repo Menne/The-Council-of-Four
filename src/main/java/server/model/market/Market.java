@@ -9,7 +9,8 @@ import server.model.Game;
 import server.model.player.Player;
 
 /**
- * models the Market: its attributes are the selling players, the buying players and the list of offers
+ * This class modelizes the market: its attributes are the selling players, 
+ * the buying players and the list of offers
  * @author andreapasquali
  *
  */

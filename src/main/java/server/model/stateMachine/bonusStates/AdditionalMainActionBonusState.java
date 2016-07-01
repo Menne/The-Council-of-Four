@@ -9,10 +9,19 @@ import server.model.actions.Action;
 import server.model.stateMachine.State;
 import server.view.notifies.MessageNotify;
 
+/**
+ * This is a special state which is set when the payer gets the corresponding bonus
+ * @author cg31
+ *
+ */
 public class AdditionalMainActionBonusState implements State {
 	
 	private State previousState;
 
+	/**
+	 * Constructor of AdditionalMainActionBonusState
+	 * @param previousState is the state from which the bonus was gotten
+	 */
 	public AdditionalMainActionBonusState(State previousState) {
 		this.previousState=previousState;
 	}

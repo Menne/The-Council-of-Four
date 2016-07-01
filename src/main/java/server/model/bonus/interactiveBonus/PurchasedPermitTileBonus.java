@@ -22,14 +22,13 @@ import server.view.notifies.PlayerNotify;
 
 public class PurchasedPermitTileBonus implements Bonus {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 5619798617816315708L;
 
 	/**
-	 * Invokes the action associated o this bonus
-	 * @param game is the current game
+	 * This method sets the state of the game to an interactive bonus state, then notifies the player 
+	 * he has to choose from one of his permit tiles
+	 * @param game is the current game status
 	 */
 	@Override
 	public void assignBonus(Game game) {

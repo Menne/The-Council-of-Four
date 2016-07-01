@@ -22,9 +22,6 @@ import server.view.notifies.PlayerNotify;
 
 public class ChooseCityBonus implements Bonus {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 4260484811602988062L;
 	private final int numberOfCities;
 	
@@ -33,8 +30,9 @@ public class ChooseCityBonus implements Bonus {
 	}
 
 	/**
-	 * Invokes the action associated o this bonus
-	 * @param game is the current game
+	 * This method sets the state of the game to an interactive bonus state, then notifies the player 
+	 * he has to choose from one of the cities in which he has built
+	 * @param game is the current game status
 	 */
 	@Override
 	public void assignBonus(Game game) {
