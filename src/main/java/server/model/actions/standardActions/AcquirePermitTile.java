@@ -27,11 +27,9 @@ import server.view.notifies.PlayerNotify;
 
 public class AcquirePermitTile implements MainAction {
 
-
 	private Integer numberOfPermitTile;
 	private RegionBoard chosenRegion;
 	private List<PoliticsCard> cardsToDescard;
-	
 	
 	public void setNumberOfPermitTile(Integer numberOfPermitTile) {
 		this.numberOfPermitTile = numberOfPermitTile;
@@ -143,7 +141,8 @@ public class AcquirePermitTile implements MainAction {
 		return satisfyCounter==this.cardsToDescard.size();
 	}
 	
-	private void notifyPlayers(Game game) {
+	@Override
+	public void notifyPlayers(Game game) {
 		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
 				Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new MessageNotify("Action completed succesfully!", 

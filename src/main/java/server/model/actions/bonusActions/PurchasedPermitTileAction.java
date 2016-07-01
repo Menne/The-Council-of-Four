@@ -44,7 +44,8 @@ public class PurchasedPermitTileAction implements Action {
 	}
 
 	
-	private void notifyPlayers(Game game) {
+	@Override
+	public void notifyPlayers(Game game) {
 		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
 				Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new MessageNotify("Bonus earned successfully!", 

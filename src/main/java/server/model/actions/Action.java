@@ -11,8 +11,26 @@ import server.model.Game;
  */
 public abstract interface Action {
 
-	
+	/**
+	 * This method executes the action selected by the user.
+	 * First it checks if all the parameters are set properly, then changes the game status,
+	 * then assigns the bonus, changes the current state and notifies the player the action went well.
+	 * If the user selected wrong parameters, he will be notified by an error message
+	 * @param game is the current game status
+	 * @return true if the action went well, false otherwise
+	 */
 	public abstract boolean executeAction(Game game);
 	
+	/**
+	 * Notifies the current player that the action went successfully, 
+	 * and the other players what action the current player decided to do
+	 * @param game is the current game status
+	 */
+	public abstract void notifyPlayers(Game game);
+	
+	/**
+	 * Maps an action to its corresponding DTO object
+	 * @return the action DTO corresponding to the real action
+	 */
 	public ActionDTO map();
 }

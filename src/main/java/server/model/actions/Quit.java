@@ -56,4 +56,9 @@ public class Quit implements Action {
 		throw new IllegalStateException("no mapping for action quit");
 	}
 
+	@Override
+	public void notifyPlayers(Game game) {
+		return;
+	}
+
 }

@@ -180,7 +180,8 @@ public class BuildByPermitTile implements MainAction {
 		game.getGameTable().getKingRewardTiles().remove(0));
 	}
 	
-	private void notifyPlayers(Game game) {
+	@Override
+	public void notifyPlayers(Game game) {
 		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
 				Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new MessageNotify("Action completed succesfully!", 

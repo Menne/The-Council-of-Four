@@ -24,7 +24,8 @@ public class MoveToNext implements QuickAction {
 		return true;
 	}
 
-	private void notifyPlayers(Game game) {
+	@Override
+	public void notifyPlayers(Game game) {
 		List<Player> otherPlayers=new ArrayList<>();
 		for (Player player : game.getPlayers())
 			if (!player.equals(game.getCurrentPlayer()))
