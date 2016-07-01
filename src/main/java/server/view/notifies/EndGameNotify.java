@@ -9,11 +9,21 @@ import client.modelDTO.gameTableDTO.GenericPlayerDTO;
 import server.model.Game;
 import server.model.player.Player;
 
+/**
+ * This class provides the logic to notify the server view that the game has just finished
+ * @author cg31
+ *
+ */
 public class EndGameNotify implements ViewNotify {
 
 	private final List<Player> finalRankingTable;
 	private Game game;
 	
+	/**
+	 * constructor of EndGameNotify
+	 * @param game is the updated game status
+	 * @param finalRankingTable is the final status of the players of the game
+	 */
 	public EndGameNotify(Game game, List<Player> finalRankingTable) {
 		this.game=game;
 		this.finalRankingTable=finalRankingTable;

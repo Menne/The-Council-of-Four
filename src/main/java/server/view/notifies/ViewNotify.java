@@ -6,7 +6,7 @@ import client.modelDTO.clientNotifies.ClientNotify;
 import server.model.player.Player;
 
 /**
- * This class modelizes a generic server notify from server game to server view
+ * This class modelizes a generic notify from server model to server view
  * @author cg31
  *
  */
