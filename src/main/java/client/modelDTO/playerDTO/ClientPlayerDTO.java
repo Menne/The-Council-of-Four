@@ -10,9 +10,6 @@ import client.modelDTO.gameTableDTO.PoliticsCardDTO;
 
 public class ClientPlayerDTO implements ModelDTO{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1059151897076991279L;
 	private String name;
 	private int playerNumber;
