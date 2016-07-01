@@ -33,7 +33,6 @@ import server.model.actions.standardActions.BuildByPermitTile;
 import server.model.actions.standardActions.ChangePermitTiles;
 import server.model.actions.standardActions.ElectCouncillor;
 import server.model.actions.standardActions.ElectCouncillorByAssistant;
-import server.model.gameTable.Assistant;
 import server.model.gameTable.CardColour;
 import server.model.gameTable.City;
 import server.model.gameTable.CouncilBalcony;
@@ -42,6 +41,7 @@ import server.model.gameTable.PermitTile;
 import server.model.gameTable.PoliticsCard;
 import server.model.gameTable.RegionBoard;
 import server.model.market.Offer;
+import server.model.player.Assistant;
 import server.model.player.Player;
 
 /**

@@ -10,8 +10,8 @@ import org.junit.Test;
 
 import server.model.Game;
 import server.model.actions.marketActions.MakeAnOffer;
-import server.model.gameTable.Assistant;
 import server.model.market.Offer;
+import server.model.player.Assistant;
 import server.model.player.Player;
 import server.model.stateMachine.SellingState;
 

@@ -43,9 +43,6 @@ public class AcceptAnOffer implements Action {
 		
 		game.getMarket().removeOffer(this.offer);
 		
-		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
-				Arrays.asList(game.getCurrentPlayer())));
-		
 		this.notifyPlayers(game);
 		game.setState(game.getState().buyActionTransition(game));
 		game.getState().updateClients(game);

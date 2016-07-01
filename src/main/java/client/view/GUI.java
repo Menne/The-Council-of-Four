@@ -1,6 +1,5 @@
 package client.view;
 
-
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -220,6 +219,51 @@ public class GUI extends ClientView{
 	}
 	
 	
+	
+	@Override
+	public void askForMap() {
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(ClientGUI.class.getResource("ChooseMap.fxml"));
+					AnchorPane root=null;
+					try {
+						root = (AnchorPane)loader.load();
+					} catch (IOException e) {
+						Logger logger=Logger.getAnonymousLogger();
+						logger.log(Level.SEVERE, "Failed to load chooseMap screen", e);
+					}
+					controllerChooseMap=loader.getController();
+					controllerChooseMap.getMap1().setUserData(1);
+					controllerChooseMap.getMap2().setUserData(2);
+					controllerChooseMap.getMap3().setUserData(3);
+					controllerChooseMap.getMap4().setUserData(4);
+					controllerChooseMap.getMap5().setUserData(5);
+					controllerChooseMap.getMap6().setUserData(6);
+					controllerChooseMap.getMap7().setUserData(7);
+					controllerChooseMap.getMap8().setUserData(8);
+					controllerChooseMap.setView(GUI.this);
+					Stage chooseMapStage=new Stage();
+					chooseMapStage.setTitle("Choose Map");
+					Scene scene=new Scene(root);
+					chooseMapStage.setScene(scene);
+					controllerChooseMap.setChooseMapStage(chooseMapStage);
+					chooseMapStage.show();
+					controllerChooseMap.changeMouseStyle();
+			}
+		});
+		
+	}
+
+
+	@Override
+	public void startGame() {
+		System.out.println(controllerGUI.getMapImage());
+		controllerGUI.getMapImage().setImage(new Image(getClass().getResource("images/maps/map"+String.valueOf
+				(this.clientGame.getClientGameTable().getMapNumber())+".jpg").toExternalForm()));			
+	}
 	
 	
 	@Override
@@ -1398,49 +1442,4 @@ public class GUI extends ClientView{
 		});		
 	}
 
-
-	@Override
-	public void askForMap() {
-		Platform.runLater(new Runnable() {
-			
-			@Override
-			public void run() {
-				FXMLLoader loader = new FXMLLoader();
-				loader.setLocation(ClientGUI.class.getResource("ChooseMap.fxml"));
-					AnchorPane root=null;
-					try {
-						root = (AnchorPane)loader.load();
-					} catch (IOException e) {
-						Logger logger=Logger.getAnonymousLogger();
-						logger.log(Level.SEVERE, "Failed to load chooseMap screen", e);
-					}
-					controllerChooseMap=loader.getController();
-					controllerChooseMap.getMap1().setUserData(1);
-					controllerChooseMap.getMap2().setUserData(2);
-					controllerChooseMap.getMap3().setUserData(3);
-					controllerChooseMap.getMap4().setUserData(4);
-					controllerChooseMap.getMap5().setUserData(5);
-					controllerChooseMap.getMap6().setUserData(6);
-					controllerChooseMap.getMap7().setUserData(7);
-					controllerChooseMap.getMap8().setUserData(8);
-					controllerChooseMap.setView(GUI.this);
-					Stage chooseMapStage=new Stage();
-					chooseMapStage.setTitle("Choose Map");
-					Scene scene=new Scene(root);
-					chooseMapStage.setScene(scene);
-					controllerChooseMap.setChooseMapStage(chooseMapStage);
-					chooseMapStage.show();
-					controllerChooseMap.changeMouseStyle();
-			}
-		});
-		
-	}
-
-
-	@Override
-	public void startGame() {
-		System.out.println(controllerGUI.getMapImage());
-		controllerGUI.getMapImage().setImage(new Image(getClass().getResource("images/maps/map"+String.valueOf
-				(this.clientGame.getClientGameTable().getMapNumber())+".jpg").toExternalForm()));			
-	}	
 }

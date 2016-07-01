@@ -9,7 +9,7 @@ import java.util.List;
 import org.junit.Test;
 
 import server.model.Game;
-import server.model.gameTable.Assistant;
+import server.model.player.Assistant;
 import server.model.player.Player;
 
 public class AssistantsTest {

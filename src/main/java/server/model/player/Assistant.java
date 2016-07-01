@@ -1,7 +1,6 @@
-package server.model.gameTable;
+package server.model.player;
 
 import server.model.market.Marketable;
-import server.model.player.Player;
 
 /**
  * modelize assistants and it contains only the methods used for the market (add to player and remove from player)
@@ -17,7 +16,7 @@ public class Assistant implements Marketable {
 	
 	@Override
 	public void removeObjectFromPlayer(Player player) throws IllegalArgumentException{
-		if(player.getNumberOfAssistants()<=0)
+		if (player.getNumberOfAssistants()<=0)
 			throw new IllegalArgumentException("the selling player hasn't assistants to sell");
 		player.decrementAssistants(1);
 	}
