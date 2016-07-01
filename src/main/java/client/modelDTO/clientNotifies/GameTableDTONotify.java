@@ -38,7 +38,7 @@ public class GameTableDTONotify implements ClientNotify{
 		gameDTOtoupdate.getClientGameTable().setColourBonuses(this.updatedGame.getColourBonuses());
 		gameDTOtoupdate.getClientGameTable().setMapNumber(this.updatedGame.getMapNumber());
 
-		gameDTOtoupdate.notifyObserver(new ClientGameTableNotify(gameDTOtoupdate.getClientGameTable(),startGame));
+		gameDTOtoupdate.notifyObserver(new ClientGameTableNotify(this.startGame));
 	}
 
 

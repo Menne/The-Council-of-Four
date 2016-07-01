@@ -3,7 +3,7 @@ package client.view.notifies;
 import client.view.ClientView;
 
 /**
- * This class contains the logic for sending an error to the client view
+ * This class contains the logic to send an error message to the client view
  * @author cg31
  *
  */

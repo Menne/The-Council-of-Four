@@ -34,8 +34,7 @@ public class MarketDTONotify implements ClientNotify {
 		gameDTOtoupdate.getMarket().setSellingPlayerList(this.updatedMarket.getSellingPlayerList());
 		gameDTOtoupdate.getMarket().setBuyingPlayerList(this.updatedMarket.getBuyingPlayerList());
 		
-		gameDTOtoupdate.notifyObserver(new ClientMarketNotify
-				(gameDTOtoupdate.getMarket(), this.startMarket, this.closeMarket));
+		gameDTOtoupdate.notifyObserver(new ClientMarketNotify(this.startMarket, this.closeMarket));
 	}
 
 

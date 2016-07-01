@@ -3,7 +3,7 @@ package client.view.notifies;
 import client.view.ClientView;
 
 /**
- * This class contains the logic for sending a chat message to the ClientView
+ * This class contains the logic to send a chat message to the ClientView
  * @author cg31
  *
  */

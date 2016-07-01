@@ -1,24 +1,18 @@
 package client.view;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.List;
 
 import client.connections.Connection;
 import client.modelDTO.GameDTO;
-import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.AddPlayerDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.CouncillorDTO;
-import client.modelDTO.gameTableDTO.GameTableDTO;
-import client.modelDTO.gameTableDTO.GenericPlayerDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
 import client.modelDTO.gameTableDTO.PoliticsCardDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
-import client.modelDTO.marketDTO.MarketDTO;
 import client.modelDTO.marketDTO.MarketableDTO;
 import client.modelDTO.marketDTO.OfferDTO;
-import client.modelDTO.playerDTO.ClientPlayerDTO;
 import client.view.notifies.ClientViewNotify;
 import observerPattern.Observer;
 
@@ -85,39 +79,38 @@ public abstract class ClientView implements Observer<ClientViewNotify> {
 	
 	/**
 	 * This method displays the game table when the game starts
-	 * @param gameTableDTO is the game table which has to be displayed
 	 */
-	public abstract void startGame(GameTableDTO gameTableDTO);
+	public abstract void startGame();
 
 	/**
 	 * This method displays to the view the available actions of the player
 	 * @param availableActions are the available actions for the current game state
 	 */
-	public abstract void displayAvailableActions(List<ActionDTO> availableActions);
+	public abstract void displayAvailableActions();
 	
 	/**
 	 * This method displays to the view the current game table
 	 * @param clientGame is the updated game table which has to be displayed
 	 */
-	public abstract void displayGameTable(GameTableDTO clientGame);
+	public abstract void displayGameTable();
 	
 	/**
 	 * This method displays to the view all the informations about the client player
 	 * @param player is the updated status of the client player
 	 */
-	public abstract void displayPlayer(ClientPlayerDTO player);
+	public abstract void displayPlayer();
 	
 	/**
 	 * This method displays to the view the current state of the market
 	 * @param market is the updated market
 	 */
-	public abstract void displayMarket(MarketDTO market);
+	public abstract void displayMarket();
 	
 	/**
 	 * This method displays to the view the final ranking of the game which has just terminated
 	 * @param finalRankingTable is the list of players with the relative informations
 	 */
-	public abstract void displayFinalRanking(List<GenericPlayerDTO> finalRankingTable);
+	public abstract void displayFinalRanking();
 	
 	/**
 	 * This method displays a chat message form another player in a proper way according to the selected view

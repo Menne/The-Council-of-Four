@@ -42,17 +42,14 @@ import client.modelDTO.gameTableDTO.BonusTileDTO;
 import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.CouncillorDTO;
-import client.modelDTO.gameTableDTO.GameTableDTO;
 import client.modelDTO.gameTableDTO.GenericPlayerDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
 import client.modelDTO.gameTableDTO.PoliticsCardDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
 import client.modelDTO.gameTableDTO.RewardTokenDTO;
-import client.modelDTO.marketDTO.MarketDTO;
 import client.modelDTO.marketDTO.MarketableDTO;
 import client.modelDTO.marketDTO.OfferDTO;
 import client.modelDTO.playerDTO.AssistantDTO;
-import client.modelDTO.playerDTO.ClientPlayerDTO;
 import client.view.notifies.ClientViewNotify;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -226,7 +223,7 @@ public class GUI extends ClientView{
 	
 	
 	@Override
-	public void displayAvailableActions(List<ActionDTO> availableActions) {
+	public void displayAvailableActions() {
 		controllerGUI.getActions().get(0).setUserData(new ElectCouncillorDTO());
 		controllerGUI.getActions().get(1).setUserData(new AcquirePermitTileDTO());
 		controllerGUI.getActions().get(2).setUserData(new BuildByPermitTileDTO());
@@ -238,7 +235,7 @@ public class GUI extends ClientView{
 		controllerGUI.getActions().get(8).setUserData(new MoveToNextDTO());
 		controllerGUI.getPoliticsDeck().setUserData(new PickPoliticsCardDTO());
 		
-		for (ActionDTO action : availableActions)
+		for (ActionDTO action : this.clientGame.getAvailableActions())
 			if (action instanceof ChooseCityActionDTO || action instanceof PickPermitTileActionDTO
 					|| action instanceof PurchasedPermitTileActionDTO)
 				try {
@@ -261,7 +258,7 @@ public class GUI extends ClientView{
 				innerShadow.setBlurType(BlurType.GAUSSIAN);
 				innerShadow.setColor(Color.web("ffffff"));
 				controllerGUI.getPoliticsDeck().setEffect(null);
-				for(ActionDTO action: availableActions){
+				for (ActionDTO action : clientGame.getAvailableActions()){
 					if(action.getClass()==PickPoliticsCardDTO.class){
 						controllerGUI.getPoliticsDeck().setEffect(new Glow(0.8));
 					}
@@ -275,46 +272,46 @@ public class GUI extends ClientView{
 	}
 
 	@Override
-	public void displayGameTable(GameTableDTO clientGame) {
+	public void displayGameTable() {
 		Platform.runLater(new Runnable() {
 			
 			@Override
 			public void run() {
-				if((controllerChooseMap!=null)&&(controllerChooseMap.getChooseMapStage().isShowing())){
+				if (controllerChooseMap!=null && controllerChooseMap.getChooseMapStage().isShowing()){
 					Alert alert=new Alert(AlertType.INFORMATION);
 			    	alert.setTitle("Map Not Chosen");
 			    	alert.setHeaderText("You did not choose the map.\n"
-			    			+ "The system has choose for you the map numeber "+clientGame.getMapNumber());
+			    			+ "The system has choose for you the map numeber " + clientGame.getClientGameTable().getMapNumber());
 			    	alert.showAndWait();
 			    	controllerChooseMap.getChooseMapStage().close();
 				}
-				unlockPlayersTabs(clientGame);
-				displayCouncillors(clientGame);
-				displayTokens(clientGame);
-				displayPlayers(clientGame.getClientPlayers());
-				displayRegions(clientGame);
-				displayCities(clientGame);
-				diplayBalconies(clientGame);
-				displayPermitTiles(clientGame);
-				displayKing(clientGame);
-				displayEmporiums(clientGame);
-				displayBonusTiles(clientGame);
+				unlockPlayersTabs();
+				displayCouncillors();
+				displayTokens();
+				displayPlayers();
+				displayRegions();
+				displayCities();
+				diplayBalconies();
+				displayPermitTiles();
+				displayKing();
+				displayEmporiums();
+				displayBonusTiles();
 			}
 		});
 		
 	}
 	
-	private void unlockPlayersTabs(GameTableDTO clientGame){
-		for(GenericPlayerDTO player: clientGame.getClientPlayers())
+	private void unlockPlayersTabs(){
+		for (GenericPlayerDTO player: clientGame.getClientGameTable().getClientPlayers())
 			this.controllerGUI.getPlayersTabs().get(player.getPlayerNumber()-1).setDisable(false);
 	}
 	
-	private void displayBonusTiles(GameTableDTO clientGame) {
+	private void displayBonusTiles() {
 		controllerGUI.getColorBonusBlue().setOpacity(0);
 		controllerGUI.getColorBonusBronze().setOpacity(0);
 		controllerGUI.getColorBonusGold().setOpacity(0);
 		controllerGUI.getColorBonusSilver().setOpacity(0);;
-		for (BonusTileDTO bonusTile : clientGame.getColourBonuses()){
+		for (BonusTileDTO bonusTile : clientGame.getClientGameTable().getColourBonuses()){
 			if ("Blue".equals(bonusTile.getType()))
 				controllerGUI.getColorBonusBlue().setOpacity(1);
 			if ("Silver".equals(bonusTile.getType()))
@@ -325,29 +322,29 @@ public class GUI extends ClientView{
 				controllerGUI.getColorBonusBronze().setOpacity(1);
 		}
 		
-		if (clientGame.getNextKingRewardTile().getBonus().getScoreAdvancement()==18)
+		if (clientGame.getClientGameTable().getNextKingRewardTile().getBonus().getScoreAdvancement()==18)
 			controllerGUI.getKingBonusTiles().get(0).setImage(null);
-		if (clientGame.getNextKingRewardTile().getBonus().getScoreAdvancement()==12)
+		if (clientGame.getClientGameTable().getNextKingRewardTile().getBonus().getScoreAdvancement()==12)
 			controllerGUI.getKingBonusTiles().get(1).setImage(null);
-		if (clientGame.getNextKingRewardTile().getBonus().getScoreAdvancement()==7)
+		if (clientGame.getClientGameTable().getNextKingRewardTile().getBonus().getScoreAdvancement()==7)
 			controllerGUI.getKingBonusTiles().get(2).setImage(null);
-		if (clientGame.getNextKingRewardTile().getBonus().getScoreAdvancement()==3)
+		if (clientGame.getClientGameTable().getNextKingRewardTile().getBonus().getScoreAdvancement()==3)
 			controllerGUI.getKingBonusTiles().get(3).setImage(null);
-		if (clientGame.getNextKingRewardTile()==null)
+		if (clientGame.getClientGameTable().getNextKingRewardTile()==null)
 			controllerGUI.getKingBonusTiles().get(4).setImage(null);	
 	}
 
 
-	private void displayRegions(GameTableDTO clientGame) {
-		for (int i=0; i<clientGame.getClientRegions().size(); i++){
-			if(clientGame.getClientRegions().get(i).getRegionBonus()==null)
+	private void displayRegions() {
+		for (int i=0; i<clientGame.getClientGameTable().getClientRegions().size(); i++){
+			if(clientGame.getClientGameTable().getClientRegions().get(i).getRegionBonus()==null)
 				controllerGUI.getRegionBonusTiles().get(i).setImage(null);
-			this.controllerGUI.getRegions().get(i).setUserData(clientGame.getClientRegions().get(i));
+			this.controllerGUI.getRegions().get(i).setUserData(clientGame.getClientGameTable().getClientRegions().get(i));
 		}
 	}
 	
-	private void displayCities(GameTableDTO clientGame) {
-		for (RegionDTO regionDTO : clientGame.getClientRegions())
+	private void displayCities() {
+		for (RegionDTO regionDTO : clientGame.getClientGameTable().getClientRegions())
 			for (CityDTO city : regionDTO.getCities()) {
 				if ("Arkon".equals(city.getName())){
 					controllerGUI.getCities().get(0).setUserData(city);
@@ -413,15 +410,15 @@ public class GUI extends ClientView{
 	}
 	
 
-	private void displayKing(GameTableDTO clientGame){
+	private void displayKing(){
 		for(Pane cityPane : controllerGUI.getCities()){
 				cityPane.getChildren().remove(king);
-			if(((CityDTO)cityPane.getUserData()).getName().equals(clientGame.getKing()))
+			if(((CityDTO)cityPane.getUserData()).getName().equals(clientGame.getClientGameTable().getKing()))
 				cityPane.getChildren().add(king);			
 		}
 	}
 	
-	private void displayEmporiums(GameTableDTO clientGame){
+	private void displayEmporiums(){
 		for(HBox hBox: controllerGUI.getCitysEmporiums()){
 			hBox.getChildren().clear();
 			for(GenericPlayerDTO emporium: ((CityDTO)hBox.getUserData()).getBuildedEmporiums()){
@@ -433,25 +430,25 @@ public class GUI extends ClientView{
 		}
 	}
 	
-	private void diplayBalconies(GameTableDTO clientGame) {
+	private void diplayBalconies() {
 		for (int i=0; i<this.controllerGUI.getBalconies().size()-1; i++)
-			controllerGUI.getBalconies().get(i).setUserData(clientGame.getClientRegions().get(i).getBalcony());
-		controllerGUI.getBalconies().get(controllerGUI.getBalconies().size()-1).setUserData(clientGame.getClientKingBalcony());
+			controllerGUI.getBalconies().get(i).setUserData(clientGame.getClientGameTable().getClientRegions().get(i).getBalcony());
+		controllerGUI.getBalconies().get(controllerGUI.getBalconies().size()-1).setUserData(clientGame.getClientGameTable().getClientKingBalcony());
 	}
 	
-	private void displayPermitTiles(GameTableDTO clientGame) {
+	private void displayPermitTiles() {
 		for (int i=0; i<2; i++) {
-			controllerGUI.getSeaPermitTile()[i].setImage(imageMap.get(clientGame.getClientRegions().get(0).getUncoveredPermitTiles()[i]));
+			controllerGUI.getSeaPermitTile()[i].setImage(imageMap.get(clientGame.getClientGameTable().getClientRegions().get(0).getUncoveredPermitTiles()[i]));
 			controllerGUI.getSeaPermitTile()[i].setUserData(new Integer(i));
-			controllerGUI.getHillPermitTile()[i].setImage(imageMap.get(clientGame.getClientRegions().get(1).getUncoveredPermitTiles()[i]));
+			controllerGUI.getHillPermitTile()[i].setImage(imageMap.get(clientGame.getClientGameTable().getClientRegions().get(1).getUncoveredPermitTiles()[i]));
 			controllerGUI.getHillPermitTile()[i].setUserData(new Integer(i));
-			controllerGUI.getMountainPermitTile()[i].setImage(imageMap.get(clientGame.getClientRegions().get(2).getUncoveredPermitTiles()[i]));
+			controllerGUI.getMountainPermitTile()[i].setImage(imageMap.get(clientGame.getClientGameTable().getClientRegions().get(2).getUncoveredPermitTiles()[i]));
 			controllerGUI.getMountainPermitTile()[i].setUserData(new Integer(i));
 		}
 	}
 	
-	private void displayPlayers(List<GenericPlayerDTO> players){
-		List<GenericPlayerDTO> orderedPlayers = new ArrayList<>(players);
+	private void displayPlayers(){
+		List<GenericPlayerDTO> orderedPlayers = new ArrayList<>(clientGame.getClientGameTable().getClientPlayers());
 		Collections.sort(orderedPlayers, new Comparator<GenericPlayerDTO>() {
 
 			@Override
@@ -491,30 +488,30 @@ public class GUI extends ClientView{
 		} 
 	}
 	
-	private void displayCouncillors(GameTableDTO clientGame) {
-		for (RegionDTO region : clientGame.getClientRegions())
+	private void displayCouncillors() {
+		for (RegionDTO region : clientGame.getClientGameTable().getClientRegions())
 			for (int i=0; i<4; i++) {
 				controllerGUI.getCouncillors(region).get(i).setImage(imageMap.get(region.getBalcony()[i]));
 				controllerGUI.getCouncillors(region).get(i).setUserData(region.getBalcony()[i]);
 			}
 		for (int i=0; i<4; i++) {
-			controllerGUI.getKingCouncillors().get(i).setImage(imageMap.get(clientGame.getClientKingBalcony()[i]));
-			controllerGUI.getKingCouncillors().get(i).setUserData(clientGame.getClientKingBalcony()[i]);
+			controllerGUI.getKingCouncillors().get(i).setImage(imageMap.get(clientGame.getClientGameTable().getClientKingBalcony()[i]));
+			controllerGUI.getKingCouncillors().get(i).setUserData(clientGame.getClientGameTable().getClientKingBalcony()[i]);
 		}
 		for (int i=0; i<8; i++) {
-			controllerGUI.getCouncillorReserve().get(i).setImage(imageMap.get(clientGame.getClientCouncillorReserve().get(i)));
-			controllerGUI.getCouncillorReserve().get(i).setUserData(clientGame.getClientCouncillorReserve().get(i));
+			controllerGUI.getCouncillorReserve().get(i).setImage(imageMap.get(clientGame.getClientGameTable().getClientCouncillorReserve().get(i)));
+			controllerGUI.getCouncillorReserve().get(i).setUserData(clientGame.getClientGameTable().getClientCouncillorReserve().get(i));
 		}
 	}
 	
-	private void displayTokens(GameTableDTO clientGame){
-		for (RegionDTO region : clientGame.getClientRegions())
+	private void displayTokens(){
+		for (RegionDTO region : clientGame.getClientGameTable().getClientRegions())
 			for (CityDTO city : region.getCities())
 				controllerGUI.getRewardToken(city).setImage(imageMap.get(city.getRewardToken()));
 	}
 
 	@Override
-	public void displayPlayer(ClientPlayerDTO player) {
+	public void displayPlayer() {
 		Platform.runLater(new Runnable() {
 			
 			@Override
@@ -523,7 +520,7 @@ public class GUI extends ClientView{
 				controllerGUI.getHand().getChildren().clear();
 				controllerGUI.getPermitTilesTurnedUpOwned().getChildren().clear();
 				controllerGUI.getPermitTilesTurnedDownOwned().getChildren().clear();
-				for (PoliticsCardDTO card : player.getHand()){
+				for (PoliticsCardDTO card : clientGame.getClientPlayer().getHand()){
 					ImageView imageView=new ImageView(imageMap.get(card));
 					controllerGUI.getHand().getChildren().add(imageView);
 					imageView.setFitWidth(50);
@@ -549,7 +546,7 @@ public class GUI extends ClientView{
 					politicsCards.add(imageView);
 					controllerGUI.setPoliticsCards(politicsCards);
 				}
-				for (PermitTileDTO permitTileDTO : player.getAvailablePermitTiles()){
+				for (PermitTileDTO permitTileDTO : clientGame.getClientPlayer().getAvailablePermitTiles()){
 					ImageView imageView=new ImageView(imageMap.get(permitTileDTO));
 					controllerGUI.getPermitTilesTurnedUpOwned().getChildren().add(imageView);
 					imageView.setFitHeight(70);
@@ -572,7 +569,7 @@ public class GUI extends ClientView{
 						}
 					});
 				}
-				for (PermitTileDTO permitTileDTO : player.getCoveredPermitTiles()){
+				for (PermitTileDTO permitTileDTO : clientGame.getClientPlayer().getCoveredPermitTiles()){
 					ImageView imageView=new ImageView(imageMap.get(permitTileDTO));
 					controllerGUI.getPermitTilesTurnedDownOwned().getChildren().add(imageView);
 					imageView.setFitHeight(70);
@@ -595,12 +592,12 @@ public class GUI extends ClientView{
 						}
 					});
 				}
-				controllerGUI.getPlayerCoins().setText(String.valueOf(player.getCoins()));
-				controllerGUI.getPlayerAssistants().setText(String.valueOf(player.getAssistants().size()));
-				controllerGUI.getPlayerNobility().setText(String.valueOf(player.getNobility()));
-				controllerGUI.getPlayerScore().setText(String.valueOf(player.getScore()));
+				controllerGUI.getPlayerCoins().setText(String.valueOf(clientGame.getClientPlayer().getCoins()));
+				controllerGUI.getPlayerAssistants().setText(String.valueOf(clientGame.getClientPlayer().getAssistants().size()));
+				controllerGUI.getPlayerNobility().setText(String.valueOf(clientGame.getClientPlayer().getNobility()));
+				controllerGUI.getPlayerScore().setText(String.valueOf(clientGame.getClientPlayer().getScore()));
 				controllerGUI.getPlayersBonuses().getChildren().clear();
-				for(BonusTileDTO bonusTileDTO : player.getFinalBonuses()){
+				for(BonusTileDTO bonusTileDTO : clientGame.getClientPlayer().getFinalBonuses()){
 					ImageView imageView =new ImageView(imageMap.get(bonusTileDTO));
 					controllerGUI.getPlayersBonuses().getChildren().add(imageView);
 					imageView.setFitWidth(60);
@@ -644,7 +641,7 @@ public class GUI extends ClientView{
 	}
 
 	@Override
-	public void displayMarket(MarketDTO market) {
+	public void displayMarket() {
 		Platform.runLater(new Runnable() {
 			
 			@Override
@@ -836,17 +833,18 @@ public class GUI extends ClientView{
 	}
 	
 	@Override
-	public void displayFinalRanking(List<GenericPlayerDTO> finalRankingTable) {
+	public void displayFinalRanking() {
 		Platform.runLater(new Runnable() {
 			
 			@Override
 			public void run() {
 				Alert alert=new Alert(AlertType.INFORMATION);
 				String string="";
-				for(int i=0; i<finalRankingTable.size();i++){
-					string=string+String.valueOf(i+1)+"\t"+finalRankingTable.get(i).getName()+
-							"\tscore: "+finalRankingTable.get(i).getScore()+"\tassistants: "+
-							finalRankingTable.get(i).getAssistants()+"\tcards: "+finalRankingTable.get(i).getHand()+"\n";
+				for (int i=0; i<clientGame.getClientGameTable().getClientPlayers().size();i++){
+					string=string+String.valueOf(i+1) + "\t"+clientGame.getClientGameTable().getClientPlayers().get(i).getName() + 
+							"\tscore: " + clientGame.getClientGameTable().getClientPlayers().get(i).getScore() + "\tassistants: " +
+							clientGame.getClientGameTable().getClientPlayers().get(i).getAssistants() + "\tcards: " + 
+							clientGame.getClientGameTable().getClientPlayers().get(i).getHand() + "\n";
 				}
 				alert.setContentText(string);
 				alert.showAndWait();
@@ -1438,8 +1436,9 @@ public class GUI extends ClientView{
 
 
 	@Override
-	public void startGame(GameTableDTO gameTableDTO) {
+	public void startGame() {
 		System.out.println(controllerGUI.getMapImage());
-		controllerGUI.getMapImage().setImage(new Image(getClass().getResource("images/maps/map"+String.valueOf(gameTableDTO.getMapNumber())+".jpg").toExternalForm()));			
+		controllerGUI.getMapImage().setImage(new Image(getClass().getResource("images/maps/map"+String.valueOf
+				(this.clientGame.getClientGameTable().getMapNumber())+".jpg").toExternalForm()));			
 	}	
 }

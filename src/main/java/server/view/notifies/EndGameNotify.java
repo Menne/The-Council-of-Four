@@ -34,7 +34,7 @@ public class EndGameNotify implements ViewNotify {
 		ArrayList<GenericPlayerDTO> finalRankingTableDTO=new ArrayList<>();
 		for (Player player : this.finalRankingTable)
 			finalRankingTableDTO.add(this.game.getGameMapper().genericPlayerMap(player));
-		return new EndGameDTONotifies(finalRankingTableDTO);
+		return new EndGameDTONotifies();
 		
 	}
 

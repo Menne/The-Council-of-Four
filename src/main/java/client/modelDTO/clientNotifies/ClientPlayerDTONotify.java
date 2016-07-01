@@ -25,7 +25,7 @@ public class ClientPlayerDTONotify implements ClientNotify {
 	@Override
 	public void updateModel(GameDTO gameDTOtoupdate) {
 		gameDTOtoupdate.setClientPlayer(this.updatedPlayer);
-		gameDTOtoupdate.notifyObserver(new ClientPlayerNotify(gameDTOtoupdate.getClientPlayer()));
+		gameDTOtoupdate.notifyObserver(new ClientPlayerNotify());
 	}
 
 }

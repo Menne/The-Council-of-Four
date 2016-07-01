@@ -18,25 +18,19 @@ import client.modelDTO.actionsDTO.QuitDTO;
 import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.CouncillorDTO;
-import client.modelDTO.gameTableDTO.GameTableDTO;
-import client.modelDTO.gameTableDTO.GenericPlayerDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
 import client.modelDTO.gameTableDTO.PoliticsCardDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
-import client.modelDTO.marketDTO.MarketDTO;
 import client.modelDTO.marketDTO.MarketableDTO;
 import client.modelDTO.marketDTO.OfferDTO;
-import client.modelDTO.playerDTO.ClientPlayerDTO;
 import client.view.notifies.ClientGameOverNotify;
 import client.view.notifies.ClientViewNotify;
 import server.model.gameTable.CouncilBalcony;
 
 public class CLI extends ClientView {
 
-
 	private final Scanner scanner;
 
-	
 	public CLI(Connection connection, GameDTO clientGame) {
 		super(connection, clientGame);
 		this.scanner=new Scanner(System.in);
@@ -121,28 +115,29 @@ public class CLI extends ClientView {
 	}
 
 	@Override
-	public void displayAvailableActions(List<ActionDTO> availableActions) {
-		System.out.println(availableActions);
+	public void displayAvailableActions() {
+		System.out.println(this.clientGame.getAvailableActions());
 	}
 
 	@Override
-	public void displayGameTable(GameTableDTO clientGame) {
-		System.out.println(clientGame);
+	public void displayGameTable() {
+		System.out.println(this.clientGame);
 	}
 
 	@Override
-	public void displayPlayer(ClientPlayerDTO player) {
-		System.out.println(player);
+	public void displayPlayer() {
+		System.out.println(this.clientGame.getClientPlayer());
 	}
 
 	@Override
-	public void displayMarket(MarketDTO market) {
-		System.out.println(market);
+	public void displayMarket() {
+		System.out.println(this.clientGame.getMarket());
 	}
 	
 	@Override
-	public void displayFinalRanking(List<GenericPlayerDTO> finalRankingTable) {
-		System.out.println("GAME OVER\n FINAL RANKING TABLE: \n"+finalRankingTable);
+	public void displayFinalRanking() {
+		System.out.println("GAME OVER\n FINAL RANKING TABLE: \n" + 
+				this.clientGame.getClientGameTable().getClientPlayers());
 	}
 	
 	@Override
@@ -402,9 +397,8 @@ public class CLI extends ClientView {
 
 
 	@Override
-	public void startGame(GameTableDTO gameTableDTO) {
-		// TODO Auto-generated method stub
-		
+	public void startGame() {
+		return;
 	}
 
 

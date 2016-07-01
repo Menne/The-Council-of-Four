@@ -33,7 +33,7 @@ public class ClientAvailableActionsNotify implements ClientViewNotify {
 	@Override
 	public void updateView(ClientView view) {
 		view.displayMessage(this.message);
-		view.displayAvailableActions(this.availableActions);
+		view.displayAvailableActions();
 		
 		if(!availableActions.isEmpty()){
 			view.getConnection().setTimerTask(new TimerTask() {
