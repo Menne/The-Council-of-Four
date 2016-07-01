@@ -8,11 +8,13 @@ import client.modelDTO.ModelDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
 import server.model.gameTable.CouncilBalcony;
 
+/**
+ * This class provides all the informations about a region, but without logic
+ * @author cg31
+ *
+ */
 public class RegionDTO implements ModelDTO{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 6668103687292375094L;
 	private String name;
 	private CouncillorDTO[] balcony;
@@ -20,6 +22,9 @@ public class RegionDTO implements ModelDTO{
 	private PermitTileDTO[] uncoveredPermitTiles;
 	private BonusTileDTO regionBonus;
 	
+	/**
+	 * Constructor of RegionDTO
+	 */
 	public RegionDTO() {
 		this.balcony=new CouncillorDTO[CouncilBalcony.getNumberofcouncillors()]; 
 		this.cities=new HashSet<>();		

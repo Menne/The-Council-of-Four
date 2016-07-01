@@ -2,11 +2,13 @@ package client.modelDTO.marketDTO;
 
 import java.io.Serializable;
 
+/**
+ * This class provides all the informations about an offer, but without logic
+ * @author cg31
+ *
+ */
 public class OfferDTO implements Serializable{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 5468761096841322975L;
 	private String offeringPlayer;
 	private MarketableDTO offeredObjectDTO;

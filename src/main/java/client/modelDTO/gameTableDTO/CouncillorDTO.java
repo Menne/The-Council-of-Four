@@ -2,17 +2,26 @@ package client.modelDTO.gameTableDTO;
 
 import client.modelDTO.ModelDTO;
 
+/**
+ * This class provides all the informations about a councillor, but without logic
+ * @author cg31
+ *
+ */
 public class CouncillorDTO implements ModelDTO {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 3297590450164485862L;
 	private CardColourDTO colour;
 	
+	/**
+	 * Constructor of CouncillorDTO
+	 */
 	public CouncillorDTO() {
 	}
 	
+	/**
+	 * Constructor of CouncillorDTO
+	 * @param cardColourDTO is the colour of the councillor
+	 */
 	public CouncillorDTO(CardColourDTO cardColourDTO) {
 		this.colour=cardColourDTO;
 	}

@@ -8,20 +8,30 @@ import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.marketDTO.MarketableDTO;
 import server.model.bonus.Bonus;
 
+/**
+ * This class provides all the informations about a permit tile, but without logic
+ * @author cg31
+ *
+ */
 public class PermitTileDTO implements ModelDTO, MarketableDTO {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -2049414013378014856L;
 	private Set<CityDTO> buildablecities;
 	private Set<Bonus> bonuses;
 	
+	/**
+	 * Constructor of PermitTileDTO
+	 */
 	public PermitTileDTO(){
 		this.buildablecities=new HashSet<>();
 		this.bonuses=new HashSet<>();
 	}
 	
+	/**
+	 * Constructor of PermitTileDTO
+	 * @param buildablecities are the cities of the permit tile
+	 * @param bonuses are the bonuses of the permit tile
+	 */
 	public PermitTileDTO(Set<CityDTO> buildablecities, Set<Bonus> bonuses){
 		this.bonuses=bonuses;
 		this.buildablecities=buildablecities;

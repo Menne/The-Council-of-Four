@@ -2,17 +2,26 @@ package client.modelDTO.gameTableDTO;
 
 import client.modelDTO.ModelDTO;
 
+/**
+ * This class provides all the informations about a card colour, but without logic
+ * @author cg31
+ *
+ */
 public class CardColourDTO implements ModelDTO {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 8929965571917578063L;
 	private String name;
 	
+	/**
+	 * Constructor of CardColourDTO
+	 */
 	public CardColourDTO() {
 	}
 	
+	/**
+	 * Constructor of CardColourDTO
+	 * @param name is the name of the colour
+	 */
 	public CardColourDTO(String name) {
 		this.name=name;
 	}

@@ -5,23 +5,32 @@ import java.util.Set;
 import client.modelDTO.ModelDTO;
 import server.model.bonus.Bonus;
 
+/**
+ * This class provides all the informations about a reward token, but without logic
+ * @author cg31
+ *
+ */
 public class RewardTokenDTO implements ModelDTO {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 8196968018708236782L;
 	private Set<Bonus> bonuses;
 	
+	/**
+	 * Constructor of RewardTokenDTO
+	 */
 	public RewardTokenDTO() {
 	}
 	
+	/**
+	 * Constructor of RewardTokenDTO
+	 * @param bonuses are the bonuses of the token
+	 */
 	public RewardTokenDTO(Set<Bonus> bonuses) {
 		this.bonuses=bonuses;
 	}
 
 	public Set<Bonus> getBonuses() {
-		return bonuses;
+		return this.bonuses;
 	}
 
 	public void setBonuses(Set<Bonus> bonuses) {

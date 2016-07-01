@@ -7,28 +7,36 @@ import java.util.Set;
 
 import client.modelDTO.ModelDTO;
 
+/**
+ * This class provides all the informations about a city, but without logic
+ * @author cg31
+ *
+ */
 public class CityDTO implements ModelDTO{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 3576160634819872933L;
 	private String name;
 	private CityColourDTO colour;
 	private Set<GenericPlayerDTO> buildedEmporiums;
 	private RewardTokenDTO rewardToken;
 	
+	/**
+	 * Constructor of CityDTO
+	 */
 	public CityDTO(){		
 		this.buildedEmporiums=new HashSet<>();
 	}
 	
+	/**
+	 * Constructor of CityDTO
+	 * @param name is the name of the city
+	 */
 	public CityDTO(String name){
 		this.name=name;
 	}
 	
-	
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
@@ -37,7 +45,7 @@ public class CityDTO implements ModelDTO{
 
 
 	public CityColourDTO getColour() {
-		return colour;
+		return this.colour;
 	}
 
 	public void setColour(CityColourDTO colour) {
@@ -52,12 +60,9 @@ public class CityDTO implements ModelDTO{
 		this.buildedEmporiums = buildedEmporiums;
 	}
 
-	
-
 	public RewardTokenDTO getRewardToken() {
-		return rewardToken;
+		return this.rewardToken;
 	}
-
 
 	public void setRewardToken(RewardTokenDTO rewardToken) {
 		this.rewardToken = rewardToken;
