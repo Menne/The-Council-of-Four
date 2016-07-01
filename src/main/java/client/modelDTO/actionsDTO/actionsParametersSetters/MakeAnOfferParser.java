@@ -42,7 +42,7 @@ public class MakeAnOfferParser implements ActionParserVisitor {
 			OfferDTO offerDTO=new OfferDTO();
 			offerDTO.setOfferingPlayer(game.getClientPlayer().getName());
 			
-			offerDTO.setOfferedObjectDTO(view.askForMakingAnOffer());
+			offerDTO.setOfferedObjectDTO(view.askForMakingAnOffer(acceptableObjectsToOffer));
 			acceptableObjectsToOffer.remove(offerDTO.getOfferedObjectDTO());
 			
 			view.displayMessage("What's the price of the element you selected?");

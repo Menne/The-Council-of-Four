@@ -1023,11 +1023,11 @@ public class GUI extends ClientView{
 	}
 
 	@Override
-	public MarketableDTO askForMakingAnOffer() {
+	public MarketableDTO askForMakingAnOffer(List<MarketableDTO> acceptableObjectsToOffer) {
 		this.controllerMarketGUI.getMakeAnOffer().setDisable(true);
 		this.controllerMarketGUI.getAcceptAnOffer().setDisable(true);
 		this.controllerMarketGUI.getSkip().setDisable(true);
-		this.disableClickOnObjectsToSell(false);
+		this.disableClickOnObjectsToSell(false, acceptableObjectsToOffer);
 		synchronized (this.controllerMarketGUI) {
 			try {
 				while (currentParameter==null)
@@ -1039,7 +1039,7 @@ public class GUI extends ClientView{
 		}
 		MarketableDTO offeringObject=(MarketableDTO) this.currentParameter;
 		this.currentParameter=null;
-		this.disableClickOnObjectsToSell(true);
+		this.disableClickOnObjectsToSell(true, acceptableObjectsToOffer);
 		return offeringObject;
 	}
 
@@ -1343,7 +1343,7 @@ public class GUI extends ClientView{
 		});
 	}
 
-	private void disableClickOnObjectsToSell(boolean disabled) {
+	private void disableClickOnObjectsToSell(boolean disabled, List<MarketableDTO> acceptableObjectsToOffer) {
 		Platform.runLater(new Runnable() {
 			
 			@Override
@@ -1351,6 +1351,8 @@ public class GUI extends ClientView{
 				for (Object object : controllerMarketGUI.getAvailablePoliticCards().getChildren()) {
 					ImageView imageView=(ImageView) object;
 					imageView.setDisable(disabled);
+					if (imageView.getOpacity()!=1 && !disabled)
+						imageView.setDisable(true);
 				}
 				for (Object object : controllerMarketGUI.getAvailablePermitTiles().getChildren()) {
 					ImageView imageView=(ImageView) object;

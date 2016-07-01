@@ -303,11 +303,7 @@ public class CLI extends ClientView {
 	}
 
 	@Override
-	public MarketableDTO askForMakingAnOffer() {
-		List<MarketableDTO> acceptableObjectsToOffer=new ArrayList<>();
-		acceptableObjectsToOffer.addAll(this.clientGame.getClientPlayer().getHand());
-		acceptableObjectsToOffer.addAll(this.clientGame.getClientPlayer().getAvailablePermitTiles());
-		acceptableObjectsToOffer.addAll(this.clientGame.getClientPlayer().getAssistants());
+	public MarketableDTO askForMakingAnOffer(List<MarketableDTO> acceptableObjectsToOffer) {
 		List<String> indexes=new ArrayList<>();
 		List<String> offersWithIndex=new ArrayList<>();
 		int i=1;

@@ -175,9 +175,10 @@ public abstract class ClientView implements Observer<ClientViewNotify> {
 	
 	/**
 	 * This method is invoked when the action DTO needs a MarketableDTO parameter to be set
+	 * @param acceptableObjectsToOffer are the objects that the player can offer to others
 	 * @return the marketable object the user has selected
 	 */
-	public abstract MarketableDTO askForMakingAnOffer();
+	public abstract MarketableDTO askForMakingAnOffer(List<MarketableDTO> acceptableObjectsToOffer);
 	
 	/**
 	 * This method is invoked when the action DTO needs a price parameter to be set

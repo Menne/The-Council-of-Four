@@ -17,8 +17,8 @@ import client.view.ClientView;
  */
 public class ClientAvailableActionsNotify implements ClientViewNotify {
 
-	private List<ActionDTO> availableActions;
-	private String message;
+	private final List<ActionDTO> availableActions;
+	private final String message;
 
 	/**
 	 * Constructor of ClientAvailableActionsNotify

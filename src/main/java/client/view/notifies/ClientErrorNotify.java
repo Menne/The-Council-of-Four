@@ -9,7 +9,7 @@ import client.view.ClientView;
  */
 public class ClientErrorNotify implements ClientViewNotify {
 
-	private String message;
+	private final String message;
 
 	/**
 	 * Constructor of ClientErrorNotify
