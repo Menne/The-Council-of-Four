@@ -37,7 +37,7 @@ public class CoinsBonus implements Bonus{
 		game.notifyObserver(new MessageNotify("Congratulations! You got a bonus and your coins are increased of " 
 				+ this.coinsIncreasement, Arrays.asList(game.getCurrentPlayer())));
 	}
-
+	
 	@Override
 	public String toString() {
 		return "coins+" + coinsIncreasement;
