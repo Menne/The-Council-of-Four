@@ -210,6 +210,12 @@ public class GUI extends ClientView{
 	}
 	
 	
+	/**
+	 * Inserts the parameters of the selected action, then sends it to the server 
+	 * using the appropriate connection
+	 * @param actionWithParameters is the action whose parameters has to be set
+	 * @throws RemoteException if something goes wrong with the RMI connection
+	 */
 	public void insertParametersAndSend(ActionWithParameters actionWithParameters) throws RemoteException {
 		this.disableActionButtons(true);
 		actionWithParameters.setParser().setParameters(this, this.clientGame);
@@ -1156,7 +1162,11 @@ public class GUI extends ClientView{
 	}
 
 	
-	
+	/**
+	 * Enables the click on regions when the user has to choose form one of them, 
+	 * than disables it again to prevent a wrong setting of other parameters
+	 * @param disabled indicates if the buttons have to be enabled or disabled
+	 */
 	private void disableClickOnRegions(boolean disabled) {
 		Platform.runLater(()-> {
 			for (ImageView regionImageView : controllerGUI.getRegions()){
@@ -1169,6 +1179,11 @@ public class GUI extends ClientView{
 		});
 	}
 	
+	/**
+	 * Enables the click on permit tiles in hand when the user has to choose form one of them, 
+	 * than disables it again to prevent a wrong setting of other parameters
+	 * @param disabled indicates if the buttons have to be enabled or disabled
+	 */
 	private void disableClickOnPermitTilesInHand(boolean disabled) {
 		Platform.runLater(()-> {
 			for (Object object : controllerGUI.getPermitTilesTurnedUpOwned().getChildren()) {
@@ -1182,6 +1197,11 @@ public class GUI extends ClientView{
 		});
 	}
 
+	/**
+	 * Enables the click on councillors in reserve when the user has to choose form one of them, 
+	 * than disables it again to prevent a wrong setting of other parameters
+	 * @param disabled indicates if the buttons have to be enabled or disabled
+	 */
 	private void disableClickOnCouncillorsInReserve(boolean disabled) {
 		Platform.runLater(()-> {
 			for (int i=0; i<controllerGUI.getCouncillorReserve().size(); i++){
@@ -1194,6 +1214,11 @@ public class GUI extends ClientView{
 			});		
 	}
 	
+	/**
+	 * Enables the click on council balconies when the user has to choose form one of them, 
+	 * than disables it again to prevent a wrong setting of other parameters
+	 * @param disabled indicates if the buttons have to be enabled or disabled
+	 */
 	private void disableClickOnCouncilBalconies(boolean disabled) {
 		Platform.runLater(()-> {
 				for (int i=0; i<controllerGUI.getBalconies().size()-1; i++){
@@ -1211,6 +1236,11 @@ public class GUI extends ClientView{
 			});		
 	}
 	
+	/**
+	 * Enables the click on cities when the user has to choose form one of them, 
+	 * than disables it again to prevent a wrong setting of other parameters
+	 * @param disabled indicates if the buttons have to be enabled or disabled
+	 */
 	private void disableClickOnCities(boolean disabled, List<CityDTO> acceptableCities) {
 		Platform.runLater(()-> {
 				for (CityDTO city : acceptableCities)
@@ -1220,6 +1250,11 @@ public class GUI extends ClientView{
 			});
 	}
 	
+	/**
+	 * Enables the click on politics cards when the user has to choose form one of them, 
+	 * than disables it again to prevent a wrong setting of other parameters
+	 * @param disabled indicates if the buttons have to be enabled or disabled
+	 */
 	private void disableClickOnPoliticsCards(boolean disabled, int opacity) {
 		Platform.runLater(()-> {
 				for (Object object : controllerGUI.getHand().getChildren()){
@@ -1235,6 +1270,11 @@ public class GUI extends ClientView{
 		
 	}
 	
+	/**
+	 * Enables the click on the descard button when the user has selected at least one politics card 
+	 * to descard, then disables it when the action is completed
+	 * @param disabled indicates if the buttons have to be enabled or disabled
+	 */
 	private void disableClickOnDescardButton(boolean disabled) {
 		Platform.runLater(()-> {
 				controllerGUI.getDescardPoliticsCards().setDisable(disabled);
@@ -1249,6 +1289,11 @@ public class GUI extends ClientView{
 			});		
 	}
 	
+	/**
+	 * Enables the click on the two permit tile in regions when the user has to choose form one of them, 
+	 * than disables them again to prevent a wrong setting of other parameters
+	 * @param disabled indicates if the buttons have to be enabled or disabled
+	 */
 	private void disableClickOnPermitTilesInRegions(boolean disabled, RegionDTO selectedRegion) {
 		Platform.runLater(()-> {
 				if ("Sea".equals(selectedRegion.getName()))
@@ -1279,6 +1324,11 @@ public class GUI extends ClientView{
 	}
 
 
+	/**
+	 * Disables the click on action buttons when the user is inserting other parameters, 
+	 * then enables it again when the insertion of parameters is completed
+	 * @param disabled indicates if the buttons have to be enabled or disabled
+	 */
 	public void disableActionButtons(boolean disabled) {
 		Platform.runLater(()-> {
 				controllerGUI.getPoliticsDeck().setDisable(disabled);
@@ -1288,6 +1338,11 @@ public class GUI extends ClientView{
 	}
 	
 
+	/**
+	 * Enables the click on permit tiles in hand covered when the user has to choose form one of them, 
+	 * than disables it again to prevent a wrong setting of other parameters
+	 * @param disabled indicates if the buttons have to be enabled or disabled
+	 */
 	private void disableClickOnPermitTilesCovered(boolean disabled) {
 		Platform.runLater(()-> {
 				for (Object object : controllerGUI.getPermitTilesTurnedDownOwned().getChildren()) {
@@ -1302,6 +1357,11 @@ public class GUI extends ClientView{
 			});
 	}
 
+	/**
+	 * Enables the click on objects that a player can sell when the user has to choose form one of them, 
+	 * than disables it again to prevent a wrong setting of other parameters
+	 * @param disabled indicates if the buttons have to be enabled or disabled
+	 */
 	private void disableClickOnObjectsToSell(boolean disabled, List<MarketableDTO> acceptableObjectsToOffer) {
 		Platform.runLater(()-> {
 
@@ -1322,18 +1382,32 @@ public class GUI extends ClientView{
 			});
 	}
 	
+	/**
+	 * Enables the click on regions when the user has to choose form one of them, 
+	 * than disables it again to prevent a wrong setting of oher parameters
+	 * @param disabled indicates if the buttons have to be enabled or disabled
+	 */
 	private void disablePriceInsertion(boolean disabled) {
 		Platform.runLater(()-> {
 				controllerMarketGUI.getPrice().setDisable(disabled);
 			});
 	}
 	
+	/**
+	 * Enables the click on the button of offer ready
+	 * @param disabled indicates if the buttons have to be enabled or disabled
+	 */
 	private void disableClickOnOfferSettedButtons(boolean disabled) {
 		Platform.runLater(()-> {
 				controllerMarketGUI.getSell().setDisable(disabled);
 			});
 	}
 	
+	/**
+	 * Enables the click on offers in the market when the user has to choose form one of them, 
+	 * than disables it again to prevent a wrong setting of other parameters
+	 * @param disabled indicates if the buttons have to be enabled or disabled
+	 */
 	private void disableClickOnOffers(boolean disabled) {
 		Platform.runLater(()-> {
 				for (Object offer : controllerMarketGUI.getOffers().getChildren()){

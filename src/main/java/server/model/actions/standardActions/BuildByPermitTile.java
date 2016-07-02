@@ -187,7 +187,7 @@ public class BuildByPermitTile implements MainAction {
 	}
 	
 	/**
-	 * For all the bonuses to assign, it notifies the player about the bonus earned
+	 * For all the bonuses to assign, it assigns the bonus and notifies the player about the bonus earned
 	 * @param game is the current game status
 	 */
 	private void assignBonus(Game game) {

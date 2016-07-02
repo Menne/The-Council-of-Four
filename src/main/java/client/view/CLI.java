@@ -61,6 +61,7 @@ public class CLI extends ClientView {
 		return null;
 	}
 	
+	
 	@Override
 	public void input() throws RemoteException {
 		String input="";
@@ -89,6 +90,12 @@ public class CLI extends ClientView {
 		}		
 	}
 	
+	/**
+	 * Inserts the parameters of the selected action, then sends it to the server 
+	 * using the appropriate connection
+	 * @param actionWithParameters is the action whose parameters has to be set
+	 * @throws RemoteException if something goes wrong with the RMI connection
+	 */
 	private void insertParametersAndSend(ActionWithParameters actionWithParameters) throws RemoteException {
 		actionWithParameters.setParser().setParameters(this, this.clientGame);
 		if (actionWithParameters.checkIfParametersSet())
@@ -103,6 +110,15 @@ public class CLI extends ClientView {
 		if (notify instanceof ClientGameOverNotify)
 			scanner.close();
 	}
+	
+	/**
+	 * Prints a generic game update or message using System.out
+	 * @param message
+	 */
+	public void println(String message){
+		System.out.println(message);
+	}
+	
 
 	@Override
 	public void displayMessage(String message) {
@@ -395,10 +411,6 @@ public class CLI extends ClientView {
 	@Override
 	public void startGame() {
 		return;
-	}
-	
-	public void println(String message){
-		System.out.println(message);
 	}
 
 
