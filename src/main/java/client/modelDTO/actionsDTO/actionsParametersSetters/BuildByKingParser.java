@@ -33,22 +33,20 @@ public class BuildByKingParser implements ActionParserVisitor {
 		
 		if (!game.getClientPlayer().getHand().isEmpty()) {
 			
-			view.displayMessage("Now I need some other infos, like:");
-		
-			view.displayMessage("the name of the city in which you want to build");
+			view.displayMessage("Select the city in which you want to build an emporium");
 			List<CityDTO> acceptableCities=new ArrayList<>();
 			for (RegionDTO region : game.getClientGameTable().getClientRegions())
 				acceptableCities.addAll(region.getCities());
 			this.selectedAction.setSelectedCity(view.askForCity(acceptableCities));
 			
-			view.displayMessage("the colour of the cards you want to descard");
+			view.displayMessage("Select the politics cards you want to descard");
 			this.selectedAction.setCardsToDescard(view.askForPoliticsCards());
 			
 			this.selectedAction.parametersSet();
 		
 		}
 		else 
-			view.displayMessage("but it seems that you haven't any politics card in your hand! Select another action please");
+			view.displayMessage("But it seems that you haven't any politics card in your hand! Select another action please");
 	}
 
 }

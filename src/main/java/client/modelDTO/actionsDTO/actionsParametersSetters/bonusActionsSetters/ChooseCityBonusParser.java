@@ -31,9 +31,6 @@ public class ChooseCityBonusParser implements ActionParserVisitor {
 
 	@Override
 	public void setParameters(ClientView view, GameDTO game) {
-		view.displayMessage("City bonus earned! You have the possibility to choose from the cities in which you have built"
-						+ "an emporium, and get the bonuses associated to that");
-		
 		List<CityDTO> acceptableCities=new ArrayList<>();
 		for (RegionDTO region : game.getClientGameTable().getClientRegions())
 			for (CityDTO city : region.getCities())

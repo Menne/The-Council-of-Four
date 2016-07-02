@@ -241,10 +241,10 @@ public class BuildByKing implements MainAction {
 	 * @param game is the current game status
 	 */
 	private void assignBonus(Game game) {
-		ConnectedBuiltCityDiscover likedCities=new ConnectedBuiltCityDiscover();
+		ConnectedBuiltCityDiscover linkedCities=new ConnectedBuiltCityDiscover();
 		Emporium temporaryEmporium=game.getCurrentPlayer().removeEmporium();
 		this.selectedCity.addEmporium(temporaryEmporium);
-		for (City city : likedCities.getConnectedBuiltCities(game.getGameTable().getMap().getGameMap(), this.selectedCity, temporaryEmporium))
+		for (City city : linkedCities.getConnectedBuiltCities(game.getGameTable().getMap().getGameMap(), this.selectedCity, temporaryEmporium))
 			for (Bonus bonusToAssign : city.getRewardToken().getRewardTokenBonus())
 				bonusToAssign.assignBonus(game);
 	}

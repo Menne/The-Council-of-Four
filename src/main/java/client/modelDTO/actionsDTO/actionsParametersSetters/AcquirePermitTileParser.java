@@ -28,23 +28,21 @@ public class AcquirePermitTileParser implements ActionParserVisitor {
 			
 		if (!game.getClientPlayer().getHand().isEmpty()) {
 			
-			view.displayMessage("Now I need some other infos, like:");
-			
-			view.displayMessage("the name of the region in which you want to pick");
+			view.displayMessage("Select the region in which you want to pick the permit tile");
 			this.selectedAction.setChosenRegion(view.askForRegionBoard());
 	
-			view.displayMessage("the number of permit tile you want to pick");
+			view.displayMessage("Select the permit tile you want to pick");
 			this.selectedAction.setNumberOfPermitTile(view.askForNumberOfPermitTile
 					(this.selectedAction.getChoosenRegion()));
 			
-			view.displayMessage("the colours of the cards in your hand you want to descard");
+			view.displayMessage("Select the politics cards you want to descard");
 			this.selectedAction.setCardsToDescard(view.askForPoliticsCards());
 			
 			this.selectedAction.parametersSet();
 			
 		}
 		else 
-			view.displayMessage("but it seems that you haven't any politics card in your hand! Select another action please");
+			view.displayMessage("But it seems that you haven't any politics card in your hand! Select another action please");
 	}
 
 }

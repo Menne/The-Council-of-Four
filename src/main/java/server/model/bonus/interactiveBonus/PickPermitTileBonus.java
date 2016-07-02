@@ -31,7 +31,7 @@ public class PickPermitTileBonus implements Bonus {
 		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
 				Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new AvailableActionsNotify(Arrays.asList(new PickPermitTileBonusAction()), Arrays.asList(game.getCurrentPlayer()),
-				"Congratulations! You got a special bonus"));
+				"Congratulations! You have the possibility pick a permit tile without paying the cost"));
 	}
 
 }
