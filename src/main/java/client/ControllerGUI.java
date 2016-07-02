@@ -951,7 +951,8 @@ public class ControllerGUI {
 	        
 	    	@Override
 	        public void run() {
-	    		((Node) mouseEvent.getSource()).setCursor(Cursor.HAND);
+	    		Image image = new Image(getClass().getResource("view/images/cursor/hand.png").toExternalForm());
+	    		((Node) mouseEvent.getSource()).setCursor(new ImageCursor(image));
 	        }
 	    });
     }

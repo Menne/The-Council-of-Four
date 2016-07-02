@@ -102,7 +102,7 @@ public class ControllerChooseMap {
 	        
 	    	@Override
 	        public void run() {
-	    		Image image = new Image(getClass().getResource("view/images/cursor/glowing1.png").toExternalForm());
+	    		Image image = new Image(getClass().getResource("view/images/cursor/arrow.png").toExternalForm());
 				backGround.setCursor(new ImageCursor(image));
 	        }
 	    });

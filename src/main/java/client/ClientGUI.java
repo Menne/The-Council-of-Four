@@ -50,7 +50,7 @@ public class ClientGUI extends Application {
 		 Scene scene = new Scene(rootLayout);
 		 primaryStage.setScene(scene);
 		 primaryStage.show();
-		 Image image = new Image(getClass().getResource("view/images/cursor/glowing1.png").toExternalForm());
+		 Image image = new Image(getClass().getResource("view/images/cursor/arrow.png").toExternalForm());
 		 scene.setCursor(new ImageCursor(image));
 	}
 	
