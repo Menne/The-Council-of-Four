@@ -104,7 +104,7 @@ public class Game extends Observable<ViewNotify>{
 	}
 	
 	/**
-	 * assigns all the end Game bonuses, sending an EndGameNotify with the quitted  players
+	 * assigns all the end Game bonuses, sending an EndGameNotify with to all players
 	 */
 	public void endGame(){
 		this.assignFinalBonus();

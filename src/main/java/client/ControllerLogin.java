@@ -60,7 +60,14 @@ public class ControllerLogin {
 		this.clientGUI = clientGUI;
 	}
 
-
+/**
+ * It's the method called by pressing play on the login screen.
+ * Reads the player name, the connection and the address from the textBox.
+ * Registers the observers and call the welcome method of the GUI
+ * @throws UnknownHostException if something goes wrong initializing the Socket
+ * @throws IOException if something goes wrong initializing the Socket
+ * @throws NotBoundException if something goes from connecting RMI
+ */
 
 	public void play() throws UnknownHostException, IOException, NotBoundException{
 		Alert alert=new Alert(AlertType.ERROR);
