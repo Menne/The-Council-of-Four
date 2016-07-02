@@ -54,16 +54,15 @@ public class ActionDTOMapper implements ActionMapperVisitor{
 
 	private Game game;
 
+	/**
+	 * Constructor of ActionDTOMapper
+	 * @param game is the current game state
+	 */
 	public ActionDTOMapper(Game game) {
 		this.game=game;
 	}
 
-	/**
-	 * This method creates a new AcquirePermitTile action according to the AcquirePermitTileDTO received,
-	 * then maps all the parameters DTO into their corresponding real objects, setting them to the real action created
-	 * @param selectedActionDTO is the action selected by the client whose parameters need to be translated
-	 * return an AcquirePermitTile action with all the parameters set
-	 */
+	
 	@Override
 	public AcquirePermitTile map(AcquirePermitTileDTO selectedActionDTO) {
 		AcquirePermitTile action = new AcquirePermitTile();
@@ -82,12 +81,6 @@ public class ActionDTOMapper implements ActionMapperVisitor{
 		return action;
 	}
 
-	/**
-	 * This method creates a new BuildByKing action according to the BuildByKingDTO received,
-	 * then maps all the parameters DTO into their corresponding real objects, setting them to the real action created
-	 * @param selectedActionDTO is the action selected by the client whose parameters need to be translated
-	 * return an BuildByKing action with all the parameters set
-	 */
 	@Override
 	public BuildByKing map(BuildByKingDTO selectedActionDTO) {
 		BuildByKing action=new BuildByKing();
@@ -104,12 +97,6 @@ public class ActionDTOMapper implements ActionMapperVisitor{
 		return action;
 	}
 
-	/**
-	 * This method creates a new BuildByPermitTile action according to the BuildByPermitTileDTO received,
-	 * then maps all the parameters DTO into their corresponding real objects, setting them to the real action created
-	 * @param selectedActionDTO is the action selected by the client whose parameters need to be translated
-	 * @return an BuildByPermitTile action with all the parameters set
-	 */
 	@Override
 	public BuildByPermitTile map(BuildByPermitTileDTO selectedActionDTO) {
 		BuildByPermitTile action =new BuildByPermitTile();
@@ -125,12 +112,6 @@ public class ActionDTOMapper implements ActionMapperVisitor{
 		return action;
 	}
 
-	/**
-	 * This method creates a new ChangePermitTiles action according to the ChangePermitTilesDTO received,
-	 * then maps all the parameters DTO into their corresponding real objects, setting them to the real action created
-	 * @param selectedActionDTO is the action selected by the client whose parameters need to be translated
-	 * @return an ChangePermitTiles action with all the parameters set
-	 */
 	@Override
 	public ChangePermitTiles map(ChangePermitTilesDTO selectedActionDTO) {
 		ChangePermitTiles action=new ChangePermitTiles();
@@ -141,12 +122,6 @@ public class ActionDTOMapper implements ActionMapperVisitor{
 		return action;
 	}
 
-	/**
-	 * This method creates a new ElectCouncillor action according to the ElectCouncillorDTO received,
-	 * then maps all the parameters DTO into their corresponding real objects, setting them to the real action created
-	 * @param selectedActionDTO is the action selected by the client whose parameters need to be translated
-	 * @return an ElectCouncillor action with all the parameters set
-	 */
 	@Override
 	public ElectCouncillor map(ElectCouncillorDTO selectedActionDTO) {
 		ElectCouncillor action = new ElectCouncillor();
@@ -164,12 +139,6 @@ public class ActionDTOMapper implements ActionMapperVisitor{
 		return action;
 	}
 
-	/**
-	 * This method creates a new ElectCouncillorByAssistant action according to the ElectCouncillorByAssistantDTO received,
-	 * then maps all the parameters DTO into their corresponding real objects, setting them to the real action created
-	 * @param selectedActionDTO is the action selected by the client whose parameters need to be translated
-	 * @return an ElectCouncillorByAssistant action with all the parameters set
-	 */
 	@Override
 	public ElectCouncillorByAssistant map(ElectCouncillorByAssistantDTO selectedActionDTO) {
 		ElectCouncillorByAssistant action =new ElectCouncillorByAssistant();
@@ -187,12 +156,6 @@ public class ActionDTOMapper implements ActionMapperVisitor{
 		return action;
 	}
 
-	/**
-	 * This method creates a new MakeAnOffer action according to the MakeAnOfferDTO received,
-	 * then maps all the parameters DTO into their corresponding real objects, setting them to the real action created
-	 * @param selectedActionDTO is the action selected by the client whose parameters need to be translated
-	 * @return an MakeAnOffer action with all the parameters set
-	 */
 	@Override
 	public MakeAnOffer map(MakeAnOfferDTO selectedActionDTO) {
 
@@ -222,12 +185,6 @@ public class ActionDTOMapper implements ActionMapperVisitor{
 		return action;
 	}
 
-	/**
-	 * This method creates a new AcceptAnOffer action according to the AcceptAnOfferDTO received,
-	 * then maps all the parameters DTO into their corresponding real objects, setting them to the real action created
-	 * @param selectedActionDTO is the action selected by the client whose parameters need to be translated
-	 * @return an AcceptAnOffer action with all the parameters set
-	 */
 	@Override
 	public AcceptAnOffer map(AcceptAnOfferDTO selectedActionDTO) {
 		AcceptAnOffer action = new AcceptAnOffer();
@@ -250,12 +207,6 @@ public class ActionDTOMapper implements ActionMapperVisitor{
 		return action;
 	}
 
-	/**
-	 * This method creates a new ChooseCityBonusAction action according to the ChooseCityBonusActionDTO received,
-	 * then maps all the parameters DTO into their corresponding real objects, setting them to the real action created
-	 * @param selectedActionDTO is the action selected by the client whose parameters need to be translated
-	 * @return an ChooseCityBonusAction action with all the parameters set
-	 */
 	@Override
 	public ChooseCityBonusAction map(ChooseCityActionDTO selectedActionDTO) {
 		ChooseCityBonusAction action=new ChooseCityBonusAction(selectedActionDTO.getNumberOfCities());
@@ -267,16 +218,9 @@ public class ActionDTOMapper implements ActionMapperVisitor{
 					selectedCities.add(city);
 		action.setSelectedCity(selectedCities);
 		
-		
 		return action;
 	}
 
-	/**
-	 * This method creates a new PurchasedPermitTileAction action according to the PurchasedPermitTileActionDTO received,
-	 * then maps all the parameters DTO into their corresponding real objects, setting them to the real action created
-	 * @param selectedActionDTO is the action selected by the client whose parameters need to be translated
-	 * @return an PurchasedPermitTileAction action with all the parameters set
-	 */
 	@Override
 	public PurchasedPermitTileAction map(PurchasedPermitTileActionDTO selectedActionDTO) {
 		PurchasedPermitTileAction action=new PurchasedPermitTileAction();
@@ -289,12 +233,6 @@ public class ActionDTOMapper implements ActionMapperVisitor{
 		return action;
 	}
 	
-	/**
-	 * This method creates a new PickPermitTileBonusAction action according to the PickPermitTileBonusActionDTO received,
-	 * then maps all the parameters DTO into their corresponding real objects, setting them to the real action created
-	 * @param selectedActionDTO is the action selected by the client whose parameters need to be translated
-	 * @return an PickPermitTileBonusAction action with all the parameters set
-	 */
 	@Override
 	public PickPermitTileBonusAction map(PickPermitTileActionDTO selectedActionDTO) {
 		PickPermitTileBonusAction action=new PickPermitTileBonusAction();
