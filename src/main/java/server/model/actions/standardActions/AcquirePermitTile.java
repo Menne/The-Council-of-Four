@@ -57,18 +57,18 @@ public class AcquirePermitTile implements MainAction {
 			throw new NullPointerException("Paramters not setted");
 		
 		if (!this.CheckEnoughCoins(game)) {
-			game.notifyObserver(new ErrorNotify("It seems that you haven't enough coins!. Try again or choose another action", 
+			game.notifyObserver(new ErrorNotify("It seems that you haven't enough coins! Try again or choose another action", 
 					Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}
 		if (!this.CheckHandSatisfiesBalcony()) {
-					game.notifyObserver(new ErrorNotify("It seems that the cards in you hand don't satisfy the councillors!. Try again or choose another action", 
+					game.notifyObserver(new ErrorNotify("It seems that the cards in you hand don't satisfy the councillors! Try again or choose another action", 
 							Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}
-					
-		for (Bonus bonusToAssign : this.chosenRegion.getUncoveredPermitTiles()[numberOfPermitTile].getBonuses())
-			bonusToAssign.assignBonus(game);
+		
+		this.assignBonus(game);
+		
 		game.getCurrentPlayer().decrementCoins(CoinsToPay());
 		
 		for (PoliticsCard card : cardsToDescard) {
@@ -153,6 +153,14 @@ public class AcquirePermitTile implements MainAction {
 				+ " acquired the permit tile number " + (this.numberOfPermitTile+1) + " of " + this.chosenRegion.getName() + " region", otherPlayers));
 	}
 
+	/**
+	 * For all the bonuses to assign, it assigns the bonus and notifies the player about the bonus earned
+	 * @param game is the current game status
+	 */
+	private void assignBonus(Game game) {
+		for (Bonus bonusToAssign : this.chosenRegion.getUncoveredPermitTiles()[numberOfPermitTile].getBonuses())
+			bonusToAssign.assignBonus(game);
+	}
 	
 	@Override
 	public ActionDTO map() {

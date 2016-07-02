@@ -133,7 +133,7 @@ public class ControllerChooseMap {
 	@FXML
     public void changeMouseStyleMap2(MouseEvent mouseEvent) {
     	Platform.runLater(() -> {
-    		preview.setImage(new Image(getClass().getResource("view/images/various/map3copia.png").toExternalForm()));
+    		preview.setImage(new Image(getClass().getResource("view/images/various/map2copia.png").toExternalForm()));
 	    	((Node) mouseEvent.getSource()).setCursor(Cursor.HAND);
 	        });
     }

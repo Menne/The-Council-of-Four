@@ -52,8 +52,6 @@ public class BuildByPermitTile implements MainAction {
 			throw new NullPointerException("Paramters not setted");
 		}
 		
-		ConnectedBuiltCityDiscover likedCities=new ConnectedBuiltCityDiscover();
-		
 		if (!checkCityNotContainsEmporium(game)) {
 			game.notifyObserver(new ErrorNotify("It seems that this city arelady contains your emporium!. Try again or choose another action", 
 					Arrays.asList(game.getCurrentPlayer())));
@@ -70,12 +68,8 @@ public class BuildByPermitTile implements MainAction {
 			return false;
 		}
 		
-		game.getCurrentPlayer().decrementAssistants(assistantsToPay());	
-		Emporium temporaryEmporium=game.getCurrentPlayer().removeEmporium();
-		this.selectedCity.addEmporium(temporaryEmporium);
-		for (City city : likedCities.getConnectedBuiltCities(game.getGameTable().getMap().getGameMap(), this.selectedCity, temporaryEmporium))
-			for (Bonus bonusToAssign : city.getRewardToken().getRewardTokenBonus())
-				bonusToAssign.assignBonus(game);
+		this.assignBonus(game);
+		
 		game.getCurrentPlayer().getPlayersPermitTilesTurnedDown().add(this.selectedPermitTile);
 		game.getCurrentPlayer().getPlayersPermitTilesTurnedUp().remove(this.selectedPermitTile);
 
@@ -190,6 +184,19 @@ public class BuildByPermitTile implements MainAction {
 				otherPlayers.add(player);
 		game.notifyObserver(new MessageNotify(game.getCurrentPlayer().getName()
 				+ " built an emporium in " + this.selectedCity.getName(), otherPlayers));
+	}
+	
+	/**
+	 * For all the bonuses to assign, it assigns the bonus and notifies the player about the bonus earned
+	 * @param game is the current game status
+	 */
+	private void assignBonus(Game game) {
+		ConnectedBuiltCityDiscover likedCities=new ConnectedBuiltCityDiscover();
+		Emporium temporaryEmporium=game.getCurrentPlayer().removeEmporium();
+		this.selectedCity.addEmporium(temporaryEmporium);
+		for (City city : likedCities.getConnectedBuiltCities(game.getGameTable().getMap().getGameMap(), this.selectedCity, temporaryEmporium))
+			for (Bonus bonusToAssign : city.getRewardToken().getRewardTokenBonus())
+				bonusToAssign.assignBonus(game);
 	}
 
 	@Override

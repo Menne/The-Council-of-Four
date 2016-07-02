@@ -10,17 +10,17 @@ import client.modelDTO.gameTableDTO.PermitTileDTO;
 
 public class PurchasedPermitTileActionDTOTest {
 
-/*	@Test
+	@Test
 	public void testSetters() {
 		PermitTileDTO selectedPermitTile= new PermitTileDTO();
 		PurchasedPermitTileActionDTO action= new PurchasedPermitTileActionDTO();
 		action.setPermitTile(selectedPermitTile);
-		assertFalse(action.checkIfParametersSetted());
+		assertFalse(action.checkIfParametersSet());
 		assertEquals(PurchasedPermitTileBonusParser.class, action.setParser().getClass());
-		action.parametersSetted();
+		action.parametersSet();
 		assertTrue(action.getSelectedPermitTile()==selectedPermitTile);
-		assertTrue(action.checkIfParametersSetted());
-		
-	}*/
+		assertTrue(action.checkIfParametersSet());
+		assertEquals("b3: get bonus!", action.toString());
+	}
 
 }

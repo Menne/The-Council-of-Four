@@ -36,13 +36,9 @@ public class BuildByKing implements MainAction {
 		this.selectedCity = selectedCity;
 	}
 
-
-
 	public void setCardsToDescard(List<PoliticsCard> cardsToDescard) {
 		this.cardsToDescard = cardsToDescard;
 	}
-
-
 
 	/**
 	 * First of all checks if the parameters the current player gave are corrected, 
@@ -56,8 +52,6 @@ public class BuildByKing implements MainAction {
 		
 		if(this.cardsToDescard==null || this.selectedCity==null)
 			throw new NullPointerException("Paramters not setted");
-		
-		ConnectedBuiltCityDiscover likedCities=new ConnectedBuiltCityDiscover();
 		
 		if (!checkCityNotContainsEmporium(game)) {
 			game.notifyObserver(new ErrorNotify("It seems that this city arelady contains your emporium!. Try again or choose another action",
@@ -85,11 +79,8 @@ public class BuildByKing implements MainAction {
 		for (PoliticsCard card : cardsToDescard)
 			game.getCurrentPlayer().removeCardFromHand(card);
 		
-		Emporium temporaryEmporium=game.getCurrentPlayer().removeEmporium();
-		this.selectedCity.addEmporium(temporaryEmporium);
-		for (City city : likedCities.getConnectedBuiltCities(game.getGameTable().getMap().getGameMap(), this.selectedCity, temporaryEmporium))
-			for (Bonus bonusToAssign : city.getRewardToken().getRewardTokenBonus())
-				bonusToAssign.assignBonus(game);
+		this.assignBonus(game);
+		
 		game.getGameTable().getKing().moveKing(selectedCity);
 
 		if (this.selectedCity.getRegion().isBonusAvailable())
@@ -245,6 +236,18 @@ public class BuildByKing implements MainAction {
 				+ " built an emporium in " + this.selectedCity.getName() + " with the help of the King", otherPlayers));
 	}
 
+	/**
+	 * For all the bonuses to assign, it assigns the bonus and notifies the player about the bonus earned
+	 * @param game is the current game status
+	 */
+	private void assignBonus(Game game) {
+		ConnectedBuiltCityDiscover likedCities=new ConnectedBuiltCityDiscover();
+		Emporium temporaryEmporium=game.getCurrentPlayer().removeEmporium();
+		this.selectedCity.addEmporium(temporaryEmporium);
+		for (City city : likedCities.getConnectedBuiltCities(game.getGameTable().getMap().getGameMap(), this.selectedCity, temporaryEmporium))
+			for (Bonus bonusToAssign : city.getRewardToken().getRewardTokenBonus())
+				bonusToAssign.assignBonus(game);
+	}
 
 	@Override
 	public ActionDTO map() {
