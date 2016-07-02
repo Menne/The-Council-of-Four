@@ -11,28 +11,30 @@ import client.modelDTO.gameTableDTO.RegionDTO;
 import server.model.actions.Action;
 import server.view.actionMapperVisitor.ActionMapperVisitor;
 
+/**
+ * This class represents the DTO version of the AcquirePermitTile action, with all the DTO parameters 
+ * necessary but without logic
+ * @author cg31
+ *
+ */
 public class AcquirePermitTileDTO implements ActionDTO, ActionWithParameters {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 8143885166021767590L;
-	
 	private Integer numberOfPermitTile;
 	private RegionDTO chosenRegion;
 	private List<PoliticsCardDTO> cardsToDescard;
 	private boolean parametersSetted=false;
 
 	public int getNumberOfPermitTiles() {
-		return numberOfPermitTile;
+		return this.numberOfPermitTile;
 	}
 
 	public RegionDTO getChoosenRegion() {
-		return chosenRegion;
+		return this.chosenRegion;
 	}
 
 	public List<PoliticsCardDTO> getCardsToDescard() {
-		return cardsToDescard;
+		return this.cardsToDescard;
 	}
 	
 	public void setNumberOfPermitTile(Integer numberOfPermitTile) {

@@ -11,11 +11,14 @@ import client.modelDTO.gameTableDTO.CityDTO;
 import server.model.actions.Action;
 import server.view.actionMapperVisitor.ActionMapperVisitor;
 
+/**
+ * This class represents the DTO version of the ChooseCityAction bonus action, with all the DTO parameters 
+ * necessary but without logic
+ * @author cg31
+ *
+ */
 public class ChooseCityActionDTO implements ActionDTO, ActionWithParameters {
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 8237414941174350412L;
 	private List<CityDTO> selectedCities;
 	private final int numberOfCities;

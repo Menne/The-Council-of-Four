@@ -9,22 +9,25 @@ import client.modelDTO.gameTableDTO.PermitTileDTO;
 import server.model.actions.Action;
 import server.view.actionMapperVisitor.ActionMapperVisitor;
 
+/**
+ * This class represents the DTO version of the BuildByPermitTile action, with all the DTO parameters 
+ * necessary but without logic
+ * @author cg31
+ *
+ */
 public class BuildByPermitTileDTO implements ActionDTO, ActionWithParameters {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -8061305769975404856L;
-	private  PermitTileDTO selectedPermitTile;
-	private  CityDTO selectedCity;
+	private PermitTileDTO selectedPermitTile;
+	private CityDTO selectedCity;
 	private boolean parametersSetted=false;
 
 	public PermitTileDTO getSelectedPermitTile() {
-		return selectedPermitTile;
+		return this.selectedPermitTile;
 	}
 
 	public CityDTO getSelectedCity() {
-		return selectedCity;
+		return this.selectedCity;
 	}
 
 	public void setSelectedPermitTile(PermitTileDTO selectedPermitTile) {
@@ -36,7 +39,7 @@ public class BuildByPermitTileDTO implements ActionDTO, ActionWithParameters {
 	}
 	@Override
 	public boolean checkIfParametersSet() {
-		return parametersSetted;
+		return this.parametersSetted;
 	}
 	@Override
 	public void parametersSet() {

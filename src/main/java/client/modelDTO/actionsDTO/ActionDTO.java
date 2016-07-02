@@ -5,7 +5,7 @@ import server.model.actions.Action;
 import server.view.actionMapperVisitor.ActionMapperVisitor;
 
 /**
- * This interface modelizes a generic action DTO
+ * This interface modelizes a generic action DTO, with all the parameters DTO necessary but without logic
  * @author cg31
  *
  */

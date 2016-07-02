@@ -11,11 +11,14 @@ import client.modelDTO.marketDTO.OfferDTO;
 import server.model.actions.Action;
 import server.view.actionMapperVisitor.ActionMapperVisitor;
 
+/**
+ * This class represents the DTO version of the MakeAnOffer action, with all the DTO parameters 
+ * necessary but without logic
+ * @author cg31
+ *
+ */
 public class MakeAnOfferDTO implements ActionDTO, ActionWithParameters {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 7027014433305067100L;
 	private List<OfferDTO> offeredObjectsDTO;
 	private boolean parametersSetted=false;

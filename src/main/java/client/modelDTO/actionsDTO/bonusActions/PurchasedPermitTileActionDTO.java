@@ -8,11 +8,14 @@ import client.modelDTO.gameTableDTO.PermitTileDTO;
 import server.model.actions.Action;
 import server.view.actionMapperVisitor.ActionMapperVisitor;
 
+/**
+ * This class represents the DTO version of the PurchasedPermitTileAction bonus action, with all the DTO parameters 
+ * necessary but without logic
+ * @author cg31
+ *
+ */
 public class PurchasedPermitTileActionDTO implements ActionDTO, ActionWithParameters {
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 893810260862447362L;
 	private PermitTileDTO selectedPermitTile;
 	private boolean parametersSetted=false;
@@ -22,7 +25,7 @@ public class PurchasedPermitTileActionDTO implements ActionDTO, ActionWithParame
 	}
 
 	public PermitTileDTO getSelectedPermitTile() {
-		return selectedPermitTile;
+		return this.selectedPermitTile;
 	}
 
 	@Override

@@ -8,11 +8,14 @@ import client.modelDTO.marketDTO.OfferDTO;
 import server.model.actions.Action;
 import server.view.actionMapperVisitor.ActionMapperVisitor;
 
+/**
+ * This class represents the DTO version of the AcceptAnOffer action, with all the DTO parameters 
+ * necessary but without logic
+ * @author cg31
+ *
+ */
 public class AcceptAnOfferDTO implements ActionDTO, ActionWithParameters {
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 4616730650885295726L;
 	private OfferDTO offerDTO;
 	private boolean parametersSetted=false;
@@ -25,7 +28,7 @@ public class AcceptAnOfferDTO implements ActionDTO, ActionWithParameters {
 
 	
 	public OfferDTO getOffer() {
-		return offerDTO;
+		return this.offerDTO;
 	}
 
 	public void setOffer(OfferDTO offerDTO) {
@@ -34,7 +37,7 @@ public class AcceptAnOfferDTO implements ActionDTO, ActionWithParameters {
 	
 	@Override
 	public boolean checkIfParametersSet() {
-		return parametersSetted;
+		return this.parametersSetted;
 	}
 
 	@Override
