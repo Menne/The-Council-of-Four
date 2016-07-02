@@ -194,8 +194,9 @@ public class Initializer {
 		s=b.readLine();
 		if("FirstRegionCities".equals(s)){
 			while(!"STOPFirstRegionCities".equals(s)){
-			firstRegionCities.add(new City(b.readLine(), regionTranslator(b.readLine(), regionList), cityColourTranslator(b.readLine(), cityColourList),rewardTokenList));
-			s=b.readLine();}
+				firstRegionCities.add(new City(b.readLine(), regionTranslator(b.readLine(), regionList), cityColourTranslator(b.readLine(), cityColourList),rewardTokenList));
+				s=b.readLine();
+			}
 		}
 		return firstRegionCities;
 	}
@@ -206,8 +207,9 @@ public class Initializer {
 		s=b.readLine();
 		if("SecondRegionCities".equals(s)){
 			while(!"STOPSecondRegionCities".equals(s)){
-			secondRegionCities.add(new City(b.readLine(), regionTranslator(b.readLine(), regionList), cityColourTranslator(b.readLine(), cityColourList),rewardTokenList));
-			s=b.readLine();}
+				secondRegionCities.add(new City(b.readLine(), regionTranslator(b.readLine(), regionList), cityColourTranslator(b.readLine(), cityColourList),rewardTokenList));
+				s=b.readLine();
+			}
 		}
 		return secondRegionCities;
 	}
@@ -218,8 +220,9 @@ public class Initializer {
 		s=b.readLine();
 		if("ThirdRegionCities".equals(s)){
 			while(!"STOPThirdRegionCities".equals(s)){
-			thirdRegionCities.add(new City(b.readLine(), regionTranslator(b.readLine(), regionList), cityColourTranslator(b.readLine(), cityColourList),rewardTokenList));
-			s=b.readLine();}
+				thirdRegionCities.add(new City(b.readLine(), regionTranslator(b.readLine(), regionList), cityColourTranslator(b.readLine(), cityColourList),rewardTokenList));
+				s=b.readLine();
+			}
 		}
 		return thirdRegionCities;
 	}
@@ -229,7 +232,8 @@ public class Initializer {
 		if("NearCities".equals(s))
 			while(!"STOPNearCities".equals(s)){
 				cityTranslator(b.readLine(), allCities).addNearCity(cityTranslator(b.readLine(), allCities));
-				s=b.readLine();}
+				s=b.readLine();
+			}
 	}
 	
 	private void firstRegionPermitListInitializer(BufferedReader b, Set<City> allCities, List<RegionBoard> regionBoards) throws IOException{

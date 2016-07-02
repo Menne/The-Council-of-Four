@@ -23,10 +23,7 @@ public class AdditionalMainAction implements QuickAction {
 	private static final int necessaryAssistants=3;
 	
 	private boolean checkAssistants(Game game){
-		if(game.getCurrentPlayer().getNumberOfAssistants()>=necessaryAssistants)
-			return true;
-		else
-			return false;
+		return (game.getCurrentPlayer().getNumberOfAssistants()>=necessaryAssistants);
 	}
 	
 	/**

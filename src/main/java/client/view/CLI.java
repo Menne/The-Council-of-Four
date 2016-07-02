@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import client.connections.Connection;
@@ -69,6 +71,8 @@ public class CLI extends ClientView {
 			try {
 				input=this.scanner.nextLine();
 			} catch (IllegalStateException e){
+				Logger logger=Logger.getAnonymousLogger();
+				logger.log(Level.INFO, "Scanner closed!", e);
 				return;
 			}
 			if (this.availableActions().contains(input)) {
@@ -110,15 +114,6 @@ public class CLI extends ClientView {
 		if (notify instanceof ClientGameOverNotify)
 			scanner.close();
 	}
-	
-	/**
-	 * Prints a generic game update or message using System.out
-	 * @param message
-	 */
-	public void println(String message){
-		System.out.println(message);
-	}
-	
 
 	@Override
 	public void displayMessage(String message) {
@@ -413,6 +408,10 @@ public class CLI extends ClientView {
 		return;
 	}
 	
+	/**
+	 * Prints a generic game update or message using System.out
+	 * @param message
+	 */
 	public void print(String message){
 		System.out.println(message);
 	}

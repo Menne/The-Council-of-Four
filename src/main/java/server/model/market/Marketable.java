@@ -19,5 +19,5 @@ public interface Marketable {
 	 * removes an object from a player who has sold it
 	 * @param player who has sold the object and will loose it
 	 */
-	void removeObjectFromPlayer(Player player) throws IllegalArgumentException;
+	void removeObjectFromPlayer(Player player);
 }

@@ -41,7 +41,7 @@ public class CouncillorsReserve {
 	 * @param c is the councillor to remove
 	 * @throws IndexOutOfBoundsException if councillors reserve is empty or doesn't contain the councillor c
 	 */
-	public void removeCouncillor(Councillor c) throws IndexOutOfBoundsException{
+	public void removeCouncillor(Councillor c){
 		if(!this.councillors.isEmpty() && this.councillors.contains(c))
 			this.councillors.remove(c);
 		else

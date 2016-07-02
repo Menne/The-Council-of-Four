@@ -41,38 +41,6 @@ public class ControllerMarketGUI {
 	private GameDTO clientGame;
 	private Stage merketStage;
 	
-	
-	/**
-	 * @return the stage where the market screen is shown
-	 */
-	public Stage getMerketStage() {
-		return merketStage;
-	}
-
-	/**
-	 * Sets the stage where to show the market
-	 * @param merketStage
-	 */
-	public void setMerketStage(Stage merketStage) {
-		this.merketStage = merketStage;
-	}
-
-	/**
-	 * Sets the model DTO of the client
-	 * @param clientGame
-	 */
-	public void setClientGame(GameDTO clientGame) {
-		this.clientGame=clientGame;
-	}
-	
-	/**
-	 * Sets the instance of the client view
-	 * @param view
-	 */
-	public void setView(GUI view) {
-		this.view=view;
-	}
-	
 	@FXML
 	private HBox availablePermitTiles;
 	
@@ -112,6 +80,36 @@ public class ControllerMarketGUI {
 		return makeAnOffer;
 	}
 	
+	/**
+	 * @return the stage where the market screen is shown
+	 */
+	public Stage getMerketStage() {
+		return merketStage;
+	}
+
+	/**
+	 * Sets the stage where to show the market
+	 * @param merketStage
+	 */
+	public void setMerketStage(Stage merketStage) {
+		this.merketStage = merketStage;
+	}
+
+	/**
+	 * Sets the model DTO of the client
+	 * @param clientGame
+	 */
+	public void setClientGame(GameDTO clientGame) {
+		this.clientGame=clientGame;
+	}
+	
+	/**
+	 * Sets the instance of the client view
+	 * @param view
+	 */
+	public void setView(GUI view) {
+		this.view=view;
+	}
 	
 	/**
 	 * @return the reference to the button to do the action accept an offer

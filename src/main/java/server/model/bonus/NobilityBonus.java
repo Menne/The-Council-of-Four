@@ -21,7 +21,7 @@ public class NobilityBonus implements Bonus{
 	 * @param nobilityAdvancement is the amount of advancement in the nobility track
 	 * @throws IllegalArgumentException if nobility advancement is negative or 0
 	 */
-	public NobilityBonus(int nobilityAdvancement) throws IllegalArgumentException{
+	public NobilityBonus(int nobilityAdvancement){
 		if(nobilityAdvancement<=0)
 			throw new IllegalArgumentException("a nobility advancement must be positive and not 0");
 		this.nobilityAdvancement=nobilityAdvancement;

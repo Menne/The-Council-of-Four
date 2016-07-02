@@ -63,7 +63,7 @@ public class Quit implements Action {
 	}
 
 	@Override
-	public ActionDTO map() throws IllegalStateException{
+	public ActionDTO map(){
 		throw new IllegalStateException("no mapping for action quit");
 	}
 

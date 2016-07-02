@@ -68,8 +68,9 @@ public class SocketConnection extends Connection implements Runnable{
 			} catch (ClassNotFoundException | IOException e) {
 				try {
 					
+					Logger logger=Logger.getAnonymousLogger();
+					logger.log(Level.INFO, "Socket closed!", e);
 					socket.close();
-					System.out.println("Connection closed!");
 					return;
 					
 				} catch (IOException e1) {

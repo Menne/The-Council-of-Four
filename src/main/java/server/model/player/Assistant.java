@@ -24,7 +24,7 @@ public class Assistant implements Marketable {
 	}
 	
 	@Override
-	public void removeObjectFromPlayer(Player player) throws IllegalArgumentException{
+	public void removeObjectFromPlayer(Player player){
 		if (player.getNumberOfAssistants()<=0)
 			throw new IllegalArgumentException("the selling player hasn't assistants to sell");
 		player.decrementAssistants(1);

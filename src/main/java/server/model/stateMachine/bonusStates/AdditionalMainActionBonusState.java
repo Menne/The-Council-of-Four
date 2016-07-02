@@ -32,7 +32,7 @@ public class AdditionalMainActionBonusState implements State {
 	}
 
 	@Override
-	public State moveToNextTransition(Game game) throws IllegalStateException{
+	public State moveToNextTransition(Game game){
 		throw new IllegalStateException();
 	}
 

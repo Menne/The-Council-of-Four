@@ -36,7 +36,7 @@ public static int getNumberofcouncillors() {
  * @return The removed councillor
  * @throws NullPointerException if councillor c is null
  */
-	public Councillor substituteCouncillor(Councillor c) throws NullPointerException{
+	public Councillor substituteCouncillor(Councillor c){
 		if(c==null)
 			throw new NullPointerException("councillor can't be null");
 		Councillor[] temp=new Councillor[numberOfCouncillors];

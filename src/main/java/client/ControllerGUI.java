@@ -54,30 +54,8 @@ public class ControllerGUI {
 	private GameDTO clientGame;
 	private GUI view;
 	
-	/**
-	 * Sets the model DTO of the client
-	 * @param clientGame
-	 */
-	public void setClientGame(GameDTO clientGame) {
-		this.clientGame=clientGame;
-	}
-	
-	/**
-	 * Sets the instance of the client view
-	 * @param view
-	 **/
-	public void setView(GUI view) {
-		this.view=view;
-	}
-	
 	@FXML
 	private AnchorPane root;
-	
-	
-	
-	public AnchorPane getRoot() {
-		return root;
-	}
 	
 	@FXML
 	private Tab tabPlayer1;
@@ -585,6 +563,27 @@ public class ControllerGUI {
 	
 	@FXML
 	private List<ImageView> permitTilesTurnedDown;	
+	
+	/**
+	 * Sets the model DTO of the client
+	 * @param clientGame
+	 */
+	public void setClientGame(GameDTO clientGame) {
+		this.clientGame=clientGame;
+	}
+	
+	/**
+	 * Sets the instance of the client view
+	 * @param view
+	 **/
+	public void setView(GUI view) {
+		this.view=view;
+	}
+	
+	
+	public AnchorPane getRoot() {
+		return root;
+	}
 	
 	
 	public void setPoliticsCards(List<ImageView> politicsCards) {

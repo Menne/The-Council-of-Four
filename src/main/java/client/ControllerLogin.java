@@ -11,6 +11,8 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import client.connections.ClientRMIViewRemote;
 import client.connections.RMIConnection;
@@ -34,8 +36,8 @@ import javafx.scene.control.ToggleGroup;
  */
 public class ControllerLogin {
 	
-	private final static int PORT_RMI = 52365;
-	private final static int PORT_SOCKET = 29999;
+	private static final int PORT_RMI = 52365;
+	private static final int PORT_SOCKET = 29999;
 	private static final String SERVER_NAME = "CoF";
 
 	@FXML
@@ -69,7 +71,7 @@ public class ControllerLogin {
  * @throws NotBoundException if something goes from connecting RMI
  */
 
-	public void play() throws UnknownHostException, IOException, NotBoundException{
+	public void play() throws IOException, NotBoundException{
 		Alert alert=new Alert(AlertType.ERROR);
 		alert.setTitle("ERROR");
 		if(name.getText().isEmpty() || address.getText().isEmpty()){
@@ -113,10 +115,12 @@ public class ControllerLogin {
 					break;
 				}
 			} catch (SocketException | RemoteException e) {
-					alert.setHeaderText("Wrong address, try again!");
-					alert.showAndWait();
-					return;
-				}
+				Logger logger=Logger.getAnonymousLogger();
+				logger.log(Level.INFO, "No such server for this address", e);
+				alert.setHeaderText("Wrong address, try again!");
+				alert.showAndWait();
+				return;
+			}
 			}
 		}
 }

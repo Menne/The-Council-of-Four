@@ -52,7 +52,6 @@ import client.view.notifies.ClientViewNotify;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -260,8 +259,8 @@ public class GUI extends ClientView{
 
 	@Override
 	public void startGame() {
-		controllerGUI.getMapImage().setImage(new Image(getClass().getResource("images/maps/map"+String.valueOf
-				(this.clientGame.getClientGameTable().getMapNumber())+".jpg").toExternalForm()));			
+		controllerGUI.getMapImage().setImage(new Image(getClass().getResource("images/maps/map"+
+				this.clientGame.getClientGameTable().getMapNumber()+".jpg").toExternalForm()));			
 	}
 	
 	
@@ -1089,7 +1088,7 @@ public class GUI extends ClientView{
 		Platform.runLater(()-> {
 			for (ImageView regionImageView : controllerGUI.getRegions()){
 				regionImageView.setDisable(disabled);
-				if(disabled==false)
+				if(!disabled)
 					regionImageView.setEffect(new Glow(0.6));
 				else
 					regionImageView.setEffect(null);
@@ -1107,7 +1106,7 @@ public class GUI extends ClientView{
 			for (Object object : controllerGUI.getPermitTilesTurnedUpOwned().getChildren()) {
 				ImageView imageView=(ImageView) object;
 				imageView.setDisable(disabled);
-				if(disabled==false)
+				if(!disabled)
 					imageView.setEffect(new Glow(0.6));
 				else
 					imageView.setEffect(null);
