@@ -18,7 +18,7 @@ public class CardColourDTOTest {
 		assertTrue(colour.getName()==name);
 		assertEquals(name, colour.toString());
 		assertEquals(colour, colour1);
-		assertEquals(1299641336, hashCode());
+		assertEquals(66922, colour.hashCode());
 	}
 	
 
