@@ -80,6 +80,8 @@ public class BuildByKing implements MainAction {
 			game.getCurrentPlayer().removeCardFromHand(card);
 		
 		this.assignBonus(game);
+		
+		game.getGameTable().getKing().moveKing(selectedCity);
 
 		if (this.selectedCity.getRegion().isBonusAvailable())
 			assignRegionBonus(game);
@@ -245,7 +247,6 @@ public class BuildByKing implements MainAction {
 		for (City city : likedCities.getConnectedBuiltCities(game.getGameTable().getMap().getGameMap(), this.selectedCity, temporaryEmporium))
 			for (Bonus bonusToAssign : city.getRewardToken().getRewardTokenBonus())
 				bonusToAssign.assignBonus(game);
-		game.getGameTable().getKing().moveKing(selectedCity);
 	}
 
 	@Override

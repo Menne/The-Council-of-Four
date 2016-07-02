@@ -1,7 +1,8 @@
 BUG NOTI E TODO:
 -togliere l'effetto che illumina tutte le azioni perchè comprende la skip e la additional main action
 -timeout scelta della mappa lancia due finsetre di messaggio
--magari aggiungere controlli in più per le azioni nel server...
+-non assegna i bonus delle città vicine
+-build by permit tile sposta il re
 
 Passi per testare l'applicazione:
 1) Lanciare la classe Server (main/java/server/Server.java)
