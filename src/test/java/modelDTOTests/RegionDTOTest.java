@@ -37,6 +37,7 @@ public class RegionDTOTest {
 		assertTrue(region.getUncoveredPermitTiles()==uncoveredPermitTiles);
 		assertEquals("\n"+name + "\t" + Arrays.toString(balcony) + "\tTiles:" + Arrays.toString(uncoveredPermitTiles)+
 				"\tBonus: "+regionBonus+"\n" + cities, region.toString());
+		assertEquals(83022, region.hashCode());
 	}
 
 	public void testEquals() {
