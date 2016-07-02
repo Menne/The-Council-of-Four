@@ -33,13 +33,11 @@ public class BuildByPermitTileParser implements ActionParserVisitor {
 			
 		if (!game.getClientPlayer().getAvailablePermitTiles().isEmpty()) {
 			
-			view.displayMessage("Now I need some other infos, like:");
-		
-			view.displayMessage("the permit tile you want to use");
+			view.displayMessage("Select the permit tile you want to use to build an emporium");
 			PermitTileDTO permitTileTranslated=view.askForPermitTile();
 			this.selectedAction.setSelectedPermitTile(permitTileTranslated);
 			
-			view.displayMessage("the name of the city in which you want to build");
+			view.displayMessage("Select the city in which you want to build");
 			List<CityDTO> acceptableCities=new ArrayList<>();
 			for (CityDTO acceptableCity : permitTileTranslated.getBuildablecities())
 				acceptableCities.add(acceptableCity);
@@ -49,7 +47,7 @@ public class BuildByPermitTileParser implements ActionParserVisitor {
 		
 		}
 		else 
-			view.displayMessage("but it seems that you haven't any permit tile turned up! Select another action please");
+			view.displayMessage("But it seems that you haven't any permit tile turned up! Select another action please");
 	}
 
 }

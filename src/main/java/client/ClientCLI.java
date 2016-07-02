@@ -3,7 +3,6 @@ package client;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.SocketException;
-import java.net.UnknownHostException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -12,6 +11,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import client.connections.ClientRMIViewRemote;
@@ -30,8 +30,8 @@ import server.view.RMIViewRemote;
  */
 public class ClientCLI {
 	
-	private final static int PORT_RMI = 52365;
-	private final static int PORT_SOCKET = 29999;
+	private static final int PORT_RMI = 52365;
+	private static final int PORT_SOCKET = 29999;
 	private static final String NAME = "CoF";
 	
 	private String stringConnection;
@@ -65,12 +65,11 @@ public class ClientCLI {
 	 * Starts the socket connection.
 	 * Registers the Client view as observer of the connection, and the clientController as observer of the clientView 
 	 * @param ip inserted from the user
-	 * @throws UnknownHostException if something goes wrong creating the socket.
 	 * @throws IOException if something goes wrong creating the socket.
 	 */
-	private void startSocketClient(String ip) throws UnknownHostException, IOException{
+	private void startSocketClient(String ip) throws IOException{
 		Socket socket=new Socket(ip, PORT_SOCKET);
-		System.out.println("Connection created");
+		print("Connection created");
 							
 		GameDTO clientGame=new GameDTO();
 		ClientController clientController=new ClientController(clientGame);
@@ -90,7 +89,7 @@ public class ClientCLI {
 	 * Asks to the user to insert the name.
 	 */
 	public void askForName(){
-		System.out.println("Welcome to CoF, please enter your name!");
+		print("Welcome to CoF, please enter your name!");
 		this.playerName=scanner.nextLine();
 	}
 	
@@ -102,18 +101,17 @@ public class ClientCLI {
 		while(!"Socket".equals(stringConnection) && !"RMI".equals(stringConnection)){
 			stringConnection=scanner.nextLine();
 			if(!"Socket".equals(stringConnection) && !"RMI".equals(stringConnection))
-				System.out.println("Wrong input. Try again.");
+				print("Wrong input. Try again.");
 		}
 	}
 	
 	/**
 	 * Asks to the user the ip address of the server.
-	 * @throws UnknownHostException
 	 * @throws IOException
 	 * @throws NotBoundException
 	 */
-	public void askForAddress() throws UnknownHostException, IOException, NotBoundException{
-		System.out.println("Please insert the server address (0 for localhost)");
+	public void askForAddress() throws IOException, NotBoundException{
+		print("Please insert the server address (0 for localhost)");
 		while(true){
 			String ip=scanner.nextLine();
 			try{
@@ -126,13 +124,18 @@ public class ClientCLI {
 					return;
 				}
 			}catch(SocketException | RemoteException e){
-
-				System.out.println("Server Unreachable. Try again");
+				Logger logger=Logger.getAnonymousLogger();
+				logger.log(Level.INFO, "No such server for this address", e);
+				print("Server Unreachable. Try again");
 			} 
 		}
 	}
 	
-	public static void main(String[] args) throws NotBoundException, UnknownHostException, IOException, InterruptedException {
+	private void print(String message){
+		System.out.println(message);
+	}
+	
+	public static void main(String[] args) throws NotBoundException, IOException, InterruptedException {
 
 		ClientCLI clientCLI=new ClientCLI();
 		clientCLI.askForName();

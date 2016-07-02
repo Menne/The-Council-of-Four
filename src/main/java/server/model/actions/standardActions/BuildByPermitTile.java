@@ -198,17 +198,16 @@ public class BuildByPermitTile implements MainAction {
 	}
 	
 	/**
-	 * For all the bonuses to assign, it notifies the player about the bonus earned
+	 * For all the bonuses to assign, it assigns the bonus and notifies the player about the bonus earned
 	 * @param game is the current game status
 	 */
 	private void assignBonus(Game game) {
-		ConnectedBuiltCityDiscover likedCities=new ConnectedBuiltCityDiscover();
+		ConnectedBuiltCityDiscover linkedCities=new ConnectedBuiltCityDiscover();
 		Emporium temporaryEmporium=game.getCurrentPlayer().removeEmporium();
 		this.selectedCity.addEmporium(temporaryEmporium);
-		for (City city : likedCities.getConnectedBuiltCities(game.getGameTable().getMap().getGameMap(), this.selectedCity, temporaryEmporium))
+		for (City city : linkedCities.getConnectedBuiltCities(game.getGameTable().getMap().getGameMap(), this.selectedCity, temporaryEmporium))
 			for (Bonus bonusToAssign : city.getRewardToken().getRewardTokenBonus())
 				bonusToAssign.assignBonus(game);
-		game.getGameTable().getKing().moveKing(selectedCity);
 	}
 
 	@Override

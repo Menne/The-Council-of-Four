@@ -21,7 +21,7 @@ public class CoinsBonus implements Bonus{
 	 * @param coinsIncreasement is the increasement of coins
 	 * @throws IllegalArgumentException if coinsIncreasement is 0 or negative
 	 */
-	public CoinsBonus(int coinsIncreasement) throws IllegalArgumentException{
+	public CoinsBonus(int coinsIncreasement){
 		if(coinsIncreasement<=0)
 			throw new IllegalArgumentException("you can't create a coin bonus with 0 or a negative number");
 		this.coinsIncreasement=coinsIncreasement;

@@ -19,7 +19,7 @@ public interface State{
 	 * @return the next state after a main action execution
 	 * @throws IllegalStateException if the state has no main actions as available actions
 	 */
-	public default State mainActionTransition(Game game) throws IllegalStateException{
+	public default State mainActionTransition(Game game){
 		
 		throw new IllegalStateException("There are not such transictions for this state");
 	}
@@ -29,7 +29,7 @@ public interface State{
 	 * @return the next state after a quick action execution
 	 * @throws IllegalStateException if the state has no quick actions as available actions
 	 */
-	public default State quickActionTransition(Game game)throws IllegalStateException{
+	public default State quickActionTransition(Game game){
 		
 		throw new IllegalStateException("There are not such transictions for this state");
 	}
@@ -38,7 +38,7 @@ public interface State{
 	 * @return the next state after a PickPoliticsCard execution
 	 * @throws IllegalStateException if the state doesn't have PickPoliticsCard as available actions
 	 */
-	public default State pickPoliticsCardTransition() throws IllegalStateException{
+	public default State pickPoliticsCardTransition() {
 		
 		throw new IllegalStateException("There are not such transictions for this state");
 	}
@@ -47,7 +47,7 @@ public interface State{
 	 * @return the next state after a SellAction execution
 	 * @throws IllegalStateException if the state doesn't have SellAction as available actions
 	 */
-	public default State sellActionTransition(Game game) throws IllegalStateException{
+	public default State sellActionTransition(Game game) {
 		
 		throw new IllegalStateException("There are not such transictions for this state");
 	}
@@ -56,7 +56,7 @@ public interface State{
 	 * @return the next state after a BuyAction execution
 	 * @throws IllegalStateException if the state doesn't have BuyAction as available actions
 	 */
-	public default State buyActionTransition(Game game) throws IllegalStateException{
+	public default State buyActionTransition(Game game){
 		
 		throw new IllegalStateException("There are not such transictions for this state");
 	}
@@ -71,7 +71,7 @@ public interface State{
 	 * @return the next state after an Additional Main Action execution
 	 * @throws IllegalStateException if the state doesn't have AditionalMainAction as available actions
 	 */
-	public default State additionalMainActionTransition() throws IllegalStateException{
+	public default State additionalMainActionTransition(){
 		
 		throw new IllegalStateException("There are not such transictions for this state");
 	}

@@ -11,6 +11,8 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import client.connections.ClientRMIViewRemote;
 import client.connections.RMIConnection;
@@ -34,9 +36,9 @@ import javafx.scene.control.ToggleGroup;
  */
 public class ControllerLogin {
 	
-	private final static int PORT_RMI = 52365;
-	private final static int PORT_SOCKET = 29999;
-	private static final String NAME = "CoF";
+	private static final int PORT_RMI = 52365;
+	private static final int PORT_SOCKET = 29999;
+	private static final String SERVER_NAME = "CoF";
 
 	@FXML
 	private TextField name;
@@ -69,7 +71,7 @@ public class ControllerLogin {
  * @throws NotBoundException if something goes from connecting RMI
  */
 
-	public void play() throws UnknownHostException, IOException, NotBoundException{
+	public void play() throws IOException, NotBoundException{
 		Alert alert=new Alert(AlertType.ERROR);
 		alert.setTitle("ERROR");
 		if(name.getText().isEmpty() || address.getText().isEmpty()){
@@ -81,43 +83,44 @@ public class ControllerLogin {
 			try {
 				if(connection.getSelectedToggle().equals(socket)){
 
-					Socket socket=new Socket(address.getText(), PORT_SOCKET);
-					System.out.println("Connection created");
+					Socket socketConn=new Socket(address.getText(), PORT_SOCKET);
 					
 					GameDTO clientGame=new GameDTO();
 					ClientController clientController=new ClientController(clientGame);
-					SocketConnection connection=new SocketConnection(socket);
+					SocketConnection socketConnection=new SocketConnection(socketConn);
 					ControllerGUI controllerGUI=clientGUI.showGame();
-					ClientView view=new GUI(connection, clientGame, controllerGUI);
+					ClientView view=new GUI(socketConnection, clientGame, controllerGUI);
 					clientGame.registerObserver(view);				
-					connection.registerObserver(clientController);
+					socketConnection.registerObserver(clientController);
 					ExecutorService executor=Executors.newSingleThreadExecutor();
-					executor.submit(connection);
+					executor.submit(socketConnection);
 					view.welcome(name.getText());
 					view.input();				
 					break;
 				}
 				else{
 					Registry registry = LocateRegistry.getRegistry(address.getText(), PORT_RMI);
-					RMIViewRemote serverStub= (RMIViewRemote) registry.lookup(NAME);
+					RMIViewRemote serverStub= (RMIViewRemote) registry.lookup(SERVER_NAME);
 					
 					GameDTO clientGame=new GameDTO();
 					ClientController clientController=new ClientController(clientGame);
-					RMIConnection connection=new RMIConnection(serverStub);
-					ClientRMIViewRemote clientRMIViewRemote=(ClientRMIViewRemote) UnicastRemoteObject.exportObject(connection,0);
+					RMIConnection rmiConnection=new RMIConnection(serverStub);
+					ClientRMIViewRemote clientRMIViewRemote=(ClientRMIViewRemote) UnicastRemoteObject.exportObject(rmiConnection,0);
 					ControllerGUI controllerGUI=clientGUI.showGame();
-					ClientView view=new GUI(connection, clientGame, controllerGUI);
+					ClientView view=new GUI(rmiConnection, clientGame, controllerGUI);
 					clientGame.registerObserver(view);
-					connection.registerObserver(clientController);
+					rmiConnection.registerObserver(clientController);
 					view.welcome(name.getText());
 					view.input();
 					break;
 				}
 			} catch (SocketException | RemoteException e) {
-					alert.setHeaderText("Wrong address, try again!");
-					alert.showAndWait();
-					return;
-				}
+				Logger logger=Logger.getAnonymousLogger();
+				logger.log(Level.INFO, "No such server for this address", e);
+				alert.setHeaderText("Wrong address, try again!");
+				alert.showAndWait();
+				return;
+			}
 			}
 		}
 }

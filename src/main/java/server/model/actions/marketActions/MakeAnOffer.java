@@ -22,12 +22,12 @@ public class MakeAnOffer implements Action{
 
 	private List<Offer> offeringObjects;
 	
-	public void addOfferToList(Offer offer) {
-		this.offeringObjects.add(offer);
-	}
-
 	public MakeAnOffer() {
 		this.offeringObjects=new ArrayList<>();
+	}
+	
+	public void addOfferToList(Offer offer) {
+		this.offeringObjects.add(offer);
 	}
 	
 	@Override

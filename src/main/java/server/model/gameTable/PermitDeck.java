@@ -26,7 +26,7 @@ public class PermitDeck {
 	 * @return the tile picked from the deck
 	 * @throws IndexOutOfBoundsException if the deck is empty 
 	 */
-	public PermitTile pickPermitTile() throws IndexOutOfBoundsException{
+	public PermitTile pickPermitTile(){
 		if(!this.permitTiles.isEmpty())
 			return this.permitTiles.remove(0);
 		throw new IndexOutOfBoundsException("The deck is empty");
@@ -37,7 +37,7 @@ public class PermitDeck {
 	 * @param permitTilesToAdd is the permit tile to add to the bottom
 	 * @throws IllegalArgumentException if param permit tile is null
 	 */
-	public void addOnBottom(PermitTile permitTilesToAdd) throws NullPointerException{
+	public void addOnBottom(PermitTile permitTilesToAdd){
 		if(permitTilesToAdd==null)
 			throw new NullPointerException("permit tile can't be null");
 		int size=this.permitTiles.size();

@@ -16,6 +16,7 @@ public class CouncillorDTO implements ModelDTO {
 	 * Constructor of CouncillorDTO
 	 */
 	public CouncillorDTO() {
+		//non-arguments constructor
 	}
 	
 	/**

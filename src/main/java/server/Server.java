@@ -37,10 +37,10 @@ import server.view.ServerView;
 
 public class Server {
 
-	private final static int SOCKET_PORT=29999;
+	private static final int SOCKET_PORT=29999;
 	
-	private final String NAME="CoF";
-	private final static int RMI_PORT=52365;
+	private static final String NAME="CoF";
+	private static final int RMI_PORT=52365;
 	private Registry registry;
 	private ServerRMIView currentRMIView;
 	

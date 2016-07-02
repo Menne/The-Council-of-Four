@@ -17,6 +17,7 @@ public class PoliticsCardDTO implements ModelDTO, MarketableDTO {
 	 * Constructor of PoliticsCardDTO
 	 */
 	public PoliticsCardDTO() {
+		//non-arguments constructor
 	}
 	
 	/**

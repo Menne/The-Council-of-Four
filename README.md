@@ -1,7 +1,8 @@
 BUG NOTI E TODO:
 -togliere l'effetto che illumina tutte le azioni perchè comprende la skip e la additional main action
 -timeout scelta della mappa lancia due finsetre di messaggio
--magari aggiungere controlli in più per le azioni nel server...
+-città viola fa pescare bonus del colore
+-probabilmente le città sono collegate in modo diverso che da quanto si vede sulla mappa
 
 Passi per testare l'applicazione:
 1) Lanciare la classe Server (main/java/server/Server.java)

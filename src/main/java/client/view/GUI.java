@@ -5,7 +5,6 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -53,7 +52,6 @@ import client.view.notifies.ClientViewNotify;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -210,6 +208,12 @@ public class GUI extends ClientView{
 	}
 	
 	
+	/**
+	 * Inserts the parameters of the selected action, then sends it to the server 
+	 * using the appropriate connection
+	 * @param actionWithParameters is the action whose parameters has to be set
+	 * @throws RemoteException if something goes wrong with the RMI connection
+	 */
 	public void insertParametersAndSend(ActionWithParameters actionWithParameters) throws RemoteException {
 		this.disableActionButtons(true);
 		actionWithParameters.setParser().setParameters(this, this.clientGame);
@@ -255,8 +259,8 @@ public class GUI extends ClientView{
 
 	@Override
 	public void startGame() {
-		controllerGUI.getMapImage().setImage(new Image(getClass().getResource("images/maps/map"+String.valueOf
-				(this.clientGame.getClientGameTable().getMapNumber())+".jpg").toExternalForm()));			
+		controllerGUI.getMapImage().setImage(new Image(getClass().getResource("images/maps/map"+
+				this.clientGame.getClientGameTable().getMapNumber()+".jpg").toExternalForm()));			
 	}
 	
 	
@@ -491,16 +495,12 @@ public class GUI extends ClientView{
 	
 	private void displayPlayers(){
 		List<GenericPlayerDTO> orderedPlayers = new ArrayList<>(clientGame.getClientGameTable().getClientPlayers());
-		Collections.sort(orderedPlayers, new Comparator<GenericPlayerDTO>() {
-
-			@Override
-			public int compare(GenericPlayerDTO o1, GenericPlayerDTO o2) {
+		Collections.sort(orderedPlayers, (o1,o2)-> {
 				if(o1.getPlayerNumber()<o2.getPlayerNumber())
 					return -1;
 				else 
 					return 1;
-			}
-		});
+			});
 		
 		for(int i=0; i<orderedPlayers.size();i++){
 			controllerGUI.getNamesLabels().get(i).setText(orderedPlayers.get(i).getName());
@@ -565,22 +565,14 @@ public class GUI extends ClientView{
 				imageView.setFitWidth(50);
 				imageView.setPreserveRatio(true);
 				imageView.setDisable(true);
-				imageView.setOnMouseClicked(new EventHandler<Event>() {
-					@Override
-					public void handle(Event event) {
+				imageView.setOnMouseClicked((Event e)-> {
 						controllerGUI.handlePoliticsCard(card);	
 						imageView.setDisable(true);
 						imageView.setOpacity(0.4);
-					}
-				});
-				imageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
-
-					@Override
-					public void handle(MouseEvent event) {
-						controllerGUI.changeMouseStyle(event);
-							
-					}
-				});
+					});
+				imageView.setOnMouseEntered((MouseEvent event)->
+						controllerGUI.changeMouseStyle(event)
+						);
 				politicsCards.add(imageView);
 				controllerGUI.setPoliticsCards(politicsCards);
 			}
@@ -590,22 +582,12 @@ public class GUI extends ClientView{
 				imageView.setFitHeight(70);
 				imageView.setPreserveRatio(true);
 				imageView.setDisable(true);
-				imageView.setOnMouseClicked(new EventHandler<Event>() {
-
-					@Override
-					public void handle(Event event) {
-						controllerGUI.handlePermitTilesTurnedUp(permitTileDTO);	
-							
-					}
-				});
-				imageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
-
-					@Override
-					public void handle(MouseEvent event) {
-						controllerGUI.changeMouseStyle(event);
-							
-					}
-				});
+				imageView.setOnMouseClicked((Event event)-> 
+					controllerGUI.handlePermitTilesTurnedUp(permitTileDTO)	
+					);
+				imageView.setOnMouseEntered((MouseEvent event)->
+						controllerGUI.changeMouseStyle(event)
+						);
 			}
 			for (PermitTileDTO permitTileDTO : clientGame.getClientPlayer().getCoveredPermitTiles()){
 				ImageView imageView=new ImageView(imageMap.get(permitTileDTO));
@@ -614,21 +596,12 @@ public class GUI extends ClientView{
 				imageView.setPreserveRatio(true);
 				imageView.setDisable(true);
 				imageView.setOpacity(0.6);
-				imageView.setOnMouseClicked(new EventHandler<Event>() {	
-					@Override
-					public void handle(Event event) {
-						controllerGUI.handlePermitTilesTurnedUp(permitTileDTO);	
-							
-					}
-				});
-				imageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
-
-					@Override
-					public void handle(MouseEvent event) {
-						controllerGUI.changeMouseStyle(event);
-							
-					}
-				});
+				imageView.setOnMouseClicked((Event event)-> 
+						controllerGUI.handlePermitTilesTurnedUp(permitTileDTO)	
+					);
+				imageView.setOnMouseEntered((MouseEvent event)-> 
+						controllerGUI.changeMouseStyle(event)
+						);
 			}
 			controllerGUI.getPlayerCoins().setText(String.valueOf(clientGame.getClientPlayer().getCoins()));
 			controllerGUI.getPlayerAssistants().setText(String.valueOf(clientGame.getClientPlayer().getAssistants().size()));
@@ -679,10 +652,7 @@ public class GUI extends ClientView{
 			displayMarketStuff();	
 			displayOffers();
 			controllerMarketGUI.getMakeAnOffer().setText("Start Offering");
-			controllerMarketGUI.getMakeAnOffer().setOnAction(new EventHandler<ActionEvent>() {
-
-				@Override
-				public void handle(ActionEvent event) {
+			controllerMarketGUI.getMakeAnOffer().setOnAction((ActionEvent event)-> {
 					try {
 						controllerMarketGUI.startAction(event);
 					} catch (RemoteException e) {
@@ -690,13 +660,9 @@ public class GUI extends ClientView{
 						logger.log(Level.SEVERE, "Failed to send action with RMI", e);
 					}
 						
-				}
-			});
+				});
 			controllerMarketGUI.getSkip().setText("Skip Action");
-			controllerMarketGUI.getSkip().setOnAction(new EventHandler<ActionEvent>() {
-
-				@Override
-				public void handle(ActionEvent event) {
+			controllerMarketGUI.getSkip().setOnAction((ActionEvent event)-> {
 					try {								
 						controllerMarketGUI.startAction(event);
 					} catch (RemoteException e) {
@@ -704,18 +670,14 @@ public class GUI extends ClientView{
 						logger.log(Level.SEVERE, "Failed to send action with RMI", e);
 					}
 						
-				}
-			});
-			controllerMarketGUI.getAcceptAnOffer().setOnAction(new EventHandler<ActionEvent>() {
-				@Override
-				public void handle(ActionEvent event) {
+				});
+			controllerMarketGUI.getAcceptAnOffer().setOnAction((ActionEvent event)-> {
 					try {
 						controllerMarketGUI.startAction(event);
 					} catch (RemoteException e) {
 						Logger logger=Logger.getAnonymousLogger();
 						logger.log(Level.SEVERE, "Failed to send action with RMI", e);
 					}					
-				}
 				});
 			});
 	}
@@ -729,21 +691,13 @@ public class GUI extends ClientView{
 			imageView.setFitWidth(50);
 			imageView.setPreserveRatio(true);
 			imageView.setDisable(true);
-			imageView.setOnMouseClicked(new EventHandler<Event>() {
-
-				@Override
-				public void handle(Event event) {
+			imageView.setOnMouseClicked((Event event)-> {
 					controllerMarketGUI.handlePoliticsCard(card);
 					imageView.setOpacity(0.4);
-				}
-			});
-			imageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
-
-				@Override
-				public void handle(MouseEvent event) {
-					controllerMarketGUI.changeMouseStyle(event);
-				}
-			});
+				});
+			imageView.setOnMouseEntered((MouseEvent event)-> 
+					controllerMarketGUI.changeMouseStyle(event)
+				);
 		}
 		controllerMarketGUI.getAvailablePermitTiles().getChildren().clear();
 		
@@ -755,21 +709,14 @@ public class GUI extends ClientView{
 			imageView.setFitWidth(50);
 			imageView.setPreserveRatio(true);
 			imageView.setDisable(true);
-			imageView.setOnMouseClicked(new EventHandler<Event>() {
-
-				@Override
-				public void handle(Event event) {
+			imageView.setOnMouseClicked((Event event)-> {
 					controllerMarketGUI.handlePermitTilesTurnedUp(permitTileDTO);		
 					imageView.setOpacity(0.4);
-				}
-			});
-			imageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
+				});
+			imageView.setOnMouseEntered((MouseEvent event)-> 
 
-				@Override
-				public void handle(MouseEvent event) {
-					controllerMarketGUI.changeMouseStyle(event);
-				}
-			});
+					controllerMarketGUI.changeMouseStyle(event)
+				);
 		}
 		
 		
@@ -782,21 +729,14 @@ public class GUI extends ClientView{
 			imageView.setUserData(assistantDTO);
 			controllerMarketGUI.getAvailableAssistants().getChildren().add(imageView);
 			imageView.setDisable(true);
-			imageView.setOnMouseClicked(new EventHandler<Event>() {
+			imageView.setOnMouseClicked((Event event)-> {
 
-				@Override
-				public void handle(Event event) {
 					controllerMarketGUI.handleAssistants(assistantDTO);
 					imageView.setOpacity(0.4);
-				}
-			});
-			imageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
-
-				@Override
-				public void handle(MouseEvent event) {
-					controllerMarketGUI.changeMouseStyle(event);
-				}
-			});
+				});
+			imageView.setOnMouseEntered((MouseEvent event)->
+					controllerMarketGUI.changeMouseStyle(event)
+					);
 		}
 	}
 	
@@ -814,31 +754,21 @@ public class GUI extends ClientView{
 			offer.getChildren().add(sellingObject);
 			offer.getChildren().add(price);
 			offer.setDisable(true);
-			offer.setOnMouseClicked(new EventHandler<Event>() {
-
-				@Override
-				public void handle(Event event) {
-					controllerMarketGUI.handleOffers(offerDTO);					
-				}
-				
-			});
+			offer.setOnMouseClicked((Event event)-> 
+					controllerMarketGUI.handleOffers(offerDTO)					
+					);
 			controllerMarketGUI.getOffers().getChildren().add(offer);
-			offer.setOnMouseEntered(new EventHandler<MouseEvent>() {
-
-				@Override
-				public void handle(MouseEvent event) {
-					controllerMarketGUI.changeMouseStyle(event);
-					
-				}
-			});
+			offer.setOnMouseEntered((MouseEvent event)-> 
+					controllerMarketGUI.changeMouseStyle(event)
+				);
 		}
 	}
 	
 	@Override
 	public void displayMessage(String string) {
-		Platform.runLater(()-> {
-			currentTextArea.appendText("SYSTEM: "+string+"\n");	
-		});
+		Platform.runLater(()-> 
+			currentTextArea.appendText("SYSTEM: "+string+"\n")	
+		);
 	}
 	
 	@Override
@@ -870,9 +800,9 @@ public class GUI extends ClientView{
 	
 	@Override
 	public void displayChatMessage(String message) {
-		Platform.runLater(()-> {
-			controllerGUI.getMessageBox().appendText(message+"\n");	
-			});		
+		Platform.runLater(()-> 
+			controllerGUI.getMessageBox().appendText(message+"\n")	
+			);		
 	}
 	
 	@Override
@@ -959,7 +889,6 @@ public class GUI extends ClientView{
 			}
 		}
 		CouncillorDTO[] councilBalcony=(CouncillorDTO[]) this.currentParameter;
-		System.out.println(councilBalcony);
 		this.currentParameter=null;
 		this.disableClickOnCouncilBalconies(true);
 		return councilBalcony;
@@ -1079,28 +1008,22 @@ public class GUI extends ClientView{
 	@Override
 	public boolean askForOtherSelling() {
 		Platform.runLater(()-> {
-				controllerMarketGUI.getMakeAnOffer().setOnAction(new EventHandler<ActionEvent>() {
-
-					@Override
-					public void handle(ActionEvent event) {				
+				controllerMarketGUI.getMakeAnOffer().setOnAction((ActionEvent event)-> {
+				
 						synchronized(controllerMarketGUI){
 							currentParameter=true;
 							controllerMarketGUI.notify();
 						}
-					}
-				});
+					});
 				controllerMarketGUI.getMakeAnOffer().setText("Next Offer");
-				controllerMarketGUI.getSkip().setOnAction(new EventHandler<ActionEvent>() {
-					
-					@Override
-					public void handle(ActionEvent event) {
+				
+				controllerMarketGUI.getSkip().setOnAction((ActionEvent event)-> {
 						
 						synchronized(controllerMarketGUI){					
 							currentParameter=false;	
 							controllerMarketGUI.notify();
 						}
-					}
-				});
+					});
 				controllerMarketGUI.getSkip().setText("Stop Offering");
 				controllerMarketGUI.getMakeAnOffer().setDisable(false);
 				controllerMarketGUI.getSkip().setDisable(false);
@@ -1169,12 +1092,16 @@ public class GUI extends ClientView{
 	}
 
 	
-	
+	/**
+	 * Enables the click on regions when the user has to choose form one of them, 
+	 * than disables it again to prevent a wrong setting of other parameters
+	 * @param disabled indicates if the buttons have to be enabled or disabled
+	 */
 	private void disableClickOnRegions(boolean disabled) {
 		Platform.runLater(()-> {
 			for (ImageView regionImageView : controllerGUI.getRegions()){
 				regionImageView.setDisable(disabled);
-				if(disabled==false)
+				if(!disabled)
 					regionImageView.setEffect(new Glow(0.6));
 				else
 					regionImageView.setEffect(null);
@@ -1182,12 +1109,17 @@ public class GUI extends ClientView{
 		});
 	}
 	
+	/**
+	 * Enables the click on permit tiles in hand when the user has to choose form one of them, 
+	 * than disables it again to prevent a wrong setting of other parameters
+	 * @param disabled indicates if the buttons have to be enabled or disabled
+	 */
 	private void disableClickOnPermitTilesInHand(boolean disabled) {
 		Platform.runLater(()-> {
 			for (Object object : controllerGUI.getPermitTilesTurnedUpOwned().getChildren()) {
 				ImageView imageView=(ImageView) object;
 				imageView.setDisable(disabled);
-				if(disabled==false)
+				if(!disabled)
 					imageView.setEffect(new Glow(0.6));
 				else
 					imageView.setEffect(null);
@@ -1195,6 +1127,11 @@ public class GUI extends ClientView{
 		});
 	}
 
+	/**
+	 * Enables the click on councillors in reserve when the user has to choose form one of them, 
+	 * than disables it again to prevent a wrong setting of other parameters
+	 * @param disabled indicates if the buttons have to be enabled or disabled
+	 */
 	private void disableClickOnCouncillorsInReserve(boolean disabled) {
 		Platform.runLater(()-> {
 			for (int i=0; i<controllerGUI.getCouncillorReserve().size(); i++){
@@ -1207,6 +1144,11 @@ public class GUI extends ClientView{
 			});		
 	}
 	
+	/**
+	 * Enables the click on council balconies when the user has to choose form one of them, 
+	 * than disables it again to prevent a wrong setting of other parameters
+	 * @param disabled indicates if the buttons have to be enabled or disabled
+	 */
 	private void disableClickOnCouncilBalconies(boolean disabled) {
 		Platform.runLater(()-> {
 				for (int i=0; i<controllerGUI.getBalconies().size()-1; i++){
@@ -1224,6 +1166,11 @@ public class GUI extends ClientView{
 			});		
 	}
 	
+	/**
+	 * Enables the click on cities when the user has to choose form one of them, 
+	 * than disables it again to prevent a wrong setting of other parameters
+	 * @param disabled indicates if the buttons have to be enabled or disabled
+	 */
 	private void disableClickOnCities(boolean disabled, List<CityDTO> acceptableCities) {
 		Platform.runLater(()-> {
 				for (CityDTO city : acceptableCities)
@@ -1233,6 +1180,11 @@ public class GUI extends ClientView{
 			});
 	}
 	
+	/**
+	 * Enables the click on politics cards when the user has to choose form one of them, 
+	 * than disables it again to prevent a wrong setting of other parameters
+	 * @param disabled indicates if the buttons have to be enabled or disabled
+	 */
 	private void disableClickOnPoliticsCards(boolean disabled, int opacity) {
 		Platform.runLater(()-> {
 				for (Object object : controllerGUI.getHand().getChildren()){
@@ -1248,6 +1200,11 @@ public class GUI extends ClientView{
 		
 	}
 	
+	/**
+	 * Enables the click on the descard button when the user has selected at least one politics card 
+	 * to descard, then disables it when the action is completed
+	 * @param disabled indicates if the buttons have to be enabled or disabled
+	 */
 	private void disableClickOnDescardButton(boolean disabled) {
 		Platform.runLater(()-> {
 				controllerGUI.getDescardPoliticsCards().setDisable(disabled);
@@ -1262,6 +1219,11 @@ public class GUI extends ClientView{
 			});		
 	}
 	
+	/**
+	 * Enables the click on the two permit tile in regions when the user has to choose form one of them, 
+	 * than disables them again to prevent a wrong setting of other parameters
+	 * @param disabled indicates if the buttons have to be enabled or disabled
+	 */
 	private void disableClickOnPermitTilesInRegions(boolean disabled, RegionDTO selectedRegion) {
 		Platform.runLater(()-> {
 				if ("Sea".equals(selectedRegion.getName()))
@@ -1292,6 +1254,11 @@ public class GUI extends ClientView{
 	}
 
 
+	/**
+	 * Disables the click on action buttons when the user is inserting other parameters, 
+	 * then enables it again when the insertion of parameters is completed
+	 * @param disabled indicates if the buttons have to be enabled or disabled
+	 */
 	public void disableActionButtons(boolean disabled) {
 		Platform.runLater(()-> {
 				controllerGUI.getPoliticsDeck().setDisable(disabled);
@@ -1301,6 +1268,11 @@ public class GUI extends ClientView{
 	}
 	
 
+	/**
+	 * Enables the click on permit tiles in hand covered when the user has to choose form one of them, 
+	 * than disables it again to prevent a wrong setting of other parameters
+	 * @param disabled indicates if the buttons have to be enabled or disabled
+	 */
 	private void disableClickOnPermitTilesCovered(boolean disabled) {
 		Platform.runLater(()-> {
 				for (Object object : controllerGUI.getPermitTilesTurnedDownOwned().getChildren()) {
@@ -1315,6 +1287,11 @@ public class GUI extends ClientView{
 			});
 	}
 
+	/**
+	 * Enables the click on objects that a player can sell when the user has to choose form one of them, 
+	 * than disables it again to prevent a wrong setting of other parameters
+	 * @param disabled indicates if the buttons have to be enabled or disabled
+	 */
 	private void disableClickOnObjectsToSell(boolean disabled, List<MarketableDTO> acceptableObjectsToOffer) {
 		Platform.runLater(()-> {
 
@@ -1335,18 +1312,32 @@ public class GUI extends ClientView{
 			});
 	}
 	
+	/**
+	 * Enables the click on regions when the user has to choose form one of them, 
+	 * than disables it again to prevent a wrong setting of oher parameters
+	 * @param disabled indicates if the buttons have to be enabled or disabled
+	 */
 	private void disablePriceInsertion(boolean disabled) {
-		Platform.runLater(()-> {
-				controllerMarketGUI.getPrice().setDisable(disabled);
-			});
+		Platform.runLater(()-> 
+				controllerMarketGUI.getPrice().setDisable(disabled)
+			);
 	}
 	
+	/**
+	 * Enables the click on the button of offer ready
+	 * @param disabled indicates if the buttons have to be enabled or disabled
+	 */
 	private void disableClickOnOfferSettedButtons(boolean disabled) {
-		Platform.runLater(()-> {
-				controllerMarketGUI.getSell().setDisable(disabled);
-			});
+		Platform.runLater(()-> 
+				controllerMarketGUI.getSell().setDisable(disabled)
+			);
 	}
 	
+	/**
+	 * Enables the click on offers in the market when the user has to choose form one of them, 
+	 * than disables it again to prevent a wrong setting of other parameters
+	 * @param disabled indicates if the buttons have to be enabled or disabled
+	 */
 	private void disableClickOnOffers(boolean disabled) {
 		Platform.runLater(()-> {
 				for (Object offer : controllerMarketGUI.getOffers().getChildren()){

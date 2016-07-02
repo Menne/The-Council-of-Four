@@ -24,9 +24,7 @@ public class PurchasedPermitTileBonusParser implements ActionParserVisitor {
 
 	@Override
 	public void setParameters(ClientView view, GameDTO game) {
-		view.displayMessage("Permit tile bonus earned! You have the possibility to choose from your permit tiles,"
-						+ "covered or not, and get the bonuses associated to that");
-			this.selectedAction.setPermitTile(view.askForPermitTileUncoveredAndCovered());
+		this.selectedAction.setPermitTile(view.askForPermitTileUncoveredAndCovered());
 		this.selectedAction.parametersSet();
 	}
 

@@ -27,7 +27,7 @@ public class King {
 	 * Moves king presence from the kingPresence's city to c.
 	 * @param c new king's city
 	 */
-	public void moveKing(City c) throws IllegalArgumentException{
+	public void moveKing(City c) {
 		if(c==null)
 			throw new IllegalArgumentException();
 		this.kingCity=c;

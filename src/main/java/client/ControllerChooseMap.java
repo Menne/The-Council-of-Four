@@ -187,10 +187,10 @@ public class ControllerChooseMap {
     }
 
 	@FXML
-    public void removeImageOnMouseExited(MouseEvent mouseEvent) {
-    	Platform.runLater(()-> {
-	    		preview.setImage(new Image(getClass().getResource("view/images/various/scritta.png").toExternalForm()));
-	        });
+    public void removeImageOnMouseExited() {
+    	Platform.runLater(()-> 
+	    		preview.setImage(new Image(getClass().getResource("view/images/various/scritta.png").toExternalForm()))
+	        );
     }
 }
 

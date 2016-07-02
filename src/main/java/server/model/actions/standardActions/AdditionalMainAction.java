@@ -23,10 +23,7 @@ public class AdditionalMainAction implements QuickAction {
 	private static final int necessaryAssistants=3;
 	
 	private boolean checkAssistants(Game game){
-		if(game.getCurrentPlayer().getNumberOfAssistants()>=necessaryAssistants)
-			return true;
-		else
-			return false;
+		return (game.getCurrentPlayer().getNumberOfAssistants()>=necessaryAssistants);
 	}
 	
 	/**
@@ -38,7 +35,7 @@ public class AdditionalMainAction implements QuickAction {
 	public boolean executeAction(Game game) {
 		
 		if (!this.checkAssistants(game)) {
-			game.notifyObserver(new ErrorNotify("It seems that you haven't enough assistants!. Try again or choose another action", 
+			game.notifyObserver(new ErrorNotify("It seems that you haven't enough assistants! Try again or choose another action", 
 					Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}

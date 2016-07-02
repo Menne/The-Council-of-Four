@@ -54,30 +54,8 @@ public class ControllerGUI {
 	private GameDTO clientGame;
 	private GUI view;
 	
-	/**
-	 * Sets the model DTO of the client
-	 * @param clientGame
-	 */
-	public void setClientGame(GameDTO clientGame) {
-		this.clientGame=clientGame;
-	}
-	
-	/**
-	 * Sets the instance of the client view
-	 * @param view
-	 **/
-	public void setView(GUI view) {
-		this.view=view;
-	}
-	
 	@FXML
 	private AnchorPane root;
-	
-	
-	
-	public AnchorPane getRoot() {
-		return root;
-	}
 	
 	@FXML
 	private Tab tabPlayer1;
@@ -586,6 +564,27 @@ public class ControllerGUI {
 	@FXML
 	private List<ImageView> permitTilesTurnedDown;	
 	
+	/**
+	 * Sets the model DTO of the client
+	 * @param clientGame
+	 */
+	public void setClientGame(GameDTO clientGame) {
+		this.clientGame=clientGame;
+	}
+	
+	/**
+	 * Sets the instance of the client view
+	 * @param view
+	 **/
+	public void setView(GUI view) {
+		this.view=view;
+	}
+	
+	
+	public AnchorPane getRoot() {
+		return root;
+	}
+	
 	
 	public void setPoliticsCards(List<ImageView> politicsCards) {
 		this.politicsCards=politicsCards;
@@ -994,18 +993,14 @@ public class ControllerGUI {
 				}
 				else if (selectedAction instanceof ActionWithParameters) {
 					ExecutorService executor=Executors.newSingleThreadExecutor();
-					executor.submit(new Runnable() {
-						
-						@Override
-						public void run() {
+					executor.submit(()-> {
 							try {
 								view.insertParametersAndSend((ActionWithParameters) selectedAction);
 							} catch (RemoteException e) {
 								Logger logger=Logger.getAnonymousLogger();
 								logger.log(Level.SEVERE, "Failed to send action with RMI", e);
 							}
-						}
-					});
+						});
 					return;
 				}
 		this.view.displayError("Sorry, action not available!");

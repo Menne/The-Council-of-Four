@@ -88,6 +88,8 @@ public class BuildByKing implements MainAction {
 			game.getCurrentPlayer().removeCardFromHand(card);
 		
 		this.assignBonus(game);
+		
+		game.getGameTable().getKing().moveKing(selectedCity);
 
 		if (this.selectedCity.getRegion().isBonusAvailable())
 			assignRegionBonus(game);
@@ -152,7 +154,7 @@ public class BuildByKing implements MainAction {
 		else
 			coinsToPay=((CouncilBalcony.getNumberofcouncillors()-(this.cardsToDescard.size()))*3)+1;
 		for (PoliticsCard card : cardsToDescard)
-			if (card.getColour().getColour() == "rainbow")
+			if ("Rainbow".equals(card.getColour().getColour()))
 				coinsToPay++;
 		return coinsToPay + 2*game.getGameTable().getMap().getShortestPathLenght(this.selectedCity, game.getGameTable().getKing().getCity());
 	}
@@ -168,7 +170,7 @@ public class BuildByKing implements MainAction {
 			temporaryBalcony.add(game.getGameTable().getCouncilOfKing().getCouncillors()[i]);
 		
 		for (PoliticsCard politicsCardInHand: this.cardsToDescard) {
-			if (politicsCardInHand.getColour().getColour().equals("Rainbow"))
+			if ("Rainbow".equals(politicsCardInHand.getColour().getColour()))
 				satisfyCounter++;		
 			for (Councillor councillorToSatisfy : temporaryBalcony)
 				if (councillorToSatisfy.getColour().getColour().equals(politicsCardInHand.getColour().getColour())) {
@@ -243,17 +245,16 @@ public class BuildByKing implements MainAction {
 	}
 
 	/**
-	 * For all the bonuses to assign, it notifies the player about the bonus earned
+	 * For all the bonuses to assign, it assigns the bonus and notifies the player about the bonus earned
 	 * @param game is the current game status
 	 */
 	private void assignBonus(Game game) {
-		ConnectedBuiltCityDiscover likedCities=new ConnectedBuiltCityDiscover();
+		ConnectedBuiltCityDiscover linkedCities=new ConnectedBuiltCityDiscover();
 		Emporium temporaryEmporium=game.getCurrentPlayer().removeEmporium();
 		this.selectedCity.addEmporium(temporaryEmporium);
-		for (City city : likedCities.getConnectedBuiltCities(game.getGameTable().getMap().getGameMap(), this.selectedCity, temporaryEmporium))
+		for (City city : linkedCities.getConnectedBuiltCities(game.getGameTable().getMap().getGameMap(), this.selectedCity, temporaryEmporium))
 			for (Bonus bonusToAssign : city.getRewardToken().getRewardTokenBonus())
 				bonusToAssign.assignBonus(game);
-		game.getGameTable().getKing().moveKing(selectedCity);
 	}
 
 	@Override
