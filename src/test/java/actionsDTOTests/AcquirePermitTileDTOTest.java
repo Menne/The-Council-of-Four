@@ -23,10 +23,10 @@ public class AcquirePermitTileDTOTest {
 		action.setCardsToDescard(cardsToDescard);
 		action.setChosenRegion(chosenRegion);
 		action.setNumberOfPermitTile(numberOfPermitTile);
-		assertFalse(action.checkIfParametersSetted());
+		assertFalse(action.checkIfParametersSet());
 		assertEquals(AcquirePermitTileParser.class, action.setParser().getClass());
-		action.parametersSetted();
-		assertTrue(action.checkIfParametersSetted());
+		action.parametersSet();
+		assertTrue(action.checkIfParametersSet());
 		assertTrue(action.getCardsToDescard()==cardsToDescard);
 		assertTrue(action.getChoosenRegion()==chosenRegion);
 		assertTrue(action.getNumberOfPermitTiles()==numberOfPermitTile);

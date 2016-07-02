@@ -4,11 +4,13 @@ import server.model.actions.Action;
 import server.model.actions.PickPoliticsCard;
 import server.view.actionMapperVisitor.ActionMapperVisitor;
 
+/**
+ * This object represents the DTO version of PickPoliticsCard action, without logic
+ * @author cg31
+ *
+ */
 public class PickPoliticsCardDTO implements ActionDTO {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -7937576386571037161L;
 
 	

@@ -14,9 +14,8 @@ import server.view.notifies.MessageNotify;
 import server.view.notifies.PlayerNotify;
 
 /**
- * It's the quick action "additional main action" it operates
- * on the protected attribute game through the method executeAction.
- * @author Luca
+ * It's the quick action "additional main action"
+ * @author cg31
  *
  */
 public class AdditionalMainAction implements QuickAction {

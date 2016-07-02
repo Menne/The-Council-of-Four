@@ -10,6 +10,11 @@ import server.model.gameTable.RegionBoard;
 import server.view.notifies.MessageNotify;
 import server.view.notifies.PlayerNotify;
 
+/**
+ * This class modelizes the action associated to the bonus of a PickPermitTileBonus
+ * @author cg31
+ *
+ */
 public class PickPermitTileBonusAction implements Action {
 
 	private Integer numberOfPermitTile;
@@ -23,6 +28,10 @@ public class PickPermitTileBonusAction implements Action {
 		this.selectedRegion=selectedRegion;
 	}
 
+	/**
+	 * Assigns the bonuses of the permit tile selected
+	 * @return true, if the bonus assignment went well, false otherwise
+	 */
 	@Override
 	public boolean executeAction(Game game) {
 		if (this.numberOfPermitTile==null||

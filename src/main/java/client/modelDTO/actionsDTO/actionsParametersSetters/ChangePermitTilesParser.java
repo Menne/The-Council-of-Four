@@ -29,7 +29,7 @@ public class ChangePermitTilesParser implements ActionParserVisitor {
 		view.displayMessage("the name of the region in which you want to pick");
 		this.selectedAction.setSelectedRegion(view.askForRegionBoard());
 		
-		this.selectedAction.parametersSetted();
+		this.selectedAction.parametersSet();
 	}
 
 }

@@ -19,7 +19,6 @@ import server.view.notifies.PlayerNotify;
  * @author Emanuele
  *
  */
-
 public class PurchasedPermitTileBonus implements Bonus {
 
 	

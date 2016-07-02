@@ -25,7 +25,6 @@ import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.scene.Cursor;
 import javafx.scene.ImageCursor;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
@@ -55,11 +54,18 @@ public class ControllerGUI {
 	private GameDTO clientGame;
 	private GUI view;
 	
-	
+	/**
+	 * Sets the model DTO of the client
+	 * @param clientGame
+	 */
 	public void setClientGame(GameDTO clientGame) {
 		this.clientGame=clientGame;
 	}
 	
+	/**
+	 * Sets the instance of the client view
+	 * @param view
+	 **/
 	public void setView(GUI view) {
 		this.view=view;
 	}
@@ -580,6 +586,7 @@ public class ControllerGUI {
 	@FXML
 	private List<ImageView> permitTilesTurnedDown;	
 	
+	
 	public void setPoliticsCards(List<ImageView> politicsCards) {
 		this.politicsCards=politicsCards;
 	}
@@ -592,128 +599,204 @@ public class ControllerGUI {
 		this.permitTilesTurnedDown=permitTilesTurnedDown;
 	}
 	
+	/**
+	 * @return the list of players tab showing the state of all the players of the game
+	 */
 	public List<Tab> getPlayersTabs(){
 		return Arrays.asList(tabPlayer1, tabPlayer2, tabPlayer3, tabPlayer4);
 	}
 
+	/**
+	 * @return the ImageView containing the map of the game
+	 */
 	public ImageView getMapImage() {
 		return mapImage;
 	}
 
+	/**
+	 * @return the list of button actions
+	 */
 	public List<Button> getActions() {
 		return Arrays.asList(m1, m2, m3, m4, q1, q2, q3, q4, skip);
 	}
 
+	/**
+	 * @return the ImageView containing the politics deck
+	 */
 	public ImageView getPoliticsDeck() {
 		return politicsDeck;
 	}
 	
+	/**
+	 * @return the list of HBox containing the bonus tile got from each player of the game
+	 */
 	public List<HBox> getGenericPlayerBonuses(){
 		return Arrays.asList(genericPlayerBonuses1,genericPlayerBonuses2,genericPlayerBonuses3,genericPlayerBonuses4);
 	}
 	
+	/**
+	 * @return the list of the 3 ImageView of the Bonus Tiles of the Regions
+	 */
 	public List<ImageView> getRegionBonusTiles(){
 		return Arrays.asList(regionBonusSea,regionBonusHill,regionBonusMountain);
 	}
 	
+	/**
+	 * @return the ImageView of the 5 king reward tiles
+	 */
 	public List<ImageView> getKingBonusTiles(){
 		return Arrays.asList(kingRewardTile1,kingRewardTile2, kingRewardTile3, kingRewardTile4, kingRewardTile5);
 	}
 	
+	/**
+	 * @return the ImageView containing blue colour bonus tile
+	 */
 	public ImageView getColorBonusBlue() {
 		return colorBonusBlue;
 	}
 
+	/**
+	 * @return the ImageView containing gold colour bonus tile
+	 */
 	public ImageView getColorBonusGold() {
 		return colorBonusGold;
 	}
 
+	/**
+	 * @return the ImageView containing silver colour bonus tile
+	 */
 	public ImageView getColorBonusSilver() {
 		return colorBonusSilver;
 	}
 
+	/**
+	 * @return the ImageView containing bronze colour bonus tile
+	 */
 	public ImageView getColorBonusBronze() {
 		return colorBonusBronze;
 	}
 
+	/**
+	 * @return the VBox containing the bonus tiles got from the player
+	 */
 	public VBox getPlayersBonuses() {
 		return playersBonuses;
 	}
 
+	/**
+	 * @return the HBox containing the available permit tiles of the players
+	 */
 	public HBox getPermitTilesTurnedUpOwned() {
 		return permitTilesTurnedUpOwned;
 	}
 
+	/**
+	 * @return the HBox containing the already used permit tiles of the player
+	 */
 	public HBox getPermitTilesTurnedDownOwned() {
 		return permitTilesTurnedDownOwned;
 	}
 
+	/**
+	 * @return the list of HBox containing the permit tiles of all the players of the game
+	 */
 	public List<HBox> getPermitTilesOtherPlayers(){
 		return Arrays.asList(permitTilesTurnedUpPlayer1,permitTilesTurnedUpPlayer2,permitTilesTurnedUpPlayer3,permitTilesTurnedUpPlayer4);
 	}
 
+	/**
+	 * @return the list of Pane of the cities
+	 */
 	public List<Pane> getCities(){
 		return Arrays.asList(arkon,burgen,castrum,dorful,esti,framek,graden,hellar,indur,juvelar,kultos,lyram,merkatim,naris,osium);
 	}
-	
-	
 
-	public Pane getFramek() {
-		return framek;
-	}
-
-	public Pane getArkon() {
-		return arkon;
-	}
-
+	/**
+	 * @return the HBox containing the politics cards in the player's hand
+	 */
 	public HBox getHand() {
 		return hand;
 	}
 	
+	/**
+	 * @return the list ImageView containing the regions
+	 */
 	public List<ImageView> getRegions() {
 		return Arrays.asList(seaRegion, hillRegion, mountainRegion);
 	}
 	
+	/**
+	 * @return the list of ImageView containing the balconies
+	 */
 	public List<ImageView> getBalconies() {
 		return Arrays.asList(seaBalcony, hillBalcony, mountainBalcony, kingBalcony);
 	}
 
+	/**
+	 * @return the TextArea where the chat and system message ae shown
+	 */
 	public TextArea getMessageBox() {
 		return messageBox;
 	}
 	
+	/**
+	 * @return the label that indicates the player name
+	 */
 	public Label getPlayerName() {
 		return playerName;
 	}
 
+	/**
+	 * @return the label that indicates the player score
+	 */
 	public Label getPlayerScore() {
 		return playerScore;
 	}
 
+	/**
+	 * @return the label that indicates the player coins
+	 */
 	public Label getPlayerCoins() {
 		return playerCoins;
 	}
 
+	/**
+	 * @return the label that indicates the number of assistants of the players
+	 */
 	public Label getPlayerAssistants() {
 		return playerAssistants;
 	}
 
+	/**
+	 * @return the label that indicates the player nobility score
+	 */
 	public Label getPlayerNobility() {
 		return playerNobility;
 	}
 	
+	/**
+	 * @return the list of ImageView of the councillor reserve
+	 */
 	public List<ImageView> getCouncillorReserve(){
 		return Arrays.asList(reserveConcillor1,reserveConcillor2,reserveConcillor3,reserveConcillor4,reserveConcillor5,reserveConcillor6,reserveConcillor7,reserveConcillor8);
 	}
 	
+	/**
+	 * @return the list of labels that indicates the number of politics cards in the hand of all players of the game
+	 */
 	public List<Label> getNumberOfPoliticsCards(){
 		return Arrays.asList(numberOfPoliticsCardInHandPlayer1,numberOfPoliticsCardInHandPlayer2,numberOfPoliticsCardInHandPlayer3,numberOfPoliticsCardInHandPlayer4);
 	}
-	
+	/**
+	 * @return the list of labels that indicates the number of used permit tiles of all players of the game
+	 */
 	public List<Label> getNumberOfCoveredPermitTiles(){
 		return Arrays.asList(numberOfCoveredPermitTilePlayer1,numberOfCoveredPermitTilePlayer2,numberOfCoveredPermitTilePlayer3,numberOfCoveredPermitTilePlayer4);
 	}
 	
+	/**
+	 * @return the array of ImageViews of the sea permit tiles
+	 */
 	public ImageView[] getSeaPermitTile(){
 		ImageView[] array=new ImageView[2];
 		array[0]=permitTileSea0;
@@ -721,13 +804,18 @@ public class ControllerGUI {
 		return array;
 	}
 	
+	/**
+	 * @return the array of ImageViews of the hill permit tiles 
+	 */
 	public ImageView[] getHillPermitTile(){
 		ImageView[] array=new ImageView[2];
 		array[0]=permitTileHill0;
 		array[1]=permitTileHill1;
 		return array;
 	} 
-	
+	/**
+	 * @return the array of ImageViews of the mountain permit tiles 
+	 */
 	public ImageView[] getMountainPermitTile(){
 		ImageView[] array=new ImageView[2];
 		array[0]=permitTileMountain0;
@@ -735,6 +823,10 @@ public class ControllerGUI {
 		return array;
 	}
 	
+	/**
+	 * @param balcony
+	 * @return the list of ImageView of the councillor of a given balcony
+	 */
 	public List<ImageView> getCouncillors(RegionDTO balcony){
 		switch(balcony.getName()){
 		case "Sea":
@@ -748,55 +840,96 @@ public class ControllerGUI {
 		}
 	}
 	
+	/**
+	 * @return the list of ImageViews of the king conucillors 
+	 */
 	public List<ImageView> getKingCouncillors(){
 		return Arrays.asList(kingConcillor1,kingConcillor2,kingConcillor3,kingConcillor4);
 	}
 	
+	/**
+	 * @return the list of labels that indicate the name of all the players of the game
+	 */
 	public List<Label> getNamesLabels(){
 		return Arrays.asList(namePlayer1,namePlayer2,namePlayer3,namePlayer4);
 	}
 	
+	/**
+	 * @return the list of labels that indicate the number of remaining of all the players of the game
+	 */
 	public List<Label> getRemainingEmporiumsLabels(){
 		return Arrays.asList(remainingEmporiumPlayer1,remainingEmporiumPlayer2,remainingEmporiumPlayer3,remainingEmporiumPlayer4);
 	}
 	
+	/**
+	 * @return the list of labels that indicate the score of all the players of the game
+	 */
 	public List<Label> getScoreLabels(){
 		return Arrays.asList(scorePlayer1,scorePlayer2,scorePlayer3,scorePlayer4);
 	}
 	
+	/**
+	 * @return the list of labels that indicate the coins of all the players of the game
+	 */
 	public List<Label> getCoinsLabels(){
 		return Arrays.asList(coinsPlayer1,coinsPlayer2, coinsPlayer3, coinsPlayer4);
 	}
 	
+	/**
+	 * @return the list of labels that indicate the number of assistants of all the players of the game
+	 */
 	public List<Label> getAssistantsLabels(){
 		return Arrays.asList(assistantsPlayer1,assistantsPlayer2,assistantsPlayer3,assistantsPlayer4);
 	}
 	
+	/**
+	 * @return the list of labels that indicate the score nobility of all the players of the game
+	 */
 	public List<Label> getNobilityLabels(){
 		return Arrays.asList(nobilityPlayer1,nobilityPlayer2,nobilityPlayer3,nobilityPlayer4);
 	}
 
+	/**
+	 * @return the ImageView of the colour of the player number 1
+	 */
 	public ImageView getColourPlayer1() {
 		return colourPlayer1;
 	}
 
+	/**
+	 * @return the ImageView of the colour of the player number 2
+	 */
 	public ImageView getColourPlayer2() {
 		return colourPlayer2;
 	}
 
+	/**
+	 * @return the ImageView of the colour of the player number 3
+	 */
 	public ImageView getColourPlayer3() {
 		return colourPlayer3;
 	}
 
+	/**
+	 * @return the ImageView of the colour of the player number 4
+	 */
 	public ImageView getColourPlayer4() {
 		return colourPlayer4;
 	}
 	
+	/**
+	 * @return the list of HBox containing the emporium builded on each city
+	 */
 	public List<HBox> getCitysEmporiums() {
 		return Arrays.asList(emporiumsArkon, emporiumsBurgen, emporiumsCastrum, emporiumsDorful, emporiumsEsti, emporiumsFramek,
 				emporiumsGraden, emporiumsHellar, emporiumsIndur, emporiumsJuvelar, emporiumsKultos, emporiumsLyram, emporiumsMerkatim, emporiumsNaris, emporiumsOsium);
 	}
 
+	/**
+	 * 
+	 * @param city the given city
+	 * @return the ImageView of the reward token of a given city
+	 */
 	public ImageView getRewardToken(CityDTO city){
 		switch(city.getName()){
 			case "Arkon":
@@ -835,12 +968,21 @@ public class ControllerGUI {
 		}
 	}
 	
+	/**
+	 * @return the button where the player as to click to discard less then 4 politics card
+	 */
 	public Button getDescardPoliticsCards() {
 		return descardPoliticsCards;
 	}
 	
 	
-	
+	/**
+	 * Is the method called by clicking on an action button.
+	 * If the chosen action does not need parameters we directly send it through the connection;
+	 * if it needs parameters we need a new thread, different to the thread application to set the parameters.
+	 * @param event is the event to handle with the method
+	 * @throws RemoteException if something goes wrong sending the action through the connection
+	 */
 	@FXML
 	public void startAction(Event event) throws RemoteException {
 		ActionDTO selectedAction=(ActionDTO) ((Button) event.getSource()).getUserData();
@@ -870,7 +1012,12 @@ public class ControllerGUI {
 	}
 	
 	
-
+	/**
+	 * Is the method called by clicking on pick politics card button.
+	 * It sends the action through the connection
+	 * @param event is the event to handle with the method
+	 * @throws RemoteException if something goes wrong sending the action through the connection
+	 */
 	@FXML
 	public void startActionPickPoliticsCard() throws RemoteException {
 		for (ActionDTO action : this.clientGame.getAvailableActions())
@@ -881,7 +1028,10 @@ public class ControllerGUI {
 		this.view.displayError("You can't pick a politics card now");
 	}
 	
-	
+	/**
+	 * Sets the current parameter of the view and wake the thread that was waiting for the parameter up
+	 * @param selectedCard
+	 */
 	@FXML
 	public void clickOnRegion(Event event) {
 		synchronized (this) {
@@ -890,7 +1040,10 @@ public class ControllerGUI {
 		}
 	}
 	
-	
+	/**
+	 * Sets the current parameter of the view and wake the thread that was waiting for the parameter up
+	 * @param selectedCard
+	 */
 	@FXML
 	public void clickOnPermitTileInRegion(Event event) {
 		synchronized (this) {
@@ -899,7 +1052,10 @@ public class ControllerGUI {
 		}
 	}
 	 
-	
+	/**
+	 * Sets the current parameter of the view and wake the thread that was waiting for the parameter up
+	 * @param selectedCard
+	 */
 	@FXML
 	public void clickOnBalcony(Event event) {
 		synchronized (this) {
@@ -908,6 +1064,10 @@ public class ControllerGUI {
 		}
 	}
 	
+	/**
+	 * Sets the current parameter of the view and wake the thread that was waiting for the parameter up
+	 * @param selectedCard
+	 */
 	@FXML
 	public void clickOnCouncillorsReserve(Event event) {
 		synchronized (this) {
@@ -915,7 +1075,10 @@ public class ControllerGUI {
 			this.notify();
 		}
 	}
-	
+	/**
+	 * Sets the current parameter of the view and wake the thread that was waiting for the parameter up
+	 * @param selectedCard
+	 */
 	@FXML
 	public void clickOnCity(Event event) {
 		synchronized (this) {
@@ -923,7 +1086,10 @@ public class ControllerGUI {
 			this.notify();
 		}
 	}
-	
+	/**
+	 * Sets the current parameter of the view and wake the thread that was waiting for the parameter up
+	 * @param selectedCard
+	 */
 	@FXML
 	public void stopDiscarding() {
 		synchronized (this) {
@@ -931,21 +1097,31 @@ public class ControllerGUI {
 			this.notify();
 		}
 	}
-	
+	/**
+	 * Sets the current parameter of the view and wake the thread that was waiting for the parameter up
+	 * @param selectedCard
+	 */
 	public void handlePoliticsCard(PoliticsCardDTO selectedCard) {
 		synchronized (this) {
 			this.view.setCurrentParameter(selectedCard);
 			this.notify();
 		}
 	}
-	
+	/**
+	 * Sets the current parameter of the view and wake the thread that was waiting for the parameter up
+	 * @param selectedCard
+	 */
 	public void handlePermitTilesTurnedUp(PermitTileDTO selectedPermitTile) {
 		synchronized (this) {
 			this.view.setCurrentParameter(selectedPermitTile);
 			this.notify();
 		}
 	}
-	
+
+	/**
+	 * changes the mouse style with a hand
+	 * @param mouseEvent
+	 */
     @FXML
     public void changeMouseStyle(MouseEvent mouseEvent) {
     	Platform.runLater(new Runnable() {
@@ -958,6 +1134,10 @@ public class ControllerGUI {
 	    });
     }
     
+    /**
+     * This method is call
+     * @throws RemoteException
+     */
     @FXML
     public void clickOnQuitGame() throws RemoteException {
     	Alert alert=new Alert(AlertType.CONFIRMATION);
@@ -973,7 +1153,12 @@ public class ControllerGUI {
     }
     
 
-    
+    /**
+	 * Is the method called by pressing enter after inserting a chat message.
+	 * It sends the action through the connection
+	 * @param key is the event to handle with the method
+	 * @throws RemoteException if something goes wrong sending the action through the connection
+	 */
     @FXML
     public void sendMessage(KeyEvent key) throws RemoteException {
         Platform.runLater(new Runnable() {

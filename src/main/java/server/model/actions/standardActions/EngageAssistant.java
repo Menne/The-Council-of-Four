@@ -13,9 +13,8 @@ import server.view.notifies.ErrorNotify;
 import server.view.notifies.MessageNotify;
 import server.view.notifies.PlayerNotify;
 /**
- * It's the quick action "engage assistants" it operates on the 
- * protected attribute game through the method executeAction.
- * @author Luca
+ * It's the quick action "engage assistants"
+ * @author cg31
  *
  */
 public class EngageAssistant implements QuickAction {

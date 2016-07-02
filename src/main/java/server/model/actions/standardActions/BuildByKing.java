@@ -21,8 +21,8 @@ import server.view.notifies.MessageNotify;
 import server.view.notifies.PlayerNotify;
 
 /**
- * This class models the build an emporium with king's help action
- * @author Emanuele
+ * This class is the main action "build an emporium with the help of the king"
+ * @author cg31
  *
  */
 

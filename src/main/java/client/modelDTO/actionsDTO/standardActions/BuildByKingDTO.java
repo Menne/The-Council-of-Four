@@ -11,11 +11,14 @@ import client.modelDTO.gameTableDTO.PoliticsCardDTO;
 import server.model.actions.Action;
 import server.view.actionMapperVisitor.ActionMapperVisitor;
 
+/**
+ * This class represents the DTO version of the BuildByKing action, with all the DTO parameters 
+ * necessary but without logic
+ * @author cg31
+ *
+ */
 public class BuildByKingDTO implements ActionDTO, ActionWithParameters {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -3717084594434999743L;
 	private CityDTO selectedCity;
 	private List<PoliticsCardDTO> cardsToDescard;
@@ -23,11 +26,11 @@ public class BuildByKingDTO implements ActionDTO, ActionWithParameters {
 
 	
 	public CityDTO getSelectedCity() {
-		return selectedCity;
+		return this.selectedCity;
 	}
 
 	public List<PoliticsCardDTO> getCardsToDescard() {
-		return cardsToDescard;
+		return this.cardsToDescard;
 	}
 
 	public void setSelectedCity(CityDTO selectedCity) {
@@ -39,12 +42,12 @@ public class BuildByKingDTO implements ActionDTO, ActionWithParameters {
 	}
 	
 	@Override
-	public boolean checkIfParametersSetted() {
-		return parametersSetted;
+	public boolean checkIfParametersSet() {
+		return this.parametersSetted;
 	}
 
 	@Override
-	public void parametersSetted() {
+	public void parametersSet() {
 		this.parametersSetted=true;
 	}
 

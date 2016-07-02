@@ -8,29 +8,32 @@ import client.modelDTO.gameTableDTO.RegionDTO;
 import server.model.actions.Action;
 import server.view.actionMapperVisitor.ActionMapperVisitor;
 
+/**
+ * This class represents the DTO version of the ChangePermitTiles action, with all the DTO parameters 
+ * necessary but without logic
+ * @author cg31
+ *
+ */
 public class ChangePermitTilesDTO implements ActionDTO, ActionWithParameters {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 3441345313935469077L;
 	private RegionDTO selectedRegion;
 	private boolean parametersSetted=false;
 
 
 	public RegionDTO getSelectedRegion() {
-		return selectedRegion;
+		return this.selectedRegion;
 	}
 
 	public void setSelectedRegion(RegionDTO selectedRegion) {
 		this.selectedRegion = selectedRegion;
 	}
 	@Override
-	public boolean checkIfParametersSetted() {
-		return parametersSetted;
+	public boolean checkIfParametersSet() {
+		return this.parametersSetted;
 	}
 	@Override
-	public void parametersSetted() {
+	public void parametersSet() {
 		this.parametersSetted=true;
 	}
 

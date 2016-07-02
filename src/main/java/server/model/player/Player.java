@@ -28,14 +28,10 @@ public class Player {
 	private final List<BonusTile> playersFinalBonus;
 	
 	
-	/**
-	 * Sets nobility and score at 0. 
-	 * Adds to the hand of the player the initial politics cards
-	 * @param playerNumber the sequential number of the player in the game
-	 * @param name of the player
-	 * @param assistants number of initial assistants
-	 * @param coins number of initial coins
-	 */
+/**
+ * Initializes the several lists and assign the name
+ * @param name of the player
+ */
 	public Player(String name) {
 		this.assistants=new ArrayList<>();
 		this.hand=new ArrayList<>();
@@ -46,65 +42,108 @@ public class Player {
 		this.name=name;
 	}
 	
-	
+/**	
+ * @return the player number
+ */
 	public int getPlayerNumber() {
 		return playerNumber;
 	}
-	
+/**	
+ * @return the player name
+ */
 	public String getName() {
 		return name;
 	}
-	
+
+	/**
+	 * @return the number of assistants of the player
+	 */
 	public int getNumberOfAssistants() {
 		return this.assistants.size();
 	}
 	
+	/**
+	 * @return the current score of the player
+	 */
 	public int getScore() {
 		return score;
 	}
 	
+	/**
+	 * @return the current nobility score of the player
+	 */
 	public int getNobility() {
 		return nobility;
 	}
 	
+	/**
+	 * @return the list of cards in the player's hand
+	 */
 	public List<PoliticsCard> getHand() {
 		return hand;
 	}
 
-
+/**
+ * @return the current amount of coins of the player
+ */
 	public int getCoins() {
 		return coins;
 	}
 	
-
+/**
+ * @return the list of remaining emporiums of the player
+ */
 	public List<Emporium> getRemainigEmporiums() {
 		return emporiums;
 	}
 	
+	/**
+	 * @return the list of permit tiles that the player can use to build a new emporium
+	 */
 	public List<PermitTile> getPlayersPermitTilesTurnedUp() {
 		return playersPermitTilesTurnedUp;
 	}
 
+	/**
+	 * @return the list of permit tiles already used by the player
+	 */
 	public List<PermitTile> getPlayersPermitTilesTurnedDown() {
 		return playersPermitTilesTurnedDown;
 	}
-
+	
+/**
+ * @return all the bonus tile got from the player
+ */
 	public List<BonusTile> getPlayersFinalBonus() {
 		return playersFinalBonus;
 	}
 
+	/**
+	 * Sets the player number when he log on the game
+	 * @param playerNumber the new player number
+	 */
 	public void setPlayerNumber(int playerNumber) {
 		this.playerNumber = playerNumber;
 	}
 
+	/**
+	 * Sets the initial score of the player
+	 * @param score initial score
+	 */
 	public void setScore(int score) {
 		this.score = score;
 	}
-
+/**
+ * Sets the initial nobility score of the player
+ * @param nobility
+ */
 	public void setNobility(int nobility) {
 		this.nobility = nobility;
 	}
-
+/**
+ * sets the initial mount of coins of the player
+ * @param coins initial number of coins
+ */
 	public void setCoins(int coins) {
 		this.coins = coins;
 	}

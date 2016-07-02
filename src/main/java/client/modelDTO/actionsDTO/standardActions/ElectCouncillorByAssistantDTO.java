@@ -8,19 +8,21 @@ import client.modelDTO.gameTableDTO.CouncillorDTO;
 import server.model.actions.Action;
 import server.view.actionMapperVisitor.ActionMapperVisitor;
 
+/**
+ * This class represents the DTO version of the ElectCouncillorByAssistant action, with all the DTO parameters 
+ * necessary but without logic
+ * @author cg31
+ *
+ */
 public class ElectCouncillorByAssistantDTO implements ActionDTO, ActionWithParameters {
-		
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = -6230692405420942190L;
 	private CouncillorDTO newCouncillor;
 	private CouncillorDTO[] councilBalcony;
 	private boolean parametersSetted=false;
 
-	
 	public CouncillorDTO getNewCouncillor() {
-		return newCouncillor;
+		return this.newCouncillor;
 	}
 
 	public void setNewCouncillor(CouncillorDTO newCouncillor) {
@@ -28,18 +30,18 @@ public class ElectCouncillorByAssistantDTO implements ActionDTO, ActionWithParam
 	}
 
 	public CouncillorDTO[] getCouncilBalcony() {
-		return councilBalcony;
+		return this.councilBalcony;
 	}
 
 	public void setCouncilBalcony(CouncillorDTO[] councilBalcony) {
 		this.councilBalcony = councilBalcony;
 	}
 	@Override
-	public boolean checkIfParametersSetted() {
-		return parametersSetted;
+	public boolean checkIfParametersSet() {
+		return this.parametersSetted;
 	}
 	@Override
-	public void parametersSetted() {
+	public void parametersSet() {
 		this.parametersSetted=true;
 	}
 

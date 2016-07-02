@@ -23,6 +23,11 @@ import server.model.actions.standardActions.ChangePermitTiles;
 import server.model.actions.standardActions.ElectCouncillor;
 import server.model.actions.standardActions.ElectCouncillorByAssistant;
 
+/**
+ * This interface provides all the methods required to map an action DTO into its corresponding real object
+ * @author cg31
+ *
+ */
 public interface ActionMapperVisitor {
 
 	/**

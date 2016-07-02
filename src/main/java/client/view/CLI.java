@@ -91,7 +91,7 @@ public class CLI extends ClientView {
 	
 	private void insertParametersAndSend(ActionWithParameters actionWithParameters) throws RemoteException {
 		actionWithParameters.setParser().setParameters(this, this.clientGame);
-		if (actionWithParameters.checkIfParametersSetted())
+		if (actionWithParameters.checkIfParametersSet())
 			connection.sendAction(actionWithParameters);
 	}
 	

@@ -12,7 +12,8 @@ import client.view.ClientView;
 public abstract interface ActionParserVisitor {
 
 	/**
-	 * This method sequentially asks the user the requested parameters and sets them to the action DTO
+	 * This method sequentially tells the client view to ask the user the requested parameters 
+	 * and sets them to the action DTO
 	 * @param view is the current ClientView
 	 * @param game is the client game
 	 */

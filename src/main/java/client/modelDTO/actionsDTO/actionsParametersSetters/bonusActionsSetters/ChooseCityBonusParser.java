@@ -47,7 +47,7 @@ public class ChooseCityBonusParser implements ActionParserVisitor {
 			acceptableCities.remove(selectedCity);
 		}
 		
-		this.selectedAction.parametersSetted();
+		this.selectedAction.parametersSet();
 	}
 
 }

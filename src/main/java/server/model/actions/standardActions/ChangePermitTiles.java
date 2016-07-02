@@ -15,10 +15,8 @@ import server.view.notifies.MessageNotify;
 import server.view.notifies.PlayerNotify;
 
 /**
- * It's the quick action "change permit tiles" it operates on the 
- * protected attribute game through the method executeAction.
- * The controller will pass to the constructor the region where to change the two uncovered permit tiles  
- * @author Luca
+ * It's the quick action "change permit tiles".
+ * @author cg31
  *
  */
 public class ChangePermitTiles implements QuickAction {

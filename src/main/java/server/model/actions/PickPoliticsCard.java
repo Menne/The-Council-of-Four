@@ -19,6 +19,9 @@ import server.view.notifies.PlayerNotify;
  */
 public class PickPoliticsCard implements Action {
 
+	/**
+	 * Adds the picked politics card to the hand of the player
+	 */
 	@Override
 	public boolean executeAction(Game game) {
 		game.getCurrentPlayer().getHand().add(game.getGameTable().getPoliticsDeck().pickCard());

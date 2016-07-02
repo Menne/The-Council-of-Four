@@ -15,11 +15,8 @@ import server.view.notifies.MessageNotify;
 import server.view.notifies.PlayerNotify;
 
 /**
- * It's the main action "elect councillor" it operates on the 
- * protected attribute game through the method executeAction.
- * The controller will pass to the constructor the councillor to add,
- * and the balcony where he wants to add it. 
- * @author Luca
+ * It's the main action "elect councillor".
+ * @author cg31
  *
  */
 public class ElectCouncillor implements MainAction {
