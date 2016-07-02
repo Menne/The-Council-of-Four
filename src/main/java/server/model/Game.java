@@ -111,7 +111,6 @@ public class Game extends Observable<ViewNotify>{
 		this.assignBonusPermitTilesEndGame();
 		this.assignBonusNobilityEndGame();
 		this.sortFinalRankingTable();
-		System.out.println(quittedPlayers.get(0));
 		notifyObserver(new EndGameNotify(this, quittedPlayers));
 	}
 	

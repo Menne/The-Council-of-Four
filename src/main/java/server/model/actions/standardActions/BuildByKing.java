@@ -146,7 +146,7 @@ public class BuildByKing implements MainAction {
 		else
 			coinsToPay=((CouncilBalcony.getNumberofcouncillors()-(this.cardsToDescard.size()))*3)+1;
 		for (PoliticsCard card : cardsToDescard)
-			if (card.getColour().getColour() == "rainbow")
+			if ("Rainbow".equals(card.getColour().getColour()))
 				coinsToPay++;
 		return coinsToPay + 2*game.getGameTable().getMap().getShortestPathLenght(this.selectedCity, game.getGameTable().getKing().getCity());
 	}
@@ -162,7 +162,7 @@ public class BuildByKing implements MainAction {
 			temporaryBalcony.add(game.getGameTable().getCouncilOfKing().getCouncillors()[i]);
 		
 		for (PoliticsCard politicsCardInHand: this.cardsToDescard) {
-			if (politicsCardInHand.getColour().getColour().equals("Rainbow"))
+			if ("Rainbow".equals(politicsCardInHand.getColour().getColour()))
 				satisfyCounter++;		
 			for (Councillor councillorToSatisfy : temporaryBalcony)
 				if (councillorToSatisfy.getColour().getColour().equals(politicsCardInHand.getColour().getColour())) {

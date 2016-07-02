@@ -5,7 +5,6 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -484,16 +483,12 @@ public class GUI extends ClientView{
 	
 	private void displayPlayers(){
 		List<GenericPlayerDTO> orderedPlayers = new ArrayList<>(clientGame.getClientGameTable().getClientPlayers());
-		Collections.sort(orderedPlayers, new Comparator<GenericPlayerDTO>() {
-
-			@Override
-			public int compare(GenericPlayerDTO o1, GenericPlayerDTO o2) {
+		Collections.sort(orderedPlayers, (o1,o2)-> {
 				if(o1.getPlayerNumber()<o2.getPlayerNumber())
 					return -1;
 				else 
 					return 1;
-			}
-		});
+			});
 		
 		for(int i=0; i<orderedPlayers.size();i++){
 			controllerGUI.getNamesLabels().get(i).setText(orderedPlayers.get(i).getName());
@@ -558,22 +553,14 @@ public class GUI extends ClientView{
 				imageView.setFitWidth(50);
 				imageView.setPreserveRatio(true);
 				imageView.setDisable(true);
-				imageView.setOnMouseClicked(new EventHandler<Event>() {
-					@Override
-					public void handle(Event event) {
+				imageView.setOnMouseClicked((Event e)-> {
 						controllerGUI.handlePoliticsCard(card);	
 						imageView.setDisable(true);
 						imageView.setOpacity(0.4);
-					}
-				});
-				imageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
-
-					@Override
-					public void handle(MouseEvent event) {
-						controllerGUI.changeMouseStyle(event);
-							
-					}
-				});
+					});
+				imageView.setOnMouseEntered((MouseEvent event)->
+						controllerGUI.changeMouseStyle(event)
+						);
 				politicsCards.add(imageView);
 				controllerGUI.setPoliticsCards(politicsCards);
 			}
@@ -583,22 +570,12 @@ public class GUI extends ClientView{
 				imageView.setFitHeight(70);
 				imageView.setPreserveRatio(true);
 				imageView.setDisable(true);
-				imageView.setOnMouseClicked(new EventHandler<Event>() {
-
-					@Override
-					public void handle(Event event) {
-						controllerGUI.handlePermitTilesTurnedUp(permitTileDTO);	
-							
-					}
-				});
-				imageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
-
-					@Override
-					public void handle(MouseEvent event) {
-						controllerGUI.changeMouseStyle(event);
-							
-					}
-				});
+				imageView.setOnMouseClicked((Event event)-> 
+					controllerGUI.handlePermitTilesTurnedUp(permitTileDTO)	
+					);
+				imageView.setOnMouseEntered((MouseEvent event)->
+						controllerGUI.changeMouseStyle(event)
+						);
 			}
 			for (PermitTileDTO permitTileDTO : clientGame.getClientPlayer().getCoveredPermitTiles()){
 				ImageView imageView=new ImageView(imageMap.get(permitTileDTO));
@@ -607,21 +584,12 @@ public class GUI extends ClientView{
 				imageView.setPreserveRatio(true);
 				imageView.setDisable(true);
 				imageView.setOpacity(0.6);
-				imageView.setOnMouseClicked(new EventHandler<Event>() {	
-					@Override
-					public void handle(Event event) {
-						controllerGUI.handlePermitTilesTurnedUp(permitTileDTO);	
-							
-					}
-				});
-				imageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
-
-					@Override
-					public void handle(MouseEvent event) {
-						controllerGUI.changeMouseStyle(event);
-							
-					}
-				});
+				imageView.setOnMouseClicked((Event event)-> 
+						controllerGUI.handlePermitTilesTurnedUp(permitTileDTO)	
+					);
+				imageView.setOnMouseEntered((MouseEvent event)-> 
+						controllerGUI.changeMouseStyle(event)
+						);
 			}
 			controllerGUI.getPlayerCoins().setText(String.valueOf(clientGame.getClientPlayer().getCoins()));
 			controllerGUI.getPlayerAssistants().setText(String.valueOf(clientGame.getClientPlayer().getAssistants().size()));
@@ -672,10 +640,7 @@ public class GUI extends ClientView{
 			displayMarketStuff();	
 			displayOffers();
 			controllerMarketGUI.getMakeAnOffer().setText("Start Offering");
-			controllerMarketGUI.getMakeAnOffer().setOnAction(new EventHandler<ActionEvent>() {
-
-				@Override
-				public void handle(ActionEvent event) {
+			controllerMarketGUI.getMakeAnOffer().setOnAction((ActionEvent event)-> {
 					try {
 						controllerMarketGUI.startAction(event);
 					} catch (RemoteException e) {
@@ -683,13 +648,9 @@ public class GUI extends ClientView{
 						logger.log(Level.SEVERE, "Failed to send action with RMI", e);
 					}
 						
-				}
-			});
+				});
 			controllerMarketGUI.getSkip().setText("Skip Action");
-			controllerMarketGUI.getSkip().setOnAction(new EventHandler<ActionEvent>() {
-
-				@Override
-				public void handle(ActionEvent event) {
+			controllerMarketGUI.getSkip().setOnAction((ActionEvent event)-> {
 					try {								
 						controllerMarketGUI.startAction(event);
 					} catch (RemoteException e) {
@@ -697,18 +658,14 @@ public class GUI extends ClientView{
 						logger.log(Level.SEVERE, "Failed to send action with RMI", e);
 					}
 						
-				}
-			});
-			controllerMarketGUI.getAcceptAnOffer().setOnAction(new EventHandler<ActionEvent>() {
-				@Override
-				public void handle(ActionEvent event) {
+				});
+			controllerMarketGUI.getAcceptAnOffer().setOnAction((ActionEvent event)-> {
 					try {
 						controllerMarketGUI.startAction(event);
 					} catch (RemoteException e) {
 						Logger logger=Logger.getAnonymousLogger();
 						logger.log(Level.SEVERE, "Failed to send action with RMI", e);
 					}					
-				}
 				});
 			});
 	}
@@ -722,21 +679,13 @@ public class GUI extends ClientView{
 			imageView.setFitWidth(50);
 			imageView.setPreserveRatio(true);
 			imageView.setDisable(true);
-			imageView.setOnMouseClicked(new EventHandler<Event>() {
-
-				@Override
-				public void handle(Event event) {
+			imageView.setOnMouseClicked((Event event)-> {
 					controllerMarketGUI.handlePoliticsCard(card);
 					imageView.setOpacity(0.4);
-				}
-			});
-			imageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
-
-				@Override
-				public void handle(MouseEvent event) {
-					controllerMarketGUI.changeMouseStyle(event);
-				}
-			});
+				});
+			imageView.setOnMouseEntered((MouseEvent event)-> 
+					controllerMarketGUI.changeMouseStyle(event)
+				);
 		}
 		controllerMarketGUI.getAvailablePermitTiles().getChildren().clear();
 		
@@ -748,21 +697,14 @@ public class GUI extends ClientView{
 			imageView.setFitWidth(50);
 			imageView.setPreserveRatio(true);
 			imageView.setDisable(true);
-			imageView.setOnMouseClicked(new EventHandler<Event>() {
-
-				@Override
-				public void handle(Event event) {
+			imageView.setOnMouseClicked((Event event)-> {
 					controllerMarketGUI.handlePermitTilesTurnedUp(permitTileDTO);		
 					imageView.setOpacity(0.4);
-				}
-			});
-			imageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
+				});
+			imageView.setOnMouseEntered((MouseEvent event)-> 
 
-				@Override
-				public void handle(MouseEvent event) {
-					controllerMarketGUI.changeMouseStyle(event);
-				}
-			});
+					controllerMarketGUI.changeMouseStyle(event)
+				);
 		}
 		
 		
@@ -775,21 +717,14 @@ public class GUI extends ClientView{
 			imageView.setUserData(assistantDTO);
 			controllerMarketGUI.getAvailableAssistants().getChildren().add(imageView);
 			imageView.setDisable(true);
-			imageView.setOnMouseClicked(new EventHandler<Event>() {
+			imageView.setOnMouseClicked((Event event)-> {
 
-				@Override
-				public void handle(Event event) {
 					controllerMarketGUI.handleAssistants(assistantDTO);
 					imageView.setOpacity(0.4);
-				}
-			});
-			imageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
-
-				@Override
-				public void handle(MouseEvent event) {
-					controllerMarketGUI.changeMouseStyle(event);
-				}
-			});
+				});
+			imageView.setOnMouseEntered((MouseEvent event)->
+					controllerMarketGUI.changeMouseStyle(event)
+					);
 		}
 	}
 	
@@ -807,31 +742,21 @@ public class GUI extends ClientView{
 			offer.getChildren().add(sellingObject);
 			offer.getChildren().add(price);
 			offer.setDisable(true);
-			offer.setOnMouseClicked(new EventHandler<Event>() {
-
-				@Override
-				public void handle(Event event) {
-					controllerMarketGUI.handleOffers(offerDTO);					
-				}
-				
-			});
+			offer.setOnMouseClicked((Event event)-> 
+					controllerMarketGUI.handleOffers(offerDTO)					
+					);
 			controllerMarketGUI.getOffers().getChildren().add(offer);
-			offer.setOnMouseEntered(new EventHandler<MouseEvent>() {
-
-				@Override
-				public void handle(MouseEvent event) {
-					controllerMarketGUI.changeMouseStyle(event);
-					
-				}
-			});
+			offer.setOnMouseEntered((MouseEvent event)-> 
+					controllerMarketGUI.changeMouseStyle(event)
+				);
 		}
 	}
 	
 	@Override
 	public void displayMessage(String string) {
-		Platform.runLater(()-> {
-			currentTextArea.appendText("SYSTEM: "+string+"\n");	
-		});
+		Platform.runLater(()-> 
+			currentTextArea.appendText("SYSTEM: "+string+"\n")	
+		);
 	}
 	
 	@Override
@@ -863,9 +788,9 @@ public class GUI extends ClientView{
 	
 	@Override
 	public void displayChatMessage(String message) {
-		Platform.runLater(()-> {
-			controllerGUI.getMessageBox().appendText(message+"\n");	
-			});		
+		Platform.runLater(()-> 
+			controllerGUI.getMessageBox().appendText(message+"\n")	
+			);		
 	}
 	
 	@Override
@@ -952,7 +877,6 @@ public class GUI extends ClientView{
 			}
 		}
 		CouncillorDTO[] councilBalcony=(CouncillorDTO[]) this.currentParameter;
-		System.out.println(councilBalcony);
 		this.currentParameter=null;
 		this.disableClickOnCouncilBalconies(true);
 		return councilBalcony;
@@ -1072,28 +996,22 @@ public class GUI extends ClientView{
 	@Override
 	public boolean askForOtherSelling() {
 		Platform.runLater(()-> {
-				controllerMarketGUI.getMakeAnOffer().setOnAction(new EventHandler<ActionEvent>() {
-
-					@Override
-					public void handle(ActionEvent event) {				
+				controllerMarketGUI.getMakeAnOffer().setOnAction((ActionEvent event)-> {
+				
 						synchronized(controllerMarketGUI){
 							currentParameter=true;
 							controllerMarketGUI.notify();
 						}
-					}
-				});
+					});
 				controllerMarketGUI.getMakeAnOffer().setText("Next Offer");
-				controllerMarketGUI.getSkip().setOnAction(new EventHandler<ActionEvent>() {
-					
-					@Override
-					public void handle(ActionEvent event) {
+				
+				controllerMarketGUI.getSkip().setOnAction((ActionEvent event)-> {
 						
 						synchronized(controllerMarketGUI){					
 							currentParameter=false;	
 							controllerMarketGUI.notify();
 						}
-					}
-				});
+					});
 				controllerMarketGUI.getSkip().setText("Stop Offering");
 				controllerMarketGUI.getMakeAnOffer().setDisable(false);
 				controllerMarketGUI.getSkip().setDisable(false);
@@ -1388,9 +1306,9 @@ public class GUI extends ClientView{
 	 * @param disabled indicates if the buttons have to be enabled or disabled
 	 */
 	private void disablePriceInsertion(boolean disabled) {
-		Platform.runLater(()-> {
-				controllerMarketGUI.getPrice().setDisable(disabled);
-			});
+		Platform.runLater(()-> 
+				controllerMarketGUI.getPrice().setDisable(disabled)
+			);
 	}
 	
 	/**
@@ -1398,9 +1316,9 @@ public class GUI extends ClientView{
 	 * @param disabled indicates if the buttons have to be enabled or disabled
 	 */
 	private void disableClickOnOfferSettedButtons(boolean disabled) {
-		Platform.runLater(()-> {
-				controllerMarketGUI.getSell().setDisable(disabled);
-			});
+		Platform.runLater(()-> 
+				controllerMarketGUI.getSell().setDisable(disabled)
+			);
 	}
 	
 	/**
