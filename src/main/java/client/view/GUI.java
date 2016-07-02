@@ -222,45 +222,39 @@ public class GUI extends ClientView{
 	
 	@Override
 	public void askForMap() {
-		Platform.runLater(new Runnable() {
-			
-			@Override
-			public void run() {
-				FXMLLoader loader = new FXMLLoader();
-				loader.setLocation(ClientGUI.class.getResource("ChooseMap.fxml"));
-					AnchorPane root=null;
-					try {
-						root = (AnchorPane)loader.load();
-					} catch (IOException e) {
-						Logger logger=Logger.getAnonymousLogger();
-						logger.log(Level.SEVERE, "Failed to load chooseMap screen", e);
-					}
-					controllerChooseMap=loader.getController();
-					controllerChooseMap.getMap1().setUserData(1);
-					controllerChooseMap.getMap2().setUserData(2);
-					controllerChooseMap.getMap3().setUserData(3);
-					controllerChooseMap.getMap4().setUserData(4);
-					controllerChooseMap.getMap5().setUserData(5);
-					controllerChooseMap.getMap6().setUserData(6);
-					controllerChooseMap.getMap7().setUserData(7);
-					controllerChooseMap.getMap8().setUserData(8);
-					controllerChooseMap.setView(GUI.this);
-					Stage chooseMapStage=new Stage();
-					chooseMapStage.setTitle("Choose Map");
-					Scene scene=new Scene(root);
-					chooseMapStage.setScene(scene);
-					controllerChooseMap.setChooseMapStage(chooseMapStage);
-					chooseMapStage.show();
-					controllerChooseMap.changeMouseStyle();
+		Platform.runLater(()-> {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(ClientGUI.class.getResource("ChooseMap.fxml"));
+			AnchorPane root=null;
+			try {
+				root = (AnchorPane)loader.load();
+			} catch (IOException e) {
+				Logger logger=Logger.getAnonymousLogger();
+				logger.log(Level.SEVERE, "Failed to load chooseMap screen", e);
 			}
-		});
-		
+			controllerChooseMap=loader.getController();
+			controllerChooseMap.getMap1().setUserData(1);
+			controllerChooseMap.getMap2().setUserData(2);
+			controllerChooseMap.getMap3().setUserData(3);
+			controllerChooseMap.getMap4().setUserData(4);
+			controllerChooseMap.getMap5().setUserData(5);
+			controllerChooseMap.getMap6().setUserData(6);
+			controllerChooseMap.getMap7().setUserData(7);
+			controllerChooseMap.getMap8().setUserData(8);
+			controllerChooseMap.setView(GUI.this);
+			Stage chooseMapStage=new Stage();
+			chooseMapStage.setTitle("Choose Map");
+			Scene scene=new Scene(root);
+			chooseMapStage.setScene(scene);
+			controllerChooseMap.setChooseMapStage(chooseMapStage);
+			chooseMapStage.show();
+			controllerChooseMap.changeMouseStyle();
+			});	
 	}
 
 
 	@Override
 	public void startGame() {
-		System.out.println(controllerGUI.getMapImage());
 		controllerGUI.getMapImage().setImage(new Image(getClass().getResource("images/maps/map"+String.valueOf
 				(this.clientGame.getClientGameTable().getMapNumber())+".jpg").toExternalForm()));			
 	}
@@ -289,60 +283,51 @@ public class GUI extends ClientView{
 					logger.log(Level.SEVERE, "Failed to send action with RMI", e);
 				}
 		
-		Platform.runLater(new Runnable() {
-			
-			@Override
-			public void run() {
-				controllerGUI.getActions().get(0).getParent().setEffect(null);
-				controllerGUI.getActions().get(4).getParent().setEffect(null);
-				InnerShadow innerShadow= new InnerShadow();
-				innerShadow.setChoke(0.5);
-				innerShadow.setHeight(150);
-				innerShadow.setWidth(150);
-				innerShadow.setBlurType(BlurType.GAUSSIAN);
-				innerShadow.setColor(Color.web("ffffff"));
-				controllerGUI.getPoliticsDeck().setEffect(null);
-				for (ActionDTO action : clientGame.getAvailableActions()){
-					if(action.getClass()==PickPoliticsCardDTO.class){
-						controllerGUI.getPoliticsDeck().setEffect(new Glow(0.8));
-					}
-					if(action.getClass()==ElectCouncillorDTO.class)
-						controllerGUI.getActions().get(0).getParent().setEffect(innerShadow);
-					if(action.getClass()==EngageAssistantDTO.class)
-						controllerGUI.getActions().get(4).getParent().setEffect(innerShadow);
+		Platform.runLater(()-> {
+			controllerGUI.getActions().get(0).getParent().setEffect(null);
+			controllerGUI.getActions().get(4).getParent().setEffect(null);
+			InnerShadow innerShadow= new InnerShadow();
+			innerShadow.setChoke(0.5);
+			innerShadow.setHeight(150);
+			innerShadow.setWidth(150);
+			innerShadow.setBlurType(BlurType.GAUSSIAN);
+			innerShadow.setColor(Color.web("ffffff"));
+			controllerGUI.getPoliticsDeck().setEffect(null);
+			for (ActionDTO action : clientGame.getAvailableActions()){
+				if(action.getClass()==PickPoliticsCardDTO.class){
+					controllerGUI.getPoliticsDeck().setEffect(new Glow(0.8));
 				}
+				if(action.getClass()==ElectCouncillorDTO.class)
+					controllerGUI.getActions().get(0).getParent().setEffect(innerShadow);
+				if(action.getClass()==EngageAssistantDTO.class)
+					controllerGUI.getActions().get(4).getParent().setEffect(innerShadow);
 			}
 		});		
 	}
 
 	@Override
 	public void displayGameTable() {
-		Platform.runLater(new Runnable() {
-			
-			@Override
-			public void run() {
-				if (controllerChooseMap!=null && controllerChooseMap.getChooseMapStage().isShowing()){
-					Alert alert=new Alert(AlertType.INFORMATION);
-			    	alert.setTitle("Map Not Chosen");
-			    	alert.setHeaderText("You did not choose the map.\n"
-			    			+ "The system has choose for you the map numeber " + clientGame.getClientGameTable().getMapNumber());
-			    	alert.showAndWait();
-			    	controllerChooseMap.getChooseMapStage().close();
-				}
-				unlockPlayersTabs();
-				displayCouncillors();
-				displayTokens();
-				displayPlayers();
-				displayRegions();
-				displayCities();
-				diplayBalconies();
-				displayPermitTiles();
-				displayKing();
-				displayEmporiums();
-				displayBonusTiles();
+		Platform.runLater(()-> {
+			if (controllerChooseMap!=null && controllerChooseMap.getChooseMapStage().isShowing()){
+				Alert alert=new Alert(AlertType.INFORMATION);
+			   	alert.setTitle("Map Not Chosen");
+			   	alert.setHeaderText("You did not choose the map.\n"
+			   			+ "The system has choose for you the map numeber " + clientGame.getClientGameTable().getMapNumber());
+			   	alert.showAndWait();
+			   	controllerChooseMap.getChooseMapStage().close();
 			}
-		});
-		
+			unlockPlayersTabs();
+			displayCouncillors();
+			displayTokens();
+			displayPlayers();
+			displayRegions();
+			displayCities();
+			diplayBalconies();
+			displayPermitTiles();
+			displayKing();
+			displayEmporiums();
+			displayBonusTiles();
+		});		
 	}
 	
 	private void unlockPlayersTabs(){
@@ -556,185 +541,170 @@ public class GUI extends ClientView{
 
 	@Override
 	public void displayPlayer() {
-		Platform.runLater(new Runnable() {
-			
-			@Override
-			public void run() {
-				List<ImageView> politicsCards=new ArrayList<>();
-				controllerGUI.getHand().getChildren().clear();
-				controllerGUI.getPermitTilesTurnedUpOwned().getChildren().clear();
-				controllerGUI.getPermitTilesTurnedDownOwned().getChildren().clear();
-				for (PoliticsCardDTO card : clientGame.getClientPlayer().getHand()){
-					ImageView imageView=new ImageView(imageMap.get(card));
-					controllerGUI.getHand().getChildren().add(imageView);
-					imageView.setFitWidth(50);
-					imageView.setPreserveRatio(true);
-					imageView.setDisable(true);
-					imageView.setOnMouseClicked(new EventHandler<Event>() {
+		Platform.runLater(()-> {
+			List<ImageView> politicsCards=new ArrayList<>();
+			controllerGUI.getHand().getChildren().clear();
+			controllerGUI.getPermitTilesTurnedUpOwned().getChildren().clear();
+			controllerGUI.getPermitTilesTurnedDownOwned().getChildren().clear();
+			for (PoliticsCardDTO card : clientGame.getClientPlayer().getHand()){
+				ImageView imageView=new ImageView(imageMap.get(card));
+				controllerGUI.getHand().getChildren().add(imageView);
+				imageView.setFitWidth(50);
+				imageView.setPreserveRatio(true);
+				imageView.setDisable(true);
+				imageView.setOnMouseClicked(new EventHandler<Event>() {
+					@Override
+					public void handle(Event event) {
+						controllerGUI.handlePoliticsCard(card);	
+						imageView.setDisable(true);
+						imageView.setOpacity(0.4);
+					}
+				});
+				imageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
 
-						@Override
-						public void handle(Event event) {
-							controllerGUI.handlePoliticsCard(card);	
-							imageView.setDisable(true);
-							imageView.setOpacity(0.4);
-						}
-					});
-					imageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
-
-						@Override
-						public void handle(MouseEvent event) {
-							controllerGUI.changeMouseStyle(event);
+					@Override
+					public void handle(MouseEvent event) {
+						controllerGUI.changeMouseStyle(event);
 							
-						}
-					});
-					politicsCards.add(imageView);
-					controllerGUI.setPoliticsCards(politicsCards);
-				}
-				for (PermitTileDTO permitTileDTO : clientGame.getClientPlayer().getAvailablePermitTiles()){
-					ImageView imageView=new ImageView(imageMap.get(permitTileDTO));
-					controllerGUI.getPermitTilesTurnedUpOwned().getChildren().add(imageView);
-					imageView.setFitHeight(70);
-					imageView.setPreserveRatio(true);
-					imageView.setDisable(true);
-					imageView.setOnMouseClicked(new EventHandler<Event>() {
-
-						@Override
-						public void handle(Event event) {
-							controllerGUI.handlePermitTilesTurnedUp(permitTileDTO);	
-							
-						}
-					});
-					imageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
-
-						@Override
-						public void handle(MouseEvent event) {
-							controllerGUI.changeMouseStyle(event);
-							
-						}
-					});
-				}
-				for (PermitTileDTO permitTileDTO : clientGame.getClientPlayer().getCoveredPermitTiles()){
-					ImageView imageView=new ImageView(imageMap.get(permitTileDTO));
-					controllerGUI.getPermitTilesTurnedDownOwned().getChildren().add(imageView);
-					imageView.setFitHeight(70);
-					imageView.setPreserveRatio(true);
-					imageView.setDisable(true);
-					imageView.setOpacity(0.6);
-					imageView.setOnMouseClicked(new EventHandler<Event>() {	
-						@Override
-						public void handle(Event event) {
-							controllerGUI.handlePermitTilesTurnedUp(permitTileDTO);	
-							
-						}
-					});
-					imageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
-
-						@Override
-						public void handle(MouseEvent event) {
-							controllerGUI.changeMouseStyle(event);
-							
-						}
-					});
-				}
-				controllerGUI.getPlayerCoins().setText(String.valueOf(clientGame.getClientPlayer().getCoins()));
-				controllerGUI.getPlayerAssistants().setText(String.valueOf(clientGame.getClientPlayer().getAssistants().size()));
-				controllerGUI.getPlayerNobility().setText(String.valueOf(clientGame.getClientPlayer().getNobility()));
-				controllerGUI.getPlayerScore().setText(String.valueOf(clientGame.getClientPlayer().getScore()));
-				controllerGUI.getPlayersBonuses().getChildren().clear();
-				for(BonusTileDTO bonusTileDTO : clientGame.getClientPlayer().getFinalBonuses()){
-					ImageView imageView =new ImageView(imageMap.get(bonusTileDTO));
-					controllerGUI.getPlayersBonuses().getChildren().add(imageView);
-					imageView.setFitWidth(60);
-					imageView.setPreserveRatio(true);
-					imageView.setDisable(true);
-				}
+					}
+				});
+				politicsCards.add(imageView);
+				controllerGUI.setPoliticsCards(politicsCards);
 			}
-		});
-		
+			for (PermitTileDTO permitTileDTO : clientGame.getClientPlayer().getAvailablePermitTiles()){
+				ImageView imageView=new ImageView(imageMap.get(permitTileDTO));
+				controllerGUI.getPermitTilesTurnedUpOwned().getChildren().add(imageView);
+				imageView.setFitHeight(70);
+				imageView.setPreserveRatio(true);
+				imageView.setDisable(true);
+				imageView.setOnMouseClicked(new EventHandler<Event>() {
+
+					@Override
+					public void handle(Event event) {
+						controllerGUI.handlePermitTilesTurnedUp(permitTileDTO);	
+							
+					}
+				});
+				imageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+					@Override
+					public void handle(MouseEvent event) {
+						controllerGUI.changeMouseStyle(event);
+							
+					}
+				});
+			}
+			for (PermitTileDTO permitTileDTO : clientGame.getClientPlayer().getCoveredPermitTiles()){
+				ImageView imageView=new ImageView(imageMap.get(permitTileDTO));
+				controllerGUI.getPermitTilesTurnedDownOwned().getChildren().add(imageView);
+				imageView.setFitHeight(70);
+				imageView.setPreserveRatio(true);
+				imageView.setDisable(true);
+				imageView.setOpacity(0.6);
+				imageView.setOnMouseClicked(new EventHandler<Event>() {	
+					@Override
+					public void handle(Event event) {
+						controllerGUI.handlePermitTilesTurnedUp(permitTileDTO);	
+							
+					}
+				});
+				imageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+					@Override
+					public void handle(MouseEvent event) {
+						controllerGUI.changeMouseStyle(event);
+							
+					}
+				});
+			}
+			controllerGUI.getPlayerCoins().setText(String.valueOf(clientGame.getClientPlayer().getCoins()));
+			controllerGUI.getPlayerAssistants().setText(String.valueOf(clientGame.getClientPlayer().getAssistants().size()));
+			controllerGUI.getPlayerNobility().setText(String.valueOf(clientGame.getClientPlayer().getNobility()));
+			controllerGUI.getPlayerScore().setText(String.valueOf(clientGame.getClientPlayer().getScore()));
+			controllerGUI.getPlayersBonuses().getChildren().clear();
+			for(BonusTileDTO bonusTileDTO : clientGame.getClientPlayer().getFinalBonuses()){
+				ImageView imageView =new ImageView(imageMap.get(bonusTileDTO));
+				controllerGUI.getPlayersBonuses().getChildren().add(imageView);
+				imageView.setFitWidth(60);
+				imageView.setPreserveRatio(true);
+				imageView.setDisable(true);
+			}
+		});	
 	}
 	
 	@Override
 	public void startMarket() {
-		Platform.runLater(new Runnable() {
-			
-			@Override
-			public void run() {
-				FXMLLoader loader = new FXMLLoader();
-				loader.setLocation(ClientGUI.class.getResource("MarketView.fxml"));
-				try {
-					AnchorPane root=(AnchorPane)loader.load();
-					controllerMarketGUI=loader.getController();
-					Stage marketStage=new Stage();
-					marketStage.setTitle("Market");
-					marketStage.setScene(new Scene(root));
-					controllerMarketGUI.setMerketStage(marketStage);
-					controllerMarketGUI.setClientGame(clientGame);
-					controllerMarketGUI.setView(GUI.this);
-					controllerMarketGUI.getMakeAnOffer().setUserData(new MakeAnOfferDTO());
-					controllerMarketGUI.getSkip().setUserData(new MoveToNextDTO());
-					controllerMarketGUI.getAcceptAnOffer().setUserData(new AcceptAnOfferDTO());
-					currentTextArea=controllerMarketGUI.getMessageBox();
-					controllerMarketGUI.getMerketStage().show();
-				} catch (IOException e) {
-					Logger logger=Logger.getAnonymousLogger();
-					logger.log(Level.SEVERE, "Failed to load market screen", e);
-				}				
-			}
-		});
-		
+		Platform.runLater(()-> {
+
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(ClientGUI.class.getResource("MarketView.fxml"));
+			try {
+				AnchorPane root=(AnchorPane)loader.load();
+				controllerMarketGUI=loader.getController();
+				Stage marketStage=new Stage();
+				marketStage.setTitle("Market");
+				marketStage.setScene(new Scene(root));
+				controllerMarketGUI.setMerketStage(marketStage);
+				controllerMarketGUI.setClientGame(clientGame);
+				controllerMarketGUI.setView(GUI.this);
+				controllerMarketGUI.getMakeAnOffer().setUserData(new MakeAnOfferDTO());
+				controllerMarketGUI.getSkip().setUserData(new MoveToNextDTO());
+				controllerMarketGUI.getAcceptAnOffer().setUserData(new AcceptAnOfferDTO());
+				currentTextArea=controllerMarketGUI.getMessageBox();
+				controllerMarketGUI.getMerketStage().show();
+			} catch (IOException e) {
+				Logger logger=Logger.getAnonymousLogger();
+				logger.log(Level.SEVERE, "Failed to load market screen", e);
+			}				
+		});		
 	}
 
 	@Override
 	public void displayMarket() {
-		Platform.runLater(new Runnable() {
+		Platform.runLater(()-> {
 			
-			@Override
-			public void run() {
+			displayMarketStuff();	
+			displayOffers();
+			controllerMarketGUI.getMakeAnOffer().setText("Start Offering");
+			controllerMarketGUI.getMakeAnOffer().setOnAction(new EventHandler<ActionEvent>() {
 
-				displayMarketStuff();	
-				displayOffers();
-				controllerMarketGUI.getMakeAnOffer().setText("Start Offering");
-				controllerMarketGUI.getMakeAnOffer().setOnAction(new EventHandler<ActionEvent>() {
-
-					@Override
-					public void handle(ActionEvent event) {
-						try {
-							controllerMarketGUI.startAction(event);
-						} catch (RemoteException e) {
-							Logger logger=Logger.getAnonymousLogger();
-							logger.log(Level.SEVERE, "Failed to send action with RMI", e);
-						}
-							
+				@Override
+				public void handle(ActionEvent event) {
+					try {
+						controllerMarketGUI.startAction(event);
+					} catch (RemoteException e) {
+						Logger logger=Logger.getAnonymousLogger();
+						logger.log(Level.SEVERE, "Failed to send action with RMI", e);
 					}
-				});
-				controllerMarketGUI.getSkip().setText("Skip Action");
-				controllerMarketGUI.getSkip().setOnAction(new EventHandler<ActionEvent>() {
+						
+				}
+			});
+			controllerMarketGUI.getSkip().setText("Skip Action");
+			controllerMarketGUI.getSkip().setOnAction(new EventHandler<ActionEvent>() {
 
-					@Override
-					public void handle(ActionEvent event) {
-						try {								
-							controllerMarketGUI.startAction(event);
-						} catch (RemoteException e) {
-							Logger logger=Logger.getAnonymousLogger();
-							logger.log(Level.SEVERE, "Failed to send action with RMI", e);
-						}
-							
+				@Override
+				public void handle(ActionEvent event) {
+					try {								
+						controllerMarketGUI.startAction(event);
+					} catch (RemoteException e) {
+						Logger logger=Logger.getAnonymousLogger();
+						logger.log(Level.SEVERE, "Failed to send action with RMI", e);
 					}
+						
+				}
+			});
+			controllerMarketGUI.getAcceptAnOffer().setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+					try {
+						controllerMarketGUI.startAction(event);
+					} catch (RemoteException e) {
+						Logger logger=Logger.getAnonymousLogger();
+						logger.log(Level.SEVERE, "Failed to send action with RMI", e);
+					}					
+				}
 				});
-				controllerMarketGUI.getAcceptAnOffer().setOnAction(new EventHandler<ActionEvent>() {
-
-					@Override
-					public void handle(ActionEvent event) {
-						try {
-							controllerMarketGUI.startAction(event);
-						} catch (RemoteException e) {
-							Logger logger=Logger.getAnonymousLogger();
-							logger.log(Level.SEVERE, "Failed to send action with RMI", e);
-						}					
-					}
-				});
-			}
-		});
+			});
 	}
 	
 	private void displayMarketStuff(){
@@ -853,77 +823,54 @@ public class GUI extends ClientView{
 	
 	@Override
 	public void displayMessage(String string) {
-		Platform.runLater(new Runnable() {
-			
-			@Override
-			public void run() {
-				currentTextArea.appendText("SYSTEM: "+string+"\n");	
-			}
+		Platform.runLater(()-> {
+			currentTextArea.appendText("SYSTEM: "+string+"\n");	
 		});
 	}
 	
 	@Override
 	public void displayError(String string) {
-		Platform.runLater(new Runnable() {
-			
-			@Override
-			public void run() {
-				Alert alert=new Alert(AlertType.ERROR);
-				alert.setTitle("WARNING");
-				alert.setHeaderText(string);
-				alert.showAndWait();
-			}
+		Platform.runLater(()-> {
+			Alert alert=new Alert(AlertType.ERROR);
+			alert.setTitle("WARNING");
+			alert.setHeaderText(string);
+			alert.showAndWait();
 		});		
 	}
 	
 	@Override
 	public void displayFinalRanking() {
-		Platform.runLater(new Runnable() {
-			
-			@Override
-			public void run() {
-				Alert alert=new Alert(AlertType.INFORMATION);
-				String string="";
-				for (int i=0; i<clientGame.getClientGameTable().getClientPlayers().size();i++){
-					string=string+String.valueOf(i+1) + "\t"+clientGame.getClientGameTable().getClientPlayers().get(i).getName() + 
-							"\tscore: " + clientGame.getClientGameTable().getClientPlayers().get(i).getScore() + "\tassistants: " +
-							clientGame.getClientGameTable().getClientPlayers().get(i).getAssistants() + "\tcards: " + 
-							clientGame.getClientGameTable().getClientPlayers().get(i).getHand() + "\n";
-				}
-				alert.setContentText(string);
-				alert.showAndWait();
-				Platform.exit();
+		Platform.runLater(()-> {
+			Alert alert=new Alert(AlertType.INFORMATION);
+			String string="";
+			for (int i=0; i<clientGame.getClientGameTable().getClientPlayers().size();i++){
+				string=string+String.valueOf(i+1) + "\t"+clientGame.getClientGameTable().getClientPlayers().get(i).getName() + 
+						"\tscore: " + clientGame.getClientGameTable().getClientPlayers().get(i).getScore() + "\tassistants: " +
+						clientGame.getClientGameTable().getClientPlayers().get(i).getAssistants() + "\tcards: " + 
+						clientGame.getClientGameTable().getClientPlayers().get(i).getHand() + "\n";
 			}
-		});
-		
+			alert.setContentText(string);
+			alert.showAndWait();
+			Platform.exit();
+		});		
 	}
 	
 	@Override
 	public void displayChatMessage(String message) {
-		Platform.runLater(new Runnable() {
-			
-			@Override
-			public void run() {
-				controllerGUI.getMessageBox().appendText(message+"\n");	
-			}
-		});
-		
+		Platform.runLater(()-> {
+			controllerGUI.getMessageBox().appendText(message+"\n");	
+			});		
 	}
 	
 	@Override
 	public void closeMarket() {
-		System.out.println("Market finished");
-		Platform.runLater(new Runnable() {
-			
-			@Override
-			public void run() {
-				Alert alert=new Alert(AlertType.INFORMATION);
-				alert.setTitle("MARKET FINISHED!");
-				alert.setHeaderText("Market phase is over, click ok to continue the game.");
-				alert.showAndWait();
-				currentTextArea=controllerGUI.getMessageBox();
-				controllerMarketGUI.getMerketStage().close();			
-			}
+		Platform.runLater(()-> {
+			Alert alert=new Alert(AlertType.INFORMATION);
+			alert.setTitle("MARKET FINISHED!");
+			alert.setHeaderText("Market phase is over, click ok to continue the game.");
+			alert.showAndWait();
+			currentTextArea=controllerGUI.getMessageBox();
+			controllerMarketGUI.getMerketStage().close();			
 		});
 	}
 	
@@ -1118,10 +1065,7 @@ public class GUI extends ClientView{
 	
 	@Override
 	public boolean askForOtherSelling() {
-		Platform.runLater(new Runnable() {
-			
-			@Override
-			public void run() {
+		Platform.runLater(()-> {
 				controllerMarketGUI.getMakeAnOffer().setOnAction(new EventHandler<ActionEvent>() {
 
 					@Override
@@ -1148,8 +1092,7 @@ public class GUI extends ClientView{
 				controllerMarketGUI.getMakeAnOffer().setDisable(false);
 				controllerMarketGUI.getSkip().setDisable(false);
 				
-			}
-		});
+			});
 		
 		synchronized(controllerMarketGUI){
 			try {
@@ -1215,59 +1158,44 @@ public class GUI extends ClientView{
 	
 	
 	private void disableClickOnRegions(boolean disabled) {
-		Platform.runLater(new Runnable() {
-			
-			@Override
-			public void run() {
-				for (ImageView regionImageView : controllerGUI.getRegions()){
-					regionImageView.setDisable(disabled);
-					if(disabled==false)
-						regionImageView.setEffect(new Glow(0.6));
-					else
-						regionImageView.setEffect(null);
-				}
+		Platform.runLater(()-> {
+			for (ImageView regionImageView : controllerGUI.getRegions()){
+				regionImageView.setDisable(disabled);
+				if(disabled==false)
+					regionImageView.setEffect(new Glow(0.6));
+				else
+					regionImageView.setEffect(null);
 			}
 		});
 	}
 	
 	private void disableClickOnPermitTilesInHand(boolean disabled) {
-		Platform.runLater(new Runnable() {
-			
-			@Override
-			public void run() {
-				for (Object object : controllerGUI.getPermitTilesTurnedUpOwned().getChildren()) {
-					ImageView imageView=(ImageView) object;
-					imageView.setDisable(disabled);
-					if(disabled==false)
-						imageView.setEffect(new Glow(0.6));
-					else
-						imageView.setEffect(null);
-				}
+		Platform.runLater(()-> {
+			for (Object object : controllerGUI.getPermitTilesTurnedUpOwned().getChildren()) {
+				ImageView imageView=(ImageView) object;
+				imageView.setDisable(disabled);
+				if(disabled==false)
+					imageView.setEffect(new Glow(0.6));
+				else
+					imageView.setEffect(null);
 			}
 		});
 	}
 
 	private void disableClickOnCouncillorsInReserve(boolean disabled) {
-		Platform.runLater(new Runnable() {
-			
-			@Override
-			public void run() {
-				for (int i=0; i<controllerGUI.getCouncillorReserve().size(); i++){
-					controllerGUI.getCouncillorReserve().get(i).setDisable(disabled);
-					if(!disabled)
-						controllerGUI.getCouncillorReserve().get(i).setEffect(new Glow(0.6));
-					else
-						controllerGUI.getCouncillorReserve().get(i).setEffect(null);
-				}
+		Platform.runLater(()-> {
+			for (int i=0; i<controllerGUI.getCouncillorReserve().size(); i++){
+				controllerGUI.getCouncillorReserve().get(i).setDisable(disabled);
+				if(!disabled)
+					controllerGUI.getCouncillorReserve().get(i).setEffect(new Glow(0.6));
+				else
+					controllerGUI.getCouncillorReserve().get(i).setEffect(null);
 			}
-		});		
+			});		
 	}
 	
 	private void disableClickOnCouncilBalconies(boolean disabled) {
-		Platform.runLater(new Runnable() {
-			
-			@Override
-			public void run() {
+		Platform.runLater(()-> {
 				for (int i=0; i<controllerGUI.getBalconies().size()-1; i++){
 					controllerGUI.getBalconies().get(i).setDisable(disabled);
 					if(!disabled)
@@ -1280,28 +1208,20 @@ public class GUI extends ClientView{
 					controllerGUI.getBalconies().get(controllerGUI.getBalconies().size()-1).setEffect(new Glow(1));
 				else
 					controllerGUI.getBalconies().get(controllerGUI.getBalconies().size()-1).setEffect(null);
-			}
-		});		
+			});		
 	}
 	
 	private void disableClickOnCities(boolean disabled, List<CityDTO> acceptableCities) {
-		Platform.runLater(new Runnable() {
-			
-			@Override
-			public void run() {
+		Platform.runLater(()-> {
 				for (CityDTO city : acceptableCities)
 					for (Pane cityPane : controllerGUI.getCities())
 						if (city.equals((CityDTO) cityPane.getUserData()))
 							cityPane.setDisable(disabled);				
-			}
-		});
+			});
 	}
 	
 	private void disableClickOnPoliticsCards(boolean disabled, int opacity) {
-		Platform.runLater(new Runnable() {
-			
-			@Override
-			public void run() {
+		Platform.runLater(()-> {
 				for (Object object : controllerGUI.getHand().getChildren()){
 					ImageView imageView=(ImageView) object;
 					imageView.setDisable(disabled);
@@ -1311,16 +1231,12 @@ public class GUI extends ClientView{
 					else
 						imageView.setEffect(null);
 				}
-			}
-		});		
+			});		
 		
 	}
 	
 	private void disableClickOnDescardButton(boolean disabled) {
-		Platform.runLater(new Runnable() {
-			
-			@Override
-			public void run() {
+		Platform.runLater(()-> {
 				controllerGUI.getDescardPoliticsCards().setDisable(disabled);
 				InnerShadow innerShadow= new InnerShadow();
 				innerShadow.setChoke(0.9);
@@ -1330,15 +1246,11 @@ public class GUI extends ClientView{
 					controllerGUI.getDescardPoliticsCards().setEffect(innerShadow);
 				else
 					controllerGUI.getDescardPoliticsCards().setEffect(null);
-			}
-		});		
+			});		
 	}
 	
 	private void disableClickOnPermitTilesInRegions(boolean disabled, RegionDTO selectedRegion) {
-		Platform.runLater(new Runnable() {
-			
-			@Override
-			public void run() {
+		Platform.runLater(()-> {
 				if ("Sea".equals(selectedRegion.getName()))
 					for (int i=0; i<=1; i++) {
 						controllerGUI.getSeaPermitTile()[i].setDisable(disabled);
@@ -1363,29 +1275,21 @@ public class GUI extends ClientView{
 						else
 							controllerGUI.getMountainPermitTile()[i].setEffect(null);
 					}
-			}
-		});		
+			});		
 	}
 
 
 	public void disableActionButtons(boolean disabled) {
-		Platform.runLater(new Runnable() {
-			
-			@Override
-			public void run() {
+		Platform.runLater(()-> {
 				controllerGUI.getPoliticsDeck().setDisable(disabled);
 				for (Button button : controllerGUI.getActions())
 					button.setDisable(disabled);
-			}
-		});		
+			});		
 	}
 	
 
 	private void disableClickOnPermitTilesCovered(boolean disabled) {
-		Platform.runLater(new Runnable() {
-			
-			@Override
-			public void run() {
+		Platform.runLater(()-> {
 				for (Object object : controllerGUI.getPermitTilesTurnedDownOwned().getChildren()) {
 					ImageView imageView=(ImageView) object;
 					imageView.setDisable(disabled);
@@ -1395,15 +1299,12 @@ public class GUI extends ClientView{
 					else
 						imageView.setEffect(null);
 				}
-			}
-		});
+			});
 	}
 
 	private void disableClickOnObjectsToSell(boolean disabled, List<MarketableDTO> acceptableObjectsToOffer) {
-		Platform.runLater(new Runnable() {
-			
-			@Override
-			public void run() {
+		Platform.runLater(()-> {
+
 				for (Object object : controllerMarketGUI.getAvailablePoliticCards().getChildren()) {
 					ImageView imageView=(ImageView) object;
 					imageView.setDisable(disabled);
@@ -1418,40 +1319,27 @@ public class GUI extends ClientView{
 					ImageView imageView=(ImageView) object;
 					imageView.setDisable(disabled);
 				}
-			}
-		});
+			});
 	}
 	
 	private void disablePriceInsertion(boolean disabled) {
-		Platform.runLater(new Runnable() {
-			
-			@Override
-			public void run() {
+		Platform.runLater(()-> {
 				controllerMarketGUI.getPrice().setDisable(disabled);
-			}
-		});
+			});
 	}
 	
 	private void disableClickOnOfferSettedButtons(boolean disabled) {
-		Platform.runLater(new Runnable() {
-			
-			@Override
-			public void run() {
+		Platform.runLater(()-> {
 				controllerMarketGUI.getSell().setDisable(disabled);
-			}
-		});
+			});
 	}
 	
 	private void disableClickOnOffers(boolean disabled) {
-		Platform.runLater(new Runnable() {
-			
-			@Override
-			public void run() {
+		Platform.runLater(()-> {
 				for (Object offer : controllerMarketGUI.getOffers().getChildren()){
 					((HBox) offer).setDisable(disabled);
 				}
-			}
-		});		
+			});		
 	}
 
 }

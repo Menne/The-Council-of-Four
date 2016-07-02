@@ -296,13 +296,9 @@ public class ControllerMarketGUI {
 	 */
 	@FXML
 	public void changeMouseStyle(MouseEvent mouseEvent) {
-		Platform.runLater(new Runnable() {
-		        
-			@Override
-			public void run() {
-				((Node) mouseEvent.getSource()).setCursor(Cursor.HAND);
-			}
-		});
+		Platform.runLater(()-> {
+			((Node) mouseEvent.getSource()).setCursor(Cursor.HAND);
+			});
 	}
 	
 	

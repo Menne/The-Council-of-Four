@@ -1124,14 +1124,10 @@ public class ControllerGUI {
 	 */
     @FXML
     public void changeMouseStyle(MouseEvent mouseEvent) {
-    	Platform.runLater(new Runnable() {
-	        
-	    	@Override
-	        public void run() {
-	    		Image image = new Image(getClass().getResource("view/images/cursor/hand.png").toExternalForm());
-	    		((Node) mouseEvent.getSource()).setCursor(new ImageCursor(image));
-	        }
-	    });
+    	Platform.runLater(()-> {
+	    	Image image = new Image(getClass().getResource("view/images/cursor/hand.png").toExternalForm());
+	    	((Node) mouseEvent.getSource()).setCursor(new ImageCursor(image));
+	        });
     }
     
     /**
@@ -1161,22 +1157,18 @@ public class ControllerGUI {
 	 */
     @FXML
     public void sendMessage(KeyEvent key) throws RemoteException {
-        Platform.runLater(new Runnable() {
-    	    
-    	    @Override
-    	    public void run() {
-    	    	if (key.getCode().equals(KeyCode.ENTER)) {
-    	    		try {
-						view.getConnection().sendAction(new ChatMessageDTO(clientGame.getClientPlayer().getName()
-								+ ": " + chatInputBox.getText().substring(0, chatInputBox.getText().length()-1)));
-					} catch (RemoteException e) {
-						Logger logger=Logger.getAnonymousLogger();
-						logger.log(Level.SEVERE, "Failed to send message with RMI", e);
-					}
-    	    		chatInputBox.clear();
-    	    	}
+        Platform.runLater(()-> {
+    	    if (key.getCode().equals(KeyCode.ENTER)) {
+    	    	try {
+					view.getConnection().sendAction(new ChatMessageDTO(clientGame.getClientPlayer().getName()
+							+ ": " + chatInputBox.getText().substring(0, chatInputBox.getText().length()-1)));
+				} catch (RemoteException e) {
+					Logger logger=Logger.getAnonymousLogger();
+					logger.log(Level.SEVERE, "Failed to send message with RMI", e);
+				}
+    	    	chatInputBox.clear();
     	    }
-    	 });
+    	   });
     }
 
 }
