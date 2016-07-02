@@ -15,9 +15,7 @@ import server.view.notifies.PlayerNotify;
  * @author cg31
  *
  */
-
 public class PickPermitTileBonus implements Bonus {
-	
 	
 	private static final long serialVersionUID = -6918588158303568411L;
 

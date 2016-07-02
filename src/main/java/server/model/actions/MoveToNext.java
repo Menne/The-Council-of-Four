@@ -9,6 +9,11 @@ import server.model.Game;
 import server.model.player.Player;
 import server.view.notifies.MessageNotify;
 
+/**
+ * This class modelizes the skip action
+ * @author cg31
+ *
+ */
 public class MoveToNext implements QuickAction {
 	
 	/**
