@@ -10,6 +10,7 @@ import java.util.Set;
 
 import org.junit.Test;
 
+import client.modelDTO.actionsDTO.bonusActions.PurchasedPermitTileActionDTO;
 import server.model.Game;
 import server.model.actions.bonusActions.PurchasedPermitTileAction;
 import server.model.bonus.Bonus;
@@ -22,7 +23,7 @@ import server.model.stateMachine.bonusStates.InteractiveBonusState;
 
 public class PurchasedePermitTileActionTest {
 
-/*	@Test
+	@Test
 	public void testExecuteAction() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
@@ -44,20 +45,8 @@ public class PurchasedePermitTileActionTest {
 		assertEquals(State01.class, game.getState().getClass());
 	}
 	
-	@Test(expected=NullPointerException.class)
-	public void testNullException() throws IOException {
-		Game game=new Game();
-		List<Player> players = new ArrayList<>();
-		Player a = new Player("Andre");
-		a.setPlayerNumber(1);
-		players.add(a);
-		game.start(players);
-		PurchasedPermitTileAction action= new PurchasedPermitTileAction();
-		action.executeAction(game);
-		assertTrue(false);
-	}
 
-	@Test(expected=IllegalStateException.class)
+	@Test
 	public void testIllegalException() throws IOException {
 		Game game=new Game();
 		List<Player> players = new ArrayList<>();
@@ -66,6 +55,6 @@ public class PurchasedePermitTileActionTest {
 		players.add(a);
 		game.start(players);
 		PurchasedPermitTileAction action= new PurchasedPermitTileAction();
-		action.map();
-	}*/
+		assertEquals(PurchasedPermitTileActionDTO.class, action.map().getClass());
+	}
 }
