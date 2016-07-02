@@ -6,11 +6,13 @@ import java.util.List;
 
 import client.modelDTO.ModelDTO;
 
+/**
+ * This class provides all the informations about the other players in the game, but without logic
+ * @author cg31
+ *
+ */
 public class GenericPlayerDTO implements ModelDTO{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -7091136957135865278L;
 	private String name;
 	private int playerNumber;
@@ -24,14 +26,21 @@ public class GenericPlayerDTO implements ModelDTO{
 	private List<PermitTileDTO> availablePermitTiles;
 	private List<BonusTileDTO> playersFinalBonus;
 	
-	public GenericPlayerDTO(){
-		this.availablePermitTiles=new ArrayList<PermitTileDTO>();
+	/**
+	 * Constructor of GenericPlayerDTO
+	 */
+	public GenericPlayerDTO() {
+		this.availablePermitTiles=new ArrayList<>();
 		this.playersFinalBonus=new ArrayList<>();
 	}
 	
-	public GenericPlayerDTO(int playerNumber){
+	/**
+	 * Constructor of GenericPlayerDTO
+	 * @param playerNumber is the player number
+	 */
+	public GenericPlayerDTO(int playerNumber) {
 		this.playerNumber=playerNumber;
-		this.availablePermitTiles=new ArrayList<PermitTileDTO>();
+		this.availablePermitTiles=new ArrayList<>();
 		this.playersFinalBonus=new ArrayList<>();
 	}
 

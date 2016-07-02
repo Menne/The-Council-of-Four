@@ -10,10 +10,10 @@ import server.model.Game;
  * 
  */
 @FunctionalInterface
-public interface Bonus extends Serializable{
+public interface Bonus extends Serializable {
 	/**
 	 * This is an abstract assignment of a bonus
-	 * @param currentPlayer is the player who is playing the turn
+	 * @param currentPlayer is the player who earned the bonus
 	 */
 	public abstract void assignBonus(Game game);
 }

@@ -26,4 +26,9 @@ public class ChatMessage implements Action {
 		throw new IllegalStateException("ChatMessage action doesn't require mapping");
 	}
 
+	@Override
+	public void notifyPlayers(Game game) {
+		return;
+	}
+
 }

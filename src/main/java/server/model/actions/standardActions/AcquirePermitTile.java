@@ -25,13 +25,11 @@ import server.view.notifies.PlayerNotify;
  *
  */
 
-public class AcquirePermitTile extends MainAction {
-
+public class AcquirePermitTile implements MainAction {
 
 	private Integer numberOfPermitTile;
 	private RegionBoard chosenRegion;
 	private List<PoliticsCard> cardsToDescard;
-	
 	
 	public void setNumberOfPermitTile(Integer numberOfPermitTile) {
 		this.numberOfPermitTile = numberOfPermitTile;
@@ -83,8 +81,7 @@ public class AcquirePermitTile extends MainAction {
 		
 		game.getCurrentPlayer().addTile(this.chosenRegion.pickUncoveredPermitTile(this.numberOfPermitTile));
 		this.chosenRegion.uncoverPermitTiles();
-		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
-				Arrays.asList(game.getCurrentPlayer())));
+		
 		this.notifyPlayers(game);
 		this.nextState(game);
 		
@@ -132,7 +129,7 @@ public class AcquirePermitTile extends MainAction {
 			temporaryBalcony.add(chosenRegion.getRegionBalcony().getCouncillors()[i]);		
 		
 		for (PoliticsCard politicsCardInHand: this.cardsToDescard) {
-			if (politicsCardInHand.getColour().getColour().equals("Rainbow"))
+			if ("Rainbow".equals(politicsCardInHand.getColour().getColour()))
 				satisfyCounter++;		
 			for (Councillor councillorToSatisfy : temporaryBalcony)
 				if (councillorToSatisfy.getColour().getColour().equals(politicsCardInHand.getColour().getColour())) {
@@ -144,7 +141,10 @@ public class AcquirePermitTile extends MainAction {
 		return satisfyCounter==this.cardsToDescard.size();
 	}
 	
-	private void notifyPlayers(Game game) {
+	@Override
+	public void notifyPlayers(Game game) {
+		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
+				Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new MessageNotify("Action completed succesfully!", 
 				Arrays.asList(game.getCurrentPlayer())));
 		List<Player> otherPlayers=new ArrayList<>();

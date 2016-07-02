@@ -29,7 +29,6 @@ import server.model.Game;
 import server.model.bonus.Bonus;
 import server.model.bonus.ScoreBonus;
 import server.model.gameMapper.GameDTOMapper;
-import server.model.gameTable.Assistant;
 import server.model.gameTable.CardColour;
 import server.model.gameTable.City;
 import server.model.gameTable.CityColour;
@@ -45,6 +44,7 @@ import server.model.gameTable.RegionBonusTile;
 import server.model.gameTable.RewardToken;
 import server.model.market.Market;
 import server.model.market.Offer;
+import server.model.player.Assistant;
 import server.model.player.Player;
 
 public class GameMapperDTOTest {

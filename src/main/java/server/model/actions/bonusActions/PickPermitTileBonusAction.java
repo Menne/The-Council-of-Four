@@ -1,10 +1,14 @@
 package server.model.actions.bonusActions;
 
+import java.util.Arrays;
+
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.bonusActions.PickPermitTileActionDTO;
 import server.model.Game;
 import server.model.actions.Action;
 import server.model.gameTable.RegionBoard;
+import server.view.notifies.MessageNotify;
+import server.view.notifies.PlayerNotify;
 
 public class PickPermitTileBonusAction implements Action {
 
@@ -28,10 +32,20 @@ public class PickPermitTileBonusAction implements Action {
 		game.getCurrentPlayer().addTile(this.selectedRegion.pickUncoveredPermitTile(this.numberOfPermitTile));
 		this.selectedRegion.uncoverPermitTiles();
 		
+		this.notifyPlayers(game);
 		game.setState(game.getState().moveToNextTransition(game));
 		game.getState().updateClients(game);
 		
 		return true;
+	}
+	
+	
+	@Override
+	public void notifyPlayers(Game game) {
+		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
+				Arrays.asList(game.getCurrentPlayer())));
+		game.notifyObserver(new MessageNotify("Bonus earned successfully!", 
+				Arrays.asList(game.getCurrentPlayer())));
 	}
 
 	@Override

@@ -11,21 +11,20 @@ import server.view.notifies.GameTableNotify;
 import server.view.notifies.PlayerNotify;
 
 /**
- * Pick up an uncovered permit tile without paying the cost
+ * Pick an uncovered permit tile without paying the cost
  * @author cg31
  *
  */
 
 public class PickPermitTileBonus implements Bonus {
 	
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = -6918588158303568411L;
 
 	/**
-	 * Invokes the action associated o this bonus
-	 * @param game is the current game
+	 * This method sets the state of the game to an interactive bonus state, then notifies the player 
+	 * he has to choose from one of the permit tiles in the game table
+	 * @param game is the current game status
 	 */
 	@Override
 	public void assignBonus(Game game) {

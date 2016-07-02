@@ -84,7 +84,7 @@ public class PermitTile implements Marketable{
 	
 	@Override
 	public String toString() {
-		Set<String> cities=new HashSet<String>();
+		Set<String> cities=new HashSet<>();
 		for(City city : buildableCities)
 			cities.add(city.getName());
 		return cities + "\t" + bonuses;

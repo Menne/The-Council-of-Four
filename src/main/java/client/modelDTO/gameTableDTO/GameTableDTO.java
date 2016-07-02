@@ -12,12 +12,13 @@ import client.view.notifies.ClientViewNotify;
 import observerPattern.Observable;
 import server.model.bonus.Bonus;
 
-
+/**
+ * This class provides all the informations about the game table, but without logic
+ * @author cg31
+ *
+ */
 public class GameTableDTO extends Observable<ClientViewNotify> implements ModelDTO {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 8250245390720798602L;
 	private ArrayList<RegionDTO> clientRegions;
 	private CouncillorDTO[] clientKingBalcony;
@@ -30,28 +31,29 @@ public class GameTableDTO extends Observable<ClientViewNotify> implements ModelD
 	private Set<BonusTileDTO> colourBonuses;
 	private int mapNumber;
 	
+	/**
+	 * Constructor of GameTableDTO
+	 */
 	public GameTableDTO() {
-		this.clientRegions=new ArrayList<RegionDTO>();
+		this.clientRegions=new ArrayList<>();
 		this.clientKingBalcony=new CouncillorDTO[4];
-		this.clientCouncillorReserve=new ArrayList<CouncillorDTO>();
-		this.clientNobilityTrack=new ArrayList<Set<Bonus>>();
-		this.players=new ArrayList<GenericPlayerDTO>();
+		this.clientCouncillorReserve=new ArrayList<>();
+		this.clientNobilityTrack=new ArrayList<>();
+		this.players=new ArrayList<>();
 		this.colourBonuses=new HashSet<>();
 	}
 
 	
 	public List<RegionDTO> getClientRegions() {
-		return clientRegions;
+		return this.clientRegions;
 	}
 
 	public void setClientRegions(List<RegionDTO> clientRegions) {
 		this.clientRegions = (ArrayList<RegionDTO>) clientRegions;
 	}
 
-	
-
 	public CouncillorDTO[] getClientKingBalcony() {
-		return clientKingBalcony;
+		return this.clientKingBalcony;
 	}
 
 
@@ -69,7 +71,7 @@ public class GameTableDTO extends Observable<ClientViewNotify> implements ModelD
 	}
 
 	public List<Set<Bonus>> getClientNobilityTrack() {
-		return clientNobilityTrack;
+		return this.clientNobilityTrack;
 	}
 
 	public void setClientNobilityTrack(List<Set<Bonus>> clientNobilityTrack) {
@@ -77,7 +79,7 @@ public class GameTableDTO extends Observable<ClientViewNotify> implements ModelD
 	}
 
 	public List<GenericPlayerDTO> getClientPlayers() {
-		return players;
+		return this.players;
 	}
 
 	public void setClientPlayers(List<GenericPlayerDTO> clientPlayers) {
@@ -85,7 +87,7 @@ public class GameTableDTO extends Observable<ClientViewNotify> implements ModelD
 	}
 
 	public String getCurrentPlayer() {
-		return currentPlayer;
+		return this.currentPlayer;
 	}
 
 	public void setCurrentPlayer(String currentPlayer) {
@@ -93,7 +95,7 @@ public class GameTableDTO extends Observable<ClientViewNotify> implements ModelD
 	}
 
 	public String getKing() {
-		return king;
+		return this.king;
 	}
 
 	public void setKing(String king) {
@@ -101,17 +103,15 @@ public class GameTableDTO extends Observable<ClientViewNotify> implements ModelD
 	}
 
 	public BonusTileDTO getNextKingRewardTile() {
-		return nextKingRewardTile;
+		return this.nextKingRewardTile;
 	}
-
 
 	public void setNextKingRewardTile(BonusTileDTO nextKingRewardTile) {
 		this.nextKingRewardTile = nextKingRewardTile;
 	}
 
-
 	public Set<BonusTileDTO> getColourBonuses() {
-		return colourBonuses;
+		return this.colourBonuses;
 	}
 
 
@@ -121,7 +121,7 @@ public class GameTableDTO extends Observable<ClientViewNotify> implements ModelD
 	
 	
 	public int getMapNumber() {
-		return mapNumber;
+		return this.mapNumber;
 	}
 
 

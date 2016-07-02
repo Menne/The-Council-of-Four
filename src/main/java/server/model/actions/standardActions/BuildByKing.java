@@ -26,7 +26,7 @@ import server.view.notifies.PlayerNotify;
  *
  */
 
-public class BuildByKing extends MainAction {
+public class BuildByKing implements MainAction {
 
 	private City selectedCity;
 	private List<PoliticsCard> cardsToDescard;
@@ -101,9 +101,6 @@ public class BuildByKing extends MainAction {
 			game.setLastLap(true);
 			game.getCurrentPlayer().incrementScore(3);
 		}
-		
-		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
-				Arrays.asList(game.getCurrentPlayer())));
 		
 		this.notifyPlayers(game);
 		this.nextState(game);
@@ -234,7 +231,10 @@ public class BuildByKing extends MainAction {
 				game.getGameTable().getKingRewardTiles().remove(0));
 	}
 	
-	private void notifyPlayers(Game game) {
+	@Override
+	public void notifyPlayers(Game game) {
+		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
+				Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new MessageNotify("Action completed succesfully!", 
 				Arrays.asList(game.getCurrentPlayer())));
 		List<Player> otherPlayers=new ArrayList<>();

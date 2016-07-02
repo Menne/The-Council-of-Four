@@ -15,31 +15,22 @@ import client.modelDTO.actionsDTO.ActionWithParameters;
 import client.modelDTO.actionsDTO.ChatMessageDTO;
 import client.modelDTO.actionsDTO.ChooseMapDTO;
 import client.modelDTO.actionsDTO.QuitDTO;
-import client.modelDTO.actionsDTO.bonusActions.ChooseCityActionDTO;
-import client.modelDTO.actionsDTO.bonusActions.PickPermitTileActionDTO;
-import client.modelDTO.actionsDTO.bonusActions.PurchasedPermitTileActionDTO;
 import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.CouncillorDTO;
-import client.modelDTO.gameTableDTO.GameTableDTO;
-import client.modelDTO.gameTableDTO.GenericPlayerDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
 import client.modelDTO.gameTableDTO.PoliticsCardDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
-import client.modelDTO.marketDTO.MarketDTO;
 import client.modelDTO.marketDTO.MarketableDTO;
 import client.modelDTO.marketDTO.OfferDTO;
-import client.modelDTO.playerDTO.ClientPlayerDTO;
 import client.view.notifies.ClientGameOverNotify;
 import client.view.notifies.ClientViewNotify;
 import server.model.gameTable.CouncilBalcony;
 
 public class CLI extends ClientView {
 
-
 	private final Scanner scanner;
 
-	
 	public CLI(Connection connection, GameDTO clientGame) {
 		super(connection, clientGame);
 		this.scanner=new Scanner(System.in);
@@ -52,7 +43,7 @@ public class CLI extends ClientView {
 	 * @return the list of strings of initials
 	 */
 	public List<String> availableActions() {
-		List<String> acceptableStrings=new ArrayList<String>();
+		List<String> acceptableStrings=new ArrayList<>();
 		for (ActionDTO action : this.clientGame.getAvailableActions())
 			acceptableStrings.add(action.toString().substring(0,2));
 		return acceptableStrings;
@@ -124,28 +115,29 @@ public class CLI extends ClientView {
 	}
 
 	@Override
-	public void displayAvailableActions(List<ActionDTO> availableActions) {
-		System.out.println(availableActions);
+	public void displayAvailableActions() {
+		System.out.println(this.clientGame.getAvailableActions());
 	}
 
 	@Override
-	public void displayGameTable(GameTableDTO clientGame) {
-		System.out.println(clientGame);
+	public void displayGameTable() {
+		System.out.println(this.clientGame);
 	}
 
 	@Override
-	public void displayPlayer(ClientPlayerDTO player) {
-		System.out.println(player);
+	public void displayPlayer() {
+		System.out.println(this.clientGame.getClientPlayer());
 	}
 
 	@Override
-	public void displayMarket(MarketDTO market) {
-		System.out.println(market);
+	public void displayMarket() {
+		System.out.println(this.clientGame.getMarket());
 	}
 	
 	@Override
-	public void displayFinalRanking(ArrayList<GenericPlayerDTO> finalRankingTable) {
-		System.out.println("GAME OVER\n FINAL RANKING TABLE: \n"+finalRankingTable);
+	public void displayFinalRanking() {
+		System.out.println("GAME OVER\n FINAL RANKING TABLE: \n" + 
+				this.clientGame.getClientGameTable().getClientPlayers());
 	}
 	
 	@Override
@@ -172,7 +164,7 @@ public class CLI extends ClientView {
 		System.out.println(acceptableRegionNames);
 		String regionToTranslate=this.scanner.nextLine();
 		while (!acceptableRegionNames.contains(regionToTranslate)) {
-			System.out.println("Wrong parameter. Try again");
+			this.displayError("Wrong parameter. Try again");
 			regionToTranslate=scanner.nextLine();
 		}
 		for (RegionDTO region : clientGame.getClientGameTable().getClientRegions())
@@ -187,14 +179,14 @@ public class CLI extends ClientView {
 		List<String> permitTilesWithIndex=new ArrayList<>();
 		int i=1;
 		for (PermitTileDTO permitTile : this.clientGame.getClientPlayer().getAvailablePermitTiles()) {
-			indexes.add(""+i);
+			indexes.add(Integer.toString(i));
 			permitTilesWithIndex.add(i+": "+permitTile.toString());
 			i++;
 		}
 		System.out.println(permitTilesWithIndex);
 		String permitTileToTranslate=scanner.nextLine();
 		while (!indexes.contains(permitTileToTranslate)) {
-			System.out.println("Wrong parameter. Try again");
+			this.displayError("Wrong parameter. Try again");
 			permitTileToTranslate=scanner.nextLine();
 		}
 		return this.clientGame.getClientPlayer().getAvailablePermitTiles().get
@@ -209,7 +201,7 @@ public class CLI extends ClientView {
 		System.out.println(acceptableCouncillorsColours);
 		String newCouncillorToTranslate=this.scanner.nextLine();
 		while (!acceptableCouncillorsColours.contains(newCouncillorToTranslate)) {
-			System.out.println("Wrong parameter. Try again");
+			this.displayError("Wrong parameter. Try again");
 			newCouncillorToTranslate=scanner.nextLine();
 		}
 		for (CouncillorDTO councillor : this.clientGame.getClientGameTable().getClientCouncillorReserve())
@@ -224,7 +216,7 @@ public class CLI extends ClientView {
 		System.out.println(acceptableCouncilBalconiyNames);
 		String councilBalconyToTranslate=this.scanner.nextLine();
 		while (!acceptableCouncilBalconiyNames.contains(councilBalconyToTranslate)) {
-			System.out.println("Wrong parameter. Try again");
+			this.displayError("Wrong parameter. Try again");
 			councilBalconyToTranslate=scanner.nextLine();
 		}
 		if (councilBalconyToTranslate.equals(acceptableCouncilBalconiyNames.get(0)))
@@ -245,14 +237,9 @@ public class CLI extends ClientView {
                 .collect(Collectors.toCollection(ArrayList::new));
 		System.out.println(acceptableCityNames);
 		String cityToTranslate="";
-		try{
-			cityToTranslate=this.scanner.nextLine();
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		System.out.println("arrivato qui");
+		cityToTranslate=this.scanner.nextLine();
 			while (!acceptableCityNames.toString().contains(cityToTranslate)) {
-				System.out.println("Wrong parameter. Try again");
+				this.displayError("Wrong parameter. Try again");
 				cityToTranslate=scanner.nextLine();
 			}
 		for (CityDTO city : acceptableCities)
@@ -289,7 +276,7 @@ public class CLI extends ClientView {
 		List<String> temporaryAcceptablePoliticsCards=new ArrayList<>(acceptableCardsColours);
 		StringTokenizer cardsToCheckTokenized=new StringTokenizer(cardsToTranslate);
 		if (!(cardsToCheckTokenized.countTokens()>0 && cardsToCheckTokenized.countTokens()<=CouncilBalcony.getNumberofcouncillors())) {
-			System.out.println("Remember: you must descard at least 1 card and a maximum of "+ CouncilBalcony.getNumberofcouncillors() +" cards");
+			this.displayError("Remember: you must descard at least 1 card and a maximum of "+ CouncilBalcony.getNumberofcouncillors() +" cards");
 			return false;
 		}
 		while (cardsToCheckTokenized.hasMoreTokens()) {
@@ -297,7 +284,7 @@ public class CLI extends ClientView {
 			if (temporaryAcceptablePoliticsCards.contains(currentCard))
 				temporaryAcceptablePoliticsCards.remove(currentCard);
 			else {
-				System.out.println("Wrong cards. Try again");
+				this.displayError("Wrong cards. Try again");
 				return false;
 			}
 		}
@@ -309,30 +296,26 @@ public class CLI extends ClientView {
 		System.out.println("[0, 1]");
 		String numberOfPermitTileToTranslate=this.scanner.nextLine();
 		while (!("0".equals(numberOfPermitTileToTranslate) || "1".equals(numberOfPermitTileToTranslate))) {
-			System.out.println("Wrong parameter. Try again");
+			this.displayError("Wrong parameter. Try again");
 			numberOfPermitTileToTranslate=scanner.nextLine();
 		}
 		return Integer.parseInt(numberOfPermitTileToTranslate);
 	}
 
 	@Override
-	public MarketableDTO askForMakingAnOffer() {
-		List<MarketableDTO> acceptableObjectsToOffer=new ArrayList<>();
-		acceptableObjectsToOffer.addAll(this.clientGame.getClientPlayer().getHand());
-		acceptableObjectsToOffer.addAll(this.clientGame.getClientPlayer().getAvailablePermitTiles());
-		acceptableObjectsToOffer.addAll(this.clientGame.getClientPlayer().getAssistants());
+	public MarketableDTO askForMakingAnOffer(List<MarketableDTO> acceptableObjectsToOffer) {
 		List<String> indexes=new ArrayList<>();
 		List<String> offersWithIndex=new ArrayList<>();
 		int i=1;
 		for (MarketableDTO offeringObject : acceptableObjectsToOffer) {
-			indexes.add(""+i);
+			indexes.add(Integer.toString(i));
 			offersWithIndex.add(i+": "+offeringObject.toString());
 			i++;
 		}
 		System.out.println(offersWithIndex);
 		String offeringObjectToTranslate=scanner.nextLine();
 		while (!indexes.contains(offeringObjectToTranslate)) {
-			System.out.println("Wrong parameter. Try again");
+			this.displayError("Wrong parameter. Try again");
 			offeringObjectToTranslate=scanner.nextLine();
 		}
 		return acceptableObjectsToOffer.get(Integer.parseInt(offeringObjectToTranslate)-1);
@@ -349,7 +332,7 @@ public class CLI extends ClientView {
 		System.out.println("[yes, no])");
 		String input=this.scanner.nextLine();
 		while (!("yes".equals(input) || "no".equals(input))) {
-			System.out.println("I didn't understand...");
+			this.displayError("I didn't understand...");
 			input=this.scanner.nextLine();
 		}
 		if ("yes".equals(input))
@@ -373,7 +356,7 @@ public class CLI extends ClientView {
 		System.out.println(offersWithIndex);
 		String offerToTranslate=scanner.nextLine();
 		while (!indexes.contains(offerToTranslate)) {
-			System.out.println("Wrong parameter. Try again");
+			this.displayError("Wrong parameter. Try again");
 			offerToTranslate=scanner.nextLine();
 		}
 		return this.clientGame.getMarket().getOffersList().get(Integer.parseInt(offerToTranslate)-1);
@@ -388,53 +371,17 @@ public class CLI extends ClientView {
 		List<String> permitTilesWithIndex=new ArrayList<>();
 		int i=1;
 		for (PermitTileDTO permitTile : availablePermitTiles) {
-			indexes.add(""+i);
+			indexes.add(Integer.toString(i));
 			permitTilesWithIndex.add(i+": "+permitTile.toString());
 			i++;
 		}
 		System.out.println(permitTilesWithIndex);
 		String permitTileToTranslate=scanner.nextLine();
 		while (!indexes.contains(permitTileToTranslate)) {
-			System.out.println("Wrong parameter. Try again");
+			this.displayError("Wrong parameter. Try again");
 			permitTileToTranslate=scanner.nextLine();
 		}
 		return availablePermitTiles.get(Integer.parseInt(permitTileToTranslate)-1);
-	}
-
-
-	
-	
-	@Override
-	public void ChooseCityBonus(int numberOfCities) {
-		ChooseCityActionDTO action=new ChooseCityActionDTO(numberOfCities);
-		try {
-			this.insertParametersAndSend(action);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	@Override
-	public void PurchasedPermitTileBonus() {
-		PurchasedPermitTileActionDTO action=new PurchasedPermitTileActionDTO();
-		try {
-			this.insertParametersAndSend(action);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	@Override
-	public void PickPermitTileBonus() {
-		PickPermitTileActionDTO action=new PickPermitTileActionDTO();
-		try {
-			this.insertParametersAndSend(action);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 
@@ -446,9 +393,8 @@ public class CLI extends ClientView {
 
 
 	@Override
-	public void startGame(GameTableDTO gameTableDTO) {
-		// TODO Auto-generated method stub
-		
+	public void startGame() {
+		return;
 	}
 
 

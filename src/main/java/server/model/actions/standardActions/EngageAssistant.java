@@ -18,7 +18,7 @@ import server.view.notifies.PlayerNotify;
  * @author Luca
  *
  */
-public class EngageAssistant extends QuickAction {
+public class EngageAssistant implements QuickAction {
 
 	private static final int necessaryCoins=3;
 
@@ -43,16 +43,16 @@ public class EngageAssistant extends QuickAction {
 		game.getCurrentPlayer().decrementCoins(necessaryCoins);
 		game.getCurrentPlayer().incrementAssistants(1);
 		
-		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
-				Arrays.asList(game.getCurrentPlayer())));
-		
 		this.notifyPlayers(game);
 		this.nextState(game);
 		
 		return true;
 	}
 	
-	private void notifyPlayers(Game game) {
+	@Override
+	public void notifyPlayers(Game game) {
+		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
+				Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new MessageNotify("Action completed succesfully!", 
 				Arrays.asList(game.getCurrentPlayer())));
 		List<Player> otherPlayers=new ArrayList<>();

@@ -4,23 +4,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 import client.modelDTO.GameDTO;
-import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.standardActions.BuildByKingDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
 import client.view.ClientView;
 
+/**
+ * This class provides the logic to set the needed parameters of a BuildByKingDTO
+ * @author cg31
+ *
+ */
 public class BuildByKingParser implements ActionParserVisitor {
 
 	private BuildByKingDTO selectedAction;
 	
+	/**
+	 * Constructor of BuildByKingDTO
+	 * @param selectedAction is the action selected by the user
+	 */
 	public BuildByKingParser(BuildByKingDTO selectedAction) {
 		this.selectedAction=selectedAction;
 	}
 
 	
 	@Override
-	public ActionDTO setParameters(ClientView view, GameDTO game) {
+	public void setParameters(ClientView view, GameDTO game) {
 		view.displayMessage("Ok! you have chosen to build an emporium with the help of the king.");
 		
 		if (!game.getClientPlayer().getHand().isEmpty()) {
@@ -41,8 +49,6 @@ public class BuildByKingParser implements ActionParserVisitor {
 		}
 		else 
 			view.displayMessage("but it seems that you haven't any politics card in your hand! Select another action please");
-		
-		return this.selectedAction;
 	}
 
 }

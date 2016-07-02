@@ -18,6 +18,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import server.controller.Controller;
 import server.model.Game;
@@ -95,8 +97,8 @@ public class Server {
 						startGame();
 						
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+						Logger logger=Logger.getAnonymousLogger();
+						logger.log(Level.SEVERE, "Failed to read the file", e);
 					}
 					
 				}
@@ -161,15 +163,16 @@ public class Server {
 		}
 	}
 	
-	public static void main(String[] args) throws IOException, AlreadyBoundException{
+	public static void main(String[] args) throws IOException, AlreadyBoundException, InterruptedException{
 		Server server=new Server();
 		try {
 			
 			server.startSocket();
 			
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Logger logger=Logger.getAnonymousLogger();
+			logger.log(Level.WARNING, "Interrupted!", e);
+			throw e;
 		}
 	}
 }

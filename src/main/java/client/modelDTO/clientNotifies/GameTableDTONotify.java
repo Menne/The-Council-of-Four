@@ -4,15 +4,22 @@ import client.modelDTO.GameDTO;
 import client.modelDTO.gameTableDTO.GameTableDTO;
 import client.view.notifies.ClientGameTableNotify;
 
+/**
+ * This class represents an update of client game status from the server to the client
+ * @author cg31
+ *
+ */
 public class GameTableDTONotify implements ClientNotify{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -912988632170214482L;
 	private final GameTableDTO updatedGame;
 	private final boolean startGame;
 	
+	/**
+	 * Constructor of GameTableDTONotify
+	 * @param gameTableDTO is the updated status of the client game
+	 * @param startGame is a flag that indicates if the game has just started
+	 */
 	public GameTableDTONotify(GameTableDTO gameTableDTO, boolean startGame) {
 		this.updatedGame=gameTableDTO;
 		this.startGame=startGame;
@@ -31,7 +38,7 @@ public class GameTableDTONotify implements ClientNotify{
 		gameDTOtoupdate.getClientGameTable().setColourBonuses(this.updatedGame.getColourBonuses());
 		gameDTOtoupdate.getClientGameTable().setMapNumber(this.updatedGame.getMapNumber());
 
-		gameDTOtoupdate.notifyObserver(new ClientGameTableNotify(gameDTOtoupdate.getClientGameTable(),startGame));
+		gameDTOtoupdate.notifyObserver(new ClientGameTableNotify(this.startGame));
 	}
 
 

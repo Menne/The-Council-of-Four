@@ -34,11 +34,9 @@ public class ClientCLI {
 	private static final String NAME = "CoF";
 	
 	private String stringConnection;
-	private String name;
+	private String playerName;
 	private Scanner scanner=new Scanner(System.in);
 	
-	public ClientCLI() {
-	}
 	/**
 	 * Starts the RMI connection.
 	 * Registers the Client view as observer of the connection, and the clientController as observer of the clientView 
@@ -57,7 +55,7 @@ public class ClientCLI {
 		ClientView view=new CLI(connection, clientGame);
 		clientGame.registerObserver(view);
 		connection.registerObserver(clientController);
-		view.welcome(name);
+		view.welcome(playerName);
 		view.input();
 		scanner.close();
 	}
@@ -81,7 +79,7 @@ public class ClientCLI {
 		connection.registerObserver(clientController);
 		ExecutorService executor=Executors.newSingleThreadExecutor();
 		executor.submit(connection);
-		view.welcome(name);
+		view.welcome(playerName);
 		view.input();
 		executor.shutdown();
 		scanner.close();
@@ -92,7 +90,7 @@ public class ClientCLI {
 	 */
 	public void askForName(){
 		System.out.println("Welcome to CoF, please enter your name!");
-		name=scanner.nextLine();
+		this.playerName=scanner.nextLine();
 	}
 	
 	/**

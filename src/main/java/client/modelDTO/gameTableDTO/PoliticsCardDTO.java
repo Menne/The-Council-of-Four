@@ -3,17 +3,26 @@ package client.modelDTO.gameTableDTO;
 import client.modelDTO.ModelDTO;
 import client.modelDTO.marketDTO.MarketableDTO;
 
+/**
+ * This class provides all the informations about a politic card, but without logic
+ * @author cg31
+ *
+ */
 public class PoliticsCardDTO implements ModelDTO, MarketableDTO {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -6403924785270201186L;
 	private CardColourDTO colour;
 	
-	public PoliticsCardDTO() {	
+	/**
+	 * Constructor of PoliticsCardDTO
+	 */
+	public PoliticsCardDTO() {
 	}
 	
+	/**
+	 * Constructor of PoliticsCardDTO
+	 * @param cardColourDTO is the colour of the card
+	 */
 	public PoliticsCardDTO(CardColourDTO cardColourDTO) {
 		this.colour=cardColourDTO;
 	}

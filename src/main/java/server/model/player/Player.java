@@ -3,7 +3,6 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import server.model.gameTable.Assistant;
 import server.model.gameTable.BonusTile;
 import server.model.gameTable.Emporium;
 import server.model.gameTable.PermitTile;
@@ -14,7 +13,6 @@ import server.model.gameTable.PoliticsCard;
 	 * @author Emanuele, Luca
 	 *
 	 */
-
 public class Player {
 
 	private int playerNumber;
@@ -131,14 +129,13 @@ public class Player {
 	/**
 	 * decrements number of player's assistances if it has more assistances than the decrement.
 	 * it returns false if player has too few assistants!
-	 * @param decrement
+	 * @param decrement of assistants
 	 */
-	public boolean decrementAssistants(int decrement) {
-		if(this.assistants.size()<decrement)
-			return false;
-		for(int i=0; i<decrement; i++)
+	public void decrementAssistants(int decrement) {
+		if (this.assistants.size()<decrement)
+			throw new IllegalArgumentException("Player hasn't got enough assistants");
+		for (int i=0; i<decrement; i++)
 			this.assistants.remove(0);
-		return true;
 	}
 	
 	/**

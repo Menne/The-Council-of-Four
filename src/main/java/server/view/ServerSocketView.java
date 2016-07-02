@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.AddPlayerDTO;
@@ -114,8 +116,8 @@ public class ServerSocketView extends ServerView implements Runnable {
 				socket.close();
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Logger logger=Logger.getAnonymousLogger();
+			logger.log(Level.SEVERE, "Failed to close the socket", e);
 		}
 		
 	}

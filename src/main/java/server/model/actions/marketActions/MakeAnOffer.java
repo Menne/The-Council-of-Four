@@ -9,6 +9,8 @@ import client.modelDTO.actionsDTO.marketActions.MakeAnOfferDTO;
 import server.model.Game;
 import server.model.actions.Action;
 import server.model.market.Offer;
+import server.model.player.Player;
+import server.view.notifies.MessageNotify;
 import server.view.notifies.PlayerNotify;
 
 public class MakeAnOffer implements Action{
@@ -24,11 +26,9 @@ public class MakeAnOffer implements Action{
 	}
 	
 	@Override
-	public boolean executeAction(Game game) throws NullPointerException {
-		if ((this.offeringObjects.size()==0))
+	public boolean executeAction(Game game) {
+		if (this.offeringObjects==null)
 			throw new NullPointerException("Paramters not setted");
-		
-		System.out.println("sono l'azione make an offer arrivata al server");
 		
 		for (Offer offer : this.offeringObjects)
 			game.getMarket().addOffer(offer);
@@ -36,6 +36,7 @@ public class MakeAnOffer implements Action{
 		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
 				Arrays.asList(game.getCurrentPlayer())));
 			
+		this.notifyPlayers(game);
 		game.setState(game.getState().sellActionTransition(game));
 		game.getState().updateClients(game);
 		
@@ -43,6 +44,19 @@ public class MakeAnOffer implements Action{
 		
 	}
 
+	@Override
+	public void notifyPlayers(Game game) {
+		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
+				Arrays.asList(game.getCurrentPlayer())));
+		game.notifyObserver(new MessageNotify("Offer registered succesfully!", 
+				Arrays.asList(game.getCurrentPlayer())));
+		List<Player> otherPlayers=new ArrayList<>();
+		for (Player player : game.getPlayers())
+			if (!player.equals(game.getCurrentPlayer()))
+				otherPlayers.add(player);
+		game.notifyObserver(new MessageNotify(game.getCurrentPlayer().getName()
+				+ " added: " + this.offeringObjects + " to the market", otherPlayers));
+	}
 
 	@Override
 	public ActionDTO map() {

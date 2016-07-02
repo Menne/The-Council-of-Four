@@ -2,18 +2,18 @@ package client.modelDTO.gameTableDTO;
 
 import client.modelDTO.ModelDTO;
 
-
+/**
+ * This class provides all the informations about a city colour, but without logic
+ * @author cg31
+ *
+ */
 public class CityColourDTO implements ModelDTO{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -2914098238189404754L;
 	private String name;
 
-	
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
@@ -22,7 +22,7 @@ public class CityColourDTO implements ModelDTO{
 
 	@Override
 	public String toString() {
-		return name;
+		return this.name;
 	}
 
 	@Override
@@ -50,7 +50,4 @@ public class CityColourDTO implements ModelDTO{
 		return true;
 	}
 
-	
-	
-	
 }

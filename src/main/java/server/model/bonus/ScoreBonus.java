@@ -27,7 +27,7 @@ public class ScoreBonus implements Bonus{
 		this.scoreAdvancement=scoreAdvancement;
 	}
 	/**
-	 * assignBonus assigns to player p the "advancement" score
+	 * assignBonus assigns to the current player the "advancement" score
 	 * @param currentPlayer
 	 */
 	@Override

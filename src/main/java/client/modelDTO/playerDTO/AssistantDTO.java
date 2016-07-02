@@ -3,16 +3,21 @@ package client.modelDTO.playerDTO;
 import client.modelDTO.ModelDTO;
 import client.modelDTO.marketDTO.MarketableDTO;
 
+/**
+ * This class provides all the informations about an assistant, but without logic
+ * @author cg31
+ *
+ */
 public class AssistantDTO implements MarketableDTO, ModelDTO {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 447991061441414920L;
 	private final int id;
 	
+	/**
+	 * Constructor of AssistantDTO
+	 */
 	public AssistantDTO() {
-		id=0;
+		this.id=0;
 	}
 
 	@Override

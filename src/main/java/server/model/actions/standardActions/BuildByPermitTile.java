@@ -26,7 +26,7 @@ import server.view.notifies.PlayerNotify;
  *
  */
 
-public class BuildByPermitTile extends MainAction {
+public class BuildByPermitTile implements MainAction {
 
 	private PermitTile selectedPermitTile;
 	private City selectedCity;
@@ -86,13 +86,10 @@ public class BuildByPermitTile extends MainAction {
 		if (this.selectedCity.getColour().isBonusAvailable())
 			assignColourBonus(game);
 		
-		if(game.getCurrentPlayer().getRemainigEmporiums().size()==0){
+		if(game.getCurrentPlayer().getRemainigEmporiums().isEmpty()){
 			game.setLastLap(true);
 			game.getCurrentPlayer().incrementScore(3);
 		}
-		
-		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
-				Arrays.asList(game.getCurrentPlayer())));
 		
 		this.notifyPlayers(game);
 		this.nextState(game);
@@ -183,7 +180,10 @@ public class BuildByPermitTile extends MainAction {
 		game.getGameTable().getKingRewardTiles().remove(0));
 	}
 	
-	private void notifyPlayers(Game game) {
+	@Override
+	public void notifyPlayers(Game game) {
+		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
+				Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new MessageNotify("Action completed succesfully!", 
 				Arrays.asList(game.getCurrentPlayer())));
 		List<Player> otherPlayers=new ArrayList<>();

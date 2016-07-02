@@ -10,17 +10,22 @@ import client.modelDTO.playerDTO.ClientPlayerDTO;
 import client.view.notifies.ClientViewNotify;
 import observerPattern.Observable;
 
+/**
+ * This class provides all the informations about the game, but without logic
+ * @author cg31
+ *
+ */
 public class GameDTO extends Observable<ClientViewNotify> implements ModelDTO {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 8250245390720798602L;
 	private GameTableDTO clientGameTable;
 	private ClientPlayerDTO clientPlayer;
 	private ArrayList<ActionDTO> availableActions;
 	private MarketDTO market;
 	
+	/**
+	 * Constructor of GameDTO
+	 */
 	public GameDTO() {
 		this.clientGameTable=new GameTableDTO();
 		this.clientPlayer=new ClientPlayerDTO();

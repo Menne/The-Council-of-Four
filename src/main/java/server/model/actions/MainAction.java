@@ -7,9 +7,9 @@ import server.model.Game;
  * @author Luca
  *
  */
-public abstract class MainAction implements Action {
+public interface MainAction extends Action {
 	
-	public void nextState(Game game){
+	public default void nextState(Game game){
 		game.setState(game.getState().mainActionTransition(game));
 		game.getState().updateClients(game);
 	}

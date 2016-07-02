@@ -6,10 +6,19 @@ import server.model.player.Player;
 import server.view.notifies.GameTableNotify;
 import server.view.notifies.MessageNotify;
 
+/**
+ * Action executed when a player wants to leave the game
+ * @author cg31
+ *
+ */
 public class Quit implements Action {
 
 	private final Player quittingPlayer;
 	
+	/**
+	 * Constructor of Quit action
+	 * @param quittingPlayer is the player who has decided to leave the game
+	 */
 	public Quit(Player quittingPlayer) {
 		this.quittingPlayer=quittingPlayer;
 	}
@@ -46,14 +55,19 @@ public class Quit implements Action {
 			else
 				game.notifyObserver(new GameTableNotify(game, game.getPlayers(),false));
 		}
-		game.notifyObserver(new MessageNotify(game.getCurrentPlayer().getName()
-				+ " has left the game", game.getPlayers()));
+		this.notifyPlayers(game);
 		return true;
 	}
 
 	@Override
 	public ActionDTO map() throws IllegalStateException{
 		throw new IllegalStateException("no mapping for action quit");
+	}
+
+	@Override
+	public void notifyPlayers(Game game) {
+		game.notifyObserver(new MessageNotify(game.getCurrentPlayer().getName()
+				+ " has left the game", game.getPlayers()));
 	}
 
 }

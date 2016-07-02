@@ -8,11 +8,13 @@ import client.modelDTO.gameTableDTO.BonusTileDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
 import client.modelDTO.gameTableDTO.PoliticsCardDTO;
 
+/**
+ * This class provides all the informations about the player, but without logic
+ * @author cg31
+ *
+ */
 public class ClientPlayerDTO implements ModelDTO{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1059151897076991279L;
 	private String name;
 	private int playerNumber;
@@ -25,6 +27,9 @@ public class ClientPlayerDTO implements ModelDTO{
 	private int score;
 	private int nobility;
 	
+	/**
+	 * Constructor of ClientPlayerDTO
+	 */
 	public ClientPlayerDTO() {
 		this.hand=new ArrayList<>();
 		this.coveredPermitTiles=new ArrayList<>();
@@ -34,14 +39,12 @@ public class ClientPlayerDTO implements ModelDTO{
 	
 
 	public List<BonusTileDTO> getFinalBonuses() {
-		return finalBonuses;
+		return this.finalBonuses;
 	}
-
 
 	public void setFinalBonuses(List<BonusTileDTO> finalBonuses) {
 		this.finalBonuses = finalBonuses;
 	}
-
 
 	public String getName() {
 		return this.name;
@@ -98,7 +101,6 @@ public class ClientPlayerDTO implements ModelDTO{
 	public void setCoins(int coins) {
 		this.coins=coins;
 	}
-
 
 	public int getScore() {
 		return this.score;

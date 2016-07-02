@@ -22,7 +22,7 @@ import server.view.notifies.PlayerNotify;
  * @author Luca
  *
  */
-public class ElectCouncillor extends MainAction {
+public class ElectCouncillor implements MainAction {
 
 	private Councillor newCouncillor;
 	private CouncilBalcony councilBalcony;
@@ -57,16 +57,16 @@ public class ElectCouncillor extends MainAction {
 			}
 		game.getCurrentPlayer().incrementCoins(givenCoins);
 		
-		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
-				Arrays.asList(game.getCurrentPlayer())));
-		
 		this.notifyPlayers(game);
 		this.nextState(game);
 		
 		return true;
 	}
 	
-	private void notifyPlayers(Game game) {
+	@Override
+	public void notifyPlayers(Game game) {
+		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
+				Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new MessageNotify("Action completed succesfully!", 
 				Arrays.asList(game.getCurrentPlayer())));
 		List<Player> otherPlayers=new ArrayList<>();

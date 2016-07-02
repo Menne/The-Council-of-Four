@@ -1,21 +1,29 @@
 package client.modelDTO.actionsDTO.actionsParametersSetters;
 
 import client.modelDTO.GameDTO;
-import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.standardActions.AcquirePermitTileDTO;
 import client.view.ClientView;
 
+/**
+ * This class provides the logic to set the needed parameters of a AcquirePermitTileDTO
+ * @author cg31
+ *
+ */
 public class AcquirePermitTileParser implements ActionParserVisitor {
 	
 	private AcquirePermitTileDTO selectedAction;
 	
+	/**
+	 * Constructor of AcquirePermitTileDTO
+	 * @param selectedAction is the action selected by the user
+	 */
 	public AcquirePermitTileParser(AcquirePermitTileDTO selectedAction) {
 		this.selectedAction=selectedAction;
 	}
 	
 	
 	@Override
-	public ActionDTO setParameters(ClientView view, GameDTO game) {
+	public void setParameters(ClientView view, GameDTO game) {
 		view.displayMessage("Ok! you have chosen to acquire a permit tile.");
 			
 		if (!game.getClientPlayer().getHand().isEmpty()) {
@@ -37,8 +45,6 @@ public class AcquirePermitTileParser implements ActionParserVisitor {
 		}
 		else 
 			view.displayMessage("but it seems that you haven't any politics card in your hand! Select another action please");
-			
-		return this.selectedAction;
 	}
 
 }

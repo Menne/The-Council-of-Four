@@ -4,16 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import client.modelDTO.GameDTO;
-import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.standardActions.ElectCouncillorByAssistantDTO;
 import client.modelDTO.gameTableDTO.CouncillorDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
 import client.view.ClientView;
 
+/**
+ * This class provides the logic to set the needed parameters of ElectCouncillorByAssistantDTO
+ * @author cg31
+ *
+ */
 public class ElectCouncillorByAssistantParser implements ActionParserVisitor {
 
 	private ElectCouncillorByAssistantDTO selectedAction;
 	
+	/**
+	 * Constructor of ElectCouncillorByAssistantDTO
+	 * @param selectedAction is the action selected by the user
+	 */
 	public ElectCouncillorByAssistantParser(ElectCouncillorByAssistantDTO selectedAction) {
 		this.selectedAction=selectedAction;
 
@@ -21,7 +29,7 @@ public class ElectCouncillorByAssistantParser implements ActionParserVisitor {
 
 
 	@Override
-	public ActionDTO setParameters(ClientView view, GameDTO game) {
+	public void setParameters(ClientView view, GameDTO game) {
 		view.displayMessage("Ok! you have chosen to send an assistant to elect a councillor. Now I need some other infos, like:");
 		
 		view.displayMessage("the colour of the councillor you want to elect");
@@ -35,8 +43,6 @@ public class ElectCouncillorByAssistantParser implements ActionParserVisitor {
 		this.selectedAction.setCouncilBalcony(view.askForCouncilBalcony());
 		
 		this.selectedAction.parametersSetted();
-		
-		return this.selectedAction;
 	}
 
 }

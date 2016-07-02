@@ -64,7 +64,7 @@ public class ConnectedBuiltCityDiscover {
 	public Set<City> getConnectedBuiltCities(UndirectedGraph<City,DefaultEdge> map, 
 			City cityToCheck, Emporium builedEmporium){
 		this.addCities(map, cityToCheck, builedEmporium);
-		Set<City> temp= new HashSet<City>(this.connectedBonusCities);
+		Set<City> temp= new HashSet<>(this.connectedBonusCities);
 		this.resetAttributes();
 		return temp;
 	}
