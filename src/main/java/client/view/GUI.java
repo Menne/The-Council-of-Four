@@ -282,25 +282,38 @@ public class GUI extends ClientView{
 					Logger logger=Logger.getAnonymousLogger();
 					logger.log(Level.SEVERE, "Failed to send action with RMI", e);
 				}
+
 		
 		Platform.runLater(()-> {
-			controllerGUI.getActions().get(0).getParent().setEffect(null);
-			controllerGUI.getActions().get(4).getParent().setEffect(null);
 			InnerShadow innerShadow= new InnerShadow();
-			innerShadow.setChoke(0.5);
-			innerShadow.setHeight(150);
-			innerShadow.setWidth(150);
-			innerShadow.setBlurType(BlurType.GAUSSIAN);
-			innerShadow.setColor(Color.web("ffffff"));
+			innerShadow.setChoke(0.2);
+			innerShadow.setWidth(100);
+			innerShadow.setHeight(100);
+			for (int i=0; i<9; i++){
+				controllerGUI.getActions().get(i).setEffect(innerShadow);
+			}
 			controllerGUI.getPoliticsDeck().setEffect(null);
 			for (ActionDTO action : clientGame.getAvailableActions()){
-				if(action.getClass()==PickPoliticsCardDTO.class){
+				if(action.getClass()==PickPoliticsCardDTO.class)
 					controllerGUI.getPoliticsDeck().setEffect(new Glow(0.8));
-				}
 				if(action.getClass()==ElectCouncillorDTO.class)
-					controllerGUI.getActions().get(0).getParent().setEffect(innerShadow);
+					controllerGUI.getActions().get(0).setEffect(null);
+				if(action.getClass()==AcquirePermitTileDTO.class)
+					controllerGUI.getActions().get(1).setEffect(null);
+				if(action.getClass()==BuildByPermitTileDTO.class)
+					controllerGUI.getActions().get(2).setEffect(null);
+				if(action.getClass()==BuildByKingDTO.class)
+					controllerGUI.getActions().get(3).setEffect(null);
 				if(action.getClass()==EngageAssistantDTO.class)
-					controllerGUI.getActions().get(4).getParent().setEffect(innerShadow);
+					controllerGUI.getActions().get(4).setEffect(null);
+				if(action.getClass()==ChangePermitTilesDTO.class)
+					controllerGUI.getActions().get(5).setEffect(null);
+				if(action.getClass()==ElectCouncillorByAssistantDTO.class)
+					controllerGUI.getActions().get(6).setEffect(null);
+				if(action.getClass()==AddictionalMainActionDTO.class)
+					controllerGUI.getActions().get(7).setEffect(null);
+				if(action.getClass()==MoveToNextDTO.class)
+					controllerGUI.getActions().get(8).setEffect(null);
 			}
 		});		
 	}

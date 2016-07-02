@@ -39,6 +39,17 @@ public class BuildByPermitTile implements MainAction {
 		this.selectedCity = selectedCity;
 	}
 
+	
+
+	public PermitTile getSelectedPermitTile() {
+		return selectedPermitTile;
+	}
+
+
+	public City getSelectedCity() {
+		return selectedCity;
+	}
+
 
 	/**
 	 * First of all checks if the parameters the current player gave are corrected,

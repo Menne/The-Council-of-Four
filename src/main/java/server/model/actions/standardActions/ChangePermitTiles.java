@@ -29,6 +29,12 @@ public class ChangePermitTiles implements QuickAction {
 	}
 	
 	
+	public RegionBoard getSelectedRegion() {
+		return selectedRegion;
+	}
+
+
+
 	private boolean checkAssistant(Game game){
 		return game.getCurrentPlayer().getNumberOfAssistants()>=necessaryAssistants;
 	}

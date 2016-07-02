@@ -41,6 +41,18 @@ public class AcquirePermitTile implements MainAction {
 		this.chosenRegion = chosenRegion;
 	}
 
+	public Integer getNumberOfPermitTile() {
+		return numberOfPermitTile;
+	}
+
+	public RegionBoard getChosenRegion() {
+		return chosenRegion;
+	}
+
+	public List<PoliticsCard> getCardsToDescard() {
+		return cardsToDescard;
+	}
+
 	/**
 	 * Acquire a permit tile from a designated region board by satisfying the councillors:
 	 * 4 cards of the same colour of the councillors,

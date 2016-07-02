@@ -39,6 +39,14 @@ public class BuildByKing implements MainAction {
 	public void setCardsToDescard(List<PoliticsCard> cardsToDescard) {
 		this.cardsToDescard = cardsToDescard;
 	}
+	
+	public City getSelectedCity() {
+		return selectedCity;
+	}
+
+	public List<PoliticsCard> getCardsToDescard() {
+		return cardsToDescard;
+	}
 
 	/**
 	 * First of all checks if the parameters the current player gave are corrected, 

@@ -34,6 +34,14 @@ public class ElectCouncillor implements MainAction {
 	}
 
 	
+	public Councillor getNewCouncillor() {
+		return newCouncillor;
+	}
+
+	public CouncilBalcony getCouncilBalcony() {
+		return councilBalcony;
+	}
+
 	/**
 	 * Substitutes a given councillor in one of the balconies of the game,
 	 * adds the old substituted councillor in the reserve,
