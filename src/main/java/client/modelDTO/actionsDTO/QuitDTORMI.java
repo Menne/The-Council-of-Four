@@ -12,7 +12,7 @@ import server.view.actionMapperVisitor.ActionMapperVisitor;
 public class QuitDTORMI implements ActionDTO {
 
 	private static final long serialVersionUID = 2925523002357555784L;
-	private final ClientRMIViewRemote quittingView;
+	private transient final ClientRMIViewRemote quittingView;
 	
 	/**
 	 * Constructor of QuitDTORMI
