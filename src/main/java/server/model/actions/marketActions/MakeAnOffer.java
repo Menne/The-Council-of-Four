@@ -13,6 +13,11 @@ import server.model.player.Player;
 import server.view.notifies.MessageNotify;
 import server.view.notifies.PlayerNotify;
 
+/**
+ * This class is the action of the market "make an offer"
+ * @author cg31
+ *
+ */
 public class MakeAnOffer implements Action{
 
 	private List<Offer> offeringObjects;

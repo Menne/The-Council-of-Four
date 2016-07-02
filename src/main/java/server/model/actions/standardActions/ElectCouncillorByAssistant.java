@@ -16,11 +16,8 @@ import server.view.notifies.MessageNotify;
 import server.view.notifies.PlayerNotify;
 
 /**
- * It's the quick action "elect councillor" it operates on the 
- * protected attribute game through the method executeAction.
- * The controller will pass to the constructor the councillor to add,
- * and the balcony where he wants to add it. 
- * @author Luca
+ * It's the quick action "elect councillor by sending an assistant"
+ * @author cg31
  *
  */
 public class ElectCouncillorByAssistant implements QuickAction {

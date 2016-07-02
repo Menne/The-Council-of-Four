@@ -40,7 +40,7 @@ public class AcquirePermitTileParser implements ActionParserVisitor {
 			view.displayMessage("the colours of the cards in your hand you want to descard");
 			this.selectedAction.setCardsToDescard(view.askForPoliticsCards());
 			
-			this.selectedAction.parametersSetted();
+			this.selectedAction.parametersSet();
 			
 		}
 		else 

@@ -13,11 +13,10 @@ import server.view.notifies.MessageNotify;
 import server.view.notifies.PlayerNotify;
 
 /**
- * This class models the action associated to the choice of the ChooseCityBonus.
- * @author Emanuele
+ * This class modelizes the action associated to the ChooseCityBonus
+ * @author cg31
  *
  */
-
 public class ChooseCityBonusAction implements Action {
 
 	private List<City> selectedCities;
@@ -26,7 +25,6 @@ public class ChooseCityBonusAction implements Action {
 	public ChooseCityBonusAction(int numberOfCities) {
 		this.numberOfCities=numberOfCities;
 	}
-	
 	
 	public int getNumberOfCities() {
 		return this.numberOfCities;
@@ -37,7 +35,8 @@ public class ChooseCityBonusAction implements Action {
 	}
 		
 	/**
-	 * Assigns the bonus/bonuses of the city to the current player
+	 * Assigns the bonus of city/cities selected to the current player
+	 * @return true, if the bonus assignment went well, false otherwise
 	 */
 	@Override
 	public boolean executeAction(Game game) {

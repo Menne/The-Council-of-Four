@@ -23,6 +23,9 @@ public class Quit implements Action {
 		this.quittingPlayer=quittingPlayer;
 	}
 
+	/**
+	 * Disconnects the player who decided to leave
+	 */
 	@Override
 	public boolean executeAction(Game game) {
 		if(quittingPlayer.equals(game.getCurrentPlayer())){

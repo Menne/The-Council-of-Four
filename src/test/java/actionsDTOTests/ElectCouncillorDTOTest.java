@@ -17,10 +17,10 @@ public class ElectCouncillorDTOTest {
 		ElectCouncillorDTO action= new ElectCouncillorDTO();
 		action.setCouncilBalcony(councilBalcony);
 		action.setNewCouncillor(newCouncillor);
-		assertFalse(action.checkIfParametersSetted());
+		assertFalse(action.checkIfParametersSet());
 		assertEquals(ElectCouncillorParser.class, action.setParser().getClass());
-		action.parametersSetted();
-		assertTrue(action.checkIfParametersSetted());
+		action.parametersSet();
+		assertTrue(action.checkIfParametersSet());
 		assertTrue(action.getCouncilBalcony()==councilBalcony);
 		assertTrue(action.getNewCouncillor()==newCouncillor);
 		assertEquals("m1: elect a councillor", action.toString());

@@ -12,11 +12,10 @@ import server.view.notifies.MessageNotify;
 import server.view.notifies.PlayerNotify;
 
 /**
- * It's the class that models the action associated to the choice of the PurchasedPermitTile.
- * @author Emanuele
+ * This class modelizes the action associated to the bonus of a PurchasedPermitTileBonus
+ * @author cg31
  *
  */
-
 public class PurchasedPermitTileAction implements Action {
 
 	private PermitTile selectedPermitTile;
@@ -25,7 +24,10 @@ public class PurchasedPermitTileAction implements Action {
 		this.selectedPermitTile=selectedPermitTile;
 	}
 	
-	
+	/**
+	 * Assigns the bonuses of the permit tile selected to the current player
+	 * @return true, if the bonus assignment went well, false otherwise
+	 */
 	@Override
 	public boolean executeAction(Game game) {
 		if (this.selectedPermitTile==null) {

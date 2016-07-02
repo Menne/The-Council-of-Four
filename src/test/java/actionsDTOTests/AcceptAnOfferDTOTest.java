@@ -13,11 +13,11 @@ public class AcceptAnOfferDTOTest {
 	public void testSetters() {
 		OfferDTO offerDTO= new OfferDTO();
 		AcceptAnOfferDTO action= new AcceptAnOfferDTO();
-		assertFalse(action.checkIfParametersSetted());
+		assertFalse(action.checkIfParametersSet());
 		action.setOffer(offerDTO);
-		action.parametersSetted();
+		action.parametersSet();
 		assertTrue(action.getOffer()==offerDTO);
-		assertTrue(action.checkIfParametersSetted());
+		assertTrue(action.checkIfParametersSet());
 		assertEquals("ao: accept an offer", action.toString());
 	}
 

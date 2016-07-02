@@ -44,7 +44,7 @@ public class BuildByKingParser implements ActionParserVisitor {
 			view.displayMessage("the colour of the cards you want to descard");
 			this.selectedAction.setCardsToDescard(view.askForPoliticsCards());
 			
-			this.selectedAction.parametersSetted();
+			this.selectedAction.parametersSet();
 		
 		}
 		else 

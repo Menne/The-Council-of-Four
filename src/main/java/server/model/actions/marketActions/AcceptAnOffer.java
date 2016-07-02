@@ -13,12 +13,18 @@ import server.model.player.Player;
 import server.view.notifies.MessageNotify;
 import server.view.notifies.PlayerNotify;
 
+/**
+ * This class is the action of the market "accept an offer", it operates on the 
+ * protected attribute game through the method executeAction.
+ * @author cg31
+ *
+ */
 public class AcceptAnOffer implements Action {
 
 	private Offer offer;
 
 	public Offer getOffer() {
-		return offer;
+		return this.offer;
 	}
 
 	public void setOffer(Offer offer) {

@@ -30,7 +30,7 @@ public class AcceptAnOfferParser implements ActionParserVisitor {
 			view.displayMessage("Choose the object you want to buy.");
 			this.selectedAction.setOffer(view.askForAcceptingAnOffer());
 			
-			this.selectedAction.parametersSetted();
+			this.selectedAction.parametersSet();
 			
 		}
 		else 

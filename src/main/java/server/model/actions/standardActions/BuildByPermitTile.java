@@ -22,7 +22,7 @@ import server.view.notifies.PlayerNotify;
  * This action allows the current player to build in one city from those which
  * are indicated by the permit deck. After that, the player catches the bonuses
  * of that city plus all of the linked cities in which he has already built
- * @author Emanuele
+ * @author cg31
  *
  */
 

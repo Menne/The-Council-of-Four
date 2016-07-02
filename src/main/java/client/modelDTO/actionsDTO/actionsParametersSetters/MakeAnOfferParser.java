@@ -53,7 +53,7 @@ public class MakeAnOfferParser implements ActionParserVisitor {
 			view.displayMessage("Do you want make another offer?");
 			this.otherSelling=view.askForOtherSelling();
 		
-			this.selectedAction.parametersSetted();
+			this.selectedAction.parametersSet();
 		}
 
 		if (this.otherSelling && acceptableObjectsToOffer.isEmpty())

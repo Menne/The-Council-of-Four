@@ -41,7 +41,7 @@ public class ElectCouncillorParser implements ActionParserVisitor {
 		acceptableCouncilBalconies.add(game.getClientGameTable().getClientKingBalcony());
 		this.selectedAction.setCouncilBalcony(view.askForCouncilBalcony());
 		
-		this.selectedAction.parametersSetted();
+		this.selectedAction.parametersSet();
 	}
 
 }

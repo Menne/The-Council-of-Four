@@ -7,6 +7,11 @@ import server.model.Game;
 import server.model.player.Player;
 import server.view.notifies.ChatNotify;
 
+/**
+ * This class modelizes the action of sending a chat message to everybody
+ * @author cg31
+ *
+ */
 public class ChatMessage implements Action {
 
 	private final String message;
@@ -15,6 +20,9 @@ public class ChatMessage implements Action {
 		this.message=message;
 	}
 
+	/**
+	 * Sends the chat message to all the clients
+	 */
 	@Override
 	public boolean executeAction(Game game) {
 		game.notifyObserver(new ChatNotify(this.message, new ArrayList<Player>(game.getPlayers())));
