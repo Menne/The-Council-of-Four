@@ -100,14 +100,10 @@ public class ControllerChooseMap {
 
 	@FXML
 	public void changeMouseStyle(){
-	Platform.runLater(new Runnable() {
-	        
-	    	@Override
-	        public void run() {
-	    		Image image = new Image(getClass().getResource("view/images/cursor/arrow.png").toExternalForm());
-				backGround.setCursor(new ImageCursor(image));
-	        }
-	    });
+	Platform.runLater(() -> {
+		Image image = new Image(getClass().getResource("view/images/cursor/arrow.png").toExternalForm());
+		backGround.setCursor(new ImageCursor(image));
+		});
     }
 	
 	@FXML
@@ -128,109 +124,73 @@ public class ControllerChooseMap {
 	
 	@FXML
     public void changeMouseStyleMap1(MouseEvent mouseEvent) {
-    	Platform.runLater(new Runnable() {
-	        
-	    	@Override
-	        public void run() {
-	    		preview.setImage(new Image(getClass().getResource("view/images/various/map1copia.jpg").toExternalForm()));
-	    		((Node) mouseEvent.getSource()).setCursor(Cursor.HAND);
-	        }
-	    });
+    	Platform.runLater(() -> {
+    		preview.setImage(new Image(getClass().getResource("view/images/various/map1copia.jpg").toExternalForm()));
+	    	((Node) mouseEvent.getSource()).setCursor(Cursor.HAND);
+	        });
     }
 	
 	@FXML
     public void changeMouseStyleMap2(MouseEvent mouseEvent) {
-    	Platform.runLater(new Runnable() {
-	        
-	    	@Override
-	        public void run() {
-	    		preview.setImage(new Image(getClass().getResource("view/images/various/map3copia.png").toExternalForm()));
-	    		((Node) mouseEvent.getSource()).setCursor(Cursor.HAND);
-	        }
-	    });
+    	Platform.runLater(() -> {
+    		preview.setImage(new Image(getClass().getResource("view/images/various/map3copia.png").toExternalForm()));
+	    	((Node) mouseEvent.getSource()).setCursor(Cursor.HAND);
+	        });
     }
 	
 	@FXML
     public void changeMouseStyleMap3(MouseEvent mouseEvent) {
-    	Platform.runLater(new Runnable() {
-	        
-	    	@Override
-	        public void run() {
-	    		preview.setImage(new Image(getClass().getResource("view/images/various/map3copia.png").toExternalForm()));
-	    		((Node) mouseEvent.getSource()).setCursor(Cursor.HAND);
-	        }
-	    });
+    	Platform.runLater(() -> {
+	    	preview.setImage(new Image(getClass().getResource("view/images/various/map3copia.png").toExternalForm()));
+	    	((Node) mouseEvent.getSource()).setCursor(Cursor.HAND);
+	        });
     }
 	
 	@FXML
     public void changeMouseStyleMap4(MouseEvent mouseEvent) {
-    	Platform.runLater(new Runnable() {
-	        
-	    	@Override
-	        public void run() {
-	    		preview.setImage(new Image(getClass().getResource("view/images/various/map4copia.png").toExternalForm()));
-	    		((Node) mouseEvent.getSource()).setCursor(Cursor.HAND);
-	        }
-	    });
+    	Platform.runLater(() -> {
+	    	preview.setImage(new Image(getClass().getResource("view/images/various/map4copia.png").toExternalForm()));
+	    	((Node) mouseEvent.getSource()).setCursor(Cursor.HAND);
+	       });
     }
 	
 	@FXML
     public void changeMouseStyleMap5(MouseEvent mouseEvent) {
-    	Platform.runLater(new Runnable() {
-	        
-	    	@Override
-	        public void run() {
-	    		preview.setImage(new Image(getClass().getResource("view/images/various/map5copia.png").toExternalForm()));
-	    		((Node) mouseEvent.getSource()).setCursor(Cursor.HAND);
-	        }
-	    });
+    	Platform.runLater(() -> {
+	    	preview.setImage(new Image(getClass().getResource("view/images/various/map5copia.png").toExternalForm()));
+	    	((Node) mouseEvent.getSource()).setCursor(Cursor.HAND);
+	        });
     }
 	
 	@FXML
     public void changeMouseStyleMap6(MouseEvent mouseEvent) {
-    	Platform.runLater(new Runnable() {
-	        
-	    	@Override
-	        public void run() {
-	    		preview.setImage(new Image(getClass().getResource("view/images/various/map6copia.png").toExternalForm()));
-	    		((Node) mouseEvent.getSource()).setCursor(Cursor.HAND);
-	        }
-	    });
+    	Platform.runLater(() -> {
+	    	preview.setImage(new Image(getClass().getResource("view/images/various/map6copia.png").toExternalForm()));
+	    	((Node) mouseEvent.getSource()).setCursor(Cursor.HAND);
+	        });
     }
 	
 	@FXML
     public void changeMouseStyleMap7(MouseEvent mouseEvent) {
-    	Platform.runLater(new Runnable() {
-	        
-	    	@Override
-	        public void run() {
-	    		preview.setImage(new Image(getClass().getResource("view/images/various/map7copia.png").toExternalForm()));
-	    		((Node) mouseEvent.getSource()).setCursor(Cursor.HAND);
-	        }
-	    });
+    	Platform.runLater(() -> {
+	    	preview.setImage(new Image(getClass().getResource("view/images/various/map7copia.png").toExternalForm()));
+	    	((Node) mouseEvent.getSource()).setCursor(Cursor.HAND);
+	    	});
     }
 	
 	@FXML
     public void changeMouseStyleMap8(MouseEvent mouseEvent) {
-    	Platform.runLater(new Runnable() {
-	        
-	    	@Override
-	        public void run() {
-	    		preview.setImage(new Image(getClass().getResource("view/images/various/map8copia.png").toExternalForm()));
-	    		((Node) mouseEvent.getSource()).setCursor(Cursor.HAND);
-	        }
-	    });
+    	Platform.runLater(()-> {
+	    	preview.setImage(new Image(getClass().getResource("view/images/various/map8copia.png").toExternalForm()));
+	    	((Node) mouseEvent.getSource()).setCursor(Cursor.HAND);
+	        });
     }
 
 	@FXML
     public void removeImageOnMouseExited(MouseEvent mouseEvent) {
-    	Platform.runLater(new Runnable() {
-	        
-	    	@Override
-	        public void run() {
+    	Platform.runLater(()-> {
 	    		preview.setImage(new Image(getClass().getResource("view/images/various/scritta.png").toExternalForm()));
-	        }
-	    });
+	        });
     }
 }
 
