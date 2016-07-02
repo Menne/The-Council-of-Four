@@ -10,52 +10,26 @@ import org.junit.Test;
 
 import server.model.Game;
 import server.model.bonus.interactiveBonus.PickPermitTileBonus;
-import server.model.gameTable.PermitTile;
 import server.model.player.Player;
 import server.model.stateMachine.State11;
 
 public class PickPermitTileBonusTest {
-
-/*	@Test(expected=IllegalArgumentException.class)
-	public void testExceptionNumberTooBig() throws IOException {
-		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
-		Player a = new Player("Andre");
-		players.add(a);
-		game.start(players);
-		new PickPermitTileBonus();
-	}
-
-	@Test(expected=IllegalArgumentException.class)
-	public void testExceptionNumberTooLow() throws IOException {
-		Game game=new Game();
-		List<Player> players = new ArrayList<Player>();
-		Player a = new Player("Andre");
-		players.add(a);
-		game.start(players);
-		new PickPermitTileBonus();
-	}
 	
 	@Test
-	public void testIfBonusGiveThePermitTileToPlayer() throws IOException{
+	public void testAssignBonus() throws IOException{
 		Game game=new Game();
 		List<Player> players = new ArrayList<Player>();
 		Player a = new Player("Andre");
 		players.add(a);
 		game.start(players);
 		game.setCurrentPlayer(game.getPlayers().get(0));
-		game.setState(new State11());
+		State11 state= new State11();
+		game.setState(state);
 		game.getGameTable().getRegionBoards().get(0).uncoverPermitTiles();
-		int temp= game.getCurrentPlayer().getPlayersPermitTilesTurnedUp().size();
-		PermitTile tile= game.getGameTable().getRegionBoards().get(0).getUncoveredPermitTiles()[1];
-		PickPermitTileBonus bonus= new PickPermitTileBonus();
-		PickPermitTileBonus bonus1= new PickPermitTileBonus();
-		bonus.assignBonus(game);
-		assertEquals(temp+1, game.getCurrentPlayer().getPlayersPermitTilesTurnedUp().size());
-		assertEquals(tile, game.getCurrentPlayer().getPlayersPermitTilesTurnedUp().get(0));
-		assertEquals(bonus, bonus1);
-		assertEquals(2574644, bonus.hashCode());
-	}*/
+		PickPermitTileBonus action= new PickPermitTileBonus();
+		action.assignBonus(game);
+		assertTrue(game.getState().getClass()==state.interactiveBonusTransition().getClass());
+	}
 
 	
 }
