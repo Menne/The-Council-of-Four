@@ -32,6 +32,7 @@ public class GameTableDTOTest {
 		String king="Arkon";
 		BonusTileDTO nextKingRewardTile= new BonusTileDTO(king, new ScoreBonus(5));
 		Set<BonusTileDTO> colourBonuses= new HashSet<>();
+		int mapNumber=1;
 		gameTable.setNextKingRewardTile(nextKingRewardTile);
 		gameTable.setColourBonuses(colourBonuses);
 		gameTable.setClientCouncillorReserve(clientCouncillorReserve);
@@ -41,6 +42,7 @@ public class GameTableDTOTest {
 		gameTable.setClientRegions(clientRegions);
 		gameTable.setCurrentPlayer(currentPlayer);
 		gameTable.setKing(king);
+		gameTable.setMapNumber(mapNumber);
 		assertTrue(gameTable.getNextKingRewardTile()==nextKingRewardTile);
 		assertTrue(gameTable.getColourBonuses()==colourBonuses);
 		assertTrue(gameTable.getClientCouncillorReserve()==clientCouncillorReserve);
@@ -50,6 +52,7 @@ public class GameTableDTOTest {
 		assertTrue(gameTable.getClientRegions()==clientRegions);
 		assertTrue(gameTable.getCurrentPlayer()==currentPlayer);
 		assertTrue(gameTable.getKing()==king);
+		assertTrue(gameTable.getMapNumber()==mapNumber);
 		assertEquals("\nUpdated game table:\nPlayers:\n" + players + "\nNow is plaiyng:\t" + currentPlayer + "\n" +
 				 clientRegions + "\nKingCity: "+ king+" \nKing's balcony:" + Arrays.toString(clientKingBalcony) + "\nCouncillors riserve"+
 				 clientCouncillorReserve + "\nNobilityTrack: " + clientNobilityTrack
