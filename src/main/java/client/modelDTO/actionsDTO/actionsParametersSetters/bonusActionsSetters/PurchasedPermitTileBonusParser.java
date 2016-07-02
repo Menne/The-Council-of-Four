@@ -27,7 +27,7 @@ public class PurchasedPermitTileBonusParser implements ActionParserVisitor {
 		view.displayMessage("Permit tile bonus earned! You have the possibility to choose from your permit tiles,"
 						+ "covered or not, and get the bonuses associated to that");
 			this.selectedAction.setPermitTile(view.askForPermitTileUncoveredAndCovered());
-		this.selectedAction.parametersSetted();
+		this.selectedAction.parametersSet();
 	}
 
 }

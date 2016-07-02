@@ -35,11 +35,11 @@ public class BuildByPermitTileDTO implements ActionDTO, ActionWithParameters {
 		this.selectedCity = selectedCity;
 	}
 	@Override
-	public boolean checkIfParametersSetted() {
+	public boolean checkIfParametersSet() {
 		return parametersSetted;
 	}
 	@Override
-	public void parametersSetted() {
+	public void parametersSet() {
 		this.parametersSetted=true;
 	}
 

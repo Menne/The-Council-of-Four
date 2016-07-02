@@ -13,9 +13,6 @@ import server.view.actionMapperVisitor.ActionMapperVisitor;
 
 public class BuildByKingDTO implements ActionDTO, ActionWithParameters {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -3717084594434999743L;
 	private CityDTO selectedCity;
 	private List<PoliticsCardDTO> cardsToDescard;
@@ -39,12 +36,12 @@ public class BuildByKingDTO implements ActionDTO, ActionWithParameters {
 	}
 	
 	@Override
-	public boolean checkIfParametersSetted() {
+	public boolean checkIfParametersSet() {
 		return parametersSetted;
 	}
 
 	@Override
-	public void parametersSetted() {
+	public void parametersSet() {
 		this.parametersSetted=true;
 	}
 

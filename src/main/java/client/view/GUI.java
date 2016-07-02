@@ -213,7 +213,7 @@ public class GUI extends ClientView{
 	public void insertParametersAndSend(ActionWithParameters actionWithParameters) throws RemoteException {
 		this.disableActionButtons(true);
 		actionWithParameters.setParser().setParameters(this, this.clientGame);
-		if (actionWithParameters.checkIfParametersSetted())
+		if (actionWithParameters.checkIfParametersSet())
 			connection.sendAction(actionWithParameters);
 		this.disableActionButtons(false);
 	}

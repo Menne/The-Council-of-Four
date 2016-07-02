@@ -26,12 +26,12 @@ public class PurchasedPermitTileActionDTO implements ActionDTO, ActionWithParame
 	}
 
 	@Override
-	public boolean checkIfParametersSetted() {
+	public boolean checkIfParametersSet() {
 		return this.parametersSetted;
 	}
 
 	@Override
-	public void parametersSetted() {
+	public void parametersSet() {
 		this.parametersSetted=true;
 	}
 

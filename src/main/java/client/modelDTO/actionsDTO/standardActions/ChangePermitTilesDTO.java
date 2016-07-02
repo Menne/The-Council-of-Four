@@ -26,11 +26,11 @@ public class ChangePermitTilesDTO implements ActionDTO, ActionWithParameters {
 		this.selectedRegion = selectedRegion;
 	}
 	@Override
-	public boolean checkIfParametersSetted() {
+	public boolean checkIfParametersSet() {
 		return parametersSetted;
 	}
 	@Override
-	public void parametersSetted() {
+	public void parametersSet() {
 		this.parametersSetted=true;
 	}
 

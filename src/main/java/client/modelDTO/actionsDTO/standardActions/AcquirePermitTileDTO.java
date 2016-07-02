@@ -48,12 +48,12 @@ public class AcquirePermitTileDTO implements ActionDTO, ActionWithParameters {
 	}
 	
 	@Override
-	public boolean checkIfParametersSetted() {
+	public boolean checkIfParametersSet() {
 		return parametersSetted;
 	}
 	
 	@Override
-	public void parametersSetted() {
+	public void parametersSet() {
 		this.parametersSetted=true;
 	}
 

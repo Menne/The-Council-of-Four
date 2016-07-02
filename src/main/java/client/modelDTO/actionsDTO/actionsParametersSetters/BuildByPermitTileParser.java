@@ -45,7 +45,7 @@ public class BuildByPermitTileParser implements ActionParserVisitor {
 				acceptableCities.add(acceptableCity);
 			this.selectedAction.setSelectedCity(view.askForCity(acceptableCities));
 			
-			this.selectedAction.parametersSetted();
+			this.selectedAction.parametersSet();
 		
 		}
 		else 

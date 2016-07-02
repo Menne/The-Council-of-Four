@@ -19,13 +19,13 @@ public class MakeAnOfferDTOTest {
 		OfferDTO offerDTO= new OfferDTO();
 		MakeAnOfferDTO action= new MakeAnOfferDTO();
 		action.setOfferedObjectsDTO(offeredObjectsDTO);
-		assertFalse(action.checkIfParametersSetted());
+		assertFalse(action.checkIfParametersSet());
 		assertEquals(MakeAnOfferParser.class, action.setParser().getClass());
 		assertTrue(action.getOfferedObjectsDTO()==offeredObjectsDTO);
 		action.addOfferToList(offerDTO);
 		assertTrue(action.getOfferedObjectsDTO().get(0)==offerDTO);
-		action.parametersSetted();
-		assertTrue(action.checkIfParametersSetted());
+		action.parametersSet();
+		assertTrue(action.checkIfParametersSet());
 		assertEquals("mo: make an offer", action.toString());
 	}
 

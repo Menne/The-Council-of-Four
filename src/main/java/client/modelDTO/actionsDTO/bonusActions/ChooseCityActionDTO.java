@@ -44,12 +44,12 @@ public class ChooseCityActionDTO implements ActionDTO, ActionWithParameters {
 	}
 
 	@Override
-	public boolean checkIfParametersSetted() {
+	public boolean checkIfParametersSet() {
 		return this.parametersSetted;
 	}
 
 	@Override
-	public void parametersSetted() {
+	public void parametersSet() {
 		this.parametersSetted=true;
 	}
 

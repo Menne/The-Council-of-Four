@@ -31,7 +31,7 @@ public class PickPermitTileBonusParser implements ActionParserVisitor {
 		this.selectedAction.setNumberOfPermitTile(view.askForNumberOfPermitTile
 				(this.selectedAction.getSelectedRegion()));
 		
-		this.selectedAction.parametersSetted();
+		this.selectedAction.parametersSet();
 	}
 
 }

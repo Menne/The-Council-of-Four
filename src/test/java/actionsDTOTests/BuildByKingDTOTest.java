@@ -21,12 +21,12 @@ public class BuildByKingDTOTest {
 		BuildByKingDTO action= new BuildByKingDTO();
 		action.setCardsToDescard(cardsToDescard);
 		action.setSelectedCity(selectedCity);
-		assertFalse(action.checkIfParametersSetted());
+		assertFalse(action.checkIfParametersSet());
 		assertEquals(BuildByKingParser.class, action.setParser().getClass());
 		assertTrue(action.getCardsToDescard()==cardsToDescard);
 		assertTrue(action.getSelectedCity()==selectedCity);
-		action.parametersSetted();
-		assertTrue(action.checkIfParametersSetted());
+		action.parametersSet();
+		assertTrue(action.checkIfParametersSet());
 		assertEquals("m4: build an emporium with the help of the king", action.toString());
 	}
 

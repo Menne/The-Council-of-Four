@@ -15,11 +15,11 @@ public class ChangePermitTileDTOTest {
 		RegionDTO selectedRegion= new RegionDTO();
 		ChangePermitTilesDTO action= new ChangePermitTilesDTO();
 		action.setSelectedRegion(selectedRegion);
-		assertFalse(action.checkIfParametersSetted());
+		assertFalse(action.checkIfParametersSet());
 		assertEquals(ChangePermitTilesParser.class, action.setParser().getClass());
 		assertTrue(action.getSelectedRegion()==selectedRegion);
-		action.parametersSetted();
-		assertTrue(action.checkIfParametersSetted());
+		action.parametersSet();
+		assertTrue(action.checkIfParametersSet());
 		assertEquals("q2: change the permit tiles of a region", action.toString());
 	}
 
