@@ -9,6 +9,11 @@ import java.util.List;
 import org.junit.Test;
 
 import server.model.Game;
+import server.model.actions.MoveToNext;
+import server.model.actions.standardActions.AdditionalMainAction;
+import server.model.actions.standardActions.ChangePermitTiles;
+import server.model.actions.standardActions.ElectCouncillorByAssistant;
+import server.model.actions.standardActions.EngageAssistant;
 import server.model.player.Player;
 import server.model.stateMachine.BeginState;
 import server.model.stateMachine.SellingState;
@@ -61,6 +66,17 @@ public class State01Test {
 		game.setState(state);
 		assertEquals(SellingState.class, state.moveToNextTransition(game).getClass());
 		assertEquals(a, game.getCurrentPlayer());
+	}
+	
+	@Test
+	public void testGetAcceptableActions(){
+		Game game=new Game();
+		State01 state= new State01();
+		assertEquals(EngageAssistant.class, state.getAcceptableActions(game).get(0).getClass());
+		assertEquals(ChangePermitTiles.class, state.getAcceptableActions(game).get(1).getClass());
+		assertEquals(ElectCouncillorByAssistant.class, state.getAcceptableActions(game).get(2).getClass());
+		assertEquals(AdditionalMainAction.class, state.getAcceptableActions(game).get(3).getClass());
+		assertEquals(MoveToNext.class, state.getAcceptableActions(game).get(4).getClass());
 	}
 }
 
