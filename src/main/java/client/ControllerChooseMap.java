@@ -228,7 +228,7 @@ public class ControllerChooseMap {
 	        
 	    	@Override
 	        public void run() {
-	    		preview.setImage(null);
+	    		preview.setImage(new Image(getClass().getResource("view/images/various/scritta.png").toExternalForm()));
 	        }
 	    });
     }
