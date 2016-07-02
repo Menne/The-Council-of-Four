@@ -11,7 +11,7 @@ import client.modelDTO.actionsDTO.QuitDTO;
 import client.view.ClientView;
 
 /**
- * This class provides the logic to notify the server view which actions a player can fo in the current game state
+ * This class provides the logic to notify the server view which actions a player can do in the current game state
  * @author cg31
  *
  */
