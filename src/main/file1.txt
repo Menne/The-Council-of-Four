@@ -260,7 +260,7 @@ STOPTileBonus
 NEXTPermitTile
 Castrum
 STOPBuildableCities
-AssistantBonus
+AssistantsBonus
 2
 NEXTBonus
 CoinsBonus
@@ -278,7 +278,7 @@ STOPBuildableCities
 PoliticsCardsBonus
 3
 NEXTBonus
-AssistantBonus
+AssistantsBonus
 1
 STOPTileBonus
 NEXTPermitTile

@@ -158,7 +158,7 @@ public class GUI extends ClientView{
 		imageMap.put(new PermitTileDTO(new HashSet<>(Arrays.asList(new CityDTO("Hellar"), new CityDTO("Graden"))),new HashSet<>(Arrays.asList(new AssistantsBonus(3)))), new Image(getClass().getResource("images/hillPermitTile/1.15.png").toExternalForm()));
 		imageMap.put(new PermitTileDTO(new HashSet<>(Arrays.asList(new CityDTO("Kultos"), new CityDTO("Lyram"), new CityDTO("Merkatim"))),new HashSet<>(Arrays.asList(new AssistantsBonus(1),new CoinsBonus(1)))), new Image(getClass().getResource("images/mountainPermitTile/2.2.png").toExternalForm()));
 		imageMap.put(new PermitTileDTO(new HashSet<>(Arrays.asList(new CityDTO("Naris"))),new HashSet<>(Arrays.asList(new CoinsBonus(7)))), new Image(getClass().getResource("images/mountainPermitTile/2.1.png").toExternalForm()));
-		imageMap.put(new PermitTileDTO(new HashSet<>(Arrays.asList(new CityDTO("Osium"), new CityDTO("Kultos"))),new HashSet<>(Arrays.asList(new PoliticsCardsBonus(1),new NobilityBonus(1)))), new Image(getClass().getResource("images/mountainPermitTile/2.3.png").toExternalForm()));
+		imageMap.put(new PermitTileDTO(new HashSet<>(Arrays.asList(new CityDTO("Osium"), new CityDTO("Kultos"))),new HashSet<>(Arrays.asList(new PoliticsCardsBonus(2),new NobilityBonus(1)))), new Image(getClass().getResource("images/mountainPermitTile/2.3.png").toExternalForm()));
 		imageMap.put(new PermitTileDTO(new HashSet<>(Arrays.asList(new CityDTO("Kultos"), new CityDTO("Lyram"), new CityDTO("Osium"))),new HashSet<>(Arrays.asList(new PoliticsCardsBonus(1),new CoinsBonus(1)))), new Image(getClass().getResource("images/mountainPermitTile/2.4.png").toExternalForm()));
 		imageMap.put(new PermitTileDTO(new HashSet<>(Arrays.asList(new CityDTO("Naris"), new CityDTO("Lyram"), new CityDTO("Merkatim"))),new HashSet<>(Arrays.asList(new ScoreBonus(3)))), new Image(getClass().getResource("images/mountainPermitTile/2.5.png").toExternalForm()));
 		imageMap.put(new PermitTileDTO(new HashSet<>(Arrays.asList(new CityDTO("Lyram"), new CityDTO("Merkatim"))),new HashSet<>(Arrays.asList(new PoliticsCardsBonus(3)))), new Image(getClass().getResource("images/mountainPermitTile/2.6.png").toExternalForm()));
@@ -168,7 +168,7 @@ public class GUI extends ClientView{
 		imageMap.put(new PermitTileDTO(new HashSet<>(Arrays.asList(new CityDTO("Lyram"))),new HashSet<>(Arrays.asList(new AssistantsBonus(3),new CoinsBonus(1)))), new Image(getClass().getResource("images/mountainPermitTile/2.10.png").toExternalForm()));
 		imageMap.put(new PermitTileDTO(new HashSet<>(Arrays.asList(new CityDTO("Merkatim"))),new HashSet<>(Arrays.asList(new ScoreBonus(5),new NobilityBonus(1)))), new Image(getClass().getResource("images/mountainPermitTile/2.11.png").toExternalForm()));
 		imageMap.put(new PermitTileDTO(new HashSet<>(Arrays.asList(new CityDTO("Kultos"), new CityDTO("Naris"), new CityDTO("Osium"))),new HashSet<>(Arrays.asList(new PoliticsCardsBonus(1),new ScoreBonus(1)))), new Image(getClass().getResource("images/mountainPermitTile/2.12.png").toExternalForm()));
-		imageMap.put(new PermitTileDTO(new HashSet<>(Arrays.asList(new CityDTO("Kultos"), new CityDTO("Lyram"))),new HashSet<>(Arrays.asList(new PoliticsCardsBonus(1),new AssistantsBonus(1)))), new Image(getClass().getResource("images/mountainPermitTile/2.13.png").toExternalForm()));
+		imageMap.put(new PermitTileDTO(new HashSet<>(Arrays.asList(new CityDTO("Kultos"), new CityDTO("Lyram"))),new HashSet<>(Arrays.asList(new PoliticsCardsBonus(1),new AssistantsBonus(2)))), new Image(getClass().getResource("images/mountainPermitTile/2.13.png").toExternalForm()));
 		imageMap.put(new PermitTileDTO(new HashSet<>(Arrays.asList(new CityDTO("Naris"), new CityDTO("Merkatim"))),new HashSet<>(Arrays.asList(new MainActionBonus()))), new Image(getClass().getResource("images/mountainPermitTile/2.14.png").toExternalForm()));
 		imageMap.put(new PermitTileDTO(new HashSet<>(Arrays.asList(new CityDTO("Naris"), new CityDTO("Osium"))),new HashSet<>(Arrays.asList(new ScoreBonus(2),new PoliticsCardsBonus(2)))), new Image(getClass().getResource("images/mountainPermitTile/2.15.png").toExternalForm()));
 		imageMap.put(new BonusTileDTO("Sea", new ScoreBonus(5)), new Image(getClass().getResource("images/bonusTiles/bonusMare.png").toExternalForm()));
@@ -937,7 +937,8 @@ public class GUI extends ClientView{
 						this.controllerGUI.wait();
 					} catch (InterruptedException e) {
 						Logger logger=Logger.getAnonymousLogger();
-						logger.log(Level.SEVERE, "wait interrupted", e);
+						logger.log(Level.WARNING, "interrupted", e);
+						Thread.currentThread().interrupt();
 					}
 		}
 		RegionDTO region=(RegionDTO) this.currentParameter;
@@ -953,9 +954,10 @@ public class GUI extends ClientView{
 			try {
 				while (currentParameter==null)
 					this.controllerGUI.wait();
-			} catch (Exception e) {
+			} catch (InterruptedException e) {
 				Logger logger=Logger.getAnonymousLogger();
-				logger.log(Level.SEVERE, "wait interrupted", e);
+				logger.log(Level.WARNING, "interrupted", e);
+				Thread.currentThread().interrupt();
 			}
 		}
 		PermitTileDTO permitTile=(PermitTileDTO) this.currentParameter;
@@ -971,9 +973,10 @@ public class GUI extends ClientView{
 			try {
 				while (currentParameter==null)
 					this.controllerGUI.wait();
-			} catch (Exception e) {
+			} catch (InterruptedException e) {
 				Logger logger=Logger.getAnonymousLogger();
-				logger.log(Level.SEVERE, "wait interrupted", e);
+				logger.log(Level.WARNING, "interrupted", e);
+				Thread.currentThread().interrupt();
 			}
 		}
 		CouncillorDTO councillor=(CouncillorDTO) this.currentParameter;
@@ -989,9 +992,10 @@ public class GUI extends ClientView{
 			try {
 				while (currentParameter==null)
 					this.controllerGUI.wait();
-			} catch (Exception e) {
+			} catch (InterruptedException e) {
 				Logger logger=Logger.getAnonymousLogger();
-				logger.log(Level.SEVERE, "wait interrupted", e);
+				logger.log(Level.WARNING, "interrupted", e);
+				Thread.currentThread().interrupt();
 			}
 		}
 		CouncillorDTO[] councilBalcony=(CouncillorDTO[]) this.currentParameter;
@@ -1009,9 +1013,10 @@ public class GUI extends ClientView{
 			try {
 				while (currentParameter==null)
 					this.controllerGUI.wait();
-			} catch (Exception e) {
+			} catch (InterruptedException e) {
 				Logger logger=Logger.getAnonymousLogger();
-				logger.log(Level.SEVERE, "wait interrupted", e);
+				logger.log(Level.WARNING, "interrupted", e);
+				Thread.currentThread().interrupt();
 			}
 		}
 		CityDTO city=(CityDTO) this.currentParameter;
@@ -1029,9 +1034,10 @@ public class GUI extends ClientView{
 				try {
 					while (currentParameter==null)
 						this.controllerGUI.wait();
-				} catch (Exception e) {
+				} catch (InterruptedException e) {
 					Logger logger=Logger.getAnonymousLogger();
-					logger.log(Level.SEVERE, "wait interrupted", e);
+					logger.log(Level.WARNING, "interrupted", e);
+					Thread.currentThread().interrupt();
 				}
 			}
 			if (this.currentParameter instanceof String) {
@@ -1055,9 +1061,10 @@ public class GUI extends ClientView{
 			try {
 				while (currentParameter==null)
 					this.controllerGUI.wait();
-			} catch (Exception e) {
+			} catch (InterruptedException e) {
 				Logger logger=Logger.getAnonymousLogger();
-				logger.log(Level.SEVERE, "wait interrupted", e);
+				logger.log(Level.WARNING, "interrupted", e);
+				Thread.currentThread().interrupt();
 			}
 		}
 		int numberOfPermitTile=(int) this.currentParameter;
@@ -1076,9 +1083,10 @@ public class GUI extends ClientView{
 			try {
 				while (currentParameter==null)
 					this.controllerMarketGUI.wait();
-			} catch (Exception e) {
+			} catch (InterruptedException e) {
 				Logger logger=Logger.getAnonymousLogger();
-				logger.log(Level.SEVERE, "wait interrupted", e);
+				logger.log(Level.WARNING, "interrupted", e);
+				Thread.currentThread().interrupt();
 			}
 		}
 		MarketableDTO offeringObject=(MarketableDTO) this.currentParameter;
@@ -1095,9 +1103,10 @@ public class GUI extends ClientView{
 			try {
 				while (currentParameter==null)
 					this.controllerMarketGUI.wait();
-			} catch (Exception e) {
+			} catch (InterruptedException e) {
 				Logger logger=Logger.getAnonymousLogger();
-				logger.log(Level.SEVERE, "wait interrupted", e);
+				logger.log(Level.WARNING, "interrupted", e);
+				Thread.currentThread().interrupt();
 			}
 		}
 		int price=(int) this.currentParameter;
@@ -1150,7 +1159,8 @@ public class GUI extends ClientView{
 				
 			} catch (InterruptedException e) {
 				Logger logger=Logger.getAnonymousLogger();
-				logger.log(Level.SEVERE, "wait interrupted", e);
+				logger.log(Level.WARNING, "interrupted", e);
+				Thread.currentThread().interrupt();
 			}
 		}
 		Boolean choice=(boolean) this.currentParameter;
@@ -1169,9 +1179,10 @@ public class GUI extends ClientView{
 			try {
 				while (currentParameter==null)
 					this.controllerMarketGUI.wait();
-			} catch (Exception e) {
+			} catch (InterruptedException e) {
 				Logger logger=Logger.getAnonymousLogger();
-				logger.log(Level.SEVERE, "wait interrupted", e);
+				logger.log(Level.WARNING, "interrupted", e);
+				Thread.currentThread().interrupt();
 			}
 		}
 		OfferDTO offer=(OfferDTO) this.currentParameter;
@@ -1188,9 +1199,10 @@ public class GUI extends ClientView{
 			try {
 				while (currentParameter==null)
 					this.controllerGUI.wait();
-			} catch (Exception e) {
+			} catch (InterruptedException e) {
 				Logger logger=Logger.getAnonymousLogger();
-				logger.log(Level.SEVERE, "wait interrupted", e);
+				logger.log(Level.WARNING, "interrupted", e);
+				Thread.currentThread().interrupt();
 			}
 		}
 		PermitTileDTO permitTile=(PermitTileDTO) this.currentParameter;

@@ -43,7 +43,7 @@ public class SocketConnection extends Connection implements Runnable{
 	@Override
 	public void sendAction(ActionDTO action){
 		try {
-			if(!(action instanceof AddPlayerDTO)&&!(action instanceof ChooseMapDTO))
+			if(!(action instanceof AddPlayerDTO)&&!(action instanceof ChooseMapDTO)&&getTimerTask()!=null)
 				this.getTimerTask().cancel();
 			socketOut.writeObject(action);
 			socketOut.flush();

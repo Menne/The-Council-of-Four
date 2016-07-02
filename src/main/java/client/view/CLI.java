@@ -121,7 +121,7 @@ public class CLI extends ClientView {
 
 	@Override
 	public void displayGameTable() {
-		System.out.println(this.clientGame);
+		System.out.println(this.clientGame.getClientGameTable());
 	}
 
 	@Override
