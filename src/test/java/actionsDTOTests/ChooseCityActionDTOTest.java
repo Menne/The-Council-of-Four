@@ -13,15 +13,16 @@ import client.modelDTO.gameTableDTO.CityDTO;
 
 public class ChooseCityActionDTOTest {
 
-/*	@Test
+	@Test
 	public void testSetter() {
 		List<CityDTO> selectedCities= new ArrayList<CityDTO>();
 		ChooseCityActionDTO action= new ChooseCityActionDTO(1);
 		action.setSelectedCities(selectedCities);
-		assertFalse(action.checkIfParametersSetted());
+		assertFalse(action.checkIfParametersSet());
 		assertEquals(ChooseCityBonusParser.class, action.setParser().getClass());
-		action.parametersSetted();
-		assertTrue(action.checkIfParametersSetted());
+		action.parametersSet();
+		assertTrue(action.checkIfParametersSet());
 		assertTrue(action.getSelectedCities()==selectedCities);
-	}*/
+		assertEquals("b1: get bonus!", action.toString());
+	}
 }
