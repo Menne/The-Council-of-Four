@@ -19,9 +19,8 @@ import server.view.notifies.MessageNotify;
 import server.view.notifies.PlayerNotify;
 
 /**
- * This class is the main action "acquire permit tile", it operates on the 
- * protected attribute game through the method executeAction.
- * @author Emanuele
+ * This class is the main action "acquire permit tile"
+ * @author cg31
  *
  */
 public class AcquirePermitTile implements MainAction {

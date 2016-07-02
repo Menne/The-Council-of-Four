@@ -26,7 +26,6 @@ public class ChooseCityBonusAction implements Action {
 		this.numberOfCities=numberOfCities;
 	}
 	
-	
 	public int getNumberOfCities() {
 		return this.numberOfCities;
 	}
