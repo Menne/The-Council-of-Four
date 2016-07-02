@@ -30,12 +30,12 @@ public class ElectCouncillorByAssistantParser implements ActionParserVisitor {
 
 	@Override
 	public void setParameters(ClientView view, GameDTO game) {
-		view.displayMessage("Ok! you have chosen to send an assistant to elect a councillor. Now I need some other infos, like:");
+		view.displayMessage("Ok! you have chosen to send an assistant to elect a councillor.");
 		
-		view.displayMessage("the colour of the councillor you want to elect");
+		view.displayMessage("Select the councillor you want to elect");
 		this.selectedAction.setNewCouncillor(view.askForCouncillor());
 		
-		view.displayMessage("the name of the region in which you want to change the councillor");
+		view.displayMessage("Select the balcony in which you wnt to change the councillor");
 		List<CouncillorDTO[]> acceptableCouncilBalconies=new ArrayList<>();
 		for (RegionDTO region : game.getClientGameTable().getClientRegions())
 			acceptableCouncilBalconies.add(region.getBalcony());

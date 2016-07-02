@@ -37,7 +37,8 @@ public class PurchasedPermitTileBonus implements Bonus {
 			game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
 					Arrays.asList(game.getCurrentPlayer())));
 			game.notifyObserver(new AvailableActionsNotify(Arrays.asList(new PurchasedPermitTileAction()), Arrays.asList(game.getCurrentPlayer()),
-					"Congratulations! You got a special bonus"));
+					"Congratulations! You have the possibility to choose from one of your permit tiles,"
+						+ "covered or not, and get the bonuses associated to that"));
 		}
 		else
 			game.notifyObserver(new MessageNotify("Unable to get bonus because you don't have any permit tile!", 

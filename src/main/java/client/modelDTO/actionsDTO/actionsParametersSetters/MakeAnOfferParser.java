@@ -30,7 +30,7 @@ public class MakeAnOfferParser implements ActionParserVisitor {
 
 	@Override
 	public void setParameters(ClientView view, GameDTO game) {
-		view.displayMessage("Ok, you decided to sell something to the other players");
+		view.displayMessage("Ok, you decided to sell something to the other players.");
 		List<MarketableDTO> acceptableObjectsToOffer=new ArrayList<>();
 		acceptableObjectsToOffer.addAll(game.getClientPlayer().getHand());
 		acceptableObjectsToOffer.addAll(game.getClientPlayer().getAvailablePermitTiles());

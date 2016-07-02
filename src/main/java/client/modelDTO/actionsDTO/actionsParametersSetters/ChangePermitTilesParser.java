@@ -24,9 +24,9 @@ public class ChangePermitTilesParser implements ActionParserVisitor {
 	
 	@Override
 	public void setParameters(ClientView view, GameDTO game) {
-		view.displayMessage("Ok! you have chosen to change the permit tiles of a region. Now I need some other infos, like:");
+		view.displayMessage("Ok! you have chosen to change the permit tiles of a region.");
 		
-		view.displayMessage("the name of the region in which you want to pick");
+		view.displayMessage("Select the region in which you want to change the permit tiles");
 		this.selectedAction.setSelectedRegion(view.askForRegionBoard());
 		
 		this.selectedAction.parametersSet();
