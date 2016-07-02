@@ -57,6 +57,7 @@ public abstract class ClientView implements Observer<ClientViewNotify> {
 	/**
 	 * Updates the view according to the notify which has arrived to the client and sent to the view
 	 */
+	@Override
 	public abstract void update(ClientViewNotify notify);
 	
 	/**

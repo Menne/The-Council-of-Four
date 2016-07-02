@@ -85,7 +85,7 @@ public class CLI extends ClientView {
 			else if ("quit".equals(input))
 				connection.sendAction(new QuitDTO());
 			else
-				System.out.println("Sorry, action not available!");	
+				println("Sorry, action not available!");	
 		}		
 	}
 	
@@ -106,53 +106,53 @@ public class CLI extends ClientView {
 
 	@Override
 	public void displayMessage(String message) {
-		System.out.println(message);
+		println(message);
 	}
 	
 	@Override
 	public void displayError(String error) {
-		System.out.println(error);
+		println(error);
 	}
 
 	@Override
 	public void displayAvailableActions() {
-		System.out.println(this.clientGame.getAvailableActions());
+		println(this.clientGame.getAvailableActions().toString());
 	}
 
 	@Override
 	public void displayGameTable() {
-		System.out.println(this.clientGame.getClientGameTable());
+		println(this.clientGame.getClientGameTable().toString());
 	}
 
 	@Override
 	public void displayPlayer() {
-		System.out.println(this.clientGame.getClientPlayer());
+		println(this.clientGame.getClientPlayer().toString());
 	}
 
 	@Override
 	public void displayMarket() {
-		System.out.println(this.clientGame.getMarket());
+		println(this.clientGame.getMarket().toString());
 	}
 	
 	@Override
 	public void displayFinalRanking() {
-		System.out.println("GAME OVER\n FINAL RANKING TABLE: \n" + 
+		println("GAME OVER\n FINAL RANKING TABLE: \n" + 
 				this.clientGame.getClientGameTable().getClientPlayers());
 	}
 	
 	@Override
 	public void displayChatMessage(String message) {
-		System.out.println(message);
+		println(message);
 	}
 	
 	@Override
 	public void startMarket() {
-		System.out.println("Market is started!");
+		println("Market is started!");
 	}
 	
 	@Override
 	public void closeMarket() {
-		System.out.println("Market is finished!");
+		println("Market is finished!");
 	}
 	
 	
@@ -161,7 +161,7 @@ public class CLI extends ClientView {
 		List<String> acceptableRegionNames=this.clientGame.getClientGameTable().getClientRegions().stream()
                 .map(RegionDTO::getName)
                 .collect(Collectors.toCollection(ArrayList::new));
-		System.out.println(acceptableRegionNames);
+		println(acceptableRegionNames.toString());
 		String regionToTranslate=this.scanner.nextLine();
 		while (!acceptableRegionNames.contains(regionToTranslate)) {
 			this.displayError("Wrong parameter. Try again");
@@ -183,7 +183,7 @@ public class CLI extends ClientView {
 			permitTilesWithIndex.add(i+": "+permitTile.toString());
 			i++;
 		}
-		System.out.println(permitTilesWithIndex);
+		println(permitTilesWithIndex.toString());
 		String permitTileToTranslate=scanner.nextLine();
 		while (!indexes.contains(permitTileToTranslate)) {
 			this.displayError("Wrong parameter. Try again");
@@ -198,7 +198,7 @@ public class CLI extends ClientView {
 		List<String> acceptableCouncillorsColours=this.clientGame.getClientGameTable().getClientCouncillorReserve().stream()
             .map(CouncillorDTO::getColour).map(CardColourDTO::getName)
             .collect(Collectors.toCollection(ArrayList::new));
-		System.out.println(acceptableCouncillorsColours);
+		println(acceptableCouncillorsColours.toString());
 		String newCouncillorToTranslate=this.scanner.nextLine();
 		while (!acceptableCouncillorsColours.contains(newCouncillorToTranslate)) {
 			this.displayError("Wrong parameter. Try again");
@@ -213,7 +213,7 @@ public class CLI extends ClientView {
 	@Override
 	public CouncillorDTO[] askForCouncilBalcony() {
 		List<String> acceptableCouncilBalconiyNames=Arrays.asList("Sea", "Hill", "Mountain", "King balcony");
-		System.out.println(acceptableCouncilBalconiyNames);
+		println(acceptableCouncilBalconiyNames.toString());
 		String councilBalconyToTranslate=this.scanner.nextLine();
 		while (!acceptableCouncilBalconiyNames.contains(councilBalconyToTranslate)) {
 			this.displayError("Wrong parameter. Try again");
@@ -235,7 +235,7 @@ public class CLI extends ClientView {
 		List<String> acceptableCityNames=acceptableCities.stream()
                 .map(CityDTO::getName)
                 .collect(Collectors.toCollection(ArrayList::new));
-		System.out.println(acceptableCityNames);
+		println(acceptableCityNames.toString());
 		String cityToTranslate="";
 		cityToTranslate=this.scanner.nextLine();
 			while (!acceptableCityNames.toString().contains(cityToTranslate)) {
@@ -253,7 +253,7 @@ public class CLI extends ClientView {
 		List<String> acceptableCardsColours=this.clientGame.getClientPlayer().getHand().stream()
                 .map(PoliticsCardDTO::getColour).map(CardColourDTO::getName)
                 .collect(Collectors.toCollection(ArrayList::new));
-		System.out.println(acceptableCardsColours);
+		println(acceptableCardsColours.toString());
 		String cardsToTranslate=scanner.nextLine();
 		StringTokenizer cardsToTranslateTokenized=new StringTokenizer(cardsToTranslate);
 		while (!this.checkCards(cardsToTranslate, acceptableCardsColours)) {
@@ -293,7 +293,7 @@ public class CLI extends ClientView {
 
 	@Override
 	public int askForNumberOfPermitTile(RegionDTO selectedRegion) {
-		System.out.println("[0, 1]");
+		println("[0, 1]");
 		String numberOfPermitTileToTranslate=this.scanner.nextLine();
 		while (!("0".equals(numberOfPermitTileToTranslate) || "1".equals(numberOfPermitTileToTranslate))) {
 			this.displayError("Wrong parameter. Try again");
@@ -329,7 +329,7 @@ public class CLI extends ClientView {
 	
 	@Override
 	public boolean askForOtherSelling() {
-		System.out.println("[yes, no])");
+		println("[yes, no])");
 		String input=this.scanner.nextLine();
 		while (!("yes".equals(input) || "no".equals(input))) {
 			this.displayError("I didn't understand...");
@@ -395,6 +395,10 @@ public class CLI extends ClientView {
 	@Override
 	public void startGame() {
 		return;
+	}
+	
+	public void println(String message){
+		System.out.println(message);
 	}
 
 
