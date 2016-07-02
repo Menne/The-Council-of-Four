@@ -45,11 +45,7 @@
                                           <Label text="Available cards" />
                                           <ScrollPane layoutY="28.0" prefHeight="85.0" prefWidth="346.0" styleClass="sfondo">
                                             <content>
-                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="82.0" prefWidth="344.0" styleClass="sfondo">
-                                                   <children>
-                                                      <HBox fx:id="availablePoliticCards" prefHeight="85.0" prefWidth="344.0" spacing="10.0" AnchorPane.bottomAnchor="-11.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                                   </children>
-                                                </AnchorPane>
+                                                <HBox fx:id="availablePoliticCards" prefHeight="82.0" prefWidth="343.0" spacing="10.0" styleClass="sfondo" />
                                             </content>
                                           </ScrollPane>
                                        </children>
@@ -57,13 +53,9 @@
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                        <children>
                                           <Label text="Available permit tiles" />
-                                          <ScrollPane layoutY="31.0" prefHeight="85.0" prefWidth="346.0">
+                                          <ScrollPane layoutY="31.0" prefHeight="85.0" prefWidth="346.0" styleClass="sfondo">
                                             <content>
-                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="83.0" prefWidth="344.0">
-                                                   <children>
-                                                      <HBox fx:id="availablePermitTiles" layoutY="-5.0" prefHeight="67.0" prefWidth="340.0" spacing="10.0" styleClass="sfondo" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-5.0" />
-                                                   </children>
-                                                </AnchorPane>
+                                                <HBox fx:id="availablePermitTiles" prefHeight="83.0" prefWidth="344.0" spacing="10.0" styleClass="sfondo" />
                                             </content>
                                           </ScrollPane>
                                        </children>
@@ -73,10 +65,7 @@
                                           <Label text="Available assistants" />
                                           <ScrollPane layoutY="32.0" prefHeight="85.0" prefWidth="346.0">
                                             <content>
-                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="81.0" prefWidth="343.0" styleClass="sfondo">
-                                                   <children>
-                                                      <HBox fx:id="availableAssistants" prefHeight="81.0" prefWidth="343.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                                   </children></AnchorPane>
+                                                <HBox fx:id="availableAssistants" prefHeight="81.0" prefWidth="343.0" spacing="10.0" styleClass="sfondo" />
                                             </content>
                                           </ScrollPane>
                                        </children>
@@ -112,7 +101,7 @@
                                     <Label text="Price" />
                                  </children>
                               </HBox>
-                              <TextArea fx:id="messageBox" editable="false" layoutX="-4.0" layoutY="317.0" prefHeight="178.0" prefWidth="402.0" />
+                              <TextArea fx:id="messageBox" editable="false" layoutX="-3.0" layoutY="317.0" prefHeight="112.0" prefWidth="401.0" />
                            </children>
                         </AnchorPane>
                     </items>
