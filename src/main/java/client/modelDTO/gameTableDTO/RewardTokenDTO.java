@@ -19,6 +19,7 @@ public class RewardTokenDTO implements ModelDTO {
 	 * Constructor of RewardTokenDTO
 	 */
 	public RewardTokenDTO() {
+		//non-arguments constructor
 	}
 	
 	/**

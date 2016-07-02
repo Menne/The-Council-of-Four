@@ -12,7 +12,6 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.logging.Logger;
 
 import client.connections.ClientRMIViewRemote;
 import client.connections.RMIConnection;
@@ -70,7 +69,7 @@ public class ClientCLI {
 	 */
 	private void startSocketClient(String ip) throws UnknownHostException, IOException{
 		Socket socket=new Socket(ip, PORT_SOCKET);
-		System.out.println("Connection created");
+		print("Connection created");
 							
 		GameDTO clientGame=new GameDTO();
 		ClientController clientController=new ClientController(clientGame);
@@ -90,7 +89,7 @@ public class ClientCLI {
 	 * Asks to the user to insert the name.
 	 */
 	public void askForName(){
-		System.out.println("Welcome to CoF, please enter your name!");
+		print("Welcome to CoF, please enter your name!");
 		this.playerName=scanner.nextLine();
 	}
 	
@@ -102,7 +101,7 @@ public class ClientCLI {
 		while(!"Socket".equals(stringConnection) && !"RMI".equals(stringConnection)){
 			stringConnection=scanner.nextLine();
 			if(!"Socket".equals(stringConnection) && !"RMI".equals(stringConnection))
-				System.out.println("Wrong input. Try again.");
+				print("Wrong input. Try again.");
 		}
 	}
 	
@@ -113,7 +112,7 @@ public class ClientCLI {
 	 * @throws NotBoundException
 	 */
 	public void askForAddress() throws UnknownHostException, IOException, NotBoundException{
-		System.out.println("Please insert the server address (0 for localhost)");
+		print("Please insert the server address (0 for localhost)");
 		while(true){
 			String ip=scanner.nextLine();
 			try{
@@ -127,9 +126,13 @@ public class ClientCLI {
 				}
 			}catch(SocketException | RemoteException e){
 
-				System.out.println("Server Unreachable. Try again");
+				print("Server Unreachable. Try again");
 			} 
 		}
+	}
+	
+	private void print(String message){
+		System.out.println(message);
 	}
 	
 	public static void main(String[] args) throws NotBoundException, UnknownHostException, IOException, InterruptedException {

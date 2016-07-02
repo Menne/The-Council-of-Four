@@ -16,6 +16,7 @@ public class CardColourDTO implements ModelDTO {
 	 * Constructor of CardColourDTO
 	 */
 	public CardColourDTO() {
+		//non-arguments constructor
 	}
 	
 	/**

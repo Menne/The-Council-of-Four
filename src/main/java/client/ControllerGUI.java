@@ -994,18 +994,14 @@ public class ControllerGUI {
 				}
 				else if (selectedAction instanceof ActionWithParameters) {
 					ExecutorService executor=Executors.newSingleThreadExecutor();
-					executor.submit(new Runnable() {
-						
-						@Override
-						public void run() {
+					executor.submit(()-> {
 							try {
 								view.insertParametersAndSend((ActionWithParameters) selectedAction);
 							} catch (RemoteException e) {
 								Logger logger=Logger.getAnonymousLogger();
 								logger.log(Level.SEVERE, "Failed to send action with RMI", e);
 							}
-						}
-					});
+						});
 					return;
 				}
 		this.view.displayError("Sorry, action not available!");
