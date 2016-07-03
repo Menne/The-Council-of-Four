@@ -75,7 +75,7 @@ public class ChangePermitTiles implements QuickAction {
 		game.notifyObserver(new GameTableServerNotify(game, new ArrayList<Player>(game.getPlayers()), false));
 		game.notifyObserver(new PlayerServerNotify(game, game.getCurrentPlayer(), 
 				Arrays.asList(game.getCurrentPlayer())));
-		game.notifyObserver(new MessageServerNotify("Action completed succesfully!", 
+		game.notifyObserver(new MessageServerNotify("Permit tiles changed successfully!", 
 				Arrays.asList(game.getCurrentPlayer())));
 		List<Player> otherPlayers=new ArrayList<>();
 		for (Player player : game.getPlayers())

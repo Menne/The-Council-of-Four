@@ -83,7 +83,7 @@ public class State11 implements State {
 	public void updateAvailableActions(Game game) {
 		game.notifyObserver(new AvailableActionsServerNotify(game.getState().getAcceptableActions(game), 
 				Arrays.asList(game.getCurrentPlayer()), game.getCurrentPlayer().getName() +
-				", you have the following available actions. Choose one of them"));
+				", you have both main an quick actions available"));
 	}
 
 }
