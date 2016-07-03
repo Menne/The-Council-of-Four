@@ -26,26 +26,47 @@ public class MarketDTO implements ModelDTO{
 		this.buyingPlayerList=new ArrayList<>();
 	}
 
+	/**
+	 * @return the list of offers DTO in the market
+	 */
 	public List<OfferDTO> getOffersList() {
 		return this.offersList;
 	}
 
+	/**
+	 * Sets the list of offers DTO to the market
+	 * @param offersList is the list of offers DTO of the market
+	 */
 	public void setOffersList(List<OfferDTO> offersList) {
 		this.offersList = offersList;
 	}
 
+	/**
+	 * @return the list of selling players
+	 */
 	public List<String> getSellingPlayerList() {
 		return this.sellingPlayerList;
 	}
 
+	/**
+	 * Sets the list of selling players to the market
+	 * @param sellingPlayerList is the list of selling players
+	 */
 	public void setSellingPlayerList(List<String> sellingPlayerList) {
 		this.sellingPlayerList = sellingPlayerList;
 	}
 
+	/**
+	 * @return the list of buying players
+	 */
 	public List<String> getBuyingPlayerList() {
 		return this.buyingPlayerList;
 	}
 
+	/**
+	 * Sets the list of buying players to the market
+	 * @param buyingPlayerList is the list of buying players
+	 */
 	public void setBuyingPlayerList(List<String> buyingPlayerList) {
 		this.buyingPlayerList = buyingPlayerList;
 	}
@@ -55,7 +76,6 @@ public class MarketDTO implements ModelDTO{
 	public String toString() {
 		return "What is in the market: " + offersList + "]";
 	}
-
 
 
 }
