@@ -10,9 +10,7 @@ import server.model.actions.MoveToNext;
 import server.model.actions.marketActions.MakeAnOffer;
 import server.model.player.Player;
 import server.serverNotifies.AvailableActionsServerNotify;
-import server.serverNotifies.GameTableServerNotify;
 import server.serverNotifies.MarketServerNotify;
-import server.serverNotifies.PlayerServerNotify;
 
 public class SellingState implements State {
 
@@ -52,17 +50,13 @@ public class SellingState implements State {
 	}
 
 	@Override
-	public void updateClients(Game game) {
+	public void updateAvailableActions(Game game) {
 		if (game.getCurrentPlayer().getPlayerNumber()==1) {
-			game.notifyObserver(new GameTableServerNotify
-					(game, new ArrayList<Player>(game.getPlayers()), false));
 			game.notifyObserver(new MarketServerNotify(game, 
 					new ArrayList<Player>(game.getPlayers()), true, false));
-			game.notifyObserver(new PlayerServerNotify(game, game.getCurrentPlayer(), 
-					Arrays.asList(game.getCurrentPlayer())));
+			game.notifyObserver(new MarketServerNotify(game, 
+					new ArrayList<Player>(game.getPlayers()), false, false));
 		}
-		game.notifyObserver(new MarketServerNotify(game, 
-				new ArrayList<Player>(game.getPlayers()), false, false));
 		game.notifyObserver(new AvailableActionsServerNotify(game.getState().getAcceptableActions(game), 
 				Arrays.asList(game.getCurrentPlayer()), game.getCurrentPlayer().getName() +
 				", you are in the market phase now. Do you want to sell something to other players?"));

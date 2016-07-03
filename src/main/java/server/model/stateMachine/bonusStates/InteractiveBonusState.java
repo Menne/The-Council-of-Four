@@ -41,7 +41,7 @@ public class InteractiveBonusState implements State {
 	}
 
 	@Override
-	public void updateClients(Game game) {
+	public void updateAvailableActions(Game game) {
 		// TODO Auto-generated method stub
 		
 	}

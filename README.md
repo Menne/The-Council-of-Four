@@ -1,12 +1,7 @@
-BUG NOTI:
--notifica nella additional main action bonus
--notifica player nel bonus permit tile quando copro la permit tile
--fare in modo che il bonus interattivo delle città non selezionino una città con bonus nobiltà
-
-TODO:
 -cambiare font e non schiarire le scritte quando si disabilitano i pulsanti
 -aggiustare pulsante quit
 -aggiungere scritte nel game table
+-mischiare le permit tile
 
 Passi per testare l'applicazione:
 1) Lanciare la classe Server (main/java/server/Server.java)

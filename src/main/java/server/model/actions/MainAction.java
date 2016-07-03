@@ -11,7 +11,7 @@ public interface MainAction extends Action {
 	
 	public default void nextState(Game game){
 		game.setState(game.getState().mainActionTransition(game));
-		game.getState().updateClients(game);
+		game.getState().updateAvailableActions(game);
 	}
 	
 }

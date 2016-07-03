@@ -9,6 +9,7 @@ import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.CouncillorDTO;
+import client.modelDTO.gameTableDTO.EmporiumDTO;
 import client.modelDTO.gameTableDTO.GameTableDTO;
 import client.modelDTO.gameTableDTO.GenericPlayerDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
@@ -200,10 +201,17 @@ public class GameDTOMapper implements GameMapperInterface {
 		cityDTO.setColour(this.cityColourMap(realObject.getColour()));
 		for (Emporium emporium : realObject.getCityEmporiums())
 			cityDTO.getBuildedEmporiums().add
-					(this.genericPlayerMap(emporium.getEmporiumsPlayer()));
+					(this.emporiumMap(emporium));
 		cityDTO.setRewardToken(this.rewardTokenMap(realObject.getRewardToken()));
 		
 		return cityDTO;
+	}
+	
+	private EmporiumDTO emporiumMap(Emporium emporium){
+		EmporiumDTO emporiumDTO=new EmporiumDTO();
+		emporiumDTO.setPlayerName(emporium.getEmporiumsPlayer().getName());
+		emporiumDTO.setPlayerNumber(emporium.getEmporiumsPlayer().getPlayerNumber());
+		return emporiumDTO;
 	}
 
 	/**

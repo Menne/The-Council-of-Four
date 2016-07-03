@@ -58,15 +58,7 @@ public class State11 implements State {
 				new ElectCouncillorByAssistant());
 	}
 
-	/**
-	 * sends GameTableNotify, PlayerNotify, AvailableActionNotify to the clients
-	 */
-	@Override
-	public void updateClients(Game game) {
-		game.notifyObserver(new AvailableActionsServerNotify(game.getState().getAcceptableActions(game), 
-				Arrays.asList(game.getCurrentPlayer()), game.getCurrentPlayer().getName() +
-				", you have the following available actions. Choose one of them"));
-	}
+	
 
 	/**
 	 *if current player is the last one, it returns a new BeginState,
@@ -82,6 +74,16 @@ public class State11 implements State {
 			game.startMarket();
 			return new SellingState();
 		}
+	}
+	
+	/**
+	 * sends GameTableNotify, PlayerNotify, AvailableActionNotify to the clients
+	 */
+	@Override
+	public void updateAvailableActions(Game game) {
+		game.notifyObserver(new AvailableActionsServerNotify(game.getState().getAcceptableActions(game), 
+				Arrays.asList(game.getCurrentPlayer()), game.getCurrentPlayer().getName() +
+				", you have both main an quick actions available"));
 	}
 
 }

@@ -29,16 +29,6 @@ public class BeginState implements State {
 		return Arrays.asList(new PickPoliticsCard());
 	}
 
-
-	@Override
-	public void updateClients(Game game) {
-		game.notifyObserver(new GameTableServerNotify(game, new ArrayList<Player>(game.getPlayers()),false));
-		game.notifyObserver(new AvailableActionsServerNotify(game.getState().getAcceptableActions(game), 
-				Arrays.asList(game.getCurrentPlayer()), game.getCurrentPlayer().getName() +
-				", it's your turn! Pick a politics card pressing pc"));
-	}
-
-
 	@Override
 	public State moveToNextTransition(Game game) {
 		if (!game.getCurrentPlayer().equals(game.lastPlayer())){
@@ -50,6 +40,14 @@ public class BeginState implements State {
 			game.startMarket();
 			return new SellingState();
 		}
+	}
+	
+	@Override
+	public void updateAvailableActions(Game game) {
+		game.notifyObserver(new GameTableServerNotify(game, new ArrayList<Player>(game.getPlayers()), false));
+		game.notifyObserver(new AvailableActionsServerNotify(game.getState().getAcceptableActions(game), 
+				Arrays.asList(game.getCurrentPlayer()), game.getCurrentPlayer().getName() +
+				", it's your turn! First of all, you should pick a politics card"));
 	}
 
 	

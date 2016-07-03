@@ -1,6 +1,5 @@
 package server.model.stateMachine;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,11 +9,9 @@ import server.model.actions.standardActions.AcquirePermitTile;
 import server.model.actions.standardActions.BuildByKing;
 import server.model.actions.standardActions.BuildByPermitTile;
 import server.model.actions.standardActions.ElectCouncillor;
-import server.model.player.Player;
 import server.model.stateMachine.bonusStates.AdditionalMainActionBonusState;
 import server.model.stateMachine.bonusStates.InteractiveBonusState;
 import server.serverNotifies.AvailableActionsServerNotify;
-import server.serverNotifies.GameTableServerNotify;
 
 /**
  * Models the state in which the current player has only the possibility to do a main action 
@@ -91,11 +88,10 @@ public class State10 implements State{
 	 * sends GameTableNotify, PlayerNotify, AvailableActionNotify to the clients
 	 */
 	@Override
-	public void updateClients(Game game) {
-		game.notifyObserver(new GameTableServerNotify(game, new ArrayList<Player>(game.getPlayers()),false));
+	public void updateAvailableActions(Game game) {
 		game.notifyObserver(new AvailableActionsServerNotify(game.getState().getAcceptableActions(game), 
 				Arrays.asList(game.getCurrentPlayer()), game.getCurrentPlayer().getName() +
-				", you have the following available actions. Choose one of them"));
+				", you have only main actions available"));
 	}
 
 }

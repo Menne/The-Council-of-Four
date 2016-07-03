@@ -54,9 +54,7 @@ public class BuyingState implements State {
 	}
 
 	@Override
-	public void updateClients(Game game) {
-		game.notifyObserver(new MarketServerNotify(game, 
-				new ArrayList<Player>(game.getPlayers()), false, false));
+	public void updateAvailableActions(Game game) {
 		game.notifyObserver(new AvailableActionsServerNotify(game.getState().getAcceptableActions(game), 
 				Arrays.asList(game.getCurrentPlayer()), game.getCurrentPlayer().getName() +
 				", do you want to buy something from the market?"));
