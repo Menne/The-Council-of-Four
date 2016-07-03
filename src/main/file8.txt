@@ -518,7 +518,7 @@ NEXTCity
 Hellar
 STOPBuildableCities
 PoliticsCardsBonus
-1
+2
 STOPTileBonus
 STOPsecondRegionPermitTileList
 
