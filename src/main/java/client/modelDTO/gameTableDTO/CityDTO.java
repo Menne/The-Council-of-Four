@@ -17,7 +17,7 @@ public class CityDTO implements ModelDTO{
 	private static final long serialVersionUID = 3576160634819872933L;
 	private String name;
 	private CityColourDTO colour;
-	private Set<GenericPlayerDTO> buildedEmporiums;
+	private Set<EmporiumDTO> buildedEmporiums;
 	private RewardTokenDTO rewardToken;
 	
 	/**
@@ -52,11 +52,11 @@ public class CityDTO implements ModelDTO{
 		this.colour = colour;
 	}
 
-	public Set<GenericPlayerDTO> getBuildedEmporiums() {
+	public Set<EmporiumDTO> getBuildedEmporiums() {
 		return buildedEmporiums;
 	}
 
-	public void setBuildedEmporiums(Set<GenericPlayerDTO> buildedEmporiums) {
+	public void setBuildedEmporiums(Set<EmporiumDTO> buildedEmporiums) {
 		this.buildedEmporiums = buildedEmporiums;
 	}
 
@@ -72,8 +72,8 @@ public class CityDTO implements ModelDTO{
 	@Override
 	public String toString() {
 		List<String> emporiums=new ArrayList<>();
-		for(GenericPlayerDTO player : buildedEmporiums)
-			emporiums.add(player.getName());
+		for(EmporiumDTO player : buildedEmporiums)
+			emporiums.add(player.getPlayerName());
 		return name+"\t"+emporiums+"\t"+rewardToken+"\n";
 	}
 

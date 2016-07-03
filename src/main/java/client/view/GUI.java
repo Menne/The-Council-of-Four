@@ -41,6 +41,7 @@ import client.modelDTO.gameTableDTO.BonusTileDTO;
 import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.CouncillorDTO;
+import client.modelDTO.gameTableDTO.EmporiumDTO;
 import client.modelDTO.gameTableDTO.GenericPlayerDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
 import client.modelDTO.gameTableDTO.PoliticsCardDTO;
@@ -182,10 +183,10 @@ public class GUI extends ClientView{
 		imageMap.put(new BonusTileDTO("Gold", new ScoreBonus(20)), new Image(getClass().getResource("images/colourBonus/GoldBonus.png").toExternalForm()));
 		imageMap.put(new BonusTileDTO("Silver", new ScoreBonus(12)), new Image(getClass().getResource("images/colourBonus/SilverBonus.png").toExternalForm()));
 		imageMap.put(new AssistantDTO(), new Image(getClass().getResource("images/various/Assistant.png").toExternalForm()));
-		imageMap.put(new GenericPlayerDTO(1), new Image(getClass().getResource("images/emporiumsColours/blue.png").toExternalForm()));
-		imageMap.put(new GenericPlayerDTO(2), new Image(getClass().getResource("images/emporiumsColours/red.png").toExternalForm()));
-		imageMap.put(new GenericPlayerDTO(3), new Image(getClass().getResource("images/emporiumsColours/yellow.png").toExternalForm()));
-		imageMap.put(new GenericPlayerDTO(4), new Image(getClass().getResource("images/emporiumsColours/green.png").toExternalForm()));
+		imageMap.put(new EmporiumDTO(1), new Image(getClass().getResource("images/emporiumsColours/blue.png").toExternalForm()));
+		imageMap.put(new EmporiumDTO(2), new Image(getClass().getResource("images/emporiumsColours/red.png").toExternalForm()));
+		imageMap.put(new EmporiumDTO(3), new Image(getClass().getResource("images/emporiumsColours/yellow.png").toExternalForm()));
+		imageMap.put(new EmporiumDTO(4), new Image(getClass().getResource("images/emporiumsColours/green.png").toExternalForm()));
 	}
 
 	
@@ -262,7 +263,7 @@ public class GUI extends ClientView{
 		controllerGUI.getMapImage().setImage(new Image(getClass().getResource("images/maps/map"+
 				this.clientGame.getClientGameTable().getMapNumber()+".jpg").toExternalForm()));
 		for(ModelDTO key : imageMap.keySet())
-			if((key instanceof GenericPlayerDTO) && ((GenericPlayerDTO)key).getPlayerNumber()==clientGame.getClientPlayer().getPlayerNumber())
+			if((key instanceof EmporiumDTO) && ((EmporiumDTO)key).getPlayerNumber()==clientGame.getClientPlayer().getPlayerNumber())
 				controllerGUI.getEmporium().setImage(imageMap.get(key));		
 	}
 	
@@ -470,7 +471,7 @@ public class GUI extends ClientView{
 	private void displayEmporiums(){
 		for(HBox hBox: controllerGUI.getCitysEmporiums()){
 			hBox.getChildren().clear();
-			for(GenericPlayerDTO emporium: ((CityDTO)hBox.getUserData()).getBuildedEmporiums()){
+			for(EmporiumDTO emporium: ((CityDTO)hBox.getUserData()).getBuildedEmporiums()){
 				ImageView imageView=new ImageView(imageMap.get(emporium));
 				imageView.setFitHeight(18);
 				imageView.setPreserveRatio(true);
