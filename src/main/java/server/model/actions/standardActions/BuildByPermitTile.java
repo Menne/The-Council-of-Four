@@ -79,11 +79,11 @@ public class BuildByPermitTile implements MainAction {
 			return false;
 		}
 		
-		this.assignBonus(game);
-		
 		game.getCurrentPlayer().getPlayersPermitTilesTurnedDown().add(this.selectedPermitTile);
 		game.getCurrentPlayer().getPlayersPermitTilesTurnedUp().remove(this.selectedPermitTile);
-
+		
+		this.assignBonus(game);
+		
 		if (this.selectedCity.getRegion().isBonusAvailable())
 			assignRegionBonus(game);
 		if (this.selectedCity.getColour().isBonusAvailable() && !"KingColour".equals(this.selectedCity.getColour().getName()))
