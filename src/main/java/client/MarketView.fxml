@@ -94,11 +94,11 @@
                                     <VBox fx:id="offers" prefHeight="272.0" prefWidth="392.0" styleClass="sfondo" />
                                  </content>
                               </ScrollPane>
-                              <HBox prefHeight="46.0" prefWidth="394.0" spacing="90.0">
+                              <HBox prefHeight="46.0" prefWidth="394.0" spacing="110.0">
                                  <children>
                                     <Label text="Player" />
-                                    <Label text="Selling Object" />
                                     <Label text="Price" />
+                                    <Label text="Selling object" />
                                  </children>
                               </HBox>
                               <TextArea fx:id="messageBox" editable="false" layoutX="-3.0" layoutY="317.0" prefHeight="112.0" prefWidth="401.0" />

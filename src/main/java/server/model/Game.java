@@ -78,9 +78,6 @@ public class Game extends Observable<ServerViewNotify>{
 		this.state=new BeginState();
 		this.lastLap=false;
 		this.market=new Market();
-		for(City city : gameTable.getRegionBoards().get(1).getRegionCities())
-			if(city.getName().equals("Graden"))
-				System.out.println(city.getNearCities());
 		
 		for (Player player : this.players) 
 			this.notifyObserver(new PlayerServerNotify(this, player, Arrays.asList(player)));
