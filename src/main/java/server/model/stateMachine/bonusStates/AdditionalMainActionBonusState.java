@@ -6,7 +6,9 @@ import java.util.List;
 
 import server.model.Game;
 import server.model.actions.Action;
+import server.model.player.Player;
 import server.model.stateMachine.State;
+import server.serverNotifies.GameTableServerNotify;
 import server.serverNotifies.MessageServerNotify;
 
 /**
@@ -43,6 +45,7 @@ public class AdditionalMainActionBonusState implements State {
 
 	@Override
 	public void updateClients(Game game) {
+		game.notifyObserver(new GameTableServerNotify(game, new ArrayList<Player>(game.getPlayers()), false));
 		game.notifyObserver(new MessageServerNotify("Congratulation! You have got an additional main action!", 
 				Arrays.asList(game.getCurrentPlayer())));
 	}

@@ -7,7 +7,6 @@ import client.modelDTO.actionsDTO.bonusActions.PickPermitTileActionDTO;
 import server.model.Game;
 import server.model.actions.Action;
 import server.model.gameTable.RegionBoard;
-import server.serverNotifies.MessageServerNotify;
 import server.serverNotifies.PlayerServerNotify;
 
 /**
