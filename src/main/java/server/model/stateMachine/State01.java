@@ -33,9 +33,13 @@ public class State01 implements State {
 			game.nextPlayer();
 			return new BeginState();
 		}
-		else {
+		else if(!game.isLastLap()){
 			game.startMarket();
 			return new SellingState();
+		}
+		else{
+			game.nextPlayer();
+			return new BeginState();
 		}
 	}
 
@@ -60,9 +64,13 @@ public class State01 implements State {
 			game.nextPlayer();
 			return new BeginState();
 		}
-		else {
+		else if(!game.isLastLap()){
 			game.startMarket();
 			return new SellingState();
+		}
+		else{
+			game.nextPlayer();
+			return new BeginState();
 		}
 			
 		
