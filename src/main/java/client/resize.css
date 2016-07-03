@@ -26,14 +26,14 @@
 	-fx-font: 18 STKaiti;
     -fx-text-fill: #6b4208;
     -fx-hoover-color:#d1ca85;
-	-fx-font-weight: bold;
+	/*-fx-font-weight: bold;*/
 }
 
 .login {
 	-fx-font: 23 STKaiti;
     -fx-text-fill: #6b4208;
     -fx-hoover-color:#d1ca85;
-	-fx-font-weight: bold;
+	/*-fx-font-weight: bold;*/
 }
 
 

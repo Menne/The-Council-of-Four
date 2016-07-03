@@ -25,6 +25,7 @@ import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.ImageCursor;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
@@ -1134,8 +1135,7 @@ public class ControllerGUI {
     @FXML
     public void changeMouseStyle(MouseEvent mouseEvent) {
     	Platform.runLater(()-> {
-	    	Image image = new Image(getClass().getResource("view/images/cursor/hand.png").toExternalForm());
-	    	((Node) mouseEvent.getSource()).setCursor(new ImageCursor(image));
+	    	((Node) mouseEvent.getSource()).setCursor(Cursor.HAND);
 	        });
     }
     
