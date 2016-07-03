@@ -85,7 +85,7 @@ public class BuildByKing implements MainAction {
 
 		if (this.selectedCity.getRegion().isBonusAvailable())
 			assignRegionBonus(game);
-		if (this.selectedCity.getColour().isBonusAvailable())
+		if (this.selectedCity.getColour().isBonusAvailable()&&!"KingColour".equals(this.selectedCity.getColour().getName()));
 			assignColourBonus(game);
 		
 		if (game.getCurrentPlayer().getRemainigEmporiums().isEmpty()){
