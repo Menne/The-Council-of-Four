@@ -37,7 +37,11 @@ import server.model.gameTable.PoliticsDeck;
 import server.model.gameTable.RegionBoard;
 import server.model.gameTable.RegionBonusTile;
 import server.model.gameTable.RewardToken;
-
+/**
+ * this class has the method
+ * @author andreapasquali
+ *
+ */
 public class Initializer {
 
 	private String s;
@@ -229,10 +233,15 @@ public class Initializer {
 	
 	private void addNearCities(BufferedReader b, Set<City> allCities) throws IOException{
 		s=b.readLine();
+		String city1;
+		String city2;
 		if("NearCities".equals(s))
 			while(!"STOPNearCities".equals(s)){
-				cityTranslator(b.readLine(), allCities).addNearCity(cityTranslator(b.readLine(), allCities));
-				s=b.readLine();
+				city1= b.readLine();
+				city2= b.readLine();
+				cityTranslator(city1, allCities).addNearCity(cityTranslator(city2, allCities));
+				cityTranslator(city2, allCities).addNearCity(cityTranslator(city1, allCities));
+				s=b.readLine();//NEXT
 			}
 	}
 	
