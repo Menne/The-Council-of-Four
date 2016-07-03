@@ -1,6 +1,7 @@
-BUG NOTI E TODO:
+BUG NOTI:
 -timeout scelta della mappa lancia due finsetre di messaggio
--probabilmente le città sono collegate in modo diverso che da quanto si vede sulla mappa
+
+TODO:
 -cambiare font e non schiarire le scritte quando si disabilitano i pulsanti
 -aggiustare pulsante quit
 -ridimensionare oggetti mercato
