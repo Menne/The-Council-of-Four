@@ -14,27 +14,47 @@ public class OfferDTO implements Serializable{
 	private MarketableDTO offeredObjectDTO;
 	private int price;
 	
-	
+	/**
+	 * @return the name of the offering player
+	 */
 	public String getOfferingPlayer() {
 		return this.offeringPlayer;
 	}
 	
+	/**
+	 * Sets the player name to the offer DTO
+	 * @param offeringPlayer
+	 */
 	public void setOfferingPlayer(String offeringPlayer) {
 		this.offeringPlayer=offeringPlayer;
 	}
 	
+	/**
+	 * @return the offered object DTO
+	 */
 	public MarketableDTO getOfferedObjectDTO() {
 		return this.offeredObjectDTO;
 	}
 
+	/**
+	 * Sets the offered object to the offer DTO
+	 * @param offeredObjectDTO is offered object DTO
+	 */
 	public void setOfferedObjectDTO(MarketableDTO offeredObjectDTO) {
 		this.offeredObjectDTO = offeredObjectDTO;
 	}
 
+	/**
+	 * @return the price of the offer DTO
+	 */
 	public int getPrice() {
 		return this.price;
 	}
 	
+	/**
+	 * Sets the price of the offer DTO
+	 * @param price is the price of the object of the offer DTO
+	 */
 	public void setPrice(int price) {
 		this.price = price;
 	}

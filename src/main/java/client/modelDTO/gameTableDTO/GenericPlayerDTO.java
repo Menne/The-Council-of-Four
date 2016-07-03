@@ -52,7 +52,7 @@ public class GenericPlayerDTO implements ModelDTO{
 	}
 
 	/**
-	 * Sets the number of uncovered permit tiles
+	 * Sets the number of covered permit tiles
 	 * @param numberOfCoveredTiles is the number of covered permit tiles
 	 */
 	public void setNumberOfCoveredTiles(int numberOfCoveredTiles) {
@@ -120,7 +120,7 @@ public class GenericPlayerDTO implements ModelDTO{
 	}
 
 	/**
-	 * @return the number of assistants of a generic player
+	 * @return the score of a generic player
 	 */
 	public int getScore() {
 		return this.score;
