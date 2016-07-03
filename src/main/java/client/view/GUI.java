@@ -1075,6 +1075,9 @@ public class GUI extends ClientView{
 		OfferDTO offer=(OfferDTO) this.currentParameter;
 		this.currentParameter=null;
 		this.disableClickOnOffers(true);
+		this.controllerMarketGUI.getMakeAnOffer().setDisable(false);
+		this.controllerMarketGUI.getAcceptAnOffer().setDisable(false);
+		this.controllerMarketGUI.getSkip().setDisable(false);
 		return offer;
 	}
 	
