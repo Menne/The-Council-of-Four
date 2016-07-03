@@ -38,7 +38,7 @@ import server.model.gameTable.RegionBoard;
 import server.model.gameTable.RegionBonusTile;
 import server.model.gameTable.RewardToken;
 /**
- * this class has the method
+ * this class has the method that initializes the game table and its attribute is the number of the file.
  * @author andreapasquali
  *
  */
@@ -53,6 +53,11 @@ public class Initializer {
 		this.mapNumber = mapNumber;
 	}
 	
+	/**
+	 * initializes the Game Table calling some private methods
+	 * @return the entire game table
+	 * @throws IOException
+	 */
 	public GameTable initialize() throws IOException{
 		FileReader f;
 		f=new FileReader("src/main/file"+String.valueOf(mapNumber)+".txt");
@@ -89,6 +94,12 @@ public class Initializer {
 		
 	}
 	
+	/**
+	 * initializes a list of card colours
+	 * @param b is the bufferedReader
+	 * @return the list of colours
+	 * @throws IOException
+	 */
 	private List<CardColour> cardColourListInitializer(BufferedReader b) throws IOException{
 		List<CardColour> cardColourList=new ArrayList<>();
 		s=b.readLine();
@@ -101,6 +112,12 @@ public class Initializer {
 		return cardColourList;
 	}
 	
+	/**
+	 * initializes a list of city colour 
+	 * @param b is the bufferedReader
+	 * @return the list of colours
+	 * @throws IOException
+	 */
 	private List<CityColour> cityColourListInitializer(BufferedReader b) throws IOException{
 		List<CityColour> cityColourList=new ArrayList<>();
 		
@@ -114,6 +131,13 @@ public class Initializer {
 		return cityColourList;
 	}
 	
+	/**
+	 * initializes a list with all the councillors
+	 * @param b is the BufferedReader
+	 * @param cardColourList is the list of card colours
+	 * @return the list of all the councillors
+	 * @throws IOException
+	 */
 	private List<Councillor> councillorsList(BufferedReader b, List<CardColour> cardColourList) throws IOException{
 		r=b.readLine();//NumberOfCouncillorOfEveryColour
 		s=b.readLine();// numero di consiglieri di ogni colore
@@ -126,6 +150,13 @@ public class Initializer {
 		return councillorsList;
 	}
 	
+	/**
+	 * initializes the list of RegionBoard 
+	 * @param b is the BufferedReader
+	 * @param councillorsReserve
+	 * @return the list of regions
+	 * @throws IOException
+	 */
 	private List<RegionBoard> regionBoardsInitializer(BufferedReader b, CouncillorsReserve councillorsReserve) throws IOException{
 		CouncilBalcony firstRegionBalcony=new CouncilBalcony(councillorsReserve);
 		CouncilBalcony secondRegionBalcony=new CouncilBalcony(councillorsReserve);
@@ -164,6 +195,12 @@ public class Initializer {
 		return regionList;
 	}
 	
+	/**
+	 * initializes the list of all the reward tokens
+	 * @param b is the BufferedReader
+	 * @return the list of tokens
+	 * @throws IOException
+	 */
 	private List<RewardToken> rewardTokenListInitializer(BufferedReader b) throws IOException{
 		r=b.readLine(); //rewardTokenList
 		List<RewardToken> rewardTokenList= new ArrayList<>();
@@ -192,6 +229,15 @@ public class Initializer {
 		return rewardTokenList;
 	}
 	
+	/**
+	 * initializes the cities of the first region
+	 * @param b is the BufferedReader
+	 * @param regionList
+	 * @param cityColourList
+	 * @param rewardTokenList
+	 * @return the list of the first region
+	 * @throws IOException
+	 */
 	private Set<City> firstRegionCitiesInitializer(BufferedReader b, List<RegionBoard> regionList, 
 			List<CityColour> cityColourList, List<RewardToken> rewardTokenList) throws IOException{
 		Set<City> firstRegionCities= new HashSet<>();
@@ -205,6 +251,15 @@ public class Initializer {
 		return firstRegionCities;
 	}
 	
+	/**
+	 * initializes the cities of the second region
+	 * @param b is the BufferedReader
+	 * @param regionList
+	 * @param cityColourList
+	 * @param rewardTokenList
+	 * @return the list of the second region
+	 * @throws IOException
+	 */
 	private Set<City> secondRegionCitiesInitializer(BufferedReader b, List<RegionBoard> regionList, 
 			List<CityColour> cityColourList, List<RewardToken> rewardTokenList) throws IOException{
 		Set<City> secondRegionCities= new HashSet<>();
@@ -218,6 +273,15 @@ public class Initializer {
 		return secondRegionCities;
 	}
 	
+	/**
+	 * initializes the cities of the third region
+	 * @param b is the BufferedReader
+	 * @param regionList
+	 * @param cityColourList
+	 * @param rewardTokenList
+	 * @return the list of the third region
+	 * @throws IOException
+	 */
 	private Set<City> thirdRegionCitiesInitializer(BufferedReader b, List<RegionBoard> regionList, 
 			List<CityColour> cityColourList, List<RewardToken> rewardTokenList) throws IOException{
 		Set<City> thirdRegionCities= new HashSet<>();
@@ -231,6 +295,12 @@ public class Initializer {
 		return thirdRegionCities;
 	}
 	
+	/**
+	 * adds to every city its near one
+	 * @param b is the BufferedReader
+	 * @param allCities
+	 * @throws IOException
+	 */
 	private void addNearCities(BufferedReader b, Set<City> allCities) throws IOException{
 		s=b.readLine();
 		String city1;
@@ -245,6 +315,13 @@ public class Initializer {
 			}
 	}
 	
+	/**
+	 * initializes the permit deck of the first region
+	 * @param b is the BufferedReader
+	 * @param allCities
+	 * @param regionBoards
+	 * @throws IOException
+	 */
 	private void firstRegionPermitListInitializer(BufferedReader b, Set<City> allCities, List<RegionBoard> regionBoards) throws IOException{
 		List<PermitTile> firstRegionPermitList = new ArrayList<>();
 		s=b.readLine();
@@ -278,6 +355,13 @@ public class Initializer {
 		s=b.readLine();//null
 	}
 	
+	/**
+	 * initializes the permit deck of the second region
+	 * @param b is the BufferedReader
+	 * @param allCities
+	 * @param regionBoards
+	 * @throws IOException
+	 */
 	private void secondRegionPermitListInitializer(BufferedReader b, Set<City> allCities, List<RegionBoard> regionBoards) throws IOException{
 		List<PermitTile> secondRegionPermitList = new ArrayList<>();
 		s=b.readLine();
@@ -311,6 +395,13 @@ public class Initializer {
 		r=b.readLine();//null
 	}
 	
+	/**
+	 * initializes the permit deck of the third region
+	 * @param b is the BufferedReader
+	 * @param allCities
+	 * @param regionBoards
+	 * @throws IOException
+	 */
 	private void thirdRegionPermitListInitializer(BufferedReader b, Set<City> allCities, List<RegionBoard> regionBoards) throws IOException{
 		List<PermitTile> thirdRegionPermitList = new ArrayList<>();
 		s=b.readLine();
@@ -344,6 +435,12 @@ public class Initializer {
 		r=b.readLine();//null
 	}
 	
+	/**
+	 * initializes the nobility track 
+	 * @param b is the BufferedReader
+	 * @return the nobility track 
+	 * @throws IOException
+	 */
 	private NobilityTrack nobilityTrackInitializer(BufferedReader b) throws IOException{
 		r=b.readLine();//NobilityTrack
 		
@@ -376,6 +473,12 @@ public class Initializer {
 		return nobilityTrack;
 	}
 	
+	/**
+	 * initializes the list of king bonus tiles 
+	 * @param b is the BufferedReader
+	 * @return the list of tiles
+	 * @throws IOException
+	 */
 	private List<KingBonusTile> kingRewardTilesInitializer(BufferedReader b) throws IOException{
 		List<KingBonusTile> kingRewardTiles= new ArrayList<>();
 		s=b.readLine();
@@ -389,7 +492,12 @@ public class Initializer {
 	
 	
 	
-		
+	/**
+	 * search a city of the parameter colour
+	 * @param cities is the set in which the method will search for the coloured city
+	 * @param colour is the colour of the city you are looking for
+	 * @return the city of that colour
+	 */
 	private City searchColoredCity(Set<City> cities, CityColour colour){
 		for(City city: cities)
 			if(city.getColour().equals(colour))
@@ -397,6 +505,12 @@ public class Initializer {
 		throw new IllegalArgumentException("city of this colour doesn't exist");
 	}
 	
+	/**
+	 * translates a string of the name of a region in a region
+	 * @param regionString the name of the region 
+	 * @param regions list of regions
+	 * @return the region with the right name
+	 */
 	private RegionBoard regionTranslator(String regionString, List<RegionBoard> regions){
 		for(RegionBoard region : regions)
 			if(region.getName().equals(regionString))
@@ -404,6 +518,12 @@ public class Initializer {
 		throw new IllegalArgumentException("regionString is not a region");
 	}
 	
+	/**
+	 * translates a string of the name of a city colour in a city colour with that name
+	 * @param colourString is the name of the colour
+	 * @param colours is the list of colour
+	 * @return the colour with that name
+	 */
 	private CityColour cityColourTranslator(String colourString, List<CityColour> colours){
 		for(CityColour colour : colours)
 			if(colour.getName().equals(colourString))
@@ -411,6 +531,12 @@ public class Initializer {
 		throw new IllegalArgumentException("colourString is not a colour");
 	}
 	
+	/**
+	 * translates a string of the name of a city  in a city  with that name
+	 * @param colourString is the name of the city
+	 * @param colours is the list of city
+	 * @return the city with that name
+	 */
 	private City cityTranslator(String cityString, Set<City> cities){
 		for(City city : cities)
 			if(city.getName().equals(cityString))
