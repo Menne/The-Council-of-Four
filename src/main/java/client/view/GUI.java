@@ -260,7 +260,10 @@ public class GUI extends ClientView{
 	@Override
 	public void startGame() {
 		controllerGUI.getMapImage().setImage(new Image(getClass().getResource("images/maps/map"+
-				this.clientGame.getClientGameTable().getMapNumber()+".jpg").toExternalForm()));			
+				this.clientGame.getClientGameTable().getMapNumber()+".jpg").toExternalForm()));
+		for(ModelDTO key : imageMap.keySet())
+			if((key instanceof GenericPlayerDTO) && ((GenericPlayerDTO)key).getPlayerNumber()==clientGame.getClientPlayer().getPlayerNumber())
+				controllerGUI.getEmporium().setImage(imageMap.get(key));		
 	}
 	
 	
@@ -607,6 +610,7 @@ public class GUI extends ClientView{
 			controllerGUI.getPlayerAssistants().setText(String.valueOf(clientGame.getClientPlayer().getAssistants().size()));
 			controllerGUI.getPlayerNobility().setText(String.valueOf(clientGame.getClientPlayer().getNobility()));
 			controllerGUI.getPlayerScore().setText(String.valueOf(clientGame.getClientPlayer().getScore()));
+			controllerGUI.getNumberOfEmporiums().setText(String.valueOf(clientGame.getClientPlayer().getEmporiums()));
 			controllerGUI.getPlayersBonuses().getChildren().clear();
 			for(BonusTileDTO bonusTileDTO : clientGame.getClientPlayer().getFinalBonuses()){
 				ImageView imageView =new ImageView(imageMap.get(bonusTileDTO));
