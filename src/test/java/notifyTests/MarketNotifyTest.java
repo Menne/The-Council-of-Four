@@ -8,10 +8,10 @@ import java.util.List;
 
 import org.junit.Test;
 
-import client.modelDTO.clientNotifies.MarketDTONotify;
+import clientUpdates.MarketUpdate;
 import server.model.Game;
 import server.model.player.Player;
-import server.view.notifies.MarketNotify;
+import server.serverNotifies.MarketServerNotify;
 
 public class MarketNotifyTest {
 
@@ -25,8 +25,8 @@ public class MarketNotifyTest {
 		List<Player> interestedPlayers= new ArrayList<>();
 		boolean startMarket= true;
 		boolean closeMarket= false;
-		MarketNotify notify= new MarketNotify(game, interestedPlayers, startMarket, closeMarket);
-		assertEquals(MarketDTONotify.class,notify.toClientNotify().getClass());
+		MarketServerNotify notify= new MarketServerNotify(game, interestedPlayers, startMarket, closeMarket);
+		assertEquals(MarketUpdate.class,notify.toClientNotify().getClass());
 		assertTrue(notify.sendTo()==interestedPlayers);
 	}
 

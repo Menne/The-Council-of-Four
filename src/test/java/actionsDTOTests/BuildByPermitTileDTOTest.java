@@ -4,8 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import client.modelDTO.actionsDTO.actionsParametersSetters.BuildByPermitTileParser;
 import client.modelDTO.actionsDTO.standardActions.BuildByPermitTileDTO;
+import client.modelDTO.actionsParametersSetters.BuildByPermitTileParametersSetter;
 import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
 
@@ -24,7 +24,7 @@ public class BuildByPermitTileDTOTest {
 		action.parametersSet();
 		assertTrue(action.checkIfParametersSet());
 		assertEquals("m3: build an emporium using a permit tile", action.toString());
-		assertEquals(BuildByPermitTileParser.class, action.setParser().getClass());
+		assertEquals(BuildByPermitTileParametersSetter.class, action.setParser().getClass());
 	}
 
 }

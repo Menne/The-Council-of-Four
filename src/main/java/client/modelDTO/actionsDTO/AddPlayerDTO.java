@@ -1,7 +1,7 @@
 package client.modelDTO.actionsDTO;
 
 import server.model.actions.Action;
-import server.view.actionMapperVisitor.ActionMapperVisitor;
+import server.model.mappers.ActionMapperVisitor;
 
 /**
  * This object is created when a player inserts his name and is ready for a new game

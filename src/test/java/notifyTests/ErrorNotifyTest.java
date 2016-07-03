@@ -7,9 +7,9 @@ import java.util.List;
 
 import org.junit.Test;
 
-import client.modelDTO.clientNotifies.ErrorDTONotify;
+import clientUpdates.ErrorUpdate;
 import server.model.player.Player;
-import server.view.notifies.ErrorNotify;
+import server.serverNotifies.ErrorServerNotify;
 
 public class ErrorNotifyTest {
 
@@ -19,8 +19,8 @@ public class ErrorNotifyTest {
 		List<Player> interestedPlayers=new ArrayList<>();
 		Player a= new Player("Andre");
 		interestedPlayers.add(a);
-		ErrorNotify notify= new ErrorNotify(message, interestedPlayers);
-		assertEquals(ErrorDTONotify.class, notify.toClientNotify().getClass());
+		ErrorServerNotify notify= new ErrorServerNotify(message, interestedPlayers);
+		assertEquals(ErrorUpdate.class, notify.toClientNotify().getClass());
 		assertTrue(notify.sendTo()==interestedPlayers);
 	}
 

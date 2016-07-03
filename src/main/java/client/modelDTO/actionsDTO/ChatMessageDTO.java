@@ -2,7 +2,7 @@ package client.modelDTO.actionsDTO;
 
 import server.model.actions.Action;
 import server.model.actions.ChatMessage;
-import server.view.actionMapperVisitor.ActionMapperVisitor;
+import server.model.mappers.ActionMapperVisitor;
 
 /**
  * This object contains the chat message sent from a player to others

@@ -11,13 +11,13 @@ import client.connections.ClientRMIViewRemote;
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.ChooseMapDTO;
 import client.modelDTO.actionsDTO.QuitDTORMI;
-import client.modelDTO.clientNotifies.PlayerAcceptedDTONotify;
+import clientUpdates.PlayerAcceptedUpdate;
 import server.Server;
 import server.model.Game;
 import server.model.actions.Quit;
+import server.model.mappers.ActionDTOMapper;
 import server.model.player.Player;
-import server.view.actionMapperVisitor.ActionDTOMapper;
-import server.view.notifies.ViewNotify;
+import server.serverNotifies.ServerViewNotify;
 
 /**
  * The RMI implementation of the Server view
@@ -46,7 +46,7 @@ public class ServerRMIView extends ServerView implements RMIViewRemote {
 	 * translate them in client notifies and send the translated notifies to the client.
 	 */
 	@Override
-	public void update(ViewNotify notify){
+	public void update(ServerViewNotify notify){
 		for(Player player : notify.sendTo())
 			for(Map.Entry<ClientRMIViewRemote, Player> entry : this.clientsMap.entrySet())
 				if(entry.getValue().equals(player))
@@ -76,7 +76,7 @@ public class ServerRMIView extends ServerView implements RMIViewRemote {
 			server.newReadyPlayer(this, player);
 			System.out.println("client registered");
 			
-			clientStub.updateClient(new PlayerAcceptedDTONotify
+			clientStub.updateClient(new PlayerAcceptedUpdate
 					(this.game.getGameMapper().clientPlayerMap(player)));
 			
 		} catch (IOException e) {

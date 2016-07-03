@@ -11,8 +11,8 @@ import server.model.actions.MainAction;
 import server.model.gameTable.CouncilBalcony;
 import server.model.gameTable.Councillor;
 import server.model.player.Player;
-import server.view.notifies.MessageNotify;
-import server.view.notifies.PlayerNotify;
+import server.serverNotifies.MessageServerNotify;
+import server.serverNotifies.PlayerServerNotify;
 
 /**
  * It's the main action "elect councillor".
@@ -70,15 +70,15 @@ public class ElectCouncillor implements MainAction {
 	
 	@Override
 	public void notifyPlayers(Game game) {
-		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
+		game.notifyObserver(new PlayerServerNotify(game, game.getCurrentPlayer(), 
 				Arrays.asList(game.getCurrentPlayer())));
-		game.notifyObserver(new MessageNotify("Action completed succesfully!", 
+		game.notifyObserver(new MessageServerNotify("Action completed succesfully!", 
 				Arrays.asList(game.getCurrentPlayer())));
 		List<Player> otherPlayers=new ArrayList<>();
 		for (Player player : game.getPlayers())
 			if (!player.equals(game.getCurrentPlayer()))
 				otherPlayers.add(player);
-		game.notifyObserver(new MessageNotify(game.getCurrentPlayer().getName()
+		game.notifyObserver(new MessageServerNotify(game.getCurrentPlayer().getName()
 				+ " elected a " + this.newCouncillor.getColour() +" councillor in the " + this.councilBalcony.toString(), otherPlayers));
 	}
 

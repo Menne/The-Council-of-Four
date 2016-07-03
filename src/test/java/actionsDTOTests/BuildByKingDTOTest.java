@@ -7,8 +7,8 @@ import java.util.List;
 
 import org.junit.Test;
 
-import client.modelDTO.actionsDTO.actionsParametersSetters.BuildByKingParser;
 import client.modelDTO.actionsDTO.standardActions.BuildByKingDTO;
+import client.modelDTO.actionsParametersSetters.BuildByKingParametersSetter;
 import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.PoliticsCardDTO;
 
@@ -22,7 +22,7 @@ public class BuildByKingDTOTest {
 		action.setCardsToDescard(cardsToDescard);
 		action.setSelectedCity(selectedCity);
 		assertFalse(action.checkIfParametersSet());
-		assertEquals(BuildByKingParser.class, action.setParser().getClass());
+		assertEquals(BuildByKingParametersSetter.class, action.setParser().getClass());
 		assertTrue(action.getCardsToDescard()==cardsToDescard);
 		assertTrue(action.getSelectedCity()==selectedCity);
 		action.parametersSet();

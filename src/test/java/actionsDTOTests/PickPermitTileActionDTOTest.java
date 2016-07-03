@@ -4,8 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import client.modelDTO.actionsDTO.actionsParametersSetters.bonusActionsSetters.PickPermitTileBonusParser;
 import client.modelDTO.actionsDTO.bonusActions.PickPermitTileActionDTO;
+import client.modelDTO.actionsParametersSetters.bonusActionsParametersSetters.PickPermitTileBonusParametersSetter;
 import client.modelDTO.gameTableDTO.RegionDTO;
 
 public class PickPermitTileActionDTOTest {
@@ -22,7 +22,7 @@ public class PickPermitTileActionDTOTest {
 		assertTrue(action.getSelectedRegion()==selectedRegion);
 		action.parametersSet();
 		assertTrue(action.checkIfParametersSet());
-		assertEquals(PickPermitTileBonusParser.class, action.setParser().getClass());
+		assertEquals(PickPermitTileBonusParametersSetter.class, action.setParser().getClass());
 		assertEquals("b2: get bonus!", action.toString());
 	}
 }

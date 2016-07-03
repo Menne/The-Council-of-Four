@@ -7,7 +7,7 @@ import java.util.List;
 import server.model.Game;
 import server.model.actions.Action;
 import server.model.stateMachine.State;
-import server.view.notifies.MessageNotify;
+import server.serverNotifies.MessageServerNotify;
 
 /**
  * This is a special state which is set when the payer gets the corresponding bonus
@@ -43,7 +43,7 @@ public class AdditionalMainActionBonusState implements State {
 
 	@Override
 	public void updateClients(Game game) {
-		game.notifyObserver(new MessageNotify("Congratulation! You have got an additional main action!", 
+		game.notifyObserver(new MessageServerNotify("Congratulation! You have got an additional main action!", 
 				Arrays.asList(game.getCurrentPlayer())));
 	}
 

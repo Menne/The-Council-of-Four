@@ -9,7 +9,7 @@ import java.util.List;
 import org.junit.Test;
 
 import server.model.Game;
-import server.model.bonus.interactiveBonus.PickPermitTileBonus;
+import server.model.bonuses.interactiveBonus.PickPermitTileBonus;
 import server.model.player.Player;
 import server.model.stateMachine.State11;
 

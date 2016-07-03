@@ -1,7 +1,7 @@
 package client.modelDTO.actionsDTO;
 
 import server.model.actions.Action;
-import server.view.actionMapperVisitor.ActionMapperVisitor;
+import server.model.mappers.ActionMapperVisitor;
 
 /**
  * This object is sent to the server when a client makes the decision to leave the game

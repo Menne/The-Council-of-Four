@@ -1,7 +1,7 @@
 package client.modelDTO.actionsDTO;
 
 import server.model.actions.Action;
-import server.view.actionMapperVisitor.ActionMapperVisitor;
+import server.model.mappers.ActionMapperVisitor;
 
 /**
  * This object contains the number of the map selected by the user

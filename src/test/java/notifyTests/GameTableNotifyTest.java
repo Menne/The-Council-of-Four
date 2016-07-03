@@ -8,10 +8,10 @@ import java.util.List;
 
 import org.junit.Test;
 
-import client.modelDTO.clientNotifies.GameTableDTONotify;
+import clientUpdates.GameTableUpdate;
 import server.model.Game;
 import server.model.player.Player;
-import server.view.notifies.GameTableNotify;
+import server.serverNotifies.GameTableServerNotify;
 
 public class GameTableNotifyTest {
 
@@ -25,8 +25,8 @@ public class GameTableNotifyTest {
 		List<Player> interestedPlayers= new ArrayList<>();
 		interestedPlayers.add(a);
 		game.setCurrentPlayer(a);
-		GameTableNotify notify= new GameTableNotify(game, interestedPlayers,false);
-		assertEquals(notify.toClientNotify().getClass(), GameTableDTONotify.class);
+		GameTableServerNotify notify= new GameTableServerNotify(game, interestedPlayers,false);
+		assertEquals(notify.toClientNotify().getClass(), GameTableUpdate.class);
 		assertTrue(interestedPlayers==notify.sendTo());
 		assertTrue(a==notify.getCurrentPlayer());
 	}

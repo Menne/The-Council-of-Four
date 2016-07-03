@@ -7,8 +7,8 @@ import java.util.List;
 
 import org.junit.Test;
 
-import client.modelDTO.actionsDTO.actionsParametersSetters.MakeAnOfferParser;
 import client.modelDTO.actionsDTO.marketActions.MakeAnOfferDTO;
+import client.modelDTO.actionsParametersSetters.MakeAnOfferParametersSetter;
 import client.modelDTO.marketDTO.OfferDTO;
 
 public class MakeAnOfferDTOTest {
@@ -20,7 +20,7 @@ public class MakeAnOfferDTOTest {
 		MakeAnOfferDTO action= new MakeAnOfferDTO();
 		action.setOfferedObjectsDTO(offeredObjectsDTO);
 		assertFalse(action.checkIfParametersSet());
-		assertEquals(MakeAnOfferParser.class, action.setParser().getClass());
+		assertEquals(MakeAnOfferParametersSetter.class, action.setParser().getClass());
 		assertTrue(action.getOfferedObjectsDTO()==offeredObjectsDTO);
 		action.addOfferToList(offerDTO);
 		assertTrue(action.getOfferedObjectsDTO().get(0)==offerDTO);

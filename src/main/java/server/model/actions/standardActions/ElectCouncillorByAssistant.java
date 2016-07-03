@@ -11,9 +11,9 @@ import server.model.actions.QuickAction;
 import server.model.gameTable.CouncilBalcony;
 import server.model.gameTable.Councillor;
 import server.model.player.Player;
-import server.view.notifies.ErrorNotify;
-import server.view.notifies.MessageNotify;
-import server.view.notifies.PlayerNotify;
+import server.serverNotifies.ErrorServerNotify;
+import server.serverNotifies.MessageServerNotify;
+import server.serverNotifies.PlayerServerNotify;
 
 /**
  * It's the quick action "elect councillor by sending an assistant"
@@ -50,7 +50,7 @@ public class ElectCouncillorByAssistant implements QuickAction {
 			throw new NullPointerException("Parameters not setted");
 
 		if (!this.checkAssistants(game)) {
-			game.notifyObserver(new ErrorNotify("It seems that you haven't enough assistants!. Try again or choose another action",
+			game.notifyObserver(new ErrorServerNotify("It seems that you haven't enough assistants!. Try again or choose another action",
 					Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}
@@ -74,15 +74,15 @@ public class ElectCouncillorByAssistant implements QuickAction {
 	
 	@Override
 	public void notifyPlayers(Game game) {
-		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
+		game.notifyObserver(new PlayerServerNotify(game, game.getCurrentPlayer(), 
 				Arrays.asList(game.getCurrentPlayer())));
-		game.notifyObserver(new MessageNotify("Action completed succesfully!", 
+		game.notifyObserver(new MessageServerNotify("Action completed succesfully!", 
 				Arrays.asList(game.getCurrentPlayer())));
 		List<Player> otherPlayers=new ArrayList<>();
 		for (Player player : game.getPlayers())
 			if (!player.equals(game.getCurrentPlayer()))
 				otherPlayers.add(player);
-		game.notifyObserver(new MessageNotify(game.getCurrentPlayer().getName()
+		game.notifyObserver(new MessageServerNotify(game.getCurrentPlayer().getName()
 				+ " sent an assistant to elect a " + this.newCouncillor.getColour() +" councillor in the " 
 				+ this.councilBalcony.toString(), otherPlayers));
 	}

@@ -1,6 +1,6 @@
 package server.model.gameTable;
 
-import server.model.bonus.ScoreBonus;
+import server.model.bonuses.ScoreBonus;
 
 /**
  * models the king bonus tile

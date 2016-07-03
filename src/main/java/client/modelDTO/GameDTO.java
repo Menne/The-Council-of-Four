@@ -3,11 +3,11 @@ package client.modelDTO;
 import java.util.ArrayList;
 import java.util.List;
 
+import client.clientNotifies.ClientViewNotify;
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.gameTableDTO.GameTableDTO;
 import client.modelDTO.marketDTO.MarketDTO;
 import client.modelDTO.playerDTO.ClientPlayerDTO;
-import client.view.notifies.ClientViewNotify;
 import observerPattern.Observable;
 
 /**

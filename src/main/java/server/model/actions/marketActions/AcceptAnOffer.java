@@ -10,8 +10,8 @@ import server.model.Game;
 import server.model.actions.Action;
 import server.model.market.Offer;
 import server.model.player.Player;
-import server.view.notifies.MessageNotify;
-import server.view.notifies.PlayerNotify;
+import server.serverNotifies.MessageServerNotify;
+import server.serverNotifies.PlayerServerNotify;
 
 /**
  * This class is the action of the market "accept an offer", it operates on the 
@@ -37,7 +37,7 @@ public class AcceptAnOffer implements Action {
 			throw new NullPointerException("Paramters not setted");
 		
 		if (!checkCoins(game)) {
-			game.notifyObserver(new MessageNotify("It seems that you haven't enough coins!. Try again or choose another action", 
+			game.notifyObserver(new MessageServerNotify("It seems that you haven't enough coins!. Try again or choose another action", 
 					Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}
@@ -64,15 +64,15 @@ public class AcceptAnOffer implements Action {
 	
 	@Override
 	public void notifyPlayers(Game game) {
-		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
+		game.notifyObserver(new PlayerServerNotify(game, game.getCurrentPlayer(), 
 				Arrays.asList(game.getCurrentPlayer())));
-		game.notifyObserver(new MessageNotify("Offer accepted succesfully!", 
+		game.notifyObserver(new MessageServerNotify("Offer accepted succesfully!", 
 				Arrays.asList(game.getCurrentPlayer())));
 		List<Player> otherPlayers=new ArrayList<>();
 		for (Player player : game.getPlayers())
 			if (!player.equals(game.getCurrentPlayer()))
 				otherPlayers.add(player);
-		game.notifyObserver(new MessageNotify(game.getCurrentPlayer().getName()
+		game.notifyObserver(new MessageServerNotify(game.getCurrentPlayer().getName()
 				+ " bought " + this.offer + " from the market", otherPlayers));
 	}
 

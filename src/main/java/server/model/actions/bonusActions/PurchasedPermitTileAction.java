@@ -6,10 +6,10 @@ import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.bonusActions.PurchasedPermitTileActionDTO;
 import server.model.Game;
 import server.model.actions.Action;
-import server.model.bonus.Bonus;
+import server.model.bonuses.Bonus;
 import server.model.gameTable.PermitTile;
-import server.view.notifies.MessageNotify;
-import server.view.notifies.PlayerNotify;
+import server.serverNotifies.MessageServerNotify;
+import server.serverNotifies.PlayerServerNotify;
 
 /**
  * This class modelizes the action associated to the bonus of a PurchasedPermitTileBonus
@@ -48,9 +48,9 @@ public class PurchasedPermitTileAction implements Action {
 	
 	@Override
 	public void notifyPlayers(Game game) {
-		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
+		game.notifyObserver(new PlayerServerNotify(game, game.getCurrentPlayer(), 
 				Arrays.asList(game.getCurrentPlayer())));
-		game.notifyObserver(new MessageNotify("Bonus earned successfully!", 
+		game.notifyObserver(new MessageServerNotify("Bonus earned successfully!", 
 				Arrays.asList(game.getCurrentPlayer())));
 	}
 

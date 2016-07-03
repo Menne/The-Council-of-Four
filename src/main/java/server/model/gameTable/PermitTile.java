@@ -3,7 +3,7 @@ package server.model.gameTable;
 import java.util.HashSet;
 import java.util.Set;
 
-import server.model.bonus.Bonus;
+import server.model.bonuses.Bonus;
 import server.model.market.Marketable;
 import server.model.player.Player;
 

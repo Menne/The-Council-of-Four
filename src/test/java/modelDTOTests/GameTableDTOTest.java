@@ -15,8 +15,8 @@ import client.modelDTO.gameTableDTO.CouncillorDTO;
 import client.modelDTO.gameTableDTO.GameTableDTO;
 import client.modelDTO.gameTableDTO.GenericPlayerDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
-import server.model.bonus.Bonus;
-import server.model.bonus.ScoreBonus;
+import server.model.bonuses.Bonus;
+import server.model.bonuses.ScoreBonus;
 
 public class GameTableDTOTest {
 

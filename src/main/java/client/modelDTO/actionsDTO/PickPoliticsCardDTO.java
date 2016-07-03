@@ -2,7 +2,7 @@ package client.modelDTO.actionsDTO;
 
 import server.model.actions.Action;
 import server.model.actions.PickPoliticsCard;
-import server.view.actionMapperVisitor.ActionMapperVisitor;
+import server.model.mappers.ActionMapperVisitor;
 
 /**
  * This object represents the DTO version of PickPoliticsCard action, without logic

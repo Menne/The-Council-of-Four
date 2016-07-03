@@ -7,8 +7,8 @@ import client.modelDTO.actionsDTO.bonusActions.PickPermitTileActionDTO;
 import server.model.Game;
 import server.model.actions.Action;
 import server.model.gameTable.RegionBoard;
-import server.view.notifies.MessageNotify;
-import server.view.notifies.PlayerNotify;
+import server.serverNotifies.MessageServerNotify;
+import server.serverNotifies.PlayerServerNotify;
 
 /**
  * This class modelizes the action associated to the bonus of a PickPermitTileBonus
@@ -51,9 +51,9 @@ public class PickPermitTileBonusAction implements Action {
 	
 	@Override
 	public void notifyPlayers(Game game) {
-		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
+		game.notifyObserver(new PlayerServerNotify(game, game.getCurrentPlayer(), 
 				Arrays.asList(game.getCurrentPlayer())));
-		game.notifyObserver(new MessageNotify("Bonus earned successfully!", 
+		game.notifyObserver(new MessageServerNotify("Bonus earned successfully!", 
 				Arrays.asList(game.getCurrentPlayer())));
 	}
 

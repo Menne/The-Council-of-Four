@@ -2,7 +2,7 @@ package client.modelDTO.actionsDTO;
 
 import java.io.Serializable;
 import server.model.actions.Action;
-import server.view.actionMapperVisitor.ActionMapperVisitor;
+import server.model.mappers.ActionMapperVisitor;
 
 /**
  * This interface modelizes a generic action DTO, with all the parameters DTO necessary but without logic

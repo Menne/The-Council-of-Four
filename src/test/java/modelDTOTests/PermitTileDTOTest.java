@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
-import server.model.bonus.Bonus;
+import server.model.bonuses.Bonus;
 
 public class PermitTileDTOTest {
 

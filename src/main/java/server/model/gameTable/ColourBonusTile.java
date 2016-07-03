@@ -1,6 +1,6 @@
 package server.model.gameTable;
 
-import server.model.bonus.ScoreBonus;
+import server.model.bonuses.ScoreBonus;
 /**
  * Models colour bonus tiles and has an attribute String that rappresent the colour of the tile
  * @author andreapasquali

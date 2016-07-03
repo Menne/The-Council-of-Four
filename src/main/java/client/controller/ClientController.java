@@ -1,7 +1,7 @@
 package client.controller;
 
 import client.modelDTO.GameDTO;
-import client.modelDTO.clientNotifies.ClientNotify;
+import clientUpdates.ClientUpdate;
 import observerPattern.Observer;
 
 /**
@@ -9,7 +9,7 @@ import observerPattern.Observer;
  * @author cg31
  *
  */
-public class ClientController implements Observer<ClientNotify> {
+public class ClientController implements Observer<ClientUpdate> {
 
 	private GameDTO clientGame;
 	
@@ -25,7 +25,7 @@ public class ClientController implements Observer<ClientNotify> {
 	 * Updates the client view that the status of the game has changed
 	 */
 	@Override
-	public void update(ClientNotify notify) {
+	public void update(ClientUpdate notify) {
 		notify.updateModel(clientGame);	
 	}
 

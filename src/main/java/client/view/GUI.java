@@ -16,6 +16,7 @@ import client.ClientGUI;
 import client.ControllerChooseMap;
 import client.ControllerGUI;
 import client.ControllerMarketGUI;
+import client.clientNotifies.ClientViewNotify;
 import client.connections.Connection;
 import client.modelDTO.GameDTO;
 import client.modelDTO.ModelDTO;
@@ -29,7 +30,7 @@ import client.modelDTO.actionsDTO.bonusActions.PurchasedPermitTileActionDTO;
 import client.modelDTO.actionsDTO.marketActions.AcceptAnOfferDTO;
 import client.modelDTO.actionsDTO.marketActions.MakeAnOfferDTO;
 import client.modelDTO.actionsDTO.standardActions.AcquirePermitTileDTO;
-import client.modelDTO.actionsDTO.standardActions.AddictionalMainActionDTO;
+import client.modelDTO.actionsDTO.standardActions.AdditionalMainActionDTO;
 import client.modelDTO.actionsDTO.standardActions.BuildByKingDTO;
 import client.modelDTO.actionsDTO.standardActions.BuildByPermitTileDTO;
 import client.modelDTO.actionsDTO.standardActions.ChangePermitTilesDTO;
@@ -48,7 +49,6 @@ import client.modelDTO.gameTableDTO.RewardTokenDTO;
 import client.modelDTO.marketDTO.MarketableDTO;
 import client.modelDTO.marketDTO.OfferDTO;
 import client.modelDTO.playerDTO.AssistantDTO;
-import client.view.notifies.ClientViewNotify;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -70,12 +70,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import server.model.bonus.AssistantsBonus;
-import server.model.bonus.CoinsBonus;
-import server.model.bonus.MainActionBonus;
-import server.model.bonus.NobilityBonus;
-import server.model.bonus.PoliticsCardsBonus;
-import server.model.bonus.ScoreBonus;
+import server.model.bonuses.AssistantsBonus;
+import server.model.bonuses.CoinsBonus;
+import server.model.bonuses.MainActionBonus;
+import server.model.bonuses.NobilityBonus;
+import server.model.bonuses.PoliticsCardsBonus;
+import server.model.bonuses.ScoreBonus;
 import server.model.gameTable.CouncilBalcony;
 
 public class GUI extends ClientView{
@@ -273,7 +273,7 @@ public class GUI extends ClientView{
 		controllerGUI.getActions().get(4).setUserData(new EngageAssistantDTO());
 		controllerGUI.getActions().get(5).setUserData(new ChangePermitTilesDTO());
 		controllerGUI.getActions().get(6).setUserData(new ElectCouncillorByAssistantDTO());
-		controllerGUI.getActions().get(7).setUserData(new AddictionalMainActionDTO());
+		controllerGUI.getActions().get(7).setUserData(new AdditionalMainActionDTO());
 		controllerGUI.getActions().get(8).setUserData(new MoveToNextDTO());
 		controllerGUI.getPoliticsDeck().setUserData(new PickPoliticsCardDTO());
 		
@@ -314,7 +314,7 @@ public class GUI extends ClientView{
 					controllerGUI.getActions().get(5).setEffect(null);
 				if(action.getClass()==ElectCouncillorByAssistantDTO.class)
 					controllerGUI.getActions().get(6).setEffect(null);
-				if(action.getClass()==AddictionalMainActionDTO.class)
+				if(action.getClass()==AdditionalMainActionDTO.class)
 					controllerGUI.getActions().get(7).setEffect(null);
 				if(action.getClass()==MoveToNextDTO.class)
 					controllerGUI.getActions().get(8).setEffect(null);

@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import client.modelDTO.gameTableDTO.BonusTileDTO;
-import server.model.bonus.ScoreBonus;
+import server.model.bonuses.ScoreBonus;
 
 public class BonusTileDTOTest {
 

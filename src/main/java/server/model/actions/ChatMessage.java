@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import client.modelDTO.actionsDTO.ActionDTO;
 import server.model.Game;
 import server.model.player.Player;
-import server.view.notifies.ChatNotify;
+import server.serverNotifies.ChatServerNotify;
 
 /**
  * This class modelizes the action of sending a chat message to everybody
@@ -25,7 +25,7 @@ public class ChatMessage implements Action {
 	 */
 	@Override
 	public boolean executeAction(Game game) {
-		game.notifyObserver(new ChatNotify(this.message, new ArrayList<Player>(game.getPlayers())));
+		game.notifyObserver(new ChatServerNotify(this.message, new ArrayList<Player>(game.getPlayers())));
 		return true;
 	}
 

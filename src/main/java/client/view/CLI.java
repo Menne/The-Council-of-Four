@@ -10,6 +10,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+import client.clientNotifies.GameOverClientNotify;
+import client.clientNotifies.ClientViewNotify;
 import client.connections.Connection;
 import client.modelDTO.GameDTO;
 import client.modelDTO.actionsDTO.ActionDTO;
@@ -25,8 +27,6 @@ import client.modelDTO.gameTableDTO.PoliticsCardDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
 import client.modelDTO.marketDTO.MarketableDTO;
 import client.modelDTO.marketDTO.OfferDTO;
-import client.view.notifies.ClientGameOverNotify;
-import client.view.notifies.ClientViewNotify;
 import server.model.gameTable.CouncilBalcony;
 
 public class CLI extends ClientView {
@@ -111,7 +111,7 @@ public class CLI extends ClientView {
 	@Override
 	public void update(ClientViewNotify notify) {
 		notify.updateView(this);
-		if (notify instanceof ClientGameOverNotify)
+		if (notify instanceof GameOverClientNotify)
 			scanner.close();
 	}
 

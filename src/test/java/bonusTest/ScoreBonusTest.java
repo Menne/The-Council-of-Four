@@ -9,7 +9,7 @@ import java.util.List;
 import org.junit.Test;
 
 import server.model.Game;
-import server.model.bonus.ScoreBonus;
+import server.model.bonuses.ScoreBonus;
 import server.model.player.Player;
 
 public class ScoreBonusTest {

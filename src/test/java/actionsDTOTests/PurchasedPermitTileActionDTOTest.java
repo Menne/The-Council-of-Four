@@ -4,8 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import client.modelDTO.actionsDTO.actionsParametersSetters.bonusActionsSetters.PurchasedPermitTileBonusParser;
 import client.modelDTO.actionsDTO.bonusActions.PurchasedPermitTileActionDTO;
+import client.modelDTO.actionsParametersSetters.bonusActionsParametersSetters.PurchasedPermitTileBonusParametersSetter;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
 
 public class PurchasedPermitTileActionDTOTest {
@@ -16,7 +16,7 @@ public class PurchasedPermitTileActionDTOTest {
 		PurchasedPermitTileActionDTO action= new PurchasedPermitTileActionDTO();
 		action.setPermitTile(selectedPermitTile);
 		assertFalse(action.checkIfParametersSet());
-		assertEquals(PurchasedPermitTileBonusParser.class, action.setParser().getClass());
+		assertEquals(PurchasedPermitTileBonusParametersSetter.class, action.setParser().getClass());
 		action.parametersSet();
 		assertTrue(action.getSelectedPermitTile()==selectedPermitTile);
 		assertTrue(action.checkIfParametersSet());

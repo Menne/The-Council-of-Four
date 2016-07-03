@@ -2,7 +2,7 @@ package server.model.gameTable;
 
 import java.util.Set;
 
-import server.model.bonus.Bonus;
+import server.model.bonuses.Bonus;
 
 /**
  * modelizes reward tokens as a set of bonuses

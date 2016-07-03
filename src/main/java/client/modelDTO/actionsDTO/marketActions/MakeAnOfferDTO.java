@@ -5,11 +5,11 @@ import java.util.List;
 
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.ActionWithParameters;
-import client.modelDTO.actionsDTO.actionsParametersSetters.ActionParserVisitor;
-import client.modelDTO.actionsDTO.actionsParametersSetters.MakeAnOfferParser;
+import client.modelDTO.actionsParametersSetters.ActionParametersSetter;
+import client.modelDTO.actionsParametersSetters.MakeAnOfferParametersSetter;
 import client.modelDTO.marketDTO.OfferDTO;
 import server.model.actions.Action;
-import server.view.actionMapperVisitor.ActionMapperVisitor;
+import server.model.mappers.ActionMapperVisitor;
 
 /**
  * This class represents the DTO version of the MakeAnOffer action, with all the DTO parameters 
@@ -28,8 +28,8 @@ public class MakeAnOfferDTO implements ActionDTO, ActionWithParameters {
 	}
 	
 	@Override
-	public ActionParserVisitor setParser() {
-		return new MakeAnOfferParser(this);
+	public ActionParametersSetter setParser() {
+		return new MakeAnOfferParametersSetter(this);
 	}
 
 

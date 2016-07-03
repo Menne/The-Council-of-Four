@@ -1,6 +1,6 @@
 package client.modelDTO.actionsDTO;
 
-import client.modelDTO.actionsDTO.actionsParametersSetters.ActionParserVisitor;
+import client.modelDTO.actionsParametersSetters.ActionParametersSetter;
 
 /**
  * This interface provides the methods in common between an action DTO which requires parameters to be set
@@ -14,7 +14,7 @@ public interface ActionWithParameters extends ActionDTO {
 	 * and which sets the parameters selected by the user to the action DTO
 	 * @return the specific setter of the action
 	 */
-	public ActionParserVisitor setParser();
+	public ActionParametersSetter setParser();
 
 	/**
 	 * Checks if the parameters in the action DTO are set properly

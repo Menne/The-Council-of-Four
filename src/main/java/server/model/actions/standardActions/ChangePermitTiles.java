@@ -10,9 +10,9 @@ import server.model.Game;
 import server.model.actions.QuickAction;
 import server.model.gameTable.RegionBoard;
 import server.model.player.Player;
-import server.view.notifies.ErrorNotify;
-import server.view.notifies.MessageNotify;
-import server.view.notifies.PlayerNotify;
+import server.serverNotifies.ErrorServerNotify;
+import server.serverNotifies.MessageServerNotify;
+import server.serverNotifies.PlayerServerNotify;
 
 /**
  * It's the quick action "change permit tiles".
@@ -52,7 +52,7 @@ public class ChangePermitTiles implements QuickAction {
 			throw new NullPointerException("Paramters not setted");
 		
 		if(!this.checkAssistant(game)){
-			game.notifyObserver(new ErrorNotify("It seems that you haven't enough assistants. Please choose another action", 
+			game.notifyObserver(new ErrorServerNotify("It seems that you haven't enough assistants. Please choose another action", 
 					Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}
@@ -71,15 +71,15 @@ public class ChangePermitTiles implements QuickAction {
 	
 	@Override
 	public void notifyPlayers(Game game) {
-		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
+		game.notifyObserver(new PlayerServerNotify(game, game.getCurrentPlayer(), 
 				Arrays.asList(game.getCurrentPlayer())));
-		game.notifyObserver(new MessageNotify("Action completed succesfully!", 
+		game.notifyObserver(new MessageServerNotify("Action completed succesfully!", 
 				Arrays.asList(game.getCurrentPlayer())));
 		List<Player> otherPlayers=new ArrayList<>();
 		for (Player player : game.getPlayers())
 			if (!player.equals(game.getCurrentPlayer()))
 				otherPlayers.add(player);
-		game.notifyObserver(new MessageNotify(game.getCurrentPlayer().getName()
+		game.notifyObserver(new MessageServerNotify(game.getCurrentPlayer().getName()
 				+ " changed the permit tiles in " + this.selectedRegion.getName() + " region", otherPlayers));
 	}
 	

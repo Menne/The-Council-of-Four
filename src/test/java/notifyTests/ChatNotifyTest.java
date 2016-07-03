@@ -7,9 +7,9 @@ import java.util.List;
 
 import org.junit.Test;
 
-import client.modelDTO.clientNotifies.ChatMessageDTONotify;
+import clientUpdates.ChatMessageUpdate;
 import server.model.player.Player;
-import server.view.notifies.ChatNotify;
+import server.serverNotifies.ChatServerNotify;
 
 public class ChatNotifyTest {
 
@@ -19,8 +19,8 @@ public class ChatNotifyTest {
 		String message= "message";
 		Player a= new Player("Andre");
 		interestedPlayers.add(a);
-		ChatNotify notify= new ChatNotify(message, interestedPlayers);
-		assertEquals(ChatMessageDTONotify.class, notify.toClientNotify().getClass());
+		ChatServerNotify notify= new ChatServerNotify(message, interestedPlayers);
+		assertEquals(ChatMessageUpdate.class, notify.toClientNotify().getClass());
 		assertTrue(interestedPlayers==notify.sendTo());
 	}
 

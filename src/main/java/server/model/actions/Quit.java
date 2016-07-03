@@ -3,8 +3,8 @@ package server.model.actions;
 import client.modelDTO.actionsDTO.ActionDTO;
 import server.model.Game;
 import server.model.player.Player;
-import server.view.notifies.GameTableNotify;
-import server.view.notifies.MessageNotify;
+import server.serverNotifies.GameTableServerNotify;
+import server.serverNotifies.MessageServerNotify;
 
 /**
  * Action executed when a player wants to leave the game
@@ -56,7 +56,7 @@ public class Quit implements Action {
 				game.endGame();
 			}
 			else
-				game.notifyObserver(new GameTableNotify(game, game.getPlayers(),false));
+				game.notifyObserver(new GameTableServerNotify(game, game.getPlayers(),false));
 		}
 		this.notifyPlayers(game);
 		return true;
@@ -69,7 +69,7 @@ public class Quit implements Action {
 
 	@Override
 	public void notifyPlayers(Game game) {
-		game.notifyObserver(new MessageNotify(game.getCurrentPlayer().getName()
+		game.notifyObserver(new MessageServerNotify(game.getCurrentPlayer().getName()
 				+ " has left the game", game.getPlayers()));
 	}
 

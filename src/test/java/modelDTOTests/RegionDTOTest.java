@@ -13,7 +13,7 @@ import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.CouncillorDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
-import server.model.bonus.ScoreBonus;
+import server.model.bonuses.ScoreBonus;
 
 public class RegionDTOTest {
 

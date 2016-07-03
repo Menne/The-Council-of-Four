@@ -7,8 +7,8 @@ import java.util.List;
 
 import org.junit.Test;
 
-import client.modelDTO.actionsDTO.actionsParametersSetters.AcquirePermitTileParser;
 import client.modelDTO.actionsDTO.standardActions.AcquirePermitTileDTO;
+import client.modelDTO.actionsParametersSetters.AcquirePermitTileParametersSetter;
 import client.modelDTO.gameTableDTO.PoliticsCardDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
 
@@ -24,7 +24,7 @@ public class AcquirePermitTileDTOTest {
 		action.setChosenRegion(chosenRegion);
 		action.setNumberOfPermitTile(numberOfPermitTile);
 		assertFalse(action.checkIfParametersSet());
-		assertEquals(AcquirePermitTileParser.class, action.setParser().getClass());
+		assertEquals(AcquirePermitTileParametersSetter.class, action.setParser().getClass());
 		action.parametersSet();
 		assertTrue(action.checkIfParametersSet());
 		assertTrue(action.getCardsToDescard()==cardsToDescard);

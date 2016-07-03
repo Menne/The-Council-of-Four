@@ -2,11 +2,11 @@ package client.modelDTO.actionsDTO.bonusActions;
 
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.ActionWithParameters;
-import client.modelDTO.actionsDTO.actionsParametersSetters.ActionParserVisitor;
-import client.modelDTO.actionsDTO.actionsParametersSetters.bonusActionsSetters.PurchasedPermitTileBonusParser;
+import client.modelDTO.actionsParametersSetters.ActionParametersSetter;
+import client.modelDTO.actionsParametersSetters.bonusActionsParametersSetters.PurchasedPermitTileBonusParametersSetter;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
 import server.model.actions.Action;
-import server.view.actionMapperVisitor.ActionMapperVisitor;
+import server.model.mappers.ActionMapperVisitor;
 
 /**
  * This class represents the DTO version of the PurchasedPermitTileAction bonus action, with all the DTO parameters 
@@ -39,8 +39,8 @@ public class PurchasedPermitTileActionDTO implements ActionDTO, ActionWithParame
 	}
 
 	@Override
-	public ActionParserVisitor setParser() {
-		return new PurchasedPermitTileBonusParser(this);
+	public ActionParametersSetter setParser() {
+		return new PurchasedPermitTileBonusParametersSetter(this);
 	}
 
 	@Override
