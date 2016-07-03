@@ -30,6 +30,10 @@ public class MakeAnOffer implements Action{
 		this.offeringObjects.add(offer);
 	}
 	
+	public List<Offer> getOfferingObjects() {
+		return offeringObjects;
+	}
+
 	@Override
 	public boolean executeAction(Game game) {
 		if (this.offeringObjects==null)
