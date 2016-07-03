@@ -11,7 +11,7 @@
     -fx-border-curve: yes;
     -fx-background-radius: 0;
     -fx-background-color: #d1ca85;
-    -fx-font: 13 Papyrus;
+    -fx-font: 15 STKaiti;
     -fx-text-fill: #6b4208;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
@@ -23,11 +23,19 @@
 }
 
 .label {
-	 -fx-font: 15 Papyrus;
+	-fx-font: 18 STKaiti;
     -fx-text-fill: #6b4208;
     -fx-hoover-color:#d1ca85;
-   /*  -fx-font-weight: bold; */
+	-fx-font-weight: bold;
 }
+
+.login {
+	-fx-font: 23 STKaiti;
+    -fx-text-fill: #6b4208;
+    -fx-hoover-color:#d1ca85;
+	-fx-font-weight: bold;
+}
+
 
 .scroll-bar{
     -fx-background-color:transparent;

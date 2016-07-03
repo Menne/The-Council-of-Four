@@ -23,7 +23,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.ControllerGUI">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.ControllerGUI">
    <children>
       <BorderPane prefHeight="800.0" prefWidth="1280.0">
          <bottom>
@@ -35,13 +35,14 @@
                           <items>
                             <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="91.0" prefWidth="309.0">
                                  <children>
-                                    <ScrollPane layoutX="110.0" layoutY="-69.0" prefHeight="91.0" prefWidth="376.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <ScrollPane layoutX="110.0" layoutY="-69.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="91.0" prefWidth="376.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                       <content>
-                                        <AnchorPane maxHeight="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="89.0" prefWidth="307.0" styleClass="sfondo">
+                                          <VBox prefHeight="89.0" prefWidth="306.0" styleClass="sfondo">
                                              <children>
-                                                <HBox fx:id="permitTilesTurnedUpOwned" layoutX="36.0" layoutY="-13.0" prefHeight="73.0" prefWidth="556.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-131.0" AnchorPane.topAnchor="0.0" />
+                                                <Label text="Available Permit Tiles" />
+                                                <HBox fx:id="permitTilesTurnedUpOwned" prefHeight="69.0" prefWidth="343.0" />
                                              </children>
-                                          </AnchorPane>
+                                          </VBox>
                                       </content>
                                        <styleClass>
                                           <String fx:value="sfondo" />
@@ -56,11 +57,12 @@
                                        <children>
                                           <ScrollPane layoutX="41.0" layoutY="-68.0" prefHeight="100.0" prefWidth="306.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <content>
-                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="96.0" prefWidth="219.0" styleClass="sfondo">
+                                                <VBox prefHeight="96.0" prefWidth="219.0" styleClass="sfondo">
                                                    <children>
-                                                      <HBox fx:id="permitTilesTurnedDownOwned" layoutX="26.0" layoutY="-25.0" prefHeight="89.0" prefWidth="219.0" AnchorPane.bottomAnchor="-4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                      <Label text="Covered Permit Tiles" />
+                                                      <HBox fx:id="permitTilesTurnedDownOwned" prefHeight="89.0" prefWidth="219.0" />
                                                    </children>
-                                                </AnchorPane>
+                                                </VBox>
                                             </content>
                                              <styleClass>
                                                 <String fx:value="sfondo" />
@@ -73,11 +75,11 @@
                                        <children>
                                           <ScrollPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <content>
-                                                <AnchorPane prefHeight="96.0" prefWidth="77.0" styleClass="sfondo">
+                                                <VBox fx:id="playersBonuses" prefHeight="96.0" prefWidth="79.0" styleClass="sfondo">
                                                    <children>
-                                                      <VBox fx:id="playersBonuses" prefHeight="250.0" prefWidth="66.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                      <Label text="Bonus" />
                                                    </children>
-                                                </AnchorPane>
+                                                </VBox>
                                              </content>
                                              <styleClass>
                                                 <String fx:value="splitPan" />
@@ -95,69 +97,66 @@
                      <children>
                         <SplitPane dividerPositions="0.46502057613168724" layoutX="-6.0" layoutY="-22.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="162.0" prefWidth="902.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-6.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <items>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="328.0">
+                            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="198.0" prefWidth="446.0">
                                  <children>
-                                    <SplitPane cacheShape="false" centerShape="false" dividerPositions="0.2857142857142857" layoutX="85.0" layoutY="-47.0" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="160.0" prefWidth="498.0" scaleShape="false" styleClass="sfondo" stylesheets="@resize.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <SplitPane cacheShape="false" centerShape="false" dividerPositions="0.2857142857142857" layoutX="85.0" layoutY="-47.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="160.0" prefWidth="498.0" scaleShape="false" styleClass="sfondo" stylesheets="@resize.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                       <items>
-                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="47.0" prefWidth="470.0">
+                                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="470.0">
                                              <children>
-                                                <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="7.0" layoutY="7.0">
+                                                <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="28.0" layoutY="7.0">
                                                    <image>
                                                       <Image url="@view/images/various/Coins.png" />
                                                    </image>
                                                 </ImageView>
-                                                <Label fx:id="playerCoins" layoutX="50.0" layoutY="11.0" text="0" />
-                                                <ImageView fitHeight="45.0" fitWidth="20.0" layoutX="105.0" layoutY="2.0">
+                                                <Label fx:id="playerCoins" layoutX="73.0" layoutY="13.0" styleClass="login" text="0" />
+                                                <ImageView fitHeight="45.0" fitWidth="20.0" layoutX="126.0" layoutY="2.0">
                                                    <image>
                                                       <Image url="@view/images/various/Assistant.png" />
                                                    </image>
                                                 </ImageView>
-                                                <Label fx:id="playerAssistants" layoutX="124.0" layoutY="11.0" text="0" />
-                                                <ImageView fitHeight="40.0" fitWidth="30.0" layoutX="185.0" layoutY="5.0">
+                                                <Label fx:id="playerAssistants" layoutX="154.0" layoutY="14.0" styleClass="login" text="0" />
+                                                <ImageView fitHeight="40.0" fitWidth="30.0" layoutX="206.0" layoutY="5.0">
                                                    <image>
                                                       <Image url="@view/images/various/Point.png" />
                                                    </image>
                                                 </ImageView>
-                                                <ImageView fitHeight="45.0" fitWidth="46.0" layoutX="276.0" layoutY="2.0">
+                                                <ImageView fitHeight="45.0" fitWidth="46.0" layoutX="285.0" layoutY="2.0">
                                                    <image>
                                                       <Image url="@view/images/various/Nobility.png" />
                                                    </image>
                                                 </ImageView>
-                                                <Label fx:id="playerScore" layoutX="222.0" layoutY="12.0" text="0" />
-                                                <Label fx:id="playerNobility" layoutX="322.0" layoutY="13.0" text="0" />
+                                                <Label fx:id="playerScore" layoutX="242.0" layoutY="13.0" styleClass="login" text="0" />
+                                                <Label fx:id="playerNobility" layoutX="329.0" layoutY="13.0" styleClass="login" text="0" />
                                                 <ImageView fx:id="emporium" fitHeight="40.0" fitWidth="40.0" layoutX="374.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
-                                                <Label fx:id="numberOfEmporiums" layoutX="417.0" layoutY="12.0" text="0" />
+                                                <Label fx:id="numberOfEmporiums" layoutX="430.0" layoutY="14.0" styleClass="login" text="0" />
                                              </children>
                                           </AnchorPane>
-                                          <SplitPane dividerPositions="0.7977777777777778">
-                                             <items>
-                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="46.0" prefWidth="535.0" styleClass="sfondo" stylesheets="@resize.css">
+                                          <VBox prefHeight="155.0" prefWidth="444.0">
+                                             <children>
+                                                <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="107.0" prefWidth="447.0" stylesheets="@resize.css">
+                                                   <content>
+                                                      <HBox fx:id="hand" prefHeight="94.0" prefWidth="471.0" styleClass="sfondo">
+                                                         <padding>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                         </padding>
+                                                      </HBox>
+                                                   </content>
+                                                   <styleClass>
+                                                      <String fx:value="sfondo" />
+                                                      <String fx:value="scroll-bar" />
+                                                   </styleClass>
+                                                </ScrollPane>
+                                                <AnchorPane prefHeight="20.0" prefWidth="416.0">
                                                    <children>
-                                                      <ScrollPane prefHeight="140.0" prefWidth="353.0" stylesheets="@resize.css" AnchorPane.bottomAnchor="-4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                         <content>
-                                                            <HBox fx:id="hand" prefHeight="138.0" prefWidth="351.0" styleClass="sfondo">
-                                                               <padding>
-                                                                  <Insets bottom="5.0" left="5.0" right="5.0" top="15.0" />
-                                                               </padding>
-                                                            </HBox>
-                                                         </content>
-                                                         <styleClass>
-                                                            <String fx:value="sfondo" />
-                                                            <String fx:value="scroll-bar" />
-                                                         </styleClass>
-                                                      </ScrollPane>
-                                                   </children>
-                                                </AnchorPane>
-                                                <AnchorPane prefHeight="137.0" prefWidth="110.0">
-                                                   <children>
-                                                      <Button fx:id="descardPoliticsCards" disable="true" layoutX="18.0" layoutY="56.0" mnemonicParsing="false" onAction="#stopDiscarding" prefHeight="137.0" prefWidth="88.0" text="Satify" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                      <Button fx:id="descardPoliticsCards" disable="true" layoutX="120.0" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#stopDiscarding" prefHeight="31.0" prefWidth="193.0" text="Satisfy">
                                                          <cursor>
                                                             <Cursor fx:constant="HAND" />
-                                                         </cursor></Button>
+                                                         </cursor>
+                                                      </Button>
                                                    </children>
                                                 </AnchorPane>
-                                             </items>
-                                          </SplitPane>
+                                             </children>
+                                          </VBox>
                                       </items>
                                     </SplitPane>
                                  </children>
@@ -166,7 +165,7 @@
                                  <children>
                                     <VBox layoutX="111.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="349.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <TextArea fx:id="messageBox" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="516.0">
+                                          <TextArea fx:id="messageBox" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="161.0" prefWidth="516.0">
                                              <font>
                                                 <Font name="Papyrus" size="13.0" />
                                              </font></TextArea>
@@ -234,22 +233,22 @@
                                                       </ImageView>
                                                    </children>
                                                 </AnchorPane>
-                                                <Label fx:id="assistantsPlayer1" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                <Label fx:id="assistantsPlayer1" styleClass="login" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                    <font>
                                                       <Font name="Papyrus" size="13.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="scorePlayer1" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                <Label fx:id="scorePlayer1" styleClass="login" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                                    <font>
                                                       <Font name="Papyrus" size="13.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="coinsPlayer1" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                <Label fx:id="coinsPlayer1" styleClass="login" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                    <font>
                                                       <Font name="Papyrus" size="13.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="nobilityPlayer1" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                                <Label fx:id="nobilityPlayer1" styleClass="login" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="2">
                                                    <font>
                                                       <Font name="Papyrus" size="13.0" />
                                                    </font>
@@ -280,12 +279,12 @@
                                                          </image>
                                                       </ImageView>
                                                    </children></AnchorPane>
-                                                <Label fx:id="remainingEmporiumPlayer1" text="10" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                                <Label fx:id="remainingEmporiumPlayer1" styleClass="login" text="10" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                                    <font>
                                                       <Font name="Papyrus" size="13.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="numberOfPoliticsCardInHandPlayer1" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                                                <Label fx:id="numberOfPoliticsCardInHandPlayer1" styleClass="login" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="3">
                                                    <font>
                                                       <Font name="Papyrus" size="13.0" />
                                                    </font>
@@ -313,7 +312,7 @@
                                           </GridPane>
                                           <AnchorPane layoutX="2.0" layoutY="177.0" prefHeight="75.0" prefWidth="398.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="177.0">
                                              <children>
-                                                <Label layoutX="14.0" layoutY="18.0" text="Permit Tiles">
+                                                <Label layoutX="10.0" layoutY="18.0" text="Permit Tiles" AnchorPane.leftAnchor="10.0">
                                                    <font>
                                                       <Font name="Papyrus" size="13.0" />
                                                    </font>
@@ -325,7 +324,7 @@
                                                 </Label>
                                                 <ScrollPane layoutX="99.0" layoutY="1.0" prefHeight="37.0" prefWidth="169.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="99.0" AnchorPane.rightAnchor="99.0" AnchorPane.topAnchor="0.0">
                                                   <content>
-                                                      <HBox fx:id="permitTilesTurnedUpPlayer1" prefHeight="60.0" prefWidth="192.0" styleClass="sfondo" stylesheets="@resize.css" />
+                                                      <HBox fx:id="permitTilesTurnedUpPlayer1" prefHeight="54.0" prefWidth="192.0" styleClass="sfondo" stylesheets="@resize.css" />
                                                   </content>
                                                    <styleClass>
                                                       <String fx:value="sfondo" />
@@ -388,22 +387,22 @@
                                                       <Font name="Papyrus" size="13.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="assistantsPlayer2" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                <Label fx:id="assistantsPlayer2" styleClass="login" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                    <font>
                                                       <Font name="Papyrus" size="13.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="scorePlayer2" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                <Label fx:id="scorePlayer2" styleClass="login" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                                    <font>
                                                       <Font name="Papyrus" size="13.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="coinsPlayer2" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                <Label fx:id="coinsPlayer2" styleClass="login" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                    <font>
                                                       <Font name="Papyrus" size="13.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="nobilityPlayer2" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                                <Label fx:id="nobilityPlayer2" styleClass="login" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="2">
                                                    <font>
                                                       <Font name="Papyrus" size="13.0" />
                                                    </font>
@@ -436,12 +435,12 @@
                                                       </ImageView>
                                                    </children>
                                                 </AnchorPane>
-                                                <Label fx:id="remainingEmporiumPlayer2" text="10" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                                <Label fx:id="remainingEmporiumPlayer2" styleClass="login" text="10" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                                    <font>
                                                       <Font name="Papyrus" size="13.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="numberOfPoliticsCardInHandPlayer2" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                                                <Label fx:id="numberOfPoliticsCardInHandPlayer2" styleClass="login" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="3">
                                                    <font>
                                                       <Font name="Papyrus" size="13.0" />
                                                    </font>
@@ -460,7 +459,7 @@
                                           </GridPane>
                                           <AnchorPane layoutX="2.0" layoutY="177.0" prefHeight="75.0" prefWidth="398.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="177.0">
                                              <children>
-                                                <Label layoutX="14.0" layoutY="18.0" text="Permit Tiles">
+                                                <Label layoutX="14.0" layoutY="18.0" text="Permit Tiles" AnchorPane.leftAnchor="10.0">
                                                    <font>
                                                       <Font name="Papyrus" size="13.0" />
                                                    </font>
@@ -534,22 +533,22 @@
                                                       <Font name="Papyrus" size="13.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="assistantsPlayer3" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                <Label fx:id="assistantsPlayer3" styleClass="login" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                    <font>
                                                       <Font name="Papyrus" size="13.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="scorePlayer3" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                <Label fx:id="scorePlayer3" styleClass="login" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                                    <font>
                                                       <Font name="Papyrus" size="13.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="coinsPlayer3" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                <Label fx:id="coinsPlayer3" styleClass="login" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                    <font>
                                                       <Font name="Papyrus" size="13.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="nobilityPlayer3" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                                <Label fx:id="nobilityPlayer3" styleClass="login" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="2">
                                                    <font>
                                                       <Font name="Papyrus" size="13.0" />
                                                    </font>
@@ -582,12 +581,12 @@
                                                       </ImageView>
                                                    </children>
                                                 </AnchorPane>
-                                                <Label fx:id="remainingEmporiumPlayer3" text="10" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                                <Label fx:id="remainingEmporiumPlayer3" styleClass="login" text="10" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                                    <font>
                                                       <Font name="Papyrus" size="13.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="numberOfPoliticsCardInHandPlayer3" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                                                <Label fx:id="numberOfPoliticsCardInHandPlayer3" styleClass="login" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="3">
                                                    <font>
                                                       <Font name="Papyrus" size="13.0" />
                                                    </font>
@@ -606,7 +605,7 @@
                                           </GridPane>
                                           <AnchorPane layoutX="2.0" layoutY="177.0" prefHeight="75.0" prefWidth="398.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="177.0">
                                              <children>
-                                                <Label layoutX="14.0" layoutY="18.0" text="Permit Tiles">
+                                                <Label layoutX="14.0" layoutY="18.0" text="Permit Tiles" AnchorPane.leftAnchor="10.0">
                                                    <font>
                                                       <Font name="Papyrus" size="13.0" />
                                                    </font>
@@ -681,22 +680,22 @@
                                                       <Font name="Papyrus" size="13.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="assistantsPlayer4" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                <Label fx:id="assistantsPlayer4" styleClass="login" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                    <font>
                                                       <Font name="Papyrus" size="13.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="scorePlayer4" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                <Label fx:id="scorePlayer4" styleClass="login" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                                    <font>
                                                       <Font name="Papyrus" size="13.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="coinsPlayer4" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                <Label fx:id="coinsPlayer4" styleClass="login" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                    <font>
                                                       <Font name="Papyrus" size="13.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="nobilityPlayer4" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                                <Label fx:id="nobilityPlayer4" styleClass="login" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="2">
                                                    <font>
                                                       <Font name="Papyrus" size="13.0" />
                                                    </font>
@@ -729,12 +728,12 @@
                                                       </ImageView>
                                                    </children>
                                                 </AnchorPane>
-                                                <Label fx:id="remainingEmporiumPlayer4" text="10" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                                <Label fx:id="remainingEmporiumPlayer4" styleClass="login" text="10" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                                    <font>
                                                       <Font name="Papyrus" size="13.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="numberOfPoliticsCardInHandPlayer4" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                                                <Label fx:id="numberOfPoliticsCardInHandPlayer4" styleClass="login" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="3">
                                                    <font>
                                                       <Font name="Papyrus" size="13.0" />
                                                    </font>
@@ -753,7 +752,7 @@
                                           </GridPane>
                                           <AnchorPane layoutX="2.0" layoutY="177.0" prefHeight="75.0" prefWidth="398.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="177.0">
                                              <children>
-                                                <Label layoutX="14.0" layoutY="18.0" text="Permit Tiles">
+                                                <Label layoutX="14.0" layoutY="18.0" text="Permit Tiles" AnchorPane.leftAnchor="10.0">
                                                    <font>
                                                       <Font name="Papyrus" size="13.0" />
                                                    </font>

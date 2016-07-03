@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="564.0" prefWidth="752.0" styleClass="sfondo" stylesheets="@resize.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.ControllerMarketGUI">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="564.0" prefWidth="752.0" styleClass="sfondo" stylesheets="@resize.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.ControllerMarketGUI">
    <children>
       <SplitPane dividerPositions="0.23035714285714284" orientation="VERTICAL" prefHeight="564.0" prefWidth="752.0" styleClass="splitPan" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -94,11 +94,11 @@
                                     <VBox fx:id="offers" prefHeight="272.0" prefWidth="392.0" styleClass="sfondo" />
                                  </content>
                               </ScrollPane>
-                              <HBox prefHeight="46.0" prefWidth="394.0" spacing="110.0">
+                              <HBox prefHeight="46.0" prefWidth="394.0" spacing="75.0">
                                  <children>
-                                    <Label text="Player" />
-                                    <Label text="Price" />
-                                    <Label text="Selling object" />
+                                    <Label prefHeight="20.0" prefWidth="74.0" text="Player" />
+                                    <Label prefHeight="20.0" prefWidth="62.0" text="Price" />
+                                    <Label prefHeight="20.0" prefWidth="102.0" text="Selling object" />
                                  </children>
                               </HBox>
                               <TextArea fx:id="messageBox" editable="false" layoutX="-3.0" layoutY="317.0" prefHeight="112.0" prefWidth="401.0" />
