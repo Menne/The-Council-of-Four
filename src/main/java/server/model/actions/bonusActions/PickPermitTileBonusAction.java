@@ -28,6 +28,15 @@ public class PickPermitTileBonusAction implements Action {
 		this.selectedRegion=selectedRegion;
 	}
 
+	
+	public RegionBoard getSelectedRegion() {
+		return selectedRegion;
+	}
+
+	public Integer getNumberOfPermitTile() {
+		return numberOfPermitTile;
+	}
+
 	/**
 	 * Assigns the bonuses of the permit tile selected
 	 * @return true, if the bonus assignment went well, false otherwise

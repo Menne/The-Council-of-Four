@@ -71,8 +71,6 @@ public class CLI extends ClientView {
 			try {
 				input=this.scanner.nextLine();
 			} catch (IllegalStateException e){
-				Logger logger=Logger.getAnonymousLogger();
-				logger.log(Level.INFO, "Scanner closed!", e);
 				return;
 			}
 			if (this.availableActions().contains(input)) {

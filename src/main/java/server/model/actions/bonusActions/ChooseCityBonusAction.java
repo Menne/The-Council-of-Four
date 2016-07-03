@@ -33,7 +33,11 @@ public class ChooseCityBonusAction implements Action {
 	public void setSelectedCity(List<City> selectedCities) {
 		this.selectedCities=selectedCities;
 	}
-		
+
+	public List<City> getSelectedCities() {
+		return selectedCities;
+	}
+
 	/**
 	 * Assigns the bonus of city/cities selected to the current player
 	 * @return true, if the bonus assignment went well, false otherwise

@@ -24,6 +24,12 @@ public class PurchasedPermitTileAction implements Action {
 		this.selectedPermitTile=selectedPermitTile;
 	}
 	
+	
+	public PermitTile getSelectedPermitTile() {
+		return selectedPermitTile;
+	}
+
+
 	/**
 	 * Assigns the bonuses of the permit tile selected to the current player
 	 * @return true, if the bonus assignment went well, false otherwise

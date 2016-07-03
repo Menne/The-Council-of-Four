@@ -115,8 +115,6 @@ public class ControllerLogin {
 					break;
 				}
 			} catch (SocketException | RemoteException e) {
-				Logger logger=Logger.getAnonymousLogger();
-				logger.log(Level.INFO, "No such server for this address", e);
 				alert.setHeaderText("Wrong address, try again!");
 				alert.showAndWait();
 				return;
