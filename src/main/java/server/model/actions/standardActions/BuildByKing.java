@@ -233,7 +233,7 @@ public class BuildByKing implements MainAction {
 	
 	@Override
 	public void updateClients(Game game) {
-		game.notifyObserver(new GameTableServerNotify(game, new ArrayList<Player>(game.getPlayers()), false));
+		game.notifyObserver(new GameTableServerNotify(game, new ArrayList<Player>(game.getAllPlayers()), false));
 		game.notifyObserver(new PlayerServerNotify(game, game.getCurrentPlayer(), 
 				Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new MessageServerNotify("Emporium built successfully!", 

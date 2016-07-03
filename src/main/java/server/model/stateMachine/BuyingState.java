@@ -25,7 +25,7 @@ public class BuyingState implements State {
 		}
 		else {
 			game.notifyObserver(new MarketServerNotify(game, 
-					new ArrayList<Player>(game.getPlayers()), false, true));
+					new ArrayList<Player>(game.getAllPlayers()), false, true));
 			game.nextPlayer();
 			return new BeginState();
 		}
@@ -42,7 +42,7 @@ public class BuyingState implements State {
 		}
 		else {
 			game.notifyObserver(new MarketServerNotify(game, 
-					new ArrayList<Player>(game.getPlayers()), false, true));
+					new ArrayList<Player>(game.getAllPlayers()), false, true));
 			game.nextPlayer();
 			return new BeginState();
 		}

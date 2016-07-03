@@ -44,7 +44,7 @@ public class BeginState implements State {
 	
 	@Override
 	public void updateAvailableActions(Game game) {
-		game.notifyObserver(new GameTableServerNotify(game, new ArrayList<Player>(game.getPlayers()), false));
+		game.notifyObserver(new GameTableServerNotify(game, new ArrayList<Player>(game.getAllPlayers()), false));
 		game.notifyObserver(new AvailableActionsServerNotify(game.getState().getAcceptableActions(game), 
 				Arrays.asList(game.getCurrentPlayer()), game.getCurrentPlayer().getName() +
 				", it's your turn! First of all, you should pick a politics card"));

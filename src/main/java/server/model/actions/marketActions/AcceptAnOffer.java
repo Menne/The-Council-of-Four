@@ -66,7 +66,7 @@ public class AcceptAnOffer implements Action {
 	@Override
 	public void updateClients(Game game) {
 		game.notifyObserver(new MarketServerNotify(game, 
-				new ArrayList<Player>(game.getPlayers()), false, false));
+				new ArrayList<Player>(game.getAllPlayers()), false, false));
 		game.notifyObserver(new PlayerServerNotify(game, game.getCurrentPlayer(), 
 				Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new MessageServerNotify("Offer accepted succesfully!", 

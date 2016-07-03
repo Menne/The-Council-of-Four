@@ -56,7 +56,7 @@ public class Quit implements Action {
 				game.endGame();
 			}
 			else
-				game.notifyObserver(new GameTableServerNotify(game, game.getPlayers(),false));
+				game.notifyObserver(new GameTableServerNotify(game, game.getAllPlayers(),false));
 		}
 		this.updateClients(game);
 		return true;

@@ -25,7 +25,7 @@ public class ChatMessage implements Action {
 	 */
 	@Override
 	public boolean executeAction(Game game) {
-		game.notifyObserver(new ChatServerNotify(this.message, new ArrayList<Player>(game.getPlayers())));
+		game.notifyObserver(new ChatServerNotify(this.message, new ArrayList<Player>(game.getAllPlayers())));
 		return true;
 	}
 

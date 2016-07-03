@@ -37,10 +37,11 @@ public class Game extends Observable<ServerViewNotify>{
 	private State state;
 	private boolean lastLap;
 	private static final int initialNumberOfCards=6;
-	private static final int intialNumberOfEmporiums=10;
+	private static final int intialNumberOfEmporiums=1;
 	private final List<Player> quittedPlayers;
 	private GameDTOMapper gameMapper;
 	private int mapNumber;
+	private List<Player> allPlayers;
 	
 	/**
 	 * constructor of the class Game;
@@ -50,6 +51,7 @@ public class Game extends Observable<ServerViewNotify>{
 		this.quittedPlayers=new ArrayList<>();
 		this.gameMapper=new GameDTOMapper();
 		this.mapNumber=1;
+		this.allPlayers=new ArrayList<>();
 	}
 	
 	/**
@@ -63,6 +65,7 @@ public class Game extends Observable<ServerViewNotify>{
 		init.setMapNumber(mapNumber);
 		this.gameTable=init.initialize();
 		this.players=playerList;
+		this.allPlayers=playerList;
 		for(Player player : players){
 			player.incrementAssistants(player.getPlayerNumber());
 			player.setScore(0);
@@ -80,7 +83,7 @@ public class Game extends Observable<ServerViewNotify>{
 
 		for (Player player : this.players) 
 			this.notifyObserver(new PlayerServerNotify(this, player, Arrays.asList(player)));
-		this.notifyObserver(new GameTableServerNotify(this, players, true));
+		this.notifyObserver(new GameTableServerNotify(this, this.allPlayers, true));
 		this.state.updateAvailableActions(this);
 	}
 
@@ -198,6 +201,10 @@ public class Game extends Observable<ServerViewNotify>{
 
 	public void setMapNumber(int mapNumber) {
 		this.mapNumber = mapNumber;
+	}
+	
+	public List<Player> getAllPlayers() {
+		return this.allPlayers;
 	}
 
 	/**

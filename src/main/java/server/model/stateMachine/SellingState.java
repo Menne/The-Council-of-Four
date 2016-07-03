@@ -53,9 +53,9 @@ public class SellingState implements State {
 	public void updateAvailableActions(Game game) {
 		if (game.getCurrentPlayer().getPlayerNumber()==1) {
 			game.notifyObserver(new MarketServerNotify(game, 
-					new ArrayList<Player>(game.getPlayers()), true, false));
+					new ArrayList<Player>(game.getAllPlayers()), true, false));
 			game.notifyObserver(new MarketServerNotify(game, 
-					new ArrayList<Player>(game.getPlayers()), false, false));
+					new ArrayList<Player>(game.getAllPlayers()), false, false));
 		}
 		game.notifyObserver(new AvailableActionsServerNotify(game.getState().getAcceptableActions(game), 
 				Arrays.asList(game.getCurrentPlayer()), game.getCurrentPlayer().getName() +
