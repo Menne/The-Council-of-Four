@@ -48,8 +48,7 @@ public class GenericPlayerDTOTest {
 		assertEquals("\nPlayer " + playerNumber + "\tname: "+ name + "\tassistants=" + assistants + "\tscore="
 				+ score + "\tnobility=" + nobility + "\tcoins=" + coins + "\thand="+hand+"\tplayersPermitTilesTurnedUp=" + availablePermitTiles +
 				 "\temporiums=" + emporiums + "\tfinalBonus= " + playersFinalBonus+"]", player.toString());
-		GenericPlayerDTO player1= new GenericPlayerDTO();
-		player1.setPlayerNumber(playerNumber);
+		GenericPlayerDTO player1= new GenericPlayerDTO(playerNumber);
 		assertEquals(player, player1);
 		assertEquals(32, player.hashCode());
 	}

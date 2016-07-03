@@ -37,8 +37,7 @@ public class CityDTOTest {
 			emporiumsPlayers.add(player.getName());
 		assertEquals(name+"\t"+emporiums+"\t"+rewardToken+"\n", city.toString());
 		assertEquals(94671961, city.hashCode());
-		CityDTO city1= new CityDTO();
-		city1.setName(name);
+		CityDTO city1= new CityDTO(name);
 		assertEquals(city, city1);
 	}
 }

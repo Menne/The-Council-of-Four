@@ -12,12 +12,11 @@ public class PoliticsCardDTOTest {
 	@Test
 	public void test() {
 		PoliticsCardDTO card= new PoliticsCardDTO();
-		PoliticsCardDTO card1= new PoliticsCardDTO();
 		CardColourDTO colour= new CardColourDTO();
+		PoliticsCardDTO card1= new PoliticsCardDTO(colour);
 		String a="blue";
 		colour.setName(a);
 		card.setColour(colour);
-		card1.setColour(colour);
 		assertTrue(card.getColour()==colour);
 		assertEquals(3027096, card.hashCode());
 		assertTrue(card.equals(card1));
