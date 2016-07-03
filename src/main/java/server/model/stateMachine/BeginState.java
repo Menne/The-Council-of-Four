@@ -47,7 +47,7 @@ public class BeginState implements State {
 		game.notifyObserver(new GameTableServerNotify(game, new ArrayList<Player>(game.getPlayers()), false));
 		game.notifyObserver(new AvailableActionsServerNotify(game.getState().getAcceptableActions(game), 
 				Arrays.asList(game.getCurrentPlayer()), game.getCurrentPlayer().getName() +
-				", it's your turn! Pick a politics card pressing pc"));
+				", it's your turn! First of all, you should pick a politics card"));
 	}
 
 	

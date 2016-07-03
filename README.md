@@ -2,7 +2,6 @@
 -aggiustare pulsante quit
 -aggiungere scritte nel game table
 -mischiare le permit tile
--aggiungere tostring a offerte
 
 Passi per testare l'applicazione:
 1) Lanciare la classe Server (main/java/server/Server.java)

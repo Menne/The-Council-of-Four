@@ -87,15 +87,15 @@ public class ElectCouncillorByAssistant implements QuickAction {
 		game.notifyObserver(new GameTableServerNotify(game, new ArrayList<Player>(game.getPlayers()), false));
 		game.notifyObserver(new PlayerServerNotify(game, game.getCurrentPlayer(), 
 				Arrays.asList(game.getCurrentPlayer())));
-		game.notifyObserver(new MessageServerNotify("Action completed succesfully!", 
+		game.notifyObserver(new MessageServerNotify("C succesfully!", 
 				Arrays.asList(game.getCurrentPlayer())));
 		List<Player> otherPlayers=new ArrayList<>();
 		for (Player player : game.getPlayers())
 			if (!player.equals(game.getCurrentPlayer()))
 				otherPlayers.add(player);
 		game.notifyObserver(new MessageServerNotify(game.getCurrentPlayer().getName()
-				+ " sent an assistant to elect a " + this.newCouncillor.getColour() +" councillor in the " 
-				+ this.councilBalcony.toString(), otherPlayers));
+				+ " sent an assistant to elect a " + this.newCouncillor.getColour() + " councillor in the " 
+				+ this.councilBalcony.toString() + " balcony", otherPlayers));
 	}
 	
 	@Override

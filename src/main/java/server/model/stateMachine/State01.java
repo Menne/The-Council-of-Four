@@ -88,7 +88,7 @@ public class State01 implements State {
 	public void updateAvailableActions(Game game) {
 		game.notifyObserver(new AvailableActionsServerNotify(game.getState().getAcceptableActions(game), 
 				Arrays.asList(game.getCurrentPlayer()), game.getCurrentPlayer().getName() +
-				", you have the following available actions. Choose one of them, or, if you want to finish the turn, press sk"));
+				", you have only quick actions available"));
 	}
 	
 }

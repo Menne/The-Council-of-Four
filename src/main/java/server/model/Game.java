@@ -10,7 +10,6 @@ import java.util.List;
 
 import observerPattern.Observable;
 import server.model.gameTable.BonusTile;
-import server.model.gameTable.City;
 import server.model.gameTable.Emporium;
 import server.model.gameTable.GameTable;
 import server.model.mappers.GameDTOMapper;
