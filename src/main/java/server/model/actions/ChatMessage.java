@@ -35,7 +35,7 @@ public class ChatMessage implements Action {
 	}
 
 	@Override
-	public void notifyPlayers(Game game) {
+	public void updateClients(Game game) {
 		return;
 	}
 

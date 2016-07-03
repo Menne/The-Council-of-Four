@@ -10,6 +10,7 @@ import server.model.Game;
 import server.model.actions.Action;
 import server.model.market.Offer;
 import server.model.player.Player;
+import server.serverNotifies.MarketServerNotify;
 import server.serverNotifies.MessageServerNotify;
 import server.serverNotifies.PlayerServerNotify;
 
@@ -49,9 +50,9 @@ public class AcceptAnOffer implements Action {
 		
 		game.getMarket().removeOffer(this.offer);
 		
-		this.notifyPlayers(game);
+		this.updateClients(game);
 		game.setState(game.getState().buyActionTransition(game));
-		game.getState().updateClients(game);
+		game.getState().updateAvailableActions(game);
 		
 		return true;
 	}
@@ -63,7 +64,9 @@ public class AcceptAnOffer implements Action {
 	}
 	
 	@Override
-	public void notifyPlayers(Game game) {
+	public void updateClients(Game game) {
+		game.notifyObserver(new MarketServerNotify(game, 
+				new ArrayList<Player>(game.getPlayers()), false, false));
 		game.notifyObserver(new PlayerServerNotify(game, game.getCurrentPlayer(), 
 				Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new MessageServerNotify("Offer accepted succesfully!", 

@@ -1,6 +1,5 @@
 package server.model.stateMachine;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,9 +10,7 @@ import server.model.actions.standardActions.AdditionalMainAction;
 import server.model.actions.standardActions.ChangePermitTiles;
 import server.model.actions.standardActions.ElectCouncillorByAssistant;
 import server.model.actions.standardActions.EngageAssistant;
-import server.model.player.Player;
 import server.serverNotifies.AvailableActionsServerNotify;
-import server.serverNotifies.GameTableServerNotify;
 
 /**
  * Models the state in which the current player has only the possibility to do a quick action 
@@ -88,8 +85,7 @@ public class State01 implements State {
 	 * sends GameTableNotify, PlayerNotify, AvailableActionNotify to the clients
 	 */
 	@Override
-	public void updateClients(Game game) {
-		game.notifyObserver(new GameTableServerNotify(game, new ArrayList<Player>(game.getPlayers()),false));
+	public void updateAvailableActions(Game game) {
 		game.notifyObserver(new AvailableActionsServerNotify(game.getState().getAcceptableActions(game), 
 				Arrays.asList(game.getCurrentPlayer()), game.getCurrentPlayer().getName() +
 				", you have the following available actions. Choose one of them, or, if you want to finish the turn, press sk"));

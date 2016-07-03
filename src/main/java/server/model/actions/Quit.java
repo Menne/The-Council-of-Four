@@ -44,7 +44,7 @@ public class Quit implements Action {
 				game.endGame();
 			}
 			else
-				game.getState().updateClients(game);
+				game.getState().updateAvailableActions(game);
 		}
 		else{
 			game.getPlayers().remove(quittingPlayer);
@@ -58,7 +58,7 @@ public class Quit implements Action {
 			else
 				game.notifyObserver(new GameTableServerNotify(game, game.getPlayers(),false));
 		}
-		this.notifyPlayers(game);
+		this.updateClients(game);
 		return true;
 	}
 
@@ -68,7 +68,7 @@ public class Quit implements Action {
 	}
 
 	@Override
-	public void notifyPlayers(Game game) {
+	public void updateClients(Game game) {
 		game.notifyObserver(new MessageServerNotify(game.getCurrentPlayer().getName()
 				+ " has left the game", game.getPlayers()));
 	}

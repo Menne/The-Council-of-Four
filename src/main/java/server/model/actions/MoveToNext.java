@@ -22,15 +22,15 @@ public class MoveToNext implements QuickAction {
 	@Override
 	public boolean executeAction(Game game) {
 		
-		this.notifyPlayers(game);
+		this.updateClients(game);
 		game.setState(game.getState().moveToNextTransition(game));
-		game.getState().updateClients(game);
+		game.getState().updateAvailableActions(game);
 		
 		return true;
 	}
 
 	@Override
-	public void notifyPlayers(Game game) {
+	public void updateClients(Game game) {
 		List<Player> otherPlayers=new ArrayList<>();
 		for (Player player : game.getPlayers())
 			if (!player.equals(game.getCurrentPlayer()))
