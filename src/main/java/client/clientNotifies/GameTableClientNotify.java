@@ -23,7 +23,8 @@ public class GameTableClientNotify implements ClientViewNotify {
 	public void updateView(ClientView view) {
 		if(startGame)
 			view.startGame();
-		view.displayGameTable();
+		else
+			view.displayGameTable();
 	}
 
 }
