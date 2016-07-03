@@ -26,6 +26,7 @@ public class ClientPlayerDTO implements ModelDTO{
 	private int coins;
 	private int score;
 	private int nobility;
+	private int emporiums;
 	
 	/**
 	 * Constructor of ClientPlayerDTO
@@ -116,6 +117,16 @@ public class ClientPlayerDTO implements ModelDTO{
 
 	public void setNobility(int nobility) {
 		this.nobility=nobility;
+	}
+
+
+	public int getEmporiums() {
+		return emporiums;
+	}
+
+
+	public void setEmporiums(int emporiums) {
+		this.emporiums = emporiums;
 	}
 
 

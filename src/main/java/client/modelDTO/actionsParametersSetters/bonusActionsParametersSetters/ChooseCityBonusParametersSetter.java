@@ -39,8 +39,11 @@ public class ChooseCityBonusParametersSetter implements ActionParametersSetter {
 						acceptableCities.add(city);
 		
 		for (int i=1; i<=this.selectedAction.getNumberOfCities(); i++) {
+			view.displayMessage("Select the city from which you want to get the bonus");
+			
 			CityDTO selectedCity=view.askForCity(acceptableCities);
 			this.selectedAction.getSelectedCities().add(selectedCity);
+			
 			acceptableCities.remove(selectedCity);
 		}
 		

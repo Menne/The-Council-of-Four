@@ -23,7 +23,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.ControllerGUI">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.ControllerGUI">
    <children>
       <BorderPane prefHeight="800.0" prefWidth="1280.0">
          <bottom>
@@ -106,25 +106,27 @@
                                                       <Image url="@view/images/various/Coins.png" />
                                                    </image>
                                                 </ImageView>
-                                                <Label fx:id="playerCoins" layoutX="50.0" layoutY="11.0" text="Label" />
-                                                <ImageView fitHeight="45.0" fitWidth="20.0" layoutX="140.0" layoutY="2.0">
+                                                <Label fx:id="playerCoins" layoutX="50.0" layoutY="11.0" text="0" />
+                                                <ImageView fitHeight="45.0" fitWidth="20.0" layoutX="105.0" layoutY="2.0">
                                                    <image>
                                                       <Image url="@view/images/various/Assistant.png" />
                                                    </image>
                                                 </ImageView>
-                                                <Label fx:id="playerAssistants" layoutX="160.0" layoutY="11.0" text="Label" />
-                                                <ImageView fitHeight="40.0" fitWidth="30.0" layoutX="245.0" layoutY="5.0">
+                                                <Label fx:id="playerAssistants" layoutX="124.0" layoutY="11.0" text="0" />
+                                                <ImageView fitHeight="40.0" fitWidth="30.0" layoutX="185.0" layoutY="5.0">
                                                    <image>
                                                       <Image url="@view/images/various/Point.png" />
                                                    </image>
                                                 </ImageView>
-                                                <ImageView fitHeight="45.0" fitWidth="46.0" layoutX="360.0" layoutY="2.0">
+                                                <ImageView fitHeight="45.0" fitWidth="46.0" layoutX="276.0" layoutY="2.0">
                                                    <image>
                                                       <Image url="@view/images/various/Nobility.png" />
                                                    </image>
                                                 </ImageView>
-                                                <Label fx:id="playerScore" layoutX="282.0" layoutY="12.0" text="Label" />
-                                                <Label fx:id="playerNobility" layoutX="406.0" layoutY="13.0" text="Label" />
+                                                <Label fx:id="playerScore" layoutX="222.0" layoutY="12.0" text="0" />
+                                                <Label fx:id="playerNobility" layoutX="322.0" layoutY="13.0" text="0" />
+                                                <ImageView fx:id="emporium" fitHeight="40.0" fitWidth="40.0" layoutX="374.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
+                                                <Label fx:id="numberOfEmporiums" layoutX="417.0" layoutY="12.0" text="0" />
                                              </children>
                                           </AnchorPane>
                                           <SplitPane dividerPositions="0.7977777777777778">

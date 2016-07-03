@@ -260,7 +260,10 @@ public class GUI extends ClientView{
 	@Override
 	public void startGame() {
 		controllerGUI.getMapImage().setImage(new Image(getClass().getResource("images/maps/map"+
-				this.clientGame.getClientGameTable().getMapNumber()+".jpg").toExternalForm()));			
+				this.clientGame.getClientGameTable().getMapNumber()+".jpg").toExternalForm()));
+		for(ModelDTO key : imageMap.keySet())
+			if((key instanceof GenericPlayerDTO) && ((GenericPlayerDTO)key).getPlayerNumber()==clientGame.getClientPlayer().getPlayerNumber())
+				controllerGUI.getEmporium().setImage(imageMap.get(key));		
 	}
 	
 	
@@ -607,6 +610,7 @@ public class GUI extends ClientView{
 			controllerGUI.getPlayerAssistants().setText(String.valueOf(clientGame.getClientPlayer().getAssistants().size()));
 			controllerGUI.getPlayerNobility().setText(String.valueOf(clientGame.getClientPlayer().getNobility()));
 			controllerGUI.getPlayerScore().setText(String.valueOf(clientGame.getClientPlayer().getScore()));
+			controllerGUI.getNumberOfEmporiums().setText(String.valueOf(clientGame.getClientPlayer().getEmporiums()));
 			controllerGUI.getPlayersBonuses().getChildren().clear();
 			for(BonusTileDTO bonusTileDTO : clientGame.getClientPlayer().getFinalBonuses()){
 				ImageView imageView =new ImageView(imageMap.get(bonusTileDTO));
@@ -1314,7 +1318,7 @@ public class GUI extends ClientView{
 	
 	/**
 	 * Enables the click on regions when the user has to choose form one of them, 
-	 * than disables it again to prevent a wrong setting of oher parameters
+	 * than disables it again to prevent a wrong setting of other parameters
 	 * @param disabled indicates if the buttons have to be enabled or disabled
 	 */
 	private void disablePriceInsertion(boolean disabled) {

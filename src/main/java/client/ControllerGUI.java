@@ -562,8 +562,22 @@ public class ControllerGUI {
 	private List<ImageView> permitTilesTurnedUp;
 	
 	@FXML
-	private List<ImageView> permitTilesTurnedDown;	
+	private List<ImageView> permitTilesTurnedDown;
 	
+	@FXML
+	private ImageView emporium;
+	
+	@FXML
+	private Label numberOfEmporiums;
+	
+	public Label getNumberOfEmporiums() {
+		return numberOfEmporiums;
+	}
+
+	public ImageView getEmporium() {
+		return emporium;
+	}
+
 	/**
 	 * Sets the model DTO of the client
 	 * @param clientGame
