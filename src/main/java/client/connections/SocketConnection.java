@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.AddPlayerDTO;
 import client.modelDTO.actionsDTO.ChooseMapDTO;
-import client.modelDTO.clientNotifies.ClientNotify;
+import clientUpdates.ClientUpdate;
 
 /**
  * Class that handle the socket connection on the client side
@@ -69,7 +69,8 @@ public class SocketConnection extends Connection implements Runnable{
 				try {
 					
 					Logger logger=Logger.getAnonymousLogger();
-					logger.log(Level.INFO, "Socket closed!", e);
+					logger.info("Socket closed!");
+	//				logger.log(Level.INFO, "Socket closed!", e);
 					socket.close();
 					return;
 					
@@ -78,7 +79,7 @@ public class SocketConnection extends Connection implements Runnable{
 					logger.log(Level.SEVERE, "Failed to close the socket", e1);
 				}
 			}	
-			ClientNotify clientNotify=(ClientNotify) object;
+			ClientUpdate clientNotify=(ClientUpdate) object;
 			this.notifyObserver(clientNotify);
 		}
 	}

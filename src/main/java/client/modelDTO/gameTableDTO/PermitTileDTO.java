@@ -6,7 +6,7 @@ import java.util.Set;
 import client.modelDTO.ModelDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.marketDTO.MarketableDTO;
-import server.model.bonus.Bonus;
+import server.model.bonuses.Bonus;
 
 /**
  * This class provides all the informations about a permit tile, but without logic

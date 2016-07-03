@@ -3,6 +3,7 @@ package client.view;
 import java.rmi.RemoteException;
 import java.util.List;
 
+import client.clientNotifies.ClientViewNotify;
 import client.connections.Connection;
 import client.modelDTO.GameDTO;
 import client.modelDTO.actionsDTO.AddPlayerDTO;
@@ -13,7 +14,6 @@ import client.modelDTO.gameTableDTO.PoliticsCardDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
 import client.modelDTO.marketDTO.MarketableDTO;
 import client.modelDTO.marketDTO.OfferDTO;
-import client.view.notifies.ClientViewNotify;
 import observerPattern.Observer;
 
 

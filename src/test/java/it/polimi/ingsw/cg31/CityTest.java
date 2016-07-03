@@ -11,8 +11,8 @@ import java.util.Set;
 import org.junit.Test;
 
 import server.model.Game;
-import server.model.bonus.Bonus;
-import server.model.bonus.ScoreBonus;
+import server.model.bonuses.Bonus;
+import server.model.bonuses.ScoreBonus;
 import server.model.gameTable.City;
 import server.model.gameTable.CityColour;
 import server.model.gameTable.ColourBonusTile;

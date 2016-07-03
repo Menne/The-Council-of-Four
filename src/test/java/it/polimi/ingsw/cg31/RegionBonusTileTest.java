@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import server.model.bonus.ScoreBonus;
+import server.model.bonuses.ScoreBonus;
 import server.model.gameTable.RegionBonusTile;
 
 public class RegionBonusTileTest {

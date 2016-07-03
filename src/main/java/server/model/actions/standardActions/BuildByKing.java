@@ -8,7 +8,7 @@ import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.standardActions.BuildByKingDTO;
 import server.model.Game;
 import server.model.actions.MainAction;
-import server.model.bonus.Bonus;
+import server.model.bonuses.Bonus;
 import server.model.gameTable.City;
 import server.model.gameTable.ConnectedBuiltCityDiscover;
 import server.model.gameTable.CouncilBalcony;
@@ -16,9 +16,9 @@ import server.model.gameTable.Councillor;
 import server.model.gameTable.Emporium;
 import server.model.gameTable.PoliticsCard;
 import server.model.player.Player;
-import server.view.notifies.ErrorNotify;
-import server.view.notifies.MessageNotify;
-import server.view.notifies.PlayerNotify;
+import server.serverNotifies.ErrorServerNotify;
+import server.serverNotifies.MessageServerNotify;
+import server.serverNotifies.PlayerServerNotify;
 
 /**
  * This class is the main action "build an emporium with the help of the king"
@@ -39,6 +39,14 @@ public class BuildByKing implements MainAction {
 	public void setCardsToDescard(List<PoliticsCard> cardsToDescard) {
 		this.cardsToDescard = cardsToDescard;
 	}
+	
+	public City getSelectedCity() {
+		return selectedCity;
+	}
+
+	public List<PoliticsCard> getCardsToDescard() {
+		return cardsToDescard;
+	}
 
 	/**
 	 * First of all checks if the parameters the current player gave are corrected, 
@@ -54,22 +62,22 @@ public class BuildByKing implements MainAction {
 			throw new NullPointerException("Paramters not setted");
 		
 		if (!checkCityNotContainsEmporium(game)) {
-			game.notifyObserver(new ErrorNotify("It seems that this city arelady contains your emporium!. Try again or choose another action",
+			game.notifyObserver(new ErrorServerNotify("It seems that this city arelady contains your emporium!. Try again or choose another action",
 					Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}
 		if (!checkEnoughAssistants(game)) {
-			game.notifyObserver(new ErrorNotify("It seems that you haven't enough assistants!. Try again or choose another action",
+			game.notifyObserver(new ErrorServerNotify("It seems that you haven't enough assistants!. Try again or choose another action",
 					Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}
 		if (!checkHandSatisfiesBalcony(game)) {
-			game.notifyObserver(new ErrorNotify("It seems that these cards don't satisfy the councillors!. Try again or choose another action",
+			game.notifyObserver(new ErrorServerNotify("It seems that these cards don't satisfy the councillors!. Try again or choose another action",
 					Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}	
 		if (!checkEnoughCoins(game)) {
-			game.notifyObserver(new ErrorNotify("It seems that you haven't enough coins!. Try again or choose another action",
+			game.notifyObserver(new ErrorServerNotify("It seems that you haven't enough coins!. Try again or choose another action",
 					Arrays.asList(game.getCurrentPlayer())));
 			return false;
 		}
@@ -224,15 +232,15 @@ public class BuildByKing implements MainAction {
 	
 	@Override
 	public void notifyPlayers(Game game) {
-		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
+		game.notifyObserver(new PlayerServerNotify(game, game.getCurrentPlayer(), 
 				Arrays.asList(game.getCurrentPlayer())));
-		game.notifyObserver(new MessageNotify("Action completed succesfully!", 
+		game.notifyObserver(new MessageServerNotify("Action completed succesfully!", 
 				Arrays.asList(game.getCurrentPlayer())));
 		List<Player> otherPlayers=new ArrayList<>();
 		for (Player player : game.getPlayers())
 			if (!player.equals(game.getCurrentPlayer()))
 				otherPlayers.add(player);
-		game.notifyObserver(new MessageNotify(game.getCurrentPlayer().getName()
+		game.notifyObserver(new MessageServerNotify(game.getCurrentPlayer().getName()
 				+ " built an emporium in " + this.selectedCity.getName() + " with the help of the King", otherPlayers));
 	}
 

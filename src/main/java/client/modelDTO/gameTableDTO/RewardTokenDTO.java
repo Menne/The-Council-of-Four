@@ -3,7 +3,7 @@ package client.modelDTO.gameTableDTO;
 import java.util.Set;
 
 import client.modelDTO.ModelDTO;
-import server.model.bonus.Bonus;
+import server.model.bonuses.Bonus;
 
 /**
  * This class provides all the informations about a reward token, but without logic

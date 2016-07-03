@@ -3,7 +3,7 @@ package client.modelDTO.actionsDTO.standardActions;
 import client.modelDTO.actionsDTO.ActionDTO;
 import server.model.actions.Action;
 import server.model.actions.standardActions.EngageAssistant;
-import server.view.actionMapperVisitor.ActionMapperVisitor;
+import server.model.mappers.ActionMapperVisitor;
 
 /**
  * This class represents the DTO version of the EngageAssistant action, with all the DTO parameters 

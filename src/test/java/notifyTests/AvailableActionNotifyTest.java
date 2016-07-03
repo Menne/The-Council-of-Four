@@ -8,11 +8,11 @@ import java.util.List;
 import org.junit.Test;
 
 import client.modelDTO.actionsDTO.ActionDTO;
-import client.modelDTO.clientNotifies.AvailableActionsDTONotify;
+import clientUpdates.AvailableActionsUpdate;
 import server.model.actions.Action;
 import server.model.actions.standardActions.AdditionalMainAction;
 import server.model.player.Player;
-import server.view.notifies.AvailableActionsNotify;
+import server.serverNotifies.AvailableActionsServerNotify;
 
 public class AvailableActionNotifyTest {
 
@@ -27,8 +27,8 @@ public class AvailableActionNotifyTest {
 		interestedPlayers.add(a);
 		List<ActionDTO> actionsDTO= new ArrayList<>();
 		actionsDTO.add(action.map());
-		AvailableActionsNotify notify= new AvailableActionsNotify(availableActions, interestedPlayers, message);
-		assertEquals(AvailableActionsDTONotify.class, notify.toClientNotify().getClass());
+		AvailableActionsServerNotify notify= new AvailableActionsServerNotify(availableActions, interestedPlayers, message);
+		assertEquals(AvailableActionsUpdate.class, notify.toClientNotify().getClass());
 		assertTrue(notify.sendTo()==interestedPlayers);
 	}
 

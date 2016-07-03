@@ -4,8 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import client.modelDTO.actionsDTO.actionsParametersSetters.ChangePermitTilesParser;
 import client.modelDTO.actionsDTO.standardActions.ChangePermitTilesDTO;
+import client.modelDTO.actionsParametersSetters.ChangePermitTilesParametersSetter;
 import client.modelDTO.gameTableDTO.RegionDTO;
 
 public class ChangePermitTileDTOTest {
@@ -16,7 +16,7 @@ public class ChangePermitTileDTOTest {
 		ChangePermitTilesDTO action= new ChangePermitTilesDTO();
 		action.setSelectedRegion(selectedRegion);
 		assertFalse(action.checkIfParametersSet());
-		assertEquals(ChangePermitTilesParser.class, action.setParser().getClass());
+		assertEquals(ChangePermitTilesParametersSetter.class, action.setParser().getClass());
 		assertTrue(action.getSelectedRegion()==selectedRegion);
 		action.parametersSet();
 		assertTrue(action.checkIfParametersSet());

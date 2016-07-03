@@ -4,8 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import client.modelDTO.actionsDTO.actionsParametersSetters.ElectCouncillorParser;
 import client.modelDTO.actionsDTO.standardActions.ElectCouncillorDTO;
+import client.modelDTO.actionsParametersSetters.ElectCouncillorParametersSetter;
 import client.modelDTO.gameTableDTO.CouncillorDTO;
 
 public class ElectCouncillorDTOTest {
@@ -18,7 +18,7 @@ public class ElectCouncillorDTOTest {
 		action.setCouncilBalcony(councilBalcony);
 		action.setNewCouncillor(newCouncillor);
 		assertFalse(action.checkIfParametersSet());
-		assertEquals(ElectCouncillorParser.class, action.setParser().getClass());
+		assertEquals(ElectCouncillorParametersSetter.class, action.setParser().getClass());
 		action.parametersSet();
 		assertTrue(action.checkIfParametersSet());
 		assertTrue(action.getCouncilBalcony()==councilBalcony);

@@ -6,14 +6,14 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import client.modelDTO.actionsDTO.ActionDTO;
-import client.modelDTO.clientNotifies.ClientNotify;
+import clientUpdates.ClientUpdate;
 import observerPattern.Observable;
 /**
  * The abstract connection. The implementations for our game are Socket and RMI.
  * @author Luca Scannapieco
  *
  */
-public abstract class Connection extends Observable<ClientNotify> {
+public abstract class Connection extends Observable<ClientUpdate> {
 
 	private final Timer timer=new Timer();
 	private TimerTask timerTask;

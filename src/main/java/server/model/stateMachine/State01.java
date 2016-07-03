@@ -12,8 +12,8 @@ import server.model.actions.standardActions.ChangePermitTiles;
 import server.model.actions.standardActions.ElectCouncillorByAssistant;
 import server.model.actions.standardActions.EngageAssistant;
 import server.model.player.Player;
-import server.view.notifies.AvailableActionsNotify;
-import server.view.notifies.GameTableNotify;
+import server.serverNotifies.AvailableActionsServerNotify;
+import server.serverNotifies.GameTableServerNotify;
 
 /**
  * Models the state in which the current player has only the possibility to do a quick action 
@@ -29,7 +29,7 @@ public class State01 implements State {
 	 */
 	@Override
 	public State quickActionTransition(Game game) {
-		game.notifyObserver(new AvailableActionsNotify(Arrays.asList(), 
+		game.notifyObserver(new AvailableActionsServerNotify(Arrays.asList(), 
 				Arrays.asList(game.getCurrentPlayer()), 
 				"Ok, your turn is over now. I will notify you when it will be your turn again"));
 		if (!game.getCurrentPlayer().equals(game.lastPlayer())){
@@ -56,7 +56,7 @@ public class State01 implements State {
 	 */
 	@Override
 	public State moveToNextTransition(Game game) {
-		game.notifyObserver(new AvailableActionsNotify(Arrays.asList(), 
+		game.notifyObserver(new AvailableActionsServerNotify(Arrays.asList(), 
 				Arrays.asList(game.getCurrentPlayer()), 
 				"Ok, I will notify you when it will be your turn again"));
 		if (!game.getCurrentPlayer().equals(game.lastPlayer())){
@@ -89,8 +89,8 @@ public class State01 implements State {
 	 */
 	@Override
 	public void updateClients(Game game) {
-		game.notifyObserver(new GameTableNotify(game, new ArrayList<Player>(game.getPlayers()),false));
-		game.notifyObserver(new AvailableActionsNotify(game.getState().getAcceptableActions(game), 
+		game.notifyObserver(new GameTableServerNotify(game, new ArrayList<Player>(game.getPlayers()),false));
+		game.notifyObserver(new AvailableActionsServerNotify(game.getState().getAcceptableActions(game), 
 				Arrays.asList(game.getCurrentPlayer()), game.getCurrentPlayer().getName() +
 				", you have the following available actions. Choose one of them, or, if you want to finish the turn, press sk"));
 	}

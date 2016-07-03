@@ -7,9 +7,9 @@ import java.util.List;
 
 import org.junit.Test;
 
-import client.modelDTO.clientNotifies.MessageDTONotify;
+import clientUpdates.MessageUpdate;
 import server.model.player.Player;
-import server.view.notifies.MessageNotify;
+import server.serverNotifies.MessageServerNotify;
 
 public class MessageNotifyTest {
 
@@ -19,8 +19,8 @@ public class MessageNotifyTest {
 		List<Player> interestedPlayers= new ArrayList<>();
 		Player a= new Player("a");
 		interestedPlayers.add(a);
-		MessageNotify notify= new MessageNotify(message, interestedPlayers);
-		assertEquals(MessageDTONotify.class, notify.toClientNotify().getClass());
+		MessageServerNotify notify= new MessageServerNotify(message, interestedPlayers);
+		assertEquals(MessageUpdate.class, notify.toClientNotify().getClass());
 		assertTrue(notify.sendTo()==interestedPlayers);
 	}
 

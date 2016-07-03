@@ -5,11 +5,11 @@ import java.util.List;
 
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.ActionWithParameters;
-import client.modelDTO.actionsDTO.actionsParametersSetters.ActionParserVisitor;
-import client.modelDTO.actionsDTO.actionsParametersSetters.bonusActionsSetters.ChooseCityBonusParser;
+import client.modelDTO.actionsParametersSetters.ActionParametersSetter;
+import client.modelDTO.actionsParametersSetters.bonusActionsParametersSetters.ChooseCityBonusParametersSetter;
 import client.modelDTO.gameTableDTO.CityDTO;
 import server.model.actions.Action;
-import server.view.actionMapperVisitor.ActionMapperVisitor;
+import server.model.mappers.ActionMapperVisitor;
 
 /**
  * This class represents the DTO version of the ChooseCityAction bonus action, with all the DTO parameters 
@@ -30,8 +30,8 @@ public class ChooseCityActionDTO implements ActionDTO, ActionWithParameters {
 	}
 
 	@Override
-	public ActionParserVisitor setParser() {
-		return new ChooseCityBonusParser(this);
+	public ActionParametersSetter setParser() {
+		return new ChooseCityBonusParametersSetter(this);
 	}
 	
 	public int getNumberOfCities() {

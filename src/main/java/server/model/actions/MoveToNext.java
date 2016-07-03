@@ -7,7 +7,7 @@ import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.MoveToNextDTO;
 import server.model.Game;
 import server.model.player.Player;
-import server.view.notifies.MessageNotify;
+import server.serverNotifies.MessageServerNotify;
 
 /**
  * This class modelizes the skip action
@@ -35,7 +35,7 @@ public class MoveToNext implements QuickAction {
 		for (Player player : game.getPlayers())
 			if (!player.equals(game.getCurrentPlayer()))
 				otherPlayers.add(player);
-		game.notifyObserver(new MessageNotify(game.getCurrentPlayer().getName()
+		game.notifyObserver(new MessageServerNotify(game.getCurrentPlayer().getName()
 				+ " decided to skip the turn", otherPlayers));
 	}
 

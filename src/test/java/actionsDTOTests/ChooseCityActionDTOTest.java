@@ -7,8 +7,8 @@ import java.util.List;
 
 import org.junit.Test;
 
-import client.modelDTO.actionsDTO.actionsParametersSetters.bonusActionsSetters.ChooseCityBonusParser;
 import client.modelDTO.actionsDTO.bonusActions.ChooseCityActionDTO;
+import client.modelDTO.actionsParametersSetters.bonusActionsParametersSetters.ChooseCityBonusParametersSetter;
 import client.modelDTO.gameTableDTO.CityDTO;
 
 public class ChooseCityActionDTOTest {
@@ -19,7 +19,7 @@ public class ChooseCityActionDTOTest {
 		ChooseCityActionDTO action= new ChooseCityActionDTO(1);
 		action.setSelectedCities(selectedCities);
 		assertFalse(action.checkIfParametersSet());
-		assertEquals(ChooseCityBonusParser.class, action.setParser().getClass());
+		assertEquals(ChooseCityBonusParametersSetter.class, action.setParser().getClass());
 		action.parametersSet();
 		assertTrue(action.checkIfParametersSet());
 		assertTrue(action.getSelectedCities()==selectedCities);

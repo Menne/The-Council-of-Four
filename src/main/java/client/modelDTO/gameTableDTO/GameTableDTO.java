@@ -6,11 +6,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import client.clientNotifies.ClientViewNotify;
 import client.modelDTO.ModelDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
-import client.view.notifies.ClientViewNotify;
 import observerPattern.Observable;
-import server.model.bonus.Bonus;
+import server.model.bonuses.Bonus;
 
 /**
  * This class provides all the informations about the game table, but without logic

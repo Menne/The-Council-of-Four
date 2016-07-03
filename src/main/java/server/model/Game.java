@@ -9,27 +9,26 @@ import java.util.Comparator;
 import java.util.List;
 
 import observerPattern.Observable;
-import server.Initializer;
-import server.model.gameMapper.GameDTOMapper;
-import server.model.gameMapper.GameMapperInterface;
 import server.model.gameTable.BonusTile;
 import server.model.gameTable.Emporium;
 import server.model.gameTable.GameTable;
+import server.model.mappers.GameDTOMapper;
+import server.model.mappers.GameMapperInterface;
 import server.model.market.Market;
 import server.model.player.Player;
 import server.model.stateMachine.BeginState;
 import server.model.stateMachine.State;
-import server.view.notifies.EndGameNotify;
-import server.view.notifies.GameTableNotify;
-import server.view.notifies.PlayerNotify;
-import server.view.notifies.ViewNotify;
+import server.serverNotifies.EndGameServerNotify;
+import server.serverNotifies.GameTableServerNotify;
+import server.serverNotifies.PlayerServerNotify;
+import server.serverNotifies.ServerViewNotify;
 
 /**
  * contains all the informations of the game
  * @author andreapasquali
  *
  */
-public class Game extends Observable<ViewNotify>{
+public class Game extends Observable<ServerViewNotify>{
 	
 	private List<Player> players;
 	private Market market;
@@ -80,8 +79,8 @@ public class Game extends Observable<ViewNotify>{
 		this.market=new Market();
 		
 		for (Player player : this.players) 
-			this.notifyObserver(new PlayerNotify(this, player, Arrays.asList(player)));
-		this.notifyObserver(new GameTableNotify(this, players, true));
+			this.notifyObserver(new PlayerServerNotify(this, player, Arrays.asList(player)));
+		this.notifyObserver(new GameTableServerNotify(this, players, true));
 		this.state.updateClients(this);
 	}
 
@@ -111,7 +110,7 @@ public class Game extends Observable<ViewNotify>{
 		this.assignBonusPermitTilesEndGame();
 		this.assignBonusNobilityEndGame();
 		this.sortFinalRankingTable();
-		notifyObserver(new EndGameNotify(this, quittedPlayers));
+		notifyObserver(new EndGameServerNotify(this, quittedPlayers));
 	}
 	
 	/**

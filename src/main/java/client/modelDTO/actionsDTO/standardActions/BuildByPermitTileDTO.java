@@ -2,12 +2,12 @@ package client.modelDTO.actionsDTO.standardActions;
 
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.ActionWithParameters;
-import client.modelDTO.actionsDTO.actionsParametersSetters.ActionParserVisitor;
-import client.modelDTO.actionsDTO.actionsParametersSetters.BuildByPermitTileParser;
+import client.modelDTO.actionsParametersSetters.ActionParametersSetter;
+import client.modelDTO.actionsParametersSetters.BuildByPermitTileParametersSetter;
 import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
 import server.model.actions.Action;
-import server.view.actionMapperVisitor.ActionMapperVisitor;
+import server.model.mappers.ActionMapperVisitor;
 
 /**
  * This class represents the DTO version of the BuildByPermitTile action, with all the DTO parameters 
@@ -52,8 +52,8 @@ public class BuildByPermitTileDTO implements ActionDTO, ActionWithParameters {
 	}
 
 	@Override
-	public ActionParserVisitor setParser() {
-		return new BuildByPermitTileParser(this);
+	public ActionParametersSetter setParser() {
+		return new BuildByPermitTileParametersSetter(this);
 	}
 
 	@Override

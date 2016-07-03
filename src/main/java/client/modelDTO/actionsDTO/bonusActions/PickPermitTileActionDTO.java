@@ -2,11 +2,11 @@ package client.modelDTO.actionsDTO.bonusActions;
 
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.ActionWithParameters;
-import client.modelDTO.actionsDTO.actionsParametersSetters.ActionParserVisitor;
-import client.modelDTO.actionsDTO.actionsParametersSetters.bonusActionsSetters.PickPermitTileBonusParser;
+import client.modelDTO.actionsParametersSetters.ActionParametersSetter;
+import client.modelDTO.actionsParametersSetters.bonusActionsParametersSetters.PickPermitTileBonusParametersSetter;
 import client.modelDTO.gameTableDTO.RegionDTO;
 import server.model.actions.Action;
-import server.view.actionMapperVisitor.ActionMapperVisitor;
+import server.model.mappers.ActionMapperVisitor;
 
 /**
  * This class represents the DTO version of the PickPermitTileAction bonus action, with all the DTO parameters 
@@ -50,8 +50,8 @@ public class PickPermitTileActionDTO implements ActionDTO, ActionWithParameters 
 	}
 
 	@Override
-	public ActionParserVisitor setParser() {
-		return new PickPermitTileBonusParser(this);
+	public ActionParametersSetter setParser() {
+		return new PickPermitTileBonusParametersSetter(this);
 	}
 
 	@Override

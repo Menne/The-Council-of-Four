@@ -7,7 +7,7 @@ import client.modelDTO.actionsDTO.AddPlayerDTO;
 import client.modelDTO.actionsDTO.ChooseMapDTO;
 import client.modelDTO.actionsDTO.QuitDTO;
 import client.modelDTO.actionsDTO.QuitDTORMI;
-import client.modelDTO.clientNotifies.ClientNotify;
+import clientUpdates.ClientUpdate;
 import server.view.RMIViewRemote;
 
 /**
@@ -28,7 +28,7 @@ public class RMIConnection extends Connection implements ClientRMIViewRemote{
 	 * Remote method called from the server the send notifies to the clients
 	 */
 	@Override
-	public void updateClient(ClientNotify clientNotify) throws RemoteException {
+	public void updateClient(ClientUpdate clientNotify) throws RemoteException {
 		this.notifyObserver(clientNotify);		
 	}
 	

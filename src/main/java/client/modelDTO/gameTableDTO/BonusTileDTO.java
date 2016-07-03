@@ -1,7 +1,7 @@
 package client.modelDTO.gameTableDTO;
 
 import client.modelDTO.ModelDTO;
-import server.model.bonus.ScoreBonus;
+import server.model.bonuses.ScoreBonus;
 
 /**
  * This class provides all the informations about a bonus tile, but without logic

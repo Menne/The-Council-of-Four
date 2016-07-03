@@ -9,7 +9,7 @@ import java.util.List;
 import org.junit.Test;
 
 import server.model.Game;
-import server.model.bonus.interactiveBonus.ChooseCityBonus;
+import server.model.bonuses.interactiveBonus.ChooseCityBonus;
 import server.model.player.Player;
 import server.model.stateMachine.State11;
 

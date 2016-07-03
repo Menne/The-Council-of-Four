@@ -7,10 +7,10 @@ import java.util.List;
 
 import org.junit.Test;
 
-import client.modelDTO.clientNotifies.EndGameDTONotifies;
+import clientUpdates.EndGameUpdate;
 import server.model.Game;
 import server.model.player.Player;
-import server.view.notifies.EndGameNotify;
+import server.serverNotifies.EndGameServerNotify;
 
 public class EndGameNotifyTest {
 
@@ -20,8 +20,8 @@ public class EndGameNotifyTest {
 		Player a= new Player("Andre");
 		finalRankingTable.add(a);
 		Game game= new Game();
-		EndGameNotify notify= new EndGameNotify(game, finalRankingTable);
-		assertEquals(EndGameDTONotifies.class, notify.toClientNotify().getClass());
+		EndGameServerNotify notify= new EndGameServerNotify(game, finalRankingTable);
+		assertEquals(EndGameUpdate.class, notify.toClientNotify().getClass());
 		assertTrue(notify.sendTo()==finalRankingTable);
 	}
 

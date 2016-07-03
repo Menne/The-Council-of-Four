@@ -2,11 +2,11 @@ package client.modelDTO.actionsDTO.marketActions;
 
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.ActionWithParameters;
-import client.modelDTO.actionsDTO.actionsParametersSetters.AcceptAnOfferParser;
-import client.modelDTO.actionsDTO.actionsParametersSetters.ActionParserVisitor;
+import client.modelDTO.actionsParametersSetters.AcceptAnOfferParametersSetter;
+import client.modelDTO.actionsParametersSetters.ActionParametersSetter;
 import client.modelDTO.marketDTO.OfferDTO;
 import server.model.actions.Action;
-import server.view.actionMapperVisitor.ActionMapperVisitor;
+import server.model.mappers.ActionMapperVisitor;
 
 /**
  * This class represents the DTO version of the AcceptAnOffer action, with all the DTO parameters 
@@ -22,8 +22,8 @@ public class AcceptAnOfferDTO implements ActionDTO, ActionWithParameters {
 
 	
 	@Override
-	public ActionParserVisitor setParser() {
-		return new AcceptAnOfferParser(this);
+	public ActionParametersSetter setParser() {
+		return new AcceptAnOfferParametersSetter(this);
 	}
 
 	

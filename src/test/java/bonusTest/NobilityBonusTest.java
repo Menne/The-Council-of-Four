@@ -9,7 +9,7 @@ import java.util.List;
 import org.junit.Test;
 
 import server.model.Game;
-import server.model.bonus.NobilityBonus;
+import server.model.bonuses.NobilityBonus;
 import server.model.player.Player;
 
 

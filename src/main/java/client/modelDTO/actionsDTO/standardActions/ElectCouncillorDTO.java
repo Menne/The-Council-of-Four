@@ -2,11 +2,11 @@ package client.modelDTO.actionsDTO.standardActions;
 
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.ActionWithParameters;
-import client.modelDTO.actionsDTO.actionsParametersSetters.ActionParserVisitor;
-import client.modelDTO.actionsDTO.actionsParametersSetters.ElectCouncillorParser;
+import client.modelDTO.actionsParametersSetters.ActionParametersSetter;
+import client.modelDTO.actionsParametersSetters.ElectCouncillorParametersSetter;
 import client.modelDTO.gameTableDTO.CouncillorDTO;
 import server.model.actions.Action;
-import server.view.actionMapperVisitor.ActionMapperVisitor;
+import server.model.mappers.ActionMapperVisitor;
 
 /**
  * This class represents the DTO version of the ElectCouncillor action, with all the DTO parameters 
@@ -54,8 +54,8 @@ public class ElectCouncillorDTO implements ActionDTO, ActionWithParameters {
 	}
 
 	@Override
-	public ActionParserVisitor setParser() {
-		return new ElectCouncillorParser(this);
+	public ActionParametersSetter setParser() {
+		return new ElectCouncillorParametersSetter(this);
 	}
 
 	@Override

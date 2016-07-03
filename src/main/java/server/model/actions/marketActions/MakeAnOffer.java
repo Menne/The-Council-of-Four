@@ -10,8 +10,8 @@ import server.model.Game;
 import server.model.actions.Action;
 import server.model.market.Offer;
 import server.model.player.Player;
-import server.view.notifies.MessageNotify;
-import server.view.notifies.PlayerNotify;
+import server.serverNotifies.MessageServerNotify;
+import server.serverNotifies.PlayerServerNotify;
 
 /**
  * This class is the action of the market "make an offer"
@@ -38,7 +38,7 @@ public class MakeAnOffer implements Action{
 		for (Offer offer : this.offeringObjects)
 			game.getMarket().addOffer(offer);
 		
-		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
+		game.notifyObserver(new PlayerServerNotify(game, game.getCurrentPlayer(), 
 				Arrays.asList(game.getCurrentPlayer())));
 			
 		this.notifyPlayers(game);
@@ -51,15 +51,15 @@ public class MakeAnOffer implements Action{
 
 	@Override
 	public void notifyPlayers(Game game) {
-		game.notifyObserver(new PlayerNotify(game, game.getCurrentPlayer(), 
+		game.notifyObserver(new PlayerServerNotify(game, game.getCurrentPlayer(), 
 				Arrays.asList(game.getCurrentPlayer())));
-		game.notifyObserver(new MessageNotify("Offer registered succesfully!", 
+		game.notifyObserver(new MessageServerNotify("Offer registered succesfully!", 
 				Arrays.asList(game.getCurrentPlayer())));
 		List<Player> otherPlayers=new ArrayList<>();
 		for (Player player : game.getPlayers())
 			if (!player.equals(game.getCurrentPlayer()))
 				otherPlayers.add(player);
-		game.notifyObserver(new MessageNotify(game.getCurrentPlayer().getName()
+		game.notifyObserver(new MessageServerNotify(game.getCurrentPlayer().getName()
 				+ " added: " + this.offeringObjects + " to the market", otherPlayers));
 	}
 

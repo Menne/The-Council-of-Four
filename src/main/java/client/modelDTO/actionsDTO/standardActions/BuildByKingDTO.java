@@ -4,12 +4,12 @@ import java.util.List;
 
 import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.ActionWithParameters;
-import client.modelDTO.actionsDTO.actionsParametersSetters.ActionParserVisitor;
-import client.modelDTO.actionsDTO.actionsParametersSetters.BuildByKingParser;
+import client.modelDTO.actionsParametersSetters.ActionParametersSetter;
+import client.modelDTO.actionsParametersSetters.BuildByKingParametersSetter;
 import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.PoliticsCardDTO;
 import server.model.actions.Action;
-import server.view.actionMapperVisitor.ActionMapperVisitor;
+import server.model.mappers.ActionMapperVisitor;
 
 /**
  * This class represents the DTO version of the BuildByKing action, with all the DTO parameters 
@@ -57,8 +57,8 @@ public class BuildByKingDTO implements ActionDTO, ActionWithParameters {
 	}
 
 	@Override
-	public ActionParserVisitor setParser() {
-		return new BuildByKingParser(this);
+	public ActionParametersSetter setParser() {
+		return new BuildByKingParametersSetter(this);
 	}
 
 	@Override

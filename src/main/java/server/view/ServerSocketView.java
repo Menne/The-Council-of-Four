@@ -11,15 +11,15 @@ import client.modelDTO.actionsDTO.ActionDTO;
 import client.modelDTO.actionsDTO.AddPlayerDTO;
 import client.modelDTO.actionsDTO.ChooseMapDTO;
 import client.modelDTO.actionsDTO.QuitDTO;
-import client.modelDTO.clientNotifies.PlayerAcceptedDTONotify;
-import client.modelDTO.clientNotifies.QuitNotify;
+import clientUpdates.PlayerAcceptedUpdate;
+import clientUpdates.QuitUpdate;
 import server.Server;
 import server.model.Game;
 import server.model.actions.Quit;
+import server.model.mappers.ActionDTOMapper;
 import server.model.player.Player;
-import server.view.actionMapperVisitor.ActionDTOMapper;
-import server.view.notifies.EndGameNotify;
-import server.view.notifies.ViewNotify;
+import server.serverNotifies.EndGameServerNotify;
+import server.serverNotifies.ServerViewNotify;
 
 /**
  * The Socket implementation of Server View
@@ -76,7 +76,7 @@ public class ServerSocketView extends ServerView implements Runnable {
 			  		this.player=new Player(notify.getPlayerName());					
 					server.newReadyPlayer(this, player);
 					
-					this.socketOut.writeObject(new PlayerAcceptedDTONotify
+					this.socketOut.writeObject(new PlayerAcceptedUpdate
 							(this.game.getGameMapper().clientPlayerMap(player)));
 				}
 				else if(object instanceof ChooseMapDTO){
@@ -85,7 +85,7 @@ public class ServerSocketView extends ServerView implements Runnable {
 				}
 				else if(object instanceof QuitDTO){
 					this.game.unregisterObserver(this);
-					this.socketOut.writeObject(new QuitNotify());
+					this.socketOut.writeObject(new QuitUpdate());
 					socket.close();
 					this.notifyObserver(new Quit(this.player));
 				}
@@ -97,7 +97,8 @@ public class ServerSocketView extends ServerView implements Runnable {
 				
 			} catch (ClassNotFoundException | IOException e) {
 				Logger logger=Logger.getAnonymousLogger();
-				logger.log(Level.INFO, "Socket closed!", e);
+				logger.info("Socket closed");
+//				logger.log(Level.INFO, "Socket closed!", e);
 				break;
 			}
 		}
@@ -109,12 +110,12 @@ public class ServerSocketView extends ServerView implements Runnable {
 	 * 
 	 */
 	@Override
-	public void update(ViewNotify notify) {
+	public void update(ServerViewNotify notify) {
 		try {
 			if(notify.sendTo().contains(this.player)){
 				this.socketOut.writeObject(notify.toClientNotify());
 			}
-			if(notify instanceof EndGameNotify)
+			if(notify instanceof EndGameServerNotify)
 				socket.close();
 			
 		} catch (IOException e) {

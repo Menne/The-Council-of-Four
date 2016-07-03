@@ -9,7 +9,7 @@ import java.util.List;
 import org.junit.Test;
 
 import server.model.Game;
-import server.model.bonus.ScoreBonus;
+import server.model.bonuses.ScoreBonus;
 import server.model.gameTable.CouncilBalcony;
 import server.model.gameTable.CouncillorsReserve;
 import server.model.gameTable.Map;

@@ -13,7 +13,7 @@ import client.modelDTO.gameTableDTO.CityColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.GenericPlayerDTO;
 import client.modelDTO.gameTableDTO.RewardTokenDTO;
-import server.model.bonus.Bonus;
+import server.model.bonuses.Bonus;
 
 public class CityDTOTest {
 

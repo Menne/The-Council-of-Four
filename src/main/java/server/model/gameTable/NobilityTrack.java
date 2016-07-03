@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import server.model.bonus.Bonus;
+import server.model.bonuses.Bonus;
 
 /**
  * It's a List of sets of bonuses.

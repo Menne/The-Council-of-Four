@@ -1,6 +1,6 @@
 package server.model.gameTable;
 
-import server.model.bonus.ScoreBonus;
+import server.model.bonuses.ScoreBonus;
 /**
  * modelizes bonus tiles and has an attribute of type Score Bonus  
  * @author andreapasquali
