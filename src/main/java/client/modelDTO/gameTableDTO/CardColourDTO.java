@@ -13,7 +13,7 @@ public class CardColourDTO implements ModelDTO {
 	private String name;
 	
 	/**
-	 * Constructor of CardColourDTO
+	 * No-arguments constructor of CardColourDTO
 	 */
 	public CardColourDTO() {
 		//non-arguments constructor
@@ -27,10 +27,17 @@ public class CardColourDTO implements ModelDTO {
 		this.name=name;
 	}
 
+	/**
+	 * @return the name of the colour of the card or councillor 
+	 */
 	public String getName() {
 		return this.name;
 	}
 
+	/**
+	 * Sets the colour name of the card or councillor
+	 * @param colour is the colour name
+	 */
 	public void setName(String name) {
 		this.name=name;
 	}

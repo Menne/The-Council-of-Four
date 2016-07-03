@@ -16,7 +16,7 @@ public class BonusTileDTO implements ModelDTO {
 	
 	/**
 	 * Constructor of BonusTileDTO
-	 * @param type is the identification of the bonus
+	 * @param type is the identification type of the bonus, it can be king, a colour, or a region
 	 * @param bonus is the bonus in the tile
 	 */
 	public BonusTileDTO(String type, ScoreBonus bonus) {
@@ -24,10 +24,16 @@ public class BonusTileDTO implements ModelDTO {
 		this.bonus=bonus;
 	}
 
+	/**
+	 * @return the identification name of the bonus
+	 */
 	public String getType() {
 		return this.type;
 	}
 
+	/**
+	 * @return the bonus
+	 */
 	public ScoreBonus getBonus() {
 		return this.bonus;
 	}

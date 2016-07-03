@@ -20,7 +20,7 @@ public class PermitTileDTO implements ModelDTO, MarketableDTO {
 	private Set<Bonus> bonuses;
 	
 	/**
-	 * Constructor of PermitTileDTO
+	 * No-arguments constructor of PermitTileDTO
 	 */
 	public PermitTileDTO(){
 		this.buildablecities=new HashSet<>();
@@ -37,19 +37,32 @@ public class PermitTileDTO implements ModelDTO, MarketableDTO {
 		this.buildablecities=buildablecities;
 	}
 
-
+	/**
+	 * @return the cities of the permit tile DTO
+	 */
 	public Set<CityDTO> getBuildablecities() {
 		return this.buildablecities;
 	}
 
+	/**
+	 * Sets to the permit tile the cities in which a player can build
+	 * @param buildablecities are the cities of the permit tile
+	 */
 	public void setBuildablecities(Set<CityDTO> buildablecities) {
 		this.buildablecities=buildablecities;
 	}
 
+	/**
+	 * @return the bonuses of the permit tile
+	 */
 	public Set<Bonus> getBonuses() {
 		return this.bonuses;
 	}
 
+	/**
+	 * Sets the bonuses of the permit tile
+	 * @param bonuses are the bonuses of the permit tile
+	 */
 	public void setBonuses(Set<Bonus> bonuses) {
 		this.bonuses=bonuses;
 	}

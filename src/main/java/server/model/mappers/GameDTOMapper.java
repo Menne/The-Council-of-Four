@@ -207,7 +207,13 @@ public class GameDTOMapper implements GameMapperInterface {
 		return cityDTO;
 	}
 	
-	private EmporiumDTO emporiumMap(Emporium emporium){
+	/**
+	 * This method maps all the attributes that a client can see in a emporium DTO object
+	 * @param realObject is a emporium from the real game
+	 * @return the emporium DTO with all the attributes updated
+	 */
+	@Override
+	public EmporiumDTO emporiumMap(Emporium emporium){
 		EmporiumDTO emporiumDTO=new EmporiumDTO();
 		emporiumDTO.setPlayerName(emporium.getEmporiumsPlayer().getName());
 		emporiumDTO.setPlayerNumber(emporium.getEmporiumsPlayer().getPlayerNumber());

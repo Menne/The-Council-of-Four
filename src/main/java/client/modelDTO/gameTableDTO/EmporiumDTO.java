@@ -9,22 +9,19 @@ import client.modelDTO.ModelDTO;
  */
 public class EmporiumDTO implements ModelDTO {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 7152158224901304775L;
 	private int playerNumber;
 	private String playerName;
 	
 	/**
-	 * Constructor with no arguments
+	 * No-arguments constructor of EmporiumDTO
 	 */
 	public EmporiumDTO() {
 		//non-arguments constructor
 	}
 	
 	/**
-	 * Constructor with player Number
+	 * Constructor of EmporiumDTO
 	 * @param playerNumber the player number of player who owns the emporium
 	 */
 	public EmporiumDTO(int playerNumber) {
@@ -41,7 +38,7 @@ public class EmporiumDTO implements ModelDTO {
 	
 	/**
 	 * Sets the player number of player who owns the emporium
-	 * @param playerNumber
+	 * @param playerNumber is the id number to set
 	 */
 	public void setPlayerNumber(int playerNumber) {
 		this.playerNumber = playerNumber;

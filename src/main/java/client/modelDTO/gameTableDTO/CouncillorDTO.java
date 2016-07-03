@@ -13,7 +13,7 @@ public class CouncillorDTO implements ModelDTO {
 	private CardColourDTO colour;
 	
 	/**
-	 * Constructor of CouncillorDTO
+	 * No-arguments constructor of CouncillorDTO
 	 */
 	public CouncillorDTO() {
 		//non-arguments constructor
@@ -27,10 +27,17 @@ public class CouncillorDTO implements ModelDTO {
 		this.colour=cardColourDTO;
 	}
 
+	/**
+	 * @return the colour of the councillor
+	 */
 	public CardColourDTO getColour() {
 		return this.colour;
 	}
 
+	/**
+	 * Sets the colour of the councillor DTO
+	 * @param colour is the colour ogf the councillor DTO
+	 */
 	public void setColour(CardColourDTO colour) {
 		this.colour=colour;
 	}

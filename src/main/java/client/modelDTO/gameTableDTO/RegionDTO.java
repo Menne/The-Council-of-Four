@@ -31,47 +31,77 @@ public class RegionDTO implements ModelDTO{
 		this.uncoveredPermitTiles=new PermitTileDTO[2];
 	}
 	
-	
+	/**
+	 * @return the name of a generic player
+	 */
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
+	/**
+	 * Sets the name of a generic player
+	 * @param name is the player's name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
-
+	/**
+	 * @return the region balcony of councillors DTO
+	 */
 	public CouncillorDTO[] getBalcony() {
-		return balcony;
+		return this.balcony;
 	}
 
-
+	/**
+	 * Sets the council balcony of the region DTO
+	 * @param balcony is the council balcony DTO
+	 */
 	public void setBalcony(CouncillorDTO[] balcony) {
 		this.balcony = balcony;
 	}
 
-
+	/**
+	 * @return the cities DTO of the region
+	 */
 	public Set<CityDTO> getCities() {
-		return cities;
+		return this.cities;
 	}
 
+	/**
+	 * Sets the cities DTO to a region DTO
+	 * @param cities are the cities DTO
+	 */
 	public void setCities(Set<CityDTO> cities) {
 		this.cities = cities;
 	}
 
+	/**
+	 * @return the permit tiles DTO of the region
+	 */
 	public PermitTileDTO[] getUncoveredPermitTiles() {
-		return uncoveredPermitTiles;
+		return this.uncoveredPermitTiles;
 	}
 
+	/**
+	 * Sets the permit tiles DTO of the region DTO
+	 * @param uncoveredPermitTiles are the uncovered permit tiles DTO of the region
+	 */
 	public void setUncoveredPermitTiles(PermitTileDTO[] uncoveredPermitTiles) {
 		this.uncoveredPermitTiles = uncoveredPermitTiles;
 	}
 
+	/**
+	 * @return the region bonus
+	 */
 	public BonusTileDTO getRegionBonus() {
 		return regionBonus;
 	}
 
-
+	/**
+	 * Sets the region bonus to the region DTO
+	 * @param regionBonus is the region bonus
+	 */
 	public void setRegionBonus(BonusTileDTO regionBonus) {
 		this.regionBonus = regionBonus;
 	}

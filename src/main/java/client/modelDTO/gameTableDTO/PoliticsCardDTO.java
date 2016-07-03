@@ -28,10 +28,17 @@ public class PoliticsCardDTO implements ModelDTO, MarketableDTO {
 		this.colour=cardColourDTO;
 	}
 
+	/**
+	 * @return the colour of the politics card DTO
+	 */
 	public CardColourDTO getColour() {
 		return this.colour;
 	}
 
+	/**
+	 * Sets the colour of the politics card DTO
+	 * @param colour is the colour of the politics card DTO
+	 */
 	public void setColour(CardColourDTO colour) {
 		this.colour=colour;
 	}

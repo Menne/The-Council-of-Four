@@ -30,10 +30,17 @@ public class RewardTokenDTO implements ModelDTO {
 		this.bonuses=bonuses;
 	}
 
+	/**
+	 * @return the bonuses of the reward token
+	 */
 	public Set<Bonus> getBonuses() {
 		return this.bonuses;
 	}
 
+	/**
+	 * Sets the bonuses of the reward token
+	 * @param bonuses are the bonuses of the reward token
+	 */
 	public void setBonuses(Set<Bonus> bonuses) {
 		this.bonuses = bonuses;
 	}
