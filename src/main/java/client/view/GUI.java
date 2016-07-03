@@ -652,7 +652,6 @@ public class GUI extends ClientView{
 	@Override
 	public void displayMarket() {
 		Platform.runLater(()-> {
-			
 			displayMarketStuff();	
 			displayOffers();
 			controllerMarketGUI.getMakeAnOffer().setText("Start Offering");
