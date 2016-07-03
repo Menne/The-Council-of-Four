@@ -42,8 +42,8 @@ public class ChooseCityBonus implements Bonus {
 			game.notifyObserver(new PlayerServerNotify(game, game.getCurrentPlayer(), 
 					Arrays.asList(game.getCurrentPlayer())));
 			game.notifyObserver(new AvailableActionsServerNotify(Arrays.asList(new ChooseCityBonusAction(this.numberOfCities)), Arrays.asList(game.getCurrentPlayer()),
-					"Congratulations! You have the possibility to choose from the cities in which you have built"
-						+ "an emporium, and get the bonuses associated to that"));
+					"Congratulations! You have the possibility to choose from " + this.numberOfCities + 
+					" city/cities in which you have built an emporium, and get the related bonuses"));
 		}
 		else
 			game.notifyObserver(new MessageServerNotify("Unable to get bonus because you haven't build any emporiums yet!", 

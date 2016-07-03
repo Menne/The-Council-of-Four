@@ -33,7 +33,7 @@ public class ScoreBonus implements Bonus{
 	@Override
 	public void assignBonus(Game game){
 		game.getCurrentPlayer().incrementScore(scoreAdvancement);
-		game.notifyObserver(new MessageServerNotify("Congratulations! You got a bonus and your socre is increased of " 
+		game.notifyObserver(new MessageServerNotify("Congratulations! You got a bonus and your score is increased of " 
 				+ this.scoreAdvancement, Arrays.asList(game.getCurrentPlayer())));
 		
 	}

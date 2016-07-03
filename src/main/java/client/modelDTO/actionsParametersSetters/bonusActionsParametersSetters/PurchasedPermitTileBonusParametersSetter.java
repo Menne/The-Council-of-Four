@@ -24,6 +24,7 @@ public class PurchasedPermitTileBonusParametersSetter implements ActionParameter
 
 	@Override
 	public void setParameters(ClientView view, GameDTO game) {
+		view.displayMessage("Select the permit tile from which you want to get the bonus");
 		this.selectedAction.setPermitTile(view.askForPermitTileUncoveredAndCovered());
 		this.selectedAction.parametersSet();
 	}

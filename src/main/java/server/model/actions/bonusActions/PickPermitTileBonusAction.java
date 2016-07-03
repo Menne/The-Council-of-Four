@@ -53,8 +53,6 @@ public class PickPermitTileBonusAction implements Action {
 	public void notifyPlayers(Game game) {
 		game.notifyObserver(new PlayerServerNotify(game, game.getCurrentPlayer(), 
 				Arrays.asList(game.getCurrentPlayer())));
-		game.notifyObserver(new MessageServerNotify("Bonus earned successfully!", 
-				Arrays.asList(game.getCurrentPlayer())));
 	}
 
 	@Override
