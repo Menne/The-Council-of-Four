@@ -33,7 +33,11 @@ public class ChooseCityBonusAction implements Action {
 	public void setSelectedCity(List<City> selectedCities) {
 		this.selectedCities=selectedCities;
 	}
-		
+
+	public List<City> getSelectedCities() {
+		return selectedCities;
+	}
+
 	/**
 	 * Assigns the bonus of city/cities selected to the current player
 	 * @return true, if the bonus assignment went well, false otherwise
@@ -59,8 +63,6 @@ public class ChooseCityBonusAction implements Action {
 	@Override
 	public void notifyPlayers(Game game) {
 		game.notifyObserver(new PlayerServerNotify(game, game.getCurrentPlayer(), 
-				Arrays.asList(game.getCurrentPlayer())));
-		game.notifyObserver(new MessageServerNotify("Bonus earned successfully!", 
 				Arrays.asList(game.getCurrentPlayer())));
 	}
 

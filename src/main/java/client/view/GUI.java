@@ -1318,7 +1318,7 @@ public class GUI extends ClientView{
 	
 	/**
 	 * Enables the click on regions when the user has to choose form one of them, 
-	 * than disables it again to prevent a wrong setting of oher parameters
+	 * than disables it again to prevent a wrong setting of other parameters
 	 * @param disabled indicates if the buttons have to be enabled or disabled
 	 */
 	private void disablePriceInsertion(boolean disabled) {
