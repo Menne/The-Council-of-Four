@@ -652,7 +652,6 @@ public class GUI extends ClientView{
 	@Override
 	public void displayMarket() {
 		Platform.runLater(()-> {
-			
 			displayMarketStuff();	
 			displayOffers();
 			controllerMarketGUI.getMakeAnOffer().setText("Start Offering");
@@ -692,7 +691,7 @@ public class GUI extends ClientView{
 			ImageView imageView=new ImageView(imageMap.get(card));
 			controllerMarketGUI.getAvailablePoliticCards().getChildren().add(imageView);
 			imageView.setUserData(card);	
-			imageView.setFitWidth(50);
+			imageView.setFitWidth(42);
 			imageView.setPreserveRatio(true);
 			imageView.setDisable(true);
 			imageView.setOnMouseClicked((Event event)-> {
@@ -710,7 +709,7 @@ public class GUI extends ClientView{
 			ImageView imageView=new ImageView(imageMap.get(permitTileDTO));
 			controllerMarketGUI.getAvailablePermitTiles().getChildren().add(imageView);
 			imageView.setUserData(permitTileDTO);
-			imageView.setFitWidth(50);
+			imageView.setFitWidth(60);
 			imageView.setPreserveRatio(true);
 			imageView.setDisable(true);
 			imageView.setOnMouseClicked((Event event)-> {
@@ -728,7 +727,7 @@ public class GUI extends ClientView{
 		controllerMarketGUI.getAvailableAssistants().getChildren().clear();
 		for(AssistantDTO assistantDTO : clientGame.getClientPlayer().getAssistants()){
 			ImageView imageView=new ImageView(image);
-			imageView.setFitWidth(50);
+			imageView.setFitWidth(35);
 			imageView.setPreserveRatio(true);
 			imageView.setUserData(assistantDTO);
 			controllerMarketGUI.getAvailableAssistants().getChildren().add(imageView);
@@ -751,12 +750,12 @@ public class GUI extends ClientView{
 			offer.setSpacing(120);
 			Label name=new Label(offerDTO.getOfferingPlayer());
 			ImageView sellingObject=new ImageView(imageMap.get(offerDTO.getOfferedObjectDTO()));
-			sellingObject.setFitWidth(30);
+			sellingObject.setFitHeight(45);
 			sellingObject.setPreserveRatio(true);
 			Label price=new Label(String.valueOf(offerDTO.getPrice()));
 			offer.getChildren().add(name);
-			offer.getChildren().add(sellingObject);
 			offer.getChildren().add(price);
+			offer.getChildren().add(sellingObject);
 			offer.setDisable(true);
 			offer.setOnMouseClicked((Event event)-> 
 					controllerMarketGUI.handleOffers(offerDTO)					
@@ -789,12 +788,17 @@ public class GUI extends ClientView{
 	public void displayFinalRanking() {
 		Platform.runLater(()-> {
 			Alert alert=new Alert(AlertType.INFORMATION);
+			alert.setTitle("GAME OVER");
 			String string="";
 			for (int i=0; i<clientGame.getClientGameTable().getClientPlayers().size();i++){
+				if(clientGame.getClientPlayer().getPlayerNumber()==clientGame.getClientGameTable().getClientPlayers().get(i).getPlayerNumber())
+					alert.setHeaderText("The game is over!\n"
+							+ "Congratulations "+clientGame.getClientPlayer().getName()+ ", you have got the "+i+" position!");
 				string=string+String.valueOf(i+1) + "\t"+clientGame.getClientGameTable().getClientPlayers().get(i).getName() + 
 						"\tscore: " + clientGame.getClientGameTable().getClientPlayers().get(i).getScore() + "\tassistants: " +
 						clientGame.getClientGameTable().getClientPlayers().get(i).getAssistants() + "\tcards: " + 
 						clientGame.getClientGameTable().getClientPlayers().get(i).getHand() + "\n";
+				
 			}
 			alert.setContentText(string);
 			alert.showAndWait();
