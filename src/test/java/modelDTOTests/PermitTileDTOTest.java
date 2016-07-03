@@ -18,11 +18,9 @@ public class PermitTileDTOTest {
 		Set<CityDTO> buildablecities= new HashSet<>();
 		Set<Bonus> bonuses= new HashSet<>();
 		PermitTileDTO permitTile= new PermitTileDTO();
-		PermitTileDTO permitTile1= new PermitTileDTO();
 		permitTile.setBonuses(bonuses);
 		permitTile.setBuildablecities(buildablecities);
-		permitTile1.setBonuses(bonuses);
-		permitTile1.setBuildablecities(buildablecities);
+		PermitTileDTO permitTile1= new PermitTileDTO(buildablecities, bonuses);
 		assertTrue(permitTile.getBonuses()==bonuses);
 		assertTrue(permitTile.getBuildablecities()==buildablecities);
 		Set<String> cities=new HashSet<>();

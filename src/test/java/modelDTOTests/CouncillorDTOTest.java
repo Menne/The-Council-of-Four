@@ -12,10 +12,10 @@ public class CouncillorDTOTest {
 	@Test
 	public void test() {
 		CouncillorDTO councillor= new CouncillorDTO();
-		CouncillorDTO councillor1= new CouncillorDTO();
 		CardColourDTO colour= new CardColourDTO();
 		String a="blue";
 		colour.setName(a);
+		CouncillorDTO councillor1= new CouncillorDTO(colour);
 		councillor.setColour(colour);
 		councillor1.setColour(colour);
 		assertTrue(councillor.getColour()==colour);

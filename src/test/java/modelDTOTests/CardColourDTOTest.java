@@ -10,11 +10,10 @@ public class CardColourDTOTest {
 
 	@Test
 	public void test() {
-		CardColourDTO colour= new CardColourDTO();
-		CardColourDTO colour1= new CardColourDTO();
 		String name= "Blu";
+		CardColourDTO colour= new CardColourDTO();
+		CardColourDTO colour1= new CardColourDTO(name);
 		colour.setName(name);
-		colour1.setName(name);
 		assertTrue(colour.getName()==name);
 		assertEquals(name, colour.toString());
 		assertEquals(colour, colour1);
