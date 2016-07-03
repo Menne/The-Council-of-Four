@@ -96,9 +96,6 @@ public class ServerSocketView extends ServerView implements Runnable {
 				}
 				
 			} catch (ClassNotFoundException | IOException e) {
-				Logger logger=Logger.getAnonymousLogger();
-				logger.info("Socket closed");
-//				logger.log(Level.INFO, "Socket closed!", e);
 				break;
 			}
 		}

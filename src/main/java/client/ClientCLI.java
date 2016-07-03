@@ -116,16 +116,14 @@ public class ClientCLI {
 			String ip=scanner.nextLine();
 			try{
 				if("RMI".equals(stringConnection)){
-					this.startSocketClient(ip);
-					return;
-				}
-				else{
 					this.startRMIClient(ip);
 					return;
 				}
+				else{
+					this.startSocketClient(ip);
+					return;
+				}
 			}catch(SocketException | RemoteException e){
-				Logger logger=Logger.getAnonymousLogger();
-				logger.log(Level.INFO, "No such server for this address", e);
 				print("Server Unreachable. Try again");
 			} 
 		}
