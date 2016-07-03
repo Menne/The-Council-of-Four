@@ -53,6 +53,11 @@ public class EmporiumDTO implements ModelDTO {
 		if (playerNumber != other.playerNumber)
 			return false;
 		return true;
-	}	
+	}
 
+	@Override
+	public String toString() {
+		return "EmporiumDTO [playerName=" + playerName + "]";
+	}	
+	
 }

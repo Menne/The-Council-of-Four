@@ -18,6 +18,7 @@ public class OfferTest {
 		assertTrue(a== offer.getOfferingPlayer());
 		assertTrue(assistant== offer.getOfferedObject());
 		assertEquals(5, offer.getPrice());
+		assertEquals("offeredObject=" + assistant, offer.toString());
 	}
 
 }
