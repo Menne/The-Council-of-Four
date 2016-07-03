@@ -1,5 +1,6 @@
 package server.model.gameTable;
  
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -41,8 +42,10 @@ public class GameTable {
 		this.politicsDeck=politicsDeck;
 		this.kingRewardTiles=kingRewardTiles;
 		this.nobilityTrack=nobilityTrack;
-		for(RegionBoard region : this.regionBoards)
+		for(RegionBoard region : this.regionBoards){
+			Collections.shuffle(region.getRegionPermitDeck().getPermitTiles());
 			region.uncoverPermitTiles();
+		}
 		City kingCity=null;
 		int i=0;
 		for(RegionBoard region : this.regionBoards)
