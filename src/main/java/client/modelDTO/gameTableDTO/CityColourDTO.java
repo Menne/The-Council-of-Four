@@ -12,10 +12,17 @@ public class CityColourDTO implements ModelDTO{
 	private static final long serialVersionUID = -2914098238189404754L;
 	private String name;
 
+	/**
+	 * @return the name of the colour of the city DTO
+	 */
 	public String getName() {
 		return this.name;
 	}
 
+	/**
+	 * Sets the colour name of the city DTO
+	 * @param colour is the colour name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}

@@ -21,7 +21,7 @@ public class CityDTO implements ModelDTO{
 	private RewardTokenDTO rewardToken;
 	
 	/**
-	 * Constructor of CityDTO
+	 * No-arguments constructor of CityDTO
 	 */
 	public CityDTO(){		
 		this.buildedEmporiums=new HashSet<>();
@@ -35,35 +35,62 @@ public class CityDTO implements ModelDTO{
 		this.name=name;
 	}
 	
+	/**
+	 * @return the name of the city
+	 */
 	public String getName() {
 		return this.name;
 	}
 
+	/**
+	 * Sets the name to the city
+	 * @param name is the name to set
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
-
+	/**
+	 * @return the name of the colour of the city
+	 */
 	public CityColourDTO getColour() {
 		return this.colour;
 	}
 
+	/**
+	 * Sets the name of the colour to the city
+	 * @param colour is the colour to set
+	 */
 	public void setColour(CityColourDTO colour) {
 		this.colour = colour;
 	}
 
+	/**
+	 * @return the emporiums built in the city
+	 */
 	public Set<EmporiumDTO> getBuildedEmporiums() {
 		return buildedEmporiums;
 	}
 
+	/**
+	 * Sets the emporiums in the city
+	 * @param buildedEmporiums are the emporiums built in the city
+	 */
 	public void setBuildedEmporiums(Set<EmporiumDTO> buildedEmporiums) {
 		this.buildedEmporiums = buildedEmporiums;
 	}
 
+	/**
+	 * @return the reward token of the city
+	 */
 	public RewardTokenDTO getRewardToken() {
 		return this.rewardToken;
 	}
 
+	/**
+	 * Sets a token to the city DTO
+	 * @param rewardToken is the token to set to the city
+	 */
 	public void setRewardToken(RewardTokenDTO rewardToken) {
 		this.rewardToken = rewardToken;
 	}
