@@ -37,7 +37,7 @@ public class Game extends Observable<ServerViewNotify>{
 	private State state;
 	private boolean lastLap;
 	private static final int initialNumberOfCards=6;
-	private static final int intialNumberOfEmporiums=1;
+	private static final int intialNumberOfEmporiums=10;
 	private final List<Player> quittedPlayers;
 	private GameDTOMapper gameMapper;
 	private int mapNumber;

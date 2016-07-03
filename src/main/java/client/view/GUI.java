@@ -786,19 +786,19 @@ public class GUI extends ClientView{
 	}
 	
 	@Override
-	public void displayFinalRanking() {
+	public void displayFinalRanking(List<GenericPlayerDTO> finalRankingTableDTO) {
 		Platform.runLater(()-> {
 			Alert alert=new Alert(AlertType.INFORMATION);
 			alert.setTitle("GAME OVER");
 			String string="";
-			for (int i=0; i<clientGame.getClientGameTable().getClientPlayers().size();i++){
-				if(clientGame.getClientPlayer().getPlayerNumber()==clientGame.getClientGameTable().getClientPlayers().get(i).getPlayerNumber())
+			for (int i=0; i<finalRankingTableDTO.size();i++){
+				if(clientGame.getClientPlayer().getPlayerNumber()==finalRankingTableDTO.get(i).getPlayerNumber())
 					alert.setHeaderText("The game is over!\n"
-							+ "Congratulations "+clientGame.getClientPlayer().getName()+ ", you have got the "+i+" position!");
-				string=string+String.valueOf(i+1) + "\t"+clientGame.getClientGameTable().getClientPlayers().get(i).getName() + 
-						"\tscore: " + clientGame.getClientGameTable().getClientPlayers().get(i).getScore() + "\tassistants: " +
-						clientGame.getClientGameTable().getClientPlayers().get(i).getAssistants() + "\tcards: " + 
-						clientGame.getClientGameTable().getClientPlayers().get(i).getHand() + "\n";
+							+ "Congratulations "+clientGame.getClientPlayer().getName()+ ", you have got the "+ String.valueOf(i+1) +" position!");
+				string=string+String.valueOf(i+1) + "\t"+finalRankingTableDTO.get(i).getName() + 
+						"\tscore: " + finalRankingTableDTO.get(i).getScore() + "\tassistants: " +
+						finalRankingTableDTO.get(i).getAssistants() + "\tcards: " + 
+						finalRankingTableDTO.get(i).getHand() + "\n";
 				
 			}
 			alert.setContentText(string);

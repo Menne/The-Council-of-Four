@@ -20,6 +20,7 @@ import client.modelDTO.actionsDTO.QuitDTO;
 import client.modelDTO.gameTableDTO.CardColourDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.CouncillorDTO;
+import client.modelDTO.gameTableDTO.GenericPlayerDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
 import client.modelDTO.gameTableDTO.PoliticsCardDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
@@ -142,9 +143,8 @@ public class CLI extends ClientView {
 	}
 	
 	@Override
-	public void displayFinalRanking() {
-		print("GAME OVER\n FINAL RANKING TABLE: \n" + 
-				this.clientGame.getClientGameTable().getClientPlayers());
+	public void displayFinalRanking(List<GenericPlayerDTO> finalRankingTableDTO) {
+		print("GAME OVER\n FINAL RANKING TABLE: \n" + finalRankingTableDTO);
 	}
 	
 	@Override

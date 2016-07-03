@@ -9,6 +9,7 @@ import client.modelDTO.GameDTO;
 import client.modelDTO.actionsDTO.AddPlayerDTO;
 import client.modelDTO.gameTableDTO.CityDTO;
 import client.modelDTO.gameTableDTO.CouncillorDTO;
+import client.modelDTO.gameTableDTO.GenericPlayerDTO;
 import client.modelDTO.gameTableDTO.PermitTileDTO;
 import client.modelDTO.gameTableDTO.PoliticsCardDTO;
 import client.modelDTO.gameTableDTO.RegionDTO;
@@ -109,9 +110,10 @@ public abstract class ClientView implements Observer<ClientViewNotify> {
 	
 	/**
 	 * This method displays to the view the final ranking of the game which has just terminated
+	 * @param finalRankingTableDTO 
 	 * @param finalRankingTable is the list of players with the relative informations
 	 */
-	public abstract void displayFinalRanking();
+	public abstract void displayFinalRanking(List<GenericPlayerDTO> finalRankingTableDTO);
 	
 	/**
 	 * This method displays a chat message form another player in a proper way according to the selected view

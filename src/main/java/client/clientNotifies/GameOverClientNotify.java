@@ -1,5 +1,8 @@
 package client.clientNotifies;
 
+import java.util.List;
+
+import client.modelDTO.gameTableDTO.GenericPlayerDTO;
 import client.view.ClientView;
 
 /**
@@ -9,9 +12,15 @@ import client.view.ClientView;
  */
 public class GameOverClientNotify implements ClientViewNotify {
 	
+	private final List<GenericPlayerDTO> finalRankingTableDTO;
+
+	public GameOverClientNotify(List<GenericPlayerDTO> finalRankingTableDTO) {
+		this.finalRankingTableDTO=finalRankingTableDTO;
+	}
+
 	@Override
 	public void updateView(ClientView view) {
-		view.displayFinalRanking();
+		view.displayFinalRanking(this.finalRankingTableDTO);
 	}
 
 }

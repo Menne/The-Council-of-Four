@@ -29,17 +29,18 @@ public class State01 implements State {
 		game.notifyObserver(new AvailableActionsServerNotify(Arrays.asList(), 
 				Arrays.asList(game.getCurrentPlayer()), 
 				"Ok, your turn is over now. I will notify you when it will be your turn again"));
+		if (game.getPlayers().size()==1){
+			game.nextPlayer();
+			return new EndGameState();
+		}
+		
 		if (!game.getCurrentPlayer().equals(game.lastPlayer())){
 			game.nextPlayer();
 			return new BeginState();
 		}
-		else if(!game.isLastLap()){
+		else {
 			game.startMarket();
 			return new SellingState();
-		}
-		else{
-			game.nextPlayer();
-			return new BeginState();
 		}
 	}
 
@@ -60,17 +61,17 @@ public class State01 implements State {
 		game.notifyObserver(new AvailableActionsServerNotify(Arrays.asList(), 
 				Arrays.asList(game.getCurrentPlayer()), 
 				"Ok, I will notify you when it will be your turn again"));
+		if (game.getPlayers().size()==1){
+			game.nextPlayer();
+			return new EndGameState();
+		}
 		if (!game.getCurrentPlayer().equals(game.lastPlayer())){
 			game.nextPlayer();
 			return new BeginState();
 		}
-		else if(!game.isLastLap()){
+		else {
 			game.startMarket();
 			return new SellingState();
-		}
-		else{
-			game.nextPlayer();
-			return new BeginState();
 		}
 			
 		

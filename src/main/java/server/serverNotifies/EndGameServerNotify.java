@@ -34,8 +34,7 @@ public class EndGameServerNotify implements ServerViewNotify {
 		ArrayList<GenericPlayerDTO> finalRankingTableDTO=new ArrayList<>();
 		for (Player player : this.finalRankingTable)
 			finalRankingTableDTO.add(this.game.getGameMapper().genericPlayerMap(player));
-		return new EndGameUpdate();
-		
+		return new EndGameUpdate(finalRankingTableDTO);
 	}
 
 	@Override
