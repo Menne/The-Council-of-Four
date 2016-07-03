@@ -29,8 +29,10 @@ public class MoveToNextTest {
 		MoveToNext action= new MoveToNext();
 		List<Player> players = new ArrayList<>();
 		Player a = new Player("Andre");
+		Player b = new Player("Andre");
 		a.setPlayerNumber(1);
 		players.add(a);
+		players.add(b);
 		game.start(players);
 		game.setState(new State01());
 		assertTrue(action.executeAction(game));
