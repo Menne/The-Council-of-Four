@@ -2,6 +2,11 @@ package client.modelDTO.gameTableDTO;
 
 import client.modelDTO.ModelDTO;
 
+/**
+ * This class provides all the informations about an emporium, but without logic
+ * @author cg31
+ *
+ */
 public class EmporiumDTO implements ModelDTO {
 
 	/**
@@ -11,24 +16,48 @@ public class EmporiumDTO implements ModelDTO {
 	private int playerNumber;
 	private String playerName;
 	
+	/**
+	 * Constructor with no arguments
+	 */
 	public EmporiumDTO() {
 		//non-arguments constructor
 	}
 	
+	/**
+	 * Constructor with player Number
+	 * @param playerNumber the player number of player who owns the emporium
+	 */
 	public EmporiumDTO(int playerNumber) {
 		this.playerNumber=playerNumber;
 	}
 	
 
+	/**
+	 * @return the player number of player who owns the emporium
+	 */
 	public int getPlayerNumber() {
 		return playerNumber;
 	}
+	
+	/**
+	 * Sets the player number of player who owns the emporium
+	 * @param playerNumber
+	 */
 	public void setPlayerNumber(int playerNumber) {
 		this.playerNumber = playerNumber;
 	}
+	
+	/**
+	 * @return the player name of player who owns the emporium
+	 */
 	public String getPlayerName() {
 		return playerName;
 	}
+	
+	/**
+	 * Sets the player number of player who owns the emporium
+	 * @param playerName
+	 */
 	public void setPlayerName(String playerName) {
 		this.playerName = playerName;
 	}
