@@ -31,7 +31,7 @@ public class PurchasedPermitTileBonus implements Bonus {
 	 */
 	@Override
 	public void assignBonus(Game game) {
-		if (!game.getCurrentPlayer().getPlayersPermitTilesTurnedUp().isEmpty()) {
+		if (!(game.getCurrentPlayer().getPlayersPermitTilesTurnedUp().isEmpty() && game.getCurrentPlayer().getPlayersPermitTilesTurnedDown().isEmpty())) {
 			game.setState(game.getState().interactiveBonusTransition());
 			game.notifyObserver(new GameTableServerNotify(game, Arrays.asList(game.getCurrentPlayer()),false));
 			game.notifyObserver(new PlayerServerNotify(game, game.getCurrentPlayer(), 

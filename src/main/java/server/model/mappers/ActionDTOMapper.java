@@ -224,8 +224,11 @@ public class ActionDTOMapper implements ActionMapperVisitor{
 	@Override
 	public PurchasedPermitTileAction map(PurchasedPermitTileActionDTO selectedActionDTO) {
 		PurchasedPermitTileAction action=new PurchasedPermitTileAction();
+		List<PermitTile> availablePermitTiles=new ArrayList<>();
+		availablePermitTiles.addAll(this.game.getCurrentPlayer().getPlayersPermitTilesTurnedUp());
+		availablePermitTiles.addAll(this.game.getCurrentPlayer().getPlayersPermitTilesTurnedDown());
 		
-		for (PermitTile permitTile : this.game.getCurrentPlayer().getPlayersPermitTilesTurnedUp())
+		for (PermitTile permitTile : availablePermitTiles)
 			if (permitTile.getBonuses().equals(selectedActionDTO.getSelectedPermitTile().getBonuses())&&
 					checkBuildableCities(permitTile.getBuildableCities(), selectedActionDTO.getSelectedPermitTile()))
 				action.setSelectedPermitTile(permitTile);
