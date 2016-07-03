@@ -26,15 +26,15 @@ public class PickPoliticsCard implements Action {
 	public boolean executeAction(Game game) {
 		game.getCurrentPlayer().getHand().add(game.getGameTable().getPoliticsDeck().pickCard());
 		
-		this.notifyPlayers(game);
+		this.updateClients(game);
 		game.setState(game.getState().pickPoliticsCardTransition());
-		game.getState().updateClients(game);
+		game.getState().updateAvailableActions(game);
 		
 		return true;
 	}
 	
 	@Override
-	public void notifyPlayers(Game game) {
+	public void updateClients(Game game) {
 		game.notifyObserver(new PlayerServerNotify(game, game.getCurrentPlayer(), 
 				Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new MessageServerNotify("Card picked!", 

@@ -1,5 +1,6 @@
 package server.model.actions.bonusActions;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import client.modelDTO.actionsDTO.ActionDTO;
@@ -7,6 +8,8 @@ import client.modelDTO.actionsDTO.bonusActions.PickPermitTileActionDTO;
 import server.model.Game;
 import server.model.actions.Action;
 import server.model.gameTable.RegionBoard;
+import server.model.player.Player;
+import server.serverNotifies.GameTableServerNotify;
 import server.serverNotifies.PlayerServerNotify;
 
 /**
@@ -49,16 +52,17 @@ public class PickPermitTileBonusAction implements Action {
 		game.getCurrentPlayer().addTile(this.selectedRegion.pickUncoveredPermitTile(this.numberOfPermitTile));
 		this.selectedRegion.uncoverPermitTiles();
 		
-		this.notifyPlayers(game);
+		this.updateClients(game);
 		game.setState(game.getState().moveToNextTransition(game));
-		game.getState().updateClients(game);
+		game.getState().updateAvailableActions(game);
 		
 		return true;
 	}
 	
 	
 	@Override
-	public void notifyPlayers(Game game) {
+	public void updateClients(Game game) {
+		game.notifyObserver(new GameTableServerNotify(game, new ArrayList<Player>(game.getPlayers()), false));
 		game.notifyObserver(new PlayerServerNotify(game, game.getCurrentPlayer(), 
 				Arrays.asList(game.getCurrentPlayer())));
 	}

@@ -10,6 +10,7 @@ import server.model.Game;
 import server.model.actions.QuickAction;
 import server.model.player.Player;
 import server.serverNotifies.ErrorServerNotify;
+import server.serverNotifies.GameTableServerNotify;
 import server.serverNotifies.MessageServerNotify;
 import server.serverNotifies.PlayerServerNotify;
 
@@ -42,16 +43,17 @@ public class AdditionalMainAction implements QuickAction {
 		
 		game.getCurrentPlayer().decrementAssistants(necessaryAssistants);
 	
-		this.notifyPlayers(game);
+		this.updateClients(game);
 		game.setState(game.getState().additionalMainActionTransition());
-		game.getState().updateClients(game);
+		game.getState().updateAvailableActions(game);
 		
 		return true;
 	}
 	
 	
 	@Override
-	public void notifyPlayers(Game game) {
+	public void updateClients(Game game) {
+		game.notifyObserver(new GameTableServerNotify(game, new ArrayList<Player>(game.getPlayers()), false));
 		game.notifyObserver(new PlayerServerNotify(game, game.getCurrentPlayer(), 
 				Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new MessageServerNotify("Action completed succesfully!", 
@@ -61,7 +63,7 @@ public class AdditionalMainAction implements QuickAction {
 			if (!player.equals(game.getCurrentPlayer()))
 				otherPlayers.add(player);
 		game.notifyObserver(new MessageServerNotify(game.getCurrentPlayer().getName()
-				+ "vgot an additional main action", otherPlayers));
+				+ "got an additional main action", otherPlayers));
 	}
 
 	@Override

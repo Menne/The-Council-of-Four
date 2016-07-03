@@ -22,11 +22,11 @@ public abstract interface Action {
 	public abstract boolean executeAction(Game game);
 	
 	/**
-	 * Notifies the current player that the action went successfully, 
-	 * and the other players what action the current player decided to do
+	 * Notifies the current player that the action went successfully, and updates the client game status, 
+	 * and notifies the other players what action the current player decided to do
 	 * @param game is the current game status
 	 */
-	public abstract void notifyPlayers(Game game);
+	public abstract void updateClients(Game game);
 	
 	/**
 	 * Maps an action to its corresponding DTO object

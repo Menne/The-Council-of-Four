@@ -85,7 +85,7 @@ public class Game extends Observable<ServerViewNotify>{
 		for (Player player : this.players) 
 			this.notifyObserver(new PlayerServerNotify(this, player, Arrays.asList(player)));
 		this.notifyObserver(new GameTableServerNotify(this, players, true));
-		this.state.updateClients(this);
+		this.state.updateAvailableActions(this);
 	}
 
 	/**

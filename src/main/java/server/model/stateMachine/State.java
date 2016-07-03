@@ -86,16 +86,16 @@ public interface State{
 	}
 	
 	/**
-	 * @param game current game
+	 * @param game is the current game
 	 * @return the available actions for this state
 	 */
 	public List<Action> getAcceptableActions(Game game);
 	
 	/**
-	 * Sends the notifies to the clients relative to this state
-	 * @param game current game
+	 * Sends the list of available actions of a player depending on the state in which the player is
+	 * @param game is the current game
 	 */
-	public void updateClients(Game game);
+	public void updateAvailableActions(Game game);
 
 
 	
