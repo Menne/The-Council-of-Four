@@ -19,7 +19,7 @@ import server.model.gameTable.City;
 import server.model.gameTable.Councillor;
 import server.model.gameTable.PoliticsCard;
 import server.model.player.Player;
-import server.model.stateMachine.SellingState;
+import server.model.stateMachine.BeginState;
 import server.model.stateMachine.State01;
 import server.model.stateMachine.State10;
 import server.model.stateMachine.State11;
@@ -118,7 +118,6 @@ public class BuildByKingTest {
 		action.setSelectedCity(city2);
 		assertTrue(action.executeAction(game));
 		assertEquals(oldCoins-6, a.getCoins());
-		assertEquals(SellingState.class, game.getState().getClass());
 	}
 	
 	@Test
