@@ -8,16 +8,17 @@ import server.model.actions.Action;
 /**
  * The interface for the State machine pattern.
  * We have four states for the standard game phase, other two states for the market phase and other two states to handle interactive bonus.
- * In each of these states the current player can only do the available actions for the state.
+ * In each of these states the current player can only do the available actions of the state.
+ * All concrete state of the pattern will override just the methods for which the relative transition is allowed in that state.
  * @author cg31
  *
  */
 public interface State{
 	
 	/**
+	 * In addition to return the next state, it will change the current player if it's necessary.
 	 * @param game current game.
 	 * @return the next state after a main action execution
-	 * @throws IllegalStateException if the state has no main actions as available actions
 	 */
 	public default State mainActionTransition(Game game){
 		
@@ -25,9 +26,9 @@ public interface State{
 	}
 
 	/**
+	 * In addition to return the next state, it will change the current player if it's necessary
 	 * @param game current game
 	 * @return the next state after a quick action execution
-	 * @throws IllegalStateException if the state has no quick actions as available actions
 	 */
 	public default State quickActionTransition(Game game){
 		
@@ -35,8 +36,8 @@ public interface State{
 	}
 	
 	/**
+	 * This transition is allowed only in the begin state 
 	 * @return the next state after a PickPoliticsCard execution
-	 * @throws IllegalStateException if the state doesn't have PickPoliticsCard as available actions
 	 */
 	public default State pickPoliticsCardTransition() {
 		
@@ -44,8 +45,8 @@ public interface State{
 	}
 
 	/**
+	 * Market phase transition
 	 * @return the next state after a SellAction execution
-	 * @throws IllegalStateException if the state doesn't have SellAction as available actions
 	 */
 	public default State sellActionTransition(Game game) {
 		
@@ -53,8 +54,8 @@ public interface State{
 	}
 
 	/**
+	 * Market phase transition
 	 * @return the next state after a BuyAction execution
-	 * @throws IllegalStateException if the state doesn't have BuyAction as available actions
 	 */
 	public default State buyActionTransition(Game game){
 		
@@ -62,14 +63,14 @@ public interface State{
 	}
 
 	/**
+	 * It's the transition relative to the skip action. It will change the current player.
 	 * @return the next state after a MoveToNext execution
-	 * @throws IllegalStateException if the state doesn't have MoveToNext as available actions
 	 */
 	public State moveToNextTransition(Game game);
 	
 	/**
+	 * Additional main action is a particular quick action
 	 * @return the next state after an Additional Main Action execution
-	 * @throws IllegalStateException if the state doesn't have AditionalMainAction as available actions
 	 */
 	public default State additionalMainActionTransition(){
 		
@@ -77,8 +78,8 @@ public interface State{
 	}
 	
 	/**
+	 * Transition relative to the three interactive bonuses
 	 * @return the next state after an interactive bonus execution
-	 * @throws IllegalStateException if the state doesn't have InteractiveBonus as available actions
 	 */
 	public default State interactiveBonusTransition(){
 		
@@ -87,7 +88,7 @@ public interface State{
 	
 	/**
 	 * @param game is the current game
-	 * @return the available actions for this state
+	 * @return the available actions of the state
 	 */
 	public List<Action> getAcceptableActions(Game game);
 	

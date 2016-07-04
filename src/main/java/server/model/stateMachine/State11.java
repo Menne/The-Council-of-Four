@@ -43,9 +43,6 @@ public class State11 implements State {
 		return new InteractiveBonusState(this);
 	}
 	
-	/**
-	 * returns a list of acceptable actions of this state
-	 */
 	@Override
 	public List<Action> getAcceptableActions(Game game) {
 		return Arrays.asList(
@@ -60,10 +57,6 @@ public class State11 implements State {
 
 	
 
-	/**
-	 *if current player is the last one, it returns a new BeginState,
-	 *else it returns a new SellingState
-	 */
 	@Override
 	public State moveToNextTransition(Game game) {
 		if (!game.getCurrentPlayer().equals(game.lastPlayer())){
@@ -76,9 +69,6 @@ public class State11 implements State {
 		}
 	}
 	
-	/**
-	 * sends GameTableNotify, PlayerNotify, AvailableActionNotify to the clients
-	 */
 	@Override
 	public void updateAvailableActions(Game game) {
 		game.notifyObserver(new AvailableActionsServerNotify(game.getState().getAcceptableActions(game), 

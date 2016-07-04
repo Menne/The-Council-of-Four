@@ -20,11 +20,7 @@ import server.serverNotifies.AvailableActionsServerNotify;
  */
 public class State10 implements State{
 	
-	/**
-	 * coordinates the transition caused by a main action
-	 * if the current player is not the last one, it returns a new Begin State changing the current player
-	 * else it returns a new Selling State
-	 */
+
 	@Override
 	public State mainActionTransition(Game game) {
 		game.notifyObserver(new AvailableActionsServerNotify(Arrays.asList(), 
@@ -44,10 +40,6 @@ public class State10 implements State{
 		}
 	}
 	
-	/**
-	 *if current player is the last one, it returns a new BeginState,
-	 *else it returns a new SellingState
-	 */
 	@Override
 	public State moveToNextTransition(Game game){
 		if(game.getPlayers().size()==1){
@@ -64,25 +56,18 @@ public class State10 implements State{
 		}
 	}
 	
-	/**
-	 *returns a new State10 after an additional main action bonus.
-	 */
 	@Override
 	public State additionalMainActionTransition() {
 		return new AdditionalMainActionBonusState(this);
 	}
 	
-	/**
-	 * returns a new InteractiveBonusState 
-	 */
+
 	@Override
 	public State interactiveBonusTransition() {
 		return new InteractiveBonusState(this);
 	}
 	
-	/**
-	 * returns a list of acceptable actions of this state
-	 */
+
 	@Override
 	public List<Action> getAcceptableActions(Game game) {
 		return Arrays.asList(
@@ -92,9 +77,7 @@ public class State10 implements State{
 				new BuildByKing());
 	}
 
-	/**
-	 * sends GameTableNotify, PlayerNotify, AvailableActionNotify to the clients
-	 */
+
 	@Override
 	public void updateAvailableActions(Game game) {
 		game.notifyObserver(new AvailableActionsServerNotify(game.getState().getAcceptableActions(game), 
