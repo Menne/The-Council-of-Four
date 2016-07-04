@@ -28,10 +28,21 @@ import client.modelDTO.marketDTO.MarketableDTO;
 import client.modelDTO.marketDTO.OfferDTO;
 import server.model.gameTable.CouncilBalcony;
 
+/**
+ * The command line interface, with all the logic required to display content to the user 
+ * and to interact with him
+ * @author cg31
+ *
+ */
 public class CLI extends ClientView {
 
 	private final Scanner scanner;
 
+	/**
+	 * Constructor of CLI
+	 * @param connection is the connection that the view uses to send objects
+	 * @param clientGame is the client game status
+	 */
 	public CLI(Connection connection, GameDTO clientGame) {
 		super(connection, clientGame);
 		this.scanner=new Scanner(System.in);

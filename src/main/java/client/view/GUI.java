@@ -79,6 +79,12 @@ import server.model.bonuses.PoliticsCardsBonus;
 import server.model.bonuses.ScoreBonus;
 import server.model.gameTable.CouncilBalcony;
 
+/**
+ * The graphical user interface, with all the logic required to display content to the user 
+ * and to interact with him
+ * @author cg31
+ *
+ */
 public class GUI extends ClientView{
 
 	private ControllerMarketGUI controllerMarketGUI;
@@ -89,6 +95,12 @@ public class GUI extends ClientView{
 	private final ImageView king;
 	private TextArea currentTextArea;
 	
+	/**
+	 * Constructor of GUI
+	 * @param connection is the connection that the view uses to send objects
+	 * @param clientGame is the client game status
+	 * @param controllerGUI is the class that controls the interaction with FXML file
+	 */
 	public GUI(Connection connection, GameDTO clientGame, ControllerGUI controllerGUI) {
 		super(connection, clientGame);
 		this.controllerGUI=controllerGUI;
