@@ -9,7 +9,7 @@ import server.model.actions.Action;
  * The interface for the State machine pattern.
  * We have four states for the standard game phase, other two states for the market phase and other two states to handle interactive bonus.
  * In each of these states the current player can only do the available actions for the state.
- * @author Luca Scannapieco
+ * @author cg31
  *
  */
 public interface State{

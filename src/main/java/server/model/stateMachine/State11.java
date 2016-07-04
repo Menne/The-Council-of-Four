@@ -18,7 +18,7 @@ import server.serverNotifies.AvailableActionsServerNotify;
 
 /**
  * Models the state in which the current player has the possibility to do a main action or a quick action
- * @author andreapasquali
+ * @author cg31
  *
  */
 public class State11 implements State {

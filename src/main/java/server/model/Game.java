@@ -20,12 +20,13 @@ import server.model.stateMachine.BeginState;
 import server.model.stateMachine.State;
 import server.serverNotifies.EndGameServerNotify;
 import server.serverNotifies.GameTableServerNotify;
+import server.serverNotifies.MessageServerNotify;
 import server.serverNotifies.PlayerServerNotify;
 import server.serverNotifies.ServerViewNotify;
 
 /**
  * contains all the informations of the game
- * @author andreapasquali
+ * @author cg31
  *
  */
 public class Game extends Observable<ServerViewNotify>{
@@ -84,6 +85,7 @@ public class Game extends Observable<ServerViewNotify>{
 		for (Player player : this.players) 
 			this.notifyObserver(new PlayerServerNotify(this, player, Arrays.asList(player)));
 		this.notifyObserver(new GameTableServerNotify(this, this.allPlayers, true));
+		this.notifyObserver(new MessageServerNotify("Game Started!", this.allPlayers));
 		this.state.updateAvailableActions(this);
 	}
 
@@ -113,7 +115,7 @@ public class Game extends Observable<ServerViewNotify>{
 		this.assignBonusPermitTilesEndGame();
 		this.assignBonusNobilityEndGame();
 		this.sortFinalRankingTable();
-		notifyObserver(new EndGameServerNotify(this, quittedPlayers));
+		this.notifyObserver(new EndGameServerNotify(this, this.quittedPlayers));
 	}
 	
 	/**

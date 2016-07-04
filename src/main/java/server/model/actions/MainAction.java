@@ -4,7 +4,7 @@ import server.model.Game;
 
 /**
  * The class that models the generic main actions of the game.
- * @author Luca
+ * @author cg31
  *
  */
 public interface MainAction extends Action {

@@ -57,7 +57,7 @@ public class EngageAssistant implements QuickAction {
 		game.notifyObserver(new MessageServerNotify("Assistant engaged succesfully!", 
 				Arrays.asList(game.getCurrentPlayer())));
 		List<Player> otherPlayers=new ArrayList<>();
-		for (Player player : game.getPlayers())
+		for (Player player : game.getAllPlayers())
 			if (!player.equals(game.getCurrentPlayer()))
 				otherPlayers.add(player);
 		game.notifyObserver(new MessageServerNotify(game.getCurrentPlayer().getName()

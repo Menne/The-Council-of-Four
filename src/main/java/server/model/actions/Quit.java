@@ -69,8 +69,8 @@ public class Quit implements Action {
 
 	@Override
 	public void updateClients(Game game) {
-		game.notifyObserver(new MessageServerNotify(game.getCurrentPlayer().getName()
-				+ " has left the game", game.getPlayers()));
+		game.notifyObserver(new MessageServerNotify(game.getQuittedPlayers().get
+				(game.getQuittedPlayers().size()-1).getName() + " has left the game", game.getPlayers()));
 	}
 
 }

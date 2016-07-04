@@ -15,7 +15,7 @@ import server.serverNotifies.AvailableActionsServerNotify;
 
 /**
  * Models the state in which the current player has only the possibility to do a main action 
- * @author andreapasquali
+ * @author cg31
  *
  */
 public class State10 implements State{
