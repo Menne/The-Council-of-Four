@@ -18,7 +18,6 @@ import server.model.gameTable.Emporium;
 import server.model.gameTable.PermitTile;
 import server.model.gameTable.PoliticsCard;
 import server.model.player.Player;
-import server.model.stateMachine.State01;
 import server.model.stateMachine.State11;
 
 public class BuildByPermitTileTest {
@@ -32,6 +31,7 @@ public class BuildByPermitTileTest {
 		Player b = new Player("Andre");
 		players.add(b);
 		a.setPlayerNumber(1);
+		b.setPlayerNumber(2);
 		players.add(a);
 		game.start(players);
 		game.setCurrentPlayer(a);
@@ -57,7 +57,6 @@ public class BuildByPermitTileTest {
 		discard.addAll(game.getCurrentPlayer().getHand());
 		acquire.setCardsToDescard(discard);
 		assertTrue(acquire.executeAction(game));
-		assertEquals(State01.class, game.getState().getClass());
 		assertTrue(tile==game.getCurrentPlayer().getPlayersPermitTilesTurnedUp().get(0));
 		Iterator<City> it= tile.getBuildableCities().iterator();
 		City selectedCity= it.next();
@@ -150,7 +149,6 @@ public class BuildByPermitTileTest {
 		discard.addAll(game.getCurrentPlayer().getHand());
 		acquire.setCardsToDescard(discard);
 		assertTrue(acquire.executeAction(game));
-		//assertEquals(State01.class, game.getState().getClass());
 		assertTrue(tile==game.getCurrentPlayer().getPlayersPermitTilesTurnedUp().get(0));
 		game.setState(new State11());
 		BuildByPermitTile action= new BuildByPermitTile();
@@ -193,7 +191,6 @@ public class BuildByPermitTileTest {
 		discard.addAll(game.getCurrentPlayer().getHand());
 		acquire.setCardsToDescard(discard);
 		assertTrue(acquire.executeAction(game));
-		//assertEquals(State01.class, game.getState().getClass());
 		assertTrue(tile==game.getCurrentPlayer().getPlayersPermitTilesTurnedUp().get(0));
 		Iterator<City> it= tile.getBuildableCities().iterator();
 		City selectedCity= it.next();
