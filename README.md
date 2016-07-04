@@ -10,3 +10,6 @@ NB se si usa la CLI:
 
 Implementazione market:
 -il market prevede che un giocatore possa mettere in vendita più di un oggetto nella fase di vendita, mentre può sceglierne solo uno da comprare nella fase di compera
+
+Scelta mappa:
+-Da GUI il primo gicatore di ogni partita avrà la facoltà di scegliere la mappa del gioco tra le 8 disponibili, se il timer di inizio parita scade prima che venga selezionata una mappa, il gioco parte con la mappa di default (nr 1)
