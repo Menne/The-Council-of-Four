@@ -19,11 +19,7 @@ import server.serverNotifies.AvailableActionsServerNotify;
  */
 public class State01 implements State {
 
-	/**
-	 * coordinates the transition caused by a quick action
-	 * if the current player is not the last one, it returns a new Begin State changing the current player
-	 * else it returns a new Selling State
-	 */
+
 	@Override
 	public State quickActionTransition(Game game) {
 		game.notifyObserver(new AvailableActionsServerNotify(Arrays.asList(), 
@@ -44,18 +40,11 @@ public class State01 implements State {
 		}
 	}
 
-	/**
-	 *returns a new State10 after an additional main action bonus.
-	 */
 	@Override
 	public State additionalMainActionTransition() {
 		return new State10();
 	}
 
-	/**
-	 *if current player is the last one, it returns a new BeginState,
-	 *else it returns a new SellingState
-	 */
 	@Override
 	public State moveToNextTransition(Game game) {
 		game.notifyObserver(new AvailableActionsServerNotify(Arrays.asList(), 

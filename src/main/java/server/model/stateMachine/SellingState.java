@@ -12,6 +12,11 @@ import server.model.player.Player;
 import server.serverNotifies.AvailableActionsServerNotify;
 import server.serverNotifies.MarketServerNotify;
 
+/**
+ * Models the market state in the current player can make an offer 
+ * @author cg31
+ *
+ */
 public class SellingState implements State {
 
 	@Override
