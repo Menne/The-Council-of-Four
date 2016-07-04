@@ -9,10 +9,9 @@ import org.jgrapht.alg.DijkstraShortestPath;
 
 /**
  * The gameMap modelized as a simple graph
- * @author Luca
+ * @author cg31
  *
  */
-
 public class Map {
 
 

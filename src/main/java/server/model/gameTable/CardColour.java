@@ -1,11 +1,10 @@
 package server.model.gameTable;
 
 /**
-	 * this class models the colour of a politics card
-	 * @author Emanuele
-	 *
-	 */
-
+* this class models the colour of a politics card
+* @author cg31
+*
+*/
 public class CardColour {
 
 	private String colour;

@@ -8,7 +8,7 @@ import org.jgrapht.UndirectedGraph;
 /**
  * Allows to find all the cities connected (directly and indirectly)
  * to a given city where a player has built a given emporium
- * @author Luca
+ * @author cg31
  *
  */
 public class ConnectedBuiltCityDiscover {

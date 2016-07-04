@@ -6,10 +6,9 @@ import java.util.Set;
 
 /**
  * Models a possible color of a city.  
- * @author Luca
+ * @author cg31
  *
  */
-
 public class CityColour {
 	
 	private final String name;

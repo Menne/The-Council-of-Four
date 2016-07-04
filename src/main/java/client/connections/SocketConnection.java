@@ -14,7 +14,7 @@ import clientUpdates.ClientUpdate;
 
 /**
  * Class that handle the socket connection on the client side
- * @author Luca Scannapieco
+ * @author cg31
  *
  */
 public class SocketConnection extends Connection implements Runnable{

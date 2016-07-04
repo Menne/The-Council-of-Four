@@ -5,11 +5,11 @@ import java.util.Random;
 import java.util.Set;
 
 
-	/**
-	 * Is a generator of random Politics Card
-	 * @author Emanuele
-	 *
-	 */
+/**
+ * Is a generator of random Politics Card
+ * @author cg31
+ *
+ */
 public class PoliticsDeck{
 
 	private final Set<CardColour> cardColours;

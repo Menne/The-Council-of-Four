@@ -4,7 +4,7 @@ import server.model.market.Marketable;
 
 /**
  * modelize assistants and it contains only the methods used for the market (add to player and remove from player)
- * @author andreapasquali
+ * @author cg31
  *
  */
 public class Assistant implements Marketable {

@@ -8,7 +8,7 @@ import server.serverNotifies.MessageServerNotify;
 
 /**
  * ScoreBonus implements assignBonus method
- * @author Andrea
+ * @author cg31
  */
 
 public class ScoreBonus implements Bonus{

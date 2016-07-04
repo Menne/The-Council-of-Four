@@ -2,10 +2,9 @@ package server.model.gameTable;
 
 /**
  * models the councillor; its attribute is only the colour (type CardColour)
- * @author andreapasquali
+ * @author cg31
  *
  */
-
 public class Councillor {
 
 	private CardColour colour;

@@ -7,7 +7,7 @@ import server.serverNotifies.MessageServerNotify;
 
 /**
  * This bonus lets you pick one or more politics cards
- * @author Emanuele
+ * @author cg31
  *
  */
 

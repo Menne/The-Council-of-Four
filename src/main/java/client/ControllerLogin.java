@@ -29,7 +29,7 @@ import javafx.scene.control.ToggleGroup;
 
 /**
  * Controller class for the login screen.
- * @author Luca Scannapieco
+ * @author cg31
  *
  */
 public class ControllerLogin {

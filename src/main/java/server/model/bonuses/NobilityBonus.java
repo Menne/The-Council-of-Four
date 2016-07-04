@@ -7,7 +7,7 @@ import server.serverNotifies.MessageServerNotify;
 
 /**
  * NobilityBonus Class
- * @author Andrea, Emanuele
+ * @author cg31
  *
  */
 

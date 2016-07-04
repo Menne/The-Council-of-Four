@@ -6,7 +6,7 @@ import server.model.actions.Action;
 
 /**
  * Controller of the MVC on the server side
- * @author Luca Scannapieco
+ * @author cg31
  *
  */
 public class Controller implements Observer<Action>{

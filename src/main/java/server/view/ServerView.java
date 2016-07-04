@@ -8,7 +8,7 @@ import server.serverNotifies.ServerViewNotify;
 
 /**
  * Abstract view of the Server MVC. The two implementation in our project are Socket and RMI
- * @author Luca Scannapieco
+ * @author cg31
  *
  */
 public abstract class ServerView extends Observable<Action> implements Observer<ServerViewNotify> {

@@ -6,7 +6,7 @@ import server.model.Game;
 
 /**
  * Bonus interface offers the abstract method assignBonus
- * @author andreapasquali
+ * @author cg31
  * 
  */
 @FunctionalInterface

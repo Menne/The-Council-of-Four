@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /**
  * Is the schema for the balconies of the game.
- * @author andreapasquali
+ * @author cg31
  *
  */
 public class CouncilBalcony {

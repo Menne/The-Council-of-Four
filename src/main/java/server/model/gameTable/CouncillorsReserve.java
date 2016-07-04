@@ -5,10 +5,9 @@ import java.util.List;
 
 /**
  * Models the councillor reserve of game
- * @author Luca
+ * @author cg31
  *
- ***/
-
+ */
 public class CouncillorsReserve {
 
 	private final List<Councillor> councillors;

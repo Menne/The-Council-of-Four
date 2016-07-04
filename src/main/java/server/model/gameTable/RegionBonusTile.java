@@ -5,7 +5,7 @@ import server.model.bonuses.ScoreBonus;
 /**
  * models the bonus tiles of the regions
  * its attributes are the region and the ScoreBonus(super)
- * @author andreapasquali
+ * @author cg31
  *
  */
 public class RegionBonusTile extends BonusTile{

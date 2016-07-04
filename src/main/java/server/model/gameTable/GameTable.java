@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * models the game table of the game and its attributes are: Map, regionBoard, councilOfKing, politicsDeck, 
  * nobilityTrack, kingRewardTiles, king
- * @author andreapasquali
+ * @author cg31
  *
  */
 public class GameTable {

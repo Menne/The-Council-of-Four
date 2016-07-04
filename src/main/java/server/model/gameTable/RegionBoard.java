@@ -8,11 +8,9 @@ import java.util.Set;
  * Models a region board
  * attributes: name, regionPermitDeck, regionBalcony, regionBonus, bonusAvailable, regionCitites,
  * uncoveredPermitTiles
- * @author andreapasquali
+ * @author cg31
  *
  */
-
-
 public class RegionBoard {
 
 	private final String name;

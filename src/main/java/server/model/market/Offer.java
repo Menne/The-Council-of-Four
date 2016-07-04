@@ -5,7 +5,7 @@ import server.model.player.Player;
 /**
  * It modelizes an offer of the market.
  * its attributes are the offering player, the offered object and its price
- * @author andreapasquali
+ * @author cg31
  *
  */
 public class Offer {

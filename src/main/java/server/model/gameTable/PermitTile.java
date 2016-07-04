@@ -8,12 +8,11 @@ import server.model.market.Marketable;
 import server.model.player.Player;
 
 /**
-	 * this class models a permit tile
-	 * contains methods for the market (add to player and remove from player)
-	 * @author Emanuele
-	 *
-	 */
-
+* this class models a permit tile
+* contains methods for the market (add to player and remove from player)
+* @author cg31
+*
+*/
 public class PermitTile implements Marketable{
 
 	private final Set<City> buildableCities;

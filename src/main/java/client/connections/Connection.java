@@ -10,7 +10,7 @@ import clientUpdates.ClientUpdate;
 import observerPattern.Observable;
 /**
  * The abstract connection. The implementations for our game are Socket and RMI.
- * @author Luca Scannapieco
+ * @author cg31
  *
  */
 public abstract class Connection extends Observable<ClientUpdate> {

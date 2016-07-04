@@ -9,10 +9,10 @@ import server.model.gameTable.PermitTile;
 import server.model.gameTable.PoliticsCard;
 
 /** Player class contains all of the informations about a player
-	 * 
-	 * @author Emanuele, Luca
-	 *
-	 */
+ * 
+ * @author cg31
+ *
+ */
 public class Player {
 
 	private int playerNumber;

@@ -28,13 +28,14 @@ import server.view.ServerRMIView;
 import server.view.RMIViewRemote;
 import server.view.ServerSocketView;
 import server.view.ServerView;
+
 /**
  * 
- * @author Luca Scannapieco
- *It's the main class to launch on the server side. 
- *It support Socket and RMI connection.
+ * It's the main class to launch on the server side. 
+ * It support Socket and RMI connection.
+ * @author cg31
+ *
  */
-
 public class Server {
 
 	private static final int SOCKET_PORT=29999;

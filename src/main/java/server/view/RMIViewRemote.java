@@ -8,7 +8,7 @@ import client.modelDTO.actionsDTO.ActionDTO;
 
 /**
  * The server stub to export on the server registry
- * @author Luca Scannapieco
+ * @author cg31
  *
  */
 public interface RMIViewRemote extends Remote {

@@ -5,10 +5,9 @@ import java.util.List;
 
 /**	
 * deck of permit tiles
-* @author Emanuele
+* @author cg31
 *
 */
-
 public class PermitDeck {
 
 	private final List<PermitTile> permitTiles;

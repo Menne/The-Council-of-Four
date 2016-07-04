@@ -23,7 +23,7 @@ import server.serverNotifies.ServerViewNotify;
 
 /**
  * The Socket implementation of Server View
- * @author Luca Scannapieco
+ * @author cg31
  *
  */
 public class ServerSocketView extends ServerView implements Runnable {

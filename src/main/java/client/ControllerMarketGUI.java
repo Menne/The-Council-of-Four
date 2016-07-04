@@ -33,7 +33,7 @@ import javafx.stage.Stage;
 
 /**
  * Controller class for the market screen
- * @author Luca Scannapieco
+ * @author cg31
  *
  */
 public class ControllerMarketGUI {

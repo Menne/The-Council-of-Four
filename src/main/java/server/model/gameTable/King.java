@@ -3,7 +3,7 @@ package server.model.gameTable;
 /**
  * models the king.
  * its attribute is only the city where the king is
- * @author andreapasquali
+ * @author cg31
  *
  */
 public class King {

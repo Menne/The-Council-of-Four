@@ -22,7 +22,7 @@ import javafx.stage.Stage;
 
 /**
  * Is the controller class for the screen where the first player chooses tha map.
- * @author Luca Scannapieco
+ * @author cg31
  *
  */
 public class ControllerChooseMap {

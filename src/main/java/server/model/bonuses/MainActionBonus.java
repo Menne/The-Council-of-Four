@@ -4,7 +4,7 @@ import server.model.Game;
 
 /**
  * Allows the current player to take another main action
- * @author Emanuele
+ * @author cg31
  *
  */
 

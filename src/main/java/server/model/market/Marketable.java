@@ -4,7 +4,7 @@ import server.model.player.Player;
 
 /**
  * This interface is implemented by every object that can be offered in the market
- * @author andreapasquali
+ * @author cg31
  *
  */
 public interface Marketable {

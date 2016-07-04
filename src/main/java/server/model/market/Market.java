@@ -11,7 +11,7 @@ import server.model.player.Player;
 /**
  * This class modelizes the market: its attributes are the selling players, 
  * the buying players and the list of offers
- * @author andreapasquali
+ * @author cg31
  *
  */
 public class Market {

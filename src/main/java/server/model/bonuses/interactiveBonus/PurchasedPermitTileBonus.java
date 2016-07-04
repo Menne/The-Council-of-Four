@@ -16,7 +16,7 @@ import server.serverNotifies.PlayerServerNotify;
  * This is a particular bonus which requires a choice by the current player.
  * In order to do this the method assignBonus invokes a particular action which
  * manages the assignment of the bonus
- * @author Emanuele
+ * @author cg31
  *
  */
 public class PurchasedPermitTileBonus implements Bonus {

@@ -3,7 +3,7 @@ import server.model.player.Player;
 
 /**
  * models the emporium object and has only the emporium's handler(player) as attribute
- * @author andreapasquali
+ * @author cg31
  *
  */
 public class Emporium {

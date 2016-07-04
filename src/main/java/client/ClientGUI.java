@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 
 /**
  * The main class to launch if the user wants to play from a GUI.
- * @author Luca Scannapieco
+ * @author cg31
  *
  */
 public class ClientGUI extends Application {

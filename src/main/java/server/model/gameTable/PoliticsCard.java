@@ -4,11 +4,11 @@ import server.model.market.Marketable;
 import server.model.player.Player;
 
 /**
-	 * this class models a politics card
-	 * its attribute is the CardColour colour of the card
-	 * @author Emanuele
-	 *
-	 */
+* this class models a politics card
+* its attribute is the CardColour colour of the card
+* @author cg31
+*
+*/
 public class PoliticsCard implements Marketable{
 	
 	private final CardColour colour;

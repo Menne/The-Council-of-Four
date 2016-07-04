@@ -12,7 +12,7 @@ import server.view.RMIViewRemote;
 
 /**
  * The class that handle the RMI connection on the client side.
- * @author Luca Scannapieco
+ * @author cg31
  *
  */
 public class RMIConnection extends Connection implements ClientRMIViewRemote{

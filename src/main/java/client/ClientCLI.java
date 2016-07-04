@@ -23,7 +23,7 @@ import server.view.RMIViewRemote;
 
 /**
  * It's the main class to launch if the clients wants to play with CLI.
- * @author Luca Scanapieco
+ * @author cg31
  *
  */
 public class ClientCLI {

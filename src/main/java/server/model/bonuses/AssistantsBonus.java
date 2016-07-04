@@ -7,7 +7,7 @@ import server.serverNotifies.MessageServerNotify;
 
 /**
  * AssistantsBonus implements the Bonus Class
- * @author Andrea, Emanuele
+ * @author cg31
  *
  */
 

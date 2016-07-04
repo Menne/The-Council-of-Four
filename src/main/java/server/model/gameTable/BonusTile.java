@@ -1,9 +1,10 @@
 package server.model.gameTable;
 
 import server.model.bonuses.ScoreBonus;
+
 /**
  * modelizes bonus tiles and has an attribute of type Score Bonus  
- * @author andreapasquali
+ * @author cg31
  *
  */
 public abstract class BonusTile {

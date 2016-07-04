@@ -7,10 +7,9 @@ import java.util.Set;
 
 /**
  * Models a city of the game
- * @author Luca
+ * @author cg31
  *
  */
-
 public class City {
 
 	private final String name;

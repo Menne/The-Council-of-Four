@@ -6,7 +6,7 @@ import server.model.bonuses.Bonus;
 
 /**
  * modelizes reward tokens as a set of bonuses
- * @author andreapasquali
+ * @author cg31
  *
  */
 public class RewardToken {

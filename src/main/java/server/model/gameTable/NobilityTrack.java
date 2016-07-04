@@ -9,7 +9,7 @@ import server.model.bonuses.Bonus;
 
 /**
  * It's a List of sets of bonuses.
- * @author Luca
+ * @author cg31
  *
  */
 public class NobilityTrack {

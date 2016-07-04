@@ -21,7 +21,7 @@ import server.serverNotifies.ServerViewNotify;
 
 /**
  * The RMI implementation of the Server view
- * @author Luca Scannapieco
+ * @author cg31
  *
  */
 public class ServerRMIView extends ServerView implements RMIViewRemote {
