@@ -40,25 +40,20 @@ public class RegionDTOTest {
 		assertEquals(83022, region.hashCode());
 	}
 
+	@Test
 	public void testEquals() {
 		String name1="Sea";
 		CouncillorDTO[] balcony1=new CouncillorDTO[4];
 		Set<CityDTO> cities1= new HashSet<>();
 		PermitTileDTO[] uncoveredPermitTiles1= new PermitTileDTO[2];
 		String name2="Sea";
-		CouncillorDTO[] balcony2=new CouncillorDTO[4];
-		Set<CityDTO> cities2= new HashSet<>();
-		PermitTileDTO[] uncoveredPermitTiles2= new PermitTileDTO[2];
 		RegionDTO region1= new RegionDTO();
 		RegionDTO region2= new RegionDTO();
 		region1.setBalcony(balcony1);
 		region1.setCities(cities1);
 		region1.setName(name1);
 		region1.setUncoveredPermitTiles(uncoveredPermitTiles1);
-		region2.setBalcony(balcony2);
-		region2.setCities(cities2);
 		region2.setName(name2);
-		region2.setUncoveredPermitTiles(uncoveredPermitTiles2);
 		assertEquals(region1, region2);
 	}
 }
