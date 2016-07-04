@@ -16,6 +16,7 @@ import server.model.actions.standardActions.ElectCouncillorByAssistant;
 import server.model.actions.standardActions.EngageAssistant;
 import server.model.player.Player;
 import server.model.stateMachine.BeginState;
+import server.model.stateMachine.EndGameState;
 import server.model.stateMachine.SellingState;
 import server.model.stateMachine.State01;
 import server.model.stateMachine.State10;
@@ -28,6 +29,7 @@ public class State01Test {
 		List<Player> players = new ArrayList<>();
 		Player a = new Player("Andre");
 		Player b = new Player("Andre");
+		a.setPlayerNumber(1);
 		b.setPlayerNumber(2);
 		players.add(a);
 		players.add(b);
@@ -40,6 +42,9 @@ public class State01Test {
 		game.setState(state);
 		assertEquals(SellingState.class, state.quickActionTransition(game).getClass());
 		assertEquals(a, game.getCurrentPlayer());
+		game.setState(state);
+		game.getPlayers().remove(1);
+		assertEquals(EndGameState.class, state.quickActionTransition(game).getClass());
 	}
 
 	@Test
@@ -66,6 +71,9 @@ public class State01Test {
 		game.setState(state);
 		assertEquals(SellingState.class, state.moveToNextTransition(game).getClass());
 		assertEquals(a, game.getCurrentPlayer());
+		game.setState(state);
+		game.getPlayers().remove(1);
+		assertEquals(EndGameState.class, state.moveToNextTransition(game).getClass());
 	}
 	
 	@Test
