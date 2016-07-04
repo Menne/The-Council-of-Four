@@ -51,7 +51,7 @@ public class SellingState implements State {
 
 	@Override
 	public void updateAvailableActions(Game game) {
-		if (game.getCurrentPlayer().getPlayerNumber()==1) {
+		if (game.getCurrentPlayer().equals(game.firstPlayer())) {
 			game.notifyObserver(new MarketServerNotify(game, 
 					new ArrayList<Player>(game.getAllPlayers()), true, false));
 			game.notifyObserver(new MarketServerNotify(game, 

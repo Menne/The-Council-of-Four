@@ -119,7 +119,7 @@ public class Game extends Observable<ServerViewNotify>{
 	}
 	
 	/**
-	 * @return last Player of the game
+	 * @return the player with the higher player number among the remaining players
 	 */
 	public Player lastPlayer(){
 		Player lastPlayer=players.get(0);
@@ -127,6 +127,18 @@ public class Game extends Observable<ServerViewNotify>{
 			if(player.getPlayerNumber()>=lastPlayer.getPlayerNumber())
 				lastPlayer=player;
 		return lastPlayer;
+	}
+	
+	/**
+	 * @return the player with the lower player number among the remaining players
+	 */
+	public Player firstPlayer(){
+		Player firstPlayer=players.get(0);
+		for(Player player : players)
+			if(player.getPlayerNumber()<=firstPlayer.getPlayerNumber())
+				firstPlayer=player;
+		return firstPlayer;
+				
 	}
 	
 	/**

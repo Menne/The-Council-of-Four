@@ -796,9 +796,7 @@ public class GUI extends ClientView{
 					alert.setHeaderText("The game is over!\n"
 							+ "Congratulations "+clientGame.getClientPlayer().getName()+ ", you have got the "+ String.valueOf(i+1) +" position!");
 				string=string+String.valueOf(i+1) + "\t"+finalRankingTableDTO.get(i).getName() + 
-						"\tscore: " + finalRankingTableDTO.get(i).getScore() + "\tassistants: " +
-						finalRankingTableDTO.get(i).getAssistants() + "\tcards: " + 
-						finalRankingTableDTO.get(i).getHand() + "\n";
+						"\t\tscore: " + finalRankingTableDTO.get(i).getScore() + "\n";
 				
 			}
 			alert.setContentText(string);
