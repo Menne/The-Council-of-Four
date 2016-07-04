@@ -59,7 +59,7 @@ public class MakeAnOffer implements Action{
 		game.notifyObserver(new MarketServerNotify(game, 
 				new ArrayList<Player>(game.getAllPlayers()), false, false));
 		game.notifyObserver(new PlayerServerNotify(game, game.getCurrentPlayer(), 
-				game.getAllPlayers()));
+				Arrays.asList(game.getCurrentPlayer())));
 		game.notifyObserver(new MessageServerNotify("Offer registered succesfully!", 
 				Arrays.asList(game.getCurrentPlayer())));
 		List<Player> otherPlayers=new ArrayList<>();
