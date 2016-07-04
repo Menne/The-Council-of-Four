@@ -15,6 +15,7 @@ import server.model.actions.standardActions.BuildByPermitTile;
 import server.model.actions.standardActions.ElectCouncillor;
 import server.model.player.Player;
 import server.model.stateMachine.BeginState;
+import server.model.stateMachine.EndGameState;
 import server.model.stateMachine.SellingState;
 import server.model.stateMachine.State10;
 import server.model.stateMachine.bonusStates.AdditionalMainActionBonusState;
@@ -40,6 +41,9 @@ public class State10Test {
 			game.setState(state);
 			assertEquals(SellingState.class, state.mainActionTransition(game).getClass());
 			assertEquals(a, game.getCurrentPlayer());
+			game.setState(state);
+			game.getPlayers().remove(1);
+			assertEquals(EndGameState.class, state.mainActionTransition(game).getClass());
 	}
 	
 	@Test
@@ -60,6 +64,9 @@ public class State10Test {
 		game.setState(state);
 		assertEquals(SellingState.class, state.moveToNextTransition(game).getClass());
 		assertEquals(a, game.getCurrentPlayer());
+		game.setState(state);
+		game.getPlayers().remove(1);
+		assertEquals(EndGameState.class, state.moveToNextTransition(game).getClass());
 	}
 	
 	@Test
