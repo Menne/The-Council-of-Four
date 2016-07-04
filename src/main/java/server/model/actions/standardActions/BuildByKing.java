@@ -100,6 +100,8 @@ public class BuildByKing implements MainAction {
 		if (game.getCurrentPlayer().getRemainigEmporiums().isEmpty()){
 			game.setLastLap(true);
 			game.getCurrentPlayer().incrementScore(3);
+			game.notifyObserver(new MessageServerNotify(game.getCurrentPlayer().getName() + 
+					"built his last emporium!", game.getAllPlayers()));
 		}
 		
 		this.updateClients(game);
@@ -239,7 +241,7 @@ public class BuildByKing implements MainAction {
 		game.notifyObserver(new MessageServerNotify("Emporium built successfully!", 
 				Arrays.asList(game.getCurrentPlayer())));
 		List<Player> otherPlayers=new ArrayList<>();
-		for (Player player : game.getPlayers())
+		for (Player player : game.getAllPlayers())
 			if (!player.equals(game.getCurrentPlayer()))
 				otherPlayers.add(player);
 		game.notifyObserver(new MessageServerNotify(game.getCurrentPlayer().getName()

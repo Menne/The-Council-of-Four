@@ -13,7 +13,7 @@ import server.serverNotifies.GameTableServerNotify;
 
 /**
  * In this state the player can just pick a politics card
- * @author Luca Scannapieco
+ * @author cg31
  *
  */
 public class BeginState implements State {

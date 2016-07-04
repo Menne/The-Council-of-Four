@@ -39,7 +39,7 @@ import server.model.gameTable.RegionBonusTile;
 import server.model.gameTable.RewardToken;
 /**
  * this class has the method that initializes the game table and its attribute is the number of the file.
- * @author andreapasquali
+ * @author cg31
  *
  */
 public class Initializer {

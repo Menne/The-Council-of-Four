@@ -196,7 +196,7 @@ public class ActionDTOMapper implements ActionMapperVisitor{
 		}
 		if (selectedActionDTO.getOffer().getOfferedObjectDTO() instanceof PermitTileDTO) {
 			PermitTileDTO offeringPermitTileDTO=(PermitTileDTO) selectedActionDTO.getOffer().getOfferedObjectDTO();
-			for (PermitTile permitTile : this.game.getCurrentPlayer().getPlayersPermitTilesTurnedUp())
+			for (PermitTile permitTile : this.setOfferingPlayer(selectedActionDTO.getOffer()).getPlayersPermitTilesTurnedUp())
 				if (permitTile.getBonuses().equals(offeringPermitTileDTO.getBonuses()) &&
 					this.checkBuildableCities(permitTile.getBuildableCities(), offeringPermitTileDTO))
 				action.setOffer(new Offer(this.setOfferingPlayer(selectedActionDTO.getOffer()), permitTile, selectedActionDTO.getOffer().getPrice()));
