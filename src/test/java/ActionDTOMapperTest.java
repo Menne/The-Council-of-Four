@@ -225,37 +225,22 @@ public class ActionDTOMapperTest {
 	@Test
 	public void testMakeAnOfferMapAndAcceptAnOffer() throws IOException {
 		MakeAnOfferDTO actionDTO= new MakeAnOfferDTO();
-		List<OfferDTO> offeredObjectsDTO= new ArrayList<>();
 		OfferDTO offer1= new OfferDTO();
 		OfferDTO offer2= new OfferDTO();
-		OfferDTO offer3= new OfferDTO();
 		offer1.setPrice(1);
 		offer2.setPrice(2);
-		offer3.setPrice(3);
 		String player= "player1";
 		offer1.setOfferingPlayer(player);
 		offer2.setOfferingPlayer(player);
-		offer3.setOfferingPlayer(player);
 		AssistantDTO assistantDTO= new AssistantDTO();
 		PoliticsCardDTO cardDTO= new PoliticsCardDTO();
 		CardColourDTO colourDTO= new CardColourDTO();
 		colourDTO.setName("Blue");
 		cardDTO.setColour(colourDTO);
-		Set<CityDTO> buildablecities= new HashSet<>();
-		Set<Bonus> bonuses= new HashSet<>();
-		CityDTO city= new CityDTO();
-		city.setName("Dorful");
-		ScoreBonus bonus= new ScoreBonus(7);
-		buildablecities.add(city);
-		bonuses.add(bonus);
-		PermitTileDTO permitTileDTO= new PermitTileDTO(buildablecities, bonuses);
 		offer1.setOfferedObjectDTO(assistantDTO);
 		offer2.setOfferedObjectDTO(cardDTO);
-		offer3.setOfferedObjectDTO(permitTileDTO);
-		offeredObjectsDTO.add(offer1);
-		offeredObjectsDTO.add(offer2);
-		offeredObjectsDTO.add(offer3);
-		actionDTO.setOfferedObjectsDTO(offeredObjectsDTO);
+		actionDTO.addOfferToList(offer1);
+		actionDTO.addOfferToList(offer2);
 		Game game= new Game();
 		List<Player> players = new ArrayList<>();
 		Player a = new Player("player1");
@@ -266,42 +251,26 @@ public class ActionDTOMapperTest {
 		Assistant assistant= new Assistant();
 		CardColour colour= new CardColour("Blue");
 		PoliticsCard politicsCard= new PoliticsCard(colour);
-		City cityDorful= null;
-		for(City city1: game.getGameTable().getRegionBoards().get(0).getRegionCities())
-			if (city1.getName().equals("Dorful"))
-				cityDorful=city1;
-		Set<City> cities= new HashSet<>();
-		cities.add(cityDorful);
-		PermitTile tile= new PermitTile(cities, bonuses, game.getGameTable().getRegionBoards().get(0).getRegionPermitDeck());
 		assertEquals(action.getOfferingObjects().get(0).getOfferedObject(), assistant);
 		assertEquals(action.getOfferingObjects().get(1).getOfferedObject(), politicsCard);
 		assertTrue(action.getOfferingObjects().size()==2);
-	//	assertEquals(action.getOfferingObjects().get(2).getOfferedObject(), tile);
 		assertEquals(a, action.getOfferingObjects().get(0).getOfferingPlayer());
 		assertEquals(a, action.getOfferingObjects().get(1).getOfferingPlayer());
-		//assertEquals(a, action.getOfferingObjects().get(2).getOfferingPlayer());
 		assertTrue(action.getOfferingObjects().get(0).getPrice()==1);
-		assertTrue(action.getOfferingObjects().get(1).getPrice()==2);
-		//assertTrue(action.getOfferingObjects().get(2).getPrice()==3);
-		
+		assertTrue(action.getOfferingObjects().get(1).getPrice()==2);	
 		AcceptAnOfferDTO accept1DTO= new AcceptAnOfferDTO();
 		AcceptAnOfferDTO accept2DTO= new AcceptAnOfferDTO();
-		AcceptAnOfferDTO accept3DTO= new AcceptAnOfferDTO();
 		accept1DTO.setOffer(offer1);
 		accept2DTO.setOffer(offer2);
-		accept3DTO.setOffer(offer3);
 		AcceptAnOffer accept1 = mapper.map(accept1DTO); 
 		AcceptAnOffer accept2 = mapper.map(accept2DTO); 
-		AcceptAnOffer accept3 = mapper.map(accept3DTO);
 		assertEquals(accept1.getOffer().getOfferedObject(), assistant);
 		assertEquals(accept2.getOffer().getOfferedObject(), politicsCard);
-		//assertEquals(accept3.getOffer().getOfferedObject(), tile);
 		assertEquals(accept1.getOffer().getOfferingPlayer(), a);
 		assertEquals(accept2.getOffer().getOfferingPlayer(), a);
-		//assertEquals(accept3.getOffer().getOfferingPlayer(), a);
 		assertTrue(accept1.getOffer().getPrice()==1);
 		assertTrue(accept2.getOffer().getPrice()==2);
-		//assertTrue(accept3.getOffer().getPrice()==3);
+
 	}
 	
 	@Test
